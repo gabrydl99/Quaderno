@@ -2,13 +2,17 @@
 """Trasforma l'HTML del Quaderno (come esce dall'artefatto o da unisci.py) in index.html per la PWA.
 
 Uso:
-    python3 strumenti/costruisci_pwa.py SORGENTE.html [--versione v35]
+    python3 strumenti/costruisci_pwa.py SORGENTE.html [--versione v36] [--sfondo] [--uscita prova.html]
+
+    --sfondo   aggiunge l'immagine dietro agli argomenti della pagina iniziale (img/sfondo-home.jpg)
+    --uscita   scrive in un altro file invece di index.html (per le prove)
 
 Cosa fa (il contenuto degli appunti non viene toccato):
 - sostituisce i link agli audio dell'artefatto (/_blob/ID) con i file in audio/ o nel repository Quaderno-Audio,
   secondo strumenti/mappa_audio.json;
 - mette i font in locale (fonts/fonts.css) al posto di Google Fonts;
 - aggiunge manifest, icone, colore della barra e la registrazione del service worker;
+- inserisce la grafica (strumenti/tema.css) e il tasto Installa (strumenti/installa.html);
 - aggiorna l'etichetta della versione e il nome della cache in sw.js.
 """
 import json, re, sys, pathlib
@@ -49,7 +53,7 @@ if ('serviceWorker' in navigator) {
 '''
 
 
-def costruisci(sorgente: str, versione: str | None) -> str:
+def costruisci(sorgente: str, versione: str | None, sfondo: bool = False) -> str:
     s = sorgente
 
     # 1. testa dell'artefatto -> testa vera della PWA (lo stile base dell'artefatto resta, per non cambiare l'aspetto)
@@ -75,12 +79,20 @@ def costruisci(sorgente: str, versione: str | None) -> str:
     if mancanti:
         sys.exit(f'Audio senza file in mappa_audio.json: {sorted(set(mancanti))}')
 
+    # 3b. grafica: tema subito dopo lo stile originale, così lo sostituisce dove serve
+    tema = (RADICE / 'strumenti' / 'tema.css').read_text(encoding='utf8')
+    k = s.find('</style>', s.find('/* Layout')) + len('</style>')
+    s = s[:k] + '\n<style id="tema">\n' + tema + '</style>' + s[k:]
+
     # 4. versione
     if versione:
         s = re.sub(r'(class="ver"[^>]*>)v\d+(<)', rf'\g<1>{versione}\2', s, count=1)
 
-    # 5. registrazione del service worker
-    s = s.replace('</body></html>', REGISTRA + '</body>\n</html>')
+    # 5. tasto Installa, immagine di sfondo (facoltativa) e registrazione del service worker
+    extra = (RADICE / 'strumenti' / 'installa.html').read_text(encoding='utf8')
+    if sfondo:
+        extra += (RADICE / 'strumenti' / 'sfondo.html').read_text(encoding='utf8')
+    s = s.replace('</body></html>', extra + REGISTRA + '</body>\n</html>')
     if REGISTRA not in s:
         s = s.rstrip() + REGISTRA
     return s
@@ -92,13 +104,14 @@ def main():
     versione = None
     if '--versione' in sys.argv:
         versione = sys.argv[sys.argv.index('--versione') + 1]
+    uscita = sys.argv[sys.argv.index('--uscita') + 1] if '--uscita' in sys.argv else 'index.html'
     src = pathlib.Path(sys.argv[1]).read_text(encoding='utf8')
-    out = costruisci(src, versione)
-    (RADICE / 'index.html').write_text(out, encoding='utf8')
-    if versione:
+    out = costruisci(src, versione, '--sfondo' in sys.argv)
+    (RADICE / uscita).write_text(out, encoding='utf8')
+    if versione and uscita == 'index.html':
         sw = RADICE / 'sw.js'
         sw.write_text(re.sub(r"const VERSIONE = '[^']*'", f"const VERSIONE = '{versione}'", sw.read_text(encoding='utf8')), encoding='utf8')
-    print('index.html scritto', len(out), 'caratteri', '· versione', versione or '(invariata)')
+    print(uscita, 'scritto', len(out), 'caratteri', '· versione', versione or '(invariata)')
 
 
 if __name__ == '__main__':

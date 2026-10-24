@@ -6,12 +6,12 @@
 #home #cards.grid{background:color-mix(in srgb,var(--sheet) 80%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 #home .howto{background:color-mix(in srgb,var(--sheet) 80%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 /* spazio in fondo: scorrendo giù l'immagine resta scoperta */
-.bg-spazio{display:flex;align-items:flex-end;justify-content:center;height:calc(100vh - var(--top-h,190px));height:calc(100svh - var(--top-h,190px));padding-bottom:8px;box-sizing:border-box}
-.bg-vedi{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:8px;margin:0;padding:10px 15px 10px 12px;border-radius:999px;background:color-mix(in srgb,var(--sheet) 85%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line);color:var(--ink);font:600 .92rem/1 var(--f-body)}
+.bg-spazio{height:calc(100vh - var(--top-h,190px));height:calc(100svh - var(--top-h,190px))}
+.bg-vedi{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:8px;margin:0 0 10px;padding:9px 15px 9px 12px;border-radius:999px;background:color-mix(in srgb,var(--sheet) 85%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line);color:var(--ink);font:600 .92rem/1 var(--f-body)}
 .bg-vedi svg{color:inherit;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .bg-vedi:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 #home > *:not(.home-bg){transition:opacity .25s ease}
-body.vedi-sfondo #home > *:not(.home-bg):not(.bg-spazio),body.vedi-sfondo ~ * .foot-ver,body.vedi-sfondo .foot-ver{opacity:0;visibility:hidden;pointer-events:none}
+body.vedi-sfondo #home > *:not(.home-bg):not(.bg-vedi),body.vedi-sfondo ~ * .foot-ver,body.vedi-sfondo .foot-ver{opacity:0;visibility:hidden;pointer-events:none}
 body.vedi-sfondo .home-bg{padding:14px 14px calc(86px + env(safe-area-inset-bottom,0px));background-origin:content-box;background-clip:border-box;background-size:contain;background-position:center}
 body.vedi-sfondo .bg-vedi{position:fixed;z-index:30;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);margin:0;background:var(--ink);color:var(--sheet);border-color:var(--ink);box-shadow:0 6px 20px rgba(6,17,27,.3)}
 @media (prefers-reduced-motion:reduce){#home > *{transition:none}}
@@ -25,8 +25,10 @@ body.vedi-sfondo .bg-vedi{position:fixed;z-index:30;left:50%;bottom:calc(20px + 
   const ICONA_VEDI = '<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="M4 17.5l5-4.5 4 3.5 3-2.5 4.5 3.5"/>';
   const ICONA_TORNA = '<path d="M5 7h14M5 12h14M5 17h14"/>';
   t.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + ICONA_VEDI + '</svg><span>Guarda l\'immagine</span>';
-  const spazio = document.createElement('div'); spazio.className = 'bg-spazio'; spazio.append(t);
+  const spazio = document.createElement('div'); spazio.className = 'bg-spazio';
+  const elenco = document.getElementById('cards');
   home.prepend(bg); home.append(spazio);
+  if (elenco) elenco.before(t); else home.prepend(t);
   const alto = () => document.documentElement.style.setProperty('--top-h', (top ? top.offsetHeight : 0) + 'px');
   alto(); addEventListener('resize', alto);
   function vedi(on){

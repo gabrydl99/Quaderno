@@ -1,0 +1,7 @@
+{
+  "_spiegazione": "Modifiche al contenuto chieste dall'utente, applicate a ogni costruzione. gruppi_da_togliere: id dei gruppi (div.grp) da eliminare con tutti i loro argomenti. sostituzioni: [testo vecchio, testo nuovo].",
+  "gruppi_da_togliere": ["conv-quaderno"],
+  "sostituzioni": [
+    ["\"desc\": \"Appunti (MARPOL, ISM, ISPS, BLU code), SOLAS,", "\"desc\": \"SOLAS,"]
+  ]
+}

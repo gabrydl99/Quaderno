@@ -30,9 +30,24 @@ body{font-size:17px;line-height:1.6;background-size:24px 24px}
 .ver{border:0;background:var(--chip);color:var(--muted);font:600 .72rem/1 var(--f-body);letter-spacing:0;padding:4px 7px;border-radius:999px}
 .brand .crumb{text-transform:none;letter-spacing:0;font:600 .9rem/1 var(--f-body);order:1;margin-left:0}
 .theme{border-radius:12px;border-color:var(--line);background:var(--sheet)}
-.brand .theme{order:4;margin-left:0;width:36px;height:36px}
+/* casetta e tema: icona con la scritta sotto */
+.brand .theme,.brand .homeb{order:4;margin-left:0;width:auto;min-width:42px;height:auto;padding:4px 6px 3px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;box-sizing:border-box}
+.brand .theme svg,.brand .homeb svg{width:19px;height:19px}
+.brand .theme,.brand .homeb{border:1.5px solid var(--line);border-radius:12px;background:var(--sheet);color:var(--ink)}
+@media (max-width:374px){.brand{gap:4px}.brand h1{font-size:.95rem;gap:6px}.brand h1::before{width:22px;height:22px;background-size:15px}.brand .theme,.brand .homeb{min-width:38px;padding:3px 4px}.brand .tcap{font-size:.56rem}}
+.brand .tcap{display:block;font:600 .6rem/1.15 var(--f-body);color:var(--muted);white-space:nowrap}
+.theme .tcap-d{display:none}
+:root[data-theme="dark"] .theme .tcap-d{display:block}
+:root[data-theme="dark"] .theme .tcap-l{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .theme .tcap-d{display:block}:root:not([data-theme="light"]) .theme .tcap-l{display:none}}
+/* versione e data dell'ultimo aggiornamento */
+.ver-top{order:2;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;line-height:1.15;color:var(--muted);white-space:nowrap}
+.ver-top b{font:700 .74rem/1.15 var(--f-body);color:var(--ink)}
+.ver-top small{font:500 .6rem/1.15 var(--f-body)}
+/* tasto fisso "Indice" tolto */
+#idx,.idx{display:none!important}
 /* tasto casetta: torna alla pagina iniziale */
-.brand .homeb{order:3;flex:none;display:grid;place-items:center;width:36px;height:36px;box-sizing:border-box;border:1.5px solid var(--line);border-radius:12px;background:var(--sheet);color:var(--ink);cursor:pointer}
+.brand .homeb{order:3;flex:none;border:1.5px solid var(--line);border-radius:12px;background:var(--sheet);color:var(--ink);cursor:pointer}
 .brand .homeb svg{color:inherit;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .brand .homeb:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .search input{border-radius:var(--r-md);border-color:var(--line);padding-block:8px;background:var(--sheet)}
@@ -153,10 +168,11 @@ figure.fig.sym .svgbox{border:0}
 .ill text{font:700 9px var(--f-body);fill:currentColor;stroke:none}
 
 /* ---------- istruzioni: un riquadro come le sezioni, si apre toccandolo ---------- */
-#home .howto{margin-top:14px;background:var(--sheet);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;padding:0}
+#home .howto{margin:0 0 10px;background:var(--sheet);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;padding:0}
 #home .howto h2{margin:0;font:inherit}
-.how-card{all:unset;box-sizing:border-box;width:100%;cursor:pointer;padding:16px 18px;display:grid;grid-template-columns:minmax(0,1fr) 88px;grid-template-areas:"n ill" "m ill" "d d";gap:2px 12px;text-align:left}
-.how-card .n{font:700 1.22rem/1.25 var(--f-body);color:var(--ink)}
+.how-card{all:unset;box-sizing:border-box;width:100%;cursor:pointer;padding:10px 16px 11px;display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"n" "d";gap:1px;text-align:left}
+.how-card .n{font:700 1.05rem/1.25 var(--f-body);color:var(--ink)}
+.how-card .d{font-size:.84rem!important;line-height:1.35!important}
 .how-card .n::after{content:"";display:inline-block;width:.5em;height:.5em;margin-left:.45em;border:solid var(--muted);border-width:0 2px 2px 0;transform:translateY(-.2em) rotate(45deg);transition:transform .2s ease}
 .how-card[aria-expanded="true"] .n::after{transform:translateY(.05em) rotate(-135deg)}
 .how-card:focus-visible{outline:2px solid var(--blue);outline-offset:-3px}

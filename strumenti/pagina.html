@@ -56,9 +56,11 @@
       '<path class="il-t" d="M48 36V8"/><path class="il-b" d="M48 36L72.2 22"/>' +
       '<circle class="il-fa" cx="62" cy="21" r="2.6"/><circle class="il-fa" cx="33" cy="48" r="2.2"/><circle class="il-fa" cx="59" cy="53" r="2"/>',
     convenzioni:
-      '<path class="il-fs" d="M14 6H44L54 16V66H14Z"/><path d="M14 6H44L54 16V66H14Z"/><path d="M44 6V16H54"/>' +
-      '<path class="il-t" d="M20 26H48M20 34H48M20 42H40"/><circle class="il-b" cx="44" cy="56" r="6"/>' +
-      '<path d="M70 6V68"/><path class="il-fs" d="M70 9H92V29H70Z"/><path class="il-b" style="stroke-width:4" d="M81 9V29M70 19H92"/><path d="M70 9H92V29H70"/>',
+      '<path class="il-fs" d="M8 8H36L44 16V64H8Z"/><path d="M8 8H36L44 16V64H8Z"/><path d="M36 8V16H44"/>' +
+      '<path class="il-t" d="M14 28H38M14 36H38M14 44H30"/><circle class="il-b" cx="35" cy="56" r="5"/>' +
+      '<path class="il-gold" d="M67.6 47L70 34H84L86.4 47Z"/><path class="il-ink" d="M67.6 47H86.4L88 58H66Z"/><path d="M66 58L70 34H84L88 58Z"/>' +
+      '<path d="M77 34V22"/><path class="il-ink" d="M77 6l-5 7h10zM77 14l-5 7h10z"/>' +
+      '<path class="il-b" d="M56 62q4-3 8 0t8 0t8 0t8 0t8 0"/>',
     formulario:
       '<path class="il-fb" d="M8 50L22 22L36 50Z"/><path class="il-b" d="M8 50L22 22L36 50Z"/>' +
       '<path d="M42 38l4-2l5 14l7-28H90"/><path class="il-t" d="M64 30l10 12M74 30l-10 12"/><path class="il-t" d="M80 28q4 0 4 3q0 3-4 5h5"/>' +
@@ -76,16 +78,22 @@
     if (id && D[id]) { c.dataset.sec = id; c.append(disegno(id)); }
   });
 
+  // scritte sotto la casetta e sotto il tasto del tema
+  const hb = document.getElementById('homeBtn');
+  if (hb && !hb.querySelector('.tcap')) hb.insertAdjacentHTML('beforeend', '<span class="tcap">Home</span>');
+  const tb = document.getElementById('themeBtn');
+  if (tb && !tb.querySelector('.tcap')) tb.insertAdjacentHTML('beforeend', '<span class="tcap tcap-l">Light mode</span><span class="tcap tcap-d">Dark mode</span>');
+
   // istruzioni: riquadro come le sezioni; toccandolo si apre l'elenco
   const how = document.querySelector('#home .howto');
   if (how) {
     const h2 = how.querySelector('h2'), ol = how.querySelector('ol');
     const b = document.createElement('button'); b.type = 'button'; b.className = 'how-card';
     b.setAttribute('aria-expanded', 'false'); if (ol) { ol.id = ol.id || 'howto-lista'; b.setAttribute('aria-controls', ol.id); }
-    b.innerHTML = '<span class="n">Come si usa</span><span class="m">Istruzioni</span><span class="d">Sezioni, audio delle lezioni, ricerca, uso senza internet e installazione.</span>';
-    b.append(disegno('istruzioni'));
+    b.innerHTML = '<span class="n">Come si usa</span><span class="d">Sezioni, audio delle lezioni, ricerca, uso senza internet e installazione.</span>';
     h2.textContent = ''; h2.append(b);
     if (ol) ol.hidden = true;
+    const home = document.getElementById('home'); if (home) home.insertBefore(how, home.firstChild);
     b.addEventListener('click', () => { const apri = ol.hidden; ol.hidden = !apri; b.setAttribute('aria-expanded', apri ? 'true' : 'false'); });
   }
 })();

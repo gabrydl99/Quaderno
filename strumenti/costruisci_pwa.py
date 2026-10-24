@@ -6,6 +6,9 @@ Uso:
 
     --sfondo   aggiunge l'immagine dietro agli argomenti della pagina iniziale (img/sfondo-home.jpg)
     --uscita   scrive in un altro file invece di index.html (per le prove)
+    --data     data dell'aggiornamento da mostrare (gg/mm/aaaa); senza, quella di oggi
+
+Le parti tolte o cambiate su richiesta sono in strumenti/modifiche.json.
 
 Cosa fa (il contenuto degli appunti non viene toccato):
 - sostituisce i link agli audio dell'artefatto (/_blob/ID) con i file in audio/ o nel repository Quaderno-Audio,
@@ -16,7 +19,8 @@ Cosa fa (il contenuto degli appunti non viene toccato):
   pagina iniziale (strumenti/pagina.html) e le istruzioni aggiornate (strumenti/istruzioni.html);
 - aggiorna l'etichetta della versione e il nome della cache in sw.js.
 """
-import json, re, sys, pathlib
+import json, re, sys, pathlib, datetime
+from zoneinfo import ZoneInfo
 
 RADICE = pathlib.Path(__file__).resolve().parent.parent
 MAPPA = json.loads((RADICE / 'strumenti' / 'mappa_audio.json').read_text(encoding='utf8'))
@@ -54,7 +58,7 @@ if ('serviceWorker' in navigator) {
 '''
 
 
-def costruisci(sorgente: str, versione: str | None, sfondo: bool = False) -> str:
+def costruisci(sorgente: str, versione: str | None, sfondo: bool = False, data: str | None = None) -> str:
     s = sorgente
 
     # 1. testa dell'artefatto -> testa vera della PWA (lo stile base dell'artefatto resta, per non cambiare l'aspetto)
@@ -80,6 +84,23 @@ def costruisci(sorgente: str, versione: str | None, sfondo: bool = False) -> str
     if mancanti:
         sys.exit(f'Audio senza file in mappa_audio.json: {sorted(set(mancanti))}')
 
+    # 2b. parti tolte o cambiate su richiesta (strumenti/modifiche.json)
+    mod = json.loads((RADICE / 'strumenti' / 'modifiche.json').read_text(encoding='utf8'))
+    for g in mod.get('gruppi_da_togliere', []):
+        i = s.find(f'<div class="grp" id="{g}"')
+        if i < 0:
+            sys.exit(f'Gruppo da togliere non trovato: {g}')
+        j = s.find('<div class="grp"', i + 10)
+        fine_sez = s.find('</section>', i)
+        if j < 0 or j > fine_sez:
+            # ultimo gruppo della sezione: chiude prima di </section>
+            j = s.rfind('</div>', i, fine_sez) + len('</div>')
+        s = s[:i] + s[j:]
+    for vecchio, nuovo in mod.get('sostituzioni', []):
+        if vecchio not in s:
+            sys.exit(f'Testo da sostituire non trovato: {vecchio[:60]}')
+        s = s.replace(vecchio, nuovo)
+
     # 3a. istruzioni della pagina iniziale aggiornate (strumenti/istruzioni.html)
     nuove = (RADICE / 'strumenti' / 'istruzioni.html').read_text(encoding='utf8').strip()
     s, n = re.subn(r'<section class="howto".*?</section>', lambda _m: nuove, s, count=1, flags=re.S)
@@ -91,9 +112,13 @@ def costruisci(sorgente: str, versione: str | None, sfondo: bool = False) -> str
     k = s.find('</style>', s.find('/* Layout')) + len('</style>')
     s = s[:k] + '\n<style id="tema">\n' + tema + '</style>' + s[k:]
 
-    # 4. versione
-    if versione:
-        s = re.sub(r'(class="ver"[^>]*>)v\d+(<)', rf'\g<1>{versione}\2', s, count=1)
+    # 4. versione e data dell'ultimo aggiornamento: in alto a destra (tolta dal fondo della pagina)
+    vecchia = re.search(r'class="ver"[^>]*>(v\d+)<', s)
+    v = versione or (vecchia.group(1) if vecchia else '')
+    s = re.sub(r'\s*<p class="foot-ver">.*?</p>', '', s, count=1, flags=re.S)
+    data = data or datetime.datetime.now(ZoneInfo('Europe/Rome')).strftime('%d/%m/%Y')
+    blocco = f'<span class="ver-top" title="Versione dell\'app e data dell\'ultimo aggiornamento"><b>{v}</b><small>({data})</small></span>\n      '
+    s = s.replace('<button type="button" id="homeBtn"', blocco + '<button type="button" id="homeBtn"', 1)
 
     # 5. tasto Installa, immagine di sfondo (facoltativa) e registrazione del service worker
     extra = (RADICE / 'strumenti' / 'installa.html').read_text(encoding='utf8')
@@ -114,7 +139,8 @@ def main():
         versione = sys.argv[sys.argv.index('--versione') + 1]
     uscita = sys.argv[sys.argv.index('--uscita') + 1] if '--uscita' in sys.argv else 'index.html'
     src = pathlib.Path(sys.argv[1]).read_text(encoding='utf8')
-    out = costruisci(src, versione, '--sfondo' in sys.argv)
+    data = sys.argv[sys.argv.index('--data') + 1] if '--data' in sys.argv else None
+    out = costruisci(src, versione, '--sfondo' in sys.argv, data)
     (RADICE / uscita).write_text(out, encoding='utf8')
     if versione and uscita == 'index.html':
         sw = RADICE / 'sw.js'

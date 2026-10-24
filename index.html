@@ -15512,7 +15512,7 @@ Il giornale di navigazione è scritto e firmato dal Comandante per le guardie da
 
 </section>
   </div>
-  <p class="foot-ver"><span class="ver" title="Versione dell'app">v36</span></p>
+  <p class="foot-ver"><span class="ver" title="Versione dell'app">v37</span></p>
 </main>
 
 <button class="up" id="up" type="button" aria-label="Torna su" hidden>↑</button>
@@ -16123,6 +16123,49 @@ Il giornale di navigazione è scritto e firmato dal Comandante per le guardie da
     }
     g.hidden = false; copia.focus();
   });
+})();
+</script>
+<style id="sfondo-css">
+/* immagine dietro agli argomenti della pagina iniziale + tasto per guardarla intera */
+.home-bg{position:fixed;inset:0;top:var(--top-h,160px);z-index:-1;background:var(--paper) url(img/sfondo-home.jpg) center top/cover no-repeat;pointer-events:none}
+#home:not([hidden]){padding-top:min(38vh,330px)}
+@media (min-width:700px){.home-bg{background-size:auto 100%}}
+.home-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,color-mix(in srgb,var(--paper) 55%,transparent) 75%)}
+#home[hidden] .home-bg{display:none}
+#home #cards.grid{background:color-mix(in srgb,var(--sheet) 80%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+#home .howto{background:color-mix(in srgb,var(--sheet) 88%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:16px;padding:6px 18px 10px;margin-top:16px}
+.bg-vedi{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:8px;margin:0 0 12px;padding:10px 15px 10px 12px;border-radius:999px;background:color-mix(in srgb,var(--sheet) 85%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line);color:var(--ink);font:600 .92rem/1 var(--f-body)}
+.bg-vedi svg{color:inherit;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bg-vedi:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+#home > *:not(.home-bg){transition:opacity .25s ease}
+body.vedi-sfondo #home > *:not(.home-bg):not(.bg-vedi){opacity:0;visibility:hidden;pointer-events:none}
+body.vedi-sfondo .home-bg{padding:14px 14px calc(86px + env(safe-area-inset-bottom,0px));background-origin:content-box;background-clip:border-box;background-size:contain;background-position:center}
+body.vedi-sfondo .home-bg::after{display:none}
+body.vedi-sfondo .bg-vedi{position:fixed;z-index:30;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);margin:0;background:var(--ink);color:var(--sheet);border-color:var(--ink);box-shadow:0 6px 20px rgba(6,17,27,.3)}
+@media (prefers-reduced-motion:reduce){#home > *{transition:none}}
+</style>
+<script>
+(function(){
+  const home = document.getElementById('home'); if (!home) return;
+  const top = document.querySelector('header.top');
+  const bg = document.createElement('div'); bg.className = 'home-bg'; bg.setAttribute('aria-hidden', 'true');
+  const t = document.createElement('button'); t.type = 'button'; t.className = 'bg-vedi'; t.setAttribute('aria-pressed', 'false');
+  const ICONA_VEDI = '<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="M4 17.5l5-4.5 4 3.5 3-2.5 4.5 3.5"/>';
+  const ICONA_TORNA = '<path d="M5 7h14M5 12h14M5 17h14"/>';
+  t.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + ICONA_VEDI + '</svg><span>Guarda l\'immagine</span>';
+  home.prepend(t); home.prepend(bg);
+  const alto = () => document.documentElement.style.setProperty('--top-h', (top ? top.offsetHeight : 0) + 'px');
+  alto(); addEventListener('resize', alto);
+  function vedi(on){
+    document.body.classList.toggle('vedi-sfondo', on);
+    t.setAttribute('aria-pressed', on ? 'true' : 'false');
+    t.querySelector('span').textContent = on ? 'Torna agli argomenti' : 'Guarda l\'immagine';
+    t.querySelector('svg').innerHTML = on ? ICONA_TORNA : ICONA_VEDI;
+    if (on) { alto(); scrollTo({top: 0}); }
+  }
+  t.addEventListener('click', () => vedi(!document.body.classList.contains('vedi-sfondo')));
+  addEventListener('hashchange', () => vedi(false));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && document.body.classList.contains('vedi-sfondo')) vedi(false); });
 })();
 </script>
 

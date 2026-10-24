@@ -1,0 +1,92 @@
+<script>
+/* pagina iniziale: disegni stilizzati nei riquadri delle sezioni, riquadro delle istruzioni che si apre,
+   altezza della barra in alto (serve per non coprire i titoli quando si salta a un argomento) */
+(function(){
+  const root = document.documentElement, top = document.querySelector('header.top');
+  const alto = () => root.style.setProperty('--top-h', (top ? top.offsetHeight : 0) + 'px');
+  alto(); addEventListener('resize', alto);
+  if (window.ResizeObserver && top) new ResizeObserver(alto).observe(top);
+
+  const stella = (x, y, r) => `M${x} ${y - r}L${x + r * .3} ${y - r * .3}L${x + r} ${y}L${x + r * .3} ${y + r * .3}L${x} ${y + r}L${x - r * .3} ${y + r * .3}L${x - r} ${y}L${x - r * .3} ${y - r * .3}Z`;
+  const spirale = (cx, cy) => { let d = ''; for (let i = 0; i <= 64; i++){ const t = i / 64 * 4.4 * Math.PI, r = 2 + t * 1.4; d += (i ? 'L' : 'M') + (cx + r * Math.cos(t)).toFixed(1) + ' ' + (cy + r * Math.sin(t)).toFixed(1); } return d; };
+
+  const D = {
+    astronomia:
+      '<circle class="il-fb" cx="38" cy="38" r="26"/><circle cx="38" cy="38" r="26"/>' +
+      '<ellipse class="il-b" cx="38" cy="38" rx="26" ry="8"/>' +
+      '<ellipse class="il-d il-t" cx="38" cy="38" rx="26" ry="8" transform="rotate(-23 38 38)"/>' +
+      '<path class="il-t" d="M38 12V64"/><circle class="il-ink" cx="38" cy="12" r="2.2"/>' +
+      `<path class="il-gold" d="${stella(78, 14, 7)}"/><path class="il-gold" d="${stella(89, 34, 4.5)}"/><path class="il-gold" d="${stella(76, 52, 5.5)}"/><path class="il-gold" d="${stella(64, 6, 3.5)}"/>`,
+    maree:
+      '<path class="il-fb" d="M20 46Q28 40 36 46T52 46T68 46T84 46V68H20Z"/>' +
+      '<path class="il-b" d="M20 46Q28 40 36 46T52 46T68 46T84 46"/>' +
+      '<path class="il-b il-d il-t" d="M12 30H76"/><path class="il-d il-t" d="M12 60H76"/>' +
+      '<path d="M12 18V68"/><path class="il-t" d="M12 26h5M12 34h5M12 42h5M12 50h5M12 58h5"/>' +
+      '<path class="il-t" d="M66 33v24M63 36l3-3 3 3M63 54l3 3 3-3"/>' +
+      '<path class="il-gold" d="M82 4a12 12 0 1 0 10 20a9.5 9.5 0 1 1-10-20z"/>',
+    stabilita:
+      '<path class="il-fb" d="M0 44H96V70H0Z"/>' +
+      '<g transform="rotate(-12 48 40)"><path class="il-fs" d="M24 18V38Q24 58 48 60Q72 58 72 38V18Z"/><path d="M24 18V38Q24 58 48 60Q72 58 72 38V18"/><path d="M19 18H77"/><path class="il-t il-d" d="M48 8V60"/></g>' +
+      '<path class="il-b" d="M0 44H96"/>' +
+      '<path class="il-a il-d il-t" d="M41.5 10V53"/>' +
+      '<circle class="il-ink" cx="41.5" cy="10" r="2.4"/><text x="45" y="12.5">M</text>' +
+      '<circle class="il-ink" cx="46.8" cy="34" r="2.4"/><text x="50.5" y="37">G</text>' +
+      '<circle class="il-fa" cx="41.5" cy="53" r="2.4"/><text x="31" y="56">B</text>',
+    meteorologia:
+      '<path class="il-fs" d="M10 44H44a9 9 0 0 0 0-18a12 12 0 0 0-23-3a9 9 0 0 0-11 21Z"/><path d="M10 44H44a9 9 0 0 0 0-18a12 12 0 0 0-23-3a9 9 0 0 0-11 21Z"/>' +
+      '<path class="il-b" d="M18 52l-3 7M28 52l-3 7M38 52l-3 7M23 62l-2 5M33 62l-2 5"/>' +
+      `<path class="il-b" d="${spirale(72, 36)}"/><circle class="il-ink" cx="72" cy="36" r="2"/>`,
+    manovrabilita:
+      '<circle class="il-b il-d" cx="54" cy="30" r="22"/>' +
+      '<path class="il-b" d="M50 8l5-3.5M50 8l5 3.5"/>' +
+      '<path class="il-t il-d" d="M10 50H28M14 56H28"/>' +
+      '<path class="il-fs" d="M34 52Q34 47 40 47H58Q66 47 72 52Q66 57 58 57H40Q34 57 34 52Z"/><path d="M34 52Q34 47 40 47H58Q66 47 72 52Q66 57 58 57H40Q34 57 34 52Z"/>' +
+      '<path class="il-a" d="M34 52l-6 4"/><path class="il-t" d="M44 52H60"/>',
+    navigazione:
+      '<path class="il-t" style="opacity:.35" d="M4 18H58M4 36H58M4 54H58M18 4V68M38 4V68"/>' +
+      '<path class="il-a" d="M8 66L54 12"/>' +
+      '<path class="il-t" d="M26 30L48 35M32 21L42 43M29 41L46 23"/><circle cx="38" cy="32" r="3.5"/>' +
+      '<circle class="il-fs" cx="76" cy="46" r="15"/><circle cx="76" cy="46" r="15"/>' +
+      '<path class="il-fb" d="M76 31L79 43L91 46L79 49L76 61L73 49L61 46L73 43Z"/><path class="il-b" d="M76 31L79 43L91 46L79 49L76 61L73 49L61 46L73 43Z"/>' +
+      '<text x="73" y="27">N</text>',
+    girobussola:
+      '<circle class="il-fs" cx="48" cy="36" r="28"/><circle cx="48" cy="36" r="28"/>' +
+      '<path class="il-fb" d="M48 36L48 8A28 28 0 0 1 72.2 22Z"/>' +
+      '<circle class="il-t" style="opacity:.45" cx="48" cy="36" r="19"/><circle class="il-t" style="opacity:.45" cx="48" cy="36" r="10"/>' +
+      '<path class="il-t" d="M48 36V8"/><path class="il-b" d="M48 36L72.2 22"/>' +
+      '<circle class="il-fa" cx="62" cy="21" r="2.6"/><circle class="il-fa" cx="33" cy="48" r="2.2"/><circle class="il-fa" cx="59" cy="53" r="2"/>',
+    convenzioni:
+      '<path class="il-fs" d="M14 6H44L54 16V66H14Z"/><path d="M14 6H44L54 16V66H14Z"/><path d="M44 6V16H54"/>' +
+      '<path class="il-t" d="M20 26H48M20 34H48M20 42H40"/><circle class="il-b" cx="44" cy="56" r="6"/>' +
+      '<path d="M70 6V68"/><path class="il-fs" d="M70 9H92V29H70Z"/><path class="il-b" style="stroke-width:4" d="M81 9V29M70 19H92"/><path d="M70 9H92V29H70"/>',
+    formulario:
+      '<path class="il-fb" d="M8 50L22 22L36 50Z"/><path class="il-b" d="M8 50L22 22L36 50Z"/>' +
+      '<path d="M42 38l4-2l5 14l7-28H90"/><path class="il-t" d="M64 30l10 12M74 30l-10 12"/><path class="il-t" d="M80 28q4 0 4 3q0 3-4 5h5"/>' +
+      '<path d="M48 60H88"/><circle class="il-ink" cx="68" cy="55" r="2"/><circle class="il-ink" cx="68" cy="66" r="2"/>',
+    istruzioni:
+      '<circle class="il-d il-t" cx="48" cy="36" r="29"/>' +
+      '<circle class="il-fs" cx="48" cy="36" r="22"/>' +
+      '<circle cx="48" cy="36" r="16" stroke="var(--acc)" stroke-width="12" stroke-dasharray="12.57 12.57" transform="rotate(-22.5 48 36)"/>' +
+      '<circle cx="48" cy="36" r="22"/><circle cx="48" cy="36" r="10"/>'
+  };
+  const PER_TITOLO = {'Astronomia':'astronomia','Maree':'maree','Stabilità':'stabilita','Meteorologia':'meteorologia','Manovrabilità':'manovrabilita','Navigazione e cartografia':'navigazione','Strumenti di navigazione':'girobussola','Convenzioni':'convenzioni','Formulario':'formulario'};
+  const disegno = id => { const s = document.createElement('span'); s.className = 'ill'; s.setAttribute('aria-hidden', 'true'); s.innerHTML = '<svg viewBox="0 0 96 72">' + D[id] + '</svg>'; return s; };
+  document.querySelectorAll('#cards .card').forEach(c => {
+    const n = c.querySelector('.n'); const id = n && PER_TITOLO[n.textContent.trim()];
+    if (id && D[id]) { c.dataset.sec = id; c.append(disegno(id)); }
+  });
+
+  // istruzioni: riquadro come le sezioni; toccandolo si apre l'elenco
+  const how = document.querySelector('#home .howto');
+  if (how) {
+    const h2 = how.querySelector('h2'), ol = how.querySelector('ol');
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'how-card';
+    b.setAttribute('aria-expanded', 'false'); if (ol) { ol.id = ol.id || 'howto-lista'; b.setAttribute('aria-controls', ol.id); }
+    b.innerHTML = '<span class="n">Come si usa</span><span class="m">Istruzioni</span><span class="d">Sezioni, audio delle lezioni, ricerca, uso senza internet e installazione.</span>';
+    b.append(disegno('istruzioni'));
+    h2.textContent = ''; h2.append(b);
+    if (ol) ol.hidden = true;
+    b.addEventListener('click', () => { const apri = ol.hidden; ol.hidden = !apri; b.setAttribute('aria-expanded', apri ? 'true' : 'false'); });
+  }
+})();
+</script>

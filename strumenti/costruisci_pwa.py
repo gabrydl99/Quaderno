@@ -12,7 +12,8 @@ Cosa fa (il contenuto degli appunti non viene toccato):
   secondo strumenti/mappa_audio.json;
 - mette i font in locale (fonts/fonts.css) al posto di Google Fonts;
 - aggiunge manifest, icone, colore della barra e la registrazione del service worker;
-- inserisce la grafica (strumenti/tema.css) e il tasto Installa (strumenti/installa.html);
+- inserisce la grafica (strumenti/tema.css), il tasto Installa (strumenti/installa.html), i disegni della
+  pagina iniziale (strumenti/pagina.html) e le istruzioni aggiornate (strumenti/istruzioni.html);
 - aggiorna l'etichetta della versione e il nome della cache in sw.js.
 """
 import json, re, sys, pathlib
@@ -79,6 +80,12 @@ def costruisci(sorgente: str, versione: str | None, sfondo: bool = False) -> str
     if mancanti:
         sys.exit(f'Audio senza file in mappa_audio.json: {sorted(set(mancanti))}')
 
+    # 3a. istruzioni della pagina iniziale aggiornate (strumenti/istruzioni.html)
+    nuove = (RADICE / 'strumenti' / 'istruzioni.html').read_text(encoding='utf8').strip()
+    s, n = re.subn(r'<section class="howto".*?</section>', lambda _m: nuove, s, count=1, flags=re.S)
+    if not n:
+        sys.exit('Istruzioni (section.howto) non trovate nella pagina')
+
     # 3b. grafica: tema subito dopo lo stile originale, così lo sostituisce dove serve
     tema = (RADICE / 'strumenti' / 'tema.css').read_text(encoding='utf8')
     k = s.find('</style>', s.find('/* Layout')) + len('</style>')
@@ -90,6 +97,7 @@ def costruisci(sorgente: str, versione: str | None, sfondo: bool = False) -> str
 
     # 5. tasto Installa, immagine di sfondo (facoltativa) e registrazione del service worker
     extra = (RADICE / 'strumenti' / 'installa.html').read_text(encoding='utf8')
+    extra += (RADICE / 'strumenti' / 'pagina.html').read_text(encoding='utf8')
     if sfondo:
         extra += (RADICE / 'strumenti' / 'sfondo.html').read_text(encoding='utf8')
     s = s.replace('</body></html>', extra + REGISTRA + '</body>\n</html>')

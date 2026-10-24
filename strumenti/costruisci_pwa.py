@@ -5,7 +5,7 @@ Uso:
     python3 strumenti/costruisci_pwa.py SORGENTE.html [--versione v35]
 
 Cosa fa (il contenuto degli appunti non viene toccato):
-- sostituisce i link agli audio dell'artefatto (/_blob/ID) con i file in audio/ o nel repository Quaderno-audio,
+- sostituisce i link agli audio dell'artefatto (/_blob/ID) con i file in audio/ o nel repository Quaderno-Audio,
   secondo strumenti/mappa_audio.json;
 - mette i font in locale (fonts/fonts.css) al posto di Google Fonts;
 - aggiunge manifest, icone, colore della barra e la registrazione del service worker;

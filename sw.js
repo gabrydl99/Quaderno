@@ -38,11 +38,12 @@ self.addEventListener('fetch', e => {
 async function pagina(req) {
   const cache = await caches.open(CACHE);
   try {
-    const rete = fetch(req).then(r => { if (r.ok) cache.put('./', r.clone()); return r; });
+    const chiave = new URL(req.url).pathname.endsWith('/index.html') ? './' : req.url.split('#')[0];
+    const rete = fetch(req).then(r => { if (r.ok) cache.put(chiave, r.clone()); return r; });
     const r = await Promise.race([rete, new Promise((_, no) => setTimeout(() => no(new Error('lenta')), 4000))]);
     return r;
   } catch (err) {
-    return (await cache.match('./')) || fetch(req);
+    return (await cache.match(req, {ignoreSearch: true})) || (await cache.match('./')) || fetch(req);
   }
 }
 

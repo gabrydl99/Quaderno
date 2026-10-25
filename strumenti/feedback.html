@@ -1,0 +1,331 @@
+<style id="feedback-css">
+/* Segnalazioni e feedback: chi usa l'app può solo inviare; solo l'amministratore (con accesso) legge.
+   La sicurezza la garantisce Supabase (regole sul database), non questa pagina. */
+.fb{margin:12px 0 0;background:color-mix(in srgb,var(--sheet) 80%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:var(--r-lg,16px);overflow:hidden}
+.fb-card,.fb-adm{all:unset;box-sizing:border-box;display:block;width:100%;cursor:pointer;padding:10px 16px 11px}
+.fb-card .n{display:block;font:700 1.05rem/1.25 var(--f-body);color:var(--ink)}
+.fb-card .d{display:block;font-size:.84rem;line-height:1.35;color:var(--muted)}
+.fb-adm{display:flex;align-items:center;gap:8px;border-top:1px solid var(--line);font:600 .88rem/1.2 var(--f-body);color:var(--ink);padding-block:10px}
+.fb-adm .cnt{margin-left:auto;min-width:22px;height:22px;padding:0 7px;box-sizing:border-box;border-radius:999px;background:var(--acc);color:var(--on-acc,#fff);font:700 .78rem/22px var(--f-body);text-align:center}
+.fb-adm .cnt[hidden]{display:none}
+.fb-card:focus-visible,.fb-adm:focus-visible{outline:2px solid var(--blue);outline-offset:-3px}
+.fb svg,.fbp svg,.adm svg,.segnala svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;color:inherit}
+
+/* link in fondo a ogni argomento */
+.segnala{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:6px;margin:14px 0 -4px auto;width:max-content;cursor:pointer;padding:6px 8px;border-radius:8px;font:500 .8rem/1 var(--f-body);color:var(--muted)}
+.segnala svg{width:15px;height:15px}
+.segnala:hover,.segnala:focus-visible{color:var(--ink);background:var(--chip)}
+.segnala:focus-visible{outline:2px solid var(--blue)}
+
+/* pannello del modulo e area admin: a tutto schermo sul telefono */
+.fbp,.adm{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;background:var(--paper);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.fbp[hidden],.adm[hidden]{display:none!important}
+.fbp-bar,.adm-bar{flex:none;display:flex;align-items:center;gap:8px;padding:10px max(14px,env(safe-area-inset-right,0px)) 10px max(14px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line);background:var(--paper)}
+.fbp-bar h2,.adm-bar h2{flex:1;min-width:0;margin:0;font:700 1.1rem/1.2 var(--f-body);color:var(--ink)}
+.adm-bar h2 small{display:block;font:600 .72rem/1.2 var(--f-body);color:var(--acc)}
+.x{all:unset;box-sizing:border-box;cursor:pointer;display:grid;place-items:center;width:38px;height:38px;border-radius:12px;border:1.5px solid var(--line);background:var(--sheet);color:var(--ink)}
+.x:focus-visible,.btn:focus-visible,.tipo label:focus-within,.adm-f button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.fbp-body,.adm-body{flex:1;overflow:auto;overscroll-behavior:contain;padding:16px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px))}
+.fbp-in,.adm-in{max-width:620px;margin:0 auto}
+.demo{margin:0 0 14px;padding:9px 12px;border-radius:12px;background:color-mix(in srgb,var(--orange) 14%,var(--sheet));color:var(--ink);font-size:.84rem;line-height:1.4;border:1px solid color-mix(in srgb,var(--orange) 35%,var(--line))}
+.fl{display:block;margin:0 0 6px;font:700 .9rem/1.3 var(--f-body);color:var(--ink)}
+.fl small{font-weight:500;color:var(--muted)}
+.campo{margin:0 0 16px}
+.tipo{display:flex;flex-wrap:wrap;gap:6px}
+fieldset.campo{border:0;padding:0;margin:0 0 16px;min-width:0}
+fieldset.campo legend{padding:0}
+.tipo label{position:relative;cursor:pointer}
+.tipo input{position:absolute;opacity:0;pointer-events:none}
+.tipo span{display:inline-block;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--sheet);font:600 .86rem/1 var(--f-body);color:var(--ink)}
+.tipo input:checked + span{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
+.in{width:100%;box-sizing:border-box;font:inherit;font-size:16px;color:var(--ink);background:var(--sheet);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;outline:none}
+.in:focus{border-color:var(--blue);box-shadow:0 0 0 3px color-mix(in srgb,var(--blue) 20%,transparent)}
+textarea.in{min-height:150px;resize:vertical;line-height:1.5}
+.aiuto{display:flex;justify-content:space-between;gap:10px;margin-top:5px;font-size:.8rem;color:var(--muted)}
+.err{color:var(--red);font-weight:600}
+.trappola{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.azioni{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:0 18px;border-radius:999px;font:600 .95rem/1 var(--f-body);border:1px solid var(--line);background:var(--chip);color:var(--ink)}
+.btn.pri{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
+.btn[disabled]{opacity:.5;cursor:default}
+.privacy{margin:14px 0 0;font-size:.8rem;line-height:1.4;color:var(--muted)}
+.esito{text-align:center;padding:36px 8px}
+.esito .ok{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 14px;border-radius:50%;background:color-mix(in srgb,var(--green) 16%,var(--sheet));color:var(--green)}
+.esito .ok svg{width:32px;height:32px;stroke-width:2.6}
+.esito h3{margin:0 0 6px;font:700 1.2rem/1.3 var(--f-body);color:var(--ink)}
+.esito p{margin:0 auto 20px;max-width:34ch;color:var(--muted)}
+
+/* area admin */
+.adm-login{max-width:380px;margin:20px auto 0;background:var(--sheet);border:1px solid var(--line);border-radius:16px;padding:18px}
+.adm-login p{margin:0 0 14px;color:var(--muted);font-size:.9rem}
+.adm-f{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px;align-items:center}
+.adm-f button{all:unset;box-sizing:border-box;cursor:pointer;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--sheet);font:600 .85rem/1 var(--f-body);color:var(--ink)}
+.adm-f button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
+.adm-f .sp{flex:1}
+.msg{position:relative;background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:12px 14px 10px;margin:0 0 10px}
+.msg.nuovo{border-left:4px solid var(--acc);padding-left:12px}
+.msg-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 6px}
+.tag{display:inline-block;padding:4px 9px;border-radius:999px;font:700 .74rem/1 var(--f-body);background:var(--chip);color:var(--ink)}
+.tag.t-errore{background:color-mix(in srgb,var(--red) 15%,var(--sheet));color:var(--red)}
+.tag.t-suggerimento{background:color-mix(in srgb,var(--green) 15%,var(--sheet));color:var(--green)}
+.tag.t-reclamo{background:color-mix(in srgb,var(--orange) 17%,var(--sheet));color:var(--orange)}
+.msg-top time{margin-left:auto;font-size:.78rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.msg-arg{all:unset;cursor:pointer;display:inline-block;margin:0 0 6px;font:600 .84rem/1.3 var(--f-body);color:var(--blue)}
+.msg-arg:focus-visible{outline:2px solid var(--blue)}
+.msg-arg.nolink{cursor:default;color:var(--muted)}
+.msg-txt{margin:0 0 8px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5;color:var(--ink)}
+.msg-bot{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.msg-bot{justify-content:flex-end}
+.msg-bot .chi{flex:1 1 100%;margin:0 0 2px}
+.msg-bot button{all:unset;box-sizing:border-box;cursor:pointer;padding:7px 10px;border-radius:8px;font:600 .8rem/1 var(--f-body);color:var(--ink);background:var(--chip)}
+.msg-bot button.del{color:var(--red);background:transparent}
+.msg-bot button.si{background:var(--red);color:#fff}
+.msg-bot button:focus-visible{outline:2px solid var(--blue)}
+.vuoto{text-align:center;color:var(--muted);padding:40px 10px}
+body.fb-aperto{overflow:hidden}
+@media (min-width:700px){
+  .fbp{inset:auto;left:50%;top:50%;transform:translate(-50%,-50%);width:min(620px,92vw);max-height:88vh;border-radius:18px;border:1px solid var(--line);box-shadow:0 24px 60px rgba(6,17,27,.3);padding:0;overflow:hidden}
+  .fbp-velo{position:fixed;inset:0;z-index:59;background:rgba(6,17,27,.42)}
+}
+.fbp-velo[hidden]{display:none}
+@media (max-width:699.98px){.fbp-velo{display:none!important}}
+</style>
+<script>
+(function(){
+  /* Collegamento a Supabase: indirizzo del progetto e chiave pubblica ("anon"). Vuoti = anteprima. */
+  const CFG = /*SUPABASE*/{"url": "", "chiave": ""}/*FINE*/;
+  const DEMO = !CFG.url || !CFG.chiave;
+  const TIPI = [['errore', 'Errore negli appunti'], ['suggerimento', 'Suggerimento'], ['reclamo', 'Reclamo'], ['altro', 'Altro']];
+  const NOME_TIPO = Object.fromEntries(TIPI);
+  const MAX = 2000;
+  const $ = (s, r) => (r || document).querySelector(s);
+  const mem = {
+    get(k){ try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } },
+    set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+    del(k){ try { localStorage.removeItem(k); } catch (e) {} }
+  };
+  const ver = (document.querySelector('.ver-top b') || {}).textContent || '';
+  const ICO = {
+    msg: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v10.5H9l-5 4z"/><path d="M8.5 9.5h7M8.5 12.5h4.5"/></svg>',
+    flag: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4.5h11.5l-2.2 4 2.2 4H5"/></svg>',
+    x: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+    ok: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    lock: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg>'
+  };
+
+  /* ---------- servizio: Supabase vero oppure anteprima sul telefono ---------- */
+  const H = t => ({apikey: CFG.chiave, Authorization: 'Bearer ' + (t || CFG.chiave), 'Content-Type': 'application/json'});
+  const DEMO_ESEMPI = [
+    {id: -3, creato: new Date(Date.now() - 36e5 * 2).toISOString(), tipo: 'errore', argomento: 'Esempio · Stabilità › un argomento', rif: 'stabilita', messaggio: 'Messaggio di esempio: in questo argomento manca un pedice nella seconda formula.', nome: '', versione: ver, letto: false},
+    {id: -2, creato: new Date(Date.now() - 36e5 * 26).toISOString(), tipo: 'suggerimento', argomento: '', rif: '', messaggio: 'Messaggio di esempio: sarebbe utile un quiz alla fine di ogni sezione.', nome: 'Nome di esempio', versione: ver, letto: false},
+    {id: -1, creato: new Date(Date.now() - 36e5 * 70).toISOString(), tipo: 'reclamo', argomento: '', rif: '', messaggio: "Messaggio di esempio: un audio parte a volume basso.", nome: '', versione: ver, letto: true}
+  ];
+  const srv = {
+    async invia(m){
+      if (DEMO) { const l = mem.get('qp-demo-msg') || []; l.unshift({...m, id: Date.now(), creato: new Date().toISOString(), letto: false}); mem.set('qp-demo-msg', l); return; }
+      const r = await fetch(CFG.url + '/rest/v1/segnalazioni', {method: 'POST', headers: {...H(), Prefer: 'return=minimal'}, body: JSON.stringify(m)});
+      if (!r.ok) throw new Error('invio ' + r.status);
+    },
+    async entra(email, pw){
+      if (DEMO) { mem.set('qp-admin', {demo: true, email}); return; }
+      const r = await fetch(CFG.url + '/auth/v1/token?grant_type=password', {method: 'POST', headers: H(), body: JSON.stringify({email, password: pw})});
+      if (!r.ok) throw new Error('accesso');
+      salva(await r.json());
+    },
+    esci(){ mem.del('qp-admin'); },
+    async elenco(){
+      if (DEMO) return (mem.get('qp-demo-msg') || []).concat(DEMO_ESEMPI.map(e => ({...e, letto: (mem.get('qp-demo-letti') || {})[e.id] ?? e.letto}))).filter(e => !(mem.get('qp-demo-via') || []).includes(e.id));
+      const r = await api('GET', '?select=*&order=creato.desc');
+      return r.json();
+    },
+    async segna(id, letto){
+      if (DEMO) { if (id < 0) { const s = mem.get('qp-demo-letti') || {}; s[id] = letto; mem.set('qp-demo-letti', s); } else { const l = mem.get('qp-demo-msg') || []; l.forEach(e => { if (e.id === id) e.letto = letto; }); mem.set('qp-demo-msg', l); } return; }
+      await api('PATCH', '?id=eq.' + id, {letto});
+    },
+    async elimina(id){
+      if (DEMO) { const v = mem.get('qp-demo-via') || []; v.push(id); mem.set('qp-demo-via', v); return; }
+      await api('DELETE', '?id=eq.' + id);
+    }
+  };
+  function salva(j){ mem.set('qp-admin', {access: j.access_token, refresh: j.refresh_token, scade: Date.now() + (j.expires_in || 3600) * 1000 - 60000, email: j.user && j.user.email}); }
+  async function token(){
+    const s = mem.get('qp-admin'); if (!s) throw new Error('fuori');
+    if (s.scade > Date.now()) return s.access;
+    const r = await fetch(CFG.url + '/auth/v1/token?grant_type=refresh_token', {method: 'POST', headers: H(), body: JSON.stringify({refresh_token: s.refresh})});
+    if (!r.ok) { mem.del('qp-admin'); throw new Error('fuori'); }
+    const j = await r.json(); salva(j); return j.access_token;
+  }
+  async function api(metodo, q, corpo){
+    const r = await fetch(CFG.url + '/rest/v1/segnalazioni' + q, {method: metodo, headers: {...H(await token()), Prefer: 'return=minimal'}, body: corpo ? JSON.stringify(corpo) : undefined});
+    if (r.status === 401) { mem.del('qp-admin'); throw new Error('fuori'); }
+    if (!r.ok) throw new Error(metodo + ' ' + r.status);
+    return r;
+  }
+  const admin = () => !!mem.get('qp-admin');
+
+  /* ---------- coda: se manca internet il messaggio parte dopo ---------- */
+  async function svuota(){
+    const coda = mem.get('qp-coda') || []; if (!coda.length || !navigator.onLine) return;
+    const resto = [];
+    for (const m of coda) { try { await srv.invia(m); } catch (e) { resto.push(m); } }
+    mem.set('qp-coda', resto);
+  }
+  addEventListener('online', svuota); svuota();
+
+  /* ---------- riquadro nella pagina iniziale ---------- */
+  const cards = document.getElementById('cards');
+  const box = document.createElement('section'); box.className = 'fb'; box.setAttribute('aria-label', 'Segnalazioni e feedback');
+  box.innerHTML = '<button type="button" class="fb-card"><span class="n">Segnalazioni e feedback</span><span class="d">Errori negli appunti, suggerimenti o reclami: scrivili qui.</span></button>' +
+    '<button type="button" class="fb-adm" hidden>' + ICO.lock + '<span>Area admin</span><span class="cnt" hidden></span></button>';
+  if (cards) cards.after(box);
+  $('.fb-card', box).addEventListener('click', () => apriModulo(''));
+  const admBtn = $('.fb-adm', box);
+  admBtn.addEventListener('click', () => { location.hash = 'admin'; });
+  async function conta(){
+    admBtn.hidden = !admin(); if (!admin()) return;
+    try {
+      const n = (await srv.elenco()).filter(m => !m.letto).length;
+      const c = $('.cnt', admBtn); c.hidden = !n; c.textContent = n; c.setAttribute('aria-label', n + ' da leggere');
+    } catch (e) {}
+  }
+  conta();
+
+  /* ---------- "Segnala un errore" in fondo a ogni argomento ---------- */
+  document.querySelectorAll('article.topic').forEach(a => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'segnala';
+    b.innerHTML = ICO.flag + '<span>Segnala un errore</span>';
+    b.addEventListener('click', () => {
+      const sec = a.closest('section.sec'), h2 = sec && sec.querySelector('.sec-head h2'), h3 = a.querySelector('h3');
+      const tit = h3 ? (h3.firstChild && h3.firstChild.nodeType === 3 ? h3.firstChild.textContent : h3.textContent).trim() : '';
+      apriModulo((h2 ? h2.textContent.trim() + ' › ' : '') + tit, a.id, 'errore');
+    });
+    a.append(b);
+  });
+
+  /* ---------- modulo ---------- */
+  const velo = document.createElement('div'); velo.className = 'fbp-velo'; velo.hidden = true;
+  const P = document.createElement('div'); P.className = 'fbp'; P.hidden = true;
+  P.setAttribute('role', 'dialog'); P.setAttribute('aria-modal', 'true'); P.setAttribute('aria-labelledby', 'fbp-t');
+  P.innerHTML = '<div class="fbp-bar"><h2 id="fbp-t">Invia una segnalazione</h2><button type="button" class="x" aria-label="Chiudi">' + ICO.x + '</button></div>' +
+    '<div class="fbp-body"><div class="fbp-in">' +
+    (DEMO ? '<p class="demo"><b>Anteprima</b>: per ora il messaggio resta su questo telefono e non viene inviato a nessuno.</p>' : '') +
+    '<form novalidate>' +
+    '<fieldset class="campo"><legend class="fl">Di che si tratta?</legend><div class="tipo">' +
+    TIPI.map(([v, t], i) => '<label><input type="radio" name="tipo" value="' + v + '"' + (i ? '' : ' checked') + '><span>' + t + '</span></label>').join('') + '</div></fieldset>' +
+    '<div class="campo"><label class="fl" for="fb-arg">Argomento <small>(facoltativo)</small></label><input class="in" id="fb-arg" maxlength="160" placeholder="Es. Stabilità › Altezza metacentrica" autocomplete="off"></div>' +
+    '<div class="campo"><label class="fl" for="fb-txt">Messaggio</label><textarea class="in" id="fb-txt" maxlength="' + MAX + '" placeholder="Scrivi qui cosa hai trovato o cosa miglioreresti." aria-describedby="fb-aiuto"></textarea>' +
+    '<div class="aiuto" id="fb-aiuto"><span class="err" id="fb-err" role="alert"></span><span id="fb-cnt">0 / ' + MAX + '</span></div></div>' +
+    '<div class="campo"><label class="fl" for="fb-nome">Nome <small>(facoltativo)</small></label><input class="in" id="fb-nome" maxlength="60" autocomplete="name" placeholder="Lascia vuoto per restare anonimo"></div>' +
+    '<div class="trappola" aria-hidden="true"><label>Sito <input id="fb-sito" tabindex="-1" autocomplete="off"></label></div>' +
+    '<div class="azioni"><button type="submit" class="btn pri">Invia</button><button type="button" class="btn annulla">Annulla</button></div>' +
+    '<p class="privacy">Il messaggio lo legge solo l\'amministratore del Quaderno. Non scrivere dati personali che non vuoi condividere.</p>' +
+    '</form><div class="esito" hidden></div></div></div>';
+  document.body.append(velo, P);
+  const F = $('form', P), txt = $('#fb-txt', P), err = $('#fb-err', P), cnt = $('#fb-cnt', P), esito = $('.esito', P);
+  let rif = '', prima = null;
+  txt.addEventListener('input', () => { cnt.textContent = txt.value.length + ' / ' + MAX; if (txt.value.trim()) err.textContent = ''; });
+  function apriModulo(arg, idArg, tipo){
+    prima = document.activeElement; rif = idArg || '';
+    F.reset(); F.hidden = false; esito.hidden = true; err.textContent = ''; cnt.textContent = '0 / ' + MAX;
+    $('#fb-arg', P).value = arg || '';
+    if (tipo) { const r = F.querySelector('input[value="' + tipo + '"]'); if (r) r.checked = true; }
+    P.hidden = false; velo.hidden = false; document.body.classList.add('fb-aperto');
+    (arg ? txt : F.querySelector('input[name="tipo"]:checked')).focus();
+  }
+  function chiudiModulo(){ P.hidden = true; velo.hidden = true; document.body.classList.remove('fb-aperto'); if (prima && prima.focus) prima.focus(); }
+  $('.x', P).addEventListener('click', chiudiModulo); $('.annulla', P).addEventListener('click', chiudiModulo); velo.addEventListener('click', chiudiModulo);
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !P.hidden) chiudiModulo(); });
+  F.addEventListener('submit', async e => {
+    e.preventDefault();
+    if ($('#fb-sito', P).value) { chiudiModulo(); return; }
+    const testo = txt.value.trim();
+    if (!testo) { err.textContent = 'Scrivi il messaggio prima di inviare.'; txt.focus(); return; }
+    const m = {tipo: F.tipo.value, argomento: $('#fb-arg', P).value.trim().slice(0, 160), rif, messaggio: testo.slice(0, MAX), nome: $('#fb-nome', P).value.trim().slice(0, 60), versione: ver};
+    const btn = $('button[type=submit]', F); btn.disabled = true; btn.textContent = 'Invio…';
+    let offline = !navigator.onLine;
+    if (!offline) { try { await srv.invia(m); } catch (x) { offline = true; } }
+    if (offline) { const c = mem.get('qp-coda') || []; c.push(m); mem.set('qp-coda', c); }
+    btn.disabled = false; btn.textContent = 'Invia';
+    F.hidden = true; esito.hidden = false;
+    esito.innerHTML = '<div class="ok">' + ICO.ok + '</div><h3>' + (offline ? 'Segnalazione salvata' : 'Segnalazione inviata') + '</h3><p>' +
+      (offline ? 'Sei senza internet: la invio da sola appena torna la connessione.' : 'Grazie! L\'amministratore la leggerà presto.') + '</p><button type="button" class="btn pri">Chiudi</button>';
+    $('button', esito).addEventListener('click', chiudiModulo); $('button', esito).focus();
+    conta();
+  });
+
+  /* ---------- area admin (#admin) ---------- */
+  const A = document.createElement('div'); A.className = 'adm'; A.id = 'qp-admin'; A.hidden = true;
+  A.setAttribute('role', 'dialog'); A.setAttribute('aria-modal', 'true'); A.setAttribute('aria-labelledby', 'adm-t');
+  A.innerHTML = '<div class="adm-bar"><button type="button" class="x chiudi" aria-label="Chiudi l\'area admin">' + ICO.x + '</button><h2 id="adm-t">Segnalazioni<small>Area admin</small></h2><button type="button" class="btn esci" hidden>Esci</button></div>' +
+    '<div class="adm-body"><div class="adm-in"></div></div>';
+  document.body.append(A);
+  const AI = $('.adm-in', A), esci = $('.esci', A);
+  let filtro = 'nuove', lista = [];
+  $('.chiudi', A).addEventListener('click', () => { history.length > 1 && location.hash === '#admin' ? history.back() : (location.hash = ''); });
+  esci.addEventListener('click', () => { srv.esci(); mostraAdmin(); conta(); });
+  const dataIt = s => new Date(s).toLocaleString('it-IT', {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'});
+  function login(){
+    esci.hidden = true;
+    AI.innerHTML = (DEMO ? '<p class="demo"><b>Anteprima</b>: va bene qualsiasi email e password; i messaggi sono d\'esempio.</p>' : '') +
+      '<form class="adm-login" novalidate><p>Entra con il tuo account per leggere le segnalazioni. Chi usa il Quaderno non può entrare qui.</p>' +
+      '<div class="campo"><label class="fl" for="adm-mail">Email</label><input class="in" id="adm-mail" type="email" autocomplete="username" required></div>' +
+      '<div class="campo"><label class="fl" for="adm-pw">Password</label><input class="in" id="adm-pw" type="password" autocomplete="current-password" required></div>' +
+      '<p class="err" id="adm-err" role="alert"></p><button type="submit" class="btn pri">Entra</button></form>';
+    const f = $('form', AI);
+    f.addEventListener('submit', async e => {
+      e.preventDefault();
+      const b = $('button', f); b.disabled = true; b.textContent = 'Accesso…';
+      try { await srv.entra($('#adm-mail', f).value.trim(), $('#adm-pw', f).value); mostraAdmin(); conta(); }
+      catch (x) { $('#adm-err', f).textContent = navigator.onLine ? 'Email o password sbagliate.' : 'Serve internet per entrare.'; b.disabled = false; b.textContent = 'Entra'; }
+    });
+    $('#adm-mail', f).focus();
+  }
+  async function mostraAdmin(){
+    if (!admin()) { login(); return; }
+    esci.hidden = false;
+    AI.innerHTML = '<p class="vuoto">Caricamento…</p>';
+    try { lista = await srv.elenco(); }
+    catch (x) { if (!admin()) { login(); return; } AI.innerHTML = '<p class="vuoto">Non riesco a caricare le segnalazioni. Controlla la connessione e tocca Aggiorna.</p><div class="azioni" style="justify-content:center"><button type="button" class="btn pri ricarica">Aggiorna</button></div>'; $('.ricarica', AI).addEventListener('click', mostraAdmin); return; }
+    disegna();
+  }
+  function disegna(){
+    const nuove = lista.filter(m => !m.letto).length;
+    const vis = filtro === 'nuove' ? lista.filter(m => !m.letto) : lista;
+    AI.innerHTML = (DEMO ? '<p class="demo"><b>Anteprima</b>: messaggi d\'esempio più quelli inviati da questo telefono.</p>' : '') +
+      '<div class="adm-f" role="group" aria-label="Filtro"><button type="button" data-f="nuove" aria-pressed="' + (filtro === 'nuove') + '">Da leggere (' + nuove + ')</button>' +
+      '<button type="button" data-f="tutte" aria-pressed="' + (filtro === 'tutte') + '">Tutte (' + lista.length + ')</button><span class="sp"></span><button type="button" class="agg">Aggiorna</button></div><div class="lista"></div>';
+    AI.querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => { filtro = b.dataset.f; disegna(); }));
+    $('.agg', AI).addEventListener('click', mostraAdmin);
+    const L = $('.lista', AI);
+    if (!vis.length) { L.innerHTML = '<p class="vuoto">' + (filtro === 'nuove' ? 'Nessuna segnalazione da leggere.' : 'Ancora nessuna segnalazione.') + '</p>'; return; }
+    vis.forEach(m => {
+      const c = document.createElement('article'); c.className = 'msg' + (m.letto ? '' : ' nuovo');
+      c.innerHTML = '<div class="msg-top"><span class="tag"></span><time></time></div><button type="button" class="msg-arg"></button><p class="msg-txt"></p>' +
+        '<div class="msg-bot"><span class="chi"></span><button type="button" class="tl"></button><button type="button" class="del">Elimina</button></div>';
+      const tag = $('.tag', c); tag.textContent = NOME_TIPO[m.tipo] || 'Altro'; tag.classList.add('t-' + (m.tipo || 'altro'));
+      $('time', c).textContent = dataIt(m.creato); $('time', c).dateTime = m.creato;
+      const ar = $('.msg-arg', c);
+      if (m.argomento) { ar.textContent = m.argomento; if (m.rif && document.getElementById(m.rif)) ar.addEventListener('click', () => { location.hash = m.rif; }); else ar.classList.add('nolink'); } else ar.remove();
+      $('.msg-txt', c).textContent = m.messaggio;
+      $('.chi', c).textContent = (m.nome ? 'da ' + m.nome : 'anonimo') + (m.versione ? ' · ' + m.versione : '');
+      const tl = $('.tl', c); tl.textContent = m.letto ? 'Segna da leggere' : 'Segna come letta';
+      tl.addEventListener('click', async () => { try { await srv.segna(m.id, !m.letto); m.letto = !m.letto; disegna(); conta(); } catch (x) {} });
+      const del = $('.del', c);
+      del.addEventListener('click', () => {
+        const bot = $('.msg-bot', c); const vecchio = bot.innerHTML;
+        bot.innerHTML = '<span class="chi">Eliminare questa segnalazione?</span><button type="button" class="si">Elimina</button><button type="button" class="no">Annulla</button>';
+        $('.no', bot).addEventListener('click', () => disegna());
+        $('.si', bot).addEventListener('click', async () => { try { await srv.elimina(m.id); lista = lista.filter(x => x !== m); disegna(); conta(); } catch (x) {} });
+        $('.no', bot).focus();
+      });
+      L.append(c);
+    });
+  }
+  function rotta(){
+    const on = location.hash === '#admin';
+    if (on && A.hidden) { A.hidden = false; document.body.classList.add('fb-aperto'); mostraAdmin(); $('.chiudi', A).focus(); }
+    else if (!on && !A.hidden) { A.hidden = true; document.body.classList.remove('fb-aperto'); conta(); }
+  }
+  addEventListener('hashchange', rotta); rotta();
+})();
+</script>

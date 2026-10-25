@@ -163,8 +163,8 @@ body.fb-aperto{overflow:hidden}
     return r;
   }
   const admin = () => !!mem.get('qp-admin');
-  /* l'admin entra con un nome utente: Supabase vuole un indirizzo, quindi diventa nome@gabrydl99.github.io (nessuna email viene inviata) */
-  const indirizzo = u => { u = u.trim().toLowerCase(); return u.includes('@') ? u : u + '@gabrydl99.github.io'; };
+  /* l'admin può scrivere l'email intera o solo la parte prima di @gmail.com */
+  const indirizzo = u => { u = u.trim().toLowerCase(); return u.includes('@') ? u : u + '@gmail.com'; };
 
   /* ---------- coda: se manca internet il messaggio parte dopo ---------- */
   async function svuota(){
@@ -271,7 +271,7 @@ body.fb-aperto{overflow:hidden}
     esci.hidden = true;
     AI.innerHTML = (DEMO ? '<p class="demo"><b>Anteprima</b>: va bene qualsiasi nome utente e password; i messaggi sono d\'esempio.</p>' : '') +
       '<form class="adm-login" novalidate><p>Entra con il tuo account per leggere le segnalazioni. Chi usa il Quaderno non può entrare qui.</p>' +
-      '<div class="campo"><label class="fl" for="adm-mail">Nome utente</label><input class="in" id="adm-mail" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required></div>' +
+      '<div class="campo"><label class="fl" for="adm-mail">Nome utente o email</label><input class="in" id="adm-mail" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required></div>' +
       '<div class="campo"><label class="fl" for="adm-pw">Password</label><input class="in" id="adm-pw" type="password" autocomplete="current-password" required></div>' +
       '<p class="err" id="adm-err" role="alert"></p><button type="submit" class="btn pri">Entra</button></form>';
     const f = $('form', AI);
@@ -279,7 +279,7 @@ body.fb-aperto{overflow:hidden}
       e.preventDefault();
       const b = $('button', f); b.disabled = true; b.textContent = 'Accesso…';
       try { await srv.entra(indirizzo($('#adm-mail', f).value), $('#adm-pw', f).value); mostraAdmin(); conta(); }
-      catch (x) { $('#adm-err', f).textContent = navigator.onLine ? 'Nome utente o password sbagliati.' : 'Serve internet per entrare.'; b.disabled = false; b.textContent = 'Entra'; }
+      catch (x) { $('#adm-err', f).textContent = navigator.onLine ? 'Nome utente, email o password sbagliati.' : 'Serve internet per entrare.'; b.disabled = false; b.textContent = 'Entra'; }
     });
     $('#adm-mail', f).focus();
   }

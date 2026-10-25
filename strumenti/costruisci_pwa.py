@@ -7,6 +7,7 @@ Uso:
     --sfondo   aggiunge l'immagine dietro agli argomenti della pagina iniziale (img/sfondo-home.jpg)
     --uscita   scrive in un altro file invece di index.html (per le prove)
     --feedback aggiunge segnalazioni e area admin (strumenti/feedback.html, collegamento in strumenti/supabase.json)
+    --anteprima non collega Supabase (tutto resta sul telefono: per le prove)
     --data     data dell'aggiornamento da mostrare (gg/mm/aaaa); senza, quella di oggi
 
 Le parti tolte o cambiate su richiesta sono in strumenti/modifiche.json.
@@ -59,7 +60,7 @@ if ('serviceWorker' in navigator) {
 '''
 
 
-def costruisci(sorgente: str, versione: str | None, sfondo: bool = False, data: str | None = None, feedback: bool = False) -> str:
+def costruisci(sorgente: str, versione: str | None, sfondo: bool = False, data: str | None = None, feedback: bool = False, senza_supabase: bool = False) -> str:
     s = sorgente
 
     # 1. testa dell'artefatto -> testa vera della PWA (lo stile base dell'artefatto resta, per non cambiare l'aspetto)
@@ -127,11 +128,12 @@ def costruisci(sorgente: str, versione: str | None, sfondo: bool = False, data: 
     if sfondo:
         extra += (RADICE / 'strumenti' / 'sfondo.html').read_text(encoding='utf8')
     if feedback:
-        fb = (RADICE / 'strumenti' / 'feedback.html').read_text(encoding='utf8')
+        # profilo (accesso con nome utente, argomenti letti) + segnalazioni e area admin
+        fb = (RADICE / 'strumenti' / 'account.html').read_text(encoding='utf8')
+        fb += (RADICE / 'strumenti' / 'feedback.html').read_text(encoding='utf8')
         conf = RADICE / 'strumenti' / 'supabase.json'
-        if conf.exists():
-            c = json.loads(conf.read_text(encoding='utf8'))
-            fb = re.sub(r'/\*SUPABASE\*/.*?/\*FINE\*/', lambda _m: json.dumps({'url': c.get('url', ''), 'chiave': c.get('chiave', '')}), fb, count=1, flags=re.S)
+        c = json.loads(conf.read_text(encoding='utf8')) if conf.exists() and not senza_supabase else {}
+        fb = re.sub(r'/\*SUPABASE\*/.*?/\*FINE\*/', lambda _m: json.dumps({'url': c.get('url', ''), 'chiave': c.get('chiave', '')}), fb, flags=re.S)
         extra += fb
     s = s.replace('</body></html>', extra + REGISTRA + '</body>\n</html>')
     if REGISTRA not in s:
@@ -148,7 +150,7 @@ def main():
     uscita = sys.argv[sys.argv.index('--uscita') + 1] if '--uscita' in sys.argv else 'index.html'
     src = pathlib.Path(sys.argv[1]).read_text(encoding='utf8')
     data = sys.argv[sys.argv.index('--data') + 1] if '--data' in sys.argv else None
-    out = costruisci(src, versione, '--sfondo' in sys.argv, data, '--feedback' in sys.argv)
+    out = costruisci(src, versione, '--sfondo' in sys.argv, data, '--feedback' in sys.argv, '--anteprima' in sys.argv)
     (RADICE / uscita).write_text(out, encoding='utf8')
     if versione and uscita == 'index.html':
         sw = RADICE / 'sw.js'

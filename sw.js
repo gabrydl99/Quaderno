@@ -2,13 +2,13 @@
    - Pagina, font e icone: salvati sul telefono, l'app si apre anche senza internet.
    - Pagina: prima prova la rete (così vedi subito gli aggiornamenti), se non c'è usa la copia salvata.
    - Audio: alla prima riproduzione il file viene salvato intero; dopo si ascolta anche offline. */
-const VERSIONE = 'v41';
+const VERSIONE = 'v42';
 const CACHE = 'qp-app-' + VERSIONE;
 const CACHE_AUDIO = 'qp-audio';
 
 const FONT = ['400', '500', '600', '700'].flatMap(w => ['latin', 'latin-ext', 'greek', 'greek-ext'].map(s => `fonts/fira-sans-${s}-${w}-normal.woff2`))
   .concat(['400', '500'].flatMap(w => ['latin', 'latin-ext', 'greek', 'greek-ext'].map(s => `fonts/fira-mono-${s}-${w}-normal.woff2`)));
-const BASE = ['./', 'manifest.webmanifest', 'fonts/fonts.css', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'img/sfondo-home.jpg', ...FONT];
+const BASE = ['./', 'manifest.webmanifest', 'fonts/fonts.css', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'img/sfondo-home.jpg', 'assetto/', 'carteggio/', 'fonts/esercizi.css', ...FONT];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(BASE)).then(() => self.skipWaiting()));

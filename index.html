@@ -603,6 +603,19 @@ figure.fig.sym .svgbox{border:0}
 #home .howto .consiglio[hidden]{display:none}
 #home .howto ol li{margin:10px 0}
 @media (prefers-reduced-motion:reduce){.how-card .n::after{transition:none}}
+
+/* ---------- esercizi: pagine a parte ---------- */
+#home .eser{margin:0 0 10px;background:color-mix(in srgb,var(--sheet) 80%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:var(--r-lg);padding:10px 12px 12px}
+#home .eser h2{margin:0 4px 8px;font:700 1.05rem/1.25 var(--f-body);color:var(--ink)}
+.eser-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.eser-c{display:grid;grid-template-rows:auto auto auto 1fr;gap:1px;padding:10px 12px 12px;border-radius:var(--r-md);border:1px solid var(--line);background:var(--sheet);color:var(--ink);text-decoration:none;min-width:0}
+.eser-c .ill{display:block;width:72px;height:54px;margin:0 0 6px}
+.eser-c .n{font:700 1rem/1.2 var(--f-body);color:var(--ink)}
+.eser-c .m{font:600 .8rem/1.3 var(--f-body);color:var(--blue)}
+.eser-c .d{margin-top:4px;font-size:.8rem;line-height:1.35;color:var(--muted)}
+.eser-c:hover,.eser-c:active{border-color:color-mix(in srgb,var(--blue) 45%,var(--line));background:color-mix(in srgb,var(--blue) 4%,var(--sheet))}
+.eser-c:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+@media (max-width:359.98px){.eser-g{grid-template-columns:1fr}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -620,7 +633,7 @@ figure.fig.sym .svgbox{border:0}
   <div class="wrap">
     <div class="brand">
       <h1>Quaderno <span>Patentino</span></h1>
-      <span class="ver-top" title="Versione dell'app e data dell'ultimo aggiornamento"><b>v41</b><small>(25/10/2026)</small></span>
+      <span class="ver-top" title="Versione dell'app e data dell'ultimo aggiornamento"><b>v42</b><small>(25/10/2026)</small></span>
       <button type="button" id="homeBtn" class="homeb" aria-label="Pagina iniziale" title="Pagina iniziale"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M6 9.6V20h4.5v-5.5h3V20H18V9.6"/></svg></button>
       
       <span class="crumb" id="crumb"></span>
@@ -653,6 +666,7 @@ figure.fig.sym .svgbox{border:0}
 <li><b>Leggere la lezione</b>: tocca <b>Trascrizione</b> (sulla scheda o nel lettore). Con <b>A−</b> e <b>A+</b> cambi la grandezza del testo; trascina la barretta in alto per ingrandire il pannello.</li>
 <li><b>Cercare</b>: scrivi nella barra in alto (es. «amplitudine», «squat») e tocca un risultato: la parola viene evidenziata nel testo.</li>
 <li><b>Disegni</b>: toccane uno per ingrandirlo (+ e − per lo zoom).</li>
+<li><b>Esercizi</b>: dal riquadro <b>Esercizi</b> in questa pagina apri <b>Assetto e pescaggi</b> (esercizi di stabilità risolti passo per passo) e il <b>Carteggio con la carta 5D</b>. Sono pagine a parte: per tornare qui tocca <b>‹ Quaderno Patentino</b> in alto. Funzionano anche senza internet dopo averle aperte una volta.</li>
 <li><b>Il tuo profilo</b>: in alto, accanto alla ricerca, c'è scritto <b>Guest</b>. Toccalo per <b>registrarti</b> o <b>entrare</b> con nome utente e password (niente email): al posto di Guest comparirà il tuo nome. In fondo a ogni argomento tocca <b>Segna come letto</b>; nell'indice gli argomenti letti hanno la spunta verde, sotto ogni capitolo vedi la percentuale e nel profilo trovi l'avanzamento di tutti i capitoli. I progressi li vedi solo tu e ti seguono su ogni telefono in cui entri. Dal profilo puoi anche <b>eliminare l'account</b>: prima ti viene chiesta la conferma.</li>
 <li><b>Segnalazioni</b>: hai trovato un errore o hai un suggerimento? Tocca <b>Segnalazioni e feedback</b> in questa pagina, oppure <b>Segnala un errore</b> in fondo a un argomento (l'argomento si compila da solo). Puoi firmarti o restare anonimo; il messaggio lo legge solo l'amministratore. Senza internet parte da solo appena torna la connessione.</li>
 <li><b>In alto a destra</b>: la <b>casetta</b> (Home) ti riporta qui, alla pagina iniziale; il <b>sole</b> (Light mode) o la <b>luna</b> (Dark mode) cambia tra tema chiaro e scuro; accanto c'è la <b>versione</b> con la data dell'ultimo aggiornamento. Mentre scorri, la freccia <b>↑</b> ti riporta in cima alla pagina.</li>
@@ -16230,6 +16244,17 @@ Il giornale di navigazione è scritto e firmato dal Comandante per le guardie da
       '<path class="il-fb" d="M8 50L22 22L36 50Z"/><path class="il-b" d="M8 50L22 22L36 50Z"/>' +
       '<path d="M42 38l4-2l5 14l7-28H90"/><path class="il-t" d="M64 30l10 12M74 30l-10 12"/><path class="il-t" d="M80 28q4 0 4 3q0 3-4 5h5"/>' +
       '<path d="M48 60H88"/><circle class="il-ink" cx="68" cy="55" r="2"/><circle class="il-ink" cx="68" cy="66" r="2"/>',
+    assetto:
+      '<path class="il-fb" d="M0 46H96V72H0Z"/>' +
+      '<g transform="rotate(-6 48 40)"><path class="il-fs" d="M10 26H84L80 44Q78 50 70 50H22Q14 50 12 44Z"/><path d="M10 26H84L80 44Q78 50 70 50H22Q14 50 12 44Z"/><path d="M34 26V16H58V26"/></g>' +
+      '<path class="il-b" d="M0 46H96"/>' +
+      '<path class="il-a il-t" d="M8 30V58M88 22V58"/><path class="il-a il-t" d="M5 58h6M85 58h6"/>' +
+      '<text x="1" y="68">Pd</text><text x="80" y="68">Pa</text>',
+    carteggio:
+      '<path class="il-t" style="opacity:.35" d="M4 14H92M4 34H92M4 54H92M24 4V68M48 4V68M72 4V68"/>' +
+      '<path class="il-b" d="M10 60L44 26L80 18"/><circle class="il-ink" cx="44" cy="26" r="2.6"/><circle class="il-ink" cx="80" cy="18" r="2.6"/>' +
+      '<path class="il-a" d="M58 66L66 40L74 66"/><circle class="il-fs" cx="66" cy="40" r="3"/><circle cx="66" cy="40" r="3"/>' +
+      '<path class="il-gold" d="M18 22L20 30L28 32L20 34L18 42L16 34L8 32L16 30Z"/>',
     istruzioni:
       '<circle class="il-d il-t" cx="48" cy="36" r="29"/>' +
       '<circle class="il-fs" cx="48" cy="36" r="22"/>' +
@@ -16249,6 +16274,17 @@ Il giornale di navigazione è scritto e firmato dal Comandante per le guardie da
   const tb = document.getElementById('themeBtn');
   if (tb && !tb.querySelector('.tcap')) tb.insertAdjacentHTML('beforeend', '<span class="tcap tcap-l">Light mode</span><span class="tcap tcap-d">Dark mode</span>');
 
+  // esercizi: pagine a parte (assetto/, carteggio/), si aprono come pagine nuove e tornano qui con "‹ Quaderno Patentino"
+  function esercizi(){
+    const sec = document.createElement('section'); sec.className = 'eser'; sec.setAttribute('aria-labelledby', 'eser-t');
+    sec.innerHTML = '<h2 id="eser-t">Esercizi</h2><div class="eser-g">' +
+      '<a class="eser-c" href="assetto/"><span class="n">Esercizi di stabilità</span><span class="m">Assetto e pescaggi</span><span class="d">Problemi del libro risolti passo per passo: densità, pesi, imbarco e sbarco, assetto voluto, punti neutri.</span></a>' +
+      '<a class="eser-c" href="carteggio/"><span class="n">Carteggio</span><span class="m">Carta 5D</span><span class="d">Tavolo di carteggio con esercizi ministeriali, punto nave con rilevamenti, fari e correnti.</span></a></div>';
+    const ill = {assetto: D.assetto, carteggio: D.carteggio};
+    sec.querySelectorAll('.eser-c').forEach((a, i) => { const s = document.createElement('span'); s.className = 'ill'; s.setAttribute('aria-hidden', 'true'); s.innerHTML = '<svg viewBox="0 0 96 72">' + (i ? ill.carteggio : ill.assetto) + '</svg>'; a.prepend(s); });
+    return sec;
+  }
+
   // istruzioni: riquadro come le sezioni; toccandolo si apre l'elenco
   const how = document.querySelector('#home .howto');
   if (how) {
@@ -16259,6 +16295,7 @@ Il giornale di navigazione è scritto e firmato dal Comandante per le guardie da
     h2.textContent = ''; h2.append(b);
     if (ol) ol.hidden = true;
     const home = document.getElementById('home'); if (home) home.insertBefore(how, home.firstChild);
+    if (home) how.after(esercizi());
     b.addEventListener('click', () => { const apri = ol.hidden; ol.hidden = !apri; b.setAttribute('aria-expanded', apri ? 'true' : 'false'); });
   }
 })();
@@ -16331,6 +16368,7 @@ body.vedi-sfondo .bg-vedi{position:fixed;z-index:30;left:50%;bottom:calc(20px + 
 /* in fondo a ogni argomento: "Segna come letto" (e "Segnala un errore") */
 .art-fondo{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:18px 0 -4px;padding-top:12px;border-top:1px solid var(--line)}
 .art-fondo .segnala{margin:0}
+.art-fondo.solo-segnala{justify-content:flex-end}
 .letto{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 15px 0 9px;border-radius:999px;border:1.5px solid var(--line);background:var(--sheet);color:var(--ink);font:600 .9rem/1 var(--f-body)}
 .letto .ck{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;border:2px solid var(--muted);box-sizing:border-box}
 .letto .ck svg{width:14px;height:14px;stroke-width:3;opacity:0}
@@ -16548,12 +16586,13 @@ body.acc-aperto{overflow:hidden}
 
   /* ---------- capitoli e argomenti della pagina ---------- */
   const tit = el => el ? (el.firstChild && el.firstChild.nodeType === 3 ? el.firstChild.textContent : el.textContent).trim() : '';
+  const NO_PROG = ['formulario'];                     // sezioni senza "letto" e percentuali (solo formule)
   const SEZ = [...document.querySelectorAll('section.sec')].map(s => ({
     id: s.id,
     tit: (($('#cards .card[data-sec="' + s.id + '"] .n') || {}).textContent) || tit($('.sec-head h2', s)),
     art: [...s.querySelectorAll('article.topic')].map(a => a.id),
     grp: [...s.querySelectorAll('.grp')].map(g => ({id: g.id, tit: g.dataset.title || g.id, art: [...g.querySelectorAll('article.topic')].map(a => a.id)}))
-  })).filter(s => s.art.length);
+  })).filter(s => s.art.length && !NO_PROG.includes(s.id));
   const TUTTI = SEZ.flatMap(s => s.art);
   const conta = ids => { let n = 0; ids.forEach(i => { if (prog.fatti.has(i)) n++; }); return n; };
   const pc = (n, t) => t ? Math.round(n / t * 100) : 0;
@@ -16571,6 +16610,7 @@ body.acc-aperto{overflow:hidden}
   const tasti = {};
   document.querySelectorAll('article.topic').forEach(a => {
     const f = document.createElement('div'); f.className = 'art-fondo';
+    const sz = a.closest('section.sec'); if (sz && NO_PROG.includes(sz.id)) { f.classList.add('solo-segnala'); a.append(f); return; }
     const b = document.createElement('button'); b.type = 'button'; b.className = 'letto'; b.setAttribute('aria-pressed', 'false');
     b.innerHTML = '<span class="ck">' + ICO.ok + '</span><span class="tx">Segna come letto</span>';
     b.addEventListener('click', () => {

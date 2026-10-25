@@ -61,6 +61,9 @@ def costruisci(src: str, titolo: str) -> str:
     corpo = src[m.end():]
     corpo = re.sub(r'^\s*<title>[^<]*</title>\s*', '', corpo, count=1)
     corpo = re.sub(r'\n?<meta name="claude:[^"]*"[^>]*>', '', corpo)
+    # caratteri in locale (../fonts/esercizi.css) al posto di Google Fonts, per l'uso senza internet
+    corpo = re.sub(r'\n?<link rel="preconnect" href="https://fonts\.(googleapis|gstatic)\.com"[^>]*>', '', corpo)
+    corpo, n = re.subn(r'<link rel="stylesheet" href="https://fonts\.googleapis\.com/[^"]*">', '<link rel="stylesheet" href="../fonts/esercizi.css">', corpo)
     # i tag <link>/<style> iniziali della pagina restano nel corpo come nell'artefatto (funzionano anche lì)
     s = TESTA.format(titolo=titolo) + m.group(1) + '\n</head>\n<body>\n' + BARRA.replace('{titolo}', titolo) + corpo
     s = s.replace('</body></html>', REGISTRA + '</body>\n</html>')

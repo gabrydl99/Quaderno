@@ -1,0 +1,2501 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Assetto e pescaggi · Quaderno Patentino</title>
+<meta name="theme-color" content="#f7f9fa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#05080b" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<script>
+/* stesso tema (chiaro/scuro) scelto nel Quaderno */
+try { var t = localStorage.getItem('qp-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+</head>
+<body>
+<style id="qp-torna-css">
+.qp-torna{position:relative;z-index:2;display:flex;align-items:center;gap:10px;padding:8px max(14px,env(safe-area-inset-right,0px)) 8px max(14px,env(safe-area-inset-left,0px));
+  background:rgba(234,242,247,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #cdd9e3;font:600 15px/1.2 "Fira Sans","Segoe UI",Roboto,Arial,sans-serif}
+.qp-torna a{flex:none;white-space:nowrap;box-sizing:border-box;font:inherit;display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:0 12px 0 8px;border-radius:999px;border:1.5px solid #cdd9e3;background:#fff;color:#0c1b2b;text-decoration:none}
+.qp-torna a:focus-visible{outline:2px solid #0a4cab;outline-offset:2px}
+.qp-torna svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.qp-torna span{color:#43576a;font-weight:500;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .qp-torna{background:rgba(6,17,27,.9);border-bottom-color:#24394c}
+  :root:not([data-theme="light"]) .qp-torna a{background:#0c1a27;border-color:#24394c;color:#eef4f9}:root:not([data-theme="light"]) .qp-torna span{color:#a8bccc}}
+:root[data-theme="dark"] .qp-torna{background:rgba(6,17,27,.9);border-bottom-color:#24394c}
+:root[data-theme="dark"] .qp-torna a{background:#0c1a27;border-color:#24394c;color:#eef4f9}
+:root[data-theme="dark"] .qp-torna span{color:#a8bccc}
+</style>
+<nav class="qp-torna" aria-label="Quaderno Patentino"><a href="../"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>Quaderno Patentino</a><span>Assetto e pescaggi</span></nav>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: colonna dati a sinistra (si impila su telefono), soluzione passo-passo a destra. Inchiostro blu "penna a sfera" come gli appunti. */
+:root {
+  --paper: #F2F5F8;
+  --surface: #FFFFFF;
+  --ink: #15233D;
+  --muted: #5B6679;
+  --line: #D4DAE3;
+  --accent: #2945B5;
+  --accent-soft: #E4E9F8;
+  --water: #CFE0EE;
+  --water-line: #3F78A8;
+  --hull: #2B3B57;
+  --sink: #B24A1F;
+  --rise: #1D7650;
+  --warn-bg: #FBEBE3;
+  --font-display: "Saira Semi Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-num: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0E1420; --surface: #161F2F; --ink: #E5EAF2; --muted: #9AA6B9; --line: #2A3549;
+    --accent: #93A9FF; --accent-soft: #1F2A49; --water: #17304A; --water-line: #6FA6D6; --hull: #AFC0DC;
+    --sink: #F08A5D; --rise: #5DCB98; --warn-bg: #3A2218; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0E1420; --surface: #161F2F; --ink: #E5EAF2; --muted: #9AA6B9; --line: #2A3549;
+  --accent: #93A9FF; --accent-soft: #1F2A49; --water: #17304A; --water-line: #6FA6D6; --hull: #AFC0DC;
+  --sink: #F08A5D; --rise: #5DCB98; --warn-bg: #3A2218; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.5; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 16px; padding-block: 20px 48px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; text-wrap: balance; margin: 0; }
+.num, .eq .n { font-family: var(--font-num); font-variant-numeric: tabular-nums; }
+
+/* Testata */
+.top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; padding-bottom: 16px; border-bottom: 2px solid var(--ink); }
+.brand h1 { font-size: clamp(1.7rem, 4.5vw, 2.4rem); font-weight: 700; letter-spacing: .01em; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.ver { font-family: var(--font-num); font-size: .8rem; font-weight: 500; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 0 6px; letter-spacing: 0; }
+.brand p { margin: 4px 0 0; color: var(--muted); font-size: .95rem; }
+.ship { font-family: var(--font-num); font-size: .82rem; color: var(--muted); text-align: right; }
+.ship b { color: var(--ink); font-weight: 600; }
+
+/* Schede */
+.tabs { display: flex; gap: 4px; margin: 18px 0 20px; border-bottom: 1px solid var(--line); overflow-x: auto; }
+.tab { appearance: none; border: 0; background: none; color: var(--muted); font: 600 1rem/1 var(--font-display); letter-spacing: .02em; padding: 12px 14px 11px; border-bottom: 3px solid transparent; cursor: pointer; white-space: nowrap; }
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.tab:focus-visible, button:focus-visible, input:focus-visible, .seg label:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Griglia principale */
+.grid { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); gap: 28px; align-items: start; }
+@media (max-width: 820px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
+@media (min-width: 821px) { .inputs { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); } }
+
+/* Form */
+.inputs h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 4px; }
+.hint { color: var(--muted); font-size: .88rem; margin: 0 0 12px; }
+fieldset { border: 0; padding: 0; margin: 0 0 14px; display: grid; gap: 10px; }
+legend { font: 600 .74rem/1 var(--font-body); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding: 0; margin-bottom: 8px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.field { display: grid; gap: 4px; min-width: 0; }
+.field label { font-size: .9rem; font-weight: 600; }
+.field label small { font-weight: 400; color: var(--muted); }
+.inbox { display: flex; align-items: stretch; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); overflow: hidden; }
+.inbox:focus-within { border-color: var(--accent); }
+.inbox input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: 500 1rem var(--font-num); padding: 9px 10px; }
+.inbox input:focus-visible { outline: none; }
+.inbox span { display: flex; align-items: center; padding: 0 10px; font-size: .82rem; color: var(--muted); border-left: 1px solid var(--line); font-family: var(--font-num); }
+.field.bad .inbox { border-color: var(--sink); }
+.seg { display: flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.seg label { flex: 1; position: relative; text-align: center; font-size: .86rem; padding: 7px 4px; cursor: pointer; color: var(--muted); border-left: 1px solid var(--line); user-select: none; }
+.seg label:first-child { border-left: 0; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg label.on { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.opt { display: flex; align-items: center; gap: 8px; font-size: .88rem; color: var(--muted); margin-top: 2px; }
+.opt input { accent-color: var(--accent); width: 16px; height: 16px; flex: none; }
+.btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+.btn { appearance: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 600 .88rem var(--font-body); border-radius: 6px; padding: 8px 12px; cursor: pointer; }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Risultati */
+.results { display: grid; gap: 22px; min-width: 0; }
+.err { background: var(--warn-bg); color: var(--ink); border-left: 4px solid var(--sink); border-radius: 6px; padding: 12px 14px; }
+.summary { display: grid; gap: 14px; }
+.summary h2 { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+.kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; min-width: 0; }
+.kpi .k { font-size: .82rem; color: var(--muted); }
+.kpi .v { font-family: var(--font-num); font-size: 1.45rem; font-weight: 600; line-height: 1.2; margin-top: 2px; overflow-wrap: anywhere; }
+.kpi .s { font-size: .82rem; color: var(--muted); }
+.kpi.main { background: var(--accent-soft); border-color: transparent; }
+.kpi.main .v { color: var(--accent); }
+.tag { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; }
+.tag.sink { color: var(--sink); background: var(--warn-bg); background: color-mix(in srgb, var(--sink) 14%, transparent); }
+.tag.rise { color: var(--rise); background: var(--accent-soft); background: color-mix(in srgb, var(--rise) 14%, transparent); }
+.figs { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+@media (min-width: 1000px) { .figs.two { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); } }
+.fig.narrow { max-width: 380px; }
+.figs > .fig:only-child:not(.narrow) { max-width: 640px; }
+.fig { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px 8px; min-width: 0; }
+.fig svg { width: 100%; height: auto; display: block; }
+.fig figcaption { font-size: .8rem; color: var(--muted); margin-top: 4px; }
+figure { margin: 0; }
+
+/* Passaggi */
+.steps h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 10px; }
+.steps ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: s; }
+.step { counter-increment: s; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 0 14px; padding: 16px 0; border-top: 1px solid var(--line); }
+.step::before { content: counter(s); font: 700 1rem/32px var(--font-display); width: 32px; height: 32px; text-align: center; border-radius: 50%; border: 2px solid var(--accent); color: var(--accent); }
+.step h3 { font-size: 1.1rem; font-weight: 600; margin: 4px 0 8px; }
+.step .why { margin: 8px 0 0; max-width: 64ch; color: var(--ink); }
+.step .why b { font-weight: 600; }
+.eqs { display: grid; gap: 6px; background: var(--paper); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
+.eq { font-size: 1.05rem; line-height: 1.5; }
+.eq .ch { display: inline-block; white-space: nowrap; vertical-align: middle; margin-block: 3px; }
+.eq .op { display: inline-block; vertical-align: middle; padding-inline: 6px; }
+.eq .lab { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); width: 100%; margin-bottom: -2px; }
+.eq i { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+.eq .res { font-weight: 600; color: var(--accent); }
+.frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; line-height: 1.25; }
+.frac > span { padding: 0 4px; white-space: nowrap; }
+.frac > span:first-child { border-bottom: 1.5px solid currentColor; }
+.note { font-size: .88rem; color: var(--muted); margin: 6px 0 0; }
+.mini { border-collapse: collapse; font-family: var(--font-num); font-size: .86rem; margin-top: 4px; }
+.mini th, .mini td { padding: 3px 10px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.mini th { font-family: var(--font-body); font-weight: 600; color: var(--muted); font-size: .78rem; }
+.mini tr.used td { color: var(--accent); font-weight: 600; }
+.scroll { overflow-x: auto; max-width: 100%; }
+.alert { background: var(--warn-bg); border-radius: 6px; padding: 8px 12px; margin-top: 8px; font-size: .92rem; }
+
+/* Tabella completa */
+.tbar { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; margin-bottom: 12px; }
+.tbar .field { width: 170px; }
+.tbar p { margin: 0; color: var(--muted); font-size: .9rem; max-width: 60ch; }
+.tablebox { max-height: 70vh; overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table.full { border-collapse: collapse; width: 100%; font-family: var(--font-num); font-size: .88rem; font-variant-numeric: tabular-nums; }
+table.full th { position: sticky; top: 0; background: var(--surface); font: 600 .8rem var(--font-body); color: var(--muted); text-align: right; padding: 8px 10px; border-bottom: 2px solid var(--ink); white-space: nowrap; }
+table.full td { text-align: right; padding: 4px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+table.full td:first-child, table.full th:first-child { text-align: left; font-weight: 600; }
+table.full tr.dec td { border-bottom-color: var(--muted); }
+table.full tr.hit td { background: var(--accent-soft); color: var(--accent); }
+footer { margin-top: 32px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: .84rem; }
+.tab .sm { display: none; }
+@media (max-width: 1080px) { .tab { padding-inline: 10px; } .tab .lg { display: none; } .tab .sm { display: inline; } }
+@media (max-width: 520px) { .tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: visible; } .tabs .tab:first-child { grid-column: 1 / -1; } .tab { padding: 11px 4px 10px; font-size: .95rem; text-align: center; } }
+.fsep { display: inline-block; width: 1.6em; }
+.fi { display: inline-block; margin-right: 1.8em; vertical-align: middle; }
+.fi:last-child { margin-right: 0; }
+@media (max-width: 820px) { .ship { text-align: left; } }
+.formule { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin-bottom: 4px; }
+.formule h3 { font: 600 .74rem/1 var(--font-body); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 8px; }
+.formule .eqs { background: transparent; padding: 0; gap: 4px; }
+.formule .eq { font-size: .96rem; }
+.exbanner { border: 1px solid var(--accent); background: var(--accent-soft); border-radius: 8px; padding: 12px 14px; display: grid; gap: 6px; }
+.exb-top { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; }
+.exb-top b { font-family: var(--font-display); font-size: 1.08rem; color: var(--accent); }
+.exb-mod { font-size: .8rem; color: var(--muted); }
+.exb-back { margin-left: auto; appearance: none; border: 0; background: none; color: var(--accent); font: 600 .88rem var(--font-body); cursor: pointer; padding: 2px 0; text-decoration: underline; text-underline-offset: 3px; }
+.exbanner p { margin: 0; max-width: 74ch; }
+.esintro { max-width: 72ch; color: var(--muted); margin: 0 0 22px; }
+.esgroup { margin-bottom: 30px; }
+.esgroup > h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 4px; }
+.esgroup > p { margin: 0 0 12px; color: var(--muted); font-size: .93rem; max-width: 74ch; }
+.escards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 430px), 1fr)); gap: 12px; }
+.excard { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.excard h3 { font-size: 1.05rem; font-weight: 600; display: flex; align-items: baseline; gap: 8px; }
+.excard h3 .num { font-family: var(--font-num); font-weight: 600; color: var(--accent); }
+.excard p { margin: 0; font-size: .95rem; }
+.exres { font-family: var(--font-num); font-size: .86rem; background: var(--paper); border-radius: 6px; padding: 8px 10px; overflow-wrap: anywhere; }
+.exres span { color: var(--muted); font-family: var(--font-body); }
+.exres:empty { display: none; }
+.btn.go { align-self: flex-start; margin-top: auto; background: var(--accent); color: var(--surface); border-color: var(--accent); }
+.btn.go:hover { color: var(--surface); border-color: var(--accent); filter: brightness(1.08); }
+.extab { border-collapse: collapse; font-family: var(--font-num); font-size: .82rem; }
+.extab th, .extab td { padding: 2px 10px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+.extab th:first-child, .extab td:first-child { text-align: left; }
+.extab th { font-family: var(--font-body); color: var(--muted); font-weight: 600; }
+.seg.grid2 { display: grid; grid-template-columns: 1fr 1fr; }
+.seg.grid2 label { border-left: 1px solid var(--line); border-top: 1px solid var(--line); }
+.seg.grid2 label:nth-child(odd) { border-left: 0; }
+.seg.grid2 label:nth-child(-n+2) { border-top: 0; }
+.wy { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 8px; align-items: end; }
+.wy .seg { background: var(--surface); }
+.seg.big, .seg.mb { margin-bottom: 14px; }
+.wlist { display: grid; gap: 10px; }
+.wrow { border: 1px solid var(--line); border-radius: 8px; padding: 10px; display: grid; gap: 8px; background: var(--paper); }
+.whead { display: flex; align-items: center; gap: 8px; }
+.wname { font: 600 .95rem var(--font-display); white-space: nowrap; min-width: 52px; }
+.whead .seg { flex: 1; background: var(--surface); }
+.seg.sm label { font-size: .8rem; padding: 5px 4px; }
+.wdel { appearance: none; flex: none; border: 1px solid var(--line); background: var(--surface); color: var(--muted); border-radius: 6px; width: 30px; height: 30px; cursor: pointer; font-size: 1.1rem; line-height: 1; }
+.wdel:hover:not(:disabled) { color: var(--sink); border-color: var(--sink); }
+.wdel:disabled { opacity: .35; cursor: default; }
+.row3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.row3 .field label { font-size: .85rem; }
+.wrow .inbox { background: var(--surface); }
+.wrow .inbox input { padding: 7px 8px; font-size: .95rem; }
+.btn.addw { width: 100%; border-style: dashed; }
+.tag.mom { color: var(--accent); background: var(--accent-soft); font-size: .72rem; margin-left: 6px; vertical-align: middle; }
+.seg.big label { font-size: 1rem; padding: 9px 4px; }
+@media (max-width: 420px) { .row2 { grid-template-columns: 1fr; } .eq { font-size: .98rem; } }
+@media (prefers-reduced-motion: no-preference) { .tab, .btn, .seg label { transition: color .15s, background-color .15s, border-color .15s; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>Assetto e Pescaggi <span class="ver" title="Versione">v4</span></h1>
+      <p>Esercizi del libro e problemi di assetto e stabilità, risolti passo per passo con le formule degli appunti.</p>
+    </div>
+    <div class="ship num">L<sub>pp</sub> = <b>143,16 m</b><br>tabella T <b>3,90 – 10,00 m</b></div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Tipo di problema">
+    <button class="tab" role="tab" id="tab-es" aria-controls="sec-es" aria-selected="true" data-sec="es"><span class="lg">Esercizi del libro</span><span class="sm">Esercizi del libro</span></button>
+    <button class="tab" role="tab" id="tab-dwa" aria-controls="sec-dwa" aria-selected="false" data-sec="dwa"><span class="lg">Cambio densità</span><span class="sm">Densità</span></button>
+    <button class="tab" role="tab" id="tab-pesi" aria-controls="sec-pesi" aria-selected="false" data-sec="pesi"><span class="lg">Spostamento pesi</span><span class="sm">Spostamento</span></button>
+    <button class="tab" role="tab" id="tab-imb" aria-controls="sec-imb" aria-selected="false" data-sec="imb"><span class="lg">Imbarco e sbarco</span><span class="sm">Imbarco</span></button>
+    <button class="tab" role="tab" id="tab-ass" aria-controls="sec-ass" aria-selected="false" data-sec="ass"><span class="lg">Assetto voluto</span><span class="sm">Assetto</span></button>
+    <button class="tab" role="tab" id="tab-neu" aria-controls="sec-neu" aria-selected="false" data-sec="neu"><span class="lg">Punti neutri</span><span class="sm">Neutri</span></button>
+    <button class="tab" role="tab" id="tab-tab" aria-controls="sec-tab" aria-selected="false" data-sec="tab"><span class="lg">Tabella</span><span class="sm">Tabella</span></button>
+  </nav>
+
+  <!-- ============ ESERCIZI ============ -->
+  <section id="sec-es" role="tabpanel" aria-labelledby="tab-es">
+    <p class="esintro">Gli esercizi 9 – 25 del libro (Modulo 3, «Spostamento e imbarco/sbarco pesi»). Ogni scheda ha il risultato; «Risolvi passo per passo» apre l'esercizio con i dati già inseriti e la soluzione spiegata con le formule degli appunti.</p>
+    <div id="es-list"></div>
+  </section>
+
+  <!-- ============ DWA ============ -->
+  <section id="sec-dwa" role="tabpanel" aria-labelledby="tab-dwa" hidden>
+    <div class="grid">
+      <form class="panel inputs" id="f-dwa" autocomplete="off" novalidate>
+        <h2>Dati del problema</h2>
+        <p class="hint">Valori di esempio già inseriti: sostituiscili con quelli del tuo esercizio. Puoi usare la virgola.</p>
+        <fieldset>
+          <legend>Pescaggi</legend>
+          <div class="row2">
+            <div class="field"><label for="d-TA">T<sub>A</sub> <small>poppa</small></label><div class="inbox"><input id="d-TA" name="TA" inputmode="decimal" value="6,20"><span>m</span></div></div>
+            <div class="field"><label for="d-TF">T<sub>F</sub> <small>prora</small></label><div class="inbox"><input id="d-TF" name="TF" inputmode="decimal" value="5,80"><span>m</span></div></div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Densità dell'acqua</legend>
+          <div class="field"><label for="d-d1">δ<sub>1</sub> <small>acqua di partenza</small></label><div class="inbox"><input id="d-d1" name="d1" inputmode="decimal" value="1,023"><span>t/m³</span></div></div>
+          <div class="field"><label for="d-d2">δ<sub>2</sub> <small>acqua di arrivo</small></label><div class="inbox"><input id="d-d2" name="d2" inputmode="decimal" value="1,016"><span>t/m³</span></div></div>
+        </fieldset>
+        <label class="opt"><input type="checkbox" id="d-interp" checked><span>Interpola la tabella se T<sub>m</sub> cade tra due righe</span></label>
+        <div class="btns"><button type="button" class="btn" id="d-reset">Ripristina esempio</button></div>
+      </form>
+      <div class="results" id="r-dwa" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ============ SPOSTAMENTO PESI ============ -->
+  <section id="sec-pesi" role="tabpanel" aria-labelledby="tab-pesi" hidden>
+    <div class="grid">
+      <form class="panel inputs" id="f-pesi" autocomplete="off" novalidate>
+        <h2>Dati del problema</h2>
+        <p class="hint">Valori di esempio già inseriti. Se uno spostamento manca nel testo, lascia 0.</p>
+        <fieldset>
+          <legend>Pescaggi e stabilità iniziale</legend>
+          <div class="row2">
+            <div class="field"><label for="p-TA">T<sub>A</sub> <small>poppa</small></label><div class="inbox"><input id="p-TA" name="TA" inputmode="decimal" value="7,40"><span>m</span></div></div>
+            <div class="field"><label for="p-TF">T<sub>F</sub> <small>prora</small></label><div class="inbox"><input id="p-TF" name="TF" inputmode="decimal" value="6,80"><span>m</span></div></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="p-GM">GM <small>iniziale</small></label><div class="inbox"><input id="p-GM" name="GM" inputmode="decimal" value="0,85"><span>m</span></div></div>
+            <div class="field"><label for="p-p">p <small>peso spostato</small></label><div class="inbox"><input id="p-p" name="p" inputmode="decimal" value="150"><span>t</span></div></div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Spostamento verticale z</legend>
+          <div class="field"><div class="inbox"><input id="p-z" name="z" inputmode="decimal" value="4" aria-label="z"><span>m</span></div></div>
+          <div class="seg" role="radiogroup" aria-label="Verso dello spostamento verticale">
+            <label><input type="radio" name="zdir" id="p-zup" value="alto" checked>↑ verso l'alto</label>
+            <label><input type="radio" name="zdir" id="p-zdn" value="basso">↓ verso il basso</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Spostamento longitudinale x</legend>
+          <div class="field"><div class="inbox"><input id="p-x" name="x" inputmode="decimal" value="40" aria-label="x"><span>m</span></div></div>
+          <div class="seg" role="radiogroup" aria-label="Verso dello spostamento longitudinale">
+            <label><input type="radio" name="xdir" id="p-xpp" value="poppa" checked>verso poppa</label>
+            <label><input type="radio" name="xdir" id="p-xpr" value="prora">verso prora</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Spostamento trasversale y</legend>
+          <div class="field"><div class="inbox"><input id="p-y" name="y" inputmode="decimal" value="6" aria-label="y"><span>m</span></div></div>
+          <div class="seg" role="radiogroup" aria-label="Verso dello spostamento trasversale">
+            <label><input type="radio" name="ydir" id="p-ydr" value="dritta" checked>verso dritta</label>
+            <label><input type="radio" name="ydir" id="p-ysx" value="sinistra">verso sinistra</label>
+          </div>
+        </fieldset>
+        <label class="opt"><input type="checkbox" id="p-interp" checked><span>Interpola la tabella se T<sub>m</sub> cade tra due righe</span></label>
+        <div class="btns"><button type="button" class="btn" id="p-reset">Ripristina esempio</button></div>
+      </form>
+      <div class="results" id="r-pesi" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ============ IMBARCO / SBARCO ============ -->
+  <section id="sec-imb" role="tabpanel" aria-labelledby="tab-imb" hidden>
+    <div class="grid">
+      <form class="panel inputs" id="f-imb" autocomplete="off" novalidate>
+        <h2>Dati del problema</h2>
+        <p class="hint">z è la quota del peso sopra la chiglia. Un peso negativo, come nelle tabelle del libro, è uno sbarco. «Ripristina esempio» rimette l'esempio dei tuoi appunti.</p>
+        <fieldset>
+          <legend>Pescaggi iniziali</legend>
+          <div class="row2">
+            <div class="field"><label for="i-TA">T<sub>A</sub> <small>poppa</small></label><div class="inbox"><input id="i-TA" name="TA" inputmode="decimal" value="5,57"><span>m</span></div></div>
+            <div class="field"><label for="i-TF">T<sub>F</sub> <small>prora</small></label><div class="inbox"><input id="i-TF" name="TF" inputmode="decimal" value="5,33"><span>m</span></div></div>
+          </div>
+        </fieldset>
+        <fieldset id="i-man" hidden>
+          <legend>Valori di tabella a mano</legend>
+          <p class="hint" id="i-man-hint">T<sub>m</sub> è fuori dalla tabella fotografata. Leggi i valori sul libro e scrivili qui.</p>
+          <div class="row3">
+            <div class="field"><label for="i-mD">Δ <small>t</small></label><div class="inbox"><input id="i-mD" inputmode="decimal"></div></div>
+            <div class="field"><label for="i-mTPC">TPC <small>t/cm</small></label><div class="inbox"><input id="i-mTPC" inputmode="decimal"></div></div>
+            <div class="field"><label for="i-mKM">KM <small>m</small></label><div class="inbox"><input id="i-mKM" inputmode="decimal"></div></div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Stabilità iniziale</legend>
+          <div class="seg" role="radiogroup" aria-label="Dato di stabilità fornito dal testo">
+            <label><input type="radio" name="stab" id="i-sKG" value="KG" checked>il testo dà KG</label>
+            <label><input type="radio" name="stab" id="i-sGM" value="GM">il testo dà GM</label>
+          </div>
+          <div class="field"><label for="i-sv" id="i-sv-lab">KG <small>iniziale</small></label><div class="inbox"><input id="i-sv" name="sv" inputmode="decimal" value="7,26"><span>m</span></div></div>
+        </fieldset>
+        <fieldset>
+          <legend>Posizione dei pesi</legend>
+          <div class="seg" role="radiogroup" aria-label="Da dove si misura x">
+            <label><input type="radio" name="xref" id="i-xAP" value="AP" checked>x dalla Pp addietro (AP)</label>
+            <label><input type="radio" name="xref" id="i-xMP" value="MP">x da mezzanave (MP)</label>
+          </div>
+          <p class="hint" id="i-xhint" hidden>Da mezzanave: x positivo a proravia, negativo a poppavia. Il programma lo trasforma in distanza dalla AP.</p>
+          <label class="opt"><input type="checkbox" id="i-sband"><span>Calcola anche lo sbandamento (pesi fuori dall'asse)</span></label>
+        </fieldset>
+        <fieldset>
+          <legend>Pesi imbarcati e sbarcati</legend>
+          <div class="wlist" id="w-list"></div>
+          <button type="button" class="btn addw" id="i-add">+ Aggiungi un peso</button>
+        </fieldset>
+        <fieldset>
+          <legend>KM per la nuova stabilità</legend>
+          <div class="seg" role="radiogroup" aria-label="KM da usare per GM′">
+            <label><input type="radio" name="km" id="i-kmR" value="rilevanti" checked>pesi rilevanti: KM′</label>
+            <label><input type="radio" name="km" id="i-kmL" value="lievi">pesi lievi: KM</label>
+          </div>
+        </fieldset>
+        <label class="opt"><input type="checkbox" id="i-interp" checked><span>Interpola la tabella se il valore cade tra due righe</span></label>
+        <div class="btns"><button type="button" class="btn" id="i-reset">Ripristina esempio</button></div>
+      </form>
+      <div class="results" id="r-imb" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ============ ASSETTO VOLUTO ============ -->
+  <section id="sec-ass" role="tabpanel" aria-labelledby="tab-ass" hidden>
+    <div class="grid">
+      <form class="panel inputs" id="f-ass" autocomplete="off" novalidate>
+        <h2>Dati del problema</h2>
+        <p class="hint">Il programma trova quanto peso imbarcare o sbarcare. Se p viene negativo il peso va sbarcato.</p>
+        <fieldset>
+          <legend>Cosa si vuole ottenere</legend>
+          <div class="seg grid2" role="radiogroup" aria-label="Condizione voluta">
+            <label><input type="radio" name="amode" id="a-mTA" value="TA" checked>immersione voluta a poppa</label>
+            <label><input type="radio" name="amode" id="a-mTF" value="TF">immersione voluta a prora</label>
+            <label><input type="radio" name="amode" id="a-mEV" value="even">chiglia piana, cassa nota</label>
+            <label><input type="radio" name="amode" id="a-mET" value="evenT">chiglia piana con T finale</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Pescaggi iniziali</legend>
+          <div class="row2">
+            <div class="field"><label for="a-TA">T<sub>A</sub> <small>poppa</small></label><div class="inbox"><input id="a-TA" inputmode="decimal" value="7,58"><span>m</span></div></div>
+            <div class="field"><label for="a-TF">T<sub>F</sub> <small>prora</small></label><div class="inbox"><input id="a-TF" inputmode="decimal" value="7,18"><span>m</span></div></div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Condizione e posizione</legend>
+          <div class="field" id="a-tt-wrap"><label for="a-Tt" id="a-tt-lab">T′<sub>A</sub> voluta</label><div class="inbox"><input id="a-Tt" inputmode="decimal" value="7,50"><span>m</span></div></div>
+          <div class="field" id="a-x-wrap"><label for="a-x">x della cassa o stiva <small>dalla AP</small></label><div class="inbox"><input id="a-x" inputmode="decimal" value="100"><span>m</span></div></div>
+        </fieldset>
+        <label class="opt"><input type="checkbox" id="a-interp" checked><span>Interpola la tabella se il valore cade tra due righe</span></label>
+        <div class="btns"><button type="button" class="btn" id="a-reset">Ripristina esempio</button></div>
+      </form>
+      <div class="results" id="r-ass" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ============ PUNTI NEUTRI ============ -->
+  <section id="sec-neu" role="tabpanel" aria-labelledby="tab-neu" hidden>
+    <div class="grid">
+      <form class="panel inputs" id="f-neu" autocomplete="off" novalidate>
+        <h2>Dati del problema</h2>
+        <p class="hint">Punto neutro: dove si può caricare un peso senza cambiare l'immersione a poppa (N<sub>A</sub>) o a prora (N<sub>F</sub>).</p>
+        <div class="seg mb" role="radiogroup" aria-label="Da dove prendere i dati">
+          <label><input type="radio" name="nsrc" id="n-sTab" value="tab" checked>dalla tabella</label>
+          <label><input type="radio" name="nsrc" id="n-sMan" value="man">dati del testo</label>
+        </div>
+        <fieldset id="n-tab-wrap">
+          <legend>Pescaggi</legend>
+          <div class="row2">
+            <div class="field"><label for="n-TA">T<sub>A</sub> <small>poppa</small></label><div class="inbox"><input id="n-TA" inputmode="decimal" value="9,22"><span>m</span></div></div>
+            <div class="field"><label for="n-TF">T<sub>F</sub> <small>prora</small></label><div class="inbox"><input id="n-TF" inputmode="decimal" value="9,06"><span>m</span></div></div>
+          </div>
+        </fieldset>
+        <fieldset id="n-man-wrap" hidden>
+          <legend>Dati idrostatici del testo</legend>
+          <div class="row2">
+            <div class="field"><label for="n-Lpp">L<sub>pp</sub></label><div class="inbox"><input id="n-Lpp" inputmode="decimal" value="220"><span>m</span></div></div>
+            <div class="field"><label for="n-TPC">TPC</label><div class="inbox"><input id="n-TPC" inputmode="decimal" value="65,85"><span>t/cm</span></div></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="n-MCTC">MCTC</label><div class="inbox"><input id="n-MCTC" inputmode="decimal" value="1013,82"><span>t·m</span></div></div>
+            <div class="field"><label for="n-XCF">X<sub>CF</sub> <small>da AP</small></label><div class="inbox"><input id="n-XCF" inputmode="decimal" value="112,19"><span>m</span></div></div>
+          </div>
+        </fieldset>
+        <label class="opt" id="n-interp-wrap"><input type="checkbox" id="n-interp" checked><span>Interpola la tabella se T<sub>m</sub> cade tra due righe</span></label>
+        <div class="btns"><button type="button" class="btn" id="n-reset">Ripristina esempio</button></div>
+      </form>
+      <div class="results" id="r-neu" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ============ TABELLA ============ -->
+  <section id="sec-tab" role="tabpanel" aria-labelledby="tab-tab" hidden>
+    <div class="tbar">
+      <div class="field"><label for="t-find">Vai al pescaggio</label><div class="inbox"><input id="t-find" inputmode="decimal" placeholder="es. 6,45"><span>m</span></div></div>
+      <p>La tabella usata dal programma, ricopiata dai fogli. Le righe evidenziate sono quelle lette nell'ultimo calcolo. Δ in t, TPC in t/cm, MCTC in t·m/cm, X<sub>b</sub> e X<sub>CF</sub> in m dalla perpendicolare addietro, KM e KM<sub>L</sub> in m.</p>
+    </div>
+    <div class="tablebox" id="t-box"><table class="full" id="t-full"><thead><tr><th>T (m)</th><th>Δ</th><th>TPC</th><th>MCTC</th><th>X<sub>b</sub></th><th>X<sub>CF</sub></th><th>KM</th><th>KM<sub>L</sub></th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <footer>Formule degli appunti. Cambio densità: FWA e DWA. Spostamento pesi: GG′, GM′, tan α, δT<sub>A</sub>, δT<sub>F</sub>. Imbarco e sbarco: Σp, Δ′ e T<sub>m</sub>′ dalla tabella, TPC<sub>m</sub>, δT<sub>m</sub>, Σpx rispetto a X′<sub>CF</sub>, δT<sub>A</sub> e δT<sub>F</sub> con MCTC′, KG′ con Varignon, GM′ = KM′ − KG′, tan α = Σpy / (Δ′·GM′). Assetto voluto e punti neutri: le stesse formule risolte per p o per la posizione. Tabella idrostatica della nave con L<sub>pp</sub> = 143,16 m.</footer>
+</div>
+
+<script>
+var CSV = `T,D,TPC,MCTC,XB,XCF,KM,KML
+3.90,7390,21.56,158.0,73.00,73.13,10.00,310.1
+3.91,7411,21.57,158.1,73.01,73.13,9.99,309.5
+3.92,7433,21.57,158.2,73.01,73.13,9.98,308.8
+3.93,7454,21.58,158.3,73.01,73.13,9.96,308.1
+3.94,7476,21.58,158.4,73.01,73.13,9.95,307.4
+3.95,7497,21.59,158.4,73.01,73.13,9.93,306.7
+3.96,7519,21.60,158.5,73.01,73.13,9.92,306.0
+3.97,7540,21.60,158.6,73.01,73.13,9.90,305.4
+3.98,7562,21.61,158.7,73.01,73.13,9.89,304.7
+3.99,7583,21.61,158.8,73.01,73.13,9.87,304.0
+4.00,7605,21.62,158.9,73.01,73.13,9.86,303.3
+4.01,7627,21.63,159.0,73.01,73.13,9.85,302.6
+4.02,7648,21.63,159.1,73.01,73.13,9.84,302.0
+4.03,7670,21.64,159.2,73.01,73.13,9.82,301.3
+4.04,7692,21.64,159.3,73.01,73.12,9.81,300.7
+4.05,7713,21.64,159.3,73.01,73.12,9.80,300.0
+4.06,7735,21.65,159.4,73.01,73.12,9.78,299.3
+4.07,7757,21.66,159.5,73.01,73.12,9.77,298.7
+4.08,7778,21.66,159.6,73.01,73.12,9.76,298.0
+4.09,7800,21.66,159.7,73.01,73.12,9.75,297.4
+4.10,7821,21.67,159.8,73.01,73.11,9.73,296.7
+4.11,7843,21.68,159.9,73.01,73.11,9.72,296.0
+4.12,7865,21.68,160.0,73.01,73.11,9.71,295.4
+4.13,7886,21.68,160.1,73.01,73.11,9.70,294.7
+4.14,7908,21.69,160.2,73.01,73.11,9.68,294.1
+4.15,7930,21.70,160.3,73.01,73.11,9.67,293.4
+4.16,7951,21.70,160.3,73.01,73.11,9.66,292.7
+4.17,7973,21.70,160.4,73.01,73.10,9.65,292.1
+4.18,7995,21.71,160.5,73.01,73.10,9.63,291.4
+4.19,8016,21.71,160.6,73.01,73.10,9.62,290.8
+4.20,8038,21.72,160.7,73.01,73.10,9.61,290.1
+4.21,8060,21.72,160.8,73.01,73.10,9.60,289.5
+4.22,8081,21.73,160.9,73.01,73.10,9.59,288.9
+4.23,8103,21.73,161.0,73.01,73.09,9.58,288.3
+4.24,8125,21.74,161.0,73.01,73.09,9.57,287.8
+4.25,8147,21.75,161.1,73.01,73.09,9.55,287.2
+4.26,8168,21.75,161.2,73.01,73.09,9.54,286.6
+4.27,8190,21.75,161.3,73.01,73.09,9.53,286.0
+4.28,8212,21.76,161.4,73.01,73.08,9.52,285.4
+4.29,8234,21.77,161.5,73.01,73.08,9.51,284.8
+4.30,8255,21.77,161.6,73.02,73.08,9.50,284.3
+4.31,8277,21.77,161.6,73.02,73.08,9.49,283.7
+4.32,8299,21.78,161.7,73.02,73.08,9.48,283.1
+4.33,8321,21.79,161.8,73.02,73.07,9.47,282.5
+4.34,8343,21.79,161.9,73.02,73.07,9.46,281.9
+4.35,8364,21.79,162.0,73.02,73.07,9.45,281.3
+4.36,8386,21.80,162.1,73.02,73.07,9.43,280.7
+4.37,8408,21.80,162.1,73.02,73.07,9.42,280.2
+4.38,8430,21.81,162.2,73.02,73.06,9.41,279.6
+4.39,8451,21.82,162.3,73.02,73.06,9.40,279.0
+4.40,8473,21.82,162.4,73.02,73.06,9.39,278.4
+4.41,8495,21.82,162.5,73.02,73.06,9.38,277.9
+4.42,8517,21.83,162.5,73.02,73.06,9.37,277.3
+4.43,8539,21.83,162.6,73.02,73.05,9.36,276.8
+4.44,8560,21.84,162.7,73.02,73.05,9.35,276.2
+4.45,8582,21.84,162.8,73.02,73.05,9.34,275.7
+4.46,8604,21.85,162.8,73.02,73.05,9.33,275.1
+4.47,8626,21.85,162.9,73.02,73.05,9.32,274.6
+4.48,8648,21.86,163.0,73.02,73.04,9.31,274.0
+4.49,8670,21.86,163.0,73.02,73.04,9.30,273.5
+4.50,8692,21.87,163.1,73.02,73.04,9.29,272.9
+4.51,8713,21.87,163.2,73.02,73.04,9.29,272.4
+4.52,8735,21.87,163.2,73.02,73.04,9.28,271.9
+4.53,8757,21.88,163.3,73.02,73.03,9.27,271.3
+4.54,8779,21.88,163.4,73.02,73.03,9.26,270.8
+4.55,8801,21.89,163.5,73.02,73.03,9.25,270.2
+4.56,8823,21.89,163.5,73.02,73.03,9.24,269.7
+4.57,8844,21.90,163.6,73.02,73.03,9.23,269.1
+4.58,8866,21.90,163.7,73.02,73.02,9.22,268.6
+4.59,8888,21.91,163.7,73.02,73.02,9.21,268.0
+4.60,8910,21.91,163.8,73.02,73.02,9.20,267.5
+4.61,8932,21.91,163.9,73.02,73.02,9.19,267.0
+4.62,8954,21.92,164.0,73.02,73.02,9.18,266.5
+4.63,8976,21.92,164.0,73.02,73.01,9.17,266.0
+4.64,8998,21.93,164.1,73.02,73.01,9.17,265.5
+4.65,9020,21.93,164.2,73.02,73.01,9.16,264.9
+4.66,9041,21.93,164.3,73.02,73.00,9.15,264.4
+4.67,9063,21.94,164.4,73.02,73.00,9.14,263.9
+4.68,9085,21.94,164.4,73.02,73.00,9.13,263.4
+4.69,9107,21.95,164.5,73.02,73.00,9.12,262.9
+4.70,9129,21.95,164.6,73.02,73.00,9.11,262.4
+4.71,9151,21.95,164.7,73.02,72.99,9.11,261.9
+4.72,9173,21.96,164.8,73.02,72.99,9.10,261.4
+4.73,9195,21.96,164.8,73.02,72.99,9.09,260.9
+4.74,9217,21.97,164.9,73.02,72.98,9.08,260.4
+4.75,9239,21.97,165.0,73.02,72.98,9.07,259.9
+4.76,9260,21.97,165.1,73.02,72.98,9.06,259.3
+4.77,9282,21.98,165.2,73.02,72.98,9.06,258.8
+4.78,9304,21.98,165.2,73.02,72.97,9.05,258.3
+4.79,9326,21.99,165.3,73.02,72.97,9.04,257.8
+4.80,9348,21.99,165.4,73.02,72.97,9.03,257.3
+4.81,9370,21.99,165.5,73.02,72.97,9.02,256.8
+4.82,9392,22.00,165.5,73.02,72.97,9.02,256.3
+4.83,9414,22.00,165.6,73.02,72.96,9.01,255.9
+4.84,9436,22.01,165.7,73.02,72.96,9.00,255.4
+4.85,9458,22.01,165.8,73.02,72.96,9.00,254.9
+4.86,9480,22.02,165.8,73.02,72.95,8.99,254.4
+4.87,9502,22.02,165.9,73.02,72.95,8.98,253.9
+4.88,9524,22.03,166.0,73.02,72.95,8.97,253.5
+4.89,9546,22.03,166.0,73.02,72.95,8.97,253.0
+4.90,9568,22.04,166.1,73.02,72.94,8.96,252.5
+4.91,9590,22.04,166.2,73.02,72.94,8.95,252.0
+4.92,9612,22.04,166.2,73.02,72.94,8.95,251.5
+4.93,9634,22.05,166.3,73.02,72.94,8.94,251.1
+4.94,9656,22.05,166.4,73.02,72.94,8.93,250.6
+4.95,9678,22.06,166.5,73.02,72.93,8.93,250.1
+4.96,9700,22.06,166.5,73.02,72.93,8.92,249.6
+4.97,9722,22.07,166.6,73.02,72.93,8.91,249.1
+4.98,9744,22.07,166.7,73.02,72.93,8.90,248.7
+4.99,9766,22.08,166.7,73.02,72.92,8.90,248.2
+5.00,9788,22.08,166.8,73.02,72.92,8.89,247.7
+5.01,9810,22.08,166.9,73.02,72.92,8.88,247.3
+5.02,9832,22.09,166.9,73.02,72.91,8.88,246.8
+5.03,9854,22.09,167.0,73.02,72.91,8.87,246.4
+5.04,9876,22.10,167.1,73.02,72.91,8.87,245.9
+5.05,9899,22.10,167.2,73.02,72.90,8.86,245.5
+5.06,9921,22.10,167.2,73.02,72.90,8.85,245.0
+5.07,9943,22.11,167.3,73.02,72.90,8.85,244.6
+5.08,9965,22.11,167.4,73.02,72.89,8.84,244.1
+5.09,9987,22.12,167.4,73.02,72.89,8.84,243.7
+5.10,10009,22.12,167.5,73.02,72.88,8.83,243.3
+5.11,10031,22.12,167.6,73.01,72.88,8.82,242.8
+5.12,10053,22.13,167.6,73.01,72.88,8.82,242.4
+5.13,10075,22.13,167.7,73.01,72.87,8.81,241.9
+5.14,10097,22.14,167.8,73.01,72.87,8.81,241.5
+5.15,10120,22.14,167.8,73.01,72.87,8.80,241.0
+5.16,10142,22.14,167.9,73.01,72.86,8.79,240.6
+5.17,10164,22.15,168.0,73.01,72.86,8.79,240.1
+5.18,10186,22.15,168.1,73.01,72.86,8.78,239.7
+5.19,10208,22.16,168.1,73.01,72.85,8.78,239.2
+5.20,10230,22.16,168.2,73.01,72.85,8.77,238.8
+5.21,10252,22.16,168.3,73.01,72.85,8.76,238.4
+5.22,10274,22.17,168.3,73.01,72.84,8.76,238.0
+5.23,10297,22.17,168.4,73.01,72.84,8.75,237.6
+5.24,10319,22.18,168.5,73.01,72.83,8.75,237.2
+5.25,10341,22.18,168.5,73.01,72.83,8.74,236.8
+5.26,10363,22.18,168.6,73.01,72.82,8.74,236.4
+5.27,10385,22.19,168.7,73.01,72.82,8.73,236.0
+5.28,10408,22.19,168.8,73.01,72.81,8.73,235.6
+5.29,10430,22.20,168.8,73.01,72.81,8.72,235.2
+5.30,10452,22.20,168.9,73.00,72.81,8.71,234.8
+5.31,10474,22.20,169.0,73.00,72.80,8.71,234.5
+5.32,10496,22.21,169.0,73.00,72.80,8.70,234.1
+5.33,10519,22.21,169.1,73.00,72.79,8.70,233.7
+5.34,10541,22.22,169.2,73.00,72.79,8.69,233.3
+5.35,10563,22.22,169.3,73.00,72.78,8.69,232.9
+5.36,10585,22.22,169.3,73.00,72.78,8.68,232.5
+5.37,10607,22.23,169.4,73.00,72.77,8.68,232.1
+5.38,10630,22.23,169.5,73.00,72.77,8.67,231.7
+5.39,10652,22.24,169.5,73.00,72.76,8.67,231.3
+5.40,10674,22.24,169.6,73.00,72.76,8.66,230.9
+5.41,10696,22.24,169.7,73.00,72.76,8.66,230.5
+5.42,10719,22.25,169.7,73.00,72.75,8.65,230.1
+5.43,10741,22.25,169.8,73.00,72.75,8.65,229.8
+5.44,10763,22.26,169.9,73.00,72.74,8.64,229.4
+5.45,10786,22.26,169.9,73.00,72.74,8.64,229.0
+5.46,10808,22.26,170.0,73.00,72.73,8.64,228.6
+5.47,10830,22.27,170.1,73.00,72.73,8.63,228.2
+5.48,10852,22.27,170.2,73.00,72.72,8.63,227.9
+5.49,10875,22.28,170.2,73.00,72.72,8.62,227.5
+5.50,10897,22.28,170.3,73.00,72.72,8.62,227.1
+5.51,10919,22.28,170.4,72.99,72.71,8.62,226.7
+5.52,10942,22.29,170.4,72.99,72.71,8.61,226.3
+5.53,10964,22.29,170.5,72.99,72.70,8.61,226.0
+5.54,10986,22.30,170.6,72.99,72.70,8.60,225.6
+5.55,11009,22.30,170.7,72.99,72.69,8.60,225.2
+5.56,11031,22.30,170.7,72.99,72.69,8.60,224.8
+5.57,11053,22.31,170.8,72.99,72.68,8.59,224.4
+5.58,11075,22.31,170.9,72.99,72.68,8.59,224.1
+5.59,11098,22.32,170.9,72.99,72.67,8.58,223.7
+5.60,11120,22.32,171.0,72.99,72.67,8.58,223.3
+5.61,11142,22.32,171.1,72.99,72.67,8.58,223.0
+5.62,11165,22.33,171.1,72.99,72.66,8.57,222.6
+5.63,11187,22.33,171.2,72.99,72.66,8.57,222.3
+5.64,11210,22.33,171.3,72.99,72.65,8.56,221.9
+5.65,11232,22.34,171.4,72.98,72.65,8.56,221.6
+5.66,11255,22.34,171.4,72.98,72.65,8.56,221.2
+5.67,11277,22.34,171.5,72.98,72.64,8.55,220.9
+5.68,11300,22.35,171.6,72.98,72.64,8.55,220.5
+5.69,11322,22.35,171.6,72.98,72.63,8.54,220.2
+5.70,11345,22.36,171.7,72.98,72.63,8.54,219.8
+5.71,11367,22.36,171.8,72.98,72.63,8.54,219.5
+5.72,11389,22.36,171.8,72.98,72.62,8.53,219.2
+5.73,11412,22.37,171.9,72.98,72.62,8.53,218.8
+5.74,11434,22.37,172.0,72.98,72.61,8.52,218.5
+5.75,11457,22.37,172.0,72.97,72.61,8.52,218.1
+5.76,11479,22.38,172.1,72.97,72.61,8.52,217.8
+5.77,11502,22.38,172.2,72.97,72.60,8.51,217.4
+5.78,11524,22.38,172.3,72.97,72.60,8.51,217.1
+5.79,11547,22.39,172.3,72.97,72.59,8.50,216.7
+5.80,11569,22.39,172.4,72.97,72.59,8.50,216.4
+5.81,11592,22.39,172.5,72.97,72.58,8.50,216.1
+5.82,11614,22.40,172.6,72.97,72.58,8.49,215.8
+5.83,11637,22.40,172.6,72.97,72.57,8.49,215.5
+5.84,11659,22.41,172.7,72.97,72.57,8.49,215.2
+5.85,11682,22.41,172.8,72.97,72.56,8.48,214.9
+5.86,11704,22.41,172.9,72.97,72.56,8.48,214.7
+5.87,11727,22.42,173.0,72.97,72.55,8.48,214.4
+5.88,11749,22.42,173.0,72.97,72.55,8.48,214.1
+5.89,11772,22.43,173.1,72.97,72.54,8.47,213.8
+5.90,11794,22.43,173.2,72.97,72.53,8.47,213.5
+5.91,11817,22.43,173.3,72.96,72.53,8.47,213.2
+5.92,11839,22.44,173.4,72.96,72.52,8.46,212.9
+5.93,11862,22.44,173.4,72.96,72.52,8.46,212.6
+5.94,11884,22.45,173.5,72.96,72.51,8.46,212.3
+5.95,11907,22.45,173.6,72.96,72.51,8.46,212.0
+5.96,11929,22.45,173.7,72.96,72.50,8.45,211.8
+5.97,11952,22.46,173.8,72.96,72.50,8.45,211.5
+5.98,11974,22.46,173.8,72.96,72.49,8.45,211.2
+5.99,11997,22.47,173.9,72.96,72.49,8.44,210.9
+6.00,12019,22.47,174.0,72.96,72.48,8.44,210.6
+6.01,12042,22.47,174.1,72.96,72.47,8.44,210.3
+6.02,12064,22.48,174.2,72.96,72.47,8.43,210.0
+6.03,12087,22.48,174.3,72.96,72.46,8.43,209.8
+6.04,12110,22.49,174.3,72.96,72.45,8.43,209.5
+6.05,12132,22.49,174.4,72.95,72.44,8.43,209.2
+6.06,12155,22.50,174.5,72.95,72.44,8.42,208.9
+6.07,12178,22.50,174.6,72.95,72.43,8.42,208.6
+6.08,12200,22.51,174.7,72.95,72.42,8.42,208.4
+6.09,12223,22.51,174.8,72.95,72.41,8.41,208.1
+6.10,12246,22.52,174.8,72.95,72.41,8.41,207.8
+6.11,12268,22.52,174.9,72.95,72.40,8.41,207.5
+6.12,12291,22.52,175.0,72.95,72.39,8.40,207.2
+6.13,12313,22.53,175.1,72.95,72.38,8.40,207.0
+6.14,12336,22.53,175.2,72.95,72.38,8.40,206.7
+6.15,12359,22.54,175.3,72.94,72.37,8.39,206.4
+6.16,12381,22.54,175.4,72.94,72.36,8.39,206.1
+6.17,12404,22.55,175.4,72.94,72.35,8.39,205.8
+6.18,12427,22.55,175.5,72.94,72.34,8.39,205.6
+6.19,12449,22.56,175.6,72.94,72.34,8.38,205.3
+6.20,12472,22.56,175.7,72.94,72.33,8.38,205.0
+6.21,12495,22.56,175.8,72.94,72.32,8.38,204.8
+6.22,12518,22.57,175.9,72.94,72.31,8.38,204.5
+6.23,12540,22.57,176.0,72.94,72.31,8.37,204.3
+6.24,12563,22.58,176.1,72.94,72.30,8.37,204.0
+6.25,12586,22.58,176.1,72.94,72.29,8.37,203.8
+6.26,12608,22.59,176.2,72.93,72.28,8.37,203.5
+6.27,12631,22.59,176.3,72.93,72.28,8.37,203.3
+6.28,12654,22.60,176.4,72.93,72.27,8.36,203.0
+6.29,12677,22.61,176.5,72.93,72.26,8.36,202.8
+6.30,12700,22.61,176.6,72.93,72.25,8.36,202.5
+6.31,12722,22.61,176.7,72.93,72.25,8.36,202.3
+6.32,12745,22.62,176.8,72.93,72.24,8.36,202.0
+6.33,12768,22.63,176.9,72.93,72.23,8.35,201.8
+6.34,12790,22.63,177.0,72.93,72.23,8.35,201.5
+6.35,12813,22.64,177.0,72.92,72.22,8.35,201.3
+6.36,12836,22.64,177.1,72.92,72.21,8.35,201.0
+6.37,12859,22.64,177.2,72.92,72.20,8.35,200.8
+6.38,12882,22.65,177.3,72.92,72.20,8.34,200.5
+6.39,12904,22.66,177.4,72.92,72.19,8.34,200.3
+6.40,12927,22.66,177.5,72.92,72.18,8.34,200.0
+6.41,12950,22.66,177.6,72.92,72.17,8.34,199.8
+6.42,12973,22.67,177.7,72.92,72.16,8.34,199.6
+6.43,12995,22.67,177.8,72.92,72.15,8.33,199.4
+6.44,13018,22.68,177.9,72.91,72.14,8.33,199.2
+6.45,13041,22.68,177.9,72.91,72.14,8.33,198.9
+6.46,13064,22.69,178.0,72.91,72.13,8.33,198.7
+6.47,13087,22.69,178.1,72.91,72.12,8.33,198.5
+6.48,13109,22.70,178.2,72.91,72.11,8.32,198.3
+6.49,13132,22.70,178.3,72.91,72.10,8.32,198.1
+6.50,13155,22.70,178.4,72.91,72.09,8.32,197.9
+6.51,13178,22.71,178.5,72.90,72.08,8.32,197.7
+6.52,13201,22.71,178.6,72.90,72.07,8.32,197.5
+6.53,13223,22.72,178.7,72.90,72.06,8.31,197.3
+6.54,13246,22.72,178.8,72.90,72.05,8.31,197.1
+6.55,13269,22.73,178.9,72.90,72.05,8.31,196.9
+6.56,13292,22.73,178.9,72.90,72.04,8.31,196.6
+6.57,13315,22.74,179.0,72.89,72.03,8.31,196.4
+6.58,13337,22.74,179.1,72.89,72.02,8.30,196.2
+6.59,13360,22.75,179.2,72.89,72.01,8.30,196.0
+6.60,13383,22.75,179.3,72.89,72.00,8.30,195.8
+6.61,13406,22.75,179.4,72.89,71.99,8.30,195.6
+6.62,13429,22.76,179.5,72.89,71.98,8.30,195.4
+6.63,13452,22.77,179.6,72.89,71.97,8.30,195.2
+6.64,13474,22.77,179.7,72.88,71.96,8.30,195.0
+6.65,13497,22.78,179.8,72.88,71.95,8.29,194.8
+6.66,13520,22.78,179.9,72.88,71.94,8.29,194.5
+6.67,13543,22.79,180.0,72.88,71.93,8.29,194.3
+6.68,13566,22.79,180.1,72.88,71.92,8.29,194.1
+6.69,13589,22.80,180.2,72.88,71.91,8.29,193.9
+6.70,13612,22.80,180.4,72.88,71.91,8.29,193.7
+6.71,13634,22.80,180.5,72.87,71.90,8.29,193.5
+6.72,13657,22.81,180.6,72.87,71.89,8.29,193.3
+6.73,13680,22.82,180.7,72.87,71.88,8.29,193.1
+6.74,13703,22.82,180.8,72.87,71.87,8.29,192.9
+6.75,13726,22.83,180.9,72.87,71.86,8.29,192.7
+6.76,13749,22.83,181.0,72.87,71.85,8.28,192.4
+6.77,13771,22.84,181.1,72.86,71.84,8.28,192.2
+6.78,13794,22.84,181.2,72.86,71.83,8.28,192.0
+6.79,13817,22.84,181.3,72.86,71.82,8.28,191.8
+6.80,13840,22.85,181.4,72.86,71.81,8.28,191.6
+6.81,13863,22.86,181.5,72.86,71.80,8.28,191.4
+6.82,13886,22.86,181.6,72.86,71.79,8.28,191.2
+6.83,13909,22.86,181.8,72.85,71.78,8.28,191.1
+6.84,13932,22.87,181.9,72.85,71.77,8.28,190.9
+6.85,13955,22.88,182.0,72.85,71.76,8.27,190.7
+6.86,13978,22.88,182.1,72.85,71.75,8.27,190.5
+6.87,14001,22.89,182.2,72.85,71.74,8.27,190.3
+6.88,14024,22.89,182.4,72.84,71.73,8.27,190.2
+6.89,14047,22.90,182.5,72.84,71.72,8.27,190.0
+6.90,14070,22.90,182.6,72.84,71.71,8.27,189.8
+6.91,14092,22.91,182.7,72.84,71.70,8.27,189.6
+6.92,14115,22.91,182.8,72.84,71.69,8.27,189.4
+6.93,14138,22.91,183.0,72.83,71.68,8.27,189.3
+6.94,14161,22.92,183.1,72.83,71.67,8.27,189.1
+6.95,14184,22.93,183.2,72.83,71.66,8.27,188.9
+6.96,14207,22.93,183.3,72.83,71.65,8.26,188.7
+6.97,14230,22.93,183.4,72.83,71.64,8.26,188.5
+6.98,14253,22.94,183.6,72.82,71.63,8.26,188.4
+6.99,14276,22.95,183.7,72.82,71.62,8.26,188.2
+7.00,14299,22.95,183.8,72.82,71.61,8.26,188.0
+7.01,14322,22.96,183.9,72.82,71.60,8.26,187.8
+7.02,14345,22.96,184.1,72.82,71.59,8.26,187.7
+7.03,14368,22.97,184.2,72.81,71.58,8.26,187.5
+7.04,14391,22.97,184.3,72.81,71.57,8.26,187.3
+7.05,14415,22.98,184.5,72.81,71.56,8.25,187.2
+7.06,14438,22.99,184.6,72.81,71.54,8.25,187.0
+7.07,14461,22.99,184.7,72.81,71.53,8.25,186.8
+7.08,14484,23.00,184.8,72.80,71.52,8.25,186.7
+7.09,14507,23.00,185.0,72.80,71.51,8.25,186.5
+7.10,14530,23.01,185.1,72.80,71.50,8.25,186.3
+7.11,14553,23.02,185.2,72.80,71.49,8.25,186.2
+7.12,14576,23.02,185.4,72.80,71.48,8.25,186.0
+7.13,14599,23.03,185.5,72.79,71.47,8.25,185.9
+7.14,14622,23.03,185.6,72.79,71.46,8.25,185.7
+7.15,14646,23.04,185.8,72.79,71.45,8.25,185.5
+7.16,14669,23.05,185.9,72.79,71.43,8.24,185.4
+7.17,14692,23.05,186.0,72.79,71.42,8.24,185.2
+7.18,14715,23.06,186.1,72.78,71.41,8.24,185.0
+7.19,14738,23.06,186.3,72.78,71.40,8.24,184.9
+7.20,14761,23.07,186.4,72.78,71.39,8.24,184.7
+7.21,14784,23.08,186.5,72.78,71.38,8.24,184.5
+7.22,14807,23.08,186.7,72.78,71.37,8.24,184.4
+7.23,14831,23.09,186.8,72.77,71.36,8.24,184.2
+7.24,14854,23.09,186.9,72.77,71.35,8.24,184.1
+7.25,14877,23.10,187.1,72.77,71.34,8.24,183.9
+7.26,14900,23.11,187.2,72.77,71.33,8.24,183.8
+7.27,14924,23.11,187.3,72.77,71.32,8.24,183.7
+7.28,14947,23.12,187.4,72.76,71.31,8.24,183.5
+7.29,14970,23.12,187.6,72.76,71.30,8.24,183.4
+7.30,14994,23.13,187.7,72.76,71.29,8.24,183.2
+7.31,15017,23.14,187.8,72.76,71.28,8.24,183.0
+7.32,15040,23.14,188.0,72.76,71.27,8.24,182.9
+7.33,15063,23.15,188.1,72.75,71.26,8.24,182.8
+7.34,15087,23.15,188.2,72.75,71.25,8.24,182.6
+7.35,15110,23.16,188.3,72.75,71.24,8.24,182.4
+7.36,15133,23.17,188.5,72.75,71.23,8.24,182.3
+7.37,15156,23.17,188.6,72.75,71.22,8.24,182.2
+7.38,15180,23.18,188.7,72.74,71.21,8.24,182.0
+7.39,15203,23.18,188.9,72.74,71.20,8.24,181.8
+7.40,15226,23.19,189.0,72.74,71.19,8.24,181.7
+7.41,15249,23.20,189.1,72.74,71.18,8.24,181.6
+7.42,15273,23.20,189.3,72.73,71.17,8.24,181.4
+7.43,15296,23.20,189.4,72.73,71.16,8.24,181.3
+7.44,15319,23.21,189.6,72.73,71.15,8.24,181.1
+7.45,15343,23.22,189.7,72.73,71.14,8.24,181.0
+7.46,15366,23.22,189.8,72.72,71.13,8.24,180.9
+7.47,15389,23.23,190.0,72.72,71.12,8.24,180.7
+7.48,15413,23.23,190.1,72.72,71.11,8.24,180.6
+7.49,15436,23.23,190.3,72.72,71.10,8.24,180.4
+7.50,15460,23.24,190.4,72.72,71.09,8.24,180.3
+7.51,15483,23.25,190.5,72.71,71.07,8.24,180.2
+7.52,15506,23.25,190.7,72.71,71.06,8.24,180.0
+7.53,15530,23.26,190.8,72.71,71.05,8.24,179.9
+7.54,15553,23.26,191.0,72.70,71.04,8.24,179.7
+7.55,15576,23.27,191.1,72.70,71.03,8.24,179.6
+7.56,15600,23.27,191.2,72.70,71.02,8.24,179.5
+7.57,15623,23.28,191.4,72.70,71.01,8.24,179.3
+7.58,15646,23.28,191.5,72.70,71.00,8.24,179.2
+7.59,15670,23.29,191.7,72.69,70.99,8.24,179.0
+7.60,15693,23.29,191.8,72.69,70.98,8.24,178.9
+7.61,15716,23.30,191.9,72.69,70.97,8.24,178.8
+7.62,15740,23.30,192.1,72.69,70.96,8.24,178.7
+7.63,15763,23.31,192.2,72.68,70.95,8.24,178.6
+7.64,15787,23.31,192.4,72.68,70.94,8.24,178.4
+7.65,15810,23.32,192.5,72.68,70.93,8.24,178.3
+7.66,15833,23.33,192.6,72.67,70.92,8.24,178.2
+7.67,15857,23.33,192.8,72.67,70.91,8.24,178.1
+7.68,15880,23.34,192.9,72.67,70.90,8.24,178.0
+7.69,15904,23.34,193.1,72.67,70.89,8.24,177.9
+7.70,15927,23.35,193.2,72.66,70.88,8.24,177.8
+7.71,15950,23.36,193.3,72.66,70.87,8.24,177.6
+7.72,15974,23.36,193.5,72.66,70.86,8.24,177.5
+7.73,15997,23.37,193.6,72.66,70.85,8.24,177.4
+7.74,16021,23.37,193.8,72.66,70.84,8.24,177.3
+7.75,16044,23.38,193.9,72.65,70.83,8.24,177.2
+7.76,16067,23.39,194.0,72.65,70.82,8.24,177.1
+7.77,16091,23.39,194.2,72.65,70.81,8.24,176.9
+7.78,16114,23.40,194.3,72.64,70.80,8.24,176.8
+7.79,16138,23.40,194.5,72.64,70.79,8.24,176.7
+7.80,16161,23.41,194.6,72.64,70.78,8.24,176.6
+7.81,16185,23.42,194.7,72.64,70.77,8.24,176.5
+7.82,16208,23.42,194.9,72.63,70.76,8.24,176.3
+7.83,16232,23.43,195.0,72.63,70.75,8.24,176.2
+7.84,16256,23.44,195.2,72.63,70.74,8.24,176.1
+7.85,16280,23.44,195.3,72.63,70.73,8.24,176.0
+7.86,16303,23.45,195.4,72.63,70.72,8.24,175.8
+7.87,16327,23.46,195.6,72.62,70.71,8.24,175.7
+7.88,16351,23.46,195.7,72.62,70.70,8.24,175.6
+7.89,16374,23.47,195.9,72.62,70.69,8.24,175.5
+7.90,16398,23.48,196.0,72.62,70.69,8.25,175.3
+7.91,16422,23.48,196.1,72.61,70.68,8.25,175.2
+7.92,16445,23.49,196.3,72.61,70.67,8.25,175.1
+7.93,16469,23.49,196.4,72.61,70.66,8.25,175.0
+7.94,16493,23.50,196.6,72.61,70.65,8.25,174.8
+7.95,16517,23.51,196.7,72.60,70.64,8.25,174.7
+7.96,16540,23.51,196.8,72.60,70.63,8.25,174.6
+7.97,16564,23.52,197.0,72.60,70.62,8.25,174.5
+7.98,16588,23.53,197.1,72.59,70.61,8.25,174.3
+7.99,16611,23.53,197.3,72.59,70.60,8.25,174.2
+8.00,16635,23.54,197.4,72.59,70.59,8.25,174.1
+8.01,16659,23.55,197.5,72.59,70.58,8.25,174.0
+8.02,16683,23.55,197.7,72.58,70.57,8.25,173.9
+8.03,16707,23.56,197.8,72.58,70.56,8.25,173.8
+8.04,16731,23.56,198.0,72.58,70.55,8.25,173.7
+8.05,16755,23.57,198.1,72.58,70.55,8.26,173.6
+8.06,16779,23.58,198.2,72.57,70.54,8.26,173.5
+8.07,16803,23.58,198.4,72.57,70.53,8.26,173.4
+8.08,16827,23.59,198.5,72.57,70.52,8.26,173.3
+8.09,16851,23.59,198.7,72.56,70.51,8.26,173.2
+8.10,16876,23.60,198.8,72.56,70.50,8.26,173.1
+8.11,16900,23.61,198.9,72.56,70.49,8.26,172.9
+8.12,16924,23.61,199.1,72.55,70.48,8.26,172.8
+8.13,16948,23.62,199.2,72.55,70.47,8.26,172.7
+8.14,16972,23.62,199.4,72.55,70.46,8.26,172.6
+8.15,16996,23.63,199.5,72.55,70.45,8.27,172.5
+8.16,17020,23.64,199.6,72.54,70.45,8.27,172.4
+8.17,17044,23.64,199.8,72.54,70.44,8.27,172.3
+8.18,17068,23.65,199.9,72.54,70.43,8.27,172.2
+8.19,17092,23.65,200.1,72.53,70.42,8.27,172.1
+8.20,17116,23.66,200.2,72.53,70.41,8.27,172.0
+8.21,17140,23.67,200.3,72.53,70.40,8.27,171.9
+8.22,17164,23.67,200.5,72.52,70.40,8.27,171.8
+8.23,17188,23.68,200.6,72.52,70.39,8.27,171.7
+8.24,17212,23.68,200.8,72.52,70.38,8.27,171.6
+8.25,17237,23.69,200.9,72.52,70.38,8.27,171.6
+8.26,17261,23.70,201.1,72.51,70.37,8.28,171.5
+8.27,17285,23.70,201.2,72.51,70.36,8.28,171.4
+8.28,17309,23.71,201.4,72.51,70.36,8.28,171.3
+8.29,17333,23.71,201.5,72.50,70.35,8.28,171.2
+8.30,17357,23.72,201.6,72.50,70.34,8.28,171.1
+8.31,17381,23.73,201.8,72.50,70.34,8.28,171.0
+8.32,17405,23.73,201.9,72.49,70.33,8.28,170.9
+8.33,17429,23.74,202.1,72.49,70.33,8.28,170.8
+8.34,17453,23.74,202.2,72.49,70.32,8.28,170.7
+8.35,17478,23.75,202.4,72.48,70.31,8.28,170.6
+8.36,17502,23.76,202.5,72.48,70.31,8.29,170.6
+8.37,17526,23.76,202.7,72.48,70.30,8.29,170.5
+8.38,17550,23.77,202.8,72.48,70.29,8.29,170.4
+8.39,17574,23.77,203.0,72.47,70.29,8.29,170.3
+8.40,17598,23.78,203.1,72.47,70.28,8.29,170.2
+8.41,17622,23.79,203.2,72.47,70.27,8.29,170.1
+8.42,17646,23.79,203.4,72.46,70.26,8.29,170.0
+8.43,17670,23.80,203.5,72.46,70.25,8.29,169.9
+8.44,17695,23.80,203.7,72.46,70.24,8.30,169.8
+8.45,17719,23.81,203.8,72.45,70.23,8.30,169.7
+8.46,17743,23.82,204.0,72.45,70.22,8.30,169.6
+8.47,17767,23.82,204.1,72.45,70.21,8.30,169.5
+8.48,17791,23.83,204.3,72.45,70.20,8.30,169.4
+8.49,17815,23.83,204.4,72.44,70.19,8.30,169.3
+8.50,17840,23.84,204.6,72.44,70.17,8.30,169.2
+8.51,17864,23.85,204.7,72.44,70.16,8.31,169.1
+8.52,17888,23.85,204.8,72.43,70.15,8.31,169.0
+8.53,17912,23.86,205.0,72.43,70.14,8.31,168.9
+8.54,17936,23.86,205.1,72.43,70.13,8.31,168.8
+8.55,17960,23.87,205.3,72.42,70.12,8.31,168.7
+8.56,17984,23.88,205.4,72.42,70.11,8.31,168.6
+8.57,18009,23.88,205.6,72.42,70.10,8.32,168.5
+8.58,18033,23.89,205.7,72.42,70.09,8.32,168.4
+8.59,18057,23.89,205.9,72.41,70.08,8.32,168.3
+8.60,18081,23.90,206.0,72.41,70.07,8.32,168.2
+8.61,18105,23.91,206.2,72.41,70.06,8.32,168.1
+8.62,18129,23.91,206.3,72.40,70.05,8.32,168.0
+8.63,18154,23.92,206.4,72.40,70.05,8.32,167.9
+8.64,18178,23.92,206.6,72.40,70.04,8.33,167.8
+8.65,18202,23.93,206.8,72.39,70.03,8.33,167.7
+8.66,18226,23.94,206.9,72.39,70.02,8.33,167.6
+8.67,18250,23.94,207.1,72.39,70.01,8.33,167.5
+8.68,18275,23.95,207.2,72.39,70.01,8.33,167.4
+8.69,18299,23.95,207.4,72.38,70.00,8.33,167.3
+8.70,18323,23.96,207.5,72.38,69.99,8.34,167.3
+8.71,18347,23.97,207.7,72.38,69.98,8.34,167.2
+8.72,18371,23.97,207.8,72.37,69.97,8.34,167.1
+8.73,18396,23.98,208.0,72.37,69.97,8.34,167.0
+8.74,18420,23.98,208.1,72.37,69.96,8.34,166.9
+8.75,18444,23.99,208.3,72.36,69.95,8.34,166.8
+8.76,18468,24.00,208.4,72.36,69.94,8.34,166.7
+8.77,18492,24.00,208.5,72.36,69.93,8.35,166.6
+8.78,18517,24.01,208.7,72.36,69.93,8.35,166.5
+8.79,18541,24.01,208.8,72.35,69.92,8.35,166.4
+8.80,18565,24.02,209.0,72.35,69.91,8.35,166.3
+8.81,18589,24.03,209.1,72.35,69.90,8.35,166.2
+8.82,18614,24.03,209.3,72.34,69.90,8.35,166.1
+8.83,18638,24.04,209.4,72.34,69.89,8.36,166.0
+8.84,18662,24.04,209.6,72.34,69.88,8.36,166.0
+8.85,18686,24.05,209.7,72.33,69.88,8.36,165.9
+8.86,18711,24.06,209.8,72.33,69.87,8.36,165.8
+8.87,18735,24.06,210.0,72.33,69.86,8.36,165.7
+8.88,18759,24.07,210.1,72.33,69.85,8.37,165.6
+8.89,18784,24.07,210.3,72.32,69.85,8.37,165.5
+8.90,18808,24.08,210.4,72.32,69.84,8.37,165.4
+8.91,18832,24.09,210.5,72.32,69.83,8.37,165.4
+8.92,18857,24.09,210.7,72.31,69.83,8.37,165.3
+8.93,18881,24.10,210.8,72.31,69.82,8.38,165.2
+8.94,18905,24.10,211.0,72.31,69.81,8.38,165.1
+8.95,18929,24.11,211.1,72.31,69.80,8.38,165.0
+8.96,18954,24.12,211.2,72.30,69.80,8.38,164.9
+8.97,18978,24.12,211.4,72.30,69.79,8.38,164.9
+8.98,19002,24.13,211.5,72.30,69.78,8.39,164.8
+8.99,19027,24.13,211.7,72.29,69.78,8.39,164.7
+9.00,19051,24.14,211.8,72.29,69.77,8.39,164.6
+9.01,19075,24.15,211.9,72.29,69.76,8.39,164.5
+9.02,19100,24.15,212.1,72.28,69.75,8.39,164.4
+9.03,19124,24.16,212.2,72.28,69.75,8.40,164.3
+9.04,19148,24.16,212.3,72.28,69.74,8.40,164.3
+9.05,19173,24.17,212.5,72.27,69.73,8.40,164.2
+9.06,19197,24.18,212.6,72.27,69.72,8.40,164.1
+9.07,19221,24.18,212.7,72.27,69.71,8.40,164.0
+9.08,19245,24.19,212.9,72.26,69.71,8.41,163.9
+9.09,19270,24.19,213.0,72.26,69.70,8.41,163.8
+9.10,19294,24.20,213.2,72.25,69.69,8.41,163.8
+9.11,19318,24.21,213.3,72.25,69.68,8.41,163.7
+9.12,19343,24.21,213.4,72.25,69.67,8.41,163.6
+9.13,19367,24.22,213.6,72.24,69.67,8.42,163.5
+9.14,19391,24.22,213.7,72.24,69.66,8.42,163.4
+9.15,19416,24.23,213.8,72.24,69.65,8.42,163.3
+9.16,19440,24.24,214.0,72.23,69.64,8.42,163.2
+9.17,19464,24.24,214.1,72.23,69.63,8.42,163.2
+9.18,19488,24.25,214.2,72.23,69.63,8.43,163.1
+9.19,19513,24.25,214.4,72.22,69.62,8.43,163.0
+9.20,19537,24.26,214.5,72.22,69.61,8.43,162.9
+9.21,19561,24.27,214.6,72.22,69.60,8.43,162.8
+9.22,19586,24.27,214.8,72.21,69.60,8.43,162.7
+9.23,19610,24.27,214.9,72.21,69.59,8.44,162.6
+9.24,19634,24.28,215.1,72.21,69.58,8.44,162.5
+9.25,19659,24.29,215.2,72.20,69.58,8.44,162.4
+9.26,19683,24.29,215.4,72.20,69.57,8.44,162.4
+9.27,19707,24.30,215.5,72.20,69.56,8.44,162.3
+9.28,19732,24.30,215.7,72.20,69.56,8.45,162.2
+9.29,19756,24.31,215.8,72.19,69.55,8.45,162.1
+9.30,19781,24.31,216.0,72.19,69.54,8.45,162.0
+9.31,19805,24.31,216.1,72.19,69.54,8.45,161.9
+9.32,19829,24.32,216.2,72.18,69.53,8.45,161.8
+9.33,19854,24.32,216.4,72.18,69.53,8.46,161.7
+9.34,19878,24.33,216.5,72.18,69.52,8.46,161.6
+9.35,19902,24.34,216.7,72.17,69.51,8.46,161.6
+9.36,19927,24.34,216.8,72.17,69.51,8.46,161.5
+9.37,19951,24.34,217.0,72.17,69.50,8.46,161.4
+9.38,19975,24.35,217.1,72.17,69.49,8.47,161.3
+9.39,20000,24.36,217.3,72.16,69.49,8.47,161.2
+9.40,20024,24.36,217.4,72.16,69.48,8.47,161.1
+9.41,20049,24.36,217.5,72.16,69.47,8.47,161.0
+9.42,20073,24.37,217.7,72.15,69.47,8.47,160.9
+9.43,20097,24.38,217.8,72.15,69.46,8.48,160.8
+9.44,20122,24.38,217.9,72.15,69.45,8.48,160.7
+9.45,20147,24.38,218.1,72.14,69.45,8.48,160.6
+9.46,20171,24.39,218.2,72.14,69.44,8.48,160.5
+9.47,20196,24.40,218.3,72.14,69.43,8.48,160.4
+9.48,20220,24.40,218.4,72.13,69.43,8.49,160.3
+9.49,20245,24.41,218.6,72.13,69.42,8.49,160.2
+9.50,20269,24.41,218.7,72.13,69.41,8.49,160.1
+9.51,20294,24.41,218.8,72.12,69.41,8.49,160.1
+9.52,20318,24.42,219.0,72.12,69.40,8.49,160.0
+9.53,20343,24.42,219.1,72.11,69.40,8.50,159.9
+9.54,20367,24.43,219.2,72.11,69.39,8.50,159.8
+9.55,20392,24.44,219.3,72.11,69.38,8.50,159.7
+9.56,20416,24.44,219.5,72.10,69.38,8.50,159.6
+9.57,20441,24.45,219.6,72.10,69.37,8.50,159.5
+9.58,20465,24.45,219.7,72.10,69.36,8.51,159.4
+9.59,20490,24.46,219.9,72.09,69.36,8.51,159.3
+9.60,20514,24.46,220.0,72.09,69.35,8.51,159.2
+9.61,20539,24.47,220.1,72.09,69.34,8.51,159.1
+9.62,20563,24.47,220.3,72.08,69.34,8.52,159.0
+9.63,20588,24.48,220.4,72.08,69.33,8.52,158.9
+9.64,20612,24.48,220.5,72.08,69.33,8.52,158.8
+9.65,20637,24.49,220.7,72.08,69.32,8.52,158.8
+9.66,20662,24.49,220.8,72.07,69.32,8.52,158.7
+9.67,20686,24.50,220.9,72.07,69.31,8.53,158.6
+9.68,20711,24.50,221.0,72.07,69.31,8.53,158.5
+9.69,20735,24.51,221.2,72.06,69.30,8.53,158.4
+9.70,20760,24.52,221.3,72.06,69.29,8.54,158.3
+9.71,20785,24.52,221.4,72.06,69.29,8.54,158.2
+9.72,20809,24.53,221.6,72.05,69.28,8.54,158.1
+9.73,20834,24.53,221.7,72.05,69.28,8.54,158.0
+9.74,20858,24.54,221.8,72.05,69.27,8.54,157.9
+9.75,20883,24.54,221.9,72.05,69.27,8.55,157.9
+9.76,20908,24.55,222.1,72.04,69.26,8.55,157.8
+9.77,20932,24.55,222.2,72.04,69.26,8.55,157.7
+9.78,20957,24.56,222.3,72.04,69.25,8.55,157.6
+9.79,20981,24.56,222.5,72.03,69.25,8.56,157.5
+9.80,21006,24.57,222.6,72.03,69.24,8.56,157.4
+9.81,21031,24.58,222.7,72.03,69.23,8.56,157.3
+9.82,21055,24.58,222.8,72.02,69.23,8.57,157.2
+9.83,21080,24.59,223.0,72.02,69.22,8.57,157.2
+9.84,21104,24.59,223.1,72.02,69.22,8.57,157.1
+9.85,21129,24.60,223.2,72.01,69.21,8.57,157.0
+9.86,21154,24.61,223.3,72.01,69.21,8.58,156.9
+9.87,21178,24.61,223.4,72.01,69.20,8.58,156.8
+9.88,21203,24.62,223.6,72.00,69.20,8.58,156.8
+9.89,21227,24.62,223.7,72.00,69.19,8.59,156.7
+9.90,21252,24.63,223.8,72.00,69.19,8.59,156.6
+9.91,21277,24.64,223.9,71.99,69.18,8.59,156.5
+9.92,21301,24.64,224.0,71.99,69.17,8.60,156.4
+9.93,21326,24.65,224.2,71.98,69.17,8.60,156.4
+9.94,21350,24.65,224.3,71.98,69.16,8.60,156.3
+9.95,21375,24.66,224.4,71.98,69.16,8.60,156.2
+9.96,21400,24.67,224.5,71.97,69.15,8.61,156.1
+9.97,21424,24.67,224.6,71.97,69.15,8.61,156.0
+9.98,21449,24.68,224.8,71.97,69.14,8.61,156.0
+9.99,21473,24.68,224.9,71.96,69.14,8.62,155.9
+10.00,21498,24.69,225.0,71.96,69.13,8.62,155.8`;
+/* Logica di calcolo: funzioni pure, nessun accesso al DOM */
+var LPP = 143.16;
+
+function parseTable(csv) {
+  return csv.trim().split('\n').slice(1).map(function (l) {
+    var a = l.split(',').map(Number);
+    return { T: a[0], D: a[1], TPC: a[2], MCTC: a[3], XB: a[4], XCF: a[5], KM: a[6], KML: a[7] };
+  });
+}
+
+var COLS = ['D', 'TPC', 'MCTC', 'XB', 'XCF', 'KM', 'KML'];
+
+/* Lettura in tabella al pescaggio medio Tm.
+   mode = 'interp' (interpolazione lineare tra due righe) | 'near' (riga più vicina) */
+function lookup(tab, Tm, mode) {
+  var c = Math.round(Tm * 100 * 1e6) / 1e6;          // Tm in cm
+  var first = Math.round(tab[0].T * 100), last = Math.round(tab[tab.length - 1].T * 100);
+  if (!(c >= first - 1e-9 && c <= last + 1e-9)) return { error: 'fuori' };
+  var fl = Math.floor(c + 1e-9);
+  var frac = c - fl;
+  if (frac < 1e-9) frac = 0;
+  var i0 = fl - first;
+  if (mode === 'near' || frac === 0) {
+    var idx = mode === 'near' ? Math.round(c) - first : i0;
+    if (idx > tab.length - 1) idx = tab.length - 1;
+    var r = tab[idx];
+    var v = {}; COLS.forEach(function (k) { v[k] = r[k]; });
+    return { rows: [r], frac: 0, v: v, nearest: mode === 'near' && frac !== 0, Tm: Tm };
+  }
+  var r0 = tab[i0], r1 = tab[i0 + 1];
+  var w = {}; COLS.forEach(function (k) { w[k] = r0[k] + (r1[k] - r0[k]) * frac; });
+  return { rows: [r0, r1], frac: frac, v: w, nearest: false, Tm: Tm };
+}
+
+/* Problema 1 – cambio di densità (FWA / DWA) */
+function calcDWA(inp, tab, mode) {
+  var Tm = (inp.TA + inp.TF) / 2;
+  var L = lookup(tab, Tm, mode);
+  if (L.error) return { error: 'fuori', Tm: Tm };
+  var D = L.v.D, TPC = L.v.TPC;
+  var FWA = D / (40 * TPC);                     // cm
+  var diff = inp.d1 - inp.d2;
+  var DWA = FWA * diff / 0.025;                 // cm
+  var DWAsempl = D * diff / TPC;                // cm (stessa cosa, formula semplificata)
+  var dm = DWA / 100;                           // m
+  return {
+    Tm: Tm, L: L, D: D, TPC: TPC, FWA: FWA, diff: diff, DWA: DWA, DWAsempl: DWAsempl,
+    dm: dm, TA2: inp.TA + dm, TF2: inp.TF + dm, Tm2: Tm + dm
+  };
+}
+
+/* Problema 2 – spostamento pesi */
+function calcPesi(inp, tab, mode) {
+  var Tm = (inp.TA + inp.TF) / 2;
+  var L = lookup(tab, Tm, mode);
+  if (L.error) return { error: 'fuori', Tm: Tm };
+  var D = L.v.D, MCTC = L.v.MCTC, XCF = L.v.XCF;
+  var GG = inp.p * inp.z / D;
+  var GM2 = inp.zdir === 'alto' ? inp.GM - GG : inp.GM + GG;
+  var tanA = GM2 > 0 ? inp.p * inp.y / (D * GM2) : NaN;
+  var alpha = Math.atan(tanA) * 180 / Math.PI;
+  var den = 100 * LPP * MCTC;
+  var dTA = XCF * inp.p * inp.x / den;
+  var dTF = (LPP - XCF) * inp.p * inp.x / den;
+  var poppa = inp.xdir === 'poppa';
+  var TA2 = poppa ? inp.TA + dTA : inp.TA - dTA;
+  var TF2 = poppa ? inp.TF - dTF : inp.TF + dTF;
+  return {
+    Tm: Tm, L: L, D: D, TPC: L.v.TPC, MCTC: MCTC, XCF: XCF, KM: L.v.KM,
+    GG: GG, GM2: GM2, tanA: tanA, alpha: alpha, den: den,
+    dTA: dTA, dTF: dTF, TA2: TA2, TF2: TF2
+  };
+}
+
+/* Lettura in tabella entrando con il dislocamento (colonna Δ) */
+function lookupByD(tab, D, mode) {
+  var n = tab.length;
+  if (!(D >= tab[0].D - 1e-9 && D <= tab[n - 1].D + 1e-9)) return { error: 'fuori' };
+  var i = 0;
+  while (i < n - 2 && tab[i + 1].D < D - 1e-9) i++;
+  var r0 = tab[i], r1 = tab[i + 1], v = {};
+  var exact = Math.abs(r0.D - D) < 1e-9 ? r0 : (Math.abs(r1.D - D) < 1e-9 ? r1 : null);
+  if (exact || mode === 'near') {
+    var r = exact || (D - r0.D <= r1.D - D ? r0 : r1);
+    COLS.forEach(function (k) { v[k] = r[k]; });
+    return { rows: [r], frac: 0, v: v, nearest: !exact, Tm: r.T, byD: true, Din: D };
+  }
+  var frac = (D - r0.D) / (r1.D - r0.D);
+  COLS.forEach(function (k) { v[k] = r0[k] + (r1[k] - r0[k]) * frac; });
+  return { rows: [r0, r1], frac: frac, v: v, nearest: false, Tm: (Math.round(r0.T * 100) + frac) / 100, byD: true, Din: D };
+}
+
+/* Problema 3 – imbarco / sbarco di pesi (formule degli appunti)
+   inp: TA, TF, stab 'GM'|'KG', stabVal, km 'rilevanti'|'lievi', xref 'AP'|'MP',
+        man: {D, TPC, KM} valori iniziali a mano se Tm è fuori tabella (facoltativo),
+        pesi: [{ op 'imbarco'|'sbarco', p, x, z, y, side 'dritta'|'sinistra' }] */
+function calcImbarco(inp, tab, mode) {
+  var Tm = (inp.TA + inp.TF) / 2;
+  var L0 = lookup(tab, Tm, mode);
+  if (L0.error) {
+    if (inp.man && isFinite(inp.man.D) && inp.man.D > 0 && isFinite(inp.man.TPC) && inp.man.TPC > 0)
+      L0 = { manual: true, rows: [], frac: 0, v: { D: inp.man.D, TPC: inp.man.TPC, KM: inp.man.KM }, Tm: Tm };
+    else return { error: 'fuori', Tm: Tm };
+  }
+  var D0 = L0.v.D, TPC0 = L0.v.TPC, KM0 = L0.v.KM;
+  if (!isFinite(KM0) && (inp.stab === 'GM' || inp.km === 'lievi')) return { error: 'km0', Tm: Tm };
+  var KG = inp.stab === 'KG' ? inp.stabVal : KM0 - inp.stabVal;
+  var GM0 = KM0 - KG;
+  var W = inp.pesi.map(function (w) {
+    return { op: w.op, s: w.op === 'sbarco' ? -1 : 1, p: w.p, xin: w.x, x: inp.xref === 'MP' ? LPP / 2 + w.x : w.x, z: w.z,
+      y: w.y || 0, side: w.side === 'sinistra' ? -1 : 1 };
+  });
+  var Sp = 0, Spz = 0, Spy = 0;
+  W.forEach(function (w) { Sp += w.s * w.p; Spz += w.s * w.p * w.z; Spy += w.s * w.p * w.y * w.side; });
+  var D1 = D0 + Sp;
+  if (D1 <= 0) return { error: 'peso', Tm: Tm, D0: D0 };
+  var L1 = lookupByD(tab, D1, mode);
+  if (L1.error) return { error: 'fuori1', Tm: Tm, D1: D1 };
+  var Tm1 = L1.Tm, TPC1 = L1.v.TPC, MCTC1 = L1.v.MCTC, XCF1 = L1.v.XCF, KM1 = L1.v.KM;
+  var TPCm = (TPC0 + TPC1) / 2;
+  var dTm = Sp / (100 * TPCm);                       // m, con segno
+  var Spx = 0;
+  W.forEach(function (w) {
+    w.dist = Math.abs(w.x - XCF1);
+    w.lato = w.x > XCF1 + 1e-9 ? 'proravia' : (w.x < XCF1 - 1e-9 ? 'poppavia' : 'F');
+    w.m = w.s * w.p * (XCF1 - w.x);                  // + appoppante, − appruante
+    w.mom = w.p * w.dist;
+    w.tipo = w.m > 1e-9 ? 'appoppante' : (w.m < -1e-9 ? 'appruante' : 'nullo');
+    Spx += w.m;
+  });
+  var A = Math.abs(Spx), den = 100 * LPP * MCTC1;
+  var dTA = XCF1 * A / den, dTF = (LPP - XCF1) * A / den;
+  var app = Spx > 1e-9, apr = Spx < -1e-9;
+  var TA2 = inp.TA + dTm + (app ? dTA : (apr ? -dTA : 0));
+  var TF2 = inp.TF + dTm + (app ? -dTF : (apr ? dTF : 0));
+  var KG1 = (D0 * KG + Spz) / D1;
+  var Tm2 = (TA2 + TF2) / 2;
+  var L2 = lookup(tab, Tm2, mode);
+  var KMuse = inp.km === 'lievi' ? KM0 : KM1;
+  var GM1 = KMuse - KG1;
+  var GMalt = (inp.km === 'lievi' ? KM1 : KM0) - KG1;
+  var tanA = GM1 > 0 ? Math.abs(Spy) / (D1 * GM1) : NaN;
+  var alpha = Math.atan(tanA) * 180 / Math.PI;
+  return {
+    Tm: Tm, L0: L0, D0: D0, TPC0: TPC0, KM0: KM0, KG: KG, GM0: GM0, W: W, Sp: Sp, Spz: Spz, Spy: Spy,
+    D1: D1, L1: L1, Tm1: Tm1, TPC1: TPC1, MCTC1: MCTC1, XCF1: XCF1, KM1: KM1, TPCm: TPCm, dTm: dTm,
+    Spx: Spx, A: A, den: den, dTA: dTA, dTF: dTF, app: app, apr: apr, TA2: TA2, TF2: TF2,
+    KG1: KG1, Tm2: Tm2, KM2: L2.error ? NaN : L2.v.KM, KMuse: KMuse, GM1: GM1, GMalt: GMalt,
+    tanA: tanA, alpha: alpha, listSide: Spy > 0 ? 'dritta' : (Spy < 0 ? 'sinistra' : '')
+  };
+}
+
+/* Pescaggi finali con le formule degli appunti, dato un peso p (con segno) in x da AP */
+function finalDrafts(TA, TF, D0, TPC0, p, x, tab, mode) {
+  var D1 = D0 + p;
+  var L1 = lookupByD(tab, D1, mode);
+  if (L1.error) return { error: 'fuori1', D1: D1 };
+  var TPC1 = L1.v.TPC, MCTC1 = L1.v.MCTC, XCF1 = L1.v.XCF;
+  var TPCm = (TPC0 + TPC1) / 2;
+  var dTm = p / (100 * TPCm);
+  var Spx = p * (XCF1 - x);                          // + appoppante
+  var A = Math.abs(Spx), den = 100 * LPP * MCTC1;
+  var dTA = XCF1 * A / den, dTF = (LPP - XCF1) * A / den;
+  var app = Spx > 1e-9, apr = Spx < -1e-9;
+  return {
+    D1: D1, L1: L1, Tm1: L1.Tm, TPC1: TPC1, MCTC1: MCTC1, XCF1: XCF1, TPCm: TPCm, dTm: dTm,
+    Spx: Spx, A: A, den: den, dTA: dTA, dTF: dTF, app: app, apr: apr,
+    TA2: TA + dTm + (app ? dTA : (apr ? -dTA : 0)), TF2: TF + dTm + (app ? -dTF : (apr ? dTF : 0))
+  };
+}
+
+/* Problema 4 – peso incognito per ottenere un assetto voluto
+   inp.mode: 'TA' (immersione voluta a poppa) | 'TF' (a prora) | 'even' (chiglia piana, x noto)
+             | 'evenT' (chiglia piana con immersione finale fissata: trova p e x)
+   inp: TA, TF, Tt (immersione voluta, per TA/TF/evenT), x (da AP, per TA/TF/even) */
+function pFrom(m, inp, TPCm, MCTC, XCF) {
+  var d = XCF - inp.x;                               // + se il peso è a poppavia di F
+  if (m === 'TA') {
+    var k1 = 1 / (100 * TPCm), k2 = XCF * d / (100 * LPP * MCTC), k = k1 + k2;
+    return { k1: k1, k2: k2, k: k, num: inp.Tt - inp.TA, p: (inp.Tt - inp.TA) / k };
+  }
+  if (m === 'TF') {
+    var j1 = 1 / (100 * TPCm), j2 = -(LPP - XCF) * d / (100 * LPP * MCTC), j = j1 + j2;
+    return { k1: j1, k2: j2, k: j, num: inp.Tt - inp.TF, p: (inp.Tt - inp.TF) / j };
+  }
+  var dd = inp.x - XCF;                              // + se a proravia di F
+  return { k: dd, Snec: 100 * MCTC * (inp.TA - inp.TF), p: 100 * MCTC * (inp.TA - inp.TF) / dd };
+}
+function calcAssetto(inp, tab, mode) {
+  var Tm = (inp.TA + inp.TF) / 2;
+  var L0 = lookup(tab, Tm, mode);
+  if (L0.error) return { error: 'fuori', Tm: Tm };
+  var D0 = L0.v.D, TPC0 = L0.v.TPC, MCTC0 = L0.v.MCTC, XCF0 = L0.v.XCF;
+  var t0 = inp.TA - inp.TF;
+  var R = { mode: inp.mode, Tm: Tm, L0: L0, D0: D0, TPC0: TPC0, MCTC0: MCTC0, XCF0: XCF0, t0: t0 };
+  if (inp.mode === 'evenT') {
+    var L1 = lookup(tab, inp.Tt, mode);
+    if (L1.error) return { error: 'fuoriT', Tm: Tm, Tt: inp.Tt };
+    var TPC1 = L1.v.TPC, MCTC1 = L1.v.MCTC, XCF1 = L1.v.XCF;
+    var TPCm = (TPC0 + TPC1) / 2;
+    var Snec = -100 * MCTC1 * t0;                    // Σpx necessario (+ appoppante)
+    var den = 100 * LPP * MCTC1;
+    var dTAt = XCF1 * Math.abs(Snec) / den, dTFt = (LPP - XCF1) * Math.abs(Snec) / den;
+    var TAt = inp.TA + (Snec > 0 ? dTAt : -dTAt), TFt = inp.TF + (Snec > 0 ? -dTFt : dTFt);
+    var dTm = inp.Tt - TAt;
+    var p = 100 * TPCm * dTm;
+    if (Math.abs(p) < 1e-9) return { error: 'nullo', Tm: Tm };
+    var x = Math.abs(Snec) < 1e-9 ? XCF1 : XCF1 - Snec / p;
+    var F = finalDrafts(inp.TA, inp.TF, D0, TPC0, p, x, tab, mode);
+    return Object.assign(R, { L1: L1, TPC1: TPC1, MCTC1: MCTC1, XCF1: XCF1, D1t: L1.v.D, TPCm: TPCm, Snec: Snec, den: den,
+      dTAt: dTAt, dTFt: dTFt, TAt: TAt, TFt: TFt, dTm: dTm, p: p, x: x, d: Math.abs(x - XCF1), F: F });
+  }
+  // TA, TF, even: prima approssimazione con i dati a Tm, poi correzione con i dati finali (Δ′)
+  var first = pFrom(inp.mode, inp, TPC0, MCTC0, XCF0);
+  if (!isFinite(first.p) || Math.abs(first.k) < 1e-12) return { error: 'neutro', Tm: Tm };
+  var p = first.p, it = 0, last, L1b;
+  for (it = 1; it <= 40; it++) {
+    L1b = lookupByD(tab, D0 + p, mode);
+    if (L1b.error) return { error: 'fuori1', Tm: Tm, D1: D0 + p, first: first };
+    last = pFrom(inp.mode, inp, (TPC0 + L1b.v.TPC) / 2, L1b.v.MCTC, L1b.v.XCF);
+    if (!isFinite(last.p)) return { error: 'neutro', Tm: Tm };
+    var conv = Math.abs(last.p - p) < 0.005;
+    p = last.p;
+    if (conv) break;
+  }
+  // valori finali coerenti con p trovato
+  L1b = lookupByD(tab, D0 + p, mode);
+  if (L1b.error) return { error: 'fuori1', Tm: Tm, D1: D0 + p };
+  var TPCmF = (TPC0 + L1b.v.TPC) / 2;
+  last = pFrom(inp.mode, inp, TPCmF, L1b.v.MCTC, L1b.v.XCF);
+  p = last.p;
+  var F2 = finalDrafts(inp.TA, inp.TF, D0, TPC0, p, inp.x, tab, mode);
+  if (F2.error) return { error: 'fuori1', Tm: Tm, D1: D0 + p };
+  return Object.assign(R, { first: first, last: last, iter: it, L1: L1b, TPC1: L1b.v.TPC, MCTC1: L1b.v.MCTC, XCF1: L1b.v.XCF,
+    TPCm: TPCmF, p: p, x: inp.x, F: F2 });
+}
+
+/* Problema 5 – punti neutri
+   inp.src 'tab' (TA, TF → tabella) | 'man' (Lpp, TPC, MCTC, XCF dati dal testo) */
+function calcNeutri(inp, tab, mode) {
+  var R = { src: inp.src };
+  if (inp.src === 'tab') {
+    var Tm = (inp.TA + inp.TF) / 2, L = lookup(tab, Tm, mode);
+    if (L.error) return { error: 'fuori', Tm: Tm };
+    R.Tm = Tm; R.L = L; R.Lpp = LPP; R.TPC = L.v.TPC; R.MCTC = L.v.MCTC; R.XCF = L.v.XCF;
+  } else {
+    R.Lpp = inp.Lpp; R.TPC = inp.TPC; R.MCTC = inp.MCTC; R.XCF = inp.XCF;
+    if (!(R.XCF > 0 && R.XCF < R.Lpp)) return { error: 'xcf' };
+  }
+  R.num = R.Lpp * R.MCTC;
+  R.dA = R.num / (R.XCF * R.TPC);                    // a proravia di F: T_A non cambia
+  R.dF = R.num / ((R.Lpp - R.XCF) * R.TPC);          // a poppavia di F: T_F non cambia
+  R.xA = R.XCF + R.dA; R.xF = R.XCF - R.dF;
+  return R;
+}
+
+
+</script>
+<script>
+(function () {
+  var TAB = parseTable(CSV);
+
+  /* ---------- formattazione ---------- */
+  function f(v, d) {
+    if (!isFinite(v)) return '—';
+    var s = Math.abs(v).toFixed(d).replace('.', ',');
+    return (v < 0 && Number(s.replace(',', '.')) !== 0 ? '−' : '') + s;
+  }
+  function fa(v, min) {
+    if (!isFinite(v)) return '—';
+    var p = String(Math.round(v * 10000) / 10000).split('.'), dec = p[1] || '';
+    while (dec.length < min) dec += '0';
+    return p[0] + (dec ? ',' + dec : '');
+  }
+  function fs(v, min) { return (v < 0 ? '−' : '') + fa(Math.abs(v), min); }
+  function fx(v, d) { return (v < 0 && Number(Math.abs(v).toFixed(d)) !== 0 ? '−' : '') + f(Math.abs(v), d); }
+  function na(v, min) { return '<span class="n">' + fa(v, min) + '</span>'; }
+  function n(v, d) { return '<span class="n">' + f(v, d) + '</span>'; }
+  function fr(a, b) { return '<span class="frac"><span>' + a + '</span><span>' + b + '</span></span>'; }
+  function dms(deg) {
+    var a = Math.abs(deg), d = Math.floor(a), m = Math.round((a - d) * 60);
+    if (m === 60) { d += 1; m = 0; }
+    return d + '°' + (m < 10 ? '0' : '') + m + '′';
+  }
+  function num(id) {
+    var el = document.getElementById(id);
+    var s = el.value.trim().replace(/\s/g, '').replace(',', '.');
+    var v = s === '' ? NaN : Number(s);
+    return v;
+  }
+  function radio(name, form) { var c = form.querySelector('input[name="' + name + '"]:checked'); return c ? c.value : null; }
+  function mark(id, bad) { var fl = document.getElementById(id).closest('.field'); if (fl) fl.classList.toggle('bad', bad); }
+  function errBox(msg) { return '<div class="err">' + msg + '</div>'; }
+
+  var COLNAME = { D: 'Δ (t)', TPC: 'TPC (t/cm)', MCTC: 'MCTC (t·m/cm)', XCF: 'X<sub>CF</sub> (m)', KM: 'KM (m)' };
+  var COLDEC = { D: 0, TPC: 2, MCTC: 1, XCF: 2, KM: 2 };
+  var lastUsed = [], usedBy = { dwa: [], pesi: [], imb: [], ass: [], neu: [] }, currentProblem = 'dwa';
+
+  /* Passaggio "lettura in tabella", comune ai due problemi */
+  function stepTabella(L, cols, perche, lab, title) {
+    lab = lab || 'T<sub>m</sub>';
+    if (L.manual) {
+      var mh = '<tr><th>T (m)</th>' + cols.map(function (k) { return '<th>' + COLNAME[k] + '</th>'; }).join('') + '</tr>';
+      var mb = '<tr class="used"><td>' + f(L.Tm, 3) + '</td>' + cols.map(function (k) { return '<td>' + f(L.v[k], COLDEC[k]) + '</td>'; }).join('') + '</tr>';
+      return { title: title || 'Entro in tabella con T<sub>m</sub>', body: '<div class="scroll"><table class="mini">' + mh + mb + '</table></div>', why: lab + ' = ' + f(L.Tm, 3) + ' m è fuori dalla tabella fotografata (3,90 – 10,00 m): questi sono i valori scritti a mano dal libro. ' + perche };
+    }
+    var Tm = L.Tm, h = '';
+    var head = '<tr><th>T (m)</th>' + cols.map(function (k) { return '<th>' + COLNAME[k] + '</th>'; }).join('') + '</tr>';
+    var body = L.rows.map(function (r) {
+      return '<tr' + (L.rows.length === 1 ? ' class="used"' : '') + '><td>' + f(r.T, 2) + '</td>' + cols.map(function (k) { return '<td>' + f(r[k], COLDEC[k]) + '</td>'; }).join('') + '</tr>';
+    }).join('');
+    if (L.rows.length === 2) {
+      body += '<tr class="used"><td>' + f(Tm, 3) + '</td>' + cols.map(function (k) { return '<td>' + f(L.v[k], COLDEC[k] + 1) + '</td>'; }).join('') + '</tr>';
+    }
+    h += '<div class="scroll"><table class="mini">' + head + body + '</table></div>';
+    var txt;
+    if (L.rows.length === 2) {
+      txt = lab + ' = ' + f(Tm, 3) + ' m cade tra le righe ' + f(L.rows[0].T, 2) + ' e ' + f(L.rows[1].T, 2) +
+        ' m: ogni valore si prende nella stessa proporzione tra le due righe (qui al ' + Math.round(L.frac * 100) + ' % della distanza). L\'ultima riga in blu sono i valori usati.';
+    } else if (L.nearest) {
+      txt = lab + ' = ' + f(Tm, 3) + ' m non è in tabella: si usa la riga più vicina, ' + f(L.rows[0].T, 2) + ' m.';
+    } else {
+      txt = lab + ' = ' + f(Tm, 2) + ' m è esattamente una riga della tabella: si leggono i valori su quella riga.';
+    }
+    return { title: title || 'Entro in tabella con T<sub>m</sub>', body: h, why: txt + ' ' + perche };
+  }
+
+  function renderSteps(steps, formule) {
+    return '<section class="steps"><h2>Soluzione passo per passo</h2>' + (formule ? formBox(formule) : '') + '<ol>' + steps.map(function (s) {
+      return '<li class="step"><div><h3>' + s.title + '</h3>' + s.body + (s.why ? '<p class="why">' + s.why + '</p>' : '') + '</div></li>';
+    }).join('') + '</ol></section>';
+  }
+  function eqs(lines) {
+    return '<div class="eqs">' + lines.map(function (l) { return '<div class="eq">' + l.split(' = ').map(function (c) { return '<span class="ch">' + c + '</span>'; }).join('<span class="op">=</span>') + '</div>'; }).join('') + '</div>';
+  }
+  function kpi(k, v, s, main) { return '<div class="kpi' + (main ? ' main' : '') + '"><div class="k">' + k + '</div><div class="v">' + v + '</div>' + (s ? '<div class="s">' + s + '</div>' : '') + '</div>'; }
+
+  /* ---------- disegni ---------- */
+  function svgScala(Tm, Tm2) {
+    // scala dei pescaggi ingrandita: marche metriche (numeri alti 10 cm ogni 20 cm, il bordo inferiore indica il pescaggio)
+    var c = (Tm + Tm2) / 2, span = Math.max(0.6, Math.abs(Tm2 - Tm) + 0.3);
+    var top = c + span / 2, bot = c - span / 2, H = 240, W = 300, y0 = 14, hh = H - 28;
+    var Y = function (t) { return y0 + (top - t) / (top - bot) * hh; };
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Scala dei pescaggi prima e dopo">';
+    var yNew = Y(Tm2);
+    s += '<rect x="0" y="' + yNew.toFixed(1) + '" width="' + W + '" height="' + (H - yNew).toFixed(1) + '" fill="var(--water)"/>';
+    s += '<rect x="70" y="0" width="90" height="' + H + '" fill="var(--surface)" stroke="var(--hull)" stroke-width="1.5"/>';
+    var startDm = Math.ceil(bot * 10 - 1e-9), endDm = Math.floor(top * 10 + 1e-9);
+    for (var dm = startDm - 1; dm <= endDm; dm++) {
+      if (dm % 2 !== 0) continue;
+      var t = dm / 10, yb = Y(t), yt = Y(t + 0.1);
+      var m = Math.floor(dm / 10 + 1e-9), r = dm - m * 10;
+      var lab = r === 0 ? m + 'M' : String(r);
+      s += '<text x="115" y="' + yb.toFixed(1) + '" font-family="Saira Semi Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="' + Math.max(10, (yb - yt) * 1.4).toFixed(1) + '" text-anchor="middle" fill="var(--hull)">' + lab + '</text>';
+    }
+    var yOld = Y(Tm);
+    s += '<line x1="0" x2="' + W + '" y1="' + yOld.toFixed(1) + '" y2="' + yOld.toFixed(1) + '" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 4"/>';
+    s += '<line x1="0" x2="' + W + '" y1="' + yNew.toFixed(1) + '" y2="' + yNew.toFixed(1) + '" stroke="var(--water-line)" stroke-width="2.5"/>';
+    var up = yNew < yOld;
+    s += '<text x="166" y="' + (yOld + (up ? 14 : -5)).toFixed(1) + '" font-size="12" font-family="IBM Plex Mono, monospace" fill="var(--muted)">prima ' + f(Tm, 3) + ' m</text>';
+    s += '<text x="166" y="' + (yNew + (up ? -5 : 14)).toFixed(1) + '" font-size="12" font-weight="600" font-family="IBM Plex Mono, monospace" fill="var(--water-line)">dopo ' + f(Tm2, 3) + ' m</text>';
+    if (Math.abs(yNew - yOld) > 6) {
+      var xa = 40, y1 = yOld, y2 = yNew, dir = y2 > y1 ? 1 : -1;
+      s += '<line x1="' + xa + '" x2="' + xa + '" y1="' + y1.toFixed(1) + '" y2="' + (y2 - dir * 4).toFixed(1) + '" stroke="var(--ink)" stroke-width="1.5"/>';
+      s += '<path d="M' + (xa - 4) + ' ' + (y2 - dir * 7).toFixed(1) + ' L' + xa + ' ' + y2.toFixed(1) + ' L' + (xa + 4) + ' ' + (y2 - dir * 7).toFixed(1) + 'Z" fill="var(--ink)"/>';
+    }
+    return s + '</svg>';
+  }
+
+  function svgProfilo(TA, TF, TA2, TF2, xcf, xdir, load) {
+    var W = 520, H = 236, xA = 62, xF = 458, keel = 182, vs = 9.5;
+    var X = function (m) { return xA + m / LPP * (xF - xA); };
+    var dA = TA2 - TA, dF = TF2 - TF, mx = Math.max(Math.abs(dA), Math.abs(dF));
+    var k = mx > 0 ? Math.min(30, Math.max(1, 1.8 / mx)) : 1;   // esagerazione delle variazioni
+    var Y = function (t) { return keel - t * vs; };
+    var deck = keel - 13.5 * vs;
+    var hull = 'M' + (xA - 26) + ' ' + deck + ' L' + (xF + 34) + ' ' + (deck - 4) + ' L' + (xF + 8) + ' ' + (keel - 20) + ' Q' + (xF - 6) + ' ' + keel + ' ' + (xF - 40) + ' ' + keel +
+      ' L' + (xA + 18) + ' ' + keel + ' Q' + (xA - 4) + ' ' + keel + ' ' + (xA - 6) + ' ' + (keel - 34) + ' L' + (xA - 26) + ' ' + (keel - 70) + 'Z';
+    var y1A = Y(TA), y1F = Y(TF), y2A = Y(TA + dA * k), y2F = Y(TF + dF * k);
+    var ext = 34, slope = (y2F - y2A) / (xF - xA), slope0 = (y1F - y1A) / (xF - xA);
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Profilo della nave con linea di galleggiamento prima e dopo">';
+    s += '<path d="M' + (xA - ext) + ' ' + (y2A - slope * ext).toFixed(1) + ' L' + (xF + ext + 10) + ' ' + (y2F + slope * (ext + 10)).toFixed(1) + ' L' + (xF + ext + 10) + ' ' + H + ' L' + (xA - ext) + ' ' + H + 'Z" fill="var(--water)"/>';
+    s += '<path d="' + hull + '" fill="none" stroke="var(--hull)" stroke-width="2"/>';
+    [xA, xF].forEach(function (x) { s += '<line x1="' + x + '" x2="' + x + '" y1="' + (deck - 14) + '" y2="' + (keel + 10) + '" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2 3"/>'; });
+    s += '<text x="' + xA + '" y="' + (deck - 18) + '" text-anchor="middle" font-size="14" fill="var(--muted)" font-family="Source Sans 3, sans-serif">Pp addietro</text>';
+    s += '<text x="' + xF + '" y="' + (deck - 18) + '" text-anchor="middle" font-size="14" fill="var(--muted)" font-family="Source Sans 3, sans-serif">Pp avanti</text>';
+    s += '<line x1="' + (xA - ext) + '" x2="' + (xF + ext) + '" y1="' + (y1A - slope0 * ext).toFixed(1) + '" y2="' + (y1F + slope0 * ext).toFixed(1) + '" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="6 4"/>';
+    s += '<line x1="' + (xA - ext) + '" x2="' + (xF + ext + 10) + '" y1="' + (y2A - slope * ext).toFixed(1) + '" y2="' + (y2F + slope * (ext + 10)).toFixed(1) + '" stroke="var(--water-line)" stroke-width="2.5"/>';
+    var xf = X(xcf), yf = y2A + slope * (xf - xA);
+    s += '<circle cx="' + xf.toFixed(1) + '" cy="' + yf.toFixed(1) + '" r="5" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>';
+    s += '<text x="' + xf.toFixed(1) + '" y="' + (yf - 10).toFixed(1) + '" text-anchor="middle" font-size="15" font-weight="700" fill="var(--accent)" font-family="Source Sans 3, sans-serif">F</text>';
+    var mono = 'font-family="IBM Plex Mono, monospace" font-size="14"';
+    s += '<text x="' + (xA + 6) + '" y="' + (keel + 26) + '" ' + mono + ' fill="var(--ink)">T′A ' + f(TA2, 3) + '</text>';
+    s += '<text x="' + (xF - 6) + '" y="' + (keel + 26) + '" ' + mono + ' text-anchor="end" fill="var(--ink)">T′F ' + f(TF2, 3) + '</text>';
+    // freccia del peso
+    var ay = deck + 22, x1 = X(LPP / 2) + (xdir === 'poppa' ? 50 : -50), x2 = X(LPP / 2) + (xdir === 'poppa' ? -50 : 50), d = x2 > x1 ? 1 : -1;
+    if (load) {
+      load.forEach(function (w, n) {
+        var xw = Math.min(xF + 20, Math.max(xA - 10, X(w.x))), yw = Math.min(keel - 12, Math.max(deck + 12, Y(w.z))), sb = w.op === 'sbarco';
+        s += '<rect x="' + (xw - 8).toFixed(1) + '" y="' + (yw - 8).toFixed(1) + '" width="16" height="16" ' + (sb ? 'fill="var(--surface)" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="3 2"' : 'fill="var(--ink)"') + '/>';
+        s += '<text x="' + xw.toFixed(1) + '" y="' + (yw - 12).toFixed(1) + '" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" font-family="Source Sans 3, sans-serif">' + (n + 1) + '</text>';
+      });
+    } else if (mx > 0) {
+      s += '<rect x="' + (x1 - 9) + '" y="' + (ay - 9) + '" width="18" height="18" fill="none" stroke="var(--muted)" stroke-dasharray="3 2"/>';
+      s += '<line x1="' + (x1 + d * 11) + '" x2="' + (x2 - d * 20) + '" y1="' + ay + '" y2="' + ay + '" stroke="var(--ink)" stroke-width="1.5"/>';
+      s += '<path d="M' + (x2 - d * 20) + ' ' + (ay - 4) + ' L' + (x2 - d * 12) + ' ' + ay + ' L' + (x2 - d * 20) + ' ' + (ay + 4) + 'Z" fill="var(--ink)"/>';
+      s += '<rect x="' + (x2 - 9) + '" y="' + (ay - 9) + '" width="18" height="18" fill="var(--ink)"/>';
+      s += '<text x="' + ((x1 + x2) / 2) + '" y="' + (ay - 10) + '" text-anchor="middle" font-size="14" fill="var(--ink)" font-family="Source Sans 3, sans-serif">p · x</text>';
+    }
+    s += '<text x="' + (xA - 26) + '" y="' + (keel + 46) + '" font-size="14" fill="var(--muted)" font-family="Source Sans 3, sans-serif">← poppa</text>';
+    s += '<text x="' + (xF + 40) + '" y="' + (keel + 46) + '" text-anchor="end" font-size="14" fill="var(--muted)" font-family="Source Sans 3, sans-serif">prora →</text>';
+    return { svg: s + '</svg>', k: k };
+  }
+
+  function svgSezione(alpha, ydir, wSide, ghost) {
+    wSide = wSide || ydir;
+    var W = 300, H = 230, cx = 150, cy = 118;
+    var a = (ydir === 'dritta' ? 1 : -1) * (isFinite(alpha) ? alpha : 0);
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Sezione maestra inclinata dell\'angolo alfa">';
+    s += '<rect x="0" y="' + cy + '" width="' + W + '" height="' + (H - cy) + '" fill="var(--water)"/>';
+    s += '<line x1="' + cx + '" x2="' + cx + '" y1="14" y2="' + (H - 8) + '" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/>';
+    s += '<g transform="rotate(' + a.toFixed(3) + ' ' + cx + ' ' + cy + ')">';
+    s += '<path d="M' + (cx - 84) + ' ' + (cy - 62) + ' L' + (cx - 84) + ' ' + (cy + 30) + ' Q' + (cx - 84) + ' ' + (cy + 64) + ' ' + (cx - 50) + ' ' + (cy + 64) + ' L' + (cx + 50) + ' ' + (cy + 64) + ' Q' + (cx + 84) + ' ' + (cy + 64) + ' ' + (cx + 84) + ' ' + (cy + 30) + ' L' + (cx + 84) + ' ' + (cy - 62) + 'Z" fill="var(--surface)" fill-opacity=".75" stroke="var(--hull)" stroke-width="2"/>';
+    s += '<line x1="' + cx + '" x2="' + cx + '" y1="' + (cy - 80) + '" y2="' + (cy + 64) + '" stroke="var(--accent)" stroke-width="1.5"/>';
+    s += '<rect x="' + (cx + (wSide === 'dritta' ? 52 : (wSide === 'sinistra' ? -70 : -9))) + '" y="' + (cy - 80) + '" width="18" height="18" ' + (ghost ? 'fill="none" stroke="var(--ink)" stroke-dasharray="3 2"' : 'fill="var(--ink)"') + '/>';
+    s += '</g>';
+    s += '<line x1="0" x2="' + W + '" y1="' + cy + '" y2="' + cy + '" stroke="var(--water-line)" stroke-width="2.5"/>';
+    var r = 70, ar = a * Math.PI / 180;
+    if (Math.abs(a) > 0.05) {
+      var ex = cx + r * Math.sin(ar), ey = cy - r * Math.cos(ar);
+      s += '<path d="M' + cx + ' ' + (cy - r) + ' A' + r + ' ' + r + ' 0 0 ' + (a > 0 ? 1 : 0) + ' ' + ex.toFixed(1) + ' ' + ey.toFixed(1) + '" fill="none" stroke="var(--accent)" stroke-width="1.5"/>';
+    }
+    s += '<text x="' + (cx + (a >= 0 ? 10 : -10)) + '" y="' + (cy - r - 8) + '" text-anchor="' + (a >= 0 ? 'start' : 'end') + '" font-size="14" font-weight="700" fill="var(--accent)" font-family="Georgia, serif" font-style="italic">α</text>';
+    s += '<text x="12" y="' + (H - 10) + '" font-size="14" fill="var(--muted)" font-family="Source Sans 3, sans-serif">sinistra</text>';
+    s += '<text x="' + (W - 12) + '" y="' + (H - 10) + '" text-anchor="end" font-size="14" fill="var(--muted)" font-family="Source Sans 3, sans-serif">dritta</text>';
+    return s + '</svg>';
+  }
+
+  /* ---------- Problema 1: DWA ---------- */
+  var fD = document.getElementById('f-dwa'), outD = document.getElementById('r-dwa');
+  function runDWA() {
+    var ids = ['d-TA', 'd-TF', 'd-d1', 'd-d2'], v = {}, bad = [];
+    ids.forEach(function (id) { var x = num(id); v[id] = x; var b = !isFinite(x) || x <= 0; mark(id, b); if (b) bad.push(id); });
+    if (bad.length) { outD.innerHTML = errBox('Completa i campi evidenziati con un numero (es. 6,20).'); return; }
+    var inp = { TA: v['d-TA'], TF: v['d-TF'], d1: v['d-d1'], d2: v['d-d2'] };
+    var mode = document.getElementById('d-interp').checked ? 'interp' : 'near';
+    var R = calcDWA(inp, TAB, mode);
+    if (R.error) { outD.innerHTML = errBox('T<sub>m</sub> = ' + f(R.Tm, 3) + ' m è fuori dalla tabella (3,90 – 10,00 m). Controlla T<sub>A</sub> e T<sub>F</sub>.'); return; }
+    usedBy.dwa = R.L.rows.map(function (r) { return r.T; });
+    var sinks = R.diff > 0, same = R.diff === 0;
+    var verbo = same ? 'non cambia immersione' : (sinks ? 'affonda' : 'emerge');
+    var tag = same ? '' : '<span class="tag ' + (sinks ? 'sink' : 'rise') + '">la nave ' + verbo + '</span>';
+    var sign = sinks ? '+' : '−';
+    var html = '';
+    html += '<section class="summary"><h2>Risultato</h2><div class="kpis">' +
+      kpi('DWA', f(Math.abs(R.DWA), 2) + ' cm', tag, true) +
+      kpi('T′<sub>A</sub> poppa', f(R.TA2, 3) + ' m', 'prima ' + fa(inp.TA, 2) + ' m') +
+      kpi('T′<sub>F</sub> prora', f(R.TF2, 3) + ' m', 'prima ' + fa(inp.TF, 2) + ' m') +
+      kpi('FWA', f(R.FWA, 2) + ' cm', 'da mare 1,025 a dolce 1,000') + '</div>' +
+      '<div class="figs"><figure class="fig narrow">' + svgScala(R.Tm, R.Tm2) + '<figcaption>Marche di immersione ingrandite al pescaggio medio: tratteggio prima, linea piena dopo. Le cifre sono alte 10 cm e il loro bordo inferiore indica il pescaggio.</figcaption></figure></div></section>';
+
+    var st = [];
+    st.push({
+      title: 'Pescaggio medio',
+      body: eqs(['<i>T</i><sub>m</sub> = ' + fr('<i>T</i><sub>A</sub> + <i>T</i><sub>F</sub>', '2') + ' = ' + fr(na(inp.TA, 2) + ' + ' + na(inp.TF, 2), '2') + ' = <span class="res n">' + f(R.Tm, 3) + ' m</span>']),
+      why: 'Le tabelle idrostatiche si leggono con un solo pescaggio. La media tra poppa e prora rappresenta l\'immersione della nave come se fosse dritta (in chiglia piana).'
+    });
+    st.push(stepTabella(R.L, ['D', 'TPC'], '<b>Δ</b> è il dislocamento, cioè il peso della nave. <b>TPC</b> sono le tonnellate da imbarcare per far affondare la nave di 1 cm a quel pescaggio.'));
+    st.push({
+      title: 'FWA: quanto affonda passando da mare ad acqua dolce',
+      body: eqs(['FWA = ' + fr('Δ', '40 · TPC') + ' = ' + fr(n(R.D, R.L.rows.length === 2 ? 1 : 0), '40 · ' + n(R.TPC, R.L.rows.length === 2 ? 3 : 2)) + ' = <span class="res n">' + f(R.FWA, 3) + ' cm</span>']),
+      why: 'La FWA (Fresh Water Allowance) è il numero di centimetri di cui la nave affonda passando da acqua di mare (1,025 t/m³) ad acqua dolce (1,000 t/m³), cioè per una differenza di densità di 0,025.'
+    });
+    st.push({
+      title: 'Proporzione: dalla FWA al DWA',
+      body: eqs([
+        'FWA : (1,025 − 1,000) = DWA : (δ<sub>1</sub> − δ<sub>2</sub>)',
+        'DWA = ' + fr('FWA · (δ<sub>1</sub> − δ<sub>2</sub>)', '0,025') + ' = ' + fr(n(R.FWA, 3) + ' · (' + na(inp.d1, 3) + ' − ' + na(inp.d2, 3) + ')', '0,025') + ' = ' + fr(n(R.FWA, 3) + ' · ' + n(R.diff, 3), '0,025') + ' = <span class="res n">' + f(R.DWA, 3) + ' cm</span>'
+      ]),
+      why: 'Il cambio di immersione è proporzionale alla differenza di densità. Se una differenza di 0,025 fa affondare la nave di FWA, la nostra differenza δ<sub>1</sub> − δ<sub>2</sub> = ' + f(R.diff, 3) + ' la fa affondare di DWA (Dock Water Allowance).'
+    });
+    st.push({
+      title: 'Verifica con la formula semplificata',
+      body: eqs([
+        'DWA = ' + fr('Δ', '40 · TPC') + ' · ' + fr('δ<sub>1</sub> − δ<sub>2</sub>', '0,025') + ' = ' + fr('Δ · (δ<sub>1</sub> − δ<sub>2</sub>)', 'TPC'),
+        'DWA = ' + fr(n(R.D, R.L.rows.length === 2 ? 1 : 0) + ' · ' + n(R.diff, 3), n(R.TPC, R.L.rows.length === 2 ? 3 : 2)) + ' = <span class="res n">' + f(R.DWAsempl, 3) + ' cm</span>'
+      ]),
+      why: 'Sostituendo FWA = Δ / (40 · TPC) nella proporzione, il 40 e lo 0,025 si semplificano (40 · 0,025 = 1). Resta DWA = Δ · (δ<sub>1</sub> − δ<sub>2</sub>) / TPC: stesso risultato, con un calcolo in meno.'
+    });
+    var dmTxt = f(Math.abs(R.dm), 4);
+    st.push({
+      title: 'Pescaggi finali',
+      body: eqs([
+        '<i>T</i>′<sub>A</sub> = <i>T</i><sub>A</sub> ' + sign + ' DWA = ' + na(inp.TA, 2) + ' ' + sign + ' ' + n(Math.abs(R.dm), 4) + ' = <span class="res n">' + f(R.TA2, 3) + ' m</span>',
+        '<i>T</i>′<sub>F</sub> = <i>T</i><sub>F</sub> ' + sign + ' DWA = ' + na(inp.TF, 2) + ' ' + sign + ' ' + n(Math.abs(R.dm), 4) + ' = <span class="res n">' + f(R.TF2, 3) + ' m</span>'
+      ]),
+      why: same ? 'Le due densità sono uguali: la nave non cambia immersione.' :
+        (sinks ? 'L\'acqua di arrivo è <b>meno densa</b> (δ<sub>2</sub> &lt; δ<sub>1</sub>): il peso della nave non cambia, quindi per galleggiare deve spostare più volume e <b>affonda</b>. '
+               : 'L\'acqua di arrivo è <b>più densa</b> (δ<sub>2</sub> &gt; δ<sub>1</sub>): basta meno volume immerso per sostenere lo stesso peso, quindi la nave <b>emerge</b>. ') +
+        'Il DWA in metri (' + dmTxt + ' m) si ' + (sinks ? 'somma' : 'sottrae') + ' allo stesso modo a poppa e a prora: la nave si sposta in verticale senza cambiare assetto.'
+    });
+    html += renderSteps(st, [
+      '<i>T</i><sub>m</sub> = ' + fr('<i>T</i><sub>A</sub> + <i>T</i><sub>F</sub>', '2') + ' → tabella: Δ, TPC',
+      'FWA = ' + fr('Δ', '40 · TPC'),
+      'FWA : (1,025 − 1,000) = DWA : (δ<sub>1</sub> − δ<sub>2</sub>)',
+      'DWA = ' + fr('FWA · (δ<sub>1</sub> − δ<sub>2</sub>)', '0,025') + ' = ' + fr('Δ · (δ<sub>1</sub> − δ<sub>2</sub>)', 'TPC'),
+      '<i>T</i>′<sub>A</sub> = <i>T</i><sub>A</sub> ± DWA    <i>T</i>′<sub>F</sub> = <i>T</i><sub>F</sub> ± DWA'
+    ]);
+    outD.innerHTML = html;
+  }
+
+  /* ---------- Problema 2: spostamento pesi ---------- */
+  var fP = document.getElementById('f-pesi'), outP = document.getElementById('r-pesi');
+  function runPesi() {
+    var req = ['p-TA', 'p-TF', 'p-GM', 'p-p'], opt = ['p-z', 'p-x', 'p-y'], v = {}, bad = [];
+    req.forEach(function (id) { var x = num(id); v[id] = x; var b = !isFinite(x) || x <= 0; mark(id, b); if (b) bad.push(id); });
+    opt.forEach(function (id) { var x = num(id); if (document.getElementById(id).value.trim() === '') x = 0; v[id] = x; var b = !isFinite(x) || x < 0; mark(id, b); if (b) bad.push(id); });
+    if (bad.length) { outP.innerHTML = errBox('Completa i campi evidenziati con un numero positivo. Gli spostamenti che il testo non dà vanno lasciati a 0; il verso si sceglie con i pulsanti.'); return; }
+    var inp = { TA: v['p-TA'], TF: v['p-TF'], GM: v['p-GM'], p: v['p-p'], z: v['p-z'], x: v['p-x'], y: v['p-y'],
+      zdir: radio('zdir', fP), xdir: radio('xdir', fP), ydir: radio('ydir', fP) };
+    var mode = document.getElementById('p-interp').checked ? 'interp' : 'near';
+    var R = calcPesi(inp, TAB, mode);
+    if (R.error) { outP.innerHTML = errBox('T<sub>m</sub> = ' + f(R.Tm, 3) + ' m è fuori dalla tabella (3,90 – 10,00 m). Controlla T<sub>A</sub> e T<sub>F</sub>.'); return; }
+    usedBy.pesi = R.L.rows.map(function (r) { return r.T; });
+    var interp = R.L.rows.length === 2;
+    var alto = inp.zdir === 'alto', poppa = inp.xdir === 'poppa';
+    var stab = R.GM2 > 0;
+    var alphaTxt = !stab ? '—' : (inp.y === 0 ? '0°' : f(R.alpha, 2) + '° = ' + dms(R.alpha));
+    var html = '<section class="summary"><h2>Risultato</h2><div class="kpis">' +
+      kpi('GM′', f(R.GM2, 3) + ' m', inp.z === 0 ? 'nessuno spostamento verticale' : (alto ? 'diminuito di ' : 'aumentato di ') + f(R.GG, 3) + ' m', true) +
+      kpi('Sbandamento α', stab ? (inp.y === 0 ? '0°' : dms(R.alpha)) : '—', stab ? (inp.y === 0 ? 'nessuno spostamento trasversale' : f(R.alpha, 2) + '° a ' + inp.ydir) : 'GM′ ≤ 0: nave instabile', true) +
+      kpi('T′<sub>A</sub> poppa', f(R.TA2, 3) + ' m', 'prima ' + fa(inp.TA, 2) + ' m') +
+      kpi('T′<sub>F</sub> prora', f(R.TF2, 3) + ' m', 'prima ' + fa(inp.TF, 2) + ' m') + '</div>';
+    var P = svgProfilo(inp.TA, inp.TF, R.TA2, R.TF2, R.XCF, inp.xdir);
+    html += '<div class="figs two"><figure class="fig">' + P.svg + '<figcaption>Profilo: tratteggio prima, linea piena dopo. La nave ruota attorno a F (centro di galleggiamento)' + (P.k > 1.05 ? '; variazione di pescaggio esagerata ×' + Math.round(P.k) + ' per renderla visibile' : '') + '.</figcaption></figure>' +
+      '<figure class="fig">' + svgSezione(stab ? R.alpha : 0, inp.ydir) + '<figcaption>Sezione vista da poppa' + (stab && inp.y > 0 ? ', inclinata dell\'angolo vero α = ' + dms(R.alpha) + ' a ' + inp.ydir : '') + '.</figcaption></figure></div></section>';
+
+    var dD = interp ? 1 : 0, dP = interp ? 3 : 2;
+    var st = [];
+    st.push({
+      title: 'Pescaggio medio',
+      body: eqs(['<i>T</i><sub>m</sub> = ' + fr('<i>T</i><sub>A</sub> + <i>T</i><sub>F</sub>', '2') + ' = ' + fr(na(inp.TA, 2) + ' + ' + na(inp.TF, 2), '2') + ' = <span class="res n">' + f(R.Tm, 3) + ' m</span>']),
+      why: 'Spostare un peso già a bordo non cambia il peso della nave, quindi il dislocamento resta quello letto al pescaggio medio iniziale.'
+    });
+    st.push(stepTabella(R.L, ['D', 'TPC', 'MCTC', 'XCF', 'KM'], '<b>Δ</b> è il dislocamento; <b>MCTC</b> è il momento che cambia l\'assetto di 1 cm; <b>X<sub>CF</sub></b> è la distanza del centro di galleggiamento F dalla perpendicolare addietro; TPC e KM si leggono sulla stessa riga ma non entrano nelle formule di questo esercizio.'));
+    var ggWhy = 'Spostando un peso p in verticale, il baricentro G della nave si sposta nello stesso verso e in modo parallelo, di una quantità piccola perché p è piccolo rispetto a Δ.';
+    st.push({
+      title: 'Spostamento del baricentro GG′',
+      body: eqs(['GG′ = ' + fr('<i>p</i> · <i>z</i>', 'Δ') + ' = ' + fr(na(inp.p, 0) + ' · ' + na(inp.z, 0), n(R.D, dD)) + ' = <span class="res n">' + f(R.GG, 4) + ' m</span>']),
+      why: inp.z === 0 ? 'Il testo non dà uno spostamento verticale (z = 0): G non sale né scende e GG′ = 0.' : ggWhy
+    });
+    st.push({
+      title: 'Nuova altezza metacentrica GM′',
+      body: eqs(['GM′ = GM ' + (alto ? '−' : '+') + ' GG′ = ' + na(inp.GM, 2) + ' ' + (alto ? '−' : '+') + ' ' + n(R.GG, 4) + ' = <span class="res n">' + f(R.GM2, 4) + ' m</span>']) +
+        (stab ? '' : '<div class="alert">GM′ è zero o negativo: la nave è instabile e la formula di tan α non si può applicare.</div>'),
+      why: alto ? 'Il peso è stato spostato <b>verso l\'alto</b>: G sale, si avvicina al metacentro M e GM <b>diminuisce</b> (la nave diventa meno stabile). Per questo GG′ si sottrae.'
+                : 'Il peso è stato spostato <b>verso il basso</b>: G scende, si allontana dal metacentro M e GM <b>aumenta</b> (la nave diventa più stabile). Per questo GG′ si somma.'
+    });
+    if (stab) {
+      st.push({
+        title: 'Angolo di sbandamento α',
+        body: eqs([
+          'tan α = ' + fr('<i>p</i> · <i>y</i>', 'Δ · GM′') + ' = ' + fr(na(inp.p, 0) + ' · ' + na(inp.y, 0), n(R.D, dD) + ' · ' + n(R.GM2, 4)) + ' = <span class="res n">' + f(R.tanA, 5) + '</span>',
+          'α = tan<sup>−1</sup>(' + n(R.tanA, 5) + ') = <span class="res n">' + f(R.alpha, 2) + '° = ' + dms(R.alpha) + '</span>'
+        ]),
+        why: inp.y === 0 ? 'Senza spostamento trasversale (y = 0) G resta sul piano diametrale e la nave non sbanda.' :
+          'Il peso spostato di y verso ' + inp.ydir + ' porta G fuori dal piano diametrale. La nave si inclina finché il centro di carena B torna sulla verticale di G: l\'angolo di equilibrio è α, con la nave sbandata a <b>' + inp.ydir + '</b>, dal lato in cui è andato il peso. Si usa GM′ (già corretto per lo spostamento verticale).'
+      });
+    }
+    var lpTxt = n(LPP, 2);
+    st.push({
+      title: 'Variazione del pescaggio a poppa δT<sub>A</sub>',
+      body: eqs(['δ<i>T</i><sub>A</sub> = ' + fr('X<sub>CF</sub> · <i>p</i> · <i>x</i>', '100 · L<sub>pp</sub> · MCTC') + ' = ' + fr(n(R.XCF, interp ? 3 : 2) + ' · ' + na(inp.p, 0) + ' · ' + na(inp.x, 0), '100 · ' + lpTxt + ' · ' + n(R.MCTC, interp ? 2 : 1)) + ' = <span class="res n">' + f(R.dTA, 4) + ' m</span>']),
+      why: inp.x === 0 ? 'Senza spostamento longitudinale (x = 0) l\'assetto non cambia: δT<sub>A</sub> = 0.' :
+        'Il momento p · x fa ruotare la nave attorno a F. La variazione totale di assetto si divide tra poppa e prora in proporzione alla distanza di ciascuna da F: la poppa dista X<sub>CF</sub> = ' + f(R.XCF, 2) + ' m. Il 100 al denominatore trasforma i centimetri di MCTC in metri.'
+    });
+    st.push({
+      title: 'Variazione del pescaggio a prora δT<sub>F</sub>',
+      body: eqs(['δ<i>T</i><sub>F</sub> = ' + fr('(L<sub>pp</sub> − X<sub>CF</sub>) · <i>p</i> · <i>x</i>', '100 · L<sub>pp</sub> · MCTC') + ' = ' + fr('(' + lpTxt + ' − ' + n(R.XCF, interp ? 3 : 2) + ') · ' + na(inp.p, 0) + ' · ' + na(inp.x, 0), '100 · ' + lpTxt + ' · ' + n(R.MCTC, interp ? 2 : 1)) + ' = <span class="res n">' + f(R.dTF, 4) + ' m</span>']),
+      why: inp.x === 0 ? 'Senza spostamento longitudinale anche δT<sub>F</sub> = 0.' :
+        'La prora dista da F L<sub>pp</sub> − X<sub>CF</sub> = ' + f(LPP - R.XCF, 2) + ' m. Siccome F è ' + (R.XCF < LPP / 2 ? 'un po\' a poppavia del mezzo nave, la prora varia leggermente più della poppa' : 'a proravia del mezzo nave, la poppa varia leggermente più della prora') + '.'
+    });
+    var trim = R.TA2 - R.TF2;
+    var assetto = Math.abs(trim) < 0.0005 ? 'in chiglia piana' : (trim > 0 ? 'appoppata di ' + f(trim * 100, 1) + ' cm' : 'appruata di ' + f(-trim * 100, 1) + ' cm');
+    st.push({
+      title: 'Pescaggi finali',
+      body: eqs([
+        '<i>T</i>′<sub>A</sub> = <i>T</i><sub>A</sub> ' + (poppa ? '+' : '−') + ' δ<i>T</i><sub>A</sub> = ' + na(inp.TA, 2) + ' ' + (poppa ? '+' : '−') + ' ' + n(R.dTA, 4) + ' = <span class="res n">' + f(R.TA2, 3) + ' m</span>',
+        '<i>T</i>′<sub>F</sub> = <i>T</i><sub>F</sub> ' + (poppa ? '−' : '+') + ' δ<i>T</i><sub>F</sub> = ' + na(inp.TF, 2) + ' ' + (poppa ? '−' : '+') + ' ' + n(R.dTF, 4) + ' = <span class="res n">' + f(R.TF2, 3) + ' m</span>'
+      ]),
+      why: (inp.x === 0 ? 'I pescaggi restano quelli iniziali. ' :
+        'Il peso è andato <b>verso ' + inp.xdir + '</b>: ' + (poppa ? 'la poppa affonda (+δT<sub>A</sub>) e la prora emerge (−δT<sub>F</sub>).' : 'la prora affonda (+δT<sub>F</sub>) e la poppa emerge (−δT<sub>A</sub>).') + ' ') +
+        'Alla fine la nave è ' + assetto + '.'
+    });
+    html += renderSteps(st, [
+      '<i>T</i><sub>m</sub> = ' + fr('<i>T</i><sub>A</sub> + <i>T</i><sub>F</sub>', '2') + ' → tabella: Δ, MCTC, X<sub>CF</sub>',
+      'GG′ = ' + fr('<i>p</i> · <i>z</i>', 'Δ') + '    GM′ = GM ∓ GG′ (− se il peso sale)',
+      'tan α = ' + fr('<i>p</i> · <i>y</i>', 'Δ · GM′'),
+      'δ<i>T</i><sub>A</sub> = ' + fr('X<sub>CF</sub> · <i>p</i> · <i>x</i>', '100 · L<sub>pp</sub> · MCTC') + '    δ<i>T</i><sub>F</sub> = ' + fr('(L<sub>pp</sub> − X<sub>CF</sub>) · <i>p</i> · <i>x</i>', '100 · L<sub>pp</sub> · MCTC'),
+      '<i>T</i>′<sub>A</sub> = <i>T</i><sub>A</sub> ± δ<i>T</i><sub>A</sub>    <i>T</i>′<sub>F</sub> = <i>T</i><sub>F</sub> ∓ δ<i>T</i><sub>F</sub>'
+    ]);
+    outP.innerHTML = html;
+  }
+
+
+  /* ---------- riquadro formule, banner esercizio ---------- */
+  function formBox(lines) {
+    return '<div class="formule"><h3>Formule usate</h3><div class="eqs">' + lines.map(function (l) { return '<div class="eq">' + l.split(/ {3,}/).map(function (x) { return '<span class="fi">' + x + '</span>'; }).join('') + '</div>'; }).join('') + '</div></div>';
+  }
+  var exCur = {};
+  function exBanner(sec) {
+    var e = exCur[sec]; if (!e) return '';
+    return '<div class="exbanner"><div class="exb-top"><b>Esercizio ' + e.n + '</b>' + (e.mod ? '<span class="exb-mod">dati modificati</span>' : '') +
+      '<button type="button" class="exb-back" data-back="' + e.n + '">Tutti gli esercizi</button></div><p>' + e.text + '</p></div>';
+  }
+  function tableByD(L, cols) {
+    cols = cols || ['D', 'TPC', 'MCTC', 'XCF', 'KM'];
+    var head = '<tr><th>T (m)</th>' + cols.map(function (k) { return '<th>' + COLNAME[k] + '</th>'; }).join('') + '</tr>';
+    var body = L.rows.map(function (r) {
+      return '<tr' + (L.rows.length === 1 ? ' class="used"' : '') + '><td>' + f(r.T, 2) + '</td>' + cols.map(function (k) { return '<td>' + f(r[k], COLDEC[k]) + '</td>'; }).join('') + '</tr>';
+    }).join('');
+    if (L.rows.length === 2) body += '<tr class="used"><td>' + f(L.Tm, 3) + '</td>' + cols.map(function (k) { return '<td>' + f(L.v[k], COLDEC[k] + 1) + '</td>'; }).join('') + '</tr>';
+    var txt;
+    if (L.rows.length === 2) txt = 'Nella colonna Δ il valore Δ′ = ' + f(L.Din, 1) + ' t cade tra ' + f(L.rows[0].D, 0) + ' t (' + f(L.rows[0].T, 2) + ' m) e ' + f(L.rows[1].D, 0) + ' t (' + f(L.rows[1].T, 2) + ' m): T<sub>m</sub>′ e gli altri valori si prendono nella stessa proporzione (qui al ' + Math.round(L.frac * 100) + ' %). L\'ultima riga in blu sono i valori usati.';
+    else if (L.nearest) txt = 'Nella colonna Δ il valore Δ′ = ' + f(L.Din, 1) + ' t non c\'è: si usa la riga con il Δ più vicino, ' + f(L.rows[0].D, 0) + ' t, cioè T<sub>m</sub>′ = ' + f(L.rows[0].T, 2) + ' m.';
+    else txt = 'Nella colonna Δ il valore Δ′ = ' + f(L.Din, 0) + ' t si trova esattamente sulla riga T = ' + f(L.rows[0].T, 2) + ' m: questo è T<sub>m</sub>′.';
+    return { html: '<div class="scroll"><table class="mini">' + head + body + '</table></div>', txt: txt };
+  }
+  function stepTabellaD(L, perche, cols) {
+    var t = tableByD(L, cols);
+    return { title: 'Entro in tabella con Δ′ e trovo T<sub>m</sub>′', body: t.html, why: t.txt + ' ' + perche };
+  }
+  function sgn(s) { return s < 0 ? '−' : '+'; }
+  function terms(list, fn) {           // somma con segni: elementi con .s (+1/−1)
+    return list.map(function (t, i) { var r = fn(t); return (i === 0 ? (t.s < 0 ? '− ' : '') : ' ' + sgn(t.s) + ' ') + r; }).join('');
+  }
+  function trimTxt(TA, TF) {
+    var t = TA - TF;
+    return Math.abs(t) < 0.0005 ? 'in chiglia piana' : (t > 0 ? 'appoppata di ' + f(t * 100, 1) + ' cm' : 'appruata di ' + f(-t * 100, 1) + ' cm');
+  }
+  function pn(s) { s = String(s).trim().replace(/\s/g, '').replace(',', '.'); return s === '' ? NaN : Number(s); }
+
+  /* ---------- Problema 3: imbarco / sbarco (formule degli appunti) ---------- */
+  var fI = document.getElementById('f-imb'), outI = document.getElementById('r-imb'), wList = document.getElementById('w-list'), wSeq = 0;
+  var EXW = [{ op: 'imbarco', p: '549', x: '112,5', z: '3,8' }, { op: 'imbarco', p: '572', x: '82,6', z: '3,4' }, { op: 'imbarco', p: '565', x: '28,4', z: '4,2' }];
+  function sbandOn() { return document.getElementById('i-sband').checked; }
+  function addWeight(w) {
+    wSeq++; var id = wSeq;
+    w = w || { op: 'imbarco', p: '', x: '', z: '' };
+    var op = /^\s*[-−]/.test(w.p || '') ? 'sbarco' : (w.op || 'imbarco');
+    var div = document.createElement('div');
+    div.className = 'wrow'; div.setAttribute('data-id', id);
+    div.innerHTML = '<div class="whead"><span class="wname">Peso</span>' +
+      '<div class="seg sm" role="radiogroup" aria-label="Imbarco o sbarco"><label><input type="radio" name="op-' + id + '" value="imbarco"' + (op !== 'sbarco' ? ' checked' : '') + '>Imbarco</label><label><input type="radio" name="op-' + id + '" value="sbarco"' + (op === 'sbarco' ? ' checked' : '') + '>Sbarco</label></div>' +
+      '<button type="button" class="wdel" aria-label="Togli questo peso">×</button></div>' +
+      '<div class="row3">' +
+      '<div class="field"><label for="wp-' + id + '">p <small>t</small></label><div class="inbox"><input id="wp-' + id + '" inputmode="decimal" value="' + (w.p || '') + '"></div></div>' +
+      '<div class="field"><label for="wx-' + id + '" class="wx-lab">x <small>da AP, m</small></label><div class="inbox"><input id="wx-' + id + '" inputmode="decimal" value="' + (w.x || '') + '"></div></div>' +
+      '<div class="field"><label for="wz-' + id + '">z <small>m</small></label><div class="inbox"><input id="wz-' + id + '" inputmode="decimal" value="' + (w.z || '') + '"></div></div>' +
+      '</div>' +
+      '<div class="wy"' + (sbandOn() ? '' : ' hidden') + '>' +
+      '<div class="field"><label for="wy-' + id + '">y <small>dall\'asse, m</small></label><div class="inbox"><input id="wy-' + id + '" inputmode="decimal" value="' + (w.y || '') + '"></div></div>' +
+      '<div class="seg sm" role="radiogroup" aria-label="Lato del peso"><label><input type="radio" name="sd-' + id + '" value="dritta"' + (w.side !== 'sinistra' ? ' checked' : '') + '>a dritta</label><label><input type="radio" name="sd-' + id + '" value="sinistra"' + (w.side === 'sinistra' ? ' checked' : '') + '>a sinistra</label></div>' +
+      '</div>';
+    wList.appendChild(div);
+    renumber();
+  }
+  function renumber() {
+    var rows = wList.querySelectorAll('.wrow');
+    rows.forEach(function (r, i) {
+      r.querySelector('.wname').textContent = 'Peso ' + (i + 1);
+      var b = r.querySelector('.wdel'); b.disabled = rows.length === 1; b.setAttribute('aria-label', 'Togli il peso ' + (i + 1));
+    });
+  }
+  EXW.forEach(function (w) { addWeight(w); });
+  wList.addEventListener('click', function (e) {
+    var b = e.target.closest('.wdel'); if (!b || b.disabled) return;
+    b.closest('.wrow').remove(); renumber(); if (exCur.imb) exCur.imb.mod = true; runImb();
+  });
+  document.getElementById('i-add').addEventListener('click', function () {
+    addWeight(); segs(); wList.lastElementChild.querySelector('input[id^="wp-"]').focus(); if (exCur.imb) exCur.imb.mod = true; runImb();
+  });
+
+  function updImbUI() {
+    var stab = radio('stab', fI), xref = radio('xref', fI), sb = sbandOn();
+    document.getElementById('i-sv-lab').innerHTML = (stab === 'GM' ? 'GM' : 'KG') + ' <small>iniziale</small>';
+    wList.querySelectorAll('.wx-lab').forEach(function (l) { l.innerHTML = 'x <small>' + (xref === 'MP' ? 'da MP, m' : 'da AP, m') + '</small>'; });
+    wList.querySelectorAll('.wy').forEach(function (d) { d.hidden = !sb; });
+    document.getElementById('i-xhint').hidden = xref !== 'MP';
+  }
+
+  function runImb() {
+    updImbUI();
+    var stab = radio('stab', fI), km = radio('km', fI), xref = radio('xref', fI), sb = sbandOn();
+    var mode = document.getElementById('i-interp').checked ? 'interp' : 'near';
+    var v = {}, bad = false;
+    ['i-TA', 'i-TF', 'i-sv'].forEach(function (id) { var x = num(id); v[id] = x; var b = !isFinite(x) || x <= 0; mark(id, b); if (b) bad = true; });
+    var pesi = [], flipped = false;
+    wList.querySelectorAll('.wrow').forEach(function (r) {
+      var id = r.getAttribute('data-id');
+      var p = num('wp-' + id), x = num('wx-' + id), z = num('wz-' + id), y = 0;
+      if (sb) { y = document.getElementById('wy-' + id).value.trim() === '' ? 0 : num('wy-' + id); }
+      var bp = !isFinite(p) || p === 0, bx = !isFinite(x) || (xref === 'AP' && x < 0), bz = !isFinite(z) || z < 0, by = sb && (!isFinite(y) || y < 0);
+      mark('wp-' + id, bp); mark('wx-' + id, bx); mark('wz-' + id, bz); if (sb) mark('wy-' + id, by);
+      if (bp || bx || bz || by) bad = true;
+      var op = radio('op-' + id, r);
+      if (p < 0 && op !== 'sbarco') { r.querySelector('input[value="sbarco"]').checked = true; op = 'sbarco'; flipped = true; }
+      pesi.push({ op: op, p: Math.abs(p), x: x, z: z, y: y, side: radio('sd-' + id, r) });
+    });
+    if (flipped) segs();
+    var Tm0 = (v['i-TA'] + v['i-TF']) / 2;
+    var outT = isFinite(Tm0) && !!lookup(TAB, Tm0, mode).error;
+    document.getElementById('i-man').hidden = !outT;
+    if (outT) document.getElementById('i-man-hint').innerHTML = 'T<sub>m</sub> = ' + f(Tm0, 3) + ' m è fuori dalla tabella fotografata (3,90 – 10,00 m). Leggi Δ, TPC e KM a ' + f(Tm0, 2) + ' m sul libro e scrivili qui. KM serve solo se il testo dà GM o se scegli «pesi lievi».';
+    if (bad) { outI.innerHTML = exBanner('imb') + errBox('Completa i campi evidenziati con un numero. Per ogni peso servono p (t), x (m) e z sopra la chiglia (m)' + (sb ? ', e y dall\'asse (m)' : '') + '.'); return; }
+    var man = outT ? { D: num('i-mD'), TPC: num('i-mTPC'), KM: num('i-mKM') } : null;
+    var inp = { TA: v['i-TA'], TF: v['i-TF'], stab: stab, stabVal: v['i-sv'], km: km, xref: xref, pesi: pesi, man: man };
+    var R = calcImbarco(inp, TAB, mode);
+    if (R.error === 'fuori') { outI.innerHTML = exBanner('imb') + errBox('T<sub>m</sub> = ' + f(R.Tm, 3) + ' m è fuori dalla tabella fotografata (3,90 – 10,00 m). Scrivi Δ e TPC letti a ' + f(R.Tm, 2) + ' m nei campi «Valori di tabella a mano» del modulo.'); return; }
+    if (R.error === 'km0') { outI.innerHTML = exBanner('imb') + errBox('Serve anche KM a T<sub>m</sub> = ' + f(R.Tm, 2) + ' m: il testo dà GM, oppure hai scelto «pesi lievi». Scrivilo nei «Valori di tabella a mano».'); return; }
+    if (R.error === 'peso') { outI.innerHTML = exBanner('imb') + errBox('I pesi sbarcati superano il dislocamento della nave (' + f(R.D0, 0) + ' t).'); return; }
+    if (R.error === 'fuori1') { outI.innerHTML = exBanner('imb') + errBox('Dopo le operazioni Δ′ = ' + f(R.D1, 0) + ' t, fuori dalla tabella (7390 – 21498 t). Controlla i pesi.'); return; }
+    usedBy.imb = R.L0.rows.concat(R.L1.rows).map(function (r) { return r.T; });
+    var i0 = R.L0.rows.length === 2 || R.L0.manual, i1 = R.L1.rows.length === 2;
+    var dD0 = R.L0.rows.length === 2 ? 1 : 0, dX = i1 ? 3 : 2;
+    var nIm = R.W.filter(function (w) { return w.s > 0; }).length, nSb = R.W.length - nIm;
+    var assetto = trimTxt(R.TA2, R.TF2);
+    var stabOK = R.GM1 > 0;
+    var showA = sb && Math.abs(R.Spy) > 1e-9;
+    var tit = (nIm ? nIm + (nIm === 1 ? ' peso imbarcato' : ' pesi imbarcati') : '') + (nIm && nSb ? ', ' : '') + (nSb ? nSb + (nSb === 1 ? ' peso sbarcato' : ' pesi sbarcati') : '');
+    var html = exBanner('imb') + '<section class="summary"><h2>Risultato · ' + tit + '</h2><div class="kpis">' +
+      kpi('GM′', f(R.GM1, 3) + ' m', stabOK ? 'KG′ = ' + f(R.KG1, 3) + ' m' : 'GM′ ≤ 0: nave instabile', true) +
+      (sb ? kpi('Sbandamento α', stabOK ? (showA ? dms(R.alpha) : '0°') : '—', stabOK ? (showA ? f(R.alpha, 2) + '° a ' + R.listSide : 'momenti trasversali bilanciati') : 'GM′ ≤ 0', true) : '') +
+      kpi('T′<sub>A</sub> poppa', f(R.TA2, 3) + ' m', 'prima ' + fa(inp.TA, 2) + ' m') +
+      kpi('T′<sub>F</sub> prora', f(R.TF2, 3) + ' m', 'prima ' + fa(inp.TF, 2) + ' m') +
+      kpi('Δ′', f(R.D1, 0) + ' t', 'nave ' + assetto) + '</div>';
+    var P = svgProfilo(inp.TA, inp.TF, R.TA2, R.TF2, R.XCF1, null, R.W);
+    html += '<div class="figs' + (showA && stabOK ? ' two' : '') + '"><figure class="fig">' + P.svg + '<figcaption>I pesi sono disegnati alla loro x e alla loro quota z: pieno = imbarcato, tratteggiato = sbarcato. Linea tratteggiata prima, piena dopo; F è il centro di galleggiamento finale' + (P.k > 1.05 ? '; variazioni di pescaggio esagerate ×' + Math.round(P.k) : '') + '.</figcaption></figure>' +
+      (showA && stabOK ? '<figure class="fig">' + svgSezione(R.alpha, R.listSide) + '<figcaption>Sezione vista da poppa, inclinata dell\'angolo vero α = ' + dms(R.alpha) + ' a ' + R.listSide + '.</figcaption></figure>' : '') + '</div></section>';
+
+    var st = [];
+    st.push({
+      title: 'Pescaggio medio iniziale',
+      body: eqs(['<i>T</i><sub>m</sub> = ' + fr('<i>T</i><sub>A</sub> + <i>T</i><sub>F</sub>', '2') + ' = ' + fr(na(inp.TA, 2) + ' + ' + na(inp.TF, 2), '2') + ' = <span class="res n">' + f(R.Tm, 3) + ' m</span>']),
+      why: 'Si parte dalla nave prima delle operazioni: con T<sub>m</sub> si entra in tabella.'
+    });
+    st.push(stepTabella(R.L0, ['D', 'TPC', 'KM'], '<b>Δ</b> è il dislocamento iniziale e <b>TPC</b> servirà per il TPC medio. <b>KM</b> serve ' + (stab === 'GM' ? 'per ricavare KG' : (km === 'lievi' ? 'per GM′ (pesi lievi)' : 'per il GM iniziale')) + '. MCTC e X<sub>CF</sub> per l\'assetto si leggono più avanti, al pescaggio finale.'));
+    if (stab === 'GM') st.push({
+      title: 'Quota del baricentro KG',
+      body: eqs(['KG = KM − GM = ' + n(R.KM0, i0 ? 3 : 2) + ' − ' + na(inp.stabVal, 2) + ' = <span class="res n">' + f(R.KG, 3) + ' m</span>']),
+      why: 'Per il teorema di Varignon serve KG. Siccome GM = KM − KG, si ricava KG = KM − GM.'
+    });
+    else if (isFinite(R.KM0)) st.push({
+      title: 'GM iniziale',
+      body: eqs(['GM = KM − KG = ' + n(R.KM0, i0 ? 3 : 2) + ' − ' + na(inp.stabVal, 2) + ' = <span class="res n">' + f(R.GM0, 3) + ' m</span>']),
+      why: 'KG è dato dal testo. GM iniziale serve solo per confrontarlo con GM′ alla fine.'
+    });
+    var tw = R.W.map(function (w, i) { w.i = i + 1; return w; });
+    st.push({
+      title: 'Somma dei pesi Σp',
+      body: eqs(['Σp = ' + terms(tw, function (w) { return 'p<sub>' + w.i + '</sub>'; }) + ' = ' + terms(tw, function (w) { return na(w.p, 0); }) + ' = <span class="res n">' + fs(R.Sp, 0) + ' t</span>']),
+      why: 'Σp = pesi imbarcati − pesi sbarcati. ' + (R.Sp > 0 ? 'Σp è positivo: la nave nel complesso diventa più pesante e affonda.' : (R.Sp < 0 ? 'Σp è negativo: la nave nel complesso si alleggerisce ed emerge.' : 'Σp è zero: il dislocamento non cambia.'))
+    });
+    st.push({
+      title: 'Nuovo dislocamento Δ′',
+      body: eqs(['Δ′ = Δ ± Σp = ' + n(R.D0, dD0) + ' ' + sgn(R.Sp) + ' ' + na(Math.abs(R.Sp), 0) + ' = <span class="res n">' + fa(R.D1, 0) + ' t</span>']),
+      why: 'Il dislocamento finale è quello iniziale più i pesi imbarcati e meno quelli sbarcati.'
+    });
+    st.push(stepTabellaD(R.L1, 'Sulla stessa riga si leggono <b>TPC′</b>, <b>MCTC′</b>, <b>X′<sub>CF</sub></b> e <b>KM′</b>: sono i dati della nave dopo le operazioni.'));
+    st.push({
+      title: 'Immersione parallela δT<sub>m</sub>',
+      body: eqs([
+        'TPC<sub>m</sub> = ' + fr('TPC + TPC′', '2') + ' = ' + fr(n(R.TPC0, i0 ? 3 : 2) + ' + ' + n(R.TPC1, i1 ? 3 : 2), '2') + ' = <span class="res n">' + f(R.TPCm, 3) + ' t/cm</span>',
+        'δ<i>T</i><sub>m</sub> = ' + fr('Σp', '100 · TPC<sub>m</sub>') + ' = ' + fr('<span class="n">' + fs(R.Sp, 0) + '</span>', '100 · ' + n(R.TPCm, 3)) + ' = <span class="res n">' + f(R.dTm, 4) + ' m</span>'
+      ]),
+      why: 'È come se tutti i pesi fossero ' + (R.Sp >= 0 ? 'imbarcati' : 'sbarcati') + ' sulla verticale di F: la nave ' + (R.Sp >= 0 ? 'affonda' : 'emerge') + ' della stessa quantità a poppa e a prora. Tra il pescaggio iniziale e quello finale il TPC cambia, per questo si usa la media TPC<sub>m</sub>. Il 100 trasforma i centimetri in metri.'
+    });
+    var momLines = [];
+    tw.forEach(function (w) {
+      var xs = 'x<sub>' + w.i + '</sub>';
+      if (xref === 'MP') momLines.push(xs + ' da AP = ' + fr('L<sub>pp</sub>', '2') + ' ' + (w.xin < 0 ? '−' : '+') + ' ' + na(Math.abs(w.xin), 1) + ' = ' + n(LPP / 2, 2) + ' ' + (w.xin < 0 ? '−' : '+') + ' ' + na(Math.abs(w.xin), 1) + ' = <span class="n">' + f(w.x, 2) + ' m</span>');
+      var xv = xref === 'MP' ? n(w.x, 2) : na(w.x, 1);
+      if (w.lato === 'proravia') momLines.push(xs + ' = x<sub>' + w.i + '</sub> da AP − X′<sub>CF</sub> = ' + xv + ' − ' + n(R.XCF1, dX) + ' = <span class="res n">' + f(w.dist, 2) + ' m</span>');
+      else if (w.lato === 'poppavia') momLines.push(xs + ' = X′<sub>CF</sub> − x<sub>' + w.i + '</sub> da AP = ' + n(R.XCF1, dX) + ' − ' + xv + ' = <span class="res n">' + f(w.dist, 2) + ' m</span>');
+      else momLines.push(xs + ' = 0 (il peso è sulla verticale di F)');
+      momLines.push('p<sub>' + w.i + '</sub> · ' + xs + ' = ' + na(w.p, 0) + ' · ' + n(w.dist, 2) + ' = <span class="res n">' + f(w.mom, 2) + ' t·m</span>' + (w.tipo !== 'nullo' ? '<span class="tag mom">' + w.tipo + '</span>' : ''));
+    });
+    st.push({
+      title: 'Bracci e momenti rispetto a F′',
+      body: eqs(momLines),
+      why: (xref === 'MP' ? 'La mezzanave (MP) è a L<sub>pp</sub>/2 = ' + f(LPP / 2, 2) + ' m dalla AP: prima si trasforma la posizione in distanza dalla AP. ' : '') +
+        'Le distanze x si misurano da F, il centro di galleggiamento finale (X′<sub>CF</sub> = ' + f(R.XCF1, 2) + ' m dalla Pp addietro). Un peso <b>imbarcato a proravia</b> di F dà un momento <b>appruante</b>, imbarcato a poppavia un momento <b>appoppante</b>. Per un peso <b>sbarcato</b> è il contrario: toglierlo a proravia alleggerisce la prora, quindi il momento è appoppante.'
+    });
+    var appo = tw.filter(function (w) { return w.tipo === 'appoppante'; }), appr = tw.filter(function (w) { return w.tipo === 'appruante'; });
+    function momSum(sym) {
+      var a = appo.map(function (w) { return sym ? 'p<sub>' + w.i + '</sub>x<sub>' + w.i + '</sub>' : n(w.mom, 2); }).join(' + ');
+      var b = appr.map(function (w) { return ' − ' + (sym ? 'p<sub>' + w.i + '</sub>x<sub>' + w.i + '</sub>' : n(w.mom, 2)); }).join('');
+      if (!a && !b) return '0';
+      return (a || '') + (a ? b : b.replace(/^ − /, '− '));
+    }
+    var segnoTxt = R.app ? 'Σpx è <b>positivo</b>: prevalgono i momenti appoppanti, quindi <b>+δT<sub>A</sub></b> e <b>−δT<sub>F</sub></b> (la poppa affonda, la prora emerge).' :
+      (R.apr ? 'Σpx è <b>negativo</b>: prevalgono i momenti appruanti, quindi <b>+δT<sub>F</sub></b> e <b>−δT<sub>A</sub></b> (la prora affonda, la poppa emerge).' : 'Σpx è zero: i momenti si bilanciano e l\'assetto non cambia.');
+    st.push({
+      title: 'Somma dei momenti Σpx',
+      body: eqs(['Σpx = mom. appoppanti − mom. appruanti = ' + momSum(true) + ' = ' + momSum(false) + ' = <span class="res n">' + f(R.Spx, 2) + ' t·m</span>']),
+      why: segnoTxt
+    });
+    var denTxt = '100 · ' + n(LPP, 2) + ' · ' + n(R.MCTC1, i1 ? 2 : 1);
+    st.push({
+      title: 'Variazioni di pescaggio δT<sub>A</sub> e δT<sub>F</sub>',
+      body: eqs([
+        'δ<i>T</i><sub>A</sub> = ' + fr('X′<sub>CF</sub> · Σpx', '100 · L<sub>pp</sub> · MCTC′') + ' = ' + fr(n(R.XCF1, dX) + ' · ' + n(R.A, 2), denTxt) + ' = <span class="res n">' + f(R.dTA, 4) + ' m</span>',
+        'δ<i>T</i><sub>F</sub> = ' + fr('(L<sub>pp</sub> − X′<sub>CF</sub>) · Σpx', '100 · L<sub>pp</sub> · MCTC′') + ' = ' + fr('(' + n(LPP, 2) + ' − ' + n(R.XCF1, dX) + ') · ' + n(R.A, 2), denTxt) + ' = <span class="res n">' + f(R.dTF, 4) + ' m</span>'
+      ]),
+      why: 'Il momento Σpx fa ruotare la nave attorno a F. La variazione di assetto si divide tra poppa e prora in proporzione alla loro distanza da F: X′<sub>CF</sub> = ' + f(R.XCF1, 2) + ' m per la poppa, L<sub>pp</sub> − X′<sub>CF</sub> = ' + f(LPP - R.XCF1, 2) + ' m per la prora. Si usano MCTC′ e X′<sub>CF</sub>, letti a T<sub>m</sub>′, e Σpx senza segno: il segno decide solo dove sommare e dove togliere.'
+    });
+    var sm = R.dTm >= 0 ? '+' : '−', sA = R.app ? '+' : '−', sF = R.app ? '−' : '+';
+    var noT = !R.app && !R.apr;
+    st.push({
+      title: 'Pescaggi finali',
+      body: eqs([
+        '<i>T</i>′<sub>A</sub> = <i>T</i><sub>A</sub> ' + sm + ' δ<i>T</i><sub>m</sub>' + (noT ? '' : ' ' + sA + ' δ<i>T</i><sub>A</sub>') + ' = ' + na(inp.TA, 2) + ' ' + sm + ' ' + n(Math.abs(R.dTm), 4) + (noT ? '' : ' ' + sA + ' ' + n(R.dTA, 4)) + ' = <span class="res n">' + f(R.TA2, 3) + ' m</span>',
+        '<i>T</i>′<sub>F</sub> = <i>T</i><sub>F</sub> ' + sm + ' δ<i>T</i><sub>m</sub>' + (noT ? '' : ' ' + sF + ' δ<i>T</i><sub>F</sub>') + ' = ' + na(inp.TF, 2) + ' ' + sm + ' ' + n(Math.abs(R.dTm), 4) + (noT ? '' : ' ' + sF + ' ' + n(R.dTF, 4)) + ' = <span class="res n">' + f(R.TF2, 3) + ' m</span>'
+      ]),
+      why: 'A ogni pescaggio si somma l\'immersione parallela δT<sub>m</sub> e poi la variazione di assetto con il segno trovato da Σpx. Alla fine la nave è ' + assetto + '.'
+    });
+    st.push({
+      title: 'Nuova quota del baricentro KG′ (Varignon)',
+      body: eqs([
+        'Σpz = ' + terms(tw, function (w) { return 'p<sub>' + w.i + '</sub>z<sub>' + w.i + '</sub>'; }) + ' = ' + terms(tw, function (w) { return na(w.p, 0) + ' · ' + na(w.z, 1); }) + ' = <span class="res n">' + f(R.Spz, 2) + ' t·m</span>',
+        'KG′ = ' + fr('Δ · KG ± Σpz', 'Δ′') + ' = ' + fr(n(R.D0, dD0) + ' · ' + n(R.KG, 3) + ' ' + sgn(R.Spz) + ' ' + n(Math.abs(R.Spz), 2), na(R.D1, 0)) + ' = <span class="res n">' + f(R.KG1, 4) + ' m</span>'
+      ]),
+      why: 'Teorema di Varignon: il momento del nuovo dislocamento rispetto alla chiglia è la somma dei momenti della nave e dei pesi, con il + per quelli imbarcati e il − per quelli sbarcati. Diviso per Δ′ dà la nuova quota di G. KG passa da ' + f(R.KG, 3) + ' a ' + f(R.KG1, 3) + ' m: G ' + (R.KG1 < R.KG - 5e-5 ? '<b>scende</b>.' : (R.KG1 > R.KG + 5e-5 ? '<b>sale</b>.' : 'resta alla stessa quota.'))
+    });
+    var kmTxt = km === 'lievi' ? 'KM' : 'KM′', kmVal = km === 'lievi' ? n(R.KM0, i0 ? 3 : 2) : n(R.KM1, i1 ? 3 : 2);
+    var check = km === 'lievi' || !isFinite(R.KM2) ? '' : '<p class="note">Controllo: entrando in tabella con T′<sub>m</sub> = (T′<sub>A</sub> + T′<sub>F</sub>) / 2 = ' + f(R.Tm2, 3) + ' m si legge KM = ' + f(R.KM2, 2) + ' m' + (Math.abs(R.KM2 - R.KM1) < 0.005 ? ', lo stesso valore.' : ', praticamente lo stesso.') + '</p>';
+    var alt = isFinite(R.GMalt) ? '<p class="note">Con ' + (km === 'lievi' ? 'KM′ (pesi rilevanti)' : 'il KM iniziale (pesi lievi)') + ' si avrebbe GM′ = ' + f(R.GMalt, 3) + ' m. Usa il valore che chiede il tuo professore.</p>' : '';
+    st.push({
+      title: 'Nuova stabilità GM′',
+      body: eqs(['GM′ = ' + kmTxt + ' − KG′ = ' + kmVal + ' − ' + n(R.KG1, 4) + ' = <span class="res n">' + f(R.GM1, 4) + ' m</span>']) + check + alt +
+        (stabOK ? '' : '<div class="alert">GM′ è zero o negativo: la nave è instabile.</div>'),
+      why: (km === 'lievi' ? 'Con <b>pesi di lieve entità</b> il pescaggio cambia poco e si tiene il KM iniziale.' : 'Con <b>pesi rilevanti</b> il pescaggio cambia molto, quindi anche il metacentro: si usa KM′ letto al nuovo pescaggio.') +
+        (isFinite(R.GM0) ? ' GM passa da ' + f(R.GM0, 3) + ' m a ' + f(R.GM1, 3) + ' m: la nave è ' + (R.GM1 > R.GM0 + 5e-5 ? '<b>più stabile</b> di prima.' : (R.GM1 < R.GM0 - 5e-5 ? '<b>meno stabile</b> di prima.' : 'stabile come prima.')) : '')
+    });
+    if (sb && stabOK) {
+      var pyl = tw.filter(function (w) { return w.y > 0; }).map(function (w) { return { s: w.s * w.side, w: w }; });
+      st.push({
+        title: 'Sbandamento α',
+        body: eqs(pyl.length ? [
+          'Σpy = ' + terms(pyl, function (t) { return 'p<sub>' + t.w.i + '</sub>y<sub>' + t.w.i + '</sub>'; }) + ' = ' + terms(pyl, function (t) { return na(t.w.p, 0) + ' · ' + na(t.w.y, 1); }) + ' = <span class="res n">' + fs(R.Spy, 2) + ' t·m</span>',
+          'tan α = ' + fr('Σpy', 'Δ′ · GM′') + ' = ' + fr(n(Math.abs(R.Spy), 2), na(R.D1, 0) + ' · ' + n(R.GM1, 4)) + ' = <span class="res n">' + f(R.tanA, 5) + '</span>',
+          'α = tan<sup>−1</sup>(' + n(R.tanA, 5) + ') = <span class="res n">' + f(R.alpha, 2) + '° = ' + dms(R.alpha) + '</span>'
+        ] : ['Σpy = 0 → α = 0°']),
+        why: 'È la formula degli appunti tan α = p·y / (Δ·GM′), con la nave dopo le operazioni: Δ′ e GM′. Nella somma i momenti verso dritta hanno il +, quelli verso sinistra il −. Un peso imbarcato fa sbandare dal suo lato, uno sbarcato dal lato opposto. ' + (showA ? 'Σpy è ' + (R.Spy > 0 ? 'positivo' : 'negativo') + ': la nave sbanda a <b>' + R.listSide + '</b>.' : 'I momenti si bilanciano: la nave resta dritta.')
+      });
+    }
+    var FI = [
+      '<i>T</i><sub>m</sub> = ' + fr('<i>T</i><sub>A</sub> + <i>T</i><sub>F</sub>', '2') + ' → tabella: Δ, TPC, KM',
+      'Σp = pesi imbarcati − pesi sbarcati',
+      'Δ′ = Δ ± Σp → tabella (colonna Δ): <i>T</i><sub>m</sub>′, TPC′, MCTC′, X′<sub>CF</sub>, KM′',
+      'TPC<sub>m</sub> = ' + fr('TPC + TPC′', '2') + '    δ<i>T</i><sub>m</sub> = ' + fr('Σp', '100 · TPC<sub>m</sub>'),
+      'Σpx = momenti appoppanti − momenti appruanti (bracci da X′<sub>CF</sub>)',
+      'δ<i>T</i><sub>A</sub> = ' + fr('X′<sub>CF</sub> · Σpx', '100 · L<sub>pp</sub> · MCTC′') + '    δ<i>T</i><sub>F</sub> = ' + fr('(L<sub>pp</sub> − X′<sub>CF</sub>) · Σpx', '100 · L<sub>pp</sub> · MCTC′'),
+      '<i>T</i>′<sub>A</sub> = <i>T</i><sub>A</sub> ± δ<i>T</i><sub>m</sub> ± δ<i>T</i><sub>A</sub>    <i>T</i>′<sub>F</sub> = <i>T</i><sub>F</sub> ± δ<i>T</i><sub>m</sub> ∓ δ<i>T</i><sub>F</sub>',
+      'KG′ = ' + fr('Δ · KG ± Σpz', 'Δ′') + ' (Varignon)    GM′ = KM′ − KG′'
+    ];
+    if (sb) FI.push('tan α = ' + fr('Σpy', 'Δ′ · GM′'));
+    html += renderSteps(st, FI);
+    outI.innerHTML = html;
+  }
+
+  /* ---------- Problema 4: assetto voluto (peso incognito) ---------- */
+  var fA = document.getElementById('f-ass'), outA = document.getElementById('r-ass');
+  function dg(L, k) { var i = L.rows.length === 2; return { TPC: i ? 3 : 2, MCTC: i ? 2 : 1, XCF: i ? 3 : 2, D: i ? 1 : 0 }[k]; }
+  function updAssUI() {
+    var m = radio('amode', fA);
+    document.getElementById('a-tt-wrap').hidden = m === 'even';
+    document.getElementById('a-x-wrap').hidden = m === 'evenT';
+    document.getElementById('a-tt-lab').innerHTML = m === 'TA' ? 'T′<sub>A</sub> voluta <small>poppa</small>' : (m === 'TF' ? 'T′<sub>F</sub> voluta <small>prora</small>' : 'T′ finale <small>chiglia piana</small>');
+  }
+  function assErr(R, inp) {
+    if (R.error === 'fuori') return 'T<sub>m</sub> = ' + f(R.Tm, 3) + ' m è fuori dalla tabella (3,90 – 10,00 m). Controlla T<sub>A</sub> e T<sub>F</sub>.';
+    if (R.error === 'fuoriT') return 'L\'immersione finale ' + f(R.Tt, 2) + ' m è fuori dalla tabella (3,90 – 10,00 m).';
+    if (R.error === 'fuori1') return 'Con il peso che servirebbe, Δ′ = ' + f(R.D1, 0) + ' t esce dalla tabella: con un peso in quella posizione la condizione voluta non si può ottenere.';
+    if (R.error === 'neutro') return inp.mode === 'even' ? 'La cassa è sulla verticale di F: un peso lì non cambia l\'assetto, quindi non porta la nave in chiglia piana.' : 'Un peso in x = ' + fa(inp.x, 1) + ' m non cambia ' + (inp.mode === 'TA' ? 'T<sub>A</sub>' : 'T<sub>F</sub>') + ': è il punto neutro. Da lì non si ottiene l\'immersione voluta.';
+    return 'La nave è già nella condizione voluta: non serve nessun peso.';
+  }
+  function finalStep(F, p, x, TA, TF, why) {
+    var P = Math.abs(p), d = Math.abs(x - F.XCF1), sm = F.dTm >= 0 ? '+' : '−', sA = F.app ? '+' : '−', sF = F.app ? '−' : '+', noT = !F.app && !F.apr;
+    var dX = dg(F.L1, 'XCF'), denTxt = '100 · ' + n(LPP, 2) + ' · ' + n(F.MCTC1, dg(F.L1, 'MCTC'));
+    return {
+      title: 'Pescaggi finali con le formule degli appunti',
+      body: eqs([
+        'δ<i>T</i><sub>m</sub> = ' + fr('<i>p</i>', '100 · TPC<sub>m</sub>') + ' = ' + fr('<span class="n">' + fx(p, 1) + '</span>', '100 · ' + n(F.TPCm, 3)) + ' = <span class="res n">' + fx(F.dTm, 4) + ' m</span>',
+        'Σpx = <i>p</i> · d = ' + n(P, 1) + ' · ' + n(d, 2) + ' = <span class="res n">' + f(F.A, 2) + ' t·m</span>' + (F.app || F.apr ? '<span class="tag mom">' + (F.app ? 'appoppante' : 'appruante') + '</span>' : ''),
+        'δ<i>T</i><sub>A</sub> = ' + fr('X′<sub>CF</sub> · Σpx', '100 · L<sub>pp</sub> · MCTC′') + ' = ' + fr(n(F.XCF1, dX) + ' · ' + n(F.A, 2), denTxt) + ' = <span class="res n">' + f(F.dTA, 4) + ' m</span>',
+        'δ<i>T</i><sub>F</sub> = ' + fr('(L<sub>pp</sub> − X′<sub>CF</sub>) · Σpx', '100 · L<sub>pp</sub> · MCTC′') + ' = ' + fr('(' + n(LPP, 2) + ' − ' + n(F.XCF1, dX) + ') · ' + n(F.A, 2), denTxt) + ' = <span class="res n">' + f(F.dTF, 4) + ' m</span>',
+        '<i>T</i>′<sub>A</sub> = <i>T</i><sub>A</sub> ' + sm + ' δ<i>T</i><sub>m</sub>' + (noT ? '' : ' ' + sA + ' δ<i>T</i><sub>A</sub>') + ' = ' + na(TA, 2) + ' ' + sm + ' ' + n(Math.abs(F.dTm), 4) + (noT ? '' : ' ' + sA + ' ' + n(F.dTA, 4)) + ' = <span class="res n">' + f(F.TA2, 3) + ' m</span>',
+        '<i>T</i>′<sub>F</sub> = <i>T</i><sub>F</sub> ' + sm + ' δ<i>T</i><sub>m</sub>' + (noT ? '' : ' ' + sF + ' δ<i>T</i><sub>F</sub>') + ' = ' + na(TF, 2) + ' ' + sm + ' ' + n(Math.abs(F.dTm), 4) + (noT ? '' : ' ' + sF + ' ' + n(F.dTF, 4)) + ' = <span class="res n">' + f(F.TF2, 3) + ' m</span>'
+      ]),
+      why: 'Sono le stesse formule della scheda Imbarco e sbarco, con un solo peso: d è la distanza del peso da F′ (X′<sub>CF</sub> = ' + f(F.XCF1, 2) + ' m). ' + why
+    };
+  }
+
+  function runAss() {
+    updAssUI();
+    var m = radio('amode', fA), mode = document.getElementById('a-interp').checked ? 'interp' : 'near';
+    var ids = ['a-TA', 'a-TF']; if (m !== 'even') ids.push('a-Tt'); if (m !== 'evenT') ids.push('a-x');
+    var v = {}, bad = false;
+    ids.forEach(function (id) { var x = num(id); v[id] = x; var b = !isFinite(x) || (id === 'a-x' ? x < 0 : x <= 0); mark(id, b); if (b) bad = true; });
+    if (bad) { outA.innerHTML = exBanner('ass') + errBox('Completa i campi evidenziati con un numero.'); return; }
+    var inp = { mode: m, TA: v['a-TA'], TF: v['a-TF'], Tt: v['a-Tt'], x: v['a-x'] };
+    var R = calcAssetto(inp, TAB, mode);
+    if (!R.error && Math.abs(R.p) < 0.05) R = { error: 'nullo' };
+    if (R.error) { outA.innerHTML = exBanner('ass') + errBox(assErr(R, inp)); return; }
+    usedBy.ass = R.L0.rows.concat(R.L1.rows).map(function (r) { return r.T; });
+    if (m === 'evenT') { renderEvenT(R, inp); return; }
+    var p = R.p, P = Math.abs(p), imb = p > 0, verb = imb ? 'imbarcare' : 'sbarcare', F = R.F;
+    var dT0 = dg(R.L0, 'TPC'), dM0 = dg(R.L0, 'MCTC'), dX0 = dg(R.L0, 'XCF'), dX1 = dg(R.L1, 'XCF'), dM1 = dg(R.L1, 'MCTC');
+    var html = exBanner('ass') + '<section class="summary"><h2>Risultato</h2><div class="kpis">' +
+      kpi('Peso da ' + verb, f(P, 1) + ' t', 'in x = ' + fa(inp.x, 1) + ' m dalla AP', true) +
+      kpi('T′<sub>A</sub> poppa', f(F.TA2, 3) + ' m', 'prima ' + fa(inp.TA, 2) + ' m') +
+      kpi('T′<sub>F</sub> prora', f(F.TF2, 3) + ' m', 'prima ' + fa(inp.TF, 2) + ' m') +
+      kpi('Δ′', f(F.D1, 0) + ' t', 'nave ' + trimTxt(F.TA2, F.TF2)) + '</div>';
+    var Pf = svgProfilo(inp.TA, inp.TF, F.TA2, F.TF2, F.XCF1, null, [{ x: inp.x, z: 2.5, op: imb ? 'imbarco' : 'sbarco' }]);
+    html += '<div class="figs"><figure class="fig">' + Pf.svg + '<figcaption>Il quadrato è il peso da ' + verb + ' (pieno = imbarco, tratteggiato = sbarco). Linea tratteggiata prima, piena dopo' + (Pf.k > 1.05 ? '; variazioni di pescaggio esagerate ×' + Math.round(Pf.k) : '') + '.</figcaption></figure></div></section>';
+
+    var st = [];
+    st.push({
+      title: 'Pescaggio medio iniziale',
+      body: eqs(['<i>T</i><sub>m</sub> = ' + fr('<i>T</i><sub>A</sub> + <i>T</i><sub>F</sub>', '2') + ' = ' + fr(na(inp.TA, 2) + ' + ' + na(inp.TF, 2), '2') + ' = <span class="res n">' + f(R.Tm, 3) + ' m</span>']),
+      why: 'Con T<sub>m</sub> si entra in tabella per i dati della nave prima dell\'operazione.'
+    });
+    st.push(stepTabella(R.L0, m === 'even' ? ['D', 'MCTC', 'XCF'] : ['D', 'TPC', 'MCTC', 'XCF'], 'Negli appunti TPC<sub>m</sub>, MCTC′ e X′<sub>CF</sub> si leggono dopo l\'imbarco, ma qui p non si conosce ancora. Allora prima si stima p con questi valori, poi si corregge.'));
+    var FA;
+    if (m === 'TA' || m === 'TF') {
+      var isA = m === 'TA', E = isA ? 'A' : 'F', endN = isA ? 'poppa' : 'prora';
+      var dx0 = inp.x - R.XCF0, fwd = dx0 > 0, d0 = Math.abs(dx0);
+      var sT = isA ? (fwd ? '−' : '+') : (fwd ? '+' : '−');
+      var arm = isA ? 'X<sub>CF</sub>' : '(L<sub>pp</sub> − X<sub>CF</sub>)';
+      var T0 = isA ? inp.TA : inp.TF;
+      st.push({
+        title: 'Imposto l\'equazione per T′<sub>' + E + '</sub>',
+        body: eqs([
+          'd = |x − X<sub>CF</sub>| = |' + na(inp.x, 1) + ' − ' + n(R.XCF0, dX0) + '| = <span class="res n">' + f(d0, 2) + ' m</span> ' + (fwd ? 'a proravia' : 'a poppavia') + ' di F',
+          '<i>T</i>′<sub>' + E + '</sub> = <i>T</i><sub>' + E + '</sub> + ' + fr('<i>p</i>', '100 · TPC') + ' ' + sT + ' ' + fr(arm + ' · <i>p</i> · d', '100 · L<sub>pp</sub> · MCTC'),
+          '<i>p</i> = ' + fr('<i>T</i>′<sub>' + E + '</sub> − <i>T</i><sub>' + E + '</sub>', fr('1', '100 · TPC') + ' ' + sT + ' ' + fr(arm + ' · d', '100 · L<sub>pp</sub> · MCTC'))
+        ]),
+        why: 'Sono le formule degli appunti con un solo peso p, di cui non si conosce il valore. Imbarcando p la nave affonda in parallelo di p/(100·TPC). Il peso è ' + (fwd ? 'a proravia' : 'a poppavia') + ' di F, quindi il suo momento è ' + (fwd ? 'appruante' : 'appoppante') + ' e la ' + endN + ' ' + (sT === '+' ? 'affonda ancora' : 'emerge') + ' di ' + arm + '·p·d / (100·L<sub>pp</sub>·MCTC). Tutti e due i termini contengono p: si raccoglie p e lo si ricava.'
+      });
+      var F1 = R.first;
+      var armV = isA ? n(R.XCF0, dX0) : '(' + n(LPP, 2) + ' − ' + n(R.XCF0, dX0) + ')';
+      st.push({
+        title: 'Prima stima di p con i dati a T<sub>m</sub>',
+        body: eqs([
+          fr('1', '100 · TPC') + ' = ' + fr('1', '100 · ' + n(R.TPC0, dT0)) + ' = <span class="n">' + f(F1.k1, 6) + '</span> m/t',
+          fr(arm + ' · d', '100 · L<sub>pp</sub> · MCTC') + ' = ' + fr(armV + ' · ' + n(d0, 2), '100 · ' + n(LPP, 2) + ' · ' + n(R.MCTC0, dM0)) + ' = <span class="n">' + f(Math.abs(F1.k2), 6) + '</span> m/t',
+          '<i>p</i><sub>1</sub> = ' + fr(na(inp.Tt, 2) + ' − ' + na(T0, 2), n(F1.k1, 6) + ' ' + sT + ' ' + n(Math.abs(F1.k2), 6)) + ' = ' + fr('<span class="n">' + fx(F1.num, 2) + '</span>', '<span class="n">' + fx(F1.k, 6) + '</span>') + ' = <span class="res n">' + fx(F1.p, 1) + ' t</span>'
+        ]),
+        why: 'Il primo numero è di quanto affonda tutta la nave per ogni tonnellata; il secondo è di quanto la ' + endN + ' ' + (sT === '+' ? 'affonda in più' : 'emerge') + ' per ogni tonnellata a causa dell\'assetto. ' + (F1.p > 0 ? 'p viene <b>positivo</b>: il peso va <b>imbarcato</b>.' : 'p viene <b>negativo</b>: il peso va <b>sbarcato</b>.')
+      });
+      var Lt = R.last, dx1 = inp.x - R.XCF1, fwd1 = dx1 > 0, sT1 = isA ? (fwd1 ? '−' : '+') : (fwd1 ? '+' : '−');
+      var armV1 = isA ? n(R.XCF1, dX1) : '(' + n(LPP, 2) + ' − ' + n(R.XCF1, dX1) + ')';
+      var tb = tableByD(R.L1, ['D', 'TPC', 'MCTC', 'XCF']);
+      st.push({
+        title: 'Correggo p con i dati dopo l\'operazione',
+        body: eqs(['Δ′ = Δ ' + sgn(p) + ' |<i>p</i>| = ' + n(R.D0, dg(R.L0, 'D')) + ' ' + sgn(p) + ' ' + n(P, 1) + ' = <span class="res n">' + f(F.D1, 1) + ' t</span>']) + tb.html +
+          eqs([
+            'TPC<sub>m</sub> = ' + fr('TPC + TPC′', '2') + ' = ' + fr(n(R.TPC0, dT0) + ' + ' + n(R.TPC1, 3), '2') + ' = <span class="n">' + f(R.TPCm, 3) + '</span>',
+            fr('1', '100 · TPC<sub>m</sub>') + ' = ' + fr('1', '100 · ' + n(R.TPCm, 3)) + ' = <span class="n">' + f(Lt.k1, 6) + '</span> m/t',
+            fr(arm.replace('X<sub>CF</sub>', 'X′<sub>CF</sub>') + ' · d', '100 · L<sub>pp</sub> · MCTC′') + ' = ' + fr(armV1 + ' · ' + n(Math.abs(dx1), 2), '100 · ' + n(LPP, 2) + ' · ' + n(R.MCTC1, dM1)) + ' = <span class="n">' + f(Math.abs(Lt.k2), 6) + '</span> m/t',
+            '<i>p</i> = ' + fr(na(inp.Tt, 2) + ' − ' + na(T0, 2), n(Lt.k1, 6) + ' ' + sT1 + ' ' + n(Math.abs(Lt.k2), 6)) + ' = <span class="res n">' + fx(p, 1) + ' t</span>'
+          ]),
+        why: 'Come negli appunti, TPC<sub>m</sub>, MCTC′ e X′<sub>CF</sub> vanno presi dopo l\'operazione: si entra in tabella con Δ′ = Δ + p<sub>1</sub>, si rifà il calcolo e si ripete finché p non cambia più (qui ' + R.iter + (R.iter === 1 ? ' volta' : ' volte') + '). Sopra ci sono i valori dell\'ultimo giro. p passa da ' + fx(F1.p, 1) + ' a ' + fx(p, 1) + ' t' + (Math.abs(p - F1.p) < 1 ? ': la differenza è minima, su carta basta la prima stima.' : '.') + ' ' + tb.txt
+      });
+      st.push(finalStep(F, p, inp.x, inp.TA, inp.TF, 'Risultato: T′<sub>' + E + '</sub> = ' + f(isA ? F.TA2 : F.TF2, 3) + ' m, proprio l\'immersione voluta. La nave alla fine è ' + trimTxt(F.TA2, F.TF2) + '.'));
+      FA = [
+        '<i>T</i><sub>m</sub> = ' + fr('<i>T</i><sub>A</sub> + <i>T</i><sub>F</sub>', '2') + ' → tabella: Δ, TPC, MCTC, X<sub>CF</sub>',
+        '<i>T</i>′<sub>' + E + '</sub> = <i>T</i><sub>' + E + '</sub> + ' + fr('<i>p</i>', '100 · TPC') + ' ± ' + fr(arm + ' · <i>p</i> · d', '100 · L<sub>pp</sub> · MCTC'),
+        '<i>p</i> = ' + fr('<i>T</i>′<sub>' + E + '</sub> − <i>T</i><sub>' + E + '</sub>', fr('1', '100 · TPC') + ' ± ' + fr(arm + ' · d', '100 · L<sub>pp</sub> · MCTC')),
+        'Δ′ = Δ + <i>p</i> → tabella: TPC′, MCTC′, X′<sub>CF</sub>    TPC<sub>m</sub> = ' + fr('TPC + TPC′', '2') + ' → <i>p</i> corretto',
+        'δ<i>T</i><sub>m</sub>, Σpx, δ<i>T</i><sub>A</sub>, δ<i>T</i><sub>F</sub>, <i>T</i>′<sub>A</sub>, <i>T</i>′<sub>F</sub> come in Imbarco e sbarco'
+      ];
+    } else {
+      var t0 = R.t0, app0 = t0 > 0, need = app0 ? 'appruante' : 'appoppante';
+      var Sn0 = Math.abs(R.first.Snec), dxe = inp.x - R.XCF0, fwde = dxe > 0, de = Math.abs(dxe), imb1 = R.first.p > 0;
+      st.push({
+        title: 'Momento che serve per la chiglia piana',
+        body: eqs([
+          't = <i>T</i><sub>A</sub> − <i>T</i><sub>F</sub> = ' + na(inp.TA, 2) + ' − ' + na(inp.TF, 2) + ' = <span class="res n">' + fx(t0, 2) + ' m</span>',
+          'δ<i>T</i><sub>A</sub> + δ<i>T</i><sub>F</sub> = ' + fr('X<sub>CF</sub> · Σpx + (L<sub>pp</sub> − X<sub>CF</sub>) · Σpx', '100 · L<sub>pp</sub> · MCTC') + ' = ' + fr('Σpx', '100 · MCTC'),
+          'Σpx = 100 · MCTC · |t| = 100 · ' + n(R.MCTC0, dM0) + ' · ' + n(Math.abs(t0), 2) + ' = <span class="res n">' + f(Sn0, 2) + ' t·m</span><span class="tag mom">' + need + '</span>'
+        ]),
+        why: 'La nave è ' + (app0 ? 'appoppata' : 'appruata') + ' di ' + f(Math.abs(t0) * 100, 0) + ' cm. In chiglia piana T′<sub>A</sub> = T′<sub>F</sub>, quindi l\'assetto deve cambiare proprio di ' + f(Math.abs(t0) * 100, 0) + ' cm. Sommando le formule degli appunti per δT<sub>A</sub> e δT<sub>F</sub>, X<sub>CF</sub> e L<sub>pp</sub> si semplificano: la variazione totale di assetto è Σpx / (100·MCTC). Serve un momento <b>' + need + '</b>.'
+      });
+      st.push({
+        title: 'Prima stima di p con i dati a T<sub>m</sub>',
+        body: eqs([
+          'd = |x − X<sub>CF</sub>| = |' + na(inp.x, 1) + ' − ' + n(R.XCF0, dX0) + '| = <span class="res n">' + f(de, 2) + ' m</span> ' + (fwde ? 'a proravia' : 'a poppavia') + ' di F',
+          '|<i>p</i><sub>1</sub>| = ' + fr('Σpx', 'd') + ' = ' + fr(n(Sn0, 2), n(de, 2)) + ' = <span class="res n">' + f(Math.abs(R.first.p), 1) + ' t</span>'
+        ]),
+        why: 'La cassa è ' + (fwde ? 'a proravia' : 'a poppavia') + ' di F. ' + (imb1 ? 'Imbarcando' : 'Sbarcando') + ' lì si ottiene un momento ' + need + ', quindi il peso va <b>' + (imb1 ? 'imbarcato' : 'sbarcato') + '</b>. Regola: imbarcare a proravia o sbarcare a poppavia appruano; imbarcare a poppavia o sbarcare a proravia appoppano.'
+      });
+      var Le = R.last, tbe = tableByD(R.L1, ['D', 'MCTC', 'XCF']);
+      st.push({
+        title: 'Correggo p con i dati dopo l\'operazione',
+        body: eqs(['Δ′ = Δ ' + sgn(p) + ' |<i>p</i>| = ' + n(R.D0, dg(R.L0, 'D')) + ' ' + sgn(p) + ' ' + n(P, 1) + ' = <span class="res n">' + f(F.D1, 1) + ' t</span>']) + tbe.html +
+          eqs([
+            'Σpx = 100 · MCTC′ · |t| = 100 · ' + n(R.MCTC1, dM1) + ' · ' + n(Math.abs(t0), 2) + ' = <span class="n">' + f(Math.abs(Le.Snec), 2) + ' t·m</span>',
+            'd = |x − X′<sub>CF</sub>| = |' + na(inp.x, 1) + ' − ' + n(R.XCF1, dX1) + '| = <span class="n">' + f(Math.abs(Le.k), 2) + ' m</span>',
+            '|<i>p</i>| = ' + fr('Σpx', 'd') + ' = ' + fr(n(Math.abs(Le.Snec), 2), n(Math.abs(Le.k), 2)) + ' = <span class="res n">' + f(P, 1) + ' t</span>'
+          ]),
+        why: 'Come negli appunti, MCTC′ e X′<sub>CF</sub> vanno presi dopo l\'operazione: si entra in tabella con Δ′ = Δ ± p<sub>1</sub>, si rifà il calcolo e si ripete finché p non cambia più (qui ' + R.iter + (R.iter === 1 ? ' volta' : ' volte') + '). p passa da ' + f(Math.abs(R.first.p), 1) + ' a ' + f(P, 1) + ' t' + (Math.abs(P - Math.abs(R.first.p)) < 1 ? ': la differenza è minima, su carta basta la prima stima.' : '.') + ' ' + tbe.txt
+      });
+      st.push(finalStep(F, p, inp.x, inp.TA, inp.TF, 'Risultato: T′<sub>A</sub> = T′<sub>F</sub> = ' + f(F.TA2, 3) + ' m, la nave è in chiglia piana.'));
+      FA = [
+        '<i>T</i><sub>m</sub> = ' + fr('<i>T</i><sub>A</sub> + <i>T</i><sub>F</sub>', '2') + ' → tabella: Δ, MCTC, X<sub>CF</sub>',
+        't = <i>T</i><sub>A</sub> − <i>T</i><sub>F</sub>    δ<i>T</i><sub>A</sub> + δ<i>T</i><sub>F</sub> = ' + fr('Σpx', '100 · MCTC'),
+        'Σpx = 100 · MCTC · |t|    |<i>p</i>| = ' + fr('Σpx', 'd') + ' con d = |x − X<sub>CF</sub>|',
+        'Δ′ = Δ ± <i>p</i> → tabella: MCTC′, X′<sub>CF</sub> → <i>p</i> corretto',
+        'δ<i>T</i><sub>m</sub>, Σpx, δ<i>T</i><sub>A</sub>, δ<i>T</i><sub>F</sub>, <i>T</i>′<sub>A</sub>, <i>T</i>′<sub>F</sub> come in Imbarco e sbarco'
+      ];
+    }
+    html += renderSteps(st, FA);
+    outA.innerHTML = html;
+  }
+
+  function renderEvenT(R, inp) {
+    var F = R.F, p = R.p, P = Math.abs(p), fwd = R.x > R.XCF1, side = Math.abs(R.Snec) < 1e-9 ? 'sulla verticale di F' : (fwd ? 'a proravia di F' : 'a poppavia di F');
+    var dT0 = dg(R.L0, 'TPC'), dX1 = dg(R.L1, 'XCF'), dM1 = dg(R.L1, 'MCTC'), dT1 = dg(R.L1, 'TPC');
+    var t0 = R.t0, need = t0 > 0 ? 'appruante' : 'appoppante';
+    var html = exBanner('ass') + '<section class="summary"><h2>Risultato</h2><div class="kpis">' +
+      kpi('Peso da ' + (p > 0 ? 'imbarcare' : 'sbarcare'), f(P, 1) + ' t', 'in chiglia piana a ' + fa(inp.Tt, 2) + ' m', true) +
+      kpi('Posizione', f(R.x, 2) + ' m', 'dalla AP · ' + f(R.d, 2) + ' m ' + side, true) +
+      kpi('T′<sub>A</sub> poppa', f(F.TA2, 3) + ' m', 'prima ' + fa(inp.TA, 2) + ' m') +
+      kpi('T′<sub>F</sub> prora', f(F.TF2, 3) + ' m', 'prima ' + fa(inp.TF, 2) + ' m') + '</div>';
+    var Pf = svgProfilo(inp.TA, inp.TF, F.TA2, F.TF2, F.XCF1, null, [{ x: R.x, z: 2.5, op: p > 0 ? 'imbarco' : 'sbarco' }]);
+    html += '<div class="figs"><figure class="fig">' + Pf.svg + '<figcaption>Il quadrato è il peso nella posizione trovata. Linea tratteggiata prima, piena dopo' + (Pf.k > 1.05 ? '; variazioni di pescaggio esagerate ×' + Math.round(Pf.k) : '') + '.</figcaption></figure></div></section>';
+    if (p < 0) html += '<div class="alert">L\'immersione finale è minore di quella che la nave ha già al centro di galleggiamento: con un imbarco non si può ottenere. Servirebbe sbarcare ' + f(P, 1) + ' t.</div>';
+    var st = [];
+    st.push({
+      title: 'Pescaggio medio iniziale',
+      body: eqs(['<i>T</i><sub>m</sub> = ' + fr('<i>T</i><sub>A</sub> + <i>T</i><sub>F</sub>', '2') + ' = ' + fr(na(inp.TA, 2) + ' + ' + na(inp.TF, 2), '2') + ' = <span class="res n">' + f(R.Tm, 3) + ' m</span>']),
+      why: 'Con T<sub>m</sub> si leggono i dati della nave prima dell\'imbarco.'
+    });
+    st.push(stepTabella(R.L0, ['D', 'TPC'], 'Servono Δ e TPC iniziali (TPC entra nel TPC medio).'));
+    st.push(stepTabella(R.L1, ['D', 'TPC', 'MCTC', 'XCF'], 'In chiglia piana T′<sub>A</sub> = T′<sub>F</sub> = T′, quindi il pescaggio medio finale è proprio T′ e i dati dopo l\'imbarco (TPC′, MCTC′, X′<sub>CF</sub>) si leggono direttamente qui, senza conoscere p.', 'T′', 'Entro in tabella con l\'immersione finale T′'));
+    st.push({
+      title: 'Momento che serve per la chiglia piana',
+      body: eqs([
+        't = <i>T</i><sub>A</sub> − <i>T</i><sub>F</sub> = ' + na(inp.TA, 2) + ' − ' + na(inp.TF, 2) + ' = <span class="res n">' + fx(t0, 2) + ' m</span>',
+        'Σpx = 100 · MCTC′ · |t| = 100 · ' + n(R.MCTC1, dM1) + ' · ' + n(Math.abs(t0), 2) + ' = <span class="res n">' + f(Math.abs(R.Snec), 2) + ' t·m</span><span class="tag mom">' + need + '</span>'
+      ]),
+      why: 'In chiglia piana l\'assetto deve cambiare di |t|. Sommando δT<sub>A</sub> e δT<sub>F</sub> degli appunti, X′<sub>CF</sub> e L<sub>pp</sub> si semplificano: la variazione di assetto è Σpx / (100·MCTC′). La nave è ' + (t0 > 0 ? 'appoppata' : 'appruata') + ', quindi serve un momento <b>' + need + '</b>.'
+    });
+    var den = '100 · ' + n(LPP, 2) + ' · ' + n(R.MCTC1, dM1), up = R.Snec > 0;
+    st.push({
+      title: 'Effetto del solo assetto sui pescaggi',
+      body: eqs([
+        'δ<i>T</i><sub>A</sub> = ' + fr('X′<sub>CF</sub> · Σpx', '100 · L<sub>pp</sub> · MCTC′') + ' = ' + fr(n(R.XCF1, dX1) + ' · ' + n(Math.abs(R.Snec), 2), den) + ' = <span class="n">' + f(R.dTAt, 4) + ' m</span>',
+        'δ<i>T</i><sub>F</sub> = ' + fr('(L<sub>pp</sub> − X′<sub>CF</sub>) · Σpx', '100 · L<sub>pp</sub> · MCTC′') + ' = ' + fr('(' + n(LPP, 2) + ' − ' + n(R.XCF1, dX1) + ') · ' + n(Math.abs(R.Snec), 2), den) + ' = <span class="n">' + f(R.dTFt, 4) + ' m</span>',
+        '<i>T</i><sub>A</sub> ' + (up ? '+' : '−') + ' δ<i>T</i><sub>A</sub> = ' + na(inp.TA, 2) + ' ' + (up ? '+' : '−') + ' ' + n(R.dTAt, 4) + ' = <span class="res n">' + f(R.TAt, 4) + ' m</span>',
+        '<i>T</i><sub>F</sub> ' + (up ? '−' : '+') + ' δ<i>T</i><sub>F</sub> = ' + na(inp.TF, 2) + ' ' + (up ? '−' : '+') + ' ' + n(R.dTFt, 4) + ' = <span class="res n">' + f(R.TFt, 4) + ' m</span>'
+      ]),
+      why: 'Il momento ' + need + ' fa ruotare la nave attorno a F: la ' + (up ? 'poppa affonda e la prora emerge' : 'prora affonda e la poppa emerge') + '. Dopo la sola rotazione i due pescaggi sono già uguali (' + f(R.TAt, 3) + ' m): la nave è in chiglia piana, ma non ancora all\'immersione voluta.'
+    });
+    st.push({
+      title: 'Peso da imbarcare',
+      body: eqs([
+        'δ<i>T</i><sub>m</sub> = T′ − ' + n(R.TAt, 4) + ' = ' + na(inp.Tt, 2) + ' − ' + n(R.TAt, 4) + ' = <span class="res n">' + fx(R.dTm, 4) + ' m</span>',
+        'TPC<sub>m</sub> = ' + fr('TPC + TPC′', '2') + ' = ' + fr(n(R.TPC0, dT0) + ' + ' + n(R.TPC1, dT1), '2') + ' = <span class="n">' + f(R.TPCm, 3) + '</span>',
+        '<i>p</i> = 100 · TPC<sub>m</sub> · δ<i>T</i><sub>m</sub> = 100 · ' + n(R.TPCm, 3) + ' · ' + n(R.dTm, 4) + ' = <span class="res n">' + fx(p, 1) + ' t</span>'
+      ]) + '<p class="note">Controllo con la tabella: Δ a T′ − Δ iniziale = ' + f(R.D1t, 0) + ' − ' + f(R.D0, dg(R.L0, 'D')) + ' = ' + f(R.D1t - R.D0, 1) + ' t, quasi lo stesso valore.</p>',
+      why: 'Il resto dell\'immersione lo deve dare l\'immersione parallela: dalla formula degli appunti δT<sub>m</sub> = p / (100·TPC<sub>m</sub>) si ricava p = 100·TPC<sub>m</sub>·δT<sub>m</sub>.'
+    });
+    st.push({
+      title: 'Dove imbarcarlo',
+      body: eqs([
+        'd = ' + fr('Σpx', '<i>p</i>') + ' = ' + fr(n(Math.abs(R.Snec), 2), n(P, 1)) + ' = <span class="res n">' + f(R.d, 2) + ' m</span> ' + side,
+        'x = X′<sub>CF</sub> ' + (fwd ? '+' : '−') + ' d = ' + n(R.XCF1, dX1) + ' ' + (fwd ? '+' : '−') + ' ' + n(R.d, 2) + ' = <span class="res n">' + f(R.x, 2) + ' m</span> dalla AP'
+      ]),
+      why: 'Il peso p deve dare proprio il momento Σpx = p·d, quindi d = Σpx / p. Il momento deve essere ' + need + ': un peso imbarcato ' + (fwd ? 'a proravia' : 'a poppavia') + ' di F.'
+    });
+    st.push(finalStep(F, p, R.x, inp.TA, inp.TF, 'Risultato: T′<sub>A</sub> = T′<sub>F</sub> = ' + f(F.TA2, 3) + ' m, chiglia piana all\'immersione voluta.'));
+    var FT = [
+      '<i>T</i><sub>m</sub> → tabella: Δ, TPC    T′ (chiglia piana: <i>T</i><sub>m</sub>′ = T′) → tabella: TPC′, MCTC′, X′<sub>CF</sub>',
+      'Σpx = 100 · MCTC′ · |<i>T</i><sub>A</sub> − <i>T</i><sub>F</sub>|',
+      'δ<i>T</i><sub>A</sub> = ' + fr('X′<sub>CF</sub> · Σpx', '100 · L<sub>pp</sub> · MCTC′') + '    δ<i>T</i><sub>m</sub> = T′ − (<i>T</i><sub>A</sub> ± δ<i>T</i><sub>A</sub>)',
+      'TPC<sub>m</sub> = ' + fr('TPC + TPC′', '2') + '    <i>p</i> = 100 · TPC<sub>m</sub> · δ<i>T</i><sub>m</sub>',
+      'd = ' + fr('Σpx', '<i>p</i>') + '    x = X′<sub>CF</sub> ± d'
+    ];
+    outA.innerHTML = html + renderSteps(st, FT);
+  }
+
+  /* ---------- Problema 5: punti neutri ---------- */
+  var fN = document.getElementById('f-neu'), outN = document.getElementById('r-neu');
+  function svgNeutri(R) {
+    var W = 540, H = 186, xa = 60, xf = 468, deck = 46, keel = 128, wl = 92;
+    var X = function (m) { return Math.min(xf + 26, Math.max(xa - 20, xa + m / R.Lpp * (xf - xa))); };
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Posizione dei punti neutri lungo la nave">';
+    s += '<rect x="0" y="' + wl + '" width="' + W + '" height="' + (keel + 14 - wl) + '" fill="var(--water)"/>';
+    s += '<path d="M' + (xa - 24) + ' ' + deck + ' L' + (xf + 30) + ' ' + (deck - 4) + ' L' + (xf + 8) + ' ' + (keel - 16) + ' Q' + (xf - 6) + ' ' + keel + ' ' + (xf - 36) + ' ' + keel + ' L' + (xa + 16) + ' ' + keel + ' Q' + (xa - 4) + ' ' + keel + ' ' + (xa - 6) + ' ' + (keel - 28) + ' L' + (xa - 24) + ' ' + (keel - 52) + 'Z" fill="none" stroke="var(--hull)" stroke-width="2"/>';
+    s += '<line x1="0" x2="' + W + '" y1="' + wl + '" y2="' + wl + '" stroke="var(--water-line)" stroke-width="2"/>';
+    var txt = 'font-family="Source Sans 3, sans-serif"', mono = 'font-family="IBM Plex Mono, monospace"';
+    [[xa, 'AP'], [xf, 'FP']].forEach(function (a) { s += '<line x1="' + a[0] + '" x2="' + a[0] + '" y1="' + (deck - 8) + '" y2="' + (keel + 8) + '" stroke="var(--muted)" stroke-dasharray="2 3"/><text x="' + a[0] + '" y="' + (deck - 14) + '" text-anchor="middle" font-size="13" fill="var(--muted)" ' + txt + '>' + a[1] + '</text>'; });
+    var xF0 = X(R.XCF), xNA = X(R.xA), xNF = X(R.xF);
+    [[xNF, 'N', 'F'], [xNA, 'N', 'A']].forEach(function (a) {
+      s += '<line x1="' + a[0].toFixed(1) + '" x2="' + a[0].toFixed(1) + '" y1="' + (deck + 6) + '" y2="' + keel + '" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 3"/>';
+      s += '<path d="M' + (a[0] - 6).toFixed(1) + ' ' + (deck - 4) + ' L' + (a[0] + 6).toFixed(1) + ' ' + (deck - 4) + ' L' + a[0].toFixed(1) + ' ' + (deck + 6) + 'Z" fill="var(--accent)"/>';
+      s += '<text x="' + a[0].toFixed(1) + '" y="' + (deck - 10) + '" text-anchor="middle" font-size="15" font-weight="700" fill="var(--accent)" ' + txt + '>' + a[1] + '<tspan font-size="11" dy="3">' + a[2] + '</tspan></text>';
+    });
+    s += '<circle cx="' + xF0.toFixed(1) + '" cy="' + wl + '" r="5" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/><text x="' + xF0.toFixed(1) + '" y="' + (wl - 9) + '" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" ' + txt + '>F</text>';
+    var yd = keel + 26;
+    function dim(x1, x2, label) {
+      var a = Math.min(x1, x2), b = Math.max(x1, x2);
+      var r = '<line x1="' + a.toFixed(1) + '" x2="' + b.toFixed(1) + '" y1="' + yd + '" y2="' + yd + '" stroke="var(--ink)" stroke-width="1.2"/>';
+      r += '<path d="M' + (a + 7).toFixed(1) + ' ' + (yd - 4) + ' L' + a.toFixed(1) + ' ' + yd + ' L' + (a + 7).toFixed(1) + ' ' + (yd + 4) + 'Z M' + (b - 7).toFixed(1) + ' ' + (yd - 4) + ' L' + b.toFixed(1) + ' ' + yd + ' L' + (b - 7).toFixed(1) + ' ' + (yd + 4) + 'Z" fill="var(--ink)"/>';
+      r += '<text x="' + ((a + b) / 2).toFixed(1) + '" y="' + (yd + 18) + '" text-anchor="middle" font-size="13" fill="var(--ink)" ' + mono + '>' + label + '</text>';
+      return r;
+    }
+    s += dim(xNF, xF0, f(R.dF, 2)) + dim(xF0, xNA, f(R.dA, 2));
+    [xNF, xF0, xNA].forEach(function (x) { s += '<line x1="' + x.toFixed(1) + '" x2="' + x.toFixed(1) + '" y1="' + (keel + 2) + '" y2="' + (yd + 6) + '" stroke="var(--muted)" stroke-width="1"/>'; });
+    s += '<text x="' + (xa - 24) + '" y="' + (yd + 18) + '" font-size="13" fill="var(--muted)" ' + txt + '>← poppa</text><text x="' + (xf + 30) + '" y="' + (yd + 18) + '" text-anchor="end" font-size="13" fill="var(--muted)" ' + txt + '>prora →</text>';
+    return s + '</svg>';
+  }
+  function runNeu() {
+    var src = radio('nsrc', fN), mode = document.getElementById('n-interp').checked ? 'interp' : 'near';
+    document.getElementById('n-tab-wrap').hidden = src !== 'tab';
+    document.getElementById('n-man-wrap').hidden = src !== 'man';
+    document.getElementById('n-interp-wrap').hidden = src !== 'tab';
+    var ids = src === 'tab' ? ['n-TA', 'n-TF'] : ['n-Lpp', 'n-TPC', 'n-MCTC', 'n-XCF'], v = {}, bad = false;
+    ids.forEach(function (id) { var x = num(id); v[id] = x; var b = !isFinite(x) || x <= 0; mark(id, b); if (b) bad = true; });
+    if (bad) { outN.innerHTML = exBanner('neu') + errBox('Completa i campi evidenziati con un numero.'); return; }
+    var inp = src === 'tab' ? { src: 'tab', TA: v['n-TA'], TF: v['n-TF'] } : { src: 'man', Lpp: v['n-Lpp'], TPC: v['n-TPC'], MCTC: v['n-MCTC'], XCF: v['n-XCF'] };
+    var R = calcNeutri(inp, TAB, mode);
+    if (R.error === 'fuori') { outN.innerHTML = exBanner('neu') + errBox('T<sub>m</sub> = ' + f(R.Tm, 3) + ' m è fuori dalla tabella (3,90 – 10,00 m). Controlla T<sub>A</sub> e T<sub>F</sub>.'); return; }
+    if (R.error) { outN.innerHTML = exBanner('neu') + errBox('X<sub>CF</sub> deve essere tra 0 e L<sub>pp</sub>.'); return; }
+    usedBy.neu = src === 'tab' ? R.L.rows.map(function (r) { return r.T; }) : [];
+    var dT = src === 'tab' ? dg(R.L, 'TPC') : 2, dM = src === 'tab' ? dg(R.L, 'MCTC') : 2, dX = src === 'tab' ? dg(R.L, 'XCF') : 2;
+    var html = exBanner('neu') + '<section class="summary"><h2>Risultato</h2><div class="kpis">' +
+      kpi('Punto neutro N<sub>A</sub>', f(R.xA, 2) + ' m', 'dalla AP · ' + f(R.dA, 2) + ' m a proravia di F · T<sub>A</sub> non cambia', true) +
+      kpi('Punto neutro N<sub>F</sub>', f(R.xF, 2) + ' m', 'dalla AP · ' + f(R.dF, 2) + ' m a poppavia di F · T<sub>F</sub> non cambia', true) +
+      kpi('Centro di galleggiamento F', f(R.XCF, 2) + ' m', 'dalla AP') + '</div>' +
+      '<div class="figs"><figure class="fig">' + svgNeutri(R) + '<figcaption>Distanze in metri da F. Un peso caricato in N<sub>A</sub> lascia invariata la poppa, in N<sub>F</sub> la prora.</figcaption></figure></div></section>';
+    var st = [];
+    if (src === 'tab') {
+      st.push({
+        title: 'Pescaggio medio',
+        body: eqs(['<i>T</i><sub>m</sub> = ' + fr('<i>T</i><sub>A</sub> + <i>T</i><sub>F</sub>', '2') + ' = ' + fr(na(inp.TA, 2) + ' + ' + na(inp.TF, 2), '2') + ' = <span class="res n">' + f(R.Tm, 3) + ' m</span>']),
+        why: 'Con T<sub>m</sub> si leggono TPC, MCTC e X<sub>CF</sub> della nave così com\'è.'
+      });
+      st.push(stepTabella(R.L, ['TPC', 'MCTC', 'XCF'], 'Il peso da caricare non è dato: si usano i valori al pescaggio attuale, senza TPC medio.'));
+    } else {
+      st.push({
+        title: 'Dati del testo',
+        body: eqs(['L<sub>pp</sub> = <span class="n">' + fa(R.Lpp, 0) + ' m</span>', 'TPC = <span class="n">' + fa(R.TPC, 2) + ' t/cm</span>', 'MCTC = <span class="n">' + fa(R.MCTC, 2) + ' t·m</span>', 'X<sub>CF</sub> = <span class="n">' + fa(R.XCF, 2) + ' m</span> dalla AP']),
+        why: 'Le curve idrostatiche sono date dal testo: non serve la tabella.'
+      });
+    }
+    var num1 = n(R.Lpp, 2) + ' · ' + n(R.MCTC, dM);
+    st.push({
+      title: 'Punto neutro per la poppa N<sub>A</sub>',
+      body: eqs([
+        'δ<i>T</i><sub>m</sub> = δ<i>T</i><sub>A</sub>',
+        fr('<i>p</i>', '100 · TPC') + ' = ' + fr('X<sub>CF</sub> · <i>p</i> · d<sub>A</sub>', '100 · L<sub>pp</sub> · MCTC'),
+        'd<sub>A</sub> = ' + fr('L<sub>pp</sub> · MCTC', 'X<sub>CF</sub> · TPC') + ' = ' + fr(num1, n(R.XCF, dX) + ' · ' + n(R.TPC, dT)) + ' = <span class="res n">' + f(R.dA, 2) + ' m</span>',
+        'x<sub>A</sub> = X<sub>CF</sub> + d<sub>A</sub> = ' + n(R.XCF, dX) + ' + ' + n(R.dA, 2) + ' = <span class="res n">' + f(R.xA, 2) + ' m</span> dalla AP'
+      ]),
+      why: 'Un peso caricato a proravia di F fa affondare tutta la nave di δT<sub>m</sub>, ma il suo momento appruante fa emergere la poppa di δT<sub>A</sub>. Nel punto neutro i due effetti sono uguali e T<sub>A</sub> non cambia. p e 100 si semplificano: il punto neutro non dipende da quanto si carica.'
+    });
+    st.push({
+      title: 'Punto neutro per la prora N<sub>F</sub>',
+      body: eqs([
+        'δ<i>T</i><sub>m</sub> = δ<i>T</i><sub>F</sub>',
+        fr('<i>p</i>', '100 · TPC') + ' = ' + fr('(L<sub>pp</sub> − X<sub>CF</sub>) · <i>p</i> · d<sub>F</sub>', '100 · L<sub>pp</sub> · MCTC'),
+        'd<sub>F</sub> = ' + fr('L<sub>pp</sub> · MCTC', '(L<sub>pp</sub> − X<sub>CF</sub>) · TPC') + ' = ' + fr(num1, '(' + n(R.Lpp, 2) + ' − ' + n(R.XCF, dX) + ') · ' + n(R.TPC, dT)) + ' = <span class="res n">' + f(R.dF, 2) + ' m</span>',
+        'x<sub>F</sub> = X<sub>CF</sub> − d<sub>F</sub> = ' + n(R.XCF, dX) + ' − ' + n(R.dF, 2) + ' = <span class="res n">' + f(R.xF, 2) + ' m</span> dalla AP'
+      ]),
+      why: 'Caricando a poppavia di F succede il contrario: tutta la nave affonda di δT<sub>m</sub> e il momento appoppante fa emergere la prora di δT<sub>F</sub>. In N<sub>F</sub> i due effetti si annullano e T<sub>F</sub> non cambia.'
+    });
+    st.push({
+      title: 'Cosa significano',
+      body: '<p class="note">Tra N<sub>F</sub> (' + f(R.xF, 2) + ' m) e N<sub>A</sub> (' + f(R.xA, 2) + ' m) un peso imbarcato fa affondare sia la poppa sia la prora. A proravia di N<sub>A</sub> la poppa emerge; a poppavia di N<sub>F</sub> emerge la prora.</p>',
+      why: 'È il modo più veloce per capire dove mettere un peso quando non si vuole superare un\'immersione a poppa o a prora.'
+    });
+    var FN = [
+      'δ<i>T</i><sub>m</sub> = ' + fr('<i>p</i>', '100 · TPC') + '    δ<i>T</i><sub>A</sub> = ' + fr('X<sub>CF</sub> · <i>p</i> · d', '100 · L<sub>pp</sub> · MCTC') + '    δ<i>T</i><sub>F</sub> = ' + fr('(L<sub>pp</sub> − X<sub>CF</sub>) · <i>p</i> · d', '100 · L<sub>pp</sub> · MCTC'),
+      'd<sub>A</sub> = ' + fr('L<sub>pp</sub> · MCTC', 'X<sub>CF</sub> · TPC') + ' a proravia di F    d<sub>F</sub> = ' + fr('L<sub>pp</sub> · MCTC', '(L<sub>pp</sub> − X<sub>CF</sub>) · TPC') + ' a poppavia di F'
+    ];
+    outN.innerHTML = html + renderSteps(st, FN);
+  }
+
+  /* ---------- Esercizi del libro ---------- */
+  var EX = [
+    { n: 9, sec: 'imb', text: 'Su una nave galleggiante con T<sub>A</sub> = 8,71 m, T<sub>F</sub> = 8,91 m, ed avente KG = 7,05 m, si eseguono i seguenti movimenti di imbarco/sbarco. Calcolare le nuove immersioni estreme e la nuova altezza metacentrica.',
+      tab: [['CARGO', '-652', '108,8', '4,8'], ['CARGO', '-754', '70,5', '4,6'], ['CARGO', '-590', '21,6', '4,2'], ['BALLAST', '-135', '135,0', '1,0'], ['BALLAST', '160', '110,0', '1,0'], ['BALLAST', '140', '35,0', '2,5']],
+      d: { TA: '8,71', TF: '8,91', stab: 'KG', sv: '7,05' } },
+    { n: 10, sec: 'imb', text: 'Su una nave galleggiante con T<sub>A</sub> = 3,58 m, T<sub>F</sub> = 3,76 m, ed avente KG = 9,20 m, si eseguono i seguenti movimenti di imbarco/sbarco. Calcolare le nuove immersioni estreme e la nuova altezza metacentrica.',
+      tab: [['CARGO', '2450', '102,0', '4,6'], ['CARGO', '3560', '83,5', '5,6'], ['CARGO', '3360', '62,6', '4,8'], ['CARGO', '2913', '30,4', '4,7'], ['BALLAST', '-420', '23,0', '3,0'], ['BALLAST', '-350', '132,0', '5,0'], ['BALLAST', '-480', '12,4', '1,7']],
+      d: { TA: '3,58', TF: '3,76', stab: 'KG', sv: '9,20' } },
+    { n: 11, sec: 'imb', text: 'Su una nave galleggiante con T<sub>A</sub> = 5,45 m, T<sub>F</sub> = 4,95 m, ed avente GM = 1,30 m, si carica un peso di 150 tonnellate ad una distanza X = 53,4 m dalla AP e ad una quota sulla baseline pari a Z = 9,6 m. Calcolare le nuove immersioni estreme e la nuova altezza metacentrica.',
+      d: { TA: '5,45', TF: '4,95', stab: 'GM', sv: '1,30', pesi: [{ p: '150', x: '53,4', z: '9,6' }] } },
+    { n: 12, sec: 'imb', text: 'Su una nave galleggiante con T<sub>A</sub> = 7,16 m, T<sub>F</sub> = 7,68 m, ed avente GM = 0,85 m, si carica un peso di 193 tonnellate ad una distanza X = 15,5 m dalla AP e ad una quota sulla baseline pari a Z = 3,9 m. Calcolare le nuove immersioni estreme e la nuova altezza metacentrica.',
+      d: { TA: '7,16', TF: '7,68', stab: 'GM', sv: '0,85', pesi: [{ p: '193', x: '15,5', z: '3,9' }] } },
+    { n: 13, sec: 'imb', text: 'Su una nave galleggiante con T<sub>A</sub> = 8,55 m, T<sub>F</sub> = 8,55 m, ed avente GM = 1,10 m, si carica un peso di 200 tonnellate sul ponte di coperta ad una distanza X = 53,0 m dalla AP. È nota la quota del ponte di coperta sulla baseline pari a Z = 12,2 m. Calcolare le nuove immersioni estreme e la nuova altezza metacentrica.',
+      d: { TA: '8,55', TF: '8,55', stab: 'GM', sv: '1,10', pesi: [{ p: '200', x: '53,0', z: '12,2' }] } },
+    { n: 14, sec: 'imb', text: 'Su una nave galleggiante con T<sub>A</sub> = 9,00 m, T<sub>F</sub> = 9,08 m, ed avente GM = 0,68 m, si sbarca un peso di 175 tonnellate sul ponte di coperta ad una distanza X = 105,0 m dalla AP. È nota la quota del ponte di coperta sulla baseline pari a Z = 12,4 m. Calcolare le nuove immersioni estreme e la nuova altezza metacentrica.',
+      d: { TA: '9,00', TF: '9,08', stab: 'GM', sv: '0,68', pesi: [{ op: 'sbarco', p: '175', x: '105,0', z: '12,4' }] } },
+    { n: 15, sec: 'imb', text: 'La nostra nave si trova con le seguenti immersioni T<sub>A</sub> = 7,24 m, T<sub>F</sub> = 7,04 m, con GM = 0,95 m. Si deve caricare un peso di 128 t in un punto posto 13,2 m a pruavia della MP, ad una distanza di 9,2 m dall\'asse longitudinale a dritta e ad una quota di 10,9 m sulla baseline. Calcolare le nuove immersioni estreme, la nuova altezza metacentrica e lo sbandamento.',
+      d: { TA: '7,24', TF: '7,04', stab: 'GM', sv: '0,95', xref: 'MP', sband: true, pesi: [{ p: '128', x: '13,2', z: '10,9', y: '9,2', side: 'dritta' }] } },
+    { n: 16, sec: 'ass', text: 'Su una nave inizialmente galleggiante con immersioni estreme T<sub>A</sub> = 7,58 m, T<sub>F</sub> = 7,18 m si vuole portare l\'immersione addietro a 7,50 m e si ha la possibilità di imbarcare zavorra in una cassa prodiera posta a X = 100 m dalla AP. Determinare l\'entità del peso da imbarcare per ottenere la condizione desiderata, quindi trovare le immersioni estreme finali.',
+      d: { mode: 'TA', TA: '7,58', TF: '7,18', Tt: '7,50', x: '100' } },
+    { n: 17, sec: 'ass', text: 'Su una nave inizialmente galleggiante con immersioni estreme T<sub>A</sub> = 6,57 m, T<sub>F</sub> = 7,11 m si vuole portare l\'immersione avanti a 7,00 m e si ha la possibilità di imbarcare zavorra nel gavone poppiero posto a X = 15 m dalla AP. Determinare l\'entità del peso da imbarcare per ottenere la condizione desiderata, quindi trovare le immersioni estreme finali.',
+      d: { mode: 'TF', TA: '6,57', TF: '7,11', Tt: '7,00', x: '15' } },
+    { n: 18, sec: 'ass', text: 'Su una nave inizialmente galleggiante con immersioni estreme T<sub>A</sub> = 8,17 m, T<sub>F</sub> = 7,99 m si vuole portare l\'immersione addietro a 8,10 m e si ha la possibilità di sbarcare zavorra in una cassa poppiera posta a X = 46 m dalla AP. Determinare l\'entità del peso da imbarcare per ottenere la condizione desiderata, quindi trovare le immersioni estreme finali.',
+      d: { mode: 'TA', TA: '8,17', TF: '7,99', Tt: '8,10', x: '46' } },
+    { n: 19, sec: 'ass', text: 'Su una nave inizialmente galleggiante con immersioni estreme T<sub>A</sub> = 7,94 m, T<sub>F</sub> = 7,78 m si vuole assumere la condizione di <i>even keel</i>, avendo la possibilità sbarcare zavorra da una cassa posta in X = 25 m. Determinare l\'entità del peso da sbarcare per ottenere la condizione desiderata, quindi trovare le immersioni estreme finali.',
+      d: { mode: 'even', TA: '7,94', TF: '7,78', x: '25' } },
+    { n: 20, sec: 'ass', text: 'Su una nave inizialmente galleggiante con immersioni estreme T<sub>A</sub> = 5,63 m, T<sub>F</sub> = 5,91 m si vuole assumere la condizione di <i>even keel</i>, avendo la possibilità sbarcare zavorra da una cassa posta in X = 98 m. Determinare l\'entità del peso da sbarcare per ottenere la condizione desiderata, quindi trovare le immersioni estreme finali.',
+      d: { mode: 'even', TA: '5,63', TF: '5,91', x: '98' } },
+    { n: 21, sec: 'ass', text: 'Su una nave inizialmente galleggiante con immersioni estreme T<sub>A</sub> = 8,06 m, T<sub>F</sub> = 7,94 m si vuole assumere la condizione di <i>even keel</i>, avendo ancora a disposizione la possibilità di imbarcare del carico. Determinare l\'entità del peso che bisogna imbarcare in una stiva posta in X = 89 m per ottenere la condizione desiderata, quindi trovare le immersioni estreme finali.',
+      d: { mode: 'even', TA: '8,06', TF: '7,94', x: '89' } },
+    { n: 22, sec: 'ass', text: 'Su una nave inizialmente galleggiante con immersioni estreme T<sub>A</sub> = 6,78 m, T<sub>F</sub> = 6,62 m si vuole assumere la condizione di <i>even keel</i>; non avendo zavorra a bordo la si intende imbarcare ma senza superare un\'immersione finale di 6,80 m. Determinare l\'entità e la posizione del peso da imbarcare per ottenere la condizione desiderata.',
+      d: { mode: 'evenT', TA: '6,78', TF: '6,62', Tt: '6,80' } },
+    { n: 23, sec: 'ass', text: 'Su una nave inizialmente galleggiante con immersioni estreme T<sub>A</sub> = 9,03 m, T<sub>F</sub> = 9,11 m si vuole assumere la condizione di <i>even keel</i>; non avendo zavorra a bordo la si intende imbarcare ma senza superare una immersione finale di 9,15 m. Determinare l\'entità e la posizione del peso da imbarcare per ottenere la condizione desiderata.',
+      d: { mode: 'evenT', TA: '9,03', TF: '9,11', Tt: '9,15' } },
+    { n: 24, sec: 'neu', text: 'Trovare la posizione dei punti neutri per una nave galleggiante con immersioni estreme T<sub>A</sub> = 9,22 m, T<sub>F</sub> = 9,06 m.',
+      d: { src: 'tab', TA: '9,22', TF: '9,06' } },
+    { n: 25, sec: 'neu', text: 'Trovare la posizione dei punti neutri per una nave avente L<sub>pp</sub> = 220 m, TPC = 65,85 t, MCTC = 1013,82 t·m, X<sub>CF</sub> = 112,19 m (esercizio extra, curve idrostatiche fornite).',
+      d: { src: 'man', Lpp: '220', TPC: '65,85', MCTC: '1013,82', XCF: '112,19' } }
+  ];
+  var EXN = {}; EX.forEach(function (e) { EXN[e.n] = e; });
+  var GROUPS = [
+    { t: 'Imbarco e sbarco di più pesi', d: 'Scheda Imbarco e sbarco: Σp, Δ′ e T<sub>m</sub>′ dalla tabella, TPC<sub>m</sub>, Σpx, δT<sub>A</sub> e δT<sub>F</sub>, poi KG′ con Varignon e GM′. Nelle tabelle del libro un peso negativo è uno sbarco.', ns: [9, 10] },
+    { t: 'Imbarco o sbarco di un peso', d: 'Stesso metodo con un solo peso. Il testo dà GM: prima si ricava KG = KM − GM.', ns: [11, 12, 13, 14] },
+    { t: 'Imbarco con sbandamento', d: 'Come sopra, più l\'angolo di sbandamento tan α = p·y / (Δ′·GM′). La posizione è data rispetto alla mezzanave (MP).', ns: [15] },
+    { t: 'Peso per un\'immersione voluta', d: 'Scheda Assetto voluto. Si scrive la formula di T′<sub>A</sub> (o T′<sub>F</sub>) degli appunti con p incognito e si ricava p. Se p viene negativo il peso va sbarcato.', ns: [16, 17, 18] },
+    { t: 'Peso per la chiglia piana (even keel)', d: 'La variazione di assetto deve annullare T<sub>A</sub> − T<sub>F</sub>: Σpx = 100·MCTC·|T<sub>A</sub> − T<sub>F</sub>|, poi p = Σpx / d.', ns: [19, 20, 21] },
+    { t: 'Peso e posizione per la chiglia piana', d: 'L\'immersione finale è data: il momento porta la nave in chiglia piana, l\'immersione parallela dà p, e da Σpx = p·d si trova dove imbarcarlo.', ns: [22, 23] },
+    { t: 'Punti neutri', d: 'Dove caricare un peso senza cambiare T<sub>A</sub> (N<sub>A</sub>) o T<sub>F</sub> (N<sub>F</sub>).', ns: [24, 25] }
+  ];
+  function exPesi(ex) {
+    if (ex.tab) return ex.tab.map(function (r) { return { p: r[1], x: r[2], z: r[3] }; });
+    return ex.d.pesi;
+  }
+  function exSummary(ex) {
+    var d = ex.d, R;
+    try {
+      if (ex.sec === 'imb') {
+        R = calcImbarco({ TA: pn(d.TA), TF: pn(d.TF), stab: d.stab, stabVal: pn(d.sv), km: 'rilevanti', xref: d.xref || 'AP',
+          pesi: exPesi(ex).map(function (w) { var p = pn(w.p); return { op: p < 0 || w.op === 'sbarco' ? 'sbarco' : 'imbarco', p: Math.abs(p), x: pn(w.x), z: pn(w.z), y: w.y ? pn(w.y) : 0, side: w.side }; }) }, TAB, 'interp');
+        if (R.error === 'fuori') return '<span>Da completare:</span> T<sub>m</sub> = ' + f(R.Tm, 2) + ' m è sotto l\'inizio della tabella fotografata (3,90 m). Servono Δ e TPC a ' + f(R.Tm, 2) + ' m dalla pagina 3,00 – 3,89 m del libro.';
+        if (R.error) return '';
+        return '<span>Risultato:</span> T′<sub>A</sub> ' + f(R.TA2, 3) + ' m · T′<sub>F</sub> ' + f(R.TF2, 3) + ' m · GM′ ' + f(R.GM1, 3) + ' m' + (d.sband && R.Spy ? ' · α ' + dms(R.alpha) + ' a ' + R.listSide : '');
+      }
+      if (ex.sec === 'ass') {
+        R = calcAssetto({ mode: d.mode, TA: pn(d.TA), TF: pn(d.TF), Tt: pn(d.Tt), x: pn(d.x) }, TAB, 'interp');
+        if (R.error) return '';
+        if (d.mode === 'evenT') return '<span>Risultato:</span> imbarcare ' + f(R.p, 1) + ' t in x = ' + f(R.x, 2) + ' m dalla AP · T′ = ' + f(R.F.TA2, 3) + ' m';
+        return '<span>Risultato:</span> ' + (R.p > 0 ? 'imbarcare ' : 'sbarcare ') + f(Math.abs(R.p), 1) + ' t · T′<sub>A</sub> ' + f(R.F.TA2, 3) + ' m · T′<sub>F</sub> ' + f(R.F.TF2, 3) + ' m';
+      }
+      R = calcNeutri(d.src === 'tab' ? { src: 'tab', TA: pn(d.TA), TF: pn(d.TF) } : { src: 'man', Lpp: pn(d.Lpp), TPC: pn(d.TPC), MCTC: pn(d.MCTC), XCF: pn(d.XCF) }, TAB, 'interp');
+      if (R.error) return '';
+      return '<span>Risultato:</span> N<sub>A</sub> a ' + f(R.xA, 2) + ' m · N<sub>F</sub> a ' + f(R.xF, 2) + ' m dalla AP';
+    } catch (e) { return ''; }
+  }
+  function exTable(ex) {
+    return '<div class="scroll"><table class="extab"><tr><th>Tipo</th><th>P (t)</th><th>X da AP (m)</th><th>Z su baseline (m)</th></tr>' +
+      ex.tab.map(function (r) { return '<tr><td>' + r[0] + '</td><td>' + r[1].replace('-', '−') + '</td><td>' + r[2] + '</td><td>' + r[3] + '</td></tr>'; }).join('') + '</table></div>';
+  }
+  function renderEx() {
+    document.getElementById('es-list').innerHTML = GROUPS.map(function (g) {
+      return '<section class="esgroup"><h2>' + g.t + '</h2><p>' + g.d + '</p><div class="escards">' + g.ns.map(function (k) {
+        var ex = EXN[k];
+        return '<article class="excard" id="ex-' + ex.n + '"><h3><span class="num">' + ex.n + ')</span> Esercizio ' + ex.n + '</h3><p>' + ex.text + '</p>' + (ex.tab ? exTable(ex) : '') +
+          '<div class="exres">' + exSummary(ex) + '</div><button type="button" class="btn go" data-ex="' + ex.n + '">Risolvi passo per passo →</button></article>';
+      }).join('') + '</div></section>';
+    }).join('');
+  }
+  function setRadio(form, name, val) { var el = form.querySelector('input[name="' + name + '"][value="' + val + '"]'); if (el) el.checked = true; }
+  function setVal(id, val) { document.getElementById(id).value = val == null ? '' : val; }
+  function loadEx(k, stay) {
+    var ex = EXN[k]; if (!ex) return;
+    var d = ex.d;
+    if (ex.sec === 'imb') {
+      setVal('i-TA', d.TA); setVal('i-TF', d.TF); setRadio(fI, 'stab', d.stab); setVal('i-sv', d.sv);
+      setRadio(fI, 'xref', d.xref || 'AP'); document.getElementById('i-sband').checked = !!d.sband; setRadio(fI, 'km', 'rilevanti');
+      setVal('i-mD', ''); setVal('i-mTPC', ''); setVal('i-mKM', '');
+      wList.innerHTML = ''; exPesi(ex).forEach(function (w) { addWeight(w); });
+      exCur.imb = { n: ex.n, text: ex.text, mod: false };
+      segs(); runImb();
+    } else if (ex.sec === 'ass') {
+      setRadio(fA, 'amode', d.mode); setVal('a-TA', d.TA); setVal('a-TF', d.TF); setVal('a-Tt', d.Tt || ''); setVal('a-x', d.x || '');
+      exCur.ass = { n: ex.n, text: ex.text, mod: false };
+      segs(); runAss();
+    } else {
+      setRadio(fN, 'nsrc', d.src);
+      if (d.src === 'tab') { setVal('n-TA', d.TA); setVal('n-TF', d.TF); }
+      else { setVal('n-Lpp', d.Lpp); setVal('n-TPC', d.TPC); setVal('n-MCTC', d.MCTC); setVal('n-XCF', d.XCF); }
+      exCur.neu = { n: ex.n, text: ex.text, mod: false };
+      segs(); runNeu();
+    }
+    if (stay) return;
+    show(ex.sec);
+    var nav = document.querySelector('.tabs'); if (nav && nav.scrollIntoView) nav.scrollIntoView({ block: 'start' });
+  }
+
+  /* ---------- Tabella completa ---------- */
+  var tbody = document.querySelector('#t-full tbody');
+  tbody.innerHTML = TAB.map(function (r) {
+    var c = Math.round(r.T * 100);
+    return '<tr data-t="' + c + '"' + (c % 10 === 9 ? ' class="dec"' : '') + '><td>' + f(r.T, 2) + '</td><td>' + r.D + '</td><td>' + f(r.TPC, 2) + '</td><td>' + f(r.MCTC, 1) + '</td><td>' + f(r.XB, 2) + '</td><td>' + f(r.XCF, 2) + '</td><td>' + f(r.KM, 2) + '</td><td>' + f(r.KML, 1) + '</td></tr>';
+  }).join('');
+  function refreshHits() {
+    var set = {}; lastUsed.forEach(function (t) { set[Math.round(t * 100)] = 1; });
+    Array.prototype.forEach.call(tbody.rows, function (tr) { tr.classList.toggle('hit', !!set[tr.getAttribute('data-t')]); });
+  }
+  function scrollToT(t) {
+    var c = Math.round(t * 100);
+    var tr = tbody.querySelector('tr[data-t="' + c + '"]');
+    if (!tr) return;
+    var box = document.getElementById('t-box');
+    box.scrollTop = tr.offsetTop - 44;
+  }
+  document.getElementById('t-find').addEventListener('input', function () {
+    var v = num('t-find');
+    var bad = this.value.trim() !== '' && !(v >= 3.9 && v <= 10);
+    mark('t-find', bad);
+    if (!bad && isFinite(v)) { lastUsed = [Math.round(v * 100) / 100]; refreshHits(); scrollToT(v); }
+  });
+
+  /* ---------- schede ---------- */
+  var tabs = document.querySelectorAll('.tab');
+  var PROB = ['dwa', 'pesi', 'imb', 'ass', 'neu'];
+  function show(sec) {
+    tabs.forEach(function (b) {
+      var on = b.getAttribute('data-sec') === sec;
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.tabIndex = on ? 0 : -1;
+      document.getElementById('sec-' + b.getAttribute('data-sec')).hidden = !on;
+    });
+    if (PROB.indexOf(sec) >= 0) currentProblem = sec;
+    if (sec === 'tab') { lastUsed = usedBy[currentProblem] || []; document.getElementById('t-find').value = ''; mark('t-find', false); refreshHits(); if (lastUsed.length) setTimeout(function () { scrollToT(lastUsed[0]); }, 0); }
+    try { localStorage.setItem('ap-tab', sec); } catch (e) {}
+  }
+  tabs.forEach(function (b, i) {
+    b.addEventListener('click', function () { show(b.getAttribute('data-sec')); });
+    b.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      var j = (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length;
+      tabs[j].focus(); show(tabs[j].getAttribute('data-sec'));
+    });
+  });
+
+  /* ---------- eventi ---------- */
+  var exD = {}, exP = {}, exI = {};
+  fI.querySelectorAll('input[id^="i-"]').forEach(function (el) { exI[el.id] = el.type === 'checkbox' || el.type === 'radio' ? el.checked : el.value; });
+  fD.querySelectorAll('input').forEach(function (el) { exD[el.id] = el.type === 'checkbox' || el.type === 'radio' ? el.checked : el.value; });
+  fP.querySelectorAll('input').forEach(function (el) { exP[el.id] = el.type === 'checkbox' || el.type === 'radio' ? el.checked : el.value; });
+  function restore(form, ex) { form.querySelectorAll('input').forEach(function (el) { if (el.type === 'checkbox' || el.type === 'radio') el.checked = ex[el.id]; else el.value = ex[el.id]; }); }
+  function segs() { document.querySelectorAll('.seg label').forEach(function (l) { var i = l.querySelector('input'); l.classList.toggle('on', i.checked); }); }
+  function markMod(sec) { return function () { if (exCur[sec]) exCur[sec].mod = true; }; }
+  [[fI, 'imb', runImb], [fA, 'ass', runAss], [fN, 'neu', runNeu]].forEach(function (a) {
+    a[0].addEventListener('input', markMod(a[1])); a[0].addEventListener('change', markMod(a[1]));
+    a[0].addEventListener('change', segs);
+    a[0].addEventListener('input', a[2]); a[0].addEventListener('change', a[2]);
+    a[0].addEventListener('submit', function (e) { e.preventDefault(); });
+  });
+  fP.addEventListener('change', segs);
+  document.getElementById('i-reset').addEventListener('click', function () {
+    delete exCur.imb;
+    wList.innerHTML = ''; EXW.forEach(function (w) { addWeight(w); });
+    fI.querySelectorAll('input[id^="i-"]').forEach(function (el) { if (!(el.id in exI)) return; if (el.type === 'checkbox' || el.type === 'radio') el.checked = exI[el.id]; else el.value = exI[el.id]; });
+    segs(); runImb();
+  });
+  document.getElementById('a-reset').addEventListener('click', function () { loadEx(16, true); });
+  document.getElementById('n-reset').addEventListener('click', function () { loadEx(24, true); });
+  fD.addEventListener('input', runDWA); fD.addEventListener('change', runDWA);
+  fP.addEventListener('input', runPesi); fP.addEventListener('change', runPesi);
+  fD.addEventListener('submit', function (e) { e.preventDefault(); });
+  fP.addEventListener('submit', function (e) { e.preventDefault(); });
+  document.getElementById('d-reset').addEventListener('click', function () { restore(fD, exD); runDWA(); });
+  document.getElementById('p-reset').addEventListener('click', function () { restore(fP, exP); segs(); runPesi(); });
+  document.addEventListener('click', function (e) {
+    var g = e.target.closest('[data-ex]');
+    if (g) { loadEx(+g.getAttribute('data-ex')); return; }
+    var b = e.target.closest('.exb-back');
+    if (b) { show('es'); var c = document.getElementById('ex-' + b.getAttribute('data-back')); if (c && c.scrollIntoView) c.scrollIntoView({ block: 'start' }); }
+  });
+
+  renderEx();
+  segs(); runImb(); runPesi(); runDWA(); loadEx(16, true); loadEx(24, true);
+  var start = 'es', h = (location.hash || '').replace('#', '');
+  var SECS = ['es', 'dwa', 'pesi', 'imb', 'ass', 'neu', 'tab'];
+  if (SECS.indexOf(h) >= 0) start = h;
+  else { try { var sv = localStorage.getItem('ap-tab'); if (SECS.indexOf(sv) >= 0) start = sv; } catch (e) {} }
+  show(start);
+})();
+</script>
+
+
+<script>
+if ('serviceWorker' in navigator) addEventListener('load', () => { navigator.serviceWorker.register('../sw.js').catch(() => {}); });
+</script>
+</body>
+</html>

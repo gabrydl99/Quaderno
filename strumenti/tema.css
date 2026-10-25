@@ -198,3 +198,29 @@ figure.fig.sym .svgbox{border:0}
 .eser-c:hover,.eser-c:active{border-color:color-mix(in srgb,var(--blue) 45%,var(--line));background:color-mix(in srgb,var(--blue) 4%,var(--sheet))}
 .eser-c:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 @media (max-width:359.98px){.eser-g{grid-template-columns:1fr}}
+
+/* ---------- disegni: più colori e un riquadro tinto sotto ogni disegno ---------- */
+.ill .il-fb2{fill:color-mix(in srgb,var(--blue) 30%,var(--sheet));stroke:none}
+.ill .il-land{fill:color-mix(in srgb,#e8b400 26%,var(--sheet));stroke:none}
+.ill .il-gs{stroke:#d9a400}
+.ill .il-r{stroke:var(--red)}
+.ill .il-tb{fill:var(--blue)}
+.ill .il-ta{fill:var(--acc)}
+.ill .il-nero{fill:#14202c;stroke:var(--ink);stroke-width:1}
+.ill text{paint-order:stroke fill;stroke:var(--sheet);stroke-width:3px;stroke-linejoin:round}
+#cards .card .ill,.eser-c .ill{box-sizing:border-box;padding:5px;border-radius:14px;background:color-mix(in srgb,var(--blue) 7%,var(--sheet));border:1px solid color-mix(in srgb,var(--blue) 10%,var(--line))}
+#cards .card .ill{width:96px;height:72px;margin-top:-2px}
+#cards .card,.how-card{grid-template-columns:minmax(0,1fr) 96px}
+.eser-c .ill{width:84px;height:63px}
+
+/* ---------- bolle e riquadri: più rilievo e finiture ---------- */
+.chip{background:var(--sheet);box-shadow:0 1px 2px rgba(6,17,27,.06);transition:background-color .15s,border-color .15s,color .15s}
+.chip:hover{border-color:color-mix(in srgb,var(--blue) 45%,var(--line))}
+.chip[aria-current="true"]{box-shadow:0 2px 8px rgba(6,17,27,.22)}
+#home .howto,#home .eser,#home #cards.grid,#home .fb{box-shadow:0 1px 2px rgba(6,17,27,.05),0 12px 32px -14px rgba(6,17,27,.22)}
+.eser-c{box-shadow:0 1px 2px rgba(6,17,27,.05);transition:border-color .15s,background-color .15s}
+article.topic{box-shadow:0 1px 2px rgba(6,17,27,.04),0 10px 28px -16px rgba(6,17,27,.18)}
+.toc{box-shadow:0 1px 2px rgba(6,17,27,.04)}
+.fbar button{box-shadow:0 1px 2px rgba(6,17,27,.06)}
+.acc-chip,.brand .theme,.brand .homeb{box-shadow:0 1px 2px rgba(6,17,27,.06)}
+@media (prefers-reduced-motion:reduce){.chip,.eser-c{transition:none}}

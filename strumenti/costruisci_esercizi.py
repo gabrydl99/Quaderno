@@ -2,20 +2,20 @@
 """Trasforma una pagina di esercizi (HTML scaricato dall'artefatto) in una pagina a parte del Quaderno.
 
 Uso:
-    python3 strumenti/costruisci_esercizi.py SORGENTE.html CARTELLA "Titolo"
+    python3 strumenti/costruisci_esercizi.py SORGENTE.html CARTELLA "Titolo" [prova.html]
     es. python3 strumenti/costruisci_esercizi.py assetto.html assetto "Assetto e pescaggi"
 
 Il contenuto della pagina non viene toccato. Aggiunge solo:
 - l'intestazione vera (titolo, icone, manifest dell'app);
 - in cima, la barra "‹ Quaderno Patentino" per tornare all'app;
-- lo stesso tema chiaro/scuro scelto nel Quaderno e il funzionamento senza internet.
+- la veste grafica del Quaderno (strumenti/tema-esercizi.css), lo stesso tema chiaro/scuro e il funzionamento senza internet.
 """
 import re, sys, pathlib
 
 RADICE = pathlib.Path(__file__).resolve().parent.parent
 
 TESTA = '''<!doctype html>
-<html lang="it">
+<html lang="it" data-pagina="{pagina}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -25,6 +25,7 @@ TESTA = '''<!doctype html>
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<link rel="stylesheet" href="../fonts/fonts.css">
 <script>
 /* stesso tema (chiaro/scuro) scelto nel Quaderno */
 try {{ var t = localStorage.getItem('qp-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; }} catch (e) {{}}
@@ -54,7 +55,7 @@ if ('serviceWorker' in navigator) addEventListener('load', () => { navigator.ser
 '''
 
 
-def costruisci(src: str, titolo: str) -> str:
+def costruisci(src: str, titolo: str, pagina: str) -> str:
     m = re.match(r'<!doctype html><html><head><meta charset=utf8><meta name=viewport[^>]*>(<style>.*?</style>)</head><body>\s*', src, re.S)
     if not m:
         sys.exit('Formato della pagina non riconosciuto')
@@ -65,7 +66,14 @@ def costruisci(src: str, titolo: str) -> str:
     corpo = re.sub(r'\n?<link rel="preconnect" href="https://fonts\.(googleapis|gstatic)\.com"[^>]*>', '', corpo)
     corpo, n = re.subn(r'<link rel="stylesheet" href="https://fonts\.googleapis\.com/[^"]*">', '<link rel="stylesheet" href="../fonts/esercizi.css">', corpo)
     # i tag <link>/<style> iniziali della pagina restano nel corpo come nell'artefatto (funzionano anche lì)
-    s = TESTA.format(titolo=titolo) + m.group(1) + '\n</head>\n<body>\n' + BARRA.replace('{titolo}', titolo) + corpo
+    s = TESTA.format(titolo=titolo, pagina=pagina) + m.group(1) + '\n</head>\n<body>\n' + BARRA.replace('{titolo}', titolo) + corpo
+    # veste grafica del Quaderno (strumenti/tema-esercizi.css), subito dopo lo stile della pagina
+    tema = (RADICE / 'strumenti' / 'tema-esercizi.css').read_text(encoding='utf8')
+    stili = list(re.finditer(r'<style>.*?</style>', s, re.S))
+    if not stili:
+        sys.exit('Stile della pagina non trovato')
+    k = max(stili, key=lambda x: x.end() - x.start()).end()
+    s = s[:k] + '\n<style id="tema-quaderno">\n' + tema + '</style>' + s[k:]
     s = s.replace('</body></html>', REGISTRA + '</body>\n</html>')
     if REGISTRA not in s:
         s = s.rstrip() + REGISTRA
@@ -76,9 +84,9 @@ def main():
     if len(sys.argv) < 4:
         sys.exit(__doc__)
     src = pathlib.Path(sys.argv[1]).read_text(encoding='utf8')
-    out = RADICE / sys.argv[2] / 'index.html'
+    out = RADICE / sys.argv[2] / (sys.argv[4] if len(sys.argv) > 4 else 'index.html')
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(costruisci(src, sys.argv[3]), encoding='utf8')
+    out.write_text(costruisci(src, sys.argv[3], sys.argv[2]), encoding='utf8')
     print(out.relative_to(RADICE), 'scritto')
 
 

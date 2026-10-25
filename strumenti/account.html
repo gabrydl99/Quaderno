@@ -95,6 +95,15 @@
 .adm-box p b{display:block;color:var(--ink);font-size:.95rem}
 .adm-box .btn{min-height:40px;padding:0 14px;background:var(--acc);border-color:var(--acc);color:var(--on-acc,#fff)}
 .acc .esci{margin-top:4px}
+.acc .elimina{all:unset;box-sizing:border-box;display:block;margin:16px auto 0;padding:9px 14px;border-radius:10px;cursor:pointer;font:600 .86rem/1 var(--f-body);color:var(--red);text-align:center}
+.acc .elimina:hover,.acc .elimina:focus-visible{background:color-mix(in srgb,var(--red) 10%,var(--sheet))}
+.acc .elimina:focus-visible{outline:2px solid var(--red)}
+.del-box{margin:14px 0 0;padding:14px 16px;border-radius:16px;border:1.5px solid var(--red);background:color-mix(in srgb,var(--red) 8%,var(--sheet))}
+.del-box[hidden]{display:none}
+.del-box h4{margin:0 0 6px;color:var(--red)}
+.del-box p{margin:0 0 12px;font-size:.9rem;line-height:1.45;color:var(--ink)}
+.del-box .azioni{display:flex;gap:8px;flex-wrap:wrap}
+.acc .btn.rosso{background:var(--red);border-color:var(--red);color:var(--sheet)}
 body.acc-aperto{overflow:hidden}
 </style>
 <script>
@@ -173,6 +182,18 @@ body.acc-aperto{overflow:hidden}
     daRisposta(j); await prog.scarica(); emetti();
   }
   function avvia(s){ mem.set('qp-sessione', s); prog.leggi(); emetti(); }
+  /* elimina per sempre l'account e i suoi progressi (funzione elimina_account sul database) */
+  async function eliminaAccount(){
+    const s = sess(); if (!s) return;
+    if (!s.demo) {
+      if (!navigator.onLine) throw new Error('Serve internet per eliminare l\'account.');
+      let r; try { r = await fetch(CFG.url + '/rest/v1/rpc/elimina_account', {method: 'POST', headers: H(await token()), body: '{}'}); } catch (e) { throw new Error(RETE); }
+      if (!r.ok) throw new Error('Non sono riuscito a eliminare l\'account: riprova più tardi.');
+    }
+    const k = prog.k(); if (k) { mem.del(k); mem.del(k + '-coda'); }
+    if (s.demo) { const n = mem.get('qp-demo-nomi') || {}; delete n[s.nome.toLowerCase()]; mem.set('qp-demo-nomi', n); }
+    mem.del('qp-sessione'); prog.leggi(); emetti();
+  }
   async function esci(){
     const s = sess();
     if (s && !s.demo && navigator.onLine) { try { await fetch(CFG.url + '/auth/v1/logout', {method: 'POST', headers: H(s.access)}); } catch (e) {} }
@@ -270,7 +291,10 @@ body.acc-aperto{overflow:hidden}
       '<div class="tot"><div class="tot-n"><b>' + p + '%</b><span>' + n + ' argomenti letti su ' + t + '</span></div><span class="bar' + (p === 100 ? ' ok' : '') + '" role="progressbar" aria-label="Avanzamento totale" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + p + '"><i style="width:' + p + '%"></i></span></div>' +
       (s.admin ? '<div class="adm-box"><p><b>Area admin</b>Segnalazioni e feedback degli utenti' + (window.QP.nuove ? ': ' + window.QP.nuove + ' da leggere' : '') + '</p><button type="button" class="btn adm-go">Apri</button></div>' : '') +
       '<h4>Capitoli</h4><ul class="cap"></ul>' +
-      '<button type="button" class="btn largo esci">Esci</button>';
+      '<button type="button" class="btn largo esci">Esci</button>' +
+      (s.admin ? '' : '<button type="button" class="elimina" aria-expanded="false" aria-controls="del-box">Elimina l\'account</button>' +
+        '<div class="del-box" id="del-box" hidden><h4>Eliminare l\'account?</h4><p>L\'account <b class="del-nome"></b> e tutti i tuoi progressi verranno cancellati <b>per sempre</b>: non si può annullare. Le segnalazioni che hai già inviato restano.</p>' +
+        '<p class="err" role="alert"></p><div class="azioni"><button type="button" class="btn rosso del-si">Elimina definitivamente</button><button type="button" class="btn del-no">Annulla</button></div></div>');
     $('.ciao .av', PI).textContent = s.nome.charAt(0);
     $('.ciao h3', PI).textContent = 'Ciao, ' + s.nome;
     const sub = $('.ciao p', PI); sub.textContent = p === 100 ? 'Hai letto tutto il Quaderno!' : (n ? 'Continua così.' : 'Segna gli argomenti man mano che li studi.');
@@ -287,6 +311,17 @@ body.acc-aperto{overflow:hidden}
       L.append(li);
     });
     $('.esci', PI).addEventListener('click', async () => { await esci(); scheda = 'entra'; disegna(); });
+    const el = $('.elimina', PI), db = $('#del-box', PI);
+    if (el) {
+      $('.del-nome', db).textContent = s.nome;
+      el.addEventListener('click', () => { db.hidden = false; el.hidden = true; el.setAttribute('aria-expanded', 'true'); db.scrollIntoView({block: 'nearest'}); $('.del-no', db).focus(); });
+      $('.del-no', db).addEventListener('click', () => { db.hidden = true; el.hidden = false; el.setAttribute('aria-expanded', 'false'); el.focus(); });
+      $('.del-si', db).addEventListener('click', async () => {
+        const b = $('.del-si', db), e = $('.err', db); b.disabled = true; b.textContent = 'Elimino…'; e.textContent = '';
+        try { await eliminaAccount(); scheda = 'entra'; avviso = 'Account eliminato. Se vuoi, puoi crearne uno nuovo quando vuoi.'; disegna(); }
+        catch (x) { e.textContent = x.message; b.disabled = false; b.textContent = 'Elimina definitivamente'; }
+      });
+    }
     const ag = $('.adm-go', PI); if (ag) ag.addEventListener('click', () => { location.hash = 'admin'; });
   }
   function riga_(nome, ids, vai){

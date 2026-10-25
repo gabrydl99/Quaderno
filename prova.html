@@ -16393,7 +16393,7 @@ body.fb-aperto{overflow:hidden}
 <script>
 (function(){
   /* Collegamento a Supabase: indirizzo del progetto e chiave pubblica ("anon"). Vuoti = anteprima. */
-  const CFG = /*SUPABASE*/{"url": "", "chiave": ""}/*FINE*/;
+  const CFG = {"url": "", "chiave": ""};
   const DEMO = !CFG.url || !CFG.chiave;
   const TIPI = [['errore', 'Errore negli appunti'], ['suggerimento', 'Suggerimento'], ['reclamo', 'Reclamo'], ['altro', 'Altro']];
   const NOME_TIPO = Object.fromEntries(TIPI);
@@ -16414,7 +16414,8 @@ body.fb-aperto{overflow:hidden}
   };
 
   /* ---------- servizio: Supabase vero oppure anteprima sul telefono ---------- */
-  const H = t => ({apikey: CFG.chiave, Authorization: 'Bearer ' + (t || CFG.chiave), 'Content-Type': 'application/json'});
+  /* la chiave pubblica va solo nell'intestazione apikey; Authorization porta l'accesso dell'admin, quando c'è */
+  const H = t => Object.assign({apikey: CFG.chiave, 'Content-Type': 'application/json'}, t ? {Authorization: 'Bearer ' + t} : {});
   const DEMO_ESEMPI = [
     {id: -3, creato: new Date(Date.now() - 36e5 * 2).toISOString(), tipo: 'errore', argomento: 'Esempio · Stabilità › un argomento', rif: 'stabilita', messaggio: 'Messaggio di esempio: in questo argomento manca un pedice nella seconda formula.', nome: '', versione: ver, letto: false},
     {id: -2, creato: new Date(Date.now() - 36e5 * 26).toISOString(), tipo: 'suggerimento', argomento: '', rif: '', messaggio: 'Messaggio di esempio: sarebbe utile un quiz alla fine di ogni sezione.', nome: 'Nome di esempio', versione: ver, letto: false},
@@ -16462,6 +16463,8 @@ body.fb-aperto{overflow:hidden}
     return r;
   }
   const admin = () => !!mem.get('qp-admin');
+  /* l'admin entra con un nome utente: Supabase vuole un indirizzo, quindi diventa nome@gabrydl99.github.io (nessuna email viene inviata) */
+  const indirizzo = u => { u = u.trim().toLowerCase(); return u.includes('@') ? u : u + '@gabrydl99.github.io'; };
 
   /* ---------- coda: se manca internet il messaggio parte dopo ---------- */
   async function svuota(){
@@ -16566,17 +16569,17 @@ body.fb-aperto{overflow:hidden}
   const dataIt = s => new Date(s).toLocaleString('it-IT', {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'});
   function login(){
     esci.hidden = true;
-    AI.innerHTML = (DEMO ? '<p class="demo"><b>Anteprima</b>: va bene qualsiasi email e password; i messaggi sono d\'esempio.</p>' : '') +
+    AI.innerHTML = (DEMO ? '<p class="demo"><b>Anteprima</b>: va bene qualsiasi nome utente e password; i messaggi sono d\'esempio.</p>' : '') +
       '<form class="adm-login" novalidate><p>Entra con il tuo account per leggere le segnalazioni. Chi usa il Quaderno non può entrare qui.</p>' +
-      '<div class="campo"><label class="fl" for="adm-mail">Email</label><input class="in" id="adm-mail" type="email" autocomplete="username" required></div>' +
+      '<div class="campo"><label class="fl" for="adm-mail">Nome utente</label><input class="in" id="adm-mail" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required></div>' +
       '<div class="campo"><label class="fl" for="adm-pw">Password</label><input class="in" id="adm-pw" type="password" autocomplete="current-password" required></div>' +
       '<p class="err" id="adm-err" role="alert"></p><button type="submit" class="btn pri">Entra</button></form>';
     const f = $('form', AI);
     f.addEventListener('submit', async e => {
       e.preventDefault();
       const b = $('button', f); b.disabled = true; b.textContent = 'Accesso…';
-      try { await srv.entra($('#adm-mail', f).value.trim(), $('#adm-pw', f).value); mostraAdmin(); conta(); }
-      catch (x) { $('#adm-err', f).textContent = navigator.onLine ? 'Email o password sbagliate.' : 'Serve internet per entrare.'; b.disabled = false; b.textContent = 'Entra'; }
+      try { await srv.entra(indirizzo($('#adm-mail', f).value), $('#adm-pw', f).value); mostraAdmin(); conta(); }
+      catch (x) { $('#adm-err', f).textContent = navigator.onLine ? 'Nome utente o password sbagliati.' : 'Serve internet per entrare.'; b.disabled = false; b.textContent = 'Entra'; }
     });
     $('#adm-mail', f).focus();
   }

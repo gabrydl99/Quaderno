@@ -2,7 +2,7 @@
    - Pagina, font e icone: salvati sul telefono, l'app si apre anche senza internet.
    - Pagina: prima prova la rete (così vedi subito gli aggiornamenti), se non c'è usa la copia salvata.
    - Audio: alla prima riproduzione il file viene salvato intero; dopo si ascolta anche offline. */
-const VERSIONE = 'v42';
+const VERSIONE = 'v43';
 const CACHE = 'qp-app-' + VERSIONE;
 const CACHE_AUDIO = 'qp-audio';
 

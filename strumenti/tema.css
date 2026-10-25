@@ -206,7 +206,7 @@ figure.fig.sym .svgbox{border:0}
 .ill .il-r{stroke:var(--red)}
 .ill .il-tb{fill:var(--blue)}
 .ill .il-ta{fill:var(--acc)}
-.ill .il-nero{fill:#14202c;stroke:var(--ink);stroke-width:1}
+.ill .il-nero{fill:#000;stroke:var(--ink);stroke-width:1}
 .ill text{paint-order:stroke fill;stroke:var(--sheet);stroke-width:3px;stroke-linejoin:round}
 #cards .card .ill,.eser-c .ill{box-sizing:border-box;padding:5px;border-radius:14px;background:color-mix(in srgb,var(--blue) 7%,var(--sheet));border:1px solid color-mix(in srgb,var(--blue) 10%,var(--line))}
 #cards .card .ill{width:96px;height:72px;margin-top:-2px}

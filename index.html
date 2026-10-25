@@ -616,6 +616,32 @@ figure.fig.sym .svgbox{border:0}
 .eser-c:hover,.eser-c:active{border-color:color-mix(in srgb,var(--blue) 45%,var(--line));background:color-mix(in srgb,var(--blue) 4%,var(--sheet))}
 .eser-c:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 @media (max-width:359.98px){.eser-g{grid-template-columns:1fr}}
+
+/* ---------- disegni: più colori e un riquadro tinto sotto ogni disegno ---------- */
+.ill .il-fb2{fill:color-mix(in srgb,var(--blue) 30%,var(--sheet));stroke:none}
+.ill .il-land{fill:color-mix(in srgb,#e8b400 26%,var(--sheet));stroke:none}
+.ill .il-gs{stroke:#d9a400}
+.ill .il-r{stroke:var(--red)}
+.ill .il-tb{fill:var(--blue)}
+.ill .il-ta{fill:var(--acc)}
+.ill .il-nero{fill:#000;stroke:var(--ink);stroke-width:1}
+.ill text{paint-order:stroke fill;stroke:var(--sheet);stroke-width:3px;stroke-linejoin:round}
+#cards .card .ill,.eser-c .ill{box-sizing:border-box;padding:5px;border-radius:14px;background:color-mix(in srgb,var(--blue) 7%,var(--sheet));border:1px solid color-mix(in srgb,var(--blue) 10%,var(--line))}
+#cards .card .ill{width:96px;height:72px;margin-top:-2px}
+#cards .card,.how-card{grid-template-columns:minmax(0,1fr) 96px}
+.eser-c .ill{width:84px;height:63px}
+
+/* ---------- bolle e riquadri: più rilievo e finiture ---------- */
+.chip{background:var(--sheet);box-shadow:0 1px 2px rgba(6,17,27,.06);transition:background-color .15s,border-color .15s,color .15s}
+.chip:hover{border-color:color-mix(in srgb,var(--blue) 45%,var(--line))}
+.chip[aria-current="true"]{box-shadow:0 2px 8px rgba(6,17,27,.22)}
+#home .howto,#home .eser,#home #cards.grid,#home .fb{box-shadow:0 1px 2px rgba(6,17,27,.05),0 12px 32px -14px rgba(6,17,27,.22)}
+.eser-c{box-shadow:0 1px 2px rgba(6,17,27,.05);transition:border-color .15s,background-color .15s}
+article.topic{box-shadow:0 1px 2px rgba(6,17,27,.04),0 10px 28px -16px rgba(6,17,27,.18)}
+.toc{box-shadow:0 1px 2px rgba(6,17,27,.04)}
+.fbar button{box-shadow:0 1px 2px rgba(6,17,27,.06)}
+.acc-chip,.brand .theme,.brand .homeb{box-shadow:0 1px 2px rgba(6,17,27,.06)}
+@media (prefers-reduced-motion:reduce){.chip,.eser-c{transition:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -633,7 +659,7 @@ figure.fig.sym .svgbox{border:0}
   <div class="wrap">
     <div class="brand">
       <h1>Quaderno <span>Patentino</span></h1>
-      <span class="ver-top" title="Versione dell'app e data dell'ultimo aggiornamento"><b>v42</b><small>(25/10/2026)</small></span>
+      <span class="ver-top" title="Versione dell'app e data dell'ultimo aggiornamento"><b>v43</b><small>(25/10/2026)</small></span>
       <button type="button" id="homeBtn" class="homeb" aria-label="Pagina iniziale" title="Pagina iniziale"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M6 9.6V20h4.5v-5.5h3V20H18V9.6"/></svg></button>
       
       <span class="crumb" id="crumb"></span>
@@ -16191,75 +16217,107 @@ Il giornale di navigazione è scritto e firmato dal Comandante per le guardie da
 
   const D = {
     astronomia:
-      '<circle class="il-fb" cx="38" cy="38" r="26"/><circle cx="38" cy="38" r="26"/>' +
-      '<ellipse class="il-b" cx="38" cy="38" rx="26" ry="8"/>' +
-      '<ellipse class="il-d il-t" cx="38" cy="38" rx="26" ry="8" transform="rotate(-23 38 38)"/>' +
-      '<path class="il-t" d="M38 12V64"/><circle class="il-ink" cx="38" cy="12" r="2.2"/>' +
-      `<path class="il-gold" d="${stella(78, 14, 7)}"/><path class="il-gold" d="${stella(89, 34, 4.5)}"/><path class="il-gold" d="${stella(76, 52, 5.5)}"/><path class="il-gold" d="${stella(64, 6, 3.5)}"/>`,
+      '<circle class="il-fb" cx="40" cy="38" r="26"/>' +
+      '<ellipse class="il-t" cx="40" cy="38" rx="10" ry="26"/>' +
+      '<ellipse class="il-gs il-d" cx="40" cy="38" rx="26" ry="7" transform="rotate(-24 40 38)"/>' +
+      '<ellipse class="il-b" cx="40" cy="38" rx="26" ry="7"/>' +
+      '<circle cx="40" cy="38" r="26"/>' +
+      '<path class="il-t" d="M40 6V70"/><circle class="il-ink" cx="40" cy="12" r="2.2"/>' +
+      '<circle class="il-fb2" cx="40" cy="38" r="4.6"/><circle class="il-b il-t" cx="40" cy="38" r="4.6"/>' +
+      '<circle class="il-gold" cx="63.8" cy="27.4" r="4.2"/>' +
+      `<path class="il-gold" d="${stella(82, 12, 7)}"/><path class="il-gold" d="${stella(88, 34, 3.6)}"/><path class="il-gold" d="${stella(80, 54, 4.6)}"/><path class="il-gold" d="${stella(14, 8, 3.2)}"/>`,
     maree:
-      '<path class="il-fb" d="M20 46Q28 40 36 46T52 46T68 46T84 46V68H20Z"/>' +
-      '<path class="il-b" d="M20 46Q28 40 36 46T52 46T68 46T84 46"/>' +
-      '<path class="il-b il-d il-t" d="M12 30H76"/><path class="il-d il-t" d="M12 60H76"/>' +
-      '<path d="M12 18V68"/><path class="il-t" d="M12 26h5M12 34h5M12 42h5M12 50h5M12 58h5"/>' +
-      '<path class="il-t" d="M66 33v24M63 36l3-3 3 3M63 54l3 3 3-3"/>' +
-      '<path class="il-gold" d="M82 4a12 12 0 1 0 10 20a9.5 9.5 0 1 1-10-20z"/>',
+      '<path class="il-fb2" d="M4 38Q12 33 20 38T36 38T52 38T68 38V72H4Z"/>' +
+      '<path class="il-land" d="M0 62Q18 57 36 61T70 60T96 59V72H0Z"/>' +
+      '<path class="il-b" d="M4 38Q12 33 20 38T36 38T52 38T68 38"/>' +
+      '<path class="il-b il-d il-t" d="M4 24H68"/><path class="il-r il-d il-t" d="M4 52H68"/>' +
+      '<rect class="il-fs" x="74" y="8" width="10" height="58" rx="2"/><rect x="74" y="8" width="10" height="58" rx="2"/>' +
+      '<path class="il-t" d="M74 16h5M74 24h7M74 32h5M74 40h7M74 48h5M74 56h7"/>' +
+      '<path class="il-a" d="M58 27v22M55 30l3-3 3 3M55 46l3 3 3-3"/>' +
+      '<path class="il-gold" d="M16 6a10 10 0 1 0 9 15a7.8 7.8 0 1 1-9-15z"/>',
     stabilita:
-      '<path class="il-fb" d="M0 44H96V70H0Z"/>' +
-      '<g transform="rotate(-12 48 40)"><path class="il-fs" d="M24 18V38Q24 58 48 60Q72 58 72 38V18Z"/><path d="M24 18V38Q24 58 48 60Q72 58 72 38V18"/><path d="M19 18H77"/><path class="il-t il-d" d="M48 8V60"/></g>' +
-      '<path class="il-b" d="M0 44H96"/>' +
-      '<path class="il-a il-d il-t" d="M41.5 10V53"/>' +
-      '<circle class="il-ink" cx="41.5" cy="10" r="2.4"/><text x="45" y="12.5">M</text>' +
-      '<circle class="il-ink" cx="46.8" cy="34" r="2.4"/><text x="50.5" y="37">G</text>' +
-      '<circle class="il-fa" cx="41.5" cy="53" r="2.4"/><text x="31" y="56">B</text>',
+      '<defs><clipPath id="il-scafo"><path transform="rotate(12 48 38)" d="M24 12V36Q24 62 48 64Q72 62 72 36V12Z"/></clipPath></defs>' +
+      '<rect class="il-fb" x="0" y="40" width="96" height="32"/>' +
+      '<g transform="rotate(12 48 38)"><path class="il-fs" d="M24 12V36Q24 62 48 64Q72 62 72 36V12Z"/></g>' +
+      '<rect class="il-fb2" x="0" y="40" width="96" height="32" clip-path="url(#il-scafo)"/>' +
+      '<g transform="rotate(12 48 38)"><path d="M24 12V36Q24 62 48 64Q72 62 72 36V12"/><path d="M19 12H77"/></g>' +
+      '<path class="il-b" d="M0 40H96"/>' +
+      '<path class="il-b il-d il-t" d="M54.65 52V7"/>' +
+      '<path class="il-a" style="stroke-width:3" d="M49.25 32.1H54.65"/>' +
+      '<path class="il-t" d="M49.25 32.1v9M47 38.6l2.25 2.8 2.25-2.8"/>' +
+      '<circle class="il-ink" cx="54.65" cy="6.7" r="2.3"/><text x="59" y="10">M</text>' +
+      '<circle class="il-ink" cx="49.25" cy="32.1" r="2.3"/><text x="38" y="31">G</text>' +
+      '<circle class="il-fa" cx="54.65" cy="52" r="2.3"/><text class="il-tb" x="59" y="56">B</text>' +
+      '<text class="il-ta" x="59" y="30">Z</text>',
     meteorologia:
-      '<path class="il-fs" d="M10 44H44a9 9 0 0 0 0-18a12 12 0 0 0-23-3a9 9 0 0 0-11 21Z"/><path d="M10 44H44a9 9 0 0 0 0-18a12 12 0 0 0-23-3a9 9 0 0 0-11 21Z"/>' +
-      '<path class="il-b" d="M18 52l-3 7M28 52l-3 7M38 52l-3 7M23 62l-2 5M33 62l-2 5"/>' +
-      `<path class="il-b" d="${spirale(72, 36)}"/><circle class="il-ink" cx="72" cy="36" r="2"/>`,
+      '<ellipse class="il-fb" cx="62" cy="40" rx="30" ry="24" transform="rotate(-14 62 40)"/>' +
+      '<ellipse class="il-b" cx="62" cy="40" rx="30" ry="24" transform="rotate(-14 62 40)"/>' +
+      '<ellipse class="il-fb" cx="62" cy="40" rx="19" ry="14.5" transform="rotate(-10 62 40)"/>' +
+      '<ellipse class="il-b" cx="62" cy="40" rx="19" ry="14.5" transform="rotate(-10 62 40)"/>' +
+      '<ellipse class="il-b" cx="62" cy="40" rx="9" ry="6.5" transform="rotate(-6 62 40)"/>' +
+      '<text class="il-ta" style="font-size:11px" x="58.3" y="44">B</text>' +
+      '<path class="il-a" d="M89 30l1.8 5.6 4.6-3.6M36 54l-2.6-5.2-4.6 3.2"/>' +
+      '<path class="il-fs" d="M6 30H32a7.5 7.5 0 0 0 0-15a10 10 0 0 0-19-2.6a7.5 7.5 0 0 0-7 17.6Z"/>' +
+      '<path d="M6 30H32a7.5 7.5 0 0 0 0-15a10 10 0 0 0-19-2.6a7.5 7.5 0 0 0-7 17.6Z"/>' +
+      '<path class="il-b" d="M12 36l-2.5 6M20 36l-2.5 6M28 36l-2.5 6M16 46l-2 4.5M24 46l-2 4.5"/>',
     manovrabilita:
-      '<circle class="il-b il-d" cx="54" cy="30" r="22"/>' +
-      '<path class="il-b" d="M50 8l5-3.5M50 8l5 3.5"/>' +
-      '<path class="il-t il-d" d="M10 50H28M14 56H28"/>' +
-      '<path class="il-fs" d="M34 52Q34 47 40 47H58Q66 47 72 52Q66 57 58 57H40Q34 57 34 52Z"/><path d="M34 52Q34 47 40 47H58Q66 47 72 52Q66 57 58 57H40Q34 57 34 52Z"/>' +
-      '<path class="il-a" d="M34 52l-6 4"/><path class="il-t" d="M44 52H60"/>',
+      '<circle class="il-fb" cx="62" cy="30" r="22"/>' +
+      '<circle class="il-t il-d" cx="62" cy="30" r="22"/>' +
+      '<path class="il-a" d="M48 52H62A22 22 0 0 0 84 30"/><path class="il-a" d="M80.5 33.5L84 29l3.5 4.5"/>' +
+      '<path class="il-t il-d" d="M6 49H26M8 55H26"/>' +
+      '<path class="il-fs" d="M26 48H42Q49 48 52 52Q49 56 42 56H26Z"/><path d="M26 48H42Q49 48 52 52Q49 56 42 56H26Z"/>' +
+      '<path class="il-t" d="M30 52H44"/>' +
+      '<path class="il-a" style="stroke-width:2.6" d="M26 52l-5 4"/>' +
+      '<circle class="il-ink" cx="62" cy="30" r="1.8"/>',
     navigazione:
-      '<path class="il-t" style="opacity:.35" d="M4 18H58M4 36H58M4 54H58M18 4V68M38 4V68"/>' +
-      '<path class="il-a" d="M8 66L54 12"/>' +
-      '<path class="il-t" d="M26 30L48 35M32 21L42 43M29 41L46 23"/><circle cx="38" cy="32" r="3.5"/>' +
-      '<circle class="il-fs" cx="76" cy="46" r="15"/><circle cx="76" cy="46" r="15"/>' +
-      '<path class="il-fb" d="M76 31L79 43L91 46L79 49L76 61L73 49L61 46L73 43Z"/><path class="il-b" d="M76 31L79 43L91 46L79 49L76 61L73 49L61 46L73 43Z"/>' +
-      '<text x="73" y="27">N</text>',
+      '<path class="il-t" style="opacity:.3" d="M4 18H92M4 36H92M4 54H92M20 4V68M44 4V68M68 4V68"/>' +
+      '<path class="il-land" d="M0 0H38Q34 8 26 10T14 20T0 24Z"/><path class="il-t" d="M38 0Q34 8 26 10T14 20T0 24"/>' +
+      '<path class="il-a" d="M10 64L56 22"/><path class="il-a" d="M50 24l6-2-2 6"/>' +
+      '<path class="il-b il-t" d="M24 44L44 47M27 37L39 55M24 52L42 38"/>' +
+      '<circle class="il-fs" cx="78" cy="50" r="15"/><circle cx="78" cy="50" r="15"/><circle class="il-t" cx="78" cy="50" r="10.5"/>' +
+      '<path class="il-fb2" d="M78 35L80.6 47.4L93 50L80.6 52.6L78 65L75.4 52.6L63 50L75.4 47.4Z"/>' +
+      '<path class="il-b" d="M78 35L80.6 47.4L93 50L80.6 52.6L78 65L75.4 52.6L63 50L75.4 47.4Z"/>' +
+      '<path class="il-fa" d="M78 35L80.6 47.4L78 50L75.4 47.4Z"/>',
     girobussola:
-      '<circle class="il-fs" cx="48" cy="36" r="28"/><circle cx="48" cy="36" r="28"/>' +
-      '<path class="il-fb" d="M48 36L48 8A28 28 0 0 1 72.2 22Z"/>' +
-      '<circle class="il-t" style="opacity:.45" cx="48" cy="36" r="19"/><circle class="il-t" style="opacity:.45" cx="48" cy="36" r="10"/>' +
-      '<path class="il-t" d="M48 36V8"/><path class="il-b" d="M48 36L72.2 22"/>' +
-      '<circle class="il-fa" cx="62" cy="21" r="2.6"/><circle class="il-fa" cx="33" cy="48" r="2.2"/><circle class="il-fa" cx="59" cy="53" r="2"/>',
+      '<circle class="il-fb2" cx="48" cy="36" r="30"/><circle cx="48" cy="36" r="30"/>' +
+      '<path class="il-fs" style="opacity:.55" d="M48 36L48 6A30 30 0 0 1 73.98 21Z"/>' +
+      '<circle class="il-t" style="opacity:.55" cx="48" cy="36" r="20"/><circle class="il-t" style="opacity:.55" cx="48" cy="36" r="10"/>' +
+      '<path class="il-t" d="M48 6v4M78 36h-4M48 66v-4M18 36h4M69.2 14.8l-2.8 2.8M26.8 57.2l2.8-2.8M69.2 57.2l-2.8-2.8M26.8 14.8l2.8 2.8"/>' +
+      '<path class="il-a" d="M48 36V6"/>' +
+      '<path class="il-b" style="stroke-width:2.4" d="M48 36L73.98 21"/>' +
+      '<path class="il-ink" d="M62 18q4 1 4 5q-4 0-4-5zM30 47q3 3 1 6q-2-2-1-6zM60 52q3 0 4 3q-3 1-4-3z"/>' +
+      '<circle class="il-ink" cx="48" cy="36" r="2.4"/>',
     convenzioni:
-      '<path class="il-fs" d="M8 8H36L44 16V64H8Z"/><path d="M8 8H36L44 16V64H8Z"/><path d="M36 8V16H44"/>' +
-      '<path class="il-t" d="M14 28H38M14 36H38M14 44H30"/><circle class="il-b" cx="35" cy="56" r="5"/>' +
-      '<path class="il-gold" d="M67.6 47L70 34H84L86.4 47Z"/><path class="il-ink" d="M67.6 47H86.4L88 58H66Z"/><path d="M66 58L70 34H84L88 58Z"/>' +
-      '<path d="M77 34V22"/><path class="il-ink" d="M77 6l-5 7h10zM77 14l-5 7h10z"/>' +
-      '<path class="il-b" d="M56 62q4-3 8 0t8 0t8 0t8 0t8 0"/>',
+      '<path class="il-fs" d="M8 6H34L44 16V66H8Z"/><path d="M8 6H34L44 16V66H8Z"/><path d="M34 6V16H44"/>' +
+      '<path class="il-t" d="M14 26H38M14 33H38M14 40H32M14 47H36"/>' +
+      '<circle class="il-fb2" cx="34" cy="57" r="5.5"/><circle class="il-b" cx="34" cy="57" r="5.5"/><path class="il-b il-t" d="M31.5 57l1.8 1.8 3.2-3.6"/>' +
+      '<path class="il-fb" d="M52 60q4-3 8 0t8 0t8 0t8 0t8 0V72H52Z"/>' +
+      '<path class="il-gold" d="M66 46L69 34H81L84 46Z"/><path class="il-nero" d="M64.5 46H85.5L87 58H63Z"/>' +
+      '<path d="M63 58L69 34H81L87 58Z"/><path d="M75 34V24"/>' +
+      '<path class="il-nero" d="M75 8l-5 7h10zM75 16l-5 7h10z"/>' +
+      '<path class="il-b" d="M52 60q4-3 8 0t8 0t8 0t8 0t8 0"/>',
     formulario:
-      '<path class="il-fb" d="M8 50L22 22L36 50Z"/><path class="il-b" d="M8 50L22 22L36 50Z"/>' +
-      '<path d="M42 38l4-2l5 14l7-28H90"/><path class="il-t" d="M64 30l10 12M74 30l-10 12"/><path class="il-t" d="M80 28q4 0 4 3q0 3-4 5h5"/>' +
-      '<path d="M48 60H88"/><circle class="il-ink" cx="68" cy="55" r="2"/><circle class="il-ink" cx="68" cy="66" r="2"/>',
+      '<rect class="il-fs" x="10" y="6" width="58" height="62" rx="6"/><rect x="10" y="6" width="58" height="62" rx="6"/>' +
+      '<path class="il-t" style="opacity:.45" d="M16 22H62M16 36H62M16 50H62"/>' +
+      '<path class="il-fb2" d="M18 31L26 15L34 31Z"/><path class="il-b" d="M18 31L26 15L34 31Z"/>' +
+      '<path d="M38 26l3-1.6 4 8.6 6-20H62"/>' +
+      '<path class="il-b" d="M18 44H40M18 60H40"/><path class="il-t" d="M44 52H58"/><circle class="il-ink" cx="51" cy="47" r="1.8"/><circle class="il-ink" cx="51" cy="57" r="1.8"/>' +
+      '<path class="il-a" d="M76 20l12 12M88 20l-12 12"/><path class="il-gs" style="stroke-width:2.4" d="M74 50h16M82 42v16"/>',
     assetto:
-      '<path class="il-fb" d="M0 46H96V72H0Z"/>' +
-      '<g transform="rotate(-6 48 40)"><path class="il-fs" d="M10 26H84L80 44Q78 50 70 50H22Q14 50 12 44Z"/><path d="M10 26H84L80 44Q78 50 70 50H22Q14 50 12 44Z"/><path d="M34 26V16H58V26"/></g>' +
-      '<path class="il-b" d="M0 46H96"/>' +
-      '<path class="il-a il-t" d="M8 30V58M88 22V58"/><path class="il-a il-t" d="M5 58h6M85 58h6"/>' +
-      '<text x="1" y="68">Pd</text><text x="80" y="68">Pa</text>',
+      '<rect class="il-fb" x="0" y="42" width="96" height="30"/>' +
+      '<g transform="rotate(4 48 40)"><path class="il-fs" d="M8 26H88L82 44Q80 50 72 50H22Q14 50 12 44Z"/><path d="M8 26H88L82 44Q80 50 72 50H22Q14 50 12 44Z"/>' +
+      '<path class="il-fs" d="M16 26V16H38V26"/><path d="M16 26V16H38V26"/><path class="il-t" d="M20 21h4M28 21h4"/></g>' +
+      '<path class="il-b" d="M0 42H96"/>' +
+      '<path class="il-a" d="M14 30V56M84 30V60"/><path class="il-a il-t" d="M11 36h6M11 42h6M11 48h6M81 38h6M81 44h6M81 50h6"/>' +
+      '<text class="il-ta" x="4" y="68">Ta</text><text class="il-ta" x="80" y="69">Tf</text>',
     carteggio:
-      '<path class="il-t" style="opacity:.35" d="M4 14H92M4 34H92M4 54H92M24 4V68M48 4V68M72 4V68"/>' +
-      '<path class="il-b" d="M10 60L44 26L80 18"/><circle class="il-ink" cx="44" cy="26" r="2.6"/><circle class="il-ink" cx="80" cy="18" r="2.6"/>' +
-      '<path class="il-a" d="M58 66L66 40L74 66"/><circle class="il-fs" cx="66" cy="40" r="3"/><circle cx="66" cy="40" r="3"/>' +
-      '<path class="il-gold" d="M18 22L20 30L28 32L20 34L18 42L16 34L8 32L16 30Z"/>',
-    istruzioni:
-      '<circle class="il-d il-t" cx="48" cy="36" r="29"/>' +
-      '<circle class="il-fs" cx="48" cy="36" r="22"/>' +
-      '<circle cx="48" cy="36" r="16" stroke="var(--acc)" stroke-width="12" stroke-dasharray="12.57 12.57" transform="rotate(-22.5 48 36)"/>' +
-      '<circle cx="48" cy="36" r="22"/><circle cx="48" cy="36" r="10"/>'
+      '<path class="il-t" style="opacity:.3" d="M4 16H92M4 36H92M4 56H92M24 4V68M48 4V68M72 4V68"/>' +
+      '<path class="il-land" d="M96 0V30Q86 28 80 20T66 8T58 0Z"/><path class="il-t" d="M96 30Q86 28 80 20T66 8T58 0"/>' +
+      '<path class="il-gold" d="M78 14l2-6 2 6z"/>' +
+      '<path class="il-a" d="M10 62L60 26"/><path class="il-a" d="M54 27l6-1-2 6"/>' +
+      '<circle class="il-fs" cx="10" cy="62" r="3.6"/><circle class="il-b" cx="10" cy="62" r="3.6"/>' +
+      '<path style="stroke-width:2.4" d="M40 8L30 46M40 8L52 44"/><circle class="il-fs" cx="40" cy="8" r="3"/><circle cx="40" cy="8" r="3"/>' +
+      '<path class="il-t" d="M30 46l-1 4M52 44l1.5 3.8"/>'
   };
   const PER_TITOLO = {'Astronomia':'astronomia','Maree':'maree','Stabilità':'stabilita','Meteorologia':'meteorologia','Manovrabilità':'manovrabilita','Navigazione e cartografia':'navigazione','Strumenti di navigazione':'girobussola','Convenzioni':'convenzioni','Formulario':'formulario'};
   const disegno = id => { const s = document.createElement('span'); s.className = 'ill'; s.setAttribute('aria-hidden', 'true'); s.innerHTML = '<svg viewBox="0 0 96 72">' + D[id] + '</svg>'; return s; };
@@ -16309,9 +16367,13 @@ Il giornale di navigazione è scritto e firmato dal Comandante per le guardie da
 #home .howto{background:color-mix(in srgb,var(--sheet) 80%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 /* spazio in fondo: scorrendo giù l'immagine resta scoperta */
 .bg-spazio{height:calc(100vh - var(--top-h,190px));height:calc(100svh - var(--top-h,190px))}
-.bg-vedi{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:8px;margin:0 0 10px;padding:9px 15px 9px 12px;border-radius:999px;background:color-mix(in srgb,var(--sheet) 85%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line);color:var(--ink);font:600 .92rem/1 var(--f-body)}
+.bg-vedi{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;width:44px;height:44px;margin:0 0 10px auto;padding:0;border-radius:50%;box-shadow:0 2px 10px rgba(6,17,27,.12);background:color-mix(in srgb,var(--sheet) 85%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line);color:var(--ink);font:600 .92rem/1 var(--f-body)}
 .bg-vedi svg{color:inherit;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .bg-vedi:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+/* solo icona; la scritta resta per i lettori di schermo e compare quando si torna agli argomenti */
+.bg-vedi span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+body.vedi-sfondo .bg-vedi span{position:static;width:auto;height:auto;overflow:visible;clip:auto}
+body.vedi-sfondo .bg-vedi{width:auto;height:auto;padding:10px 16px 10px 12px;border-radius:999px}
 #home > *:not(.home-bg){transition:opacity .25s ease}
 body.vedi-sfondo #home > *:not(.home-bg):not(.bg-vedi),body.vedi-sfondo ~ * .foot-ver,body.vedi-sfondo .foot-ver{opacity:0;visibility:hidden;pointer-events:none}
 body.vedi-sfondo .home-bg{padding:14px 14px calc(86px + env(safe-area-inset-bottom,0px));background-origin:content-box;background-clip:border-box;background-size:contain;background-position:center}
@@ -16327,6 +16389,7 @@ body.vedi-sfondo .bg-vedi{position:fixed;z-index:30;left:50%;bottom:calc(20px + 
   const ICONA_VEDI = '<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="M4 17.5l5-4.5 4 3.5 3-2.5 4.5 3.5"/>';
   const ICONA_TORNA = '<path d="M5 7h14M5 12h14M5 17h14"/>';
   t.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + ICONA_VEDI + '</svg><span>Guarda l\'immagine</span>';
+  t.title = 'Guarda l\'immagine';
   const spazio = document.createElement('div'); spazio.className = 'bg-spazio';
   const elenco = document.getElementById('cards');
   home.prepend(bg); home.append(spazio);
@@ -16337,7 +16400,7 @@ body.vedi-sfondo .bg-vedi{position:fixed;z-index:30;left:50%;bottom:calc(20px + 
     document.body.classList.toggle('vedi-sfondo', on);
     t.setAttribute('aria-pressed', on ? 'true' : 'false');
     t.querySelector('span').textContent = on ? 'Torna agli argomenti' : 'Guarda l\'immagine';
-    t.querySelector('svg').innerHTML = on ? ICONA_TORNA : ICONA_VEDI;
+    t.querySelector('svg').innerHTML = on ? ICONA_TORNA : ICONA_VEDI; t.title = on ? 'Torna agli argomenti' : 'Guarda l\'immagine';
     if (on) { alto(); scrollTo({top: 0}); } else scrollTo({top: 0});
   }
   t.addEventListener('click', () => vedi(!document.body.classList.contains('vedi-sfondo')));

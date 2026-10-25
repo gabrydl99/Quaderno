@@ -104,6 +104,7 @@ body.acc-aperto{overflow:hidden}
   const DEMO = !CFG.url || !CFG.chiave;
   const DOMINIO = 'gabrydl99.github.io';           // il nome utente diventa nome@questo-dominio: nessuna email viene mai inviata
   const NOME_OK = /^[A-Za-z0-9._-]{3,20}$/;
+  const RETE = 'Non riesco a collegarmi: controlla la connessione e riprova.';
   const $ = (s, r) => (r || document).querySelector(s);
   const mem = {
     get(k){ try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } },
@@ -154,7 +155,7 @@ body.acc-aperto{overflow:hidden}
     nome = nome.trim();
     if (DEMO) { if (!NOME_OK.test(nome)) throw new Error('Nome utente o password sbagliati.'); avvia({demo: true, id: 'demo-' + nome.toLowerCase(), nome: (mem.get('qp-demo-nomi') || {})[nome.toLowerCase()] || nome, admin: nome.toLowerCase() === 'gabrydl'}); return; }
     if (!navigator.onLine) throw new Error('Serve internet per entrare.');
-    const r = await fetch(CFG.url + '/auth/v1/token?grant_type=password', {method: 'POST', headers: H(), body: JSON.stringify({email: nome.toLowerCase() + '@' + DOMINIO, password: pw})});
+    let r; try { r = await fetch(CFG.url + '/auth/v1/token?grant_type=password', {method: 'POST', headers: H(), body: JSON.stringify({email: nome.toLowerCase() + '@' + DOMINIO, password: pw})}); } catch (e) { throw new Error(RETE); }
     const j = await r.json().catch(() => ({}));
     if (!r.ok) throw new Error(errore(j, 'Nome utente o password sbagliati.'));
     daRisposta(j); await prog.scarica(); emetti();
@@ -165,7 +166,7 @@ body.acc-aperto{overflow:hidden}
     if (pw.length < 6) throw new Error('Password troppo corta: usa almeno 6 caratteri.');
     if (DEMO) { const n = mem.get('qp-demo-nomi') || {}; if (n[nome.toLowerCase()]) throw new Error('Questo nome utente è già preso: scegline un altro.'); n[nome.toLowerCase()] = nome; mem.set('qp-demo-nomi', n); return entra(nome, pw); }
     if (!navigator.onLine) throw new Error('Serve internet per registrarti.');
-    const r = await fetch(CFG.url + '/auth/v1/signup', {method: 'POST', headers: H(), body: JSON.stringify({email: nome.toLowerCase() + '@' + DOMINIO, password: pw, data: {nome}})});
+    let r; try { r = await fetch(CFG.url + '/auth/v1/signup', {method: 'POST', headers: H(), body: JSON.stringify({email: nome.toLowerCase() + '@' + DOMINIO, password: pw, data: {nome}})}); } catch (e) { throw new Error(RETE); }
     const j = await r.json().catch(() => ({}));
     if (!r.ok) throw new Error(errore(j, 'Registrazione non riuscita: riprova.'));
     if (!j.access_token) throw new Error('Registrazione ricevuta, ma l\'accesso non è ancora attivo: avvisa l\'amministratore.');
@@ -355,9 +356,12 @@ body.acc-aperto{overflow:hidden}
       c.classList.add('con-pr'); $('.bar', pr).classList.toggle('ok', p === 100); $('.bar i', pr).style.width = p + '%';
       $('.pr-n', pr).textContent = n + '/' + t + ' · ' + p + '%';
     });
+    const cons = $('#home .howto .consiglio'); if (cons) cons.hidden = !!s;
+    const hd = $('#home .how-card .d'); if (hd) hd.textContent = s ? 'Sezioni, audio delle lezioni, ricerca, profilo e progressi, uso senza internet e installazione.' : 'Consigliato: crea un account per salvare i tuoi progressi. Qui trovi anche come usare sezioni, audio e ricerca.';
     if (!P.hidden) disegna();
   }
   subs.push(aggiorna);
+  const ca = $('#home .howto .crea-account'); if (ca) ca.addEventListener('click', () => { scheda = 'registrati'; apri(); });
 
   /* ---------- per gli altri moduli (segnalazioni) ---------- */
   window.QP = {CFG, DEMO, H, rest, token, sessione: sess, admin: () => { const s = sess(); return !!(s && s.admin); }, nome: () => { const s = sess(); return s ? s.nome : ''; },

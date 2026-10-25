@@ -594,7 +594,13 @@ figure.fig.sym .svgbox{border:0}
 .how-card .n::after{content:"";display:inline-block;width:.5em;height:.5em;margin-left:.45em;border:solid var(--muted);border-width:0 2px 2px 0;transform:translateY(-.2em) rotate(45deg);transition:transform .2s ease}
 .how-card[aria-expanded="true"] .n::after{transform:translateY(.05em) rotate(-135deg)}
 .how-card:focus-visible{outline:2px solid var(--blue);outline-offset:-3px}
-#home .howto ol{margin:0;padding:4px 20px 16px 40px;border-top:1px solid var(--line);line-height:1.5}
+#home .howto .how-corpo{border-top:1px solid var(--line)}
+#home .howto ol{margin:0;padding:4px 20px 16px 40px;line-height:1.5}
+#home .howto .consiglio{margin:12px 14px 4px;padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--blue) 10%,var(--sheet));border:1px solid color-mix(in srgb,var(--blue) 30%,var(--line));line-height:1.45;font-size:.92rem;color:var(--ink)}
+#home .howto .consiglio b{color:var(--blue)}
+#home .howto .crea-account{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;margin-top:10px;min-height:40px;padding:0 16px;border-radius:999px;background:var(--ink);color:var(--sheet);font:600 .9rem/1 var(--f-body)}
+#home .howto .crea-account:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+#home .howto .consiglio[hidden]{display:none}
 #home .howto ol li{margin:10px 0}
 @media (prefers-reduced-motion:reduce){.how-card .n::after{transition:none}}
 </style>
@@ -614,7 +620,7 @@ figure.fig.sym .svgbox{border:0}
   <div class="wrap">
     <div class="brand">
       <h1>Quaderno <span>Patentino</span></h1>
-      <span class="ver-top" title="Versione dell'app e data dell'ultimo aggiornamento"><b>v39</b><small>(25/10/2026)</small></span>
+      <span class="ver-top" title="Versione dell'app e data dell'ultimo aggiornamento"><b>v40</b><small>(25/10/2026)</small></span>
       <button type="button" id="homeBtn" class="homeb" aria-label="Pagina iniziale" title="Pagina iniziale"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M6 9.6V20h4.5v-5.5h3V20H18V9.6"/></svg></button>
       
       <span class="crumb" id="crumb"></span>
@@ -638,6 +644,8 @@ figure.fig.sym .svgbox{border:0}
     <div class="grid" id="cards"></div>
 <section class="howto" aria-labelledby="howto-t">
 <h2 id="howto-t">Come si usa</h2>
+<div class="how-corpo" id="howto-corpo">
+<p class="consiglio"><b>Consigliato: crea un account.</b> Bastano un nome utente e una password, niente email. Così puoi segnare gli argomenti che hai studiato, vedere i tuoi progressi capitolo per capitolo e ritrovarli su ogni telefono. <button type="button" class="crea-account">Crea un account</button></p>
 <ol>
 <li><b>Apri una sezione</b> toccando il suo riquadro in questa pagina o una delle bolle in alto. Si apre l'<b>indice</b> degli argomenti: tocca un argomento per leggerlo. Con <b>‹ Precedente</b> e <b>Successivo ›</b> passi al vicino, con <b>☰ Tutti gli argomenti</b> torni all'elenco.</li>
 <li><b>Le cuffie</b> 🎧 nell'indice ti dicono dove c'è la lezione registrata: piene = audio presente, sbarrate = manca.</li>
@@ -645,12 +653,14 @@ figure.fig.sym .svgbox{border:0}
 <li><b>Leggere la lezione</b>: tocca <b>Trascrizione</b> (sulla scheda o nel lettore). Con <b>A−</b> e <b>A+</b> cambi la grandezza del testo; trascina la barretta in alto per ingrandire il pannello.</li>
 <li><b>Cercare</b>: scrivi nella barra in alto (es. «amplitudine», «squat») e tocca un risultato: la parola viene evidenziata nel testo.</li>
 <li><b>Disegni</b>: toccane uno per ingrandirlo (+ e − per lo zoom).</li>
+<li><b>Il tuo profilo</b>: in alto, accanto alla ricerca, c'è scritto <b>Guest</b>. Toccalo per <b>registrarti</b> o <b>entrare</b> con nome utente e password (niente email): al posto di Guest comparirà il tuo nome. In fondo a ogni argomento tocca <b>Segna come letto</b>; nell'indice gli argomenti letti hanno la spunta verde, sotto ogni capitolo vedi la percentuale e nel profilo trovi l'avanzamento di tutti i capitoli. I progressi li vedi solo tu e ti seguono su ogni telefono in cui entri.</li>
 <li><b>Segnalazioni</b>: hai trovato un errore o hai un suggerimento? Tocca <b>Segnalazioni e feedback</b> in questa pagina, oppure <b>Segnala un errore</b> in fondo a un argomento (l'argomento si compila da solo). Puoi firmarti o restare anonimo; il messaggio lo legge solo l'amministratore. Senza internet parte da solo appena torna la connessione.</li>
 <li><b>In alto a destra</b>: la <b>casetta</b> (Home) ti riporta qui, alla pagina iniziale; il <b>sole</b> (Light mode) o la <b>luna</b> (Dark mode) cambia tra tema chiaro e scuro; accanto c'è la <b>versione</b> con la data dell'ultimo aggiornamento. Mentre scorri, la freccia <b>↑</b> ti riporta in cima alla pagina.</li>
 <li><b>Senza internet</b> il Quaderno si apre lo stesso. Ogni audio, dopo che l'hai ascoltato una volta, resta sul telefono e si sente anche offline. Su iPhone, se un audio non parte al primo tocco, tocca di nuovo ▶.</li>
 <li><b>Installa</b>: se accanto alla barra di ricerca vedi il tasto <b>Installa</b>, toccalo per mettere il Quaderno tra le app del telefono. Gli aggiornamenti arrivano da soli: la versione in alto a destra ti dice quale hai.</li>
 <li><b>L'immagine</b>: con <b>Guarda l'immagine</b>, sopra l'elenco delle sezioni, la vedi intera; con <b>Torna agli argomenti</b> torni all'elenco. Scorrendo fino in fondo a questa pagina la vedi anche dietro gli argomenti.</li>
 </ol>
+</div>
 </section>
 
   </div>
@@ -16243,7 +16253,7 @@ Il giornale di navigazione è scritto e firmato dal Comandante per le guardie da
   // istruzioni: riquadro come le sezioni; toccandolo si apre l'elenco
   const how = document.querySelector('#home .howto');
   if (how) {
-    const h2 = how.querySelector('h2'), ol = how.querySelector('ol');
+    const h2 = how.querySelector('h2'), ol = how.querySelector('.how-corpo') || how.querySelector('ol');
     const b = document.createElement('button'); b.type = 'button'; b.className = 'how-card';
     b.setAttribute('aria-expanded', 'false'); if (ol) { ol.id = ol.id || 'howto-lista'; b.setAttribute('aria-controls', ol.id); }
     b.innerHTML = '<span class="n">Come si usa</span><span class="d">Sezioni, audio delle lezioni, ricerca, uso senza internet e installazione.</span>';
@@ -16297,6 +16307,379 @@ body.vedi-sfondo .bg-vedi{position:fixed;z-index:30;left:50%;bottom:calc(20px + 
   t.addEventListener('click', () => vedi(!document.body.classList.contains('vedi-sfondo')));
   addEventListener('hashchange', () => vedi(false));
   addEventListener('keydown', e => { if (e.key === 'Escape' && document.body.classList.contains('vedi-sfondo')) vedi(false); });
+})();
+</script>
+<style id="account-css">
+/* Profilo: accesso con nome utente e password, argomenti segnati come letti, progressi per capitolo.
+   I dati di ognuno li può leggere solo il proprietario (regole sul database Supabase). */
+.cerca-riga{display:flex;gap:8px;align-items:stretch}
+.cerca-riga .search{flex:1;min-width:0}
+.acc-chip{all:unset;box-sizing:border-box;flex:none;display:inline-flex;align-items:center;gap:6px;max-width:42%;padding:0 11px 0 5px;border-radius:999px;border:1.5px solid var(--line);background:var(--sheet);color:var(--ink);font:600 .86rem/1 var(--f-body);cursor:pointer}
+.acc-chip .av,.acc .av{flex:none;display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:var(--chip);color:var(--muted);font:700 .8rem/1 var(--f-body);text-transform:uppercase}
+.acc-chip .av svg{width:16px;height:16px}
+.acc-chip.in .av,.acc .av.in{background:var(--blue);color:var(--sheet)}
+.acc-chip.ad .av,.acc .av.ad{background:var(--acc);color:var(--on-acc,#fff)}
+.acc-chip .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.acc-chip:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.acc svg,.acc-chip svg,.letto svg,.toc .tk svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;color:inherit}
+
+/* barra di avanzamento */
+.bar{display:block;height:8px;border-radius:99px;background:color-mix(in srgb,var(--blue) 14%,var(--sheet));overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:inherit;background:var(--blue);transition:width .35s ease}
+.bar.ok i{background:var(--green)}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+
+/* in fondo a ogni argomento: "Segna come letto" (e "Segnala un errore") */
+.art-fondo{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:18px 0 -4px;padding-top:12px;border-top:1px solid var(--line)}
+.art-fondo .segnala{margin:0}
+.letto{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 15px 0 9px;border-radius:999px;border:1.5px solid var(--line);background:var(--sheet);color:var(--ink);font:600 .9rem/1 var(--f-body)}
+.letto .ck{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;border:2px solid var(--muted);box-sizing:border-box}
+.letto .ck svg{width:14px;height:14px;stroke-width:3;opacity:0}
+.letto.on{border-color:var(--green);background:color-mix(in srgb,var(--green) 13%,var(--sheet));color:var(--green)}
+.letto.on .ck{border-color:var(--green);background:var(--green);color:var(--sheet)}
+.letto.on .ck svg{opacity:1}
+.letto:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.toc a .tk{flex:none;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--green);color:var(--sheet)}
+.toc a .tk svg{width:11px;height:11px;stroke-width:3.4}
+
+/* pagina iniziale: avanzamento sotto ogni capitolo */
+#cards .card.con-pr{grid-template-areas:"n ill" "m ill" "d d" "p p"}
+#cards .card .pr{grid-area:p;display:flex;align-items:center;gap:10px;margin-top:8px}
+#cards .card .pr .bar{flex:1}
+#cards .card .pr-n{font:600 .78rem/1 var(--f-body);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* pannello Profilo */
+.acc{position:fixed;inset:0;z-index:58;display:flex;flex-direction:column;background:var(--paper);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.acc[hidden]{display:none!important}
+.acc-bar{flex:none;display:flex;align-items:center;gap:8px;padding:10px max(14px,env(safe-area-inset-right,0px)) 10px max(14px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line)}
+.acc-bar h2{flex:1;min-width:0;margin:0;font:700 1.1rem/1.2 var(--f-body);color:var(--ink)}
+.acc-bar .x{all:unset;box-sizing:border-box;cursor:pointer;display:grid;place-items:center;width:38px;height:38px;border-radius:12px;border:1.5px solid var(--line);background:var(--sheet);color:var(--ink)}
+.acc-bar .x svg{width:18px;height:18px}
+.acc-body{flex:1;overflow:auto;overscroll-behavior:contain;padding:16px max(16px,env(safe-area-inset-right,0px)) 28px max(16px,env(safe-area-inset-left,0px))}
+.acc-in{max-width:560px;margin:0 auto}
+.acc .demo{margin:0 0 14px;padding:9px 12px;border-radius:12px;background:color-mix(in srgb,var(--orange) 14%,var(--sheet));color:var(--ink);font-size:.84rem;line-height:1.4;border:1px solid color-mix(in srgb,var(--orange) 35%,var(--line))}
+.acc .avviso{margin:0 0 14px;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--blue) 10%,var(--sheet));border:1px solid color-mix(in srgb,var(--blue) 30%,var(--line));font-size:.9rem;color:var(--ink)}
+.acc-intro{margin:0 0 14px;color:var(--muted);line-height:1.45}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;margin:0 0 16px;border-radius:999px;background:var(--chip)}
+.seg button{all:unset;box-sizing:border-box;cursor:pointer;text-align:center;padding:10px 8px;border-radius:999px;font:600 .92rem/1 var(--f-body);color:var(--muted)}
+.seg button[aria-selected="true"]{background:var(--sheet);color:var(--ink);box-shadow:0 1px 4px rgba(6,17,27,.12)}
+.seg button:focus-visible{outline:2px solid var(--blue)}
+.acc form{background:var(--sheet);border:1px solid var(--line);border-radius:16px;padding:16px}
+.acc .campo{margin:0 0 14px}
+.acc .fl{display:block;margin:0 0 6px;font:700 .9rem/1.3 var(--f-body);color:var(--ink)}
+.acc .in{width:100%;box-sizing:border-box;font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;outline:none}
+.acc .in:focus{border-color:var(--blue);box-shadow:0 0 0 3px color-mix(in srgb,var(--blue) 20%,transparent)}
+.acc .aiuto{margin:5px 0 0;font-size:.8rem;color:var(--muted)}
+.acc .err{min-height:1.2em;margin:0 0 10px;color:var(--red);font-weight:600;font-size:.88rem}
+.acc .btn{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:999px;font:600 .95rem/1 var(--f-body);border:1px solid var(--line);background:var(--chip);color:var(--ink)}
+.acc .btn.pri{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
+.acc .btn.largo{width:100%}
+.acc .btn[disabled]{opacity:.5;cursor:default}
+.acc .btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.acc .nota{margin:14px 2px 0;font-size:.82rem;line-height:1.45;color:var(--muted)}
+.ciao{display:flex;align-items:center;gap:12px;margin:0 0 14px}
+.ciao .av{width:52px;height:52px;font-size:1.3rem}
+.ciao h3{margin:0;font:700 1.3rem/1.2 var(--f-body);color:var(--ink)}
+.ciao p{margin:3px 0 0;font-size:.86rem;color:var(--muted)}
+.ciao .ruolo{display:inline-block;margin-left:6px;padding:3px 8px;border-radius:999px;background:var(--acc-soft,#f8e6f1);color:var(--acc);font:700 .72rem/1 var(--f-body);vertical-align:2px}
+.tot{background:var(--sheet);border:1px solid var(--line);border-radius:16px;padding:16px;margin:0 0 18px}
+.tot-n{display:flex;align-items:baseline;gap:10px;margin:0 0 10px}
+.tot-n b{font:700 2.1rem/1 var(--f-body);color:var(--ink);font-variant-numeric:tabular-nums}
+.tot-n span{color:var(--muted);font-size:.9rem}
+.tot .bar{height:12px}
+.acc h4{margin:0 0 8px;font:700 1rem/1.3 var(--f-body);color:var(--ink)}
+.cap{list-style:none;margin:0 0 18px;padding:0;background:var(--sheet);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.cap > li + li{border-top:1px solid var(--line)}
+.cap button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;width:100%;padding:12px 16px}
+.cap button:hover{background:color-mix(in srgb,var(--blue) 4%,var(--sheet))}
+.cap button:focus-visible{outline:2px solid var(--blue);outline-offset:-3px}
+.cap .c-t{font:700 1rem/1.25 var(--f-body);color:var(--ink)}
+.cap .c-n{font:600 .82rem/1.25 var(--f-body);color:var(--muted);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.cap .c-n.ok{color:var(--green)}
+.cap .bar{grid-column:1/-1}
+.cap .sub{list-style:none;margin:0;padding:0 0 6px}
+.cap .sub button{padding:7px 16px 7px 30px}
+.cap .sub .c-t{font-weight:600;font-size:.88rem}
+.cap .sub .bar{height:5px}
+.adm-box{display:flex;align-items:center;gap:10px;background:var(--sheet);border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:0 0 18px}
+.adm-box p{flex:1;margin:0;font-size:.88rem;color:var(--muted)}
+.adm-box p b{display:block;color:var(--ink);font-size:.95rem}
+.adm-box .btn{min-height:40px;padding:0 14px;background:var(--acc);border-color:var(--acc);color:var(--on-acc,#fff)}
+.acc .esci{margin-top:4px}
+body.acc-aperto{overflow:hidden}
+</style>
+<script>
+(function(){
+  /* Collegamento a Supabase (vuoto = anteprima: tutto resta su questo telefono) */
+  const CFG = {"url": "https://cvyuytnouuapmazjnebc.supabase.co", "chiave": "sb_publishable_D6-pqLmc7Wmtl24AdNN89Q_N-r0wUp7"};
+  const DEMO = !CFG.url || !CFG.chiave;
+  const DOMINIO = 'gabrydl99.github.io';           // il nome utente diventa nome@questo-dominio: nessuna email viene mai inviata
+  const NOME_OK = /^[A-Za-z0-9._-]{3,20}$/;
+  const RETE = 'Non riesco a collegarmi: controlla la connessione e riprova.';
+  const $ = (s, r) => (r || document).querySelector(s);
+  const mem = {
+    get(k){ try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } },
+    set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+    del(k){ try { localStorage.removeItem(k); } catch (e) {} }
+  };
+  const H = t => Object.assign({apikey: CFG.chiave, 'Content-Type': 'application/json'}, t ? {Authorization: 'Bearer ' + t} : {});
+  const ICO = {
+    utente: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>',
+    x: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+    ok: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
+  };
+
+  /* ---------- sessione ---------- */
+  const sess = () => mem.get('qp-sessione');
+  const emetti = () => subs.forEach(f => { try { f(); } catch (e) {} });
+  const subs = [];
+  function daRisposta(j){
+    const u = j.user || {}, md = u.user_metadata || {}, am = u.app_metadata || {};
+    const s = {access: j.access_token, refresh: j.refresh_token, scade: Date.now() + (j.expires_in || 3600) * 1000 - 60000,
+      id: u.id, nome: md.nome || (u.email || '').split('@')[0], admin: am.ruolo === 'admin'};
+    mem.set('qp-sessione', s); return s;
+  }
+  async function token(){
+    const s = sess(); if (!s) throw new Error('fuori');
+    if (s.demo || s.scade > Date.now()) return s.access;
+    const r = await fetch(CFG.url + '/auth/v1/token?grant_type=refresh_token', {method: 'POST', headers: H(), body: JSON.stringify({refresh_token: s.refresh})});
+    if (r.status === 400 || r.status === 401) { mem.del('qp-sessione'); emetti(); throw new Error('fuori'); }
+    if (!r.ok) throw new Error('rete');
+    return daRisposta(await r.json()).access;
+  }
+  async function rest(tab, metodo, q, corpo, prefer){
+    const r = await fetch(CFG.url + '/rest/v1/' + tab + (q || ''), {method: metodo, headers: Object.assign(H(await token()), {Prefer: prefer || 'return=minimal'}), body: corpo ? JSON.stringify(corpo) : undefined});
+    if (r.status === 401) { mem.del('qp-sessione'); emetti(); throw new Error('fuori'); }
+    if (!r.ok) throw new Error(metodo + ' ' + r.status);
+    return r;
+  }
+  const errore = (j, def) => {
+    const c = (j && (j.error_code || j.code || j.error)) || '', m = ((j && (j.msg || j.message || j.error_description)) || '').toLowerCase();
+    if (c === 'user_already_exists' || m.includes('already registered')) return 'Questo nome utente è già preso: scegline un altro.';
+    if (c === 'weak_password' || m.includes('password should')) return 'Password troppo corta: usa almeno 6 caratteri.';
+    if (c === 'signup_disabled' || m.includes('signups not allowed')) return 'Le registrazioni sono chiuse in questo momento.';
+    if (c === 'invalid_credentials' || m.includes('invalid login')) return 'Nome utente o password sbagliati.';
+    if (c === 'over_request_rate_limit' || c === 'over_email_send_rate_limit') return 'Troppi tentativi: riprova tra qualche minuto.';
+    return def;
+  };
+  async function entra(nome, pw){
+    nome = nome.trim();
+    if (DEMO) { if (!NOME_OK.test(nome)) throw new Error('Nome utente o password sbagliati.'); avvia({demo: true, id: 'demo-' + nome.toLowerCase(), nome: (mem.get('qp-demo-nomi') || {})[nome.toLowerCase()] || nome, admin: nome.toLowerCase() === 'gabrydl'}); return; }
+    if (!navigator.onLine) throw new Error('Serve internet per entrare.');
+    let r; try { r = await fetch(CFG.url + '/auth/v1/token?grant_type=password', {method: 'POST', headers: H(), body: JSON.stringify({email: nome.toLowerCase() + '@' + DOMINIO, password: pw})}); } catch (e) { throw new Error(RETE); }
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(errore(j, 'Nome utente o password sbagliati.'));
+    daRisposta(j); await prog.scarica(); emetti();
+  }
+  async function registra(nome, pw){
+    nome = nome.trim();
+    if (!NOME_OK.test(nome)) throw new Error('Il nome utente deve avere da 3 a 20 caratteri: lettere, numeri, punto, trattino o trattino basso.');
+    if (pw.length < 6) throw new Error('Password troppo corta: usa almeno 6 caratteri.');
+    if (DEMO) { const n = mem.get('qp-demo-nomi') || {}; if (n[nome.toLowerCase()]) throw new Error('Questo nome utente è già preso: scegline un altro.'); n[nome.toLowerCase()] = nome; mem.set('qp-demo-nomi', n); return entra(nome, pw); }
+    if (!navigator.onLine) throw new Error('Serve internet per registrarti.');
+    let r; try { r = await fetch(CFG.url + '/auth/v1/signup', {method: 'POST', headers: H(), body: JSON.stringify({email: nome.toLowerCase() + '@' + DOMINIO, password: pw, data: {nome}})}); } catch (e) { throw new Error(RETE); }
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(errore(j, 'Registrazione non riuscita: riprova.'));
+    if (!j.access_token) throw new Error('Registrazione ricevuta, ma l\'accesso non è ancora attivo: avvisa l\'amministratore.');
+    daRisposta(j); await prog.scarica(); emetti();
+  }
+  function avvia(s){ mem.set('qp-sessione', s); prog.leggi(); emetti(); }
+  async function esci(){
+    const s = sess();
+    if (s && !s.demo && navigator.onLine) { try { await fetch(CFG.url + '/auth/v1/logout', {method: 'POST', headers: H(s.access)}); } catch (e) {} }
+    mem.del('qp-sessione'); prog.leggi(); emetti();
+  }
+
+  /* ---------- argomenti letti ---------- */
+  const prog = {
+    fatti: new Set(),
+    k(){ const s = sess(); return s ? 'qp-prog-' + s.id : null; },
+    leggi(){ const k = this.k(); this.fatti = new Set(k ? (mem.get(k) || []) : []); },
+    salva(){ const k = this.k(); if (k) mem.set(k, [...this.fatti]); },
+    async segna(id, si){
+      if (!sess()) return;
+      si ? this.fatti.add(id) : this.fatti.delete(id); this.salva(); emetti();
+      if (DEMO) return;
+      const ck = this.k() + '-coda', coda = (mem.get(ck) || []).filter(o => o.a !== id); coda.push({a: id, si}); mem.set(ck, coda);
+      this.invia();
+    },
+    async invia(){
+      const s = sess(); if (!s || DEMO || !navigator.onLine) return false;
+      const ck = this.k() + '-coda'; let coda = mem.get(ck) || [];
+      while (coda.length) {
+        const o = coda[0];
+        try {
+          if (o.si) await rest('progressi', 'POST', '', {argomento: o.a}, 'return=minimal,resolution=ignore-duplicates');
+          else await rest('progressi', 'DELETE', '?argomento=eq.' + encodeURIComponent(o.a));
+        } catch (e) { return false; }
+        coda = coda.slice(1); mem.set(ck, coda);
+      }
+      return true;
+    },
+    async scarica(){
+      this.leggi();
+      if (DEMO || !sess() || !navigator.onLine) return;
+      if (!(await this.invia())) return;
+      try { const r = await rest('progressi', 'GET', '?select=argomento', null, 'count=none'); this.fatti = new Set((await r.json()).map(x => x.argomento)); this.salva(); } catch (e) {}
+    }
+  };
+  prog.leggi();
+  addEventListener('online', async () => { await prog.scarica(); emetti(); });
+
+  /* ---------- capitoli e argomenti della pagina ---------- */
+  const tit = el => el ? (el.firstChild && el.firstChild.nodeType === 3 ? el.firstChild.textContent : el.textContent).trim() : '';
+  const SEZ = [...document.querySelectorAll('section.sec')].map(s => ({
+    id: s.id,
+    tit: (($('#cards .card[data-sec="' + s.id + '"] .n') || {}).textContent) || tit($('.sec-head h2', s)),
+    art: [...s.querySelectorAll('article.topic')].map(a => a.id),
+    grp: [...s.querySelectorAll('.grp')].map(g => ({id: g.id, tit: g.dataset.title || g.id, art: [...g.querySelectorAll('article.topic')].map(a => a.id)}))
+  })).filter(s => s.art.length);
+  const TUTTI = SEZ.flatMap(s => s.art);
+  const conta = ids => { let n = 0; ids.forEach(i => { if (prog.fatti.has(i)) n++; }); return n; };
+  const pc = (n, t) => t ? Math.round(n / t * 100) : 0;
+
+  /* ---------- tasto in alto: Guest / nome ---------- */
+  const cerca = $('.top .search');
+  let riga = cerca && cerca.closest('.cerca-riga');
+  if (cerca && !riga) { riga = document.createElement('div'); riga.className = 'cerca-riga'; cerca.parentNode.insertBefore(riga, cerca); riga.append(cerca); }
+  const chip = document.createElement('button'); chip.type = 'button'; chip.className = 'acc-chip';
+  chip.innerHTML = '<span class="av"></span><span class="nm"></span>';
+  if (riga) cerca.after(chip);
+  chip.addEventListener('click', () => apri());
+
+  /* ---------- "Segna come letto" in fondo a ogni argomento ---------- */
+  const tasti = {};
+  document.querySelectorAll('article.topic').forEach(a => {
+    const f = document.createElement('div'); f.className = 'art-fondo';
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'letto'; b.setAttribute('aria-pressed', 'false');
+    b.innerHTML = '<span class="ck">' + ICO.ok + '</span><span class="tx">Segna come letto</span>';
+    b.addEventListener('click', () => {
+      if (!sess()) { apri('Entra o registrati per segnare gli argomenti che hai letto e vedere i tuoi progressi.', () => prog.segna(a.id, true)); return; }
+      prog.segna(a.id, !prog.fatti.has(a.id));
+    });
+    f.append(b); a.append(f); tasti[a.id] = b;
+  });
+
+  /* ---------- pannello Profilo (#profilo) ---------- */
+  const P = document.createElement('div'); P.className = 'acc'; P.id = 'qp-profilo'; P.hidden = true;
+  P.setAttribute('role', 'dialog'); P.setAttribute('aria-modal', 'true'); P.setAttribute('aria-labelledby', 'acc-t');
+  P.innerHTML = '<div class="acc-bar"><button type="button" class="x" aria-label="Chiudi il profilo">' + ICO.x + '</button><h2 id="acc-t">Profilo</h2></div><div class="acc-body"><div class="acc-in"></div></div>';
+  document.body.append(P);
+  const PI = $('.acc-in', P);
+  let avviso = '', scheda = 'entra', dopo = null;
+  $('.x', P).addEventListener('click', chiudi);
+  function apri(msg, poi){ avviso = msg || ''; dopo = poi || null; if (location.hash !== '#profilo') location.hash = 'profilo'; else disegna(); }
+  function chiudi(){ if (history.length > 1 && location.hash === '#profilo') history.back(); else location.hash = ''; }
+
+  function disegna(){
+    const s = sess();
+    $('#acc-t', P).textContent = s ? 'Il tuo profilo' : 'Entra o registrati';
+    if (!s) return disegnaOspite();
+    const n = conta(TUTTI), t = TUTTI.length, p = pc(n, t);
+    PI.innerHTML = (DEMO ? '<p class="demo"><b>Anteprima</b>: i progressi restano su questo telefono.</p>' : '') +
+      '<div class="ciao"><span class="av in' + (s.admin ? ' ad' : '') + '"></span><div><h3></h3><p></p></div></div>' +
+      '<div class="tot"><div class="tot-n"><b>' + p + '%</b><span>' + n + ' argomenti letti su ' + t + '</span></div><span class="bar' + (p === 100 ? ' ok' : '') + '" role="progressbar" aria-label="Avanzamento totale" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + p + '"><i style="width:' + p + '%"></i></span></div>' +
+      (s.admin ? '<div class="adm-box"><p><b>Area admin</b>Segnalazioni e feedback degli utenti' + (window.QP.nuove ? ': ' + window.QP.nuove + ' da leggere' : '') + '</p><button type="button" class="btn adm-go">Apri</button></div>' : '') +
+      '<h4>Capitoli</h4><ul class="cap"></ul>' +
+      '<button type="button" class="btn largo esci">Esci</button>';
+    $('.ciao .av', PI).textContent = s.nome.charAt(0);
+    $('.ciao h3', PI).textContent = 'Ciao, ' + s.nome;
+    const sub = $('.ciao p', PI); sub.textContent = p === 100 ? 'Hai letto tutto il Quaderno!' : (n ? 'Continua così.' : 'Segna gli argomenti man mano che li studi.');
+    if (s.admin) { const r = document.createElement('span'); r.className = 'ruolo'; r.textContent = 'admin'; $('.ciao h3', PI).append(r); }
+    const L = $('.cap', PI);
+    SEZ.forEach(c => {
+      const li = document.createElement('li');
+      li.append(riga_(c.tit, c.art, () => { location.hash = c.id; }));
+      if (c.grp.length > 1) {
+        const ul = document.createElement('ul'); ul.className = 'sub';
+        c.grp.forEach(g => { const l2 = document.createElement('li'); l2.append(riga_(g.tit, g.art, () => { location.hash = g.id; })); ul.append(l2); });
+        li.append(ul);
+      }
+      L.append(li);
+    });
+    $('.esci', PI).addEventListener('click', async () => { await esci(); scheda = 'entra'; disegna(); });
+    const ag = $('.adm-go', PI); if (ag) ag.addEventListener('click', () => { location.hash = 'admin'; });
+  }
+  function riga_(nome, ids, vai){
+    const n = conta(ids), t = ids.length, p = pc(n, t);
+    const b = document.createElement('button'); b.type = 'button';
+    b.innerHTML = '<span class="c-t"></span><span class="c-n' + (p === 100 ? ' ok' : '') + '">' + (p === 100 ? 'Completato · ' : '') + n + '/' + t + ' · ' + p + '%</span><span class="bar' + (p === 100 ? ' ok' : '') + '"><i style="width:' + p + '%"></i></span>';
+    $('.c-t', b).textContent = nome; b.setAttribute('aria-label', nome + ': ' + n + ' argomenti letti su ' + t + ', ' + p + ' per cento');
+    b.addEventListener('click', vai); return b;
+  }
+  function disegnaOspite(){
+    const reg = scheda === 'registrati';
+    PI.innerHTML = (DEMO ? '<p class="demo"><b>Anteprima</b>: va bene qualsiasi nome utente e password; con <b>Gabrydl</b> vedi anche l\'area admin.</p>' : '') +
+      (avviso ? '<p class="avviso"></p>' : '') +
+      '<p class="acc-intro">Con un account puoi segnare gli argomenti che hai studiato e vedere i tuoi progressi capitolo per capitolo. Basta un nome utente e una password, niente email.</p>' +
+      '<div class="seg" role="tablist" aria-label="Accesso"><button type="button" role="tab" data-s="entra" aria-selected="' + !reg + '">Entra</button><button type="button" role="tab" data-s="registrati" aria-selected="' + reg + '">Registrati</button></div>' +
+      '<form novalidate>' +
+      '<div class="campo"><label class="fl" for="acc-u">Nome utente</label><input class="in" id="acc-u" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="20" required>' +
+      (reg ? '<p class="aiuto">Da 3 a 20 caratteri: lettere, numeri, punto, trattino o trattino basso. È il nome che vedrai in alto.</p>' : '') + '</div>' +
+      '<div class="campo"><label class="fl" for="acc-p">Password</label><input class="in" id="acc-p" type="password" autocomplete="' + (reg ? 'new-password' : 'current-password') + '" required>' +
+      (reg ? '<p class="aiuto">Almeno 6 caratteri.</p>' : '') + '</div>' +
+      (reg ? '<div class="campo"><label class="fl" for="acc-p2">Ripeti la password</label><input class="in" id="acc-p2" type="password" autocomplete="new-password" required></div>' : '') +
+      '<p class="err" role="alert"></p><button type="submit" class="btn pri largo">' + (reg ? 'Crea l\'account' : 'Entra') + '</button></form>' +
+      '<p class="nota">' + (reg ? 'Senza email la password non si può recuperare da soli: se la dimentichi, scrivilo in <b>Segnalazioni e feedback</b> e l\'amministratore te la cambia.' : 'Non hai un account? Tocca <b>Registrati</b>: ci vogliono pochi secondi.') + '</p>';
+    if (avviso) $('.avviso', PI).textContent = avviso;
+    PI.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => { scheda = b.dataset.s; disegnaOspite(); $('#acc-u', PI).focus(); }));
+    const f = $('form', PI), e = $('.err', f), btn = $('button[type=submit]', f);
+    f.addEventListener('submit', async ev => {
+      ev.preventDefault(); e.textContent = '';
+      const u = $('#acc-u', f).value, pw = $('#acc-p', f).value;
+      if (!u.trim() || !pw) { e.textContent = 'Scrivi nome utente e password.'; return; }
+      if (reg && pw !== $('#acc-p2', f).value) { e.textContent = 'Le due password non coincidono.'; return; }
+      btn.disabled = true; btn.textContent = reg ? 'Creo l\'account…' : 'Accesso…';
+      try { reg ? await registra(u, pw) : await entra(u, pw); avviso = ''; if (dopo) { const f2 = dopo; dopo = null; f2(); chiudi(); } else disegna(); }
+      catch (x) { e.textContent = x.message || 'Qualcosa non ha funzionato: riprova.'; btn.disabled = false; btn.textContent = reg ? 'Crea l\'account' : 'Entra'; }
+    });
+  }
+  function rotta(){
+    const on = location.hash === '#profilo';
+    if (on) { if (P.hidden) { P.hidden = false; document.body.classList.add('acc-aperto'); } disegna(); $('.x', P).focus(); }
+    else if (!P.hidden) { P.hidden = true; avviso = ''; dopo = null; document.body.classList.remove('acc-aperto'); }
+  }
+  addEventListener('hashchange', rotta);
+
+  /* ---------- aggiorna tutto quando cambia qualcosa ---------- */
+  function aggiorna(){
+    const s = sess();
+    chip.classList.toggle('in', !!s); chip.classList.toggle('ad', !!(s && s.admin));
+    const av = $('.av', chip); if (s) av.textContent = s.nome.charAt(0); else av.innerHTML = ICO.utente;
+    $('.nm', chip).textContent = s ? s.nome : 'Guest';
+    chip.setAttribute('aria-label', s ? 'Profilo di ' + s.nome : 'Guest: entra o registrati');
+    Object.keys(tasti).forEach(id => {
+      const b = tasti[id], on = !!s && prog.fatti.has(id);
+      b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      $('.tx', b).textContent = on ? 'Letto' : 'Segna come letto';
+    });
+    document.querySelectorAll('.toc a').forEach(a => {
+      const id = (a.getAttribute('href') || '').replace(/^#/, ''); if (!tasti[id]) return;
+      let tk = $('.tk', a); const on = !!s && prog.fatti.has(id);
+      if (on && !tk) { tk = document.createElement('span'); tk.className = 'tk'; tk.innerHTML = ICO.ok; tk.setAttribute('role', 'img'); tk.setAttribute('aria-label', 'letto'); const ult = a.lastElementChild; ult && ult !== a.firstElementChild ? a.insertBefore(tk, ult) : a.append(tk); }
+      else if (!on && tk) tk.remove();
+    });
+    document.querySelectorAll('#cards .card[data-sec]').forEach(c => {
+      const sz = SEZ.find(x => x.id === c.dataset.sec); let pr = $('.pr', c);
+      if (!s || !sz) { if (pr) pr.remove(); c.classList.remove('con-pr'); return; }
+      const n = conta(sz.art), t = sz.art.length, p = pc(n, t);
+      if (!pr) { pr = document.createElement('span'); pr.className = 'pr'; pr.innerHTML = '<span class="bar"><i></i></span><span class="pr-n"></span>'; c.append(pr); }
+      c.classList.add('con-pr'); $('.bar', pr).classList.toggle('ok', p === 100); $('.bar i', pr).style.width = p + '%';
+      $('.pr-n', pr).textContent = n + '/' + t + ' · ' + p + '%';
+    });
+    const cons = $('#home .howto .consiglio'); if (cons) cons.hidden = !!s;
+    const hd = $('#home .how-card .d'); if (hd) hd.textContent = s ? 'Sezioni, audio delle lezioni, ricerca, profilo e progressi, uso senza internet e installazione.' : 'Consigliato: crea un account per salvare i tuoi progressi. Qui trovi anche come usare sezioni, audio e ricerca.';
+    if (!P.hidden) disegna();
+  }
+  subs.push(aggiorna);
+  const ca = $('#home .howto .crea-account'); if (ca) ca.addEventListener('click', () => { scheda = 'registrati'; apri(); });
+
+  /* ---------- per gli altri moduli (segnalazioni) ---------- */
+  window.QP = {CFG, DEMO, H, rest, token, sessione: sess, admin: () => { const s = sess(); return !!(s && s.admin); }, nome: () => { const s = sess(); return s ? s.nome : ''; },
+    on: f => subs.push(f), apriProfilo: apri, nuove: 0, ridisegna: () => { if (!P.hidden) disegna(); }};
+
+  aggiorna(); rotta();
+  if (sess() && !DEMO) prog.scarica().then(aggiorna);
 })();
 </script>
 <style id="feedback-css">
@@ -16393,9 +16776,9 @@ body.fb-aperto{overflow:hidden}
 </style>
 <script>
 (function(){
-  /* Collegamento a Supabase: indirizzo del progetto e chiave pubblica ("anon"). Vuoti = anteprima. */
-  const CFG = {"url": "https://cvyuytnouuapmazjnebc.supabase.co", "chiave": "sb_publishable_D6-pqLmc7Wmtl24AdNN89Q_N-r0wUp7"};
-  const DEMO = !CFG.url || !CFG.chiave;
+  /* collegamento a Supabase e accesso: vedi strumenti/account.html (va inserito prima di questo file) */
+  const QP = window.QP;                               // accesso e collegamento: strumenti/account.html
+  const CFG = QP.CFG, DEMO = QP.DEMO;
   const TIPI = [['errore', 'Errore negli appunti'], ['suggerimento', 'Suggerimento'], ['reclamo', 'Reclamo'], ['altro', 'Altro']];
   const NOME_TIPO = Object.fromEntries(TIPI);
   const MAX = 2000;
@@ -16415,8 +16798,7 @@ body.fb-aperto{overflow:hidden}
   };
 
   /* ---------- servizio: Supabase vero oppure anteprima sul telefono ---------- */
-  /* la chiave pubblica va solo nell'intestazione apikey; Authorization porta l'accesso dell'admin, quando c'è */
-  const H = t => Object.assign({apikey: CFG.chiave, 'Content-Type': 'application/json'}, t ? {Authorization: 'Bearer ' + t} : {});
+  const H = QP.H;
   const DEMO_ESEMPI = [
     {id: -3, creato: new Date(Date.now() - 36e5 * 2).toISOString(), tipo: 'errore', argomento: 'Esempio · Stabilità › un argomento', rif: 'stabilita', messaggio: 'Messaggio di esempio: in questo argomento manca un pedice nella seconda formula.', nome: '', versione: ver, letto: false},
     {id: -2, creato: new Date(Date.now() - 36e5 * 26).toISOString(), tipo: 'suggerimento', argomento: '', rif: '', messaggio: 'Messaggio di esempio: sarebbe utile un quiz alla fine di ogni sezione.', nome: 'Nome di esempio', versione: ver, letto: false},
@@ -16428,13 +16810,6 @@ body.fb-aperto{overflow:hidden}
       const r = await fetch(CFG.url + '/rest/v1/segnalazioni', {method: 'POST', headers: {...H(), Prefer: 'return=minimal'}, body: JSON.stringify(m)});
       if (!r.ok) throw new Error('invio ' + r.status);
     },
-    async entra(email, pw){
-      if (DEMO) { mem.set('qp-admin', {demo: true, email}); return; }
-      const r = await fetch(CFG.url + '/auth/v1/token?grant_type=password', {method: 'POST', headers: H(), body: JSON.stringify({email, password: pw})});
-      if (!r.ok) throw new Error('accesso');
-      salva(await r.json());
-    },
-    esci(){ mem.del('qp-admin'); },
     async elenco(){
       if (DEMO) return (mem.get('qp-demo-msg') || []).concat(DEMO_ESEMPI.map(e => ({...e, letto: (mem.get('qp-demo-letti') || {})[e.id] ?? e.letto}))).filter(e => !(mem.get('qp-demo-via') || []).includes(e.id));
       const r = await api('GET', '?select=*&order=creato.desc');
@@ -16449,23 +16824,8 @@ body.fb-aperto{overflow:hidden}
       await api('DELETE', '?id=eq.' + id);
     }
   };
-  function salva(j){ mem.set('qp-admin', {access: j.access_token, refresh: j.refresh_token, scade: Date.now() + (j.expires_in || 3600) * 1000 - 60000, email: j.user && j.user.email}); }
-  async function token(){
-    const s = mem.get('qp-admin'); if (!s) throw new Error('fuori');
-    if (s.scade > Date.now()) return s.access;
-    const r = await fetch(CFG.url + '/auth/v1/token?grant_type=refresh_token', {method: 'POST', headers: H(), body: JSON.stringify({refresh_token: s.refresh})});
-    if (!r.ok) { mem.del('qp-admin'); throw new Error('fuori'); }
-    const j = await r.json(); salva(j); return j.access_token;
-  }
-  async function api(metodo, q, corpo){
-    const r = await fetch(CFG.url + '/rest/v1/segnalazioni' + q, {method: metodo, headers: {...H(await token()), Prefer: 'return=minimal'}, body: corpo ? JSON.stringify(corpo) : undefined});
-    if (r.status === 401) { mem.del('qp-admin'); throw new Error('fuori'); }
-    if (!r.ok) throw new Error(metodo + ' ' + r.status);
-    return r;
-  }
-  const admin = () => !!mem.get('qp-admin');
-  /* l'admin può scrivere l'email intera o solo la parte prima di @gmail.com */
-  const indirizzo = u => { u = u.trim().toLowerCase(); return u.includes('@') ? u : u + '@gmail.com'; };
+  const api = (metodo, q, corpo) => QP.rest('segnalazioni', metodo, q, corpo);
+  const admin = QP.admin;
 
   /* ---------- coda: se manca internet il messaggio parte dopo ---------- */
   async function svuota(){
@@ -16486,13 +16846,14 @@ body.fb-aperto{overflow:hidden}
   const admBtn = $('.fb-adm', box);
   admBtn.addEventListener('click', () => { location.hash = 'admin'; });
   async function conta(){
-    admBtn.hidden = !admin(); if (!admin()) return;
+    admBtn.hidden = !admin(); if (!admin()) { QP.nuove = 0; return; }
     try {
       const n = (await srv.elenco()).filter(m => !m.letto).length;
       const c = $('.cnt', admBtn); c.hidden = !n; c.textContent = n; c.setAttribute('aria-label', n + ' da leggere');
+      if (QP.nuove !== n) { QP.nuove = n; QP.ridisegna(); }
     } catch (e) {}
   }
-  conta();
+  conta(); QP.on(conta);
 
   /* ---------- "Segnala un errore" in fondo a ogni argomento ---------- */
   document.querySelectorAll('article.topic').forEach(a => {
@@ -16503,7 +16864,7 @@ body.fb-aperto{overflow:hidden}
       const tit = h3 ? (h3.firstChild && h3.firstChild.nodeType === 3 ? h3.firstChild.textContent : h3.textContent).trim() : '';
       apriModulo((h2 ? h2.textContent.trim() + ' › ' : '') + tit, a.id, 'errore');
     });
-    a.append(b);
+    (a.querySelector('.art-fondo') || a).append(b);
   });
 
   /* ---------- modulo ---------- */
@@ -16532,6 +16893,7 @@ body.fb-aperto{overflow:hidden}
     prima = document.activeElement; rif = idArg || '';
     F.reset(); F.hidden = false; esito.hidden = true; err.textContent = ''; cnt.textContent = '0 / ' + MAX;
     $('#fb-arg', P).value = arg || '';
+    $('#fb-nome', P).value = QP.nome();
     if (tipo) { const r = F.querySelector('input[value="' + tipo + '"]'); if (r) r.checked = true; }
     P.hidden = false; velo.hidden = false; document.body.classList.add('fb-aperto');
     (arg ? txt : F.querySelector('input[name="tipo"]:checked')).focus();
@@ -16560,33 +16922,21 @@ body.fb-aperto{overflow:hidden}
   /* ---------- area admin (#admin) ---------- */
   const A = document.createElement('div'); A.className = 'adm'; A.id = 'qp-admin'; A.hidden = true;
   A.setAttribute('role', 'dialog'); A.setAttribute('aria-modal', 'true'); A.setAttribute('aria-labelledby', 'adm-t');
-  A.innerHTML = '<div class="adm-bar"><button type="button" class="x chiudi" aria-label="Chiudi l\'area admin">' + ICO.x + '</button><h2 id="adm-t">Segnalazioni<small>Area admin</small></h2><button type="button" class="btn esci" hidden>Esci</button></div>' +
+  A.innerHTML = '<div class="adm-bar"><button type="button" class="x chiudi" aria-label="Chiudi l\'area admin">' + ICO.x + '</button><h2 id="adm-t">Segnalazioni<small>Area admin</small></h2></div>' +
     '<div class="adm-body"><div class="adm-in"></div></div>';
   document.body.append(A);
-  const AI = $('.adm-in', A), esci = $('.esci', A);
+  const AI = $('.adm-in', A);
   let filtro = 'nuove', lista = [];
   $('.chiudi', A).addEventListener('click', () => { history.length > 1 && location.hash === '#admin' ? history.back() : (location.hash = ''); });
-  esci.addEventListener('click', () => { srv.esci(); mostraAdmin(); conta(); });
   const dataIt = s => new Date(s).toLocaleString('it-IT', {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'});
   function login(){
-    esci.hidden = true;
-    AI.innerHTML = (DEMO ? '<p class="demo"><b>Anteprima</b>: va bene qualsiasi nome utente e password; i messaggi sono d\'esempio.</p>' : '') +
-      '<form class="adm-login" novalidate><p>Entra con il tuo account per leggere le segnalazioni. Chi usa il Quaderno non può entrare qui.</p>' +
-      '<div class="campo"><label class="fl" for="adm-mail">Nome utente o email</label><input class="in" id="adm-mail" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required></div>' +
-      '<div class="campo"><label class="fl" for="adm-pw">Password</label><input class="in" id="adm-pw" type="password" autocomplete="current-password" required></div>' +
-      '<p class="err" id="adm-err" role="alert"></p><button type="submit" class="btn pri">Entra</button></form>';
-    const f = $('form', AI);
-    f.addEventListener('submit', async e => {
-      e.preventDefault();
-      const b = $('button', f); b.disabled = true; b.textContent = 'Accesso…';
-      try { await srv.entra(indirizzo($('#adm-mail', f).value), $('#adm-pw', f).value); mostraAdmin(); conta(); }
-      catch (x) { $('#adm-err', f).textContent = navigator.onLine ? 'Nome utente, email o password sbagliati.' : 'Serve internet per entrare.'; b.disabled = false; b.textContent = 'Entra'; }
-    });
-    $('#adm-mail', f).focus();
+    const ospite = !QP.sessione();
+    AI.innerHTML = '<div class="adm-login"><p>' + (ospite ? 'Quest\'area è solo per l\'amministratore. Entra dal profilo con il tuo nome utente e la password.' : 'Il tuo account non è amministratore: quest\'area è riservata.') + '</p>' +
+      (ospite ? '<button type="button" class="btn pri entra">Entra</button>' : '') + '</div>';
+    const b = $('.entra', AI); if (b) { b.addEventListener('click', () => QP.apriProfilo()); b.focus(); }
   }
   async function mostraAdmin(){
     if (!admin()) { login(); return; }
-    esci.hidden = false;
     AI.innerHTML = '<p class="vuoto">Caricamento…</p>';
     try { lista = await srv.elenco(); }
     catch (x) { if (!admin()) { login(); return; } AI.innerHTML = '<p class="vuoto">Non riesco a caricare le segnalazioni. Controlla la connessione e tocca Aggiorna.</p><div class="azioni" style="justify-content:center"><button type="button" class="btn pri ricarica">Aggiorna</button></div>'; $('.ricarica', AI).addEventListener('click', mostraAdmin); return; }
@@ -16631,6 +16981,7 @@ body.fb-aperto{overflow:hidden}
     else if (!on && !A.hidden) { A.hidden = true; document.body.classList.remove('fb-aperto'); conta(); }
   }
   addEventListener('hashchange', rotta); rotta();
+  QP.on(() => { if (!A.hidden) mostraAdmin(); });
 })();
 </script>
 

@@ -176,6 +176,12 @@ figure.fig.sym .svgbox{border:0}
 .how-card .n::after{content:"";display:inline-block;width:.5em;height:.5em;margin-left:.45em;border:solid var(--muted);border-width:0 2px 2px 0;transform:translateY(-.2em) rotate(45deg);transition:transform .2s ease}
 .how-card[aria-expanded="true"] .n::after{transform:translateY(.05em) rotate(-135deg)}
 .how-card:focus-visible{outline:2px solid var(--blue);outline-offset:-3px}
-#home .howto ol{margin:0;padding:4px 20px 16px 40px;border-top:1px solid var(--line);line-height:1.5}
+#home .howto .how-corpo{border-top:1px solid var(--line)}
+#home .howto ol{margin:0;padding:4px 20px 16px 40px;line-height:1.5}
+#home .howto .consiglio{margin:12px 14px 4px;padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--blue) 10%,var(--sheet));border:1px solid color-mix(in srgb,var(--blue) 30%,var(--line));line-height:1.45;font-size:.92rem;color:var(--ink)}
+#home .howto .consiglio b{color:var(--blue)}
+#home .howto .crea-account{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;margin-top:10px;min-height:40px;padding:0 16px;border-radius:999px;background:var(--ink);color:var(--sheet);font:600 .9rem/1 var(--f-body)}
+#home .howto .crea-account:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+#home .howto .consiglio[hidden]{display:none}
 #home .howto ol li{margin:10px 0}
 @media (prefers-reduced-motion:reduce){.how-card .n::after{transition:none}}

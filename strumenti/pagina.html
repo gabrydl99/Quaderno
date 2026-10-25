@@ -87,7 +87,7 @@
   // istruzioni: riquadro come le sezioni; toccandolo si apre l'elenco
   const how = document.querySelector('#home .howto');
   if (how) {
-    const h2 = how.querySelector('h2'), ol = how.querySelector('ol');
+    const h2 = how.querySelector('h2'), ol = how.querySelector('.how-corpo') || how.querySelector('ol');
     const b = document.createElement('button'); b.type = 'button'; b.className = 'how-card';
     b.setAttribute('aria-expanded', 'false'); if (ol) { ol.id = ol.id || 'howto-lista'; b.setAttribute('aria-controls', ol.id); }
     b.innerHTML = '<span class="n">Come si usa</span><span class="d">Sezioni, audio delle lezioni, ricerca, uso senza internet e installazione.</span>';

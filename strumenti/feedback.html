@@ -7,6 +7,7 @@
 .fb-card .d{display:block;font-size:.84rem;line-height:1.35;color:var(--muted)}
 .fb-adm{display:flex;align-items:center;gap:8px;border-top:1px solid var(--line);font:600 .88rem/1.2 var(--f-body);color:var(--ink);padding-block:10px}
 .fb-adm .cnt{margin-left:auto;min-width:22px;height:22px;padding:0 7px;box-sizing:border-box;border-radius:999px;background:var(--acc);color:var(--on-acc,#fff);font:700 .78rem/22px var(--f-body);text-align:center}
+.fb-adm.sa svg{color:var(--racing-bd)}
 .fb-adm .cnt[hidden]{display:none}
 .fb-card:focus-visible,.fb-adm:focus-visible{outline:2px solid var(--blue);outline-offset:-3px}
 .fb svg,.fbp svg,.adm svg,.segnala svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;color:inherit}
@@ -22,7 +23,7 @@
 .fbp[hidden],.adm[hidden]{display:none!important}
 .fbp-bar,.adm-bar{flex:none;display:flex;align-items:center;gap:8px;padding:10px max(14px,env(safe-area-inset-right,0px)) 10px max(14px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line);background:var(--paper)}
 .fbp-bar h2,.adm-bar h2{flex:1;min-width:0;margin:0;font:700 1.1rem/1.2 var(--f-body);color:var(--ink)}
-.adm-bar h2 small{display:block;font:600 .72rem/1.2 var(--f-body);color:var(--acc)}
+.adm-bar h2 small{display:block;font:600 .72rem/1.2 var(--f-body);color:var(--blue)}
 .x{all:unset;box-sizing:border-box;cursor:pointer;display:grid;place-items:center;width:38px;height:38px;border-radius:12px;border:1.5px solid var(--line);background:var(--sheet);color:var(--ink)}
 .x:focus-visible,.btn:focus-visible,.tipo label:focus-within,.adm-f button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .fbp-body,.adm-body{flex:1;overflow:auto;overscroll-behavior:contain;padding:16px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px))}
@@ -82,6 +83,69 @@ textarea.in{min-height:150px;resize:vertical;line-height:1.5}
 .msg-bot button.si{background:var(--red);color:#fff}
 .msg-bot button:focus-visible{outline:2px solid var(--blue)}
 .vuoto{text-align:center;color:var(--muted);padding:40px 10px}
+
+/* area admin: utenti (admin: nome e foto; super-admin: tutto), accessi, segnalazioni */
+.adm-bar h2 small.sa{display:block;width:max-content;margin-top:3px;padding:2px 8px;border-radius:999px;background:var(--racing);color:var(--on-racing);box-shadow:inset 0 0 0 1px var(--racing-bd)}
+.adm-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:4px;margin:0 0 14px;border-radius:999px;background:var(--chip)}
+.adm-tabs button{all:unset;box-sizing:border-box;cursor:pointer;text-align:center;padding:9px 4px;border-radius:999px;font:600 .86rem/1 var(--f-body);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adm-tabs button[aria-selected="true"]{background:var(--sheet);color:var(--ink);box-shadow:0 1px 4px rgba(6,17,27,.12)}
+.adm-tabs button:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+.adm-tabs .n{font-variant-numeric:tabular-nums}
+.adm-nota{margin:0 0 12px;font-size:.8rem;line-height:1.4;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.adm-nota .sp{flex:1}
+.adm-nota button{all:unset;cursor:pointer;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--sheet);font:600 .82rem/1 var(--f-body);color:var(--ink)}
+.adm-nota button:focus-visible{outline:2px solid var(--blue)}
+.adm .av{position:relative;flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--chip);color:var(--muted);font:700 1.05rem/1 var(--f-body);text-transform:uppercase}
+.adm .av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;max-width:none}
+.adm .av.sa{background:var(--racing);color:var(--on-racing);box-shadow:0 0 0 2px var(--racing)}
+.adm .av.ad{background:var(--blue);color:var(--sheet)}
+.adm .av .dot{position:absolute;right:-2px;bottom:-2px;width:13px;height:13px;border-radius:50%;background:var(--green);border:2.5px solid var(--sheet)}
+.badge{display:inline-block;margin-left:6px;padding:3px 7px;border-radius:999px;font:700 .68rem/1 var(--f-body);vertical-align:2px;background:color-mix(in srgb,var(--blue) 14%,var(--sheet));color:var(--blue);white-space:nowrap}
+.badge.sa{background:var(--racing);color:var(--on-racing);box-shadow:inset 0 0 0 1px var(--racing-bd)}
+.ut{background:var(--sheet);border:1px solid var(--line);border-radius:14px;margin:0 0 10px;overflow:hidden}
+.ut.sa{border-color:var(--racing-bd)}
+.ut-top{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;padding:12px 14px 6px}
+.ut-top:focus-visible{outline:2px solid var(--blue);outline-offset:-3px}
+.ut-n b{font:700 1rem/1.25 var(--f-body);color:var(--ink);overflow-wrap:anywhere}
+.ut-st{display:block;margin-top:3px;font-size:.8rem;line-height:1.3;color:var(--muted)}
+.ut-st.on{color:var(--green);font-weight:600}
+.ut-fr{color:var(--muted)}
+.ut-fr svg{transition:transform .2s}
+.ut-top[aria-expanded="true"] .ut-fr svg{transform:rotate(90deg)}
+.ut-info{padding:0 14px 12px 70px;font-size:.8rem;line-height:1.45;color:var(--muted)}
+.ut-info .disp{display:block;color:var(--ink);overflow-wrap:anywhere}
+.ut-det{border-top:1px solid var(--line);padding:12px 14px 14px;background:color-mix(in srgb,var(--chip) 45%,var(--sheet))}
+.ut-det[hidden]{display:none}
+.ut-det h5{margin:0 0 8px;font:700 .84rem/1.2 var(--f-body);color:var(--ink)}
+.reg{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:6px}
+.reg li{padding:8px 10px;border-radius:10px;background:var(--sheet);border:1px solid var(--line);font-size:.8rem;line-height:1.4;color:var(--muted);overflow-wrap:anywhere}
+.reg li b{color:var(--ink);font-weight:600}
+.ip{font-family:var(--f-mono,monospace);font-size:.92em}
+.ut-az{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.ut-az .btn{min-height:38px;padding:0 14px;font-size:.86rem}
+.ut-az .btn.del{color:var(--red);background:transparent;border-color:color-mix(in srgb,var(--red) 40%,var(--line))}
+.ut-az .btn.rosso{background:var(--red);border-color:var(--red);color:#fff}
+.ut-az .conf{flex-basis:100%;margin:0;font-size:.86rem;line-height:1.45;color:var(--ink)}
+.ut-az .err{flex-basis:100%;margin:0;font-size:.84rem}
+.ut-griglia{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:10px}
+.ut-c{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 8px 12px;border-radius:14px;background:var(--sheet);border:1px solid var(--line);text-align:center;font:600 .86rem/1.25 var(--f-body);color:var(--ink);overflow-wrap:anywhere;min-width:0}
+.ut-c .av{width:58px;height:58px;font-size:1.35rem}
+.ac-riga{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;padding:10px 12px;margin:0 0 8px;background:var(--sheet);border:1px solid var(--line);border-radius:12px}
+.ac-riga .av{width:34px;height:34px;font-size:.85rem}
+.ac-riga .t{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.ac-riga .t b{color:var(--ink)}
+.ac-riga .t time{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.ac-riga .d{font-size:.8rem;line-height:1.4;color:var(--ink);overflow-wrap:anywhere}
+/* termini di servizio, sotto "Segnalazioni e feedback" */
+.tos{margin:10px 0 0}
+.tos summary{display:flex;align-items:center;gap:6px;width:max-content;max-width:100%;box-sizing:border-box;cursor:pointer;list-style:none;padding:8px 14px 8px 10px;border-radius:999px;font:600 .82rem/1.2 var(--f-body);color:var(--ink);background:color-mix(in srgb,var(--sheet) 85%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line)}
+.tos summary::-webkit-details-marker{display:none}
+.tos summary svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.tos[open] summary svg{transform:rotate(90deg)}
+.tos summary:hover{background:var(--sheet)}
+.tos summary:focus-visible{outline:2px solid var(--blue)}
+.tos .tos-testo{margin:4px 0 0;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,var(--sheet) 88%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){.ut-fr svg,.tos summary svg{transition:none}}
 body.fb-aperto{overflow:hidden}
 @media (min-width:700px){
   .fbp{inset:auto;left:50%;top:50%;transform:translate(-50%,-50%);width:min(620px,92vw);max-height:88vh;border-radius:18px;border:1px solid var(--line);box-shadow:0 24px 60px rgba(6,17,27,.3);padding:0;overflow:hidden}
@@ -104,7 +168,7 @@ body.fb-aperto{overflow:hidden}
     set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
     del(k){ try { localStorage.removeItem(k); } catch (e) {} }
   };
-  const ver = (document.querySelector('.ver-top b') || {}).textContent || '';
+  const ver = (document.querySelector('.ver-fondo b') || {}).textContent || '';
   const ICO = {
     msg: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v10.5H9l-5 4z"/><path d="M8.5 9.5h7M8.5 12.5h4.5"/></svg>',
     flag: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4.5h11.5l-2.2 4 2.2 4H5"/></svg>',
@@ -141,7 +205,7 @@ body.fb-aperto{overflow:hidden}
     }
   };
   const api = (metodo, q, corpo) => QP.rest('segnalazioni', metodo, q, corpo);
-  const admin = QP.admin;
+  const admin = QP.superadmin;                        // le segnalazioni le legge solo il super-admin
 
   /* ---------- coda: se manca internet il messaggio parte dopo ---------- */
   async function svuota(){
@@ -158,11 +222,18 @@ body.fb-aperto{overflow:hidden}
   box.innerHTML = '<button type="button" class="fb-card"><span class="n">Segnalazioni e feedback</span><span class="d">Errori negli appunti, suggerimenti o reclami: scrivili qui.</span></button>' +
     '<button type="button" class="fb-adm" hidden>' + ICO.lock + '<span>Area admin</span><span class="cnt" hidden></span></button>';
   if (cards) cards.after(box);
+  /* termini di servizio: piccola sezione apribile subito sotto */
+  const tos = document.createElement('details'); tos.className = 'tos'; tos.id = 'termini';
+  tos.innerHTML = '<summary><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 15.5 12 9 18.5"/></svg>Termini di servizio e privacy</summary>' + QP.TERMINI;
+  box.after(tos);
   $('.fb-card', box).addEventListener('click', () => apriModulo(''));
   const admBtn = $('.fb-adm', box);
   admBtn.addEventListener('click', () => { location.hash = 'admin'; });
   async function conta(){
-    admBtn.hidden = !admin(); if (!admin()) { QP.nuove = 0; return; }
+    admBtn.hidden = !QP.admin();
+    admBtn.classList.toggle('sa', QP.superadmin());
+    $('span', admBtn).textContent = QP.superadmin() ? 'Area super-admin' : 'Area admin';
+    if (!admin()) { QP.nuove = 0; $('.cnt', admBtn).hidden = true; return; }
     try {
       const n = (await srv.elenco()).filter(m => !m.letto).length;
       const c = $('.cnt', admBtn); c.hidden = !n; c.textContent = n; c.setAttribute('aria-label', n + ' da leggere');
@@ -235,38 +306,213 @@ body.fb-aperto{overflow:hidden}
     conta();
   });
 
-  /* ---------- area admin (#admin) ---------- */
+  /* ---------- area admin (#admin) ----------
+     super-admin: Utenti (tutto: ultimo accesso, in linea, dispositivo, IP, elimina, nomina admin), Accessi, Segnalazioni
+     admin: solo l'elenco degli utenti con nome e foto. I permessi li controlla il database (funzioni elenco_utenti ecc.). */
   const A = document.createElement('div'); A.className = 'adm'; A.id = 'qp-admin'; A.hidden = true;
   A.setAttribute('role', 'dialog'); A.setAttribute('aria-modal', 'true'); A.setAttribute('aria-labelledby', 'adm-t');
-  A.innerHTML = '<div class="adm-bar"><button type="button" class="x chiudi" aria-label="Chiudi l\'area admin">' + ICO.x + '</button><h2 id="adm-t">Segnalazioni<small>Area admin</small></h2></div>' +
+  A.innerHTML = '<div class="adm-bar"><button type="button" class="x chiudi" aria-label="Chiudi l\'area admin">' + ICO.x + '</button><h2 id="adm-t">Utenti<small>Area admin</small></h2></div>' +
     '<div class="adm-body"><div class="adm-in"></div></div>';
   document.body.append(A);
   const AI = $('.adm-in', A);
-  let filtro = 'nuove', lista = [];
+  const FR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 15.5 12 9 18.5"/></svg>';
+  let scheda = 'utenti', filtro = 'nuove', lista = [], utenti = [], registro = [], aperto = null, giro = null;
   $('.chiudi', A).addEventListener('click', () => { history.length > 1 && location.hash === '#admin' ? history.back() : (location.hash = ''); });
   const dataIt = s => new Date(s).toLocaleString('it-IT', {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'});
+  const giorno = s => new Date(s).toLocaleDateString('it-IT', {day: '2-digit', month: '2-digit', year: 'numeric'});
+  const ora = s => new Date(s).toLocaleTimeString('it-IT', {hour: '2-digit', minute: '2-digit'});
+  function quando(s){
+    if (!s) return 'mai';
+    const d = new Date(s), oggi = new Date(), ieri = new Date(Date.now() - 864e5);
+    const stesso = (a, b) => a.toDateString() === b.toDateString();
+    return (stesso(d, oggi) ? 'oggi' : stesso(d, ieri) ? 'ieri' : giorno(s)) + ' alle ' + ora(s);
+  }
+  const periodo = a => quando(a.inizio) + (a.fine && ora(a.fine) !== ora(a.inizio) ? ' – ' + (new Date(a.fine).toDateString() === new Date(a.inizio).toDateString() ? ora(a.fine) : quando(a.fine)) : '');
+  const dispTesto = a => [a.modello, a.sistema, a.browser].filter(Boolean).join(' · ') || 'dispositivo non comunicato';
+  const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+
+  /* ---------- dati: database vero oppure esempi (anteprima) ---------- */
+  const T = Date.now(), iso = ms => new Date(ms).toISOString();
+  const DEMO_UT = () => [
+    {id: 'd0', nome: QP.nome() || 'Gabrydl', ruolo: 'superadmin', foto: QP.foto(), registrato: iso(T - 2 * 864e5), ultimo_accesso: iso(T), in_linea: true, letti: 42, n_accessi: 9, ultimo: {ip: '93.45.12.208', modello: 'SM-S918B', sistema: 'Android 14', browser: 'Chrome 130 · app installata', inizio: iso(T - 25 * 6e4), fine: iso(T)}},
+    {id: 'd1', nome: 'esempio.marco', ruolo: 'admin', foto: null, registrato: iso(T - 30 * 864e5), ultimo_accesso: iso(T - 3 * 36e5), in_linea: false, letti: 17, n_accessi: 4, ultimo: {ip: '151.38.4.77', modello: 'iPhone', sistema: 'iOS 18.1', browser: 'Safari 18.1', inizio: iso(T - 4 * 36e5), fine: iso(T - 3 * 36e5)}},
+    {id: 'd2', nome: 'esempio.sara', ruolo: '', foto: null, registrato: iso(T - 9 * 864e5), ultimo_accesso: iso(T - 40 * 6e4), in_linea: true, letti: 5, n_accessi: 2, ultimo: {ip: '2.36.120.9', modello: '2201117TY', sistema: 'Android 13', browser: 'Chrome 129', inizio: iso(T - 40 * 6e4), fine: iso(T - 1 * 6e4)}},
+    {id: 'd3', nome: 'esempio.luca', ruolo: '', foto: null, registrato: iso(T - 60 * 864e5), ultimo_accesso: iso(T - 5 * 864e5), in_linea: false, letti: 0, n_accessi: 1, ultimo: {ip: '79.20.88.150', modello: '', sistema: 'Windows 11', browser: 'Edge 130', inizio: iso(T - 5 * 864e5), fine: iso(T - 5 * 864e5 + 18e5)}}
+  ];
+  const serv = {
+    async utenti(){
+      if (DEMO) { const u = (mem.get('qp-demo-ut') || DEMO_UT()).filter(x => !(mem.get('qp-demo-ut-via') || []).includes(x.id)); return QP.superadmin() ? u : u.map(x => ({nome: x.nome, foto: x.foto})); }
+      return (await QP.rpc('elenco_utenti')) || [];
+    },
+    async registro(chi, quanti){
+      if (DEMO) { return (await this.utenti()).filter(u => u.ultimo && (!chi || u.id === chi)).map(u => Object.assign({utente: u.id, nome: u.nome}, u.ultimo)); }
+      return (await QP.rpc('registro_accessi', chi ? {chi, quanti: quanti || 20} : {quanti: quanti || 150})) || [];
+    },
+    async elimina(chi){
+      if (DEMO) { const v = mem.get('qp-demo-ut-via') || []; v.push(chi); mem.set('qp-demo-ut-via', v); return; }
+      await QP.rpc('elimina_utente', {chi});
+    },
+    async ruolo(chi, r){
+      if (DEMO) { const u = DEMO_UT().map(x => x.id === chi ? Object.assign(x, {ruolo: r}) : x); mem.set('qp-demo-ut', u); return; }
+      await QP.rpc('imposta_ruolo', {chi, ruolo: r});
+    }
+  };
+  const errMsg = x => (x && x.message === 'fuori') ? 'Accesso scaduto: rientra dal profilo.' : (navigator.onLine ? ((x && x.message && !/^rpc \d/.test(x.message)) ? x.message : 'Qualcosa non ha funzionato: riprova.') : 'Sei senza internet.');
+
   function login(){
     const ospite = !QP.sessione();
-    AI.innerHTML = '<div class="adm-login"><p>' + (ospite ? 'Quest\'area è solo per l\'amministratore. Entra dal profilo con il tuo nome utente e la password.' : 'Il tuo account non è amministratore: quest\'area è riservata.') + '</p>' +
+    $('#adm-t', A).innerHTML = 'Area admin<small>Riservata</small>';
+    AI.innerHTML = '<div class="adm-login"><p>' + (ospite ? 'Quest\'area è solo per gli amministratori. Entra dal profilo con il tuo nome utente e la password.' : 'Il tuo account non è amministratore: quest\'area è riservata.') + '</p>' +
       (ospite ? '<button type="button" class="btn pri entra">Entra</button>' : '') + '</div>';
     const b = $('.entra', AI); if (b) { b.addEventListener('click', () => QP.apriProfilo()); b.focus(); }
   }
-  async function mostraAdmin(){
-    if (!admin()) { login(); return; }
-    AI.innerHTML = '<p class="vuoto">Caricamento…</p>';
-    try { lista = await srv.elenco(); }
-    catch (x) { if (!admin()) { login(); return; } AI.innerHTML = '<p class="vuoto">Non riesco a caricare le segnalazioni. Controlla la connessione e tocca Aggiorna.</p><div class="azioni" style="justify-content:center"><button type="button" class="btn pri ricarica">Aggiorna</button></div>'; $('.ricarica', AI).addEventListener('click', mostraAdmin); return; }
-    disegna();
+  function intestazione(){
+    const sup = QP.superadmin();
+    const tit = !sup ? 'Utenti registrati' : scheda === 'accessi' ? 'Registro accessi' : scheda === 'segnalazioni' ? 'Segnalazioni' : 'Utenti registrati';
+    $('#adm-t', A).innerHTML = esc(tit) + (sup ? '<small class="sa">Area super-admin</small>' : '<small>Area admin</small>');
   }
-  function disegna(){
+  /* carica i dati della scheda aperta e disegna */
+  async function mostraAdmin(silenzioso){
+    if (!QP.admin()) { ferma(); login(); return; }
+    if (!QP.superadmin()) scheda = 'utenti';
+    intestazione();
+    if (!silenzioso) AI.innerHTML = '<p class="vuoto">Caricamento…</p>';
+    try {
+      if (scheda === 'segnalazioni') lista = await srv.elenco();
+      else if (scheda === 'accessi') { [registro, utenti] = await Promise.all([serv.registro(null, 150), serv.utenti()]); }
+      else utenti = await serv.utenti();
+    } catch (x) {
+      if (!QP.admin()) { login(); return; }
+      if (silenzioso) return;
+      AI.innerHTML = '<p class="vuoto">' + esc(errMsg(x)) + '</p><div class="azioni" style="justify-content:center"><button type="button" class="btn pri ricarica">Aggiorna</button></div>';
+      $('.ricarica', AI).addEventListener('click', () => mostraAdmin()); return;
+    }
+    if (silenzioso && aperto) { aggiornaStati(); return; }      // non richiudere i dettagli aperti
+    disegnaAdmin();
+  }
+  function schede(){
+    if (!QP.superadmin()) return '';
+    const n = lista.filter(m => !m.letto).length;
+    return '<div class="adm-tabs" role="tablist" aria-label="Area super-admin">' +
+      [['utenti', 'Utenti'], ['accessi', 'Accessi'], ['segnalazioni', 'Segnalazioni' + (QP.nuove || n ? ' <span class="n">(' + (QP.nuove || n) + ')</span>' : '')]]
+        .map(([k, t]) => '<button type="button" role="tab" data-s="' + k + '" aria-selected="' + (scheda === k) + '">' + t + '</button>').join('') + '</div>';
+  }
+  function disegnaAdmin(){
+    intestazione();
+    const demo = DEMO ? '<p class="demo"><b>Anteprima</b>: dati d\'esempio, nulla viene inviato.</p>' : '';
+    AI.innerHTML = demo + schede() + '<div class="adm-cont"></div>';
+    AI.querySelectorAll('.adm-tabs button').forEach(b => b.addEventListener('click', () => { if (scheda === b.dataset.s) return; scheda = b.dataset.s; aperto = null; mostraAdmin(); }));
+    const C = $('.adm-cont', AI);
+    if (scheda === 'segnalazioni') return disegnaSegnalazioni(C);
+    if (scheda === 'accessi') return disegnaAccessi(C);
+    return QP.superadmin() ? disegnaUtenti(C) : disegnaGriglia(C);
+  }
+  function av(u, dot){
+    const s = document.createElement('span'); s.className = 'av';
+    QP.avatar(s, u.nome, u.foto, u.ruolo || '');
+    if (dot) { const d = document.createElement('i'); d.className = 'dot'; d.title = 'In linea'; s.append(d); }
+    return s;
+  }
+  /* admin: solo nome e foto */
+  function disegnaGriglia(C){
+    C.innerHTML = '<p class="adm-nota"><span>' + utenti.length + ' utenti registrati</span><span class="sp"></span><button type="button" class="agg">Aggiorna</button></p><div class="ut-griglia"></div>';
+    $('.agg', C).addEventListener('click', () => mostraAdmin());
+    const G = $('.ut-griglia', C);
+    if (!utenti.length) { G.outerHTML = '<p class="vuoto">Ancora nessun utente.</p>'; return; }
+    utenti.forEach(u => { const c = document.createElement('div'); c.className = 'ut-c'; c.append(av(u)); const n = document.createElement('span'); n.textContent = u.nome; c.append(n); G.append(c); });
+  }
+  /* super-admin: tutti i dettagli */
+  function stato(u){ return u.in_linea ? 'In linea ora' : 'Ultimo accesso: ' + quando(u.ultimo_accesso); }
+  function disegnaUtenti(C){
+    const inLinea = utenti.filter(u => u.in_linea).length;
+    C.innerHTML = '<p class="adm-nota"><span>' + utenti.length + ' utenti · <b class="n-on">' + inLinea + '</b> in linea</span><span class="sp"></span><button type="button" class="agg">Aggiorna</button></p><div class="ut-lista"></div>';
+    $('.agg', C).addEventListener('click', () => mostraAdmin());
+    const L = $('.ut-lista', C);
+    if (!utenti.length) { L.innerHTML = '<p class="vuoto">Ancora nessun utente.</p>'; return; }
+    utenti.forEach(u => L.append(schedaUtente(u)));
+  }
+  function schedaUtente(u){
+    const io = QP.sessione() && u.id === QP.sessione().id;
+    const a = document.createElement('article'); a.className = 'ut' + (u.ruolo === 'superadmin' ? ' sa' : ''); a.dataset.id = u.id;
+    a.innerHTML = '<button type="button" class="ut-top" aria-expanded="false"><span class="av-p"></span><span class="ut-n"><b></b><span class="ut-st"></span></span><span class="ut-fr">' + FR + '</span></button>' +
+      '<div class="ut-info"><span class="disp"></span><span class="reg-i"></span></div><div class="ut-det" hidden></div>';
+    $('.av-p', a).replaceWith(av(u, u.in_linea));
+    $('.ut-n b', a).textContent = u.nome + (io ? ' (tu)' : '');
+    if (u.ruolo) { const b = document.createElement('span'); b.className = 'badge' + (u.ruolo === 'superadmin' ? ' sa' : ''); b.textContent = QP.NOME_RUOLO[u.ruolo] || u.ruolo; $('.ut-n b', a).after(b); }
+    const st = $('.ut-st', a); st.textContent = stato(u); st.classList.toggle('on', !!u.in_linea);
+    $('.disp', a).innerHTML = u.ultimo ? esc(dispTesto(u.ultimo)) + (u.ultimo.ip ? ' · IP <span class="ip">' + esc(u.ultimo.ip) + '</span>' : '') : 'Nessun accesso registrato dalla versione 1.0';
+    $('.reg-i', a).textContent = 'Registrato il ' + giorno(u.registrato) + ' · ' + u.letti + ' argomenti letti · ' + u.n_accessi + (u.n_accessi === 1 ? ' accesso' : ' accessi');
+    const top = $('.ut-top', a), det = $('.ut-det', a);
+    top.setAttribute('aria-label', u.nome + ', ' + stato(u) + '. Mostra accessi e azioni');
+    top.addEventListener('click', () => { const on = det.hidden; chiudiDettagli(); if (on) apriDettagli(a, u); });
+    return a;
+  }
+  function chiudiDettagli(){ AI.querySelectorAll('.ut-det').forEach(d => { d.hidden = true; d.innerHTML = ''; }); AI.querySelectorAll('.ut-top').forEach(t => t.setAttribute('aria-expanded', 'false')); aperto = null; }
+  async function apriDettagli(a, u){
+    const det = $('.ut-det', a), top = $('.ut-top', a); aperto = u.id;
+    det.hidden = false; top.setAttribute('aria-expanded', 'true');
+    det.innerHTML = '<h5>Ultimi accessi</h5><ul class="reg"><li>Caricamento…</li></ul><div class="ut-az"></div>';
+    azioni(det, u);
+    try {
+      const r = await serv.registro(u.id, 20); if (aperto !== u.id) return;
+      $('.reg', det).innerHTML = r.length ? r.map(x => '<li><b>' + esc(periodo(x)) + '</b><br>' + esc(dispTesto(x)) + (x.ip ? ' · IP <span class="ip">' + esc(x.ip) + '</span>' : '') + '</li>').join('') : '<li>Nessun accesso registrato.</li>';
+    } catch (x) { $('.reg', det).innerHTML = '<li>' + esc(errMsg(x)) + '</li>'; }
+  }
+  function azioni(det, u){
+    const Z = $('.ut-az', det), io = QP.sessione() && u.id === QP.sessione().id;
+    if (io || u.ruolo === 'superadmin') { Z.innerHTML = '<p class="conf" style="color:var(--muted)">Il super-admin non si modifica né si elimina da qui.</p>'; return; }
+    Z.innerHTML = '<button type="button" class="btn ruolo-b">' + (u.ruolo === 'admin' ? 'Togli admin' : 'Rendi admin') + '</button><button type="button" class="btn del">Elimina account</button><p class="err" role="alert"></p>';
+    const e = $('.err', Z);
+    $('.ruolo-b', Z).addEventListener('click', async ev => {
+      const b = ev.currentTarget; b.disabled = true; e.textContent = '';
+      try { await serv.ruolo(u.id, u.ruolo === 'admin' ? '' : 'admin'); aperto = null; await mostraAdmin(); }
+      catch (x) { e.textContent = errMsg(x); b.disabled = false; }
+    });
+    $('.del', Z).addEventListener('click', () => {
+      Z.innerHTML = '<p class="conf">Eliminare l\'account <b></b>? Si cancellano per sempre progressi, foto e accessi. Le segnalazioni già inviate restano.</p><button type="button" class="btn rosso si">Elimina definitivamente</button><button type="button" class="btn no">Annulla</button><p class="err" role="alert"></p>';
+      $('.conf b', Z).textContent = u.nome;
+      $('.no', Z).addEventListener('click', () => azioni(det, u)); $('.no', Z).focus();
+      $('.si', Z).addEventListener('click', async ev => {
+        const b = ev.currentTarget; b.disabled = true; b.textContent = 'Elimino…';
+        try { await serv.elimina(u.id); aperto = null; await mostraAdmin(); }
+        catch (x) { $('.err', Z).textContent = errMsg(x); b.disabled = false; b.textContent = 'Elimina definitivamente'; }
+      });
+    });
+  }
+  /* aggiornamento ogni 30 s senza chiudere i dettagli: solo pallino "in linea" e stato */
+  function aggiornaStati(){
+    utenti.forEach(u => {
+      const a = AI.querySelector('.ut[data-id="' + u.id + '"]'); if (!a) return;
+      const st = $('.ut-st', a); st.textContent = stato(u); st.classList.toggle('on', !!u.in_linea);
+      const s = $('.av', a), d = $('.dot', s); if (u.in_linea && !d) { const i = document.createElement('i'); i.className = 'dot'; s.append(i); } else if (!u.in_linea && d) d.remove();
+    });
+    const n = AI.querySelector('.n-on'); if (n) n.textContent = utenti.filter(u => u.in_linea).length;
+  }
+  function disegnaAccessi(C){
+    const foto = Object.fromEntries(utenti.map(u => [u.id, u]));
+    C.innerHTML = '<p class="adm-nota"><span>Ultimi ' + registro.length + ' accessi · si cancellano dopo 6 mesi</span><span class="sp"></span><button type="button" class="agg">Aggiorna</button></p><div class="ac-lista"></div>';
+    $('.agg', C).addEventListener('click', () => mostraAdmin());
+    const L = $('.ac-lista', C);
+    if (!registro.length) { L.innerHTML = '<p class="vuoto">Ancora nessun accesso registrato.</p>'; return; }
+    registro.forEach(x => {
+      const u = foto[x.utente] || {nome: x.nome};
+      const r = document.createElement('div'); r.className = 'ac-riga';
+      r.innerHTML = '<span class="av-p"></span><div><div class="t"><b></b><time></time></div><div class="d"></div></div>';
+      $('.av-p', r).replaceWith(av(u));
+      $('b', r).textContent = x.nome; $('time', r).textContent = periodo(x); $('time', r).dateTime = x.inizio;
+      $('.d', r).innerHTML = esc(dispTesto(x)) + (x.ip ? ' · IP <span class="ip">' + esc(x.ip) + '</span>' : '');
+      L.append(r);
+    });
+  }
+  /* segnalazioni (solo super-admin) */
+  function disegnaSegnalazioni(C){
     const nuove = lista.filter(m => !m.letto).length;
     const vis = filtro === 'nuove' ? lista.filter(m => !m.letto) : lista;
-    AI.innerHTML = (DEMO ? '<p class="demo"><b>Anteprima</b>: messaggi d\'esempio più quelli inviati da questo telefono.</p>' : '') +
-      '<div class="adm-f" role="group" aria-label="Filtro"><button type="button" data-f="nuove" aria-pressed="' + (filtro === 'nuove') + '">Da leggere (' + nuove + ')</button>' +
+    C.innerHTML = '<div class="adm-f" role="group" aria-label="Filtro"><button type="button" data-f="nuove" aria-pressed="' + (filtro === 'nuove') + '">Da leggere (' + nuove + ')</button>' +
       '<button type="button" data-f="tutte" aria-pressed="' + (filtro === 'tutte') + '">Tutte (' + lista.length + ')</button><span class="sp"></span><button type="button" class="agg">Aggiorna</button></div><div class="lista"></div>';
-    AI.querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => { filtro = b.dataset.f; disegna(); }));
-    $('.agg', AI).addEventListener('click', mostraAdmin);
-    const L = $('.lista', AI);
+    C.querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => { filtro = b.dataset.f; disegnaAdmin(); }));
+    $('.agg', C).addEventListener('click', () => mostraAdmin());
+    const L = $('.lista', C);
     if (!vis.length) { L.innerHTML = '<p class="vuoto">' + (filtro === 'nuove' ? 'Nessuna segnalazione da leggere.' : 'Ancora nessuna segnalazione.') + '</p>'; return; }
     vis.forEach(m => {
       const c = document.createElement('article'); c.className = 'msg' + (m.letto ? '' : ' nuovo');
@@ -279,24 +525,28 @@ body.fb-aperto{overflow:hidden}
       $('.msg-txt', c).textContent = m.messaggio;
       $('.chi', c).textContent = (m.nome ? 'da ' + m.nome : 'anonimo') + (m.versione ? ' · ' + m.versione : '');
       const tl = $('.tl', c); tl.textContent = m.letto ? 'Segna da leggere' : 'Segna come letta';
-      tl.addEventListener('click', async () => { try { await srv.segna(m.id, !m.letto); m.letto = !m.letto; disegna(); conta(); } catch (x) {} });
+      tl.addEventListener('click', async () => { try { await srv.segna(m.id, !m.letto); m.letto = !m.letto; disegnaAdmin(); conta(); } catch (x) {} });
       const del = $('.del', c);
       del.addEventListener('click', () => {
-        const bot = $('.msg-bot', c); const vecchio = bot.innerHTML;
+        const bot = $('.msg-bot', c);
         bot.innerHTML = '<span class="chi">Eliminare questa segnalazione?</span><button type="button" class="si">Elimina</button><button type="button" class="no">Annulla</button>';
-        $('.no', bot).addEventListener('click', () => disegna());
-        $('.si', bot).addEventListener('click', async () => { try { await srv.elimina(m.id); lista = lista.filter(x => x !== m); disegna(); conta(); } catch (x) {} });
+        $('.no', bot).addEventListener('click', () => disegnaAdmin());
+        $('.si', bot).addEventListener('click', async () => { try { await srv.elimina(m.id); lista = lista.filter(x => x !== m); disegnaAdmin(); conta(); } catch (x) {} });
         $('.no', bot).focus();
       });
       L.append(c);
     });
   }
+  function ferma(){ clearInterval(giro); giro = null; }
   function rotta(){
     const on = location.hash === '#admin';
-    if (on && A.hidden) { A.hidden = false; document.body.classList.add('fb-aperto'); mostraAdmin(); $('.chiudi', A).focus(); }
-    else if (!on && !A.hidden) { A.hidden = true; document.body.classList.remove('fb-aperto'); conta(); }
+    if (on && A.hidden) {
+      A.hidden = false; document.body.classList.add('fb-aperto'); scheda = 'utenti'; aperto = null; mostraAdmin(); $('.chiudi', A).focus();
+      ferma(); giro = setInterval(() => { if (!document.hidden && scheda === 'utenti' && QP.superadmin()) mostraAdmin(true); }, 30000);
+    }
+    else if (!on && !A.hidden) { A.hidden = true; ferma(); document.body.classList.remove('fb-aperto'); conta(); }
   }
   addEventListener('hashchange', rotta); rotta();
-  QP.on(() => { if (!A.hidden) mostraAdmin(); });
+  QP.on(() => { if (!A.hidden) mostraAdmin(true); });
 })();
 </script>

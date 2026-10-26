@@ -7,7 +7,13 @@
 .acc-chip .av,.acc .av{flex:none;display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:var(--chip);color:var(--muted);font:700 .8rem/1 var(--f-body);text-transform:uppercase}
 .acc-chip .av svg{width:16px;height:16px}
 .acc-chip.in .av,.acc .av.in{background:var(--blue);color:var(--sheet)}
-.acc-chip.ad .av,.acc .av.ad{background:var(--acc);color:var(--on-acc,#fff)}
+.acc-chip.ad .av,.acc .av.ad{background:var(--blue);color:var(--sheet)}
+/* foto profilo e super-admin (giallo racing) */
+.acc-chip .av,.acc .av{position:relative;overflow:hidden}
+.acc-chip .av img,.acc .av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none}
+.acc .av.io{background:var(--blue);color:var(--sheet)}
+.acc-chip.sa{border-color:var(--racing-bd)}
+.acc-chip.sa .av,.acc .av.sa{background:var(--racing);color:var(--on-racing);box-shadow:0 0 0 2px var(--racing)}
 .acc-chip .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .acc-chip:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .acc svg,.acc-chip svg,.letto svg,.toc .tk svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;color:inherit}
@@ -71,7 +77,24 @@
 .ciao .av{width:52px;height:52px;font-size:1.3rem}
 .ciao h3{margin:0;font:700 1.3rem/1.2 var(--f-body);color:var(--ink)}
 .ciao p{margin:3px 0 0;font-size:.86rem;color:var(--muted)}
-.ciao .ruolo{display:inline-block;margin-left:6px;padding:3px 8px;border-radius:999px;background:var(--acc-soft,#f8e6f1);color:var(--acc);font:700 .72rem/1 var(--f-body);vertical-align:2px}
+.ciao .ruolo{display:inline-block;margin-left:6px;padding:3px 8px;border-radius:999px;background:color-mix(in srgb,var(--blue) 14%,var(--sheet));color:var(--blue);font:700 .72rem/1 var(--f-body);vertical-align:2px}
+.ciao .ruolo.sa{background:var(--racing);color:var(--on-racing);box-shadow:inset 0 0 0 1px var(--racing-bd)}
+.foto-az{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 16px}
+.foto-az button{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 12px 0 9px;border-radius:999px;border:1.5px solid var(--line);background:var(--sheet);color:var(--ink);font:600 .82rem/1 var(--f-body)}
+.foto-az button svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.foto-az button.via{color:var(--red)}
+.foto-az button[disabled]{opacity:.5;cursor:default}
+.foto-az button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.foto-az .err{flex-basis:100%;min-height:0;margin:2px 2px 0}
+/* termini di servizio (testo in comune tra pagina iniziale e registrazione) */
+.tos-testo{font-size:.82rem;line-height:1.45;color:var(--muted)}
+.tos-testo ul{margin:0;padding:0 0 0 18px;display:grid;gap:5px}
+.tos-testo b{color:var(--ink);font-weight:600}
+.tos-testo p{margin:8px 0 0;font-size:.76rem}
+.tos-reg{margin:12px 2px 0;font-size:.82rem;color:var(--muted)}
+.tos-reg summary{cursor:pointer;line-height:1.4}
+.tos-reg summary u{color:var(--blue);text-underline-offset:2px}
+.tos-reg .tos-testo{margin-top:8px;padding:10px 12px;border-radius:12px;background:var(--sheet);border:1px solid var(--line)}
 .tot{background:var(--sheet);border:1px solid var(--line);border-radius:16px;padding:16px;margin:0 0 18px}
 .tot-n{display:flex;align-items:baseline;gap:10px;margin:0 0 10px}
 .tot-n b{font:700 2.1rem/1 var(--f-body);color:var(--ink);font-variant-numeric:tabular-nums}
@@ -94,7 +117,8 @@
 .adm-box{display:flex;align-items:center;gap:10px;background:var(--sheet);border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:0 0 18px}
 .adm-box p{flex:1;margin:0;font-size:.88rem;color:var(--muted)}
 .adm-box p b{display:block;color:var(--ink);font-size:.95rem}
-.adm-box .btn{min-height:40px;padding:0 14px;background:var(--acc);border-color:var(--acc);color:var(--on-acc,#fff)}
+.adm-box .btn{min-height:40px;padding:0 16px;background:var(--blue);border-color:var(--blue);color:var(--sheet)}
+.adm-box.sa{border-color:var(--racing-bd);background:color-mix(in srgb,var(--racing) 12%,var(--sheet))}
 .acc .esci{margin-top:4px}
 .acc .elimina{all:unset;box-sizing:border-box;display:block;margin:16px auto 0;padding:9px 14px;border-radius:10px;cursor:pointer;font:600 .86rem/1 var(--f-body);color:var(--red);text-align:center}
 .acc .elimina:hover,.acc .elimina:focus-visible{background:color-mix(in srgb,var(--red) 10%,var(--sheet))}
@@ -125,17 +149,37 @@ body.acc-aperto{overflow:hidden}
   const ICO = {
     utente: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>',
     x: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
-    ok: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
+    ok: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    cam: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.6-2.4h6.8L17 8h3v11H4z"/><circle cx="12" cy="13.2" r="3.6"/></svg>',
+    img: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="m4 17 5-4.5 3.5 3 3-2.5 4.5 4"/></svg>',
+    via: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12"/></svg>'
   };
+  /* termini di servizio: un solo testo, mostrato in pagina iniziale e alla registrazione */
+  const TERMINI = '<div class="tos-testo"><ul>' +
+    '<li><b>Cos\'è.</b> App gratuita di studio con gli appunti per il patentino nautico. Può contenere errori: non sostituisce i testi ufficiali né l\'istruttore.</li>' +
+    '<li><b>Senza account (Guest)</b> usi tutto tranne progressi e traduttore Gemini, e non viene registrato nessun accesso.</li>' +
+    '<li><b>Con l\'account</b> si salvano nome utente, password (cifrata), foto del profilo se la metti e argomenti segnati come letti. Nessuna email.</li>' +
+    '<li><b>Registro degli accessi.</b> Per sicurezza e contro gli abusi, quando usi l\'app con l\'account si registrano data e ora, indirizzo IP e dispositivo (modello, sistema e browser, se il telefono li comunica). Li vede solo il super-admin; gli admin vedono solo nome e foto.</li>' +
+    '<li><b>Quanto restano.</b> Gli accessi si cancellano da soli dopo 6 mesi. Un account non usato per 12 mesi viene cancellato con tutti i suoi dati.</li>' +
+    '<li><b>I tuoi diritti.</b> Puoi eliminare l\'account quando vuoi dal profilo: si cancella tutto. Per altre richieste scrivi in Segnalazioni e feedback.</li>' +
+    '<li><b>Segnalazioni</b>: le legge solo il super-admin; puoi inviarle anche anonime.</li>' +
+    '<li><b>Traduttore Gemini</b>: il testo che invii passa a Google per la traduzione, quindi non scriverci dati personali. Riservato a chi ha almeno 18 anni.</li>' +
+    '<li><b>Sul telefono</b> l\'app salva solo ciò che le serve (accesso, preferenze, audio ascoltati): niente pubblicità né cookie di profilazione.</li>' +
+    '<li><b>Servizi usati</b>: GitHub Pages (sito), Supabase (account e dati), Google Gemini (traduttore).</li>' +
+    '</ul><p>Titolare: l\'amministratore dell\'app (Gabrydl). Aggiornati il 26/10/2026.</p></div>';
 
   /* ---------- sessione ---------- */
   const sess = () => mem.get('qp-sessione');
+  /* ruoli: 'superadmin' (tutto: utenti, accessi, segnalazioni), 'admin' (solo nome e foto degli utenti), '' utente */
+  const ruoloDi = s => !s ? '' : (typeof s.ruolo === 'string' ? s.ruolo : (s.admin ? 'admin' : ''));
+  const ruolo = () => ruoloDi(sess());
+  const NOME_RUOLO = {superadmin: 'super-admin', admin: 'admin'};
   const emetti = () => subs.forEach(f => { try { f(); } catch (e) {} });
   const subs = [];
   function daRisposta(j){
     const u = j.user || {}, md = u.user_metadata || {}, am = u.app_metadata || {};
     const s = {access: j.access_token, refresh: j.refresh_token, scade: Date.now() + (j.expires_in || 3600) * 1000 - 60000,
-      id: u.id, nome: md.nome || (u.email || '').split('@')[0], admin: am.ruolo === 'admin'};
+      id: u.id, nome: md.nome || (u.email || '').split('@')[0], ruolo: am.ruolo || ''};
     mem.set('qp-sessione', s); return s;
   }
   async function token(){
@@ -163,12 +207,12 @@ body.acc-aperto{overflow:hidden}
   };
   async function entra(nome, pw){
     nome = nome.trim();
-    if (DEMO) { if (!NOME_OK.test(nome)) throw new Error('Nome utente o password sbagliati.'); avvia({demo: true, id: 'demo-' + nome.toLowerCase(), nome: (mem.get('qp-demo-nomi') || {})[nome.toLowerCase()] || nome, admin: nome.toLowerCase() === 'gabrydl'}); return; }
+    if (DEMO) { if (!NOME_OK.test(nome)) throw new Error('Nome utente o password sbagliati.'); avvia({demo: true, id: 'demo-' + nome.toLowerCase(), nome: (mem.get('qp-demo-nomi') || {})[nome.toLowerCase()] || nome, ruolo: nome.toLowerCase() === 'gabrydl' ? 'superadmin' : /^admin/i.test(nome) ? 'admin' : ''}); return; }
     if (!navigator.onLine) throw new Error('Serve internet per entrare.');
     let r; try { r = await fetch(CFG.url + '/auth/v1/token?grant_type=password', {method: 'POST', headers: H(), body: JSON.stringify({email: nome.toLowerCase() + '@' + DOMINIO, password: pw})}); } catch (e) { throw new Error(RETE); }
     const j = await r.json().catch(() => ({}));
     if (!r.ok) throw new Error(errore(j, 'Nome utente o password sbagliati.'));
-    daRisposta(j); await prog.scarica(); emetti();
+    daRisposta(j); await prog.scarica(); emetti(); battito.avvia();
   }
   async function registra(nome, pw){
     nome = nome.trim();
@@ -180,7 +224,7 @@ body.acc-aperto{overflow:hidden}
     const j = await r.json().catch(() => ({}));
     if (!r.ok) throw new Error(errore(j, 'Registrazione non riuscita: riprova.'));
     if (!j.access_token) throw new Error('Registrazione ricevuta, ma l\'accesso non è ancora attivo: avvisa l\'amministratore.');
-    daRisposta(j); await prog.scarica(); emetti();
+    daRisposta(j); await prog.scarica(); emetti(); battito.avvia();
   }
   function avvia(s){ mem.set('qp-sessione', s); prog.leggi(); emetti(); }
   /* elimina per sempre l'account e i suoi progressi (funzione elimina_account sul database) */
@@ -192,13 +236,116 @@ body.acc-aperto{overflow:hidden}
       if (!r.ok) throw new Error('Non sono riuscito a eliminare l\'account: riprova più tardi.');
     }
     const k = prog.k(); if (k) { mem.del(k); mem.del(k + '-coda'); }
+    mem.del('qp-foto-' + s.id); battito.ferma();
     if (s.demo) { const n = mem.get('qp-demo-nomi') || {}; delete n[s.nome.toLowerCase()]; mem.set('qp-demo-nomi', n); }
     mem.del('qp-sessione'); prog.leggi(); emetti();
   }
   async function esci(){
     const s = sess();
     if (s && !s.demo && navigator.onLine) { try { await fetch(CFG.url + '/auth/v1/logout', {method: 'POST', headers: H(s.access)}); } catch (e) {} }
-    mem.del('qp-sessione'); prog.leggi(); emetti();
+    battito.ferma(); mem.del('qp-sessione'); prog.leggi(); emetti();
+  }
+
+  /* ---------- rpc sul database (funzioni che controllano chi le chiama) ---------- */
+  async function rpc(nome, corpo){
+    const r = await fetch(CFG.url + '/rest/v1/rpc/' + nome, {method: 'POST', headers: H(await token()), body: JSON.stringify(corpo || {})});
+    if (r.status === 401) { mem.del('qp-sessione'); emetti(); throw new Error('fuori'); }
+    const j = await r.json().catch(() => null);
+    if (!r.ok) throw new Error((j && j.message) || ('rpc ' + r.status));
+    return j;
+  }
+
+  /* ---------- dispositivo: modello (se il telefono lo comunica), sistema e browser ---------- */
+  async function dispositivo(){
+    const ua = navigator.userAgent || '';
+    let modello = '', sistema = '', browser = '', m;
+    const ipad = /iPad/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    if ((m = ua.match(/Android\s([\d.]+)/))) sistema = 'Android ' + m[1];
+    else if (/iPhone|iPod/.test(ua) || ipad) { m = ua.match(/OS (\d+)[._](\d+)/) || ua.match(/Version\/(\d+)\.(\d+)/); sistema = (ipad ? 'iPadOS ' : 'iOS ') + (m ? m[1] + '.' + m[2] : ''); modello = ipad ? 'iPad' : 'iPhone'; }
+    else if (/Windows/.test(ua)) sistema = 'Windows';
+    else if (/CrOS/.test(ua)) sistema = 'ChromeOS';
+    else if (/Mac OS X/.test(ua)) sistema = 'macOS';
+    else if (/Linux/.test(ua)) sistema = 'Linux';
+    if ((m = ua.match(/EdgA?\/(\d+)/))) browser = 'Edge ' + m[1];
+    else if ((m = ua.match(/SamsungBrowser\/(\d+)/))) browser = 'Samsung Internet ' + m[1];
+    else if ((m = ua.match(/OPR\/(\d+)/))) browser = 'Opera ' + m[1];
+    else if ((m = ua.match(/(?:Firefox|FxiOS)\/(\d+)/))) browser = 'Firefox ' + m[1];
+    else if ((m = ua.match(/CriOS\/(\d+)/))) browser = 'Chrome ' + m[1];
+    else if ((m = ua.match(/Chrome\/(\d+)/))) browser = 'Chrome ' + m[1];
+    else if ((m = ua.match(/Version\/([\d]+(?:\.\d+)?).*Safari/))) browser = 'Safari ' + m[1];
+    const uad = navigator.userAgentData;
+    if (uad && uad.getHighEntropyValues) {
+      try {
+        const h = await uad.getHighEntropyValues(['model', 'platformVersion']);
+        if (h.model) modello = h.model;
+        if (h.platform === 'Android' && h.platformVersion) sistema = 'Android ' + h.platformVersion.split('.')[0];
+        if (h.platform === 'Windows' && h.platformVersion) sistema = parseInt(h.platformVersion, 10) >= 13 ? 'Windows 11' : 'Windows 10';
+      } catch (e) {}
+    }
+    if (!modello && (m = ua.match(/Android [\d.]+; ([^;)]+)\)/)) && m[1] !== 'K') modello = m[1].replace(/\s*Build\/.*$/, '').trim();
+    if (matchMedia('(display-mode: standalone)').matches) browser += (browser ? ' · ' : '') + 'app installata';
+    return {modello: modello.slice(0, 60), sistema: sistema.slice(0, 40), browser: browser.slice(0, 40)};
+  }
+
+  /* ---------- segnale: "in linea" e registro degli accessi (solo con l'account, ogni minuto mentre l'app è aperta) ---------- */
+  const battito = {
+    t: null, disp: null, prima: true,
+    async invia(){
+      const s = sess(); if (!s || DEMO || s.demo || !navigator.onLine || document.hidden) return;
+      try {
+        if (!this.disp) this.disp = await dispositivo();
+        const prima = this.prima;
+        const j = await rpc('segnale', {d: Object.assign({}, this.disp, prima ? {foto: '1'} : {})});
+        this.prima = false;
+        const s2 = sess(); if (!s2 || !j) return;
+        let cambia = false;
+        if ((j.ruolo || '') !== ruoloDi(s2)) { s2.ruolo = j.ruolo || ''; delete s2.admin; mem.set('qp-sessione', s2); cambia = true; }
+        if (prima && 'foto' in j && (j.foto || null) !== foto.mia()) { foto.metti(j.foto || null); cambia = true; }
+        if (cambia) emetti();
+      } catch (e) {}
+    },
+    avvia(){ this.ferma(); if (!sess() || DEMO) return; this.prima = true; this.invia(); this.t = setInterval(() => this.invia(), 60000); },
+    ferma(){ clearInterval(this.t); this.t = null; }
+  };
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && battito.t) battito.invia(); });
+
+  /* ---------- foto del profilo: ridotta sul telefono (192 px, ~15 KB) prima di salvarla ---------- */
+  const foto = {
+    mia(){ const s = sess(); return s ? mem.get('qp-foto-' + s.id) : null; },
+    metti(d){ const s = sess(); if (!s) return; d ? mem.set('qp-foto-' + s.id, d) : mem.del('qp-foto-' + s.id); },
+    riduci(file){
+      return new Promise((ok, no) => {
+        const u = URL.createObjectURL(file), im = new Image();
+        im.onload = () => {
+          const L = 192, c = document.createElement('canvas'); c.width = c.height = L;
+          const x = c.getContext('2d'), w = im.naturalWidth, h = im.naturalHeight, lato = Math.min(w, h);
+          x.fillStyle = '#ffffff'; x.fillRect(0, 0, L, L);
+          x.drawImage(im, (w - lato) / 2, (h - lato) / 2, lato, lato, 0, 0, L, L);
+          URL.revokeObjectURL(u);
+          let q = .85, d = c.toDataURL('image/webp', q); const tipo = d.startsWith('data:image/webp') ? 'image/webp' : 'image/jpeg';
+          if (tipo === 'image/jpeg') d = c.toDataURL(tipo, q);
+          while (d.length > 55000 && q > .4) { q -= .15; d = c.toDataURL(tipo, q); }
+          d.length > 60000 ? no(new Error('Foto troppo pesante: prova con un\'altra.')) : ok(d);
+        };
+        im.onerror = () => { URL.revokeObjectURL(u); no(new Error('Non riesco ad aprire questa immagine.')); };
+        im.src = u;
+      });
+    },
+    async salva(d){
+      const s = sess(); if (!s) return;
+      if (!DEMO && !s.demo) {
+        if (!navigator.onLine) throw new Error('Serve internet per cambiare la foto.');
+        await rpc('salva_foto', {foto: d});
+      }
+      this.metti(d); emetti();
+    }
+  };
+  /* avatar: foto se c'è, altrimenti l'iniziale del nome */
+  function avatar(el, nome, f, r){
+    el.textContent = '';
+    if (f && /^data:image\//.test(f)) { const i = document.createElement('img'); i.alt = ''; i.src = f; el.append(i); }
+    else el.textContent = (nome || '?').charAt(0);
+    el.classList.toggle('sa', r === 'superadmin'); el.classList.toggle('ad', r === 'admin');
   }
 
   /* ---------- argomenti letti ---------- */
@@ -288,20 +435,39 @@ body.acc-aperto{overflow:hidden}
     const s = sess();
     $('#acc-t', P).textContent = s ? 'Il tuo profilo' : 'Entra o registrati';
     if (!s) return disegnaOspite();
-    const n = conta(TUTTI), t = TUTTI.length, p = pc(n, t);
-    PI.innerHTML = (DEMO ? '<p class="demo"><b>Anteprima</b>: i progressi restano su questo telefono.</p>' : '') +
-      '<div class="ciao"><span class="av in' + (s.admin ? ' ad' : '') + '"></span><div><h3></h3><p></p></div></div>' +
+    const n = conta(TUTTI), t = TUTTI.length, p = pc(n, t), r = ruoloDi(s), mia = foto.mia();
+    PI.innerHTML = (DEMO ? '<p class="demo"><b>Anteprima</b>: i progressi e la foto restano su questo telefono.</p>' : '') +
+      '<div class="ciao"><span class="av io"></span><div><h3></h3><p></p></div></div>' +
+      '<div class="foto-az" role="group" aria-label="Foto del profilo"><button type="button" class="f-cam">' + ICO.cam + 'Scatta foto</button><button type="button" class="f-gal">' + ICO.img + 'Galleria</button>' +
+      (mia ? '<button type="button" class="via f-via">' + ICO.via + 'Togli</button>' : '') + '<p class="err" role="alert"></p>' +
+      '<input type="file" accept="image/*" capture="user" class="f-in-cam" hidden><input type="file" accept="image/*" class="f-in-gal" hidden></div>' +
       '<div class="tot"><div class="tot-n"><b>' + p + '%</b><span>' + n + ' argomenti letti su ' + t + '</span></div><span class="bar' + (p === 100 ? ' ok' : '') + '" role="progressbar" aria-label="Avanzamento totale" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + p + '"><i style="width:' + p + '%"></i></span></div>' +
-      (s.admin ? '<div class="adm-box"><p><b>Area admin</b>Segnalazioni e feedback degli utenti' + (window.QP.nuove ? ': ' + window.QP.nuove + ' da leggere' : '') + '</p><button type="button" class="btn adm-go">Apri</button></div>' : '') +
+      (r === 'superadmin' ? '<div class="adm-box sa"><p><b>Area super-admin</b>Utenti, accessi e segnalazioni' + (window.QP.nuove ? ' · ' + window.QP.nuove + ' da leggere' : '') + '</p><button type="button" class="btn adm-go">Apri</button></div>' :
+       r === 'admin' ? '<div class="adm-box"><p><b>Area admin</b>Utenti registrati</p><button type="button" class="btn adm-go">Apri</button></div>' : '') +
       '<h4>Capitoli</h4><ul class="cap"></ul>' +
       '<button type="button" class="btn largo esci">Esci</button>' +
-      (s.admin ? '' : '<button type="button" class="elimina" aria-expanded="false" aria-controls="del-box">Elimina l\'account</button>' +
+      (r === 'superadmin' ? '' : '<button type="button" class="elimina" aria-expanded="false" aria-controls="del-box">Elimina l\'account</button>' +
         '<div class="del-box" id="del-box" hidden><h4>Eliminare l\'account?</h4><p>L\'account <b class="del-nome"></b> e tutti i tuoi progressi verranno cancellati <b>per sempre</b>: non si può annullare. Le segnalazioni che hai già inviato restano.</p>' +
         '<p class="err" role="alert"></p><div class="azioni"><button type="button" class="btn rosso del-si">Elimina definitivamente</button><button type="button" class="btn del-no">Annulla</button></div></div>');
-    $('.ciao .av', PI).textContent = s.nome.charAt(0);
+    avatar($('.ciao .av', PI), s.nome, mia, r);
     $('.ciao h3', PI).textContent = 'Ciao, ' + s.nome;
     const sub = $('.ciao p', PI); sub.textContent = p === 100 ? 'Hai letto tutto il Quaderno!' : (n ? 'Continua così.' : 'Segna gli argomenti man mano che li studi.');
-    if (s.admin) { const r = document.createElement('span'); r.className = 'ruolo'; r.textContent = 'admin'; $('.ciao h3', PI).append(r); }
+    if (r) { const b = document.createElement('span'); b.className = 'ruolo' + (r === 'superadmin' ? ' sa' : ''); b.textContent = NOME_RUOLO[r] || r; $('.ciao h3', PI).append(b); }
+    /* foto: scatta ora (fotocamera) o scegli dalla galleria */
+    const fa = $('.foto-az', PI), fe = $('.err', fa);
+    $('.f-cam', fa).addEventListener('click', () => $('.f-in-cam', fa).click());
+    $('.f-gal', fa).addEventListener('click', () => $('.f-in-gal', fa).click());
+    fa.querySelectorAll('input[type=file]').forEach(inp => inp.addEventListener('change', async () => {
+      const f = inp.files && inp.files[0]; inp.value = ''; if (!f) return;
+      fe.textContent = ''; fa.querySelectorAll('button').forEach(b => { b.disabled = true; });
+      try { await foto.salva(await foto.riduci(f)); }
+      catch (x) { fe.textContent = x.message === 'fuori' ? 'Accesso scaduto: rientra e riprova.' : (x.message || 'Non sono riuscito a salvare la foto.'); fa.querySelectorAll('button').forEach(b => { b.disabled = false; }); }
+    }));
+    const fv = $('.f-via', fa);
+    if (fv) fv.addEventListener('click', async () => {
+      fe.textContent = ''; fv.disabled = true;
+      try { await foto.salva(null); } catch (x) { fe.textContent = x.message || 'Non sono riuscito a togliere la foto.'; fv.disabled = false; }
+    });
     const L = $('.cap', PI);
     SEZ.forEach(c => {
       const li = document.createElement('li');
@@ -346,7 +512,8 @@ body.acc-aperto{overflow:hidden}
       '<div class="campo"><label class="fl" for="acc-p">Password</label><input class="in" id="acc-p" type="password" autocomplete="' + (reg ? 'new-password' : 'current-password') + '" required>' +
       (reg ? '<p class="aiuto">Almeno 6 caratteri.</p>' : '') + '</div>' +
       (reg ? '<div class="campo"><label class="fl" for="acc-p2">Ripeti la password</label><input class="in" id="acc-p2" type="password" autocomplete="new-password" required></div>' : '') +
-      '<p class="err" role="alert"></p><button type="submit" class="btn pri largo">' + (reg ? 'Crea l\'account' : 'Entra') + '</button></form>' +
+      '<p class="err" role="alert"></p><button type="submit" class="btn pri largo">' + (reg ? 'Crea l\'account' : 'Entra') + '</button>' +
+      (reg ? '<details class="tos-reg"><summary>Creando l\'account accetti i <u>termini di servizio</u></summary>' + TERMINI + '</details>' : '') + '</form>' +
       '<p class="nota">' + (reg ? 'Senza email la password non si può recuperare da soli: se la dimentichi, scrivilo in <b>Segnalazioni e feedback</b> e l\'amministratore te la cambia.' : 'Non hai un account? Tocca <b>Registrati</b>: ci vogliono pochi secondi.') + '</p>';
     if (avviso) $('.avviso', PI).textContent = avviso;
     PI.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => { scheda = b.dataset.s; disegnaOspite(); $('#acc-u', PI).focus(); }));
@@ -371,10 +538,11 @@ body.acc-aperto{overflow:hidden}
   /* ---------- aggiorna tutto quando cambia qualcosa ---------- */
   function aggiorna(){
     const s = sess();
-    chip.classList.toggle('in', !!s); chip.classList.toggle('ad', !!(s && s.admin));
-    const av = $('.av', chip); if (s) av.textContent = s.nome.charAt(0); else av.innerHTML = ICO.utente;
+    const r = ruoloDi(s);
+    chip.classList.toggle('in', !!s); chip.classList.toggle('ad', r === 'admin'); chip.classList.toggle('sa', r === 'superadmin');
+    const av = $('.av', chip); if (s) { avatar(av, s.nome, foto.mia(), ''); } else { av.innerHTML = ICO.utente; }
     $('.nm', chip).textContent = s ? s.nome : 'Guest';
-    chip.setAttribute('aria-label', s ? 'Profilo di ' + s.nome : 'Guest: entra o registrati');
+    chip.setAttribute('aria-label', s ? 'Profilo di ' + s.nome + (r ? ' (' + NOME_RUOLO[r] + ')' : '') : 'Guest: entra o registrati');
     Object.keys(tasti).forEach(id => {
       const b = tasti[id], on = !!s && prog.fatti.has(id);
       b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false');
@@ -402,10 +570,13 @@ body.acc-aperto{overflow:hidden}
   const ca = $('#home .howto .crea-account'); if (ca) ca.addEventListener('click', () => { scheda = 'registrati'; apri(); });
 
   /* ---------- per gli altri moduli (segnalazioni) ---------- */
-  window.QP = {CFG, DEMO, H, rest, token, sessione: sess, admin: () => { const s = sess(); return !!(s && s.admin); }, nome: () => { const s = sess(); return s ? s.nome : ''; },
+  window.QP = {CFG, DEMO, H, rest, rpc, token, sessione: sess, ruolo, NOME_RUOLO, avatar, TERMINI, foto: () => foto.mia(),
+    admin: () => ruolo() === 'admin' || ruolo() === 'superadmin',       // può aprire l'area admin (utenti)
+    superadmin: () => ruolo() === 'superadmin',                           // accessi, segnalazioni, elimina account
+    nome: () => { const s = sess(); return s ? s.nome : ''; },
     on: f => subs.push(f), apriProfilo: apri, nuove: 0, ridisegna: () => { if (!P.hidden) disegna(); }};
 
   aggiorna(); rotta();
-  if (sess() && !DEMO) prog.scarica().then(aggiorna);
+  if (sess() && !DEMO) { prog.scarica().then(aggiorna); battito.avvia(); }
 })();
 </script>

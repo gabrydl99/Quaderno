@@ -2,7 +2,7 @@
 """Trasforma l'HTML del Quaderno (come esce dall'artefatto o da unisci.py) in index.html per la PWA.
 
 Uso:
-    python3 strumenti/costruisci_pwa.py SORGENTE.html [--versione v36] [--sfondo] [--uscita prova.html]
+    python3 strumenti/costruisci_pwa.py SORGENTE.html [--versione 1.1] [--sfondo] [--uscita prova.html]
 
     --sfondo   aggiunge l'immagine dietro agli argomenti della pagina iniziale (img/sfondo-home.jpg)
     --uscita   scrive in un altro file invece di index.html (per le prove)
@@ -46,6 +46,8 @@ TESTA = '''<!doctype html>
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="stylesheet" href="fonts/fonts.css">
 '''
+
+PIEDE = '\n<p class="ver-fondo" title="Versione dell\'app e data dell\'ultimo aggiornamento">Versione <b>{v}</b> · {data}</p>'
 
 REGISTRA = '''
 <script>
@@ -114,13 +116,15 @@ def costruisci(sorgente: str, versione: str | None, sfondo: bool = False, data: 
     k = s.find('</style>', s.find('/* Layout')) + len('</style>')
     s = s[:k] + '\n<style id="tema">\n' + tema + '</style>' + s[k:]
 
-    # 4. versione e data dell'ultimo aggiornamento: in alto a destra (tolta dal fondo della pagina)
+    # 4. versione e data dell'ultimo aggiornamento: in fondo alla pagina iniziale, sotto "Come si usa l'app"
+    #    (dalla 1.0 del 26/10/2026: 1.0, 1.1, 1.2 … ; prima era in alto a destra come vNN)
     vecchia = re.search(r'class="ver"[^>]*>(v\d+)<', s)
     v = versione or (vecchia.group(1) if vecchia else '')
     s = re.sub(r'\s*<p class="foot-ver">.*?</p>', '', s, count=1, flags=re.S)
     data = data or datetime.datetime.now(ZoneInfo('Europe/Rome')).strftime('%d/%m/%Y')
-    blocco = f'<span class="ver-top" title="Versione dell\'app e data dell\'ultimo aggiornamento"><b>{v}</b><small>({data})</small></span>\n      '
-    s = s.replace('<button type="button" id="homeBtn"', blocco + '<button type="button" id="homeBtn"', 1)
+    piede = PIEDE.format(v=v, data=data)
+    k = s.find('</section>', s.find('<section class="howto"')) + len('</section>')
+    s = s[:k] + piede + s[k:]
 
     # 5. tasto Installa, immagine di sfondo (facoltativa) e registrazione del service worker
     extra = (RADICE / 'strumenti' / 'installa.html').read_text(encoding='utf8')

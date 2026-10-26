@@ -3,7 +3,7 @@
 // - Massimo 300 caratteri per richiesta, massimo 30 richieste ogni 10 minuti per utente.
 // - La chiave resta qui, nel segreto GEMINI_KEY: l'app non la vede mai.
 // - GEMINI_PER_TUTTI = true: la usano tutti gli account registrati (scelta dell'utente, 26/10/2026).
-//   Con false solo gli account con app_metadata.ruolo = 'admin' oppure app_metadata.gemini = true.
+//   Con false solo gli account con app_metadata.ruolo = 'superadmin' o 'admin' oppure app_metadata.gemini = true.
 // - Modello: segreto GEMINI_MODEL, se c'è; altrimenti i modelli "flash" disponibili con la chiave, dal più recente
 //   (prima i flash, poi i flash-lite). Se un modello è occupato o al limite si passa al successivo e lo si salta
 //   per qualche minuto (ritirato: per un giorno).
@@ -43,7 +43,7 @@ async function utente(req: Request): Promise<{ id: string; gemini: boolean } | n
   const u = await r.json();
   if (!u?.id) return null;
   const m = u.app_metadata ?? {};
-  return { id: u.id, gemini: GEMINI_PER_TUTTI || m.ruolo === "admin" || m.gemini === true };
+  return { id: u.id, gemini: GEMINI_PER_TUTTI || m.ruolo === "superadmin" || m.ruolo === "admin" || m.gemini === true };
 }
 
 const usi = new Map<string, number[]>();

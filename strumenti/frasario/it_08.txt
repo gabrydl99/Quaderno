@@ -1,0 +1,211 @@
+1315|Assicurate la lancia (le lance) e riferite.
+1316|La lancia è assicurata / Le lance sono assicurate.
+1317|Controllate le zattere e riferite.
+1318|Tutte le zattere sono al loro posto ed efficienti.
+1319|La zattera (le zattere) n. ... non è / non sono efficiente/i.
+1320|La cima di gonfiaggio della zattera n. ... non è fissata a bordo.
+1321|Fissate la cima di gonfiaggio.
+1322|Il contenitore della zattera n. ... è danneggiato.
+1323|Sostituite il contenitore della zattera nel prossimo porto.
+1324|Il cartellino di revisione della zattera n. ... è scaduto.
+1325|Sostituite la zattera nel prossimo porto.
+1326|Ordine di evacuazione
+1327|Evacuate tutti i locali / gli spazi / i ponti / ... e riferite.
+1328|Tutti i locali / gli spazi / i ponti / ... evacuati.
+1329|Evacuate la sala macchine e riferite.
+1330|Sala macchine evacuata.
+1331|Evacuate la stiva (le stive) / la cisterna (le cisterne) n. ... e riferite.
+1332|Stiva (stive) / cisterna (cisterne) n. ... evacuata/e.
+1333|Evacuate le sovrastrutture e riferite.
+1334|Sovrastrutture evacuate.
+1335|Evacuate gli alloggi e riferite.
+1336|Alloggi evacuati.
+1337|Non entrate nel ponte / nello spazio / nell'area ... .
+1338|Riferite su dispersi / feriti / vittime.
+1339|Nessun disperso / ferito.
+1340|Il numero di dispersi / feriti / vittime è: ... .
+1341|Ponte / spazio / area ... non (ancora) accessibile.
+1342|Prestate il primo soccorso (nell'ospedale di bordo / in un luogo sicuro).
+1343|Chiedete assistenza medica a ... (via radio).
+1344|Tutte le persone sono fuori dall'area pericolosa.
+1345|Appello
+1346|Riferite il numero di tutte le persone / dei passeggeri / dei membri dell'equipaggio ai punti di riunione.
+1347|Il numero di tutte le persone / dei passeggeri / dei membri dell'equipaggio al punto di riunione ... è ... .
+1348|Il numero delle persone / dei passeggeri / dei membri dell'equipaggio al punto di riunione ... è completo.
+1349|Il numero delle persone / dei passeggeri / dei membri dell'equipaggio al punto di riunione ... non è (ancora) completo.
+1350|... passeggero/i / membro/i dell'equipaggio manca / mancano.
+1351|Cercate il passeggero (i passeggeri) / il membro (i membri) dell'equipaggio dispersi e riferite.
+1352|Passeggero/i / membro/i dell'equipaggio disperso/i ritrovato/i.
+1353|Passeggero/i / membro/i dell'equipaggio disperso/i non (ancora) ritrovato/i - (la ricerca continua).
+1354|Il personale di guardia ai punti di riunione.
+1355|Capilancia! Controllate l'equipaggiamento dell'equipaggio ai punti di riunione e riferite.
+1356|L'equipaggiamento dell'equipaggio al punto di riunione ... è completo.
+1357|L'equipaggiamento dell'equipaggio al punto di riunione ... non è (ancora) completo.
+1358|Completate l'equipaggiamento e riferite.
+1359|Andate a prendere coperte / barella / ... e riferite.
+1360|Capilancia! Controllate l'abbigliamento dei passeggeri ai punti di riunione e riferite.
+1361|L'abbigliamento dei passeggeri al punto di riunione ... è corretto.
+1362|L'abbigliamento dei passeggeri al punto di riunione ... non è (ancora) corretto.
+1363|Correggete l'abbigliamento e riferite.
+1364|Indossate abiti caldi / camicia a maniche lunghe / pantaloni lunghi / scarpe robuste / copricapo / ... e riferite.
+1365|Passeggeri ed equipaggio! Seguite i capilancia ai posti lance / zattere sul ponte d'imbarco.
+1366|Ordine di abbandono nave
+1367|Mettete fuori bordo (bracciate) la lancia (le lance) n. ... e riferite.
+1368|Lancia (lance) n. ... fuori bordo.
+1369|Ammainate la lancia (le lance) n. ... a livello del ponte d'imbarco e riferite.
+1370|La lancia (le lance) n. ... è / sono a livello del ponte d'imbarco.
+1371|Salite sulla lancia (sulle lance) (n. ...) e riferite.
+1372|Salite sulla lancia (sulle lance) / sulla zattera (sulle zattere) dal ponte ... .
+1373|Salite sulla lancia (sulle lance) / sulla zattera (sulle zattere) con le scale / le reti / i tientibene.
+1374|Saltate in acqua e salite sulla lancia (sulle lance) / sulla zattera (sulle zattere).
+1375|Saltate sulla zattera (sulle zattere) sottobordo.
+1376|Non spingetevi quando salite.
+1377|Aiutate i feriti / le persone non autosufficienti.
+1378|Liberate l'ingresso della lancia / della zattera.
+1379|Sedetevi subito nella lancia / nella zattera.
+1380|Tenetevi alle cime o al sedile durante l'ammaino.
+1381|Lancia (lance) / zattera (zattere) n. ... occupata/e.
+1382|Sganciate la lancia (le lance) / la zattera (le zattere) n. ... e riferite.
+1383|La lancia (le lance) / la zattera (le zattere) n. ... è / sono sganciata/e.
+1384|Gettate fuori bordo la zattera n. ... e riferite.
+1385|Zattera n. ... gettata fuori bordo.
+1386|Informate le stazioni radio costiere / le navi nelle vicinanze sul numero di lance / zattere messe a mare e riferite.
+1387|Informate le stazioni radio costiere / le navi nelle vicinanze sul numero di persone in ogni lancia / zattera e riferite.
+1388|Informate le stazioni radio costiere / le navi nelle vicinanze sul numero di membri dell'equipaggio rimasti a bordo.
+1389|Stazione radio costiera ... / navi nelle vicinanze informate.
+1390|Allontanatevi dalla nave e riferite.
+1391|La lancia (le lance) / la zattera (le zattere) n. ... si è / si sono allontanata/e.
+1392|La lancia (le lance) / la zattera (le zattere) n. ... non si è / non si sono allontanata/e.
+1393|Battello di emergenza / lancia a motore n. ... ! Assistete la lancia (le lance) / la zattera (le zattere) n. ... e riferite.
+1394|Il battello di emergenza / la lancia a motore n. ... sta assistendo.
+1395|La lancia (le lance) / la zattera (le zattere) n. ... ora è / sono lontana/e dalla nave.
+1396|Procedure a bordo dei mezzi di salvataggio
+1397|Vedere anche B4 "Assistenza ai passeggeri" 2.5 e 2.6.
+1398|Pronti al motore / alle pompe / alla vedetta / all'ingresso e riferite.
+1399|Motore / pompe / vedetta / ingresso pronti.
+1400|Recuperate le persone in acqua e riferite.
+1401|Il numero delle persone recuperate è: ... .
+1402|Continuate la vedetta per altre persone in acqua.
+1403|Riferite il numero totale delle persone nella lancia (nelle lance) / nella zattera (nelle zattere).
+1404|Il numero totale delle persone ora è: ... .
+1405|Riferite il numero dei feriti.
+1406|Nessun ferito.
+1407|Il numero dei feriti è: ... .
+1408|Prestate il primo soccorso ai feriti.
+1409|Assicurate i feriti / le persone non autosufficienti.
+1410|Filate l'ancora galleggiante e riferite.
+1411|L'ancora galleggiante è filata.
+1412|Riferite il numero di lance / zattere in vista.
+1413|Il numero di lance / zattere in vista è: ... .
+1414|Contattate via radio la lancia (le lance) / la zattera (le zattere) e riferite.
+1415|Lancia (lance) / zattera (zattere) contattata/e.
+1416|Nessun contatto possibile.
+1417|Fate segnali di soccorso per farvi identificare.
+1418|Lanciate razzi per farvi identificare.
+1419|Usate vetri riflettenti / lampade / specchi di segnalazione per farvi identificare.
+1420|Fate segnali sonori / segnali ... per farvi identificare.
+1421|Avviate il motore e riferite.
+1422|Alzate la vela.
+1423|Usate i remi.
+1424|Raggiungete l'altra lancia (le altre lance) / zattera (zattere).
+1425|Collegate le lance / zattere con cime e riferite.
+1426|... lance / zattere collegate.
+1427|Sicurezza sul lavoro
+1428|Istruzione
+1429|Preparate un piano di addestramento sulla sicurezza sul lavoro.
+1430|Quando è stato l'ultimo addestramento sulla sicurezza sul lavoro?
+1431|L'ultimo addestramento è stato il ... (data).
+1432|Quando è il prossimo addestramento sulla sicurezza sul lavoro?
+1433|Il prossimo addestramento è il ... (data).
+1434|I nuovi membri dell'equipaggio / passeggeri sono stati istruiti sulla sicurezza sul lavoro?
+1435|Sì, i nuovi membri dell'equipaggio / passeggeri sono stati istruiti.
+1436|No, i nuovi membri dell'equipaggio / passeggeri non sono (ancora) stati istruiti.
+1437|Istruite i nuovi membri dell'equipaggio / passeggeri entro le ... (ora) / il ... (data).
+1438|La partecipazione agli addestramenti sulla sicurezza sul lavoro è obbligatoria.
+1439|Sicurezza sul lavoro in pratica
+1440|Istruite l'equipaggio sulla sicurezza sul lavoro prima della partenza.
+1441|Fate un'istruzione specifica su merci pericolose / colli pesanti / rizzaggio del carico / illuminazione / ventilazione / ... .
+1442|Dove sono trasportate a bordo le merci pericolose?
+1443|Le merci pericolose di classe IMO ... sono trasportate
+1443~0|in coperta (in aree delimitate da cime).
+1443~1|nella stiva (nelle stive) n. ... .
+1443~2|in ... / su ... .
+1444|Preparate un piano di emergenza.
+1445|Informate tutti i membri dell'equipaggio / i passeggeri sui sintomi causati dalle sostanze pericolose.
+1446|Quali segnali / comunicazioni si usano in caso di emergenza?
+1447|In caso di emergenza si usano i seguenti segnali / comunicazioni: ... .
+1448|Informate tutti i membri dell'equipaggio / i passeggeri
+1448~0|sulle aree ad accesso limitato.
+1448~1|su come segnalare l'entrata / l'uscita (quando entrano / escono dalla plancia / dalla sala macchine / ...).
+1449|Non entrate nel locale (macchine) / nello spazio ... non presidiato senza permesso.
+1450|Mentre siete nel locale (macchine) / nello spazio ... fate rapporto al telefono / via radio / ... ogni ... minuti.
+1451|Informate tutti i membri dell'equipaggio / i passeggeri sulla tempesta.
+1452|Attenzione! È vietato / pericoloso andare sul castello di prora / sul ponte principale / sul lato sopravvento / ... della nave (a causa della tempesta).
+1453|Attenzione! Usate i corrimano e le battagliole di sicurezza nei corridoi e in coperta.
+1454|Attenzione! Chiudete tutti i portellini ciechi e le porte stagne di tempesta.
+1455|Attenzione! Fissate tutti gli oggetti liberi nelle cabine / in coperta / in ... .
+1456|Informate tutti i membri dell'equipaggio / i passeggeri sulle condizioni invernali / tropicali.
+1457|Controllate che le attrezzature di sicurezza sul lavoro siano complete e disponibili e riferite.
+1458|Le attrezzature di sicurezza sul lavoro sono complete e disponibili.
+1459|Le seguenti attrezzature di sicurezza sul lavoro non sono complete / disponibili: ... .
+1460|Le attrezzature di sicurezza sul lavoro saranno complete e disponibili tra ... ore.
+1461|Nominate un ufficiale / un membro dell'equipaggio responsabile della sicurezza prima di iniziare il lavoro.
+1462|Prendete misure di sicurezza aggiuntive per il
+1462~0|lavoro sugli alberi.
+1462~1|lavoro fuori bordo.
+1462~2|lavoro nelle stive / nelle cisterne.
+1462~3|lavoro in condizioni meteo estreme / ... .
+1463|Infortuni sul lavoro
+1464|Infortunio in sala macchine / nella stiva n. ... / nella cisterna n. ... / nelle sovrastrutture / negli alloggi / nello spazio ... / in coperta / fuori bordo / sul molo / su ... / in ... .
+1465|Riferite su feriti / vittime:
+1466|Nessun ferito.
+1467|Il numero di feriti / vittime è: ... .
+1468|Cosa è successo?
+1469|Esplosione / incendio in ... .
+1470|Infortunio con il carico.
+1471|Caduta da ... / in ... .
+1472|Infortunio elettrico in ... .
+1473|Fuga di gas / ... .
+1474|... .
+1475|Agite subito per recuperare i feriti / le vittime.
+1476|Prestate il primo soccorso.
+1477|Agite subito per controllare l'area pericolosa.
+1478|Che tipo di assistenza è richiesta?
+1479|Non è richiesta assistenza.
+1480|È richiesta assistenza medica / tecnica.
+1481|È richiesta assistenza da terra.
+1482|Mettete in sicurezza l'area pericolosa e riferite.
+1483|L'area pericolosa è in sicurezza.
+1484|Preparate un rapporto sull'infortunio.
+1485|Prevenzione e lotta antincendio
+1486|Prevenzione incendi
+1487|Controllo dello stato delle attrezzature
+1488|Fate ronde antincendio (ogni ... ore / ... volte per guardia).
+1489|Fate ronde antincendio
+1489~0|in tutti i locali.
+1489~1|in sala macchine / nelle stive / nelle sovrastrutture / negli alloggi / ... .
+1489~2|in coperta.
+1490|Tenete una guardia antincendio permanente.
+1491|È tutto in ordine?
+1492|Sì, è tutto in ordine.
+1493|No, quanto segue non è in ordine: ... .
+1494|Controllate gli allarmi incendio / fumo e riferite.
+1495|Tutti gli allarmi incendio / fumo sono operativi.
+1496|L'allarme (gli allarmi) incendio / fumo in ... non è / non sono (ancora) operativo/i.
+1497|L'allarme (gli allarmi) incendio / fumo in ... sarà / saranno operativo/i tra ... minuti.
+1498|Controllate gli estintori portatili e riferite.
+1499|Tutti gli estintori portatili sono al loro posto ed efficienti.
+1500|Gli estintori portatili in ...
+1500~0|non sono (ancora) al loro posto.
+1500~1|saranno al loro posto tra ... minuti.
+1500~2|non sono (ancora) accessibili.
+1500~3|saranno accessibili tra ... minuti.
+1500~4|mancano.
+1501|Sostituite l'estintore portatile (gli estintori) mancante/i.
+1502|Il cartellino di revisione dell'estintore portatile (degli estintori) in ... è rotto / scaduto.
+1503|Sostituite l'estintore portatile (gli estintori) con il cartellino di revisione rotto / scaduto.
+1504|Controllate il collettore antincendio e riferite.
+1505|Tutto il collettore antincendio è operativo.
+1506|L'idrante (gli idranti) in ... non è / non sono (ancora) operativo/i.
+1507|L'idrante (gli idranti) sarà / saranno operativo/i tra ... minuti.
+1508|La manichetta (le manichette) dell'idrante (degli idranti) in ... è / sono consumata/e / tagliata/e.

@@ -1,0 +1,189 @@
+341|Chiuse o ponti in avaria
+342|Chiusa ... (nome) in avaria.
+343|Per entrare in ... (nome sulla carta del luogo) usate la chiusa ... (nome).
+344|Chiusa / ponte ... (nome) in avaria.
+345|Evitate quest'area - nessuna possibilità di evoluzione per le navi.
+346|Operazioni militari
+347|Esercitazioni di tiro d'artiglieria / lancio di razzi / missili / siluri / ordigni subacquei nell'area delimitata da ... (posizioni) dalle ... (data e ora) alle ... (data e ora). Si richiede di passare ben al largo (se richiesto).
+348|Operazioni di sminamento dalle ... (data e ora) alle ... (data e ora) nell'area delimitata da ... (posizioni). Si richiede di passare ben al largo. Contattare sul canale VHF ... (numero) (se richiesto).
+349|Pesca
+350|Piccoli pescherecci nell'area intorno a ... . Navigate con prudenza.
+351|Ci sono attrezzi da pesca di prora a me?
+352|Nessun attrezzo da pesca di prora a voi.
+353|Sì, attrezzi da pesca con boe / senza boe nella posizione ... / nell'area intorno a ... . Navigate con prudenza.
+354|Attrezzi da pesca si sono impigliati nella mia elica (nelle mie eliche).
+355|Avete agganciato i miei attrezzi da pesca.
+356|Vi consiglio di recuperare i vostri attrezzi da pesca.
+357|Pesca vietata nell'area ... .
+358|Comunicazioni per la protezione dell'ambiente
+359|Localizzata macchia di idrocarburi nella posizione ... estesa ... (lunghezza e larghezza in metri) verso ... (punti cardinali).
+360|Localizzata macchia di idrocarburi
+360~0|nella vostra scia.
+360~1|nella scia della M/N ... .
+361|Ho / La M/N ... ha uno sversamento accidentale di idrocarburi / ... .
+362|Potete / La M/N ... può fermare lo sversamento?
+363|Sì, posso / la M/N ... può fermare lo sversamento.
+364|No, non posso / la M/N ... non può fermare lo sversamento.
+365|Che tipo di assistenza è richiesta?
+366|Richiedo / La M/N ... richiede
+366~0|assistenza per la rimozione degli idrocarburi.
+366~1|panne galleggianti / disperdenti / ... .
+367|Rimanete nelle vicinanze dell'inquinamento e collaborate con la squadra di rimozione degli idrocarburi.
+368|... (numero) barili / fusti / container con marcature del Codice IMDG segnalati alla deriva vicino alla posizione ... .
+369|Localizzata una nave che scarica in mare prodotti chimici / rifiuti / ... nella posizione ... .
+370|Localizzata una nave che incenerisce prodotti chimici / rifiuti / ... nella posizione ... .
+371|Potete identificare la nave inquinante?
+372|Sì, posso identificare la nave inquinante - la nave inquinante è la M/N ... .
+373|No, non posso identificare la nave inquinante.
+374|Quali sono rotta e velocità della nave inquinante?
+375|Rotta della nave inquinante ... gradi, velocità ... nodi.
+376|La nave inquinante ha lasciato la zona.
+377|Pilotaggio
+378|Richiesta del pilota
+379|Vedere A1/6 - .4.3 "Richiesta del pilota".
+380|Imbarco / sbarco del pilota
+381|Preparate la biscaggina del pilota.
+382|Armate la biscaggina del pilota sul lato sinistro / sul lato dritto / sottovento ... metri sopra l'acqua.
+383|La biscaggina del pilota è armata sul lato sinistro / sul lato dritto.
+384|Dovete armare un'altra biscaggina del pilota.
+385|La biscaggina del pilota non è sicura.
+386|Cosa non va nella biscaggina del pilota?
+387|La biscaggina del pilota
+387~0|ha gradini rotti / allentati.
+387~1|ha i gradini lunghi (spreader) rotti.
+387~2|ha i gradini lunghi (spreader) troppo corti.
+387~3|è troppo a poppa / a prora.
+388|Spostate la biscaggina del pilota
+388~0|di ... metri verso poppa / verso prora.
+388~1|lontano dagli scarichi.
+389|Armate la scala reale insieme alla biscaggina del pilota.
+390|Armate la biscaggina del pilota accanto all'elevatore.
+391|Accendete le luci alla biscaggina del pilota.
+392|I tientibene sono richiesti / non sono richiesti.
+393|Tenete pronta una sagola di lancio alla biscaggina del pilota.
+394|Correggete lo sbandamento della nave.
+395|Fate ridosso (sottovento) sul vostro lato sinistro / lato dritto.
+396|Governate per ... gradi per fare ridosso.
+397|Tenete il mare al giardinetto di sinistra / di dritta.
+398|Tenete una velocità di imbarco di ... nodi.
+399|Fermate la macchina (le macchine) finché la pilotina non si è allontanata.
+400|Mettete tutta barra a sinistra / a dritta.
+401|Accostate verso ... (punti cardinali) - la pilotina non riesce a staccarsi dalla nave.
+402|Mettete la macchina (le macchine) avanti / indietro.
+403|L'imbarco non è possibile.
+404|Le sistemazioni per l'imbarco del pilota non sono conformi alle regole SOLAS.
+405|La nave non è adatta alla biscaggina del pilota.
+406|Richiesta di rimorchiatori
+407|Devo prendere rimorchiatori?
+408|Sì, dovete prendere ... rimorchiatori.
+409|No, non dovete prendere rimorchiatori.
+410|Quanti rimorchiatori devo prendere?
+411|Dovete prendere ... rimorchiatori secondo il regolamento del porto.
+412|Dovete prendere ... rimorchiatori a prora e ... rimorchiatori a poppa.
+413|Richiedo ... rimorchiatori.
+414|In quale posizione mi incontreranno i rimorchiatori?
+415|I rimorchiatori vi incontreranno nella posizione ... alle ... UTC.
+416|Attendete i rimorchiatori nella posizione ... .
+417|Devo usare i cavi di rimorchio della mia nave?
+418|Sì, dovete usare i cavi di rimorchio.
+419|No, dovete usare i cavi di rimorchio del rimorchiatore.
+420|Operazioni speciali
+421|Operazioni con elicottero
+422|(H: = dall'elicottero  V: = dalla nave)
+423|V: Richiedo un elicottero
+423~0|per recuperare persone.
+423~1|con medico.
+423~2|con zattera / ... .
+424|MRCC: Invierò un elicottero con ... .
+425|H: M/N ... , lancerò ... .
+426|H: M/N ... , siete pronti per l'elicottero?
+427|V: Sì, sono pronto per l'elicottero.
+428|V: No, non sono (ancora) pronto per l'elicottero.
+429|V: Pronto per l'elicottero tra ... minuti.
+430|H: M/N ... , l'elicottero sta arrivando da voi.
+431|H: M/N ... , qual è la vostra posizione?
+432|V: La mia posizione è ... .
+433|H: M/N ... , quali sono la vostra rotta e velocità attuali?
+434|V: La mia rotta attuale è ... gradi, la velocità è ... nodi.
+435|H: M/N ... , fate segnali di identificazione.
+436|V: Sto facendo segnali di identificazione con fumogeno (boetta) / proiettore / bandiere / lampada di segnalazione / ... .
+437|H: M/N ... , siete identificati.
+438|H: M/N ... , qual è la direzione del vento relativo in gradi e nodi?
+439|V: La direzione del vento relativo è ... gradi e ... nodi.
+440|H: M/N ... , tenete il vento al mascone di sinistra / di dritta.
+441|H: M/N ... , tenete il vento al giardinetto di sinistra / di dritta.
+442|H: M/N ... , indicate l'area di atterraggio / di recupero.
+443|V: L'area di atterraggio / di recupero è ... .
+444|H: M/N ... , posso atterrare in coperta?
+445|V: Sì, potete atterrare in coperta.
+446|V: No, non potete (ancora) atterrare in coperta.
+447|V: Potete atterrare in coperta tra ... minuti.
+448|H: M/N ... , userò il verricello / l'imbracatura di salvataggio / il cestello / la rete di salvataggio / la barella / il seggiolino / il doppio sollevamento.
+449|V: Sono pronto a ricevervi.
+450|H: M/N ... , sto atterrando.
+451|H: M/N ... , inizio l'operazione.
+452|H: M/N ... , non fissate il cavo del verricello.
+453|H: M/N ... , operazione terminata.
+454|H: M/N ... , sto decollando.
+455|Operazioni con rompighiaccio
+456|Richiesta di rompighiaccio
+457|Sono / La M/N ... è bloccata nel ghiaccio nella posizione ... .
+458|Richiedo / La M/N ... richiede l'assistenza di un rompighiaccio per raggiungere ... .
+459|L'assistenza del rompighiaccio
+459~0|arriverà alle ... UTC / entro ... ore.
+459~1|non è disponibile fino alle ... UTC.
+459~2|è disponibile solo fino alla latitudine ... longitudine ... .
+459~3|è sospesa fino a ... (data e ora).
+459~4|è sospesa dopo il tramonto.
+459~5|è sospesa fino a condizioni meteo favorevoli.
+459~6|riprenderà alle ... UTC.
+460|Assistenza del rompighiaccio a un convoglio. I comandi del rompighiaccio rivolti a tutte le navi del convoglio devono essere confermati subito, una nave dopo l'altra, ed eseguiti secondo lo schema di GENERALE 4.6. I comandi rivolti a una sola nave sono confermati ed eseguiti solo da quella nave; lo stesso vale per il rimorchio in accoppiata stretta. Quando si è assistiti da un rompighiaccio è importante mantenere un ascolto continuo sul canale VHF previsto e un'attenta vedetta per i segnali sonori e visivi.
+461|L'assistenza del rompighiaccio al convoglio inizierà ora / alle ... UTC.
+462|Il vostro posto nel convoglio è il numero ... .
+463|La M/N ... vi seguirà.
+464|Seguirete la M/N ... .
+465|Avanti e seguitemi.
+466|Non seguitemi.
+467|Procedete lungo il canale nel ghiaccio.
+468|Aumentate / riducete la velocità.
+469|Invertite la macchina (le macchine).
+470|Fermate la macchina (le macchine).
+471|Mantenete una distanza di ... metri / decimi di miglio tra le navi.
+472|Aumentate / riducete la distanza tra le navi a ... metri / decimi di miglio.
+473|Pronti a ricevere il cavo di rimorchio.
+474|Pronti a mollare il cavo di rimorchio.
+475|Accendete il proiettore di prora / di poppa.
+476|Fermatevi nella posizione attuale.
+477|Il rompighiaccio ... vi scorterà.
+478|Assistenza del rompighiaccio al convoglio terminata.
+479|Acque libere / ghiaccio leggero di prora.
+480|Procedete da soli (verso l'area ...).
+481|Assistenza del rompighiaccio nel rimorchio in accoppiata stretta
+482|Pronti per il rimorchio in accoppiata stretta.
+483|Filate le ancore sotto le cubie.
+484|Passate le sagole di lancio attraverso le cubie.
+485|Ricevete il cavo di rimorchio in coperta.
+486|Legate insieme le gasse del cavo di rimorchio con una legatura di manila.
+487|Date volta al cavo di rimorchio sulle vostre bitte.
+488|Inizio a tirare la vostra prora nell'incavo di poppa del rompighiaccio.
+489|Pronti a tagliare la legatura di manila se necessario.
+490|Tenetevi nel piano di simmetria del rompighiaccio.
+491|Frasi standard del servizio di assistenza al traffico (VTS)
+492|Uso dei Message Markers
+493|Per facilitare in particolare le comunicazioni terra-nave e nave-terra, o quando nessuna delle frasi standard IMO esprime il significato voluto, si può usare uno degli otto message markers seguenti per aumentare la probabilità che lo scopo del messaggio sia capito correttamente.
+494|Spetta al personale di terra o all'ufficiale di bordo decidere se usare un message marker e quale, in base alla propria valutazione della situazione. Se usato, il marker va pronunciato prima del messaggio o della parte di messaggio corrispondente. Le Linee guida IMO sui VTS raccomandano che in ogni messaggio diretto a una nave sia chiaro se contiene un'informazione, un consiglio, un avvertimento o un'istruzione, e che si usino le frasi standard IMO quando possibile.
+495|Per altre comunicazioni VTS standardizzate vedere anche le altre sezioni della Parte A1. Per le procedure standard di riporto VTS vedere la risoluzione IMO A.851(20) sui principi generali dei sistemi di rapportazione delle navi e sui requisiti di rapportazione, comprese le linee guida per segnalare incidenti con merci pericolose, sostanze nocive e / o inquinanti marini.
+496|Nota: tutte le frasi seguenti devono costituire la parte finale (il contenuto del messaggio) di uno scambio radio tra stazioni soggette al Regolamento delle Radiocomunicazioni ITU, e vanno rispettate le relative procedure di chiamata.
+497|Message Markers
+498|(i) INSTRUCTION (ISTRUZIONE)
+499|Indica che con il messaggio seguente il mittente intende influire sugli altri tramite una norma.
+500|Commento: il mittente, per esempio una stazione VTS o una nave militare, deve avere piena autorità per inviare questo messaggio. Il destinatario deve seguire questo messaggio legalmente vincolante, a meno che non abbia motivi di sicurezza contrari, che deve comunicare al mittente.
+501|Esempio: "INSTRUCTION. Do not cross the fairway." (ISTRUZIONE. Non attraversate il canale.)
+502|(ii) ADVICE (CONSIGLIO)
+503|Indica che con il messaggio seguente il mittente intende influire sugli altri tramite una raccomandazione.
+504|Commento: la decisione di seguire l'ADVICE resta al destinatario. Non va necessariamente seguito, ma va valutato con molta attenzione. Esempio: "ADVICE. (Advise you) stand by on VHF Channel six nine." (CONSIGLIO. Rimanete in ascolto sul canale VHF sei nove.) (iii) WARNING
+505|Indica che con il messaggio seguente il mittente intende informare gli altri di un pericolo.
+506|Commento: chi riceve un WARNING deve prestare subito attenzione al pericolo indicato. Le conseguenze di un WARNING spettano al destinatario.
+507|Esempio: "WARNING. Obstruction in the fairway." (AVVERTIMENTO. Ostruzione nel canale.)
+508|(iv) INFORMATION (INFORMAZIONE)
+509|Indica che il messaggio seguente si limita a fatti, situazioni, ecc. osservati.

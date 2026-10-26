@@ -1,0 +1,268 @@
+937|Il mio pescaggio massimo attuale è ... metri.
+938|La mia immersione a prora / a poppa è ... metri.
+939|Qual è il vostro tirante d'aria?
+940|Il mio tirante d'aria è ... metri.
+941|Ancoraggio
+942|Andare all'ancora
+943|Pronti a dare fondo all'ancora di sinistra / di dritta / a entrambe le ancore.
+944|Accostate l'ancora (le ancore) fuori cubia.
+945|Stiamo andando all'ancoraggio.
+946|Daremo fondo all'ancora di sinistra / di dritta / a entrambe le ancore.
+947|Mettete ... lunghezze (maniglie) di catena in acqua / in cubia / in coperta.
+948|Lascate con il salpancore l'ancora di sinistra / di dritta / entrambe di una / una e mezza lunghezza.
+949|Daremo fondo all'ancora di sinistra / di dritta / a entrambe con ... lunghezze e la / le dragheremo sul fondo.
+950|Fondo all'ancora di sinistra / di dritta / a entrambe le ancore.
+951|Filate la catena (le catene).
+952|Frenate la catena (le catene).
+953|Tenete la catena di sinistra / di dritta / entrambe le catene.
+954|Come lavora la catena?
+955|La catena lavora
+955~0|di prora / di poppa.
+955~1|a sinistra / a dritta.
+955~2|sotto la prora (attraverso la prora).
+955~3|a picco.
+956|Come tira la catena?
+957|La catena è lasca / tesa / sta andando in tiro.
+958|L'ancora tiene? / Le ancore tengono?
+959|Sì, l'ancora tiene / le ancore tengono.
+960|No, l'ancora non tiene / le ancore non tengono.
+961|La nave ha preso la fonda (è ferma sull'ancora)?
+962|Sì, la nave ha preso la fonda nella posizione ... .
+963|No, la nave non ha (ancora) preso la fonda.
+964|Accendete il fanale (i fanali) di fonda.
+965|Issate il pallone di fonda.
+966|Controllate la posizione di fonda con rilevamenti / con ... .
+967|La posizione di fonda è rilevamento ... gradi, distanza ... chilometri / miglia nautiche da ... .
+968|Controllate la posizione di fonda ogni ... minuti.
+969|Lasciare l'ancoraggio
+970|Quanta catena è fuori?
+971|... lunghezze (maniglie) sono fuori.
+972|Pronti a salpare.
+973|Innestate il salpancore.
+974|Il salpancore è innestato.
+975|Come lavora la catena?
+976|La catena lavora
+976~0|di prora / di poppa.
+976~1|a sinistra / a dritta.
+976~2|sotto la prora (attraverso la prora).
+976~3|a picco.
+977|Virate la catena di sinistra / di dritta / entrambe le catene.
+978|Quanto tira la catena?
+979|La catena tira molto / troppo.
+980|La catena non tira.
+981|Fermate di virare.
+982|Quante lunghezze restano (da virare)?
+983|Restano ... lunghezze (da virare).
+984|Attenzione! Virate la catena (le catene).
+985|L'ancora è spedata / Le ancore sono spedate.
+986|Le catene sono libere.
+987|L'ancora (le ancore) è fuori dall'acqua / a posto in cubia / impigliata / rizzata.
+988|Assistenza dei rimorchiatori
+989|Prenderemo ... rimorchiatori.
+990|Il rimorchiatore (i rimorchiatori) tirerà / spingerà.
+991|Usiamo i cavi di rimorchio della vostra nave.
+992|Usiamo i cavi di rimorchio del rimorchiatore (dei rimorchiatori).
+993|Pronti a dare volta al rimorchiatore (ai rimorchiatori).
+994|Usate il passacavo centrale / passacavo di Panama.
+995|Usate il passacavo
+995~0|sul lato sinistro / sul lato dritto.
+995~1|a mezzanave.
+995~2|al mascone di sinistra / di dritta.
+995~3|al giardinetto di sinistra / di dritta.
+996|Passate la sagola di lancio (le sagole) al rimorchiatore (ai rimorchiatori).
+997|Passate due cavi di rimorchio al rimorchiatore (ai rimorchiatori).
+998|Calate il cavo di rimorchio (i cavi)
+998~0|al rimorchiatore (ai rimorchiatori).
+998~1|a ... metri dall'acqua.
+999|Lascate il cavo di rimorchio (i cavi).
+1000|Date volta al rimorchiatore (ai rimorchiatori).
+1001|Date volta al rimorchiatore (ai rimorchiatori)
+1001~0|a prora / a poppa.
+1001~1|al mascone di sinistra / di dritta.
+1001~2|al giardinetto di sinistra / di dritta.
+1002|Date volta al rimorchiatore di prora / di poppa accostato sul lato sinistro / sul lato dritto.
+1003|Date volta a ... rimorchiatori su ogni mascone / giardinetto.
+1004|Mettete le gasse del cavo di rimorchio (dei cavi) sulle bitte.
+1005|Il rimorchiatore è / I rimorchiatori sono dati volta (a ...).
+1006|Tenetevi lontani dal cavo di rimorchio (dai cavi).
+1007|Pronti a mollare il rimorchiatore (i rimorchiatori).
+1008|Mollate il rimorchiatore (i rimorchiatori).
+1009|Il cavo di rimorchio si è rotto / I cavi di rimorchio si sono rotti.
+1010|Ormeggio e disormeggio
+1011|Generale
+1012|L'elica è libera? / Le eliche sono libere?
+1013|Sì, l'elica è libera / le eliche sono libere.
+1014|No, l'elica non è libera / le eliche non sono libere.
+1015|Tenete libera l'elica (le eliche).
+1016|Ci sono parabordi all'ormeggio?
+1017|Sì, ci sono parabordi all'ormeggio.
+1018|No, non ci sono parabordi all'ormeggio.
+1019|Tenete pronti i parabordi a prora e a poppa.
+1020|Ormeggio
+1021|Ormeggeremo accostati con il lato sinistro / il lato dritto.
+1022|Ormeggeremo
+1022~0|alla boa (alle boe) (di prora e di poppa).
+1022~1|accostati.
+1022~2|alle briccole.
+1023|Passate a terra
+1023~0|i cavi di prora / di poppa / i traversini.
+1023~1|lo spring (gli spring) ... di prora / di poppa.
+1024|Avete verricelli autotensionanti?
+1025|Sì, abbiamo verricelli autotensionanti (a prora e a poppa). 4.2 No, non abbiamo verricelli autotensionanti.
+1026|Tenete pronte le sagole di lancio a prora e a poppa. 6 Passate a terra la sagola di lancio / i cavi di prora / di poppa / i traversini.
+1027|Gli ormeggiatori useranno grilli / legature per fissare l'ormeggio.
+1028|Usate
+1028~0|il passacavo centrale / passacavo di Panama.
+1028~1|il passacavo di prora.
+1028~2|il passacavo al giardinetto di sinistra / di dritta.
+1029|Virate il cavo (i cavi) ... / lo spring (gli spring) ... .
+1030|Recuperate il lasco del cavo (dei cavi) ... / dello spring (degli spring) ... .
+1031|Virate.
+1032|Fermate di virare.
+1033|Lascate / frenate il cavo (i cavi) ... / lo spring (gli spring) ... .
+1034|Tenete il cavo (i cavi) ... / lo spring (gli spring) ... .
+1035|Virate piano.
+1036|Virate fino ad accostare.
+1037|Tenete teso il cavo (i cavi) ... / lo spring (gli spring) ... .
+1038|Riferite la distanza a prora / a poppa da ... .
+1039|La distanza a prora / a poppa da ... è ... metri.
+1040|Dobbiamo spostarci di ... metri avanti / indietro.
+1041|Siamo in posizione.
+1042|Date volta a prora e a poppa.
+1043|Fine dei posti di manovra.
+1044|Disormeggio
+1045|Pronti in macchina.
+1046|Siete pronti a muovere?
+1047|Sì, siamo pronti (a muovere).
+1048|No, non siamo (ancora) pronti (a muovere).
+1049|Saremo pronti a muovere tra ... minuti.
+1050|Pronti a mollare.
+1051|Lasciate in singolo i cavi ... e gli spring ... a prora e a poppa.
+1052|Lascate / tenete / virate il
+1052~0|cavo di prora / di poppa.
+1052~1|traversino.
+1052~2|spring di prora / di poppa.
+1053|Mollate
+1053~0|il cavo di prora / di poppa.
+1053~1|il traversino.
+1053~2|lo spring di prora / di poppa.
+1053~3|tutto (a prora / a poppa).
+1054|Mollate il cavo di rimorchio (i cavi).
+1055|Pronti alle ancore di prora.
+1056|Fine dei posti di manovra. FRASI STANDARD IMO PER LE COMUNICAZIONI MARITTIME: PARTE B. La Parte B comprende altre frasi standard di bordo legate alla sicurezza che, a integrazione della Parte A, possono aiutare i marittimi nelle altre comunicazioni di base a bordo e sono utili per l'insegnamento dell'inglese marittimo. B FRASI PER LE COMUNICAZIONI A BORDO
+1057|Conduzione operativa della nave
+1058|Passaggio delle consegne di guardia
+1059|Informazioni su posizione, movimento e pescaggio
+1060|L'ufficiale di guardia deve informare l'ufficiale che gli dà il cambio su quanto segue:
+1061|Posizione
+1062|La posizione attuale è
+1062~0|latitudine ..., longitudine ... .
+1062~1|rilevamento ... gradi, distanza ... decimi di miglio / miglia nautiche da / a ... .
+1062~2|boa ... (nome sulla carta).
+1062~3|tra ... e ... .
+1062~4|waypoint / punto di riporto ... .
+1062~5|... .
+1063|Il prossimo waypoint / punto di riporto è ... .
+1064|L'ETA a ... è ... UTC.
+1065|Stiamo passando / abbiamo passato la boa ... (nome sulla carta) sul lato sinistro / sul lato dritto.
+1066|Ci stiamo avvicinando alla boa ... (nome sulla carta) sul lato sinistro / sul lato dritto.
+1067|La boa ... (nome sulla carta) è a ... decimi di miglio / miglia nautiche di prora.
+1068|Stiamo entrando / siamo entrati nell'area ... .
+1069|Stiamo lasciando / abbiamo lasciato l'area ... .
+1070|Movimenti
+1071|La rotta vera / rotta girobussola / rotta bussola magnetica è ... gradi.
+1072|L'errore della girobussola è ... gradi in più / in meno.
+1073|L'errore della bussola magnetica è ... gradi est / ovest.
+1074|La velocità sul fondo / sull'acqua è ... nodi.
+1075|Direzione e velocità della corrente: ... gradi, ... nodi.
+1076|Abbiamo uno scarroccio di ... gradi.
+1077|La lavagna delle rotte è aggiornata.
+1078|La prossima carta serve entro ... ore.
+1079|Pescaggio
+1080|L'immersione a prora / a poppa è ... metri.
+1081|Il pescaggio massimo attuale è ... metri.
+1082|L'acqua sotto la chiglia è ... metri.
+1083|Informazioni sulla situazione del traffico nella zona
+1084|Una nave
+1084~0|ci sta sorpassando a ... (punti cardinali).
+1084~1|ha rotta opposta.
+1084~2|sta passando sul lato sinistro / sul lato dritto.
+1085|Una nave sta incrociando da sinistra.
+1086|La nave
+1086~0|lascerà libera la rotta.
+1086~1|ha lasciato libera la rotta.
+1086~2|non ha ancora lasciato libera la rotta.
+1086~3|mantiene rotta e velocità.
+1086~4|non deve lasciare libera la rotta.
+1087|Una nave sta incrociando da dritta.
+1088|Noi
+1088~0|non dobbiamo lasciare libera la rotta.
+1088~1|manterremo rotta e velocità.
+1088~2|accosteremo per lasciare libera la rotta.
+1088~3|abbiamo accostato per lasciare libera la rotta.
+1089|La nave passerà a ... chilometri / miglia nautiche di prora / di poppa.
+1090|Completerò la manovra.
+1091|Una nave a ... (punti cardinali) di noi ha la stessa rotta.
+1092|Il rilevamento della nave a ... gradi è costante.
+1093|C'è traffico intenso / ... nella zona.
+1094|Ci sono pescherecci / ... nella zona.
+1095|Non ci sono bersagli pericolosi al radar.
+1096|Attenzione. Ci sono bersagli pericolosi al radar.
+1097|Chiamate il comandante se una nave passa con un CPA inferiore a ... miglia.
+1098|Chiamate il comandante se ... .
+1099|Informazioni sugli aiuti alla navigazione e sullo stato delle apparecchiature
+1100|Il radar di sinistra / di dritta è sulla scala da ... miglia.
+1101|Il radar è
+1101~0|in moto relativo prora in alto / nord in alto / rotta in alto.
+1101~1|in moto vero nord in alto / rotta in alto.
+1102|Il GPS / LORAN è / non è in funzione.
+1103|L'ecoscandaglio è sulla scala da ... metri.
+1104|Le registrazioni dell'ecoscandaglio non sono affidabili.
+1105|Sono passato al governo manuale / automatico (alle ... UTC).
+1106|I fanali di navigazione sono accesi / spenti.
+1107|Informazioni sulle radiocomunicazioni
+1108|INMARSAT ... (tipo di sistema) è / non è operativo.
+1109|VHF DSC canale 70 / canale VHF ... / controller DSC è acceso.
+1110|La frequenza DSC 2187,5 kHz è attiva.
+1111|Il NAVTEX è acceso.
+1112|È stato ricevuto quanto segue su ... alle ... UTC.
+1113|Assistenza radar da terra / VTS / stazione piloti è sul canale VHF ... .
+1114|La stazione piloti / la stazione VTS richiede
+1114~0|Stato di bandiera.
+1114~1|nominativo / identificazione.
+1114~2|pescaggio.
+1114~3|stazza lorda.
+1114~4|lunghezza fuori tutto.
+1114~5|tipo di carico.
+1114~6|ETA a ... .
+1114~7|MAREP POSREP / ... .
+1114~8|... .
+1115|Informazioni sulle condizioni meteorologiche
+1116|Una corrente (di marea) debole / forte porta per ... gradi.
+1117|La direzione della corrente (di marea) cambierà tra ... ore.
+1118|C'è nebbia / foschia / polvere / pioggia / neve / ... nella zona.
+1119|Il segnale da nebbia automatico è acceso.
+1120|Il vento è aumentato / diminuito (nelle ultime ... ore).
+1121|Il vento è da ... (punti cardinali) forza Beaufort ... .
+1122|Il vento è cambiato da ... (punti cardinali) a ... (punti cardinali).
+1123|È previsto un cambiamento dello stato del mare (entro ... ore).
+1124|È previsto mare calmo / mosso / agitato / grosso, mare lungo debole / moderato / forte di ... metri da ... (punti cardinali) (entro ... ore).
+1125|È previsto uno tsunami / un'onda anomala entro le ... UTC.
+1126|La visibilità è ... miglia nautiche.
+1127|La visibilità è ridotta da nebbia / foschia / polvere / pioggia / neve / ... .
+1128|La visibilità è prevista
+1128~0|in diminuzione / in aumento fino a ... miglia nautiche (entro ... ore).
+1128~1|variabile tra ... e ... miglia nautiche (entro ... ore).
+1129|Il prossimo bollettino meteo è alle ... UTC.
+1130|La pressione atmosferica è ... millibar / ettopascal.
+1131|La variazione barometrica è ... millibar / ettopascal all'ora / nelle ultime ... ore.
+1132|Il barometro è stazionario / in calo (rapido) / in aumento (rapido).
+1133|C'era un avviso di burrasca / di tempesta tropicale per l'area ... alle ... UTC.
+1134|Informazioni sugli ordini permanenti e sull'organizzazione della plancia
+1135|Gli ordini permanenti per il periodo dalle ... alle ... UTC sono: ... .
+1136|Gli ordini permanenti per l'area ... sono: ... .
+1137|Prendete nota delle modifiche agli ordini permanenti.
+1138|Avete capito gli ordini permanenti?
+1139|Sì, ho capito gli ordini permanenti.
+1140|No, non ho capito, spiegate per favore.
+1141|Leggete / firmate gli ordini permanenti.

@@ -1,0 +1,266 @@
+0|FRASI STANDARD IMO PER LE COMUNICAZIONI MARITTIME: PARTE A
+1|La Parte A comprende le frasi per le comunicazioni esterne nave-terra, terra-nave e nave-nave richieste dalla STCW 1978 emendata, Tabella A-II/1, e le frasi da usare a bordo nelle conversazioni tra pilota e squadra di plancia, come richiesto dalla Regola 14(4) del Capitolo V della SOLAS 1974 emendata.
+2|FRASI PER LE COMUNICAZIONI ESTERNE
+3|Attenzione: l'uso delle frasi standard nelle comunicazioni esterne della nave non esonera in alcun modo dall'applicare le procedure radiotelefoniche del Regolamento delle Radiocomunicazioni ITU.
+4|Traffico di soccorso
+5|La stazione che dirige il traffico di soccorso o le altre stazioni possono imporre il silenzio radio alle stazioni che interferiscono con il termine "Seelonce Mayday / Distress", a meno che queste non abbiano messaggi riguardanti il soccorso.
+6|Comunicazioni di soccorso
+7|Nota: il traffico di soccorso deve sempre iniziare indicando la posizione della nave in pericolo come specificato in "GENERALE 11 Posizioni / 13 Rilevamenti", se non è già contenuta nell'allarme di soccorso DSC.
+8|Incendio, esplosione
+9|Sono / La M/N ... è in fiamme (- dopo un'esplosione).
+10|Dov'è l'incendio?
+11|L'incendio è
+11~0|in coperta.
+11~1|in sala macchine.
+11~2|in stiva / nelle stive.
+11~3|nelle sovrastrutture / negli alloggi / ... .
+12|Sono in fiamme merci pericolose?
+13|Sì, sono in fiamme merci pericolose.
+14|No, le merci pericolose non sono in fiamme.
+15|C'è pericolo di esplosione?
+16|Sì, pericolo di esplosione.
+17|Nessun pericolo di esplosione.
+18|Non governo / La M/N ... non governa.
+19|L'incendio è sotto controllo?
+20|Sì, l'incendio è sotto controllo.
+21|No, l'incendio non è sotto controllo.
+22|Che tipo di assistenza è richiesta?
+23|Non richiedo / La M/N ... non richiede assistenza.
+24|Richiedo / La M/N ... richiede
+24~0|assistenza antincendio.
+24~1|autorespiratori - il fumo è tossico.
+24~2|estintori a schiuma / estintori a CO2.
+24~3|pompe antincendio.
+24~4|assistenza medica / ... .
+25|Riferite sui feriti.
+26|Nessun ferito.
+27|Numero di feriti / vittime: ... .
+28|Allagamento
+29|Sto imbarcando acqua / La M/N ... sta imbarcando acqua sotto la linea di galleggiamento / in sala macchine / nella stiva (nelle stive).
+30|Non riesco / La M/N ... non riesce a controllare l'allagamento.
+31|Che tipo di assistenza è richiesta?
+32|Richiedo / La M/N ... richiede pompe / sommozzatori, ... .
+33|Invierò pompe / sommozzatori / ... .
+34|Non posso inviare pompe / sommozzatori ... .
+35|Ho / La M/N ... ha uno sbandamento pericoloso a sinistra / a dritta.
+36|Sono / La M/N ... è in condizioni critiche.
+37|L'allagamento è sotto controllo.
+38|Posso / La M/N ... può proseguire senza assistenza.
+39|Richiedo / La M/N ... richiede scorta / assistenza di rimorchiatori / ... .
+40|Collisione
+41|Sono entrato / La M/N ... è entrata in collisione
+41~0|con la M/N ... .
+41~1|con nave / oggetto / ... sconosciuto.
+41~2|con il battello fanale ... (nome).
+41~3|con il segnale ... (nome sulla carta).
+41~4|con un iceberg / ... .
+42|Riferite sui danni.
+43|Ho / La M/N ... ha danni sopra / sotto la linea di galleggiamento.
+44|Non governo / La M/N ... non governa.
+45|Non riesco / La M/N ... non riesce a stabilire i danni.
+46|Non riesco / La M/N non riesce a riparare i danni.
+47|Posso / La M/N ... può procedere solo a bassa velocità.
+48|Che tipo di assistenza è richiesta?
+49|Richiedo / La M/N ... richiede scorta / assistenza di rimorchiatori / ... .
+50|Incaglio
+51|Sono / La M/N ... è incagliata.
+52|Richiedo / La M/N ... richiede assistenza di rimorchiatori / pompe / ... .
+53|Quale parte della vostra nave è incagliata?
+54|Incagliata a prora / a mezzanave / a poppa / per tutta la lunghezza.
+55|Non riesco a stabilire quale parte è incagliata.
+56|Avvertimento. Scogli non segnati sulla carta in posizione ... .
+57|Rischio di incaglio con la bassa marea.
+58|Getterò / La M/N ... getterà a mare il carico per disincagliarsi.
+59|Avvertimento! Non gettate a mare carico di classe IMO!
+60|Quando prevedete / Quando la M/N ... prevede di disincagliarsi?
+61|Prevedo / La M/N ... prevede di disincagliarsi
+61~0|alle ... UTC.
+61~1|quando la marea sale.
+61~2|quando il tempo migliora.
+61~3|quando il pescaggio diminuisce.
+61~4|con l'assistenza di rimorchiatori / ... .
+62|Potete / La M/N ... può portare la nave in secco (spiaggiare)?
+63|Posso / La M/N ... può / Porterò in secco la nave nella posizione ... .
+64|Non posso / La M/N ... non può portare la nave in secco.
+65|Sbandamento - pericolo di capovolgimento
+66|Ho / La M/N ... ha uno sbandamento pericoloso a sinistra / a dritta.
+67|Io / La M/N ...
+67~0|trasferirà carico / combustibile per fermare lo sbandamento.
+67~1|getterà a mare il carico per fermare lo sbandamento.
+68|Sono / La M/N ... è in pericolo di capovolgersi (sbandamento in aumento).
+69|Affondamento
+70|Sto affondando / La M/N ... sta affondando dopo collisione / incaglio / allagamento / esplosione / ... .
+71|Richiedo / La M/N ... richiede assistenza.
+72|Sto / La M/N ... sta procedendo in vostra assistenza.
+73|ETA alla posizione di soccorso entro ... ore / alle ... UTC.
+74|Nave in avaria e alla deriva
+75|Io / La M/N ...
+75~0|non governo / non governa.
+75~1|alla deriva.
+75~2|sto derivando / sta derivando a ... nodi verso ... (punti cardinali).
+75~3|sto derivando / sta derivando verso un pericolo.
+76|Richiedo / La M/N ... richiede assistenza di rimorchiatori.
+77|Attacco armato / pirateria
+78|Sono / La M/N ... è sotto attacco dei pirati.
+79|Sono stato / La M/N ... è stata attaccata dai pirati.
+80|Richiedo / La M/N ... richiede assistenza.
+81|Che tipo di assistenza è richiesta?
+82|Richiedo / La M/N ... richiede
+82~0|assistenza medica.
+82~1|assistenza alla navigazione.
+82~2|assistenza militare.
+82~3|assistenza di rimorchiatori.
+82~4|scorta / ... .
+83|Riferite sui danni.
+84|Io / La M/N ...
+84~0|non ho / non ha danni.
+84~1|ho / ha danni alle apparecchiature di navigazione / ... .
+85|Non governo / La M/N ... non governa.
+86|Potete / La M/N ... può proseguire?
+87|Sì, posso / la M/N ... può proseguire.
+88|No, non posso / la M/N ... non può proseguire.
+89|Pericolo non specificato
+90|Ho / La M/N ... ha problemi con il carico / la macchina (le macchine) / la navigazione / ... .
+91|Richiedo / La M/N ... richiede ... .
+92|Abbandono della nave
+93|Io / L'equipaggio della M/N ... deve abbandonare la nave ... dopo esplosione / collisione / incaglio / allagamento / pirateria / attacco armato / ... .
+94|Uomo a mare
+95|Ho / La M/N ... ha perso una persona (persone) in mare nella posizione ... .
+96|Assistete nella ricerca nelle vicinanze della posizione ... .
+97|Tutte le navi nelle vicinanze della posizione ... mantengano un'attenta vedetta e riferiscano a ... .
+98|Sto / La M/N ... sta procedendo in assistenza. ETA alle ... UTC / entro ... ore.
+99|Cercate nelle vicinanze della posizione ... .
+100|Sto / La M/N ... sta cercando nelle vicinanze della posizione ... .
+101|Aereo ETA alle ... UTC / entro ... ore per assistere nella ricerca.
+102|Potete continuare la ricerca?
+103|Sì, posso continuare la ricerca.
+104|No, non posso continuare la ricerca.
+105|Interrompete la ricerca.
+106|Tornate a ... .
+107|Proseguite il vostro viaggio.
+108|Qual è il risultato della ricerca?
+109|Il risultato della ricerca è negativo.
+110|Ho / La M/N ... ha localizzato / recuperato una persona (persone) nella posizione ... .
+111|La persona recuperata è un membro dell'equipaggio / un passeggero della M/N ... .
+112|Quali sono le condizioni della persona (delle persone)?
+113|Condizioni della persona (delle persone) cattive / buone.
+114|Persona (persone) deceduta/e.
+115|Comunicazioni di ricerca e soccorso
+116|Comunicazioni SAR (che specificano o integrano la 1.1)
+117|Richiedo / La M/N ... richiede assistenza.
+118|Sto / La M/N ... sta procedendo in vostra assistenza.
+119|Qual è il vostro numero MMSI?
+120|Il mio numero MMSI è ... .
+121|Qual è la vostra posizione?
+122|La mia posizione ... .
+123|Quali sono la vostra rotta e velocità attuali?
+124|La mia rotta attuale ... gradi, la mia velocità ... nodi.
+125|Riferite il numero di persone a bordo.
+126|Numero di persone a bordo: ... .
+127|Riferite sui feriti.
+128|Nessun ferito.
+129|Numero di feriti / vittime: ... .
+130|Abbandonerete la nave?
+131|Non abbandonerò la nave.
+132|Abbandonerò la nave alle ... UTC.
+133|La vostra EPIRB / il vostro SART sta trasmettendo?
+134|Sì, la mia EPIRB / il mio SART sta trasmettendo.
+135|Sì, la mia EPIRB / il mio SART sta trasmettendo per errore.
+136|Avete trasmesso un allarme di soccorso DSC?
+137|Sì, ho trasmesso un allarme DSC.
+138|Sì, ho trasmesso un allarme DSC per errore.
+139|Quante lance / zattere (con quante persone) metterete a mare?
+140|Metterò a mare ... lance / zattere (con ... persone).
+141|Quante persone resteranno a bordo?
+142|Nessuna persona resterà a bordo.
+143|... persone resteranno a bordo.
+144|Qual è la situazione meteorologica nella vostra posizione?
+145|Vento ... (punti cardinali) forza Beaufort ... .
+146|Visibilità buona / moderata / scarsa.
+147|Mare calmo / mosso / agitato / grosso; mare lungo debole / moderato / forte ... (punti cardinali).
+148|Corrente ... nodi, verso ... (punti cardinali).
+149|Ci sono pericoli per la navigazione?
+150|Nessun pericolo per la navigazione.
+151|Avvertimento! Scogli non segnati sulla carta / ghiaccio / maree eccezionalmente basse / mine / ... .
+152|Conferma di ricezione e / o ritrasmissione dei messaggi SAR
+153|Ricevuto MAYDAY dalla M/N ... alle ... UTC sul canale VHF ... / frequenza ... .
+154|Nave nella posizione ...
+154~0|in fiamme.
+154~1|ha avuto un'esplosione.
+154~2|allagata.
+154~3|in collisione (con ...).
+154~4|sbandata / in pericolo di capovolgersi.
+154~5|in affondamento.
+154~6|in avaria e alla deriva.
+154~7|abbandonata / ... .
+155|La nave richiede assistenza.
+156|Ricevuto il vostro MAYDAY.
+157|La mia posizione ... .
+158|Io / La M/N ... procederò / procederà in vostra assistenza.
+159|ETA alla posizione di soccorso entro ... ore / alle ... UTC.
+160|Esecuzione / coordinamento delle operazioni SAR. Le domande sono di norma poste, e i consigli dati, dal Coordinatore sul posto (OSC). Per maggiori informazioni vedere il Manuale IAMSAR, Londra/Montreal, 1998.
+161|Farò da Coordinatore sul posto.
+162|Mostrerò i seguenti segnali / luci: ... .
+163|Potete procedere alla posizione di soccorso?
+164|Sì, posso procedere alla posizione di soccorso.
+165|No, non posso procedere alla posizione di soccorso.
+166|Qual è la vostra ETA alla posizione di soccorso?
+167|La mia ETA alla posizione di soccorso entro ... ore / alle ... UTC.
+168|La posizione del MAYDAY non è corretta.
+169|La posizione corretta del MAYDAY è ... .
+170|Si consiglia alle navi di procedere alla posizione ... per iniziare il soccorso.
+171|Eseguite lo schema di ricerca ... iniziando alle ... UTC.
+172|Rotta iniziale ... gradi, velocità di ricerca ... nodi.
+173|Eseguite una ricerca radar.
+174|Alla M/N ... è assegnato il percorso numero ... .
+175|M/N ... regolate l'intervallo tra le navi a ... chilometri / miglia nautiche.
+176|Regolate la spaziatura tra i percorsi a ... chilometri / miglia nautiche.
+177|Velocità di ricerca ora ... nodi.
+178|Accostate
+178~0|per ... gradi (- alle ... UTC).
+178~1|per il tratto successivo del percorso ora / alle ... UTC.
+179|Riprendiamo la ricerca nella posizione ... .
+180|L'equipaggio ha abbandonato la nave / la M/N ... .
+181|Mantenete un'attenta vedetta per lance / zattere / persone in acqua / ... .
+182|Conclusione delle operazioni SAR
+183|Qual è il risultato della ricerca?
+184|Il risultato della ricerca è negativo.
+185|Avvistato/i
+185~0|nave nella posizione ... .
+185~1|lance / zattere nella posizione ... .
+185~2|persone in acqua / ... nella posizione ... .
+186|Continuate la ricerca nella posizione ... .
+187|Potete recuperare i superstiti?
+188|Sì, posso recuperare i superstiti.
+189|No, non posso recuperare i superstiti.
+190|La M/N ... / Io procederò a recuperare i superstiti.
+191|Tenete pronte lance / zattere.
+192|Recuperato/i
+192~0|... superstiti nella posizione ... .
+192~1|... lance / zattere (con ... persone / vittime) nella posizione ... .
+192~2|... persone / vittime con giubbotto di salvataggio nella posizione ... .
+192~3|... nella posizione ... .
+193|Superstiti in cattive / buone condizioni.
+194|Richiedete assistenza medica?
+195|Sì, richiedo assistenza medica.
+196|No, non richiedo assistenza medica.
+197|Cercate di ottenere informazioni dai superstiti.
+198|Ci sono
+198~0|ancora ... lance / zattere con superstiti.
+198~1|nessun'altra lancia / zattera.
+199|Il numero totale delle persone a bordo era ... .
+200|Tutte le persone / ... persone soccorse.
+201|Voi / La M/N ... potete / può interrompere la ricerca e proseguire il viaggio.
+202|Non c'è speranza di soccorrere altre persone.
+203|Concludiamo le operazioni SAR.
+204|Richiesta di assistenza medica
+205|Richiedo / La M/N ... richiede assistenza medica.
+206|Che tipo di assistenza è richiesta?
+207|Richiedo / La M/N ... richiede
+207~0|un'imbarcazione per il trasferimento in ospedale.
+207~1|consulenza medica via radio.
+207~2|un elicottero con medico (per recuperare la persona / le persone).
+208|Io / La M/N ...
+208~0|invierò / invierà un'imbarcazione.
+208~1|invierò / invierà un elicottero con medico.
+208~2|invierò / invierà un elicottero per recuperare la persona / le persone.

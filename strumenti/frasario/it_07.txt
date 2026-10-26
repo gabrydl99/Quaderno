@@ -1,0 +1,193 @@
+1142|L'ultima ronda antincendio è stata alle ... UTC.
+1143|L'ultima ronda di security è stata alle ... UTC.
+1144|Tutto è in ordine.
+1145|È stato rilevato quanto segue: ... .
+1146|Sono state prese le seguenti misure: ... .
+1147|Quanto segue richiede attenzione: ... .
+1148|La vedetta è pronta.
+1149|Il timoniere è pronto.
+1150|Chiamate il comandante alle ... UTC / nella posizione ... .
+1151|Informazioni su eventi particolari
+1152|Vedere anche A1/3 "Comunicazioni di sicurezza".
+1153|C'è stato un allarme macchina alle ... UTC a causa di ... .
+1154|La velocità è stata ridotta alle ... UTC a causa di ... .
+1155|La macchina è stata fermata / Le macchine sono state fermate alle ... UTC a causa di ... .
+1156|La rotta è stata cambiata alle ... UTC a causa di ... .
+1157|Il comandante / Il direttore di macchina è stato chiamato alle ... UTC a causa di ... .
+1158|Informazioni su temperature, pressioni e sondaggi
+1159|La temperatura minima / massima di ... (apparecchiatura) è
+1159~0|... gradi (centigradi) / da mantenere.
+1159~1|... sopra / sotto il normale.
+1159~2|critica.
+1160|Non superate una temperatura minima / massima di ... gradi.
+1161|La pressione minima / massima di ... (apparecchiatura) è
+1161~0|... kilopond / bar / da mantenere.
+1161~1|sopra / sotto il normale.
+1161~2|critica.
+1162|Non superate una pressione di ... kilopond / bar.
+1163|Il sondaggio di zavorra / acqua dolce / combustibile / olio / slop è ... metri / metri cubi.
+1164|Il sondaggio
+1164~0|della cisterna del carico n. ... è ... metri / metri cubi.
+1164~1|della stiva n. ... è ... centimetri.
+1164~2|... .
+1165|Informazioni sul funzionamento della macchina principale e degli ausiliari
+1166|Vedere anche B1/1.8.
+1167|I giri (attuali) della macchina (delle macchine) principale/i sono ... al minuto.
+1168|La potenza (attuale) della macchina (delle macchine) principale/i / del motore ausiliario (dei motori ausiliari) è ... kilowatt.
+1169|Il passo (attuale) dell'elica (delle eliche) è ... gradi.
+1170|Non ci sono problemi.
+1171|Ci sono problemi con ... .
+1171~0|con la macchina principale (le macchine principali) / il motore ausiliario (i motori ausiliari).
+1171~1|con ... . 6 Chiamate l'ufficiale di macchina di guardia (se i problemi continuano).
+1172|Chiamate l'ufficiale di macchina di guardia ... minuti prima dell'arrivo a ... / alle ... UTC.
+1173|Informazioni sul trasferimento di combustibile, acqua di zavorra, ecc.
+1174|Al momento non ci sono travasi in corso.
+1175|Stiamo riempiendo / abbiamo riempito il doppiofondo (i doppifondi) n. ... / le casse di zavorra / la cassa (le casse) ... .
+1176|Riempite ... tonnellate / sondaggio ... / ullage ... / livello ... fino al punto di allarme.
+1177|Stiamo svuotando / abbiamo svuotato il doppiofondo (i doppifondi) n. ... / le casse di zavorra / la cassa (le casse) ... .
+1178|Stiamo trasferendo / abbiamo trasferito combustibile / zavorra / acqua dolce / olio dalla cassa (dalle casse) n. ... alla cassa (alle casse) n. ... .
+1179|Ci serve un altro generatore per far funzionare una pompa in più.
+1180|Informazioni su eventi particolari di macchina e riparazioni
+1181|C'è stata un'avaria alla macchina principale (alle macchine principali) (alle ... UTC / dalle ... alle ... UTC).
+1182|C'è stata un'avaria a ... (alle ... UTC / dalle ... alle ... UTC).
+1183|C'è stato un blackout totale (alle ... UTC / dalle ... alle ... UTC).
+1184|C'è stato un blackout in ... (alle ... UTC / dalle ... alle ... UTC).
+1185|La macchina principale è stata fermata / Le macchine principali sono state fermate (alle ... UTC / dalle ... alle ... UTC) a causa di ... .
+1186|La velocità è stata ridotta (alle ... UTC / dalle ... alle ... UTC) a causa di ... .
+1187|Chiamate il comandante / il direttore di macchina se i giri della macchina (delle macchine) principale/i scendono sotto ... al minuto.
+1188|Chiamate il comandante / il direttore di macchina / l'ufficiale di macchina di guardia se ... .
+1189|Informazioni sulla tenuta dei registri
+1190|I giornali di bordo / i registri sono compilati e firmati.
+1191|Le annotazioni del brogliaccio saranno ricopiate (nei giornali di bordo / nei registri) dopo la guardia.
+1192|Cambiate la carta del registratore dati / dell'ecoscandaglio / del registratore ... .
+1193|Ricaricate il toner / l'inchiostro del registratore dati / dell'ecoscandaglio / del registratore ... .
+1194|Consegna e presa in carico della guardia / del comando della manovra
+1195|Il comandante / il direttore di macchina o l'ufficiale (di macchina) che consegna la guardia dice:
+1196|Ora avete voi la guardia.
+1197|L'ufficiale che dà il cambio conferma e dice: Ora ho io la guardia. Il comandante / il direttore di macchina, quando chiamato in plancia / in sala (controllo) macchine e prende formalmente la guardia, conferma e dice:
+1198|Ora ho io la guardia.
+1199|L'ufficiale di guardia conferma e dice: Ora avete voi la guardia.
+1200|Assetto, sbandamento e stabilità
+1201|1 La nave è in chiglia piana (al momento).
+1202|La nave è appruata / appoppata di ... metri (al momento).
+1203|Non c'è sbandamento (al momento).
+1204|Lo sbandamento (attuale) è di ... gradi a sinistra / a dritta.
+1205|È stato trasferito combustibile / zavorra / acqua dolce / olio dalla cassa (dalle casse) n. ... alla cassa (alle casse) n. ... per correggere lo sbandamento.
+1206|Dobbiamo trasferire combustibile / zavorra / acqua dolce / olio dalla cassa (dalle casse) n. ... alla cassa (alle casse) n. ... per correggere lo sbandamento.
+1207|Il carico di coperta / il carico è stato ristivato (nella stiva / nelle stive n. ...) per correggere lo sbandamento.
+1208|Dobbiamo ristivare il carico nella stiva (nelle stive) n. ... per correggere lo sbandamento.
+1209|La stabilità (attuale) è buona / scarsa.
+1210|Il doppiofondo (i doppifondi) n. ... è stato riempito / sono stati riempiti per migliorare la stabilità.
+1211|È stato trasferito combustibile / zavorra / acqua dolce / olio dalla cassa (dalle casse) n. ... alla cassa (alle casse) n. ... per migliorare la stabilità.
+1212|Dobbiamo trasferire combustibile / zavorra / acqua dolce / olio dalla cassa (dalle casse) n. ... alla cassa (alle casse) n. ... per migliorare la stabilità.
+1213|Il gavone di prora / di poppa è stato riempito / svuotato per cambiare l'assetto.
+1214|Il carico è stato ristivato nella stiva (nelle stive) n. ... / in coperta per migliorare la stabilità.
+1215|Dobbiamo ristivare il carico nella stiva (nelle stive) n. ... / in coperta per migliorare la stabilità.
+1216|I container sono stati ristivati da ... a ... per migliorare la stabilità.
+1217|Dobbiamo ristivare i container da ... a ... per migliorare la stabilità.
+1218|Sicurezza a bordo
+1219|Attività generali
+1220|Le frasi di questa sezione valgono per la maggior parte delle emergenze trattate in questo capitolo.
+1221|Dare l'allarme
+1222|Azionate l'allarme generale di emergenza.
+1223|Informate il comandante / il direttore di macchina / ... .
+1224|Informate la stazione radio costiera di ... / le navi nelle vicinanze (via radio).
+1225|Chiedete assistenza (via radio) a ... e riferite.
+1226|L'assistenza è stata
+1226~0|richiesta a ... .
+1226~1|offerta da ... .
+1226~2|accettata da ... .
+1227|Trasmettete un SÉCURITÉ / PAN-PAN / allarme di soccorso / MAYDAY e riferite.
+1228|È stato trasmesso un SÉCURITÉ / PAN-PAN / allarme di soccorso / MAYDAY.
+1229|È stata confermata la ricezione dell'allarme di soccorso / del MAYDAY?
+1230|Sì, la ricezione dell'allarme di soccorso / del MAYDAY è stata confermata dalla stazione radio costiera di ... / dall'MRCC / dalla nave (dalle navi) nelle vicinanze.
+1231|No, la ricezione dell'allarme di soccorso non è stata (ancora) confermata.
+1232|Ripetete l'allarme di soccorso.
+1233|Informare equipaggio e passeggeri
+1234|Vedere anche B4 "Assistenza ai passeggeri".
+1235|Fate il seguente annuncio (con l'impianto di diffusione sonora):
+1236|Vi parla il comandante.
+1237|Siamo incagliati / abbiamo un piccolo allagamento / un piccolo incendio in ... .
+1238|Non c'è pericolo immediato per equipaggio, passeggeri o nave e non c'è motivo di allarmarsi.
+1239|Per motivi di sicurezza chiedo a tutti i membri dell'equipaggio di recarsi ai punti di riunione.
+1240|Tutti gli ufficiali si presentino in plancia.
+1241|Il personale di guardia resti ai propri posti fino a nuovo ordine.
+1242|Appena avrò altre informazioni farò un altro annuncio - al momento non c'è pericolo.
+1243|Le squadre antincendio / le squadre controllo avarie stanno combattendo l'incendio / l'allagamento.
+1244|Siamo anche in contatto radio con altre navi / stazioni radio costiere.
+1245|L'incendio / l'allagamento è sotto controllo.
+1246|Vi parla il comandante. Ho un altro annuncio:
+1247|L'incendio / l'allagamento non è ancora sotto controllo.
+1248|Lasciate immediatamente la sala macchine / le sovrastrutture / i vostri posti / le vostre cabine / ... . Chiudete tutte le aperture.
+1249|Portate con voi i giubbotti di salvataggio.
+1250|Portate con voi l'equipaggiamento di emergenza previsto dal ruolo d'appello.
+1251|Pronti ai posti antincendio / ai posti controllo avarie e riferite.
+1252|I posti antincendio / i posti controllo avarie sono pronti.
+1253|Tutto l'equipaggio ai punti di riunione.
+1254|Seguite le vie di fuga indicate.
+1255|Il percorso verso il punto di riunione ... non è libero.
+1256|Il percorso verso il punto di riunione passerà per ... .
+1257|Radunatevi
+1257~0|in coperta.
+1257~1|sul ponte di prora / di poppa.
+1257~2|sul ponte ... lato sinistro / lato dritto.
+1257~3|sul ponte ... a proravia di ... / a poppavia di ... .
+1258|Non
+1258~0|andate ai posti lance / zattere prima dell'ordine.
+1258~1|salite sulle lance / zattere - l'ordine di salire sarà dato dalla plancia / dagli ufficiali.
+1259|I seguenti reparti / membri dell'equipaggio sbarcheranno (temporaneamente) per motivi di sicurezza.
+1260|Controllo delle vie di fuga
+1261|Controllate le vie di fuga e riferite.
+1262|Tutte le vie di fuga sono libere.
+1263|La via di fuga (le vie di fuga) da ... (a ...) / attraverso ... è / sono bloccata/e / non (ancora) libera/e.
+1264|La via di fuga (le vie di fuga) da ... (a ...) / attraverso ... sarà / saranno libera/e tra ... minuti.
+1265|Controllo delle lance / zattere
+1266|Controllate le guide di ammaino e riferite.
+1267|Tutte le guide di ammaino sono libere.
+1268|La guida (le guide) di ammaino della lancia / zattera n. ... non è / non sono (ancora) libera/e.
+1269|La guida (le guide) di ammaino della lancia / zattera n. ... sarà / saranno libera/e tra ... minuti.
+1270|Controllate le parti mobili e riferite.
+1271|Tutte le parti mobili sono libere.
+1272|I rulli / i bozzelli / l'attrezzatura / ... della lancia n. ... non sono (ancora) liberi.
+1273|I rulli / i bozzelli / l'attrezzatura / ... della lancia n. ... saranno liberi tra ... minuti.
+1274|Controllate le rizze dei mezzi di ammaino e riferite.
+1275|Tutte le rizze sono nella posizione corretta.
+1276|La rizza della lancia / zattera n. ... non è nella posizione corretta.
+1277|Correggete la posizione della rizza.
+1278|La rizza della lancia / zattera n. ... è danneggiata.
+1279|Sostituite / riparate la rizza.
+1280|Il perno di sicurezza (i perni) della lancia n. ... manca / mancano.
+1281|Sostituite il perno di sicurezza (i perni).
+1282|Controllate combustibile / olio del motore (dei motori) della lancia e riferite.
+1283|La cassa del combustibile del motore della lancia n. ... è piena / non è piena.
+1284|Fate il pieno di combustibile.
+1285|Il livello dell'olio del motore della lancia n. ... è normale / sotto il normale.
+1286|Rabboccate l'olio.
+1287|Avviate il motore (i motori) della lancia e riferite.
+1288|Tutti i motori delle lance sono operativi.
+1289|Il motore della lancia n. ... non è (ancora) operativo.
+1290|Il motore della lancia n. ... sarà operativo tra ... minuti.
+1291|Controllate le pompe di sentina delle lance e riferite.
+1292|Tutte le pompe di sentina sono operative.
+1293|Le pompe di sentina della lancia n. ... non sono (ancora) operative.
+1294|Le pompe di sentina della lancia n. ... saranno operative tra ... minuti.
+1295|Controllate i tappi di scarico e riferite.
+1296|Tutti i tappi di scarico sono presenti.
+1297|Il tappo (i tappi) di scarico della lancia n. ... manca / mancano.
+1298|Sostituite il tappo (i tappi) di scarico.
+1299|Controllate il dispositivo di sgancio delle lance e riferite.
+1300|Tutti i dispositivi di sgancio sono nella posizione corretta e assicurati.
+1301|Il dispositivo di sgancio della lancia n. ... non è nella posizione corretta.
+1302|Correggete la posizione del dispositivo di sgancio.
+1303|Il dispositivo di sgancio della lancia n. ... non è assicurato.
+1304|Assicurate il dispositivo di sgancio.
+1305|Controllate la dotazione della lancia e riferite.
+1306|La dotazione di tutte le lance è completa ed efficiente.
+1307|La dotazione della lancia non è completa.
+1308|Completate la dotazione della lancia.
+1309|Ammainate / issate la lancia (le lance) n. ... e riferite.
+1310|I mezzi di ammaino sono operativi.
+1311|I mezzi di ammaino non sono operativi.
+1312|Il verricello / la gru n. ... non è (ancora) operativo/a.
+1313|Il verricello / la gru n. ... sarà operativo/a tra ... minuti.
+1314|Issate la lancia (le lance) n. ... .

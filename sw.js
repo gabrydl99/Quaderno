@@ -1,14 +1,16 @@
 /* Service worker del Quaderno Patentino.
    - Pagina, font e icone: salvati sul telefono, l'app si apre anche senza internet.
    - Pagina: prima prova la rete (così vedi subito gli aggiornamenti), se non c'è usa la copia salvata.
-   - Audio: alla prima riproduzione il file viene salvato intero; dopo si ascolta anche offline. */
-const VERSIONE = 'v43';
+   - Audio: alla prima riproduzione il file viene salvato intero; dopo si ascolta anche offline.
+   - Frasario: pagina e dati salvati subito; il riconoscimento del testo da foto (frasario/ocr/) si scarica al primo uso e resta salvato. */
+const VERSIONE = 'v44';
 const CACHE = 'qp-app-' + VERSIONE;
 const CACHE_AUDIO = 'qp-audio';
+const CACHE_OCR = 'qp-ocr';
 
 const FONT = ['400', '500', '600', '700'].flatMap(w => ['latin', 'latin-ext', 'greek', 'greek-ext'].map(s => `fonts/fira-sans-${s}-${w}-normal.woff2`))
   .concat(['400', '500'].flatMap(w => ['latin', 'latin-ext', 'greek', 'greek-ext'].map(s => `fonts/fira-mono-${s}-${w}-normal.woff2`)));
-const BASE = ['./', 'manifest.webmanifest', 'fonts/fonts.css', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'img/sfondo-home.jpg', 'assetto/', 'carteggio/', 'fonts/esercizi.css', ...FONT];
+const BASE = ['./', 'manifest.webmanifest', 'fonts/fonts.css', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'img/sfondo-home.jpg', 'assetto/', 'carteggio/', 'frasario/', 'frasario/dati.json', 'fonts/esercizi.css', ...FONT];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(BASE)).then(() => self.skipWaiting()));
@@ -16,7 +18,7 @@ self.addEventListener('install', e => {
 
 self.addEventListener('activate', e => {
   e.waitUntil((async () => {
-    for (const k of await caches.keys()) if (k !== CACHE && k !== CACHE_AUDIO) await caches.delete(k);
+    for (const k of await caches.keys()) if (k !== CACHE && k !== CACHE_AUDIO && k !== CACHE_OCR) await caches.delete(k);
     await self.clients.claim();
   })());
 });
@@ -27,6 +29,7 @@ self.addEventListener('fetch', e => {
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;
   if (url.pathname.endsWith('.m4a')) { e.respondWith(audio(e)); return; }
+  if (url.pathname.includes('/frasario/ocr/')) { e.respondWith(ocr(req)); return; }
   if (req.mode === 'navigate') { e.respondWith(pagina(req)); return; }
   e.respondWith(caches.match(req, {ignoreSearch: true}).then(hit => hit || fetch(req).then(r => {
     if (r.ok) { const copia = r.clone(); caches.open(CACHE).then(c => c.put(req, copia)); }
@@ -83,4 +86,14 @@ async function aPezzi(resp, range) {
       'Accept-Ranges': 'bytes'
     }
   });
+}
+
+/* riconoscimento del testo (frasario/ocr/): circa 7 MB, salvati al primo uso in una cache che non si svuota a ogni aggiornamento */
+async function ocr(req) {
+  const cache = await caches.open(CACHE_OCR);
+  const hit = await cache.match(req, {ignoreSearch: true});
+  if (hit) return hit;
+  const r = await fetch(req);
+  if (r.ok) cache.put(req, r.clone());
+  return r;
 }

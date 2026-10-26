@@ -1,0 +1,242 @@
+1509|Sostituite la manichetta (le manichette) consumata/e / tagliata/e.
+1510|La manichetta (le manichette) / la chiave (le chiavi) / la lancia (le lance) dell'idrante (degli idranti) in ... manca / mancano.
+1511|Sostituite la manichetta (le manichette) / la chiave (le chiavi) / la lancia (le lance) mancante/i.
+1512|La pompa antincendio (le pompe) in ... non è / non sono (ancora) operativa/e.
+1513|La pompa antincendio (le pompe) in ... sarà / saranno operativa/e tra ... minuti.
+1514|Il tubo (i tubi) dell'acqua in ... perde / perdono.
+1515|Riparate il tubo (i tubi) dell'acqua che perde / perdono in ... .
+1516|Il tubo (i tubi) dell'acqua in ... è / sono ostruito/i.
+1517|Liberate il tubo (i tubi) dell'acqua ostruito/i in ... .
+1518|La pressione nel tubo (nei tubi) dell'acqua in ... è troppo alta / bassa.
+1519|Riducete / aumentate la pressione nel tubo (nei tubi) dell'acqua in ... .
+1520|Controllate l'impianto fisso di estinzione a schiuma / a gas e riferite.
+1521|L'impianto fisso a schiuma / a gas è operativo.
+1522|L'impianto fisso a schiuma / a gas non è (ancora) operativo.
+1523|L'impianto fisso a schiuma / a gas sarà operativo tra ... minuti.
+1524|Controllate l'impianto sprinkler e riferite.
+1525|L'impianto sprinkler è operativo.
+1526|L'impianto sprinkler in ... non è (ancora) operativo.
+1527|L'impianto sprinkler in ... sarà operativo tra ... minuti.
+1528|Controllate l'impianto di ventilazione e riferite.
+1529|L'impianto di ventilazione è operativo.
+1530|L'impianto di ventilazione non è (ancora) operativo.
+1531|L'impianto di ventilazione sarà operativo tra ... minuti.
+1532|Il comando a distanza non è (ancora) operativo.
+1533|Il comando a distanza sarà operativo tra ... minuti.
+1534|Gli indicatori non sono (ancora) operativi.
+1535|Gli indicatori saranno operativi tra ... minuti.
+1536|Le serrande tagliafuoco in ... non sono (ancora) operative.
+1537|Le serrande tagliafuoco in ... saranno operative tra ... minuti.
+1538|Le serrande tagliafuoco in ... sono bloccate dalla vernice.
+1539|Sbloccate le serrande tagliafuoco.
+1540|Controllate i lucernari / le finestre / ... e riferite.
+1541|I lucernari / le finestre / ... in / verso ... sono aperti.
+1542|Chiudete i lucernari / le finestre / ... in / verso ... .
+1543|Controllate il comando delle porte stagne e riferite.
+1544|Il comando delle porte stagne è operativo.
+1545|Il comando delle porte stagne in ... non è (ancora) operativo.
+1546|Il comando delle porte stagne in ... sarà operativo tra ... minuti.
+1547|Controllate l'illuminazione elettrica e riferite.
+1548|L'illuminazione elettrica è operativa.
+1549|L'illuminazione elettrica in ... non è (ancora) operativa.
+1550|L'illuminazione elettrica in ... sarà operativa tra ... minuti.
+1551|Accendete / spegnete l'illuminazione elettrica in ... .
+1552|Controllate l'alimentazione di emergenza e riferite.
+1553|L'alimentazione di emergenza è operativa.
+1554|L'alimentazione di emergenza non è (ancora) operativa.
+1555|L'alimentazione di emergenza sarà operativa tra ... minuti.
+1556|Controllate gli equipaggiamenti da vigile del fuoco e riferite.
+1557|Tutti gli equipaggiamenti da vigile del fuoco sono completi e disponibili.
+1558|Gli equipaggiamenti da vigile del fuoco non sono completi.
+1559|Completate gli equipaggiamenti da vigile del fuoco.
+1560|Lotta antincendio ed esercitazioni
+1561|Segnalare un incendio
+1562|Incendio a bordo!
+1563|Fumo / esalazioni / incendio / esplosione
+1563~0|in sala macchine.
+1563~1|nella stiva (nelle stive) / nella cisterna (nelle cisterne) n. ... .
+1563~2|nelle sovrastrutture / negli alloggi.
+1563~3|nello spazio ... .
+1563~4|in coperta / ... .
+1564|Fumo / esalazioni dal ventilatore (dai ventilatori).
+1565|Odore di bruciato / esalazioni in ... / da ... .
+1566|Riferite su feriti / vittime:
+1567|Nessun ferito.
+1568|Il numero di feriti / vittime è: ... .
+1569|Che cosa brucia?
+1570|In fiamme combustibile / carico / auto / camion / vagoni / container (con merci pericolose) / ... .
+1571|Nessuna informazione (ancora).
+1572|Il fumo è tossico?
+1573|No, fumo non tossico.
+1574|Sì, fumo tossico.
+1575|L'incendio è sotto controllo?
+1576|Sì, incendio (in ...) sotto controllo.
+1577|No, incendio (in ...) non (ancora) sotto controllo.
+1578|L'incendio si sta estendendo (a ...).
+1579|Incendio (in ...) non raggiungibile.
+1580|Riferite sui danni.
+1581|Nessun danno.
+1582|Danni lievi / gravi in ... / a ... .
+1583|Nessuna alimentazione elettrica (in ...).
+1584|Entra acqua in ... .
+1585|Pressione sul collettore antincendio!
+1586|Fermate la macchina principale (le macchine principali) / il motore ausiliario (i motori ausiliari) / ... e riferite.
+1587|Macchina principale (macchine principali) / motore ausiliario (motori ausiliari) / ... fermati.
+1588|Chiudete il combustibile e riferite.
+1589|Combustibile chiuso.
+1590|Chiudete tutte le aperture (in ... / in tutti i locali) e riferite.
+1591|Tutte le aperture (in ... / in tutti i locali) chiuse.
+1592|Aperture in ... non raggiungibili.
+1593|Spegnete il ventilatore (i ventilatori) (in ...) e riferite.
+1594|Ventilatore (ventilatori) (in ...) spento/i.
+1595|Mettete la prora / la poppa al vento.
+1596|Mettete il lato sinistro / il lato dritto al vento.
+1597|Accostate per ... .
+1598|Segnalare la prontezza a intervenire
+1599|Pronti la squadra antincendio / la squadra di soccorso / la squadra di primo soccorso / la squadra di supporto e riferite.
+1600|Squadra antincendio / di soccorso / di primo soccorso / di supporto pronta.
+1601|Pronti in macchina e riferite.
+1602|Macchina principale pronta.
+1603|Pronti alla stazione CO2 / alla stazione ... / al generatore di emergenza.
+1604|Stazione CO2 / stazione ... / generatore di emergenza pronti.
+1605|Chiudete tutte le aperture (in ... / in tutti i locali) e riferite.
+1606|Tutte le aperture (in ... / in tutti i locali) chiuse.
+1607|Aperture in ... non raggiungibili.
+1608|Ordini per la lotta antincendio
+1609|Iniziate l'estinzione.
+1610|Portate sul posto una / due / ... squadre antincendio / squadre ... .
+1611|Seguite questo percorso:
+1612|Passate per la sala macchine / la stiva (le stive) / la cisterna (le cisterne) n. ... / le sovrastrutture / gli alloggi / lo spazio ... / il passo d'uomo (i passi d'uomo) fino allo spazio ... / al fumaiolo / a ... .
+1613|Andate da
+1613~0|fuori / dentro verso ... .
+1613~1|lato sinistro / lato dritto verso ... .
+1613~2|... a ... .
+1614|Prendete le seguenti misure di sicurezza (aggiuntive) e riferite.
+1615|Formate squadre di due / ... persone.
+1616|Il numero dei componenti della squadra antincendio / della squadra ... è: ... .
+1617|Collegatevi con la sagola di sicurezza tra voi / con l'esterno.
+1618|... componenti della squadra sono collegati tra loro con sagole di sicurezza.
+1619|La squadra ... ha sagole di sicurezza collegate all'esterno.
+1620|Tenete pronta una squadra di soccorso.
+1621|Mantenete il contatto visivo / il contatto radio con il walkie-talkie.
+1622|La squadra antincendio deve avere il seguente equipaggiamento:
+1623|La squadra antincendio deve avere indumenti protettivi / caschi antifumo / autorespiratori / ... .
+1624|Composizione della squadra antincendio / della squadra ... come segue:
+1625|Il primo ufficiale / il direttore di macchina / ... al comando della squadra antincendio / della squadra ... (n. ...).
+1626|I seguenti ufficiali / membri dell'equipaggio nella squadra antincendio / nella squadra ... : ... .
+1627|Limitate l'intervento (in ... / su ...) a ... minuti.
+1628|Concordate il segnale di ritirata e riferite.
+1629|Il segnale di ritirata per la squadra antincendio / la squadra ... è ... .
+1630|Usate acqua / schiuma / polvere / CO2 / sabbia / ... in ... .
+1631|Stendete le manichette e riferite.
+1632|Manichette stese.
+1633|Acqua!
+1634|Acqua aperta.
+1635|Raffreddate ... con acqua e riferite.
+1636|... raffreddato.
+1637|Cessato allarme
+1638|L'incendio è spento?
+1639|Sì, incendio (in ...) spento.
+1640|No, incendio (in ...) non (ancora) spento.
+1641|Incendio circoscritto allo spazio / all'area ... .
+1642|Mettete una guardia antincendio e riferite.
+1643|Guardia antincendio messa (nello spazio / nell'area ...).
+1644|Gli impianti / i mezzi di estinzione restano pronti.
+1645|La squadra antincendio / la squadra ... resta pronta.
+1646|Delimitate con cime l'area dell'incendio e riferite.
+1647|Area dell'incendio delimitata.
+1648|Controllate l'area dell'incendio ogni ... minuti / ore per eventuali riaccensioni e riferite.
+1649|Area dell'incendio controllata, nessuna riaccensione.
+1650|Area dell'incendio controllata, riaccensione nello spazio / nell'area ... .
+1651|Riaccensione spenta.
+1652|L'allarme incendio è cessato (con le seguenti limitazioni: ... ).
+1653|Controllo delle avarie
+1654|Vedere anche B2/1 "Attività generali".
+1655|Controllo delle attrezzature ed esercitazioni
+1656|Controllate le aperture in tutti i locali / in ... e riferite.
+1657|Tutte le aperture in ... sono chiuse.
+1658|Le aperture in ... non sono (ancora) chiuse.
+1659|Le aperture in ... non sono raggiungibili.
+1660|Controllate il comando delle porte stagne e riferite.
+1661|Il comando delle porte stagne
+1661~0|è operativo.
+1661~1|(in ...) non è (ancora) operativo.
+1661~2|(in ...) sarà operativo tra ... minuti.
+1662|La porta stagna (le porte stagne) (in ...) non è / non sono raggiungibile/i.
+1663|Controllate le pompe / il generatore di emergenza e riferite.
+1664|La pompa (le pompe) (di sentina) in ... / il generatore di emergenza
+1664~0|è / sono operativa/e.
+1664~1|non è / non sono (ancora) operativa/e.
+1664~2|sarà / saranno operativa/e tra ... minuti.
+1665|Controllate l'alimentazione elettrica e riferite.
+1666|L'energia elettrica (in / a ...)
+1666~0|è disponibile.
+1666~1|non è (ancora) disponibile.
+1666~2|sarà disponibile tra ... minuti.
+1667|Controllate le attrezzature per il controllo delle avarie e riferite.
+1668|Tutte le attrezzature per il controllo delle avarie sono complete e disponibili.
+1669|Le attrezzature per il controllo delle avarie non sono complete.
+1670|Completate le attrezzature per il controllo delle avarie.
+1671|Attività di controllo delle avarie
+1672|Segnalare un allagamento
+1673|Siamo entrati in collisione (con ...).
+1674|Abbiamo un allagamento in ... .
+1675|L'allagamento è sotto controllo?
+1676|Sì, allagamento sotto controllo.
+1677|No, allagamento (in ...) non (ancora) sotto controllo.
+1678|C'è un pericolo imminente?
+1679|No, nessun pericolo imminente.
+1680|Sì, pericolo di blackout (totale) (in ...).
+1681|Sì, pericolo di forte sbandamento / capovolgimento / affondamento / ... .
+1682|Segnalare la prontezza a intervenire
+1683|Radunate la squadra controllo avarie e riferite.
+1684|Squadra controllo avarie completa e radunata.
+1685|Il materiale per il controllo delle avarie è disponibile?
+1686|Sì, materiale per il controllo delle avarie disponibile.
+1687|No, materiale per il controllo delle avarie non (ancora) disponibile.
+1688|Il materiale per il controllo delle avarie sarà disponibile tra ... minuti.
+1689|Pronti in sala macchine / alla stazione ... e riferite.
+1690|Sala macchine / stazione ... pronta.
+1691|Sala macchine / stazione ... allagata.
+1692|Sala macchine / stazione ... sarà pronta tra ... minuti.
+1693|Ordini per il controllo delle avarie
+1694|Chiudete tutte le aperture / gli scarichi / le valvole (in ...) e riferite.
+1695|Tutte le aperture / gli scarichi / le valvole (in ...) chiusi.
+1696|Aperture / scarichi / valvole in ... non raggiungibili / non operativi.
+1697|Inserite / togliete l'energia (a / su / in ...) e riferite.
+1698|Energia (a / su / in ...) inserita / tolta.
+1699|Alimentazione elettrica (a / su / in ...) non operativa.
+1700|Chiudete la porta stagna (le porte stagne) (in ...) (a mano) e riferite.
+1701|Porta stagna (porte stagne) (in ...) chiusa/e.
+1702|Porta stagna (porte stagne) (in ...) non raggiungibile/i / non operativa/e.
+1703|Avviate la pompa (le pompe) (di sentina) (in ...) e riferite.
+1704|Pompa (pompe) (di sentina) (in ...) avviata/e.
+1705|Pompa (pompe) (di sentina) (in ...) non operativa/e.
+1706|Commutate la pompa (le pompe) (di sentina) da ... a ... .
+1707|Pompa (pompe) (di sentina) commutata/e.
+1708|Commutazione della pompa (delle pompe) (di sentina) non possibile.
+1709|Iniziate il controllo delle avarie.
+1710|Portate sul posto una / due / ... squadre controllo avarie.
+1711|Seguite questo percorso: ... .
+1712|Passate per la sala macchine / la stiva (le stive) / la cisterna (le cisterne) n. ... / le sovrastrutture / il passo d'uomo / lo spazio ... / il ponte ... / ... .
+1713|Andate da
+1713~0|fuori / dentro verso ... .
+1713~1|lato sinistro / lato dritto verso ... .
+1713~2|... a ... .
+1714|Prendete le seguenti misure di sicurezza (aggiuntive) e riferite.
+1715|Formate squadre controllo avarie di due / ... persone.
+1716|Collegatevi con la sagola di sicurezza tra voi / con l'esterno.
+1717|Tenete pronta una squadra di soccorso e riferite.
+1718|Squadra di soccorso pronta.
+1719|Mantenete il contatto visivo / il contatto radio con il walkie-talkie.
+1720|La squadra controllo avarie deve avere il seguente equipaggiamento.
+1721|La squadra controllo avarie deve avere
+1721~0|indumenti protettivi.
+1721~1|caschi di protezione.
+1721~2|giubbotti di salvataggio.
+1721~3|attrezzatura subacquea / ... .
+1722|Composizione della squadra controllo avarie come segue: ... .
+1723|Il primo ufficiale / il direttore di macchina / ... al comando della squadra controllo avarie (n. ...) ... .
+1724|I seguenti ufficiali / membri dell'equipaggio nella squadra controllo avarie (n. ...): ... .
+1725|Limitate l'intervento (in ...) a ... minuti.
+1726|Concordate il segnale di ritirata e riferite.

@@ -1,0 +1,130 @@
+2352|I sacchi / le balle con ... (carico) sono strappati / ricuciti / perdono.
+2353|I fusti / i barili / ... con ... (carico) sono deformati / perdono.
+2354|Le scatole / i cartoni / le casse / ... con ... (carico) sono schiacciati.
+2355|I sacchi / le scatole / i cartoni / ... con ... (carico) non sono pieni / sono lenti / vuoti.
+2356|I sacchi / le scatole / i cartoni / ... con ... (carico) sono di seconda mano.
+2357|Le scatole / i cartoni / le casse / ... con bottiglie di ... (carico) sono (in parte) rotti.
+2358|Il ... (carico) è (in parte)
+2358~0|rosicchiato da topi / vermi.
+2358~1|infestato da parassiti.
+2358~2|mancante.
+2359|... container sono danneggiati.
+2360|... container sono stati danneggiati
+2360~0|prima della caricazione.
+2360~1|durante la caricazione.
+2360~2|per spostamento a bordo.
+2360~3|dal mare grosso.
+2361|... container sono finiti fuori bordo (informate via radio).
+2362|La temperatura nella stiva n. ... è sopra il normale / sotto il normale / critica / ... gradi Celsius.
+2363|L'umidità di ... (carico) è sopra il normale / sotto il normale / critica.
+2364|Azioni da intraprendere. Vedere anche la sezione B2/1.2.4 "Azioni in caso di incidente".
+2365|Accendete la ventilazione della stiva in mandata / in aspirazione.
+2366|Spegnete la ventilazione della stiva (in caso di colpi di mare in coperta).
+2367|Accendete / spegnete il controllo / il registratore automatico della temperatura.
+2368|Ripassate le rizze del container (dei container) / dell'auto (delle auto) / del camion (dei camion) ... nella stiva n. ... / sul ponte ... .
+2369|Ricollegate il container frigorifero (i container) nella stiva n. ... / in coperta.
+2370|Assicurate il carico scorrevole nella stiva n. ... / sul ponte ... .
+2371|Proteggete il carico di coperta di ... (carico) dal sole / dalla pioggia / dai colpi di mare.
+2372|Tenete bagnato / asciutto il carico di coperta di ... (carico).
+2373|Controllate il contenuto del fusto (dei fusti) / del barile (dei barili) / del container (dei container) / ... con etichette false.
+2374|Assistenza ai passeggeri
+2375|Le frasi di questo capitolo aiutano comandanti, ufficiali ed equipaggi delle navi passeggeri e dei traghetti a informare i passeggeri sulla sicurezza e a gestirli in caso di emergenza.
+2376|Informazioni e istruzioni
+2377|Comportamento dei passeggeri a bordo
+2378|Informazioni generali sul comportamento dei passeggeri
+2379|Signore e signori, vi parla il comandante ... . Ho il piacere di informarvi che tutte le dotazioni di sicurezza sono perfettamente efficienti. I portelloni di prora / di poppa sono chiusi e assicurati. La nave è pronta sotto ogni aspetto per il mare. Ascoltate con attenzione le istruzioni di sicurezza che seguono. Nell'improbabile caso di un'emergenza, seguite gli ordini dati con gli altoparlanti.
+2380|I passeggeri sono pregati di leggere tutti gli avvisi e i dépliant sulle norme di sicurezza.
+2381|Tutte le norme che regolano la vita di bordo vanno rispettate.
+2382|Informazioni su zone, ponti e locali vietati. Le norme di sicurezza non permettono ai passeggeri di entrare nei seguenti locali: - plancia di comando - sala macchine - zone di manovra a prora e a poppa della nave - stive e compartimenti del carico - locali di servizio - tutte le zone e i locali segnati "Solo equipaggio" - tutte le zone, gli spazi e i locali chiusi, sigillati o delimitati da cime - i ponti garage quando la nave è in navigazione.
+2383|Informazioni su norme di sicurezza, misure preventive e comunicazioni
+2384|Esercitazioni
+2385|Le norme internazionali prevedono che tutti i passeggeri partecipino a un'esercitazione da svolgere entro 24 ore dalla partenza.
+2386|Si terrà un'esercitazione per far conoscere ai passeggeri i punti di riunione, i mezzi di salvataggio e le procedure di emergenza.
+2387|Tutti i passeggeri devono partecipare a questa esercitazione.
+2388|L'allarme generale di emergenza
+2389|In caso di emergenza saranno dati sette suoni brevi e uno prolungato con il fischio della nave e il sistema di allarme.
+2390|Mantenete la calma quando sentite l'allarme generale di emergenza.
+2391|Ai passeggeri sarà insegnato come agire e comportarsi in caso di emergenza.
+2392|Prevenire / segnalare un incendio
+2393|Ricordate sempre che l'incendio è il pericolo più grave a bordo.
+2394|Agite sempre subito se scoprite un incendio o sentite odore di esalazioni o di fumo.
+2395|Informate sempre un membro dell'equipaggio se scoprite un incendio o sentite odore di esalazioni o di fumo.
+2396|Spegnete con cura le sigarette.
+2397|Mettete le sigarette usate negli appositi contenitori.
+2398|Non fumate mai a letto.
+2399|Non fumate mai in coperta, tranne che nelle zone indicate per fumatori.
+2400|Non gettate mai una sigaretta fuori bordo.
+2401|L'uso di luci libere e fiamme libere è severamente vietato.
+2402|Non usate mai candele accese.
+2403|Non appendete mai nulla sopra o vicino a una lampadina.
+2404|Non usate mai un ferro da stiro in cabina. Se dovete stirare qualcosa usate la stireria sul ponte ... . La chiave si ritira al banco informazioni.
+2405|Se scoprite un incendio o sentite odore di esalazioni o di fumo agite subito così: - gridate "Fuoco!" - azionate l'allarme antincendio più vicino - informate un membro dell'equipaggio - telefonate alla plancia. Il numero da comporre è ... .
+2406|Annunci di emergenza agli altoparlanti
+2407|Attenzione prego! Attenzione prego! Vi parla il comandante con un annuncio importante. Ripeto, vi parla il comandante con un annuncio importante.
+2408|Siamo incagliati / abbiamo un piccolo allagamento (in ...) / un piccolo incendio (in ...).
+2409|Non c'è pericolo immediato per i passeggeri o per la nave e non c'è motivo di allarmarsi.
+2410|Per motivi di sicurezza chiediamo a tutti i passeggeri di recarsi ai punti di riunione in coperta e di attendere lì altre istruzioni.
+2411|Seguite le istruzioni degli ufficiali e dell'equipaggio.
+2412|La squadra antincendio / la squadra controllo avarie della nave sta combattendo l'incendio / l'allagamento.
+2413|Siamo anche in contatto radio con altre navi / stazioni radio costiere.
+2414|L'incendio / l'allagamento è sotto controllo.
+2415|Appena avrò altre informazioni farò un altro annuncio. Vi chiedo gentilmente di mantenere la calma. Al momento non c'è pericolo.
+2416|Vi parla il comandante. Ho un altro annuncio. L'incendio / l'allagamento non è ancora sotto controllo.
+2417|C'è fumo / un allagamento in ... . L'accesso a questa zona è vietato.
+2418|Per motivi di sicurezza chiediamo a tutti i passeggeri di prepararsi a raggiungere i punti di riunione. Ai punti di riunione si accederà da ... . Non dimenticate di portare con voi giubbotti di salvataggio e coperte.
+2419|Tutti i passeggeri del ponte n. ... sono pregati di seguire i membri dell'equipaggio che li accompagneranno ai punti di riunione.
+2420|Arrivati ai punti di riunione indossate i giubbotti di salvataggio e attendete altri ordini.
+2421|Non andate ai posti lance finché non vi viene ordinato.
+2422|Andate ai posti lance.
+2423|Seguite le vie di fuga indicate.
+2424|Non salite sulle lance / zattere. L'ordine di salire sarà dato dalla plancia o dagli ufficiali.
+2425|Abbiamo appena ricevuto un messaggio da terra / da altre navi: l'assistenza è in arrivo. Dovrebbe arrivare tra circa ... ore.
+2426|Uomo a mare
+2427|Se vedete qualcuno cadere in mare agite così: - gridate "Uomo a mare" - gettate fuori bordo i salvagenti - non perdete di vista la persona in acqua - mostrate / dite a un ufficiale o all'equipaggio la posizione della persona in acqua, oppure telefonate subito alla plancia, il numero è ... .
+2428|Misure di protezione per i bambini
+2429|I bambini vanno sempre sorvegliati.
+2430|Non lasciate mai che i bambini si arrampichino o si siedano sulle battagliole.
+2431|Sono disponibili giubbotti di salvataggio speciali per bambini; chiedete allo steward / alla stewardess.
+2432|Potete lasciare i bambini in custodia a personale qualificato nella sala giochi / sul ponte giochi del ponte ... dalle ... alle ... .
+2433|Evacuazione ed esercitazione con le lance
+2434|Assegnare / indirizzare ai punti di riunione, spiegare come mettersi in salvo
+2435|Quando suona l'allarme generale di emergenza, sette suoni brevi e uno prolungato, tutti i passeggeri devono recarsi al proprio punto di riunione. Portate con voi giubbotto di salvataggio e coperta. I giubbotti si trovano in cabina sotto i letti e ai punti di riunione. Vi consigliamo di provare il vostro giubbotto.
+2436|Tutti i passeggeri devono indossare - abiti caldi - pantaloni lunghi, camicie / giacche a maniche lunghe - scarpe robuste e copricapo.
+2437|Tutti i passeggeri, con giubbotti e coperte, sono pregati di recarsi subito ai punti di riunione / nel salone / nel ... .
+2438|Dai punti di riunione sarete accompagnati alle lance / zattere.
+2439|Tutti i passeggeri sono pregati di leggere con attenzione le istruzioni di sicurezza dietro la porta della cabina.
+2440|Tutti i passeggeri sono pregati di seguire le vie di fuga indicate.
+2441|Non usate gli ascensori.
+2442|Tutti i passeggeri sono pregati di seguire scrupolosamente le istruzioni degli ufficiali o dell'equipaggio.
+2443|Quando sentite l'allarme di abbandono nave, un suono prolungato e uno breve ripetuti di continuo, comportatevi come per l'allarme generale di emergenza.
+2444|Durante il viaggio potreste sentire altri segnali sonori. Sono solo per l'equipaggio. Agite solo se sentite l'allarme generale di emergenza o l'allarme di abbandono nave.
+2445|Per qualsiasi domanda sulla sicurezza rivolgetevi senza esitare agli ufficiali o all'equipaggio.
+2446|Come vestirsi e cosa portare ai punti di riunione
+2447|Prendete il giubbotto di salvataggio e una coperta. Il giubbotto è sotto il vostro letto.
+2448|Indossate abiti caldi, camicie a maniche lunghe, scarpe robuste e copricapo con qualsiasi tempo. Niente tacchi alti.
+2449|Non dimenticate documenti personali, occhiali ed eventuali medicine.
+2450|Non tornate in cabina a prendere le vostre cose.
+2451|Fare l'appello
+2452|Al punto di riunione un ufficiale / un membro dell'equipaggio farà l'appello.
+2453|L'ufficiale / il membro dell'equipaggio dirà "Questo è l'appello" e chiamerà i passeggeri uno per uno per nome.
+2454|Quando sentite il vostro nome rispondete forte "Presente".
+2455|Se un vostro compagno di cabina non può presentarsi all'appello, informate subito l'ufficiale / l'equipaggio.
+2456|Come indossare il giubbotto di salvataggio
+2457|(Secondo il tipo di giubbotto) - infilate il giubbotto dalla testa - stringete bene i lacci - passate i lacci intorno alla vita e annodateli davanti.
+2458|Seguite con attenzione la dimostrazione dell'ufficiale / dell'equipaggio. Se serve vi aiuteranno i membri dell'equipaggio.
+2459|Studiate con attenzione la dimostrazione illustrata nelle cabine.
+2460|Studiate con attenzione lo schema al punto di riunione.
+2461|Istruzioni su come salire e comportarsi nelle lance / zattere
+2462|Salite sulla lancia / zattera solo quando lo ordina un ufficiale / un capolancia.
+2463|Liberate subito l'ingresso della lancia / zattera dopo essere saliti.
+2464|Non spingetevi quando salite sulla lancia / zattera.
+2465|Tenetevi alle cime o al sedile durante l'ammaino / il recupero.
+2466|Sedetevi subito nella lancia / zattera.
+2467|Tenete addosso il giubbotto di salvataggio.
+2468|Viveri e acqua potabile saranno distribuiti solo da un ufficiale / capolancia.
+2469|Seguite scrupolosamente tutte le istruzioni dell'ufficiale / del capolancia.
+2470|La disciplina nella lancia / zattera è di vitale importanza.
+2471|Misure e azioni sul posto nelle lance / zattere
+2472|Mantenete un'attenta vedetta per le persone in acqua.
+2473|Tenete pronti una cima / un gancio / un coltello / un salvagente.
+2474|Non togliete camicie / pantaloni lunghi / copricapo con qualsiasi tempo.

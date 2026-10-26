@@ -1,0 +1,40 @@
+<style id="home-aggiunte-css">
+/* aggiunte alla pagina iniziale (26/10/2026): "Come si usa l'app" compatto, bolla e riquadro del Frasario SMCP */
+.how-card{padding:9px 16px!important}
+.how-card .n{font-size:1rem!important}
+#home .howto .consiglio{margin:10px 12px 2px;padding:9px 12px;font-size:.86rem;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+#home .howto .crea-account{margin-top:0;min-height:34px;padding:0 14px;font-size:.84rem}
+#home .howto ul.brevi{list-style:none;margin:0;padding:6px 14px 12px;display:grid;gap:0}
+#home .howto ul.brevi li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:8px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.86rem;line-height:1.4;color:var(--muted)}
+#home .howto ul.brevi li:last-child{border-bottom:0}
+#home .howto ul.brevi b{color:var(--ink);font-weight:600}
+/* bolla con i colori della bandiera britannica */
+.chip.chip-uk{background:#012169;color:#fff;border:1.5px solid #c8102e;box-shadow:inset 0 0 0 1px #fff,0 1px 2px rgba(6,17,27,.12);text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.chip.chip-uk:hover{border-color:#c8102e;filter:brightness(1.15)}
+/* riquadro a parte dopo il Formulario */
+#home .frs{margin:12px 0 0;background:color-mix(in srgb,var(--sheet) 80%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 1px 2px rgba(6,17,27,.05),0 12px 32px -14px rgba(6,17,27,.22)}
+#home .frs a{display:grid;grid-template-columns:minmax(0,1fr) 96px;grid-template-areas:"n ill" "m ill" "d d";gap:2px 12px;padding:16px 18px;color:inherit;text-decoration:none}
+#home .frs a:hover,#home .frs a:active{background:color-mix(in srgb,var(--blue) 5%,var(--sheet))}
+#home .frs a:focus-visible{outline:2px solid var(--blue);outline-offset:-3px}
+#home .frs .n{grid-area:n;font:700 1.22rem/1.25 var(--f-body);color:var(--ink)}
+#home .frs .m{grid-area:m;align-self:start;font-size:.82rem;color:var(--muted);margin:2px 0 4px}
+#home .frs .d{grid-area:d;font-size:.93rem;line-height:1.45;color:var(--muted)}
+#home .frs .ill{grid-area:ill;box-sizing:border-box;width:96px;height:72px;padding:5px;border-radius:14px;background:color-mix(in srgb,var(--blue) 7%,var(--sheet));border:1px solid color-mix(in srgb,var(--blue) 10%,var(--line))}
+</style>
+<script>
+(function(){
+  const chips = document.getElementById('chips');
+  if (chips && !chips.querySelector('.chip-uk')) {
+    const a = document.createElement('a'); a.className = 'chip chip-uk'; a.href = 'frasario/'; a.textContent = 'Frasario e Traduttore SMCP';
+    chips.append(a);
+  }
+  const cards = document.getElementById('cards');
+  if (cards && !document.querySelector('#home .frs')) {
+    const s = document.createElement('section'); s.className = 'frs'; s.setAttribute('aria-label', 'Frasario e Traduttore SMCP');
+    s.innerHTML = '<a href="frasario/"><span class="n">Frasario e Traduttore SMCP</span><span class="m">Inglese nautico · IT ⇄ EN</span>' +
+      '<span class="d">Frasi IMO SMCP, glossario dei termini nautici e traduttore, anche da foto.</span>' +
+      '<span class="ill" aria-hidden="true"><svg viewBox="0 0 96 72"><path class="il-fs" d="M6 6H50Q54 6 54 10V32Q54 36 50 36H22L12 44V36H10Q6 36 6 32V10Q6 6 10 6Z"/><path d="M10 6H50Q54 6 54 10V32Q54 36 50 36H22L12 44V36H10Q6 36 6 32V10Q6 6 10 6Z"/><svg x="14" y="12" width="32" height="16" viewBox="0 0 60 30" preserveAspectRatio="none" style="overflow:hidden"><clipPath id="ukc-home"><path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z"/></clipPath><rect width="60" height="30" style="fill:#012169;stroke:none"/><path d="M0,0L60,30M60,0L0,30" style="stroke:#fff;stroke-width:6;fill:none"/><path d="M0,0L60,30M60,0L0,30" clip-path="url(#ukc-home)" style="stroke:#C8102E;stroke-width:4;fill:none"/><path d="M30,0v30M0,15h60" style="stroke:#fff;stroke-width:10;fill:none"/><path d="M30,0v30M0,15h60" style="stroke:#C8102E;stroke-width:6;fill:none"/></svg><rect x="14" y="12" width="32" height="16" style="fill:none;stroke:var(--ink);stroke-width:1.2"/><path class="il-fs" d="M46 30H86Q90 30 90 34V56Q90 60 86 60H84V68L74 60H46Q42 60 42 56V34Q42 30 46 30Z"/><path d="M46 30H86Q90 30 90 34V56Q90 60 86 60H84V68L74 60H46Q42 60 42 56V34Q42 30 46 30Z"/><rect x="52" y="37" width="10" height="16" style="fill:#009246;stroke:none"/><rect x="62" y="37" width="10" height="16" style="fill:#fff;stroke:none"/><rect x="72" y="37" width="10" height="16" style="fill:#CE2B37;stroke:none"/><rect x="52" y="37" width="30" height="16" style="fill:none;stroke:var(--ink);stroke-width:1.2"/><path class="il-a" d="M18 54h16l-4-4M34 62H18l4 4"/></svg></span></a>';
+    cards.after(s);
+  }
+})();
+</script>

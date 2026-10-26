@@ -1,0 +1,172 @@
+510|Commento: questo marker si usa di preferenza per informazioni sulla navigazione e sul traffico, ecc. Le conseguenze dell'INFORMATION spettano al destinatario.
+511|Esempio: "INFORMATION. MV Noname will overtake to the west of you." (INFORMAZIONE. La M/N Noname vi sorpasserà a ovest.)
+512|(v) QUESTION (DOMANDA)
+513|Indica che il messaggio seguente è una domanda.
+514|Commento: l'uso di questo marker elimina ogni dubbio sul fatto che si stia facendo una domanda o un'affermazione, soprattutto quando si usano anche all'inizio parole interrogative come what, where, why, who, how. Il destinatario deve rispondere.
+515|Esempio: "QUESTION. (What is) your present maximum draft?" (DOMANDA. Qual è il vostro pescaggio massimo attuale?)
+516|(vi) ANSWER (RISPOSTA)
+517|Indica che il messaggio seguente è la risposta a una domanda precedente.
+518|Commento: una risposta non deve contenere un'altra domanda.
+519|Esempio: "ANSWER. My present maximum draft is zero seven metres." (RISPOSTA. Il mio pescaggio massimo attuale è zero sette metri.)
+520|(vii) REQUEST (RICHIESTA)
+521|Indica che il messaggio seguente chiede ad altri di agire per la nave.
+522|Commento: questo marker segnala "voglio che qualcosa sia organizzato o fornito", per esempio provviste di bordo, rimorchiatori, permessi, ecc.
+523|Nota: REQUEST non va usato per questioni di navigazione o per modificare il COLREG.
+524|Esempio: "REQUEST. I require two tugs." (RICHIESTA. Richiedo due rimorchiatori.)
+525|(viii) INTENTION (INTENZIONE)
+526|Indica che il messaggio seguente informa gli altri su un'azione di navigazione che si intende fare subito.
+527|Commento: l'uso di questo marker è logicamente limitato ai messaggi che annunciano azioni di navigazione della nave che trasmette.
+528|Esempio: "INTENTION. I will reduce my speed." (INTENZIONE. Ridurrò la velocità.)
+529|Frasi per acquisire e fornire i dati per il quadro del traffico
+530|Acquisizione e fornitura dei dati di traffico ordinari
+531|Qual è il nome della vostra nave e il nominativo internazionale / l'identificazione?
+532|Il nome della mia nave è ... , nominativo ... / identificazione ... .
+533|Sillabate il nome della vostra nave.
+534|Qual è il vostro Stato di bandiera?
+535|Il mio Stato di bandiera è ... .
+536|Qual è la vostra posizione?
+537|La mia posizione è ... .
+538|Quali sono la vostra rotta e velocità attuali?
+539|La mia rotta attuale è ... gradi, la mia velocità è ... nodi.
+540|Da quale direzione vi state avvicinando?
+541|Mi sto avvicinando da ... .
+542|Qual è il vostro porto di destinazione / la vostra destinazione?
+543|Il mio porto di destinazione / la mia destinazione è ... .
+544|Qual è stato il vostro ultimo porto di scalo?
+545|Il mio ultimo porto di scalo è stato ... .
+546|Qual è la vostra ETA nella posizione ... ?
+547|La mia ETA è ... UTC.
+548|Qual è la vostra ETD da ... ?
+549|La mia ETD da ... è ... UTC.
+550|Qual è la vostra immersione a prora / a poppa?
+551|La mia immersione a prora / a poppa è ... metri.
+552|Qual è il vostro pescaggio massimo attuale?
+553|Il mio pescaggio massimo attuale è ... metri.
+554|Qual è il vostro bordo libero?
+555|Il mio bordo libero è ... metri.
+556|Qual è il vostro tirante d'aria?
+557|Il mio tirante d'aria è ... metri.
+558|Siete in navigazione?
+559|Sì, sono in navigazione.
+560|No, non sono in navigazione.
+561|Sono pronto a muovere (mettermi in navigazione).
+562|Qual è la vostra velocità massima / velocità massima di manovra?
+563|La mia velocità massima / velocità massima di manovra è ... nodi.
+564|Qual è il vostro carico?
+565|Il mio carico è ... .
+566|Trasportate merci pericolose?
+567|Sì, trasporto le seguenti merci pericolose: ... chilogrammi / tonnellate classe IMO ... .
+568|No, non trasporto merci pericolose.
+569|Avete deficienze / limitazioni?
+570|No, non ho deficienze / limitazioni.
+571|Sì, ho le seguenti deficienze / limitazioni: ... .
+572|Sono / La M/N ... è condizionata dal proprio pescaggio.
+573|Il pescaggio massimo consentito è ... metri.
+574|Avete sbandamento?
+575|Sì, ho uno sbandamento a sinistra / a dritta di ... gradi.
+576|No, non ho sbandamento.
+577|Siete in chiglia piana?
+578|Sì, sono in chiglia piana.
+579|No, sono appruato / appoppato.
+580|Acquisizione e fornitura dei dati del traffico di soccorso. Vedere A1/1.1 "Comunicazioni di soccorso".
+581|Frasi per fornire i servizi VTS
+582|Servizio di informazione. Queste frasi sono di norma trasmesse da terra.
+583|Avvertimenti per la navigazione
+584|Oggetto/i sconosciuto/i nella posizione ... .
+585|Ghiaccio / iceberg nella posizione ... / nell'area intorno a ... .
+586|Relitto alla deriva non illuminato nelle vicinanze di ... alle ... (data e ora).
+587|Relitto pericoloso / ostruzione localizzato/a nella posizione ... segnalato/a da boa ... (tipo).
+588|Mina pericolosa alla deriva nelle vicinanze di ... alle ... (data e ora).
+589|Scogliera / scoglio / secca non segnati sulla carta segnalati nella posizione ... .
+590|Condotta che perde gas / petrolio nella posizione ... . Si richiede di passare ben al largo.
+591|Profondità dell'acqua non sufficiente nella posizione ... .
+592|Navigazione chiusa nell'area ... .
+593|Informazioni per la navigazione
+594|Macchia di idrocarburi nella posizione ... .
+595|Correntometri / strumenti idrografici ormeggiati nella posizione ... . Si richiede di passare ben al largo.
+596|Piattaforma ... (nome / numero) segnalata / installata nella posizione ... . Si richiede di passare ben al largo.
+597|... (nome sulla carta del faro / della boa) nella posizione ...
+597~0|spento / inaffidabile / danneggiato / distrutto / fuori posizione / mancante.
+597~1|(temporaneamente) cambiato in ... (caratteristiche complete).
+597~2|(temporaneamente) rimosso.
+597~3|(temporaneamente) sospeso.
+598|... (nome sulla carta del faro / della boa) ... (caratteristiche complete).
+598~0|istituito nella posizione ... .
+598~1|ripristinato nella posizione ... .
+598~2|spostato di ... chilometri / miglia nautiche verso ... (direzione) nella posizione ... .
+599|(Nota: solo per le principali stazioni di segnalazione da nebbia). Segnale da nebbia ... (nome sulla carta del faro / della boa) nella posizione ... fuori servizio.
+600|Informazioni sul traffico
+601|Esercitazioni di tiro d'artiglieria / lancio di razzi / missili / siluri / ordigni subacquei nell'area delimitata da ... (posizioni) e ... dalle ... (data e ora) alle ... (data e ora). Si richiede di passare ben al largo.
+602|Operazioni su cavi / condotte da parte di ... (nave) nelle vicinanze di ... / lungo una linea che unisce ... (posizione) dalle ... (data e ora) alle ... (data e ora). Si richiede di passare ben al largo. Contattare sul canale VHF ... .
+603|Operazioni di recupero nella posizione ... dalle ... (data e ora) alle ... (data e ora). Si richiede di passare ben al largo. Contattare sul canale VHF ... .
+604|Operazioni sismiche / idrografiche da parte di ... (nave) dalle ... (data e ora) alle ... (data e ora) nella posizione ... . Si richiede di passare ben al largo. Contattare sul canale VHF ... .
+605|Operazioni di rimozione degli idrocarburi vicino alla M/C ... nella posizione ... . Si richiede di passare ben al largo.
+606|Trasbordo di ... (tipo di carico) nella posizione ... . Si richiede di passare ben al largo.
+607|Rimorchio difficoltoso da ... (porto di partenza) a ... (destinazione) il ... (data). Si richiede di passare ben al largo.
+608|Nave che non governa nella posizione ... / nell'area ... .
+609|Nave con capacità di manovra limitata nella posizione ... / nell'area ... (rotta ... gradi, velocità ... nodi).
+610|Nave condizionata dal proprio pescaggio nella posizione ... / nell'area ... (rotta ... gradi, velocità ... nodi).
+611|La nave nella posizione ... con rotta ... e velocità ... non rispetta le norme sul traffico.
+612|Una nave sta attraversando la corsia di traffico ... con rotta ... e velocità ... nella posizione ... .
+613|Piccoli pescherecci nell'area intorno a ... . Navigate con prudenza.
+614|Sommergibili in attività nella zona di mare intorno a ... . Sono presenti unità di superficie di assistenza.
+615|Informazioni sulle rotte
+616|La rotta ... / La corsia di traffico ... è stata sospesa / soppressa / deviata.
+617|Informazioni idrografiche
+618|Previsione di marea per ... (nome della/e stazione/i) / area ... :
+619|È prevista una marea di ... metri sopra / sotto lo zero idrografico nella posizione ... / area ... verso le ... UTC.
+620|Sono previste maree eccezionalmente alte / basse nella posizione ... / area ... verso le ... UTC.
+621|La marea è montante:
+621~0|mancano ... ore all'alta marea / sono passate ... ore dalla bassa marea.
+621~1|è ... metri sotto l'alta marea / sopra la bassa marea.
+622|La marea è calante:
+622~0|sono passate ... ore dall'alta marea / mancano ... ore alla bassa marea.
+622~1|è ... metri sotto l'alta marea / sopra la bassa marea.
+623|La marea è all'acqua stanca (stanca di marea).
+624|La marea attuale è ... metri sopra / sotto lo zero idrografico nella posizione ... .
+625|La marea è ... metri sopra / sotto la previsione.
+626|La corrente di marea / la corrente è di ... nodi nella posizione ... .
+627|La marea porta in direzione ... gradi.
+628|La profondità dell'acqua è / non è sufficiente nella posizione ... .
+629|La profondità indicata sulla carta è aumentata / diminuita di ... metri per i venti / lo stato del mare.
+630|Informazioni sugli aiuti elettronici alla navigazione
+631|Satellite GPS ... (numero) inutilizzabile dalle ... (data e ora) alle ... (data e ora). Annullare un'ora dopo il ripristino.
+632|Stazione LORAN ... (nome / numero della principale / secondaria)
+633|RACON ... (nome della stazione) nella posizione ... fuori onda dalle ... (data e ora) alle ... (data e ora).
+634|Avvisi meteorologici
+635|L'avviso di burrasca / di tempesta è stato emesso alle ... UTC con inizio alle ... UTC.
+636|Avviso di burrasca / di tempesta. Vento alle ... UTC nell'area ... (area meteo) da direzione ... (punti cardinali) e forza Beaufort ... in rotazione antioraria / oraria verso ... (punti cardinali).
+637|L'avviso di tempesta tropicale è stato emesso alle ... UTC con inizio alle ... UTC.
+638|Avviso di tempesta tropicale alle ... UTC. Uragano ... (nome) / ciclone tropicale / tornado / willy-willy / tifone / ... con pressione centrale di ... millibar / ettopascal localizzato nella posizione ... . Movimento attuale ... (punti cardinali) a ... nodi. Venti di ... nodi entro un raggio di ... miglia nautiche dal centro. Onde oltre ... metri. Ulteriori informazioni sul canale VHF ... / frequenza ... (alle ... UTC).
+639|Informazioni meteorologiche
+640|Posizione della tempesta tropicale ... (nome) ... , traiettoria ... (punti cardinali), velocità di traslazione ... nodi.
+641|Direzione del vento ... (punti cardinali), forza Beaufort ... nella posizione ... .
+642|Il vento ruota in senso antiorario / orario ed è in aumento / in diminuzione.
+643|Il vento è previsto in aumento / in diminuzione nella posizione ... fino a forza Beaufort ... nelle prossime ... ore.
+644|Visibilità nella posizione ...
+644~0|... metri / miglia nautiche.
+644~1|ridotta da foschia / nebbia / neve / polvere / pioggia / ... .
+644~2|prevista in aumento / in diminuzione fino a ... metri / miglia nautiche nelle prossime ... ore.
+645|Mare / mare lungo nella posizione ...
+645~0|... metri da ... (punti cardinali).
+645~1|previsto in aumento / in diminuzione nelle prossime ... ore.
+646|Formazione di ghiaccio prevista / non prevista nell'area ... .
+647|Domande e risposte meteorologiche. Vedere A1/3.1 "Condizioni meteorologiche e idrologiche".
+648|Servizio di assistenza alla navigazione. Pilotaggio da terra tramite il servizio di assistenza alla navigazione: vedere anche A1/6.4 .3.18 – .3.21.
+649|Richiesta e identificazione
+650|È disponibile l'assistenza radar da terra?
+651|Sì, l'assistenza radar da terra è disponibile.
+652|No, l'assistenza radar da terra non è disponibile.
+653|L'assistenza radar da terra è disponibile dalle ... alle ... UTC.
+654|Richiedete assistenza alla navigazione per raggiungere ... ?
+655|Sì, richiedo assistenza alla navigazione.
+656|No, non richiedo assistenza alla navigazione.
+657|Qual è la vostra posizione?
+658|La mia posizione è rilevamento ... gradi ..., distanza ... chilometri / miglia nautiche da ... .
+659|Come avete ottenuto la vostra posizione?
+660|La mia posizione è stata ottenuta con GPS / RADAR / rilevamenti incrociati / osservazione astronomica / ... .
+661|Ripetete la vostra posizione per l'identificazione.
+662|Vi ho individuato sul mio schermo radar.
+663|La vostra posizione è rilevamento ... gradi, distanza ... chilometri / miglia nautiche da ... .
+664|Non riesco a individuarvi sul mio schermo radar.
+665|Quali sono la vostra rotta e velocità attuali?

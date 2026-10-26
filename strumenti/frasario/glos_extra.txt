@@ -1,0 +1,650 @@
+# inglese | italiano | categoria | definizione (facoltativa) | x = non usare in DeepL (parola comune con altri significati)
+# ---------- Scafo e struttura ----------
+hull | scafo | Scafo |  |
+keel | chiglia | Scafo |  |
+stem | dritto di prora | Scafo |  |
+sternpost | dritto di poppa | Scafo |  |
+bow | prora | Scafo | Parte anteriore della nave. |
+stern | poppa | Scafo | Parte posteriore della nave. |
+port side | lato sinistro, sinistra | Scafo | Lato sinistro della nave guardando verso prora. |
+port | sinistra (anche: porto) | Scafo | In manovra indica il lato sinistro; come luogo, il porto. | x
+starboard | dritta | Scafo | Lato destro della nave guardando verso prora. |
+starboard side | lato dritto, dritta | Scafo |  |
+amidships | a mezzanave | Scafo |  |
+midships | al centro (barra al centro) | Scafo | Nell'ordine al timone: barra a zero. |
+fore and aft | longitudinale (da prora a poppa) | Scafo |  |
+athwartships | trasversale | Scafo |  |
+forward | a prora, verso prora | Scafo |  | x
+aft | a poppa, verso poppa | Scafo |  |
+abeam | al traverso | Scafo | Direzione a 90° dalla prora. |
+ahead | di prora (a proravia) | Scafo |  | x
+astern | di poppa (a poppavia) | Scafo |  | x
+deck | ponte, coperta | Scafo |  |
+main deck | ponte principale | Scafo |  |
+weather deck | ponte scoperto | Scafo |  |
+freeboard deck | ponte di bordo libero | Scafo |  |
+tank deck | ponte delle cisterne | Scafo |  |
+forecastle | castello di prora | Scafo |  |
+poop deck | cassero di poppa | Scafo |  |
+superstructure | sovrastruttura | Scafo |  |
+accommodation | alloggi | Scafo |  |
+bridge | plancia | Scafo | Ponte di comando da cui si conduce la nave. | x
+navigation bridge | plancia di comando | Scafo |  |
+wheelhouse | timoneria | Scafo |  |
+bridge wing | aletta di plancia | Scafo |  |
+engine room | sala macchine | Scafo |  |
+steering gear room | locale agghiaccio | Scafo |  |
+hold | stiva | Scafo |  | x
+cargo hold | stiva | Scafo |  |
+hatch | boccaporto | Scafo |  |
+hatch cover | copertura di boccaporto | Scafo |  |
+bulkhead | paratia | Scafo |  |
+watertight bulkhead | paratia stagna | Scafo |  |
+collision bulkhead | paratia di collisione | Scafo |  |
+double bottom | doppiofondo | Scafo |  |
+tank | cisterna, cassa | Scafo |  |
+ballast tank | cassa di zavorra | Scafo |  |
+fuel tank | cassa del combustibile | Scafo |  |
+peak tank | gavone (cassa di picco) | Scafo |  |
+forepeak | gavone di prora | Scafo |  |
+afterpeak | gavone di poppa | Scafo |  |
+bilge | sentina | Scafo |  |
+frame | ordinata | Scafo |  | x
+beam | 1) baglio  2) larghezza | Scafo | Elemento strutturale trasversale; anche larghezza della nave. | x
+breadth | larghezza | Scafo |  |
+length overall | lunghezza fuori tutto | Scafo |  |
+length between perpendiculars | lunghezza tra le perpendicolari | Scafo |  |
+plating | fasciame (lamiere) | Scafo |  |
+shell plating | fasciame esterno | Scafo |  |
+bulwark | impavesata | Scafo |  |
+railing | battagliola | Scafo |  |
+scupper | ombrinale | Scafo |  |
+porthole | oblò | Scafo |  |
+manhole | passo d'uomo | Scafo |  |
+sounding pipe | tubo di sonda | Scafo |  |
+air pipe | tubo di sfogo d'aria | Scafo |  |
+sea chest | cassa di presa a mare | Scafo |  |
+watertight door | porta stagna | Scafo |  |
+watertight | stagno | Scafo |  |
+weathertight | stagno alle intemperie | Scafo |  |
+funnel | fumaiolo | Scafo |  |
+mast | albero | Scafo |  |
+rudder | timone | Scafo | Pala del timone. |
+propeller | elica | Scafo |  |
+controllable pitch propeller | elica a passo variabile | Scafo |  |
+bow thruster | elica di manovra prodiera (bow thruster) | Scafo |  |
+stern thruster | elica di manovra poppiera | Scafo |  |
+bulbous bow | bulbo prodiero | Scafo |  |
+draught marks | scala delle immersioni (marche di pescaggio) | Scafo |  |
+draft marks | scala delle immersioni (marche di pescaggio) | Scafo |  |
+load line | linea di massimo carico | Scafo |  |
+Plimsoll mark | marca di bordo libero (disco di Plimsoll) | Scafo |  |
+freeboard | bordo libero | Scafo | Distanza verticale tra la linea di galleggiamento e il ponte di bordo libero. |
+waterline | linea di galleggiamento | Scafo |  |
+hawse pipe | cubia | Scafo |  |
+chain locker | pozzo delle catene | Scafo |  |
+gangway | scalandrone, passerella | Scafo |  |
+pilot ladder | biscaggina del pilota | Scafo |  |
+# ---------- Stabilità e assetto ----------
+stability | stabilità | Stabilità |  |
+intact stability | stabilità allo stato integro | Stabilità |  |
+damage stability | stabilità in avaria | Stabilità |  |
+transverse stability | stabilità trasversale | Stabilità |  |
+longitudinal stability | stabilità longitudinale | Stabilità |  |
+metacentre | metacentro | Stabilità |  |
+metacenter | metacentro | Stabilità |  |
+metacentric height | altezza metacentrica (GM) | Stabilità |  |
+centre of gravity | baricentro (centro di gravità) | Stabilità |  |
+center of gravity | baricentro (centro di gravità) | Stabilità |  |
+centre of buoyancy | centro di carena | Stabilità |  |
+centre of flotation | centro di galleggiamento (della figura di galleggiamento) | Stabilità |  |
+righting arm | braccio di stabilità (GZ) | Stabilità |  |
+righting lever | braccio di stabilità (GZ) | Stabilità |  |
+righting moment | momento raddrizzante | Stabilità |  |
+heeling moment | momento sbandante | Stabilità |  |
+GZ curve | curva di stabilità statica (curva GZ) | Stabilità |  |
+angle of loll | angolo di loll | Stabilità |  |
+angle of heel | angolo di sbandamento | Stabilità |  |
+angle of list | angolo di sbandamento permanente | Stabilità |  |
+downflooding angle | angolo di allagamento progressivo | Stabilità |  |
+displacement | dislocamento | Stabilità |  |
+deadweight | portata lorda | Stabilità |  |
+lightship | nave scarica (dislocamento leggero) | Stabilità |  |
+gross tonnage | stazza lorda | Stabilità |  |
+net tonnage | stazza netta | Stabilità |  |
+trim | assetto | Stabilità | Differenza tra immersione a poppa e a prora. |
+trim by the head | assetto appruato | Stabilità |  |
+trim by the stern | assetto appoppato | Stabilità |  |
+down by the head | appruato | Stabilità |  |
+down by the stern | appoppato | Stabilità |  |
+even keel | in chiglia piana (assetto diritto) | Stabilità |  |
+draught forward | immersione a prora | Stabilità |  |
+draught aft | immersione a poppa | Stabilità |  |
+mean draught | immersione media | Stabilità |  |
+draft forward | immersione a prora | Stabilità |  |
+draft aft | immersione a poppa | Stabilità |  |
+mean draft | immersione media | Stabilità |  |
+heel | sbandamento (temporaneo) | Stabilità | Inclinazione trasversale passeggera: vento, onda, accostata. | x
+heeling | sbandamento | Stabilità |  |
+dangerous list | sbandamento pericoloso | Stabilità |  |
+list to port | sbandamento a sinistra | Stabilità |  |
+list to starboard | sbandamento a dritta | Stabilità |  |
+danger of capsizing | pericolo di capovolgimento | Stabilità |  |
+capsizing | capovolgimento | Stabilità |  |
+free surface effect | effetto delle superfici libere | Stabilità |  |
+free surface | superficie libera | Stabilità |  |
+inclining test | prova di stabilità | Stabilità |  |
+tonnes per centimetre immersion | tonnellate per centimetro di immersione (TPC) | Stabilità |  |
+TPC | tonnellate per centimetro di immersione (TPC) | Stabilità |  |
+moment to change trim | momento unitario d'assetto (MCT 1 cm) | Stabilità |  |
+MCTC | momento unitario d'assetto (MCT 1 cm) | Stabilità |  |
+hogging | inarcamento | Stabilità |  |
+sagging | insellamento | Stabilità |  |
+squat | squat (abbassamento dinamico) | Stabilità |  |
+reserve buoyancy | riserva di galleggiabilità | Stabilità |  |
+buoyancy | galleggiabilità (spinta) | Stabilità |  |
+ballast | zavorra | Stabilità |  |
+ballast water | acqua di zavorra | Stabilità |  |
+deballasting | sbarco della zavorra (dezavorramento) | Stabilità |  |
+stability calculation | calcolo di stabilità | Stabilità |  |
+loading computer | computer di caricazione | Stabilità |  |
+# ---------- Manovra e governo ----------
+helm | timone (barra) | Manovra |  |
+wheel | ruota del timone | Manovra |  | x
+helmsman | timoniere | Manovra |  |
+wheel order | ordine al timone | Manovra |  |
+engine order | ordine alla macchina | Manovra |  |
+rudder angle | angolo di barra | Manovra |  |
+hard-a-port | tutta barra a sinistra | Manovra |  |
+hard-a-starboard | tutta barra a dritta | Manovra |  |
+steady as she goes | via così | Manovra |  |
+ease to | riduci (la barra) a | Manovra |  |
+finished with wheel | timone libero (fine col timone) | Manovra |  |
+finished with engine | macchina libera (fine manovra) | Manovra |  |
+full ahead | avanti tutta | Manovra |  |
+half ahead | avanti mezza | Manovra |  |
+slow ahead | avanti adagio | Manovra |  |
+dead slow ahead | avanti molto adagio | Manovra |  |
+stop engine | stop macchina | Manovra |  |
+dead slow astern | indietro molto adagio | Manovra |  |
+slow astern | indietro adagio | Manovra |  |
+half astern | indietro mezza | Manovra |  |
+full astern | indietro tutta | Manovra |  |
+emergency full astern | indietro tutta d'emergenza | Manovra |  |
+turning circle | curva di evoluzione | Manovra |  |
+advance | avanzo | Manovra | Spostamento nella direzione della prora iniziale durante l'evoluzione. | x
+transfer | traslazione | Manovra | Spostamento laterale durante l'evoluzione. | x
+tactical diameter | diametro tattico | Manovra |  |
+pivot point | punto di rotazione (pivot point) | Manovra |  |
+headway | abbrivio avanti | Manovra |  |
+sternway | abbrivio indietro | Manovra |  |
+way | abbrivio | Manovra |  | x
+making way | con abbrivio (in moto sull'acqua) | Manovra |  |
+stopping distance | spazio d'arresto | Manovra |  |
+manoeuvre | manovra | Manovra |  |
+maneuver | manovra | Manovra |  |
+manoeuvrability | manovrabilità | Manovra |  |
+alter course | accostare (cambiare rotta) | Manovra |  |
+alteration of course | accostata, cambio di rotta | Manovra |  |
+course alteration | accostata, cambio di rotta | Manovra |  |
+reduce speed | ridurre la velocità | Manovra |  |
+increase speed | aumentare la velocità | Manovra |  |
+keep clear | tenersi lontano (lasciare libero) | Manovra |  |
+overtake | sorpassare | Manovra |  |
+yaw | imbardata (straorzata) | Manovra |  |
+roll | rollio | Manovra |  | x
+rolling | rollio | Manovra |  |
+pitch | beccheggio (anche: passo dell'elica) | Manovra |  | x
+pitching | beccheggio | Manovra |  |
+wake | scia | Manovra |  |
+bank effect | effetto sponda | Manovra |  |
+shallow water effect | effetto dei bassi fondali | Manovra |  |
+interaction | interazione (tra navi) | Manovra |  |
+autopilot | pilota automatico | Manovra |  |
+hand steering | governo a mano | Manovra |  |
+manual steering | governo a mano | Manovra |  |
+steering gear | agghiaccio (macchina del timone) | Manovra |  |
+steering failure | avaria al timone | Manovra |  |
+# ---------- Ancoraggio e ormeggio ----------
+anchor | ancora | Ormeggio |  |
+anchor chain | catena dell'ancora | Ormeggio |  |
+anchorage | ancoraggio (zona di fonda) | Ormeggio |  |
+at anchor | alla fonda | Ormeggio |  |
+drop anchor | dare fondo all'ancora | Ormeggio |  |
+let go anchor | dare fondo all'ancora | Ormeggio |  |
+weigh anchor | salpare l'ancora | Ormeggio |  |
+heave up anchor | salpare l'ancora | Ormeggio |  |
+anchor aweigh | ancora spedata | Ormeggio | L'ancora si è staccata dal fondo. |
+anchor up and down | catena a picco | Ormeggio |  |
+anchor clear of water | ancora fuori dall'acqua | Ormeggio |  |
+anchor home | ancora a posto (in cubia) | Ormeggio |  |
+anchor dragging | ancora che ara | Ormeggio |  |
+anchor holding | ancora che tiene (ha fatto presa) | Ormeggio |  |
+anchor watch | guardia alla fonda | Ormeggio |  |
+anchor light | fanale di fonda | Ormeggio |  |
+windlass | salpancore | Ormeggio |  |
+capstan | argano | Ormeggio |  |
+winch | verricello | Ormeggio |  |
+mooring winch | verricello d'ormeggio | Ormeggio |  |
+bollard | bitta | Ormeggio |  |
+fairlead | passacavo | Ormeggio |  |
+mooring line | cavo d'ormeggio | Ormeggio |  |
+mooring buoy | boa d'ormeggio | Ormeggio |  |
+head line | cavo di prora | Ormeggio |  |
+stern line | cavo di poppa | Ormeggio |  |
+spring line | spring | Ormeggio |  |
+breast line | traversino | Ormeggio |  |
+heaving line | sagola di lancio | Ormeggio |  |
+messenger line | sagola di richiamo | Ormeggio |  |
+towline | cavo di rimorchio | Ormeggio |  |
+tow line | cavo di rimorchio | Ormeggio |  |
+towrope | cavo di rimorchio | Ormeggio |  |
+tug | rimorchiatore | Ormeggio |  |
+towage | rimorchio | Ormeggio |  |
+fender | parabordo | Ormeggio |  |
+quay | banchina | Ormeggio |  |
+pier | molo | Ormeggio |  |
+jetty | pontile | Ormeggio |  |
+dolphin | briccola (duca d'alba) | Ormeggio |  | x
+alongside | accostato (a banchina o a un'altra nave) | Ormeggio |  |
+berthing | ormeggio (manovra di accosto) | Ormeggio |  |
+unberthing | disormeggio | Ormeggio |  |
+make fast | dare volta | Ormeggio |  |
+slack away | lascare | Ormeggio |  |
+heave in | virare (alare) | Ormeggio |  |
+single up | lasciare un solo cavo per ormeggio | Ormeggio |  |
+cast off | mollare (gli ormeggi) | Ormeggio |  |
+mooring | ormeggio | Ormeggio |  |
+unmooring | disormeggio | Ormeggio |  |
+# ---------- Navigazione e carteggio ----------
+true course | rotta vera | Navigazione |  |
+magnetic course | rotta magnetica | Navigazione |  |
+compass course | rotta bussola | Navigazione |  |
+course over ground | rotta sul fondo (COG) | Navigazione |  |
+speed over ground | velocità sul fondo (SOG) | Navigazione |  |
+speed through the water | velocità propria (sull'acqua) | Navigazione |  |
+ground speed | velocità sul fondo | Navigazione |  |
+bearing | rilevamento | Navigazione |  |
+true bearing | rilevamento vero | Navigazione |  |
+relative bearing | rilevamento polare | Navigazione |  |
+compass bearing | rilevamento bussola | Navigazione |  |
+variation | declinazione magnetica | Navigazione | In inglese "variation" è la declinazione magnetica. | x
+magnetic variation | declinazione magnetica | Navigazione |  |
+deviation | deviazione (della bussola) | Navigazione |  |
+compass error | variazione (errore della bussola) | Navigazione | Somma di declinazione e deviazione. |
+gyro error | errore della girobussola | Navigazione |  |
+dead reckoning | navigazione stimata (stima) | Navigazione |  |
+estimated position | punto stimato | Navigazione |  |
+fix | punto nave (osservato) | Navigazione |  | x
+position fix | punto nave | Navigazione |  |
+position line | retta di posizione (LOP) | Navigazione |  |
+line of position | retta di posizione (LOP) | Navigazione |  |
+running fix | punto nave con rilevamenti successivi | Navigazione |  |
+cross bearing | rilevamenti incrociati | Navigazione |  |
+set and drift | direzione e velocità della corrente (Dc, Vc) | Navigazione | Set = direzione verso cui va la corrente; drift = sua velocità. |
+set | direzione della corrente (Dc) | Navigazione |  | x
+drift | velocità della corrente (Vc) / deriva | Navigazione |  | x
+current | corrente | Navigazione |  | x
+tidal stream | corrente di marea | Navigazione |  |
+passage plan | piano di traversata (passage plan) | Navigazione |  |
+voyage plan | piano di viaggio | Navigazione |  |
+chart | carta nautica | Navigazione |  | x
+nautical chart | carta nautica | Navigazione |  |
+chart datum | zero idrografico (livello di riferimento della carta) | Navigazione |  |
+sounding | scandagliata (profondità) | Navigazione |  |
+depth | profondità | Navigazione |  |
+under keel clearance | acqua sotto la chiglia (UKC) | Navigazione |  |
+nautical mile | miglio nautico | Navigazione |  |
+knot | nodo | Navigazione |  |
+knots | nodi | Navigazione |  |
+latitude | latitudine | Navigazione |  |
+longitude | longitudine | Navigazione |  |
+meridian | meridiano | Navigazione |  |
+parallel | parallelo | Navigazione |  | x
+equator | equatore | Navigazione |  |
+great circle | ortodromia (circolo massimo) | Navigazione |  |
+rhumb line | lossodromia | Navigazione |  |
+Mercator chart | carta di Mercatore | Navigazione |  |
+scale | scala | Navigazione |  | x
+landmark | punto cospicuo | Navigazione |  |
+lighthouse | faro | Navigazione |  |
+light vessel | battello fanale | Navigazione |  |
+buoy | boa | Navigazione |  |
+lateral mark | segnale laterale | Navigazione |  |
+cardinal mark | segnale cardinale | Navigazione |  |
+isolated danger mark | segnale di pericolo isolato | Navigazione |  |
+safe water mark | segnale di acque sicure | Navigazione |  |
+special mark | segnale speciale | Navigazione |  |
+new danger | nuovo pericolo | Navigazione |  |
+leading lights | fanali di allineamento | Navigazione |  |
+leading line | allineamento | Navigazione |  |
+sector light | luce a settori | Navigazione |  |
+light characteristic | caratteristica della luce | Navigazione |  |
+shoal | secca (basso fondale) | Navigazione |  |
+shallow water | acque basse | Navigazione |  |
+reef | scogliera | Navigazione |  |
+sandbank | banco di sabbia | Navigazione |  |
+channel | canale | Navigazione |  | x
+narrow channel | passaggio stretto | Navigazione |  |
+traffic separation scheme | schema di separazione del traffico | Navigazione |  |
+inshore traffic zone | zona di traffico costiero | Navigazione |  |
+precautionary area | area di precauzione | Navigazione |  |
+area to be avoided | zona da evitare | Navigazione |  |
+deep water route | rotta per acque profonde | Navigazione |  |
+roadstead | rada | Navigazione |  |
+harbour | porto | Navigazione |  |
+harbour entrance | imboccatura del porto | Navigazione |  |
+breakwater | diga foranea (frangiflutti) | Navigazione |  |
+Sailing Directions | Portolano | Navigazione |  |
+List of Lights | Elenco dei fari e segnali da nebbia | Navigazione |  |
+Notices to Mariners | Avvisi ai naviganti | Navigazione |  |
+navigational warning | avviso ai naviganti (avvertimento) | Navigazione |  |
+tide tables | tavole di marea | Navigazione |  |
+distance | distanza | Navigazione |  |
+range | distanza (portata) | Navigazione |  | x
+closest point of approach | punto di massimo avvicinamento (CPA) | Navigazione |  |
+time to closest point of approach | tempo al punto di massimo avvicinamento (TCPA) | Navigazione |  |
+estimated time of arrival | ora stimata di arrivo (ETA) | Navigazione |  |
+position | posizione | Navigazione |  | x
+# ---------- Strumenti ----------
+radar | radar | Strumenti |  |
+radar range | portata radar (scala) | Strumenti |  |
+radar target | bersaglio radar | Strumenti |  |
+sea clutter | eco del mare (disturbo del mare) | Strumenti |  |
+rain clutter | eco della pioggia | Strumenti |  |
+ARPA | ARPA (radar con plottaggio automatico) | Strumenti |  |
+AIS | AIS (sistema di identificazione automatica) | Strumenti |  |
+ECDIS | ECDIS (carta elettronica) | Strumenti |  |
+electronic chart | carta elettronica | Strumenti |  |
+gyrocompass | girobussola | Strumenti |  |
+gyro compass | girobussola | Strumenti |  |
+magnetic compass | bussola magnetica | Strumenti |  |
+repeater | ripetitrice | Strumenti |  |
+echo sounder | ecoscandaglio | Strumenti |  |
+log | solcometro | Strumenti |  | x
+speed log | solcometro | Strumenti |  |
+Doppler log | solcometro Doppler | Strumenti |  |
+logbook | giornale di bordo | Strumenti |  |
+sextant | sestante | Strumenti |  |
+chronometer | cronometro | Strumenti |  |
+barometer | barometro | Strumenti |  |
+anemometer | anemometro | Strumenti |  |
+voyage data recorder | registratore dei dati di viaggio (VDR) | Strumenti |  |
+NAVTEX | NAVTEX | Strumenti |  |
+Inmarsat | Inmarsat | Strumenti |  |
+satellite | satellite | Strumenti |  |
+# ---------- Meteorologia e mare ----------
+wind | vento | Meteo |  |
+wind force | forza del vento | Meteo |  |
+wind direction | direzione del vento | Meteo |  |
+Beaufort scale | scala Beaufort | Meteo |  |
+gale | burrasca | Meteo |  |
+gale warning | avviso di burrasca | Meteo |  |
+storm | tempesta | Meteo |  |
+storm warning | avviso di tempesta | Meteo |  |
+tropical storm | tempesta tropicale | Meteo |  |
+hurricane | uragano | Meteo |  |
+typhoon | tifone | Meteo |  |
+cyclone | ciclone | Meteo |  |
+depression | depressione (bassa pressione) | Meteo |  |
+low pressure | bassa pressione | Meteo |  |
+high pressure | alta pressione | Meteo |  |
+anticyclone | anticiclone | Meteo |  |
+cold front | fronte freddo | Meteo |  |
+warm front | fronte caldo | Meteo |  |
+occluded front | fronte occluso | Meteo |  |
+isobar | isobara | Meteo |  |
+pressure gradient | gradiente di pressione | Meteo |  |
+weather forecast | previsioni del tempo (bollettino meteo) | Meteo |  |
+weather report | bollettino meteorologico | Meteo |  |
+visibility | visibilità | Meteo |  |
+restricted visibility | visibilità ridotta | Meteo |  |
+fog | nebbia | Meteo |  |
+mist | foschia | Meteo |  |
+haze | caligine | Meteo |  |
+squall | groppo | Meteo |  |
+gust | raffica | Meteo |  |
+calm | calma | Meteo |  |
+thunderstorm | temporale | Meteo |  |
+hail | grandine | Meteo |  |
+sleet | nevischio | Meteo |  |
+sea state | stato del mare | Meteo |  |
+swell | mare lungo (onda lunga) | Meteo |  |
+rough sea | mare agitato | Meteo |  |
+heavy sea | mare grosso | Meteo |  |
+smooth sea | mare calmo (poco mosso) | Meteo |  |
+wave height | altezza d'onda | Meteo |  |
+breaking waves | frangenti | Meteo |  |
+tide | marea | Meteo |  |
+high water | alta marea | Meteo |  |
+low water | bassa marea | Meteo |  |
+spring tide | marea viva (sizigiale) | Meteo |  |
+neap tide | marea morta (di quadratura) | Meteo |  |
+flood tide | marea montante (flusso) | Meteo |  |
+ebb tide | marea calante (riflusso) | Meteo |  |
+tidal range | escursione di marea | Meteo |  |
+storm surge | mareggiata (sopraelevazione da tempesta) | Meteo |  |
+ice | ghiaccio | Meteo |  |
+pack ice | pack (banchisa alla deriva) | Meteo |  |
+iceberg | iceberg | Meteo |  |
+ice accretion | accumulo di ghiaccio | Meteo |  |
+icebreaker | rompighiaccio | Meteo |  |
+ice-breaker | rompighiaccio | Meteo |  |
+# ---------- COLREG ----------
+vessel | nave | COLREG |  | x
+power-driven vessel | nave a propulsione meccanica | COLREG |  |
+sailing vessel | nave a vela | COLREG |  |
+vessel engaged in fishing | nave intenta alla pesca | COLREG |  |
+vessel not under command | nave che non governa | COLREG |  |
+vessel restricted in her ability to manoeuvre | nave con capacità di manovra limitata | COLREG |  |
+restricted in her ability to manoeuvre | con capacità di manovra limitata | COLREG |  |
+constrained by her draught | condizionata dal proprio pescaggio | COLREG |  |
+seaplane | idrovolante | COLREG |  |
+give-way vessel | nave che deve lasciare libera la rotta | COLREG |  |
+stand-on vessel | nave che mantiene rotta e velocità | COLREG |  |
+lookout | servizio di vedetta (vedetta) | COLREG |  |
+risk of collision | rischio di collisione | COLREG |  |
+collision | collisione | COLREG |  |
+overtaking | sorpasso | COLREG |  |
+overtaking vessel | nave che sorpassa | COLREG |  |
+head-on situation | navi con rotte opposte | COLREG |  |
+crossing situation | navi con rotte che si incrociano | COLREG |  |
+masthead light | fanale di testa d'albero | COLREG |  |
+sidelights | fanali laterali | COLREG |  |
+sternlight | fanale di coda | COLREG |  |
+towing light | fanale di rimorchio | COLREG |  |
+all-round light | fanale visibile per tutto l'orizzonte | COLREG |  |
+flashing light | luce lampeggiante | COLREG |  |
+navigation lights | fanali di navigazione | COLREG |  |
+day shapes | segnali diurni | COLREG |  |
+ball | pallone | COLREG |  | x
+cone | cono | COLREG |  |
+diamond | rombo | COLREG |  | x
+cylinder | cilindro | COLREG |  |
+sound signal | segnale sonoro | COLREG |  |
+whistle | fischio | COLREG |  |
+short blast | suono breve | COLREG |  |
+prolonged blast | suono prolungato | COLREG |  |
+bell | campana | COLREG |  |
+gong | gong | COLREG |  |
+manoeuvring signals | segnali di manovra | COLREG |  |
+distress signals | segnali di pericolo (di soccorso) | COLREG |  |
+# ---------- Sicurezza ed emergenze ----------
+fire | incendio | Sicurezza |  |
+explosion | esplosione | Sicurezza |  |
+fire fighting | lotta antincendio | Sicurezza |  |
+fire alarm | allarme antincendio | Sicurezza |  |
+fire extinguisher | estintore | Sicurezza |  |
+fire hose | manichetta antincendio | Sicurezza |  |
+fire hydrant | idrante | Sicurezza |  |
+fire pump | pompa antincendio | Sicurezza |  |
+emergency fire pump | pompa antincendio di emergenza | Sicurezza |  |
+fire door | porta tagliafuoco | Sicurezza |  |
+fire damper | serranda tagliafuoco | Sicurezza |  |
+smoke detector | rivelatore di fumo | Sicurezza |  |
+sprinkler | impianto sprinkler | Sicurezza |  |
+CO2 system | impianto antincendio a CO2 | Sicurezza |  |
+foam | schiuma | Sicurezza |  |
+breathing apparatus | autorespiratore | Sicurezza |  |
+fireman's outfit | equipaggiamento da vigile del fuoco | Sicurezza |  |
+fire drill | esercitazione antincendio | Sicurezza |  |
+abandon ship | abbandono nave | Sicurezza |  |
+abandon ship drill | esercitazione di abbandono nave | Sicurezza |  |
+boat drill | esercitazione con le lance | Sicurezza |  |
+lifeboat | lancia di salvataggio | Sicurezza |  |
+rescue boat | battello di emergenza (rescue boat) | Sicurezza |  |
+liferaft | zattera di salvataggio | Sicurezza |  |
+life raft | zattera di salvataggio | Sicurezza |  |
+davit | gru di ammaino (gruetta) | Sicurezza |  |
+lifejacket | giubbotto di salvataggio | Sicurezza |  |
+life-jacket | giubbotto di salvataggio | Sicurezza |  |
+immersion suit | tuta d'immersione | Sicurezza |  |
+thermal protective aid | mezzo di protezione termica | Sicurezza |  |
+lifebuoy | salvagente anulare | Sicurezza |  |
+embarkation station | punto di imbarco (sui mezzi collettivi) | Sicurezza |  |
+general alarm | allarme generale | Sicurezza |  |
+person overboard | uomo a mare | Sicurezza |  |
+man overboard | uomo a mare | Sicurezza |  |
+pyrotechnics | artifizi pirotecnici | Sicurezza |  |
+rocket parachute flare | razzo a paracadute | Sicurezza |  |
+hand flare | fuoco a mano | Sicurezza |  |
+smoke signal | segnale fumogeno | Sicurezza |  |
+line-throwing apparatus | apparecchio lanciasagole | Sicurezza |  |
+damage control | controllo delle avarie | Sicurezza |  |
+leak | falla | Sicurezza |  |
+collision mat | paglietto turafalle | Sicurezza |  |
+shoring | puntellamento | Sicurezza |  |
+bilge pump | pompa di sentina | Sicurezza |  |
+grounding | incaglio | Sicurezza |  |
+aground | incagliato | Sicurezza |  |
+run aground | incagliarsi | Sicurezza |  |
+sinking | affondamento | Sicurezza |  |
+enclosed space | spazio chiuso (confinato) | Sicurezza |  |
+permit to work | permesso di lavoro | Sicurezza |  |
+personal protective equipment | dispositivi di protezione individuale (DPI) | Sicurezza |  |
+safety harness | imbracatura di sicurezza | Sicurezza |  |
+first aid | primo soccorso | Sicurezza |  |
+medical assistance | assistenza medica | Sicurezza |  |
+injured person | ferito | Sicurezza |  |
+casualties | vittime | Sicurezza |  |
+evacuation | evacuazione | Sicurezza |  |
+piracy | pirateria | Sicurezza |  |
+armed attack | attacco armato | Sicurezza |  |
+armed robbery | rapina a mano armata | Sicurezza |  |
+stowaway | clandestino | Sicurezza |  |
+security level | livello di security | Sicurezza |  |
+# ---------- SAR, GMDSS e radio ----------
+search and rescue | ricerca e soccorso | SAR e radio |  |
+rescue coordination centre | centro di coordinamento del soccorso (RCC) | SAR e radio |  |
+on-scene co-ordinator | coordinatore sul posto (OSC) | SAR e radio |  |
+search area | area di ricerca | SAR e radio |  |
+expanding square search | ricerca a quadrato espanso | SAR e radio |  |
+sector search | ricerca a settori | SAR e radio |  |
+parallel track search | ricerca a percorsi paralleli | SAR e radio |  |
+distress | pericolo (soccorso) | SAR e radio |  |
+distress call | chiamata di soccorso | SAR e radio |  |
+distress message | messaggio di soccorso | SAR e radio |  |
+distress relay | ritrasmissione di soccorso (Mayday relay) | SAR e radio |  |
+urgency message | messaggio di urgenza | SAR e radio |  |
+safety message | messaggio di sicurezza | SAR e radio |  |
+acknowledge | confermare la ricezione | SAR e radio |  |
+acknowledgement | conferma di ricezione | SAR e radio |  |
+coast radio station | stazione radio costiera | SAR e radio |  |
+coast guard | guardia costiera | SAR e radio |  |
+coastguard | guardia costiera | SAR e radio |  |
+working channel | canale di lavoro | SAR e radio |  |
+channel 16 | canale 16 | SAR e radio |  |
+radio silence | silenzio radio | SAR e radio |  |
+signal strength | intensità del segnale | SAR e radio |  |
+call sign | nominativo internazionale (call sign) | SAR e radio |  |
+over | passo | SAR e radio | Fine della trasmissione, attendo risposta. | x
+out | chiudo | SAR e radio | Fine della comunicazione. | x
+say again | ripetete | SAR e radio |  |
+stand by | rimanete in ascolto (attendete) | SAR e radio |  | x
+mistake | errore | SAR e radio |  |
+correction | correzione | SAR e radio |  |
+helicopter | elicottero | SAR e radio |  |
+winching | recupero con verricello | SAR e radio |  |
+# ---------- Porto, pilotaggio e VTS ----------
+pilot | pilota | Porto e VTS |  |
+pilot boat | pilotina | Porto e VTS |  |
+pilot station | stazione piloti | Porto e VTS |  |
+pilot boarding point | punto d'imbarco del pilota | Porto e VTS |  |
+pilotage | pilotaggio | Porto e VTS |  |
+vessel traffic service | servizio di assistenza al traffico (VTS) | Porto e VTS |  |
+port authority | autorità portuale | Porto e VTS |  |
+harbour master | comandante del porto (capitaneria) | Porto e VTS |  |
+port of departure | porto di partenza | Porto e VTS |  |
+port of destination | porto di destinazione | Porto e VTS |  |
+inbound | in entrata | Porto e VTS |  |
+outbound | in uscita | Porto e VTS |  |
+# ---------- Carico ----------
+cargo | carico | Carico |  |
+dangerous goods | merci pericolose | Carico |  |
+bulk cargo | carico alla rinfusa | Carico |  |
+bulk carrier | portarinfuse | Carico |  |
+general cargo | carico generale (merci varie) | Carico |  |
+container | contenitore (container) | Carico |  |
+container ship | nave portacontainer | Carico |  |
+tanker | nave cisterna | Carico |  |
+oil tanker | petroliera | Carico |  |
+chemical tanker | chimichiera | Carico |  |
+gas carrier | gasiera | Carico |  |
+ro-ro | ro-ro (nave a carico rotabile) | Carico |  |
+reefer | nave frigorifera | Carico |  |
+stowage | stivaggio | Carico |  |
+stowage plan | piano di carico | Carico |  |
+lashing | rizzaggio | Carico |  |
+securing | fissaggio (del carico) | Carico |  |
+loading | caricazione | Carico |  |
+discharging | discarica (scaricazione) | Carico |  |
+crane | gru | Carico |  |
+derrick | picco di carico | Carico |  |
+ullage | spazio vuoto (ullage) | Carico |  |
+manifold | collettore (manifold) | Carico |  |
+cargo hose | manichetta del carico | Carico |  |
+bunkers | combustibile (bunker) | Carico |  |
+bunkering | rifornimento di combustibile (bunkeraggio) | Carico |  |
+IMDG Code | Codice IMDG | Carico |  |
+bill of lading | polizza di carico | Carico |  |
+cargo manifest | manifesto di carico | Carico |  |
+# ---------- Macchina ----------
+main engine | macchina principale | Macchina |  |
+auxiliary engine | motore ausiliario | Macchina |  |
+generator | generatore | Macchina |  |
+emergency generator | generatore di emergenza | Macchina |  |
+blackout | blackout (mancanza totale di energia) | Macchina |  |
+engine failure | avaria alla macchina | Macchina |  |
+propeller shaft | asse portaelica | Macchina |  |
+boiler | caldaia | Macchina |  |
+fuel oil | combustibile (nafta) | Macchina |  |
+lubricating oil | olio lubrificante | Macchina |  |
+cooling water | acqua di raffreddamento | Macchina |  |
+revolutions | giri (dell'elica) | Macchina |  |
+# ---------- Equipaggio e servizio ----------
+master | comandante | Equipaggio |  | x
+captain | comandante | Equipaggio |  |
+officer of the watch | ufficiale di guardia | Equipaggio |  |
+chief officer | primo ufficiale (comandante in seconda) | Equipaggio |  |
+second officer | secondo ufficiale | Equipaggio |  |
+third officer | terzo ufficiale | Equipaggio |  |
+chief engineer | direttore di macchina | Equipaggio |  |
+engineer | ufficiale di macchina | Equipaggio |  | x
+boatswain | nostromo | Equipaggio |  |
+bosun | nostromo | Equipaggio |  |
+able seaman | marinaio (comune di prima) | Equipaggio |  |
+crew | equipaggio | Equipaggio |  |
+passengers | passeggeri | Equipaggio |  |
+watch | guardia | Equipaggio |  | x
+handing over the watch | passaggio delle consegne di guardia | Equipaggio |  |
+conn | comando della manovra (conn) | Equipaggio |  |
+# ---------- Inquinamento ----------
+pollution | inquinamento | Inquinamento |  |
+oil spill | sversamento di idrocarburi | Inquinamento |  |
+oil pollution | inquinamento da idrocarburi | Inquinamento |  |
+discharge | scarico | Inquinamento |  | x
+boom | panna galleggiante | Inquinamento |  | x
+oil boom | panna galleggiante | Inquinamento |  |
+dispersant | disperdente | Inquinamento |  |
+garbage | rifiuti | Inquinamento |  |
+marine pollutant | inquinante marino | Inquinamento |  |

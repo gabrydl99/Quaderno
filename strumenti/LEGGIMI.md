@@ -28,3 +28,18 @@ Sorgenti: gli artefatti "Assetto e Pescaggi" e "Carteggio con carta 5D". Grafica
 Tabelle `segnalazioni` (chiunque invia, legge solo il ruolo admin) e `progressi` (ognuno solo i suoi).
 Funzione `elimina_account()`. Admin = `app_metadata.ruolo = 'admin'` (account Gabrydl).
 Accesso con nome utente: l'app usa `nome@gabrydl99.github.io` come indirizzo (nessuna email inviata).
+
+## Frasario e Traduttore SMCP (pagina `frasario/`)
+Frasi IMO SMCP (Ris. A.918(22), dal PDF "frasi inglesi") con traduzione italiana, glossario nautico IT ⇄ EN, traduttore.
+- Dati: `frasario/dati.json`, generato da `strumenti/frasario/` (non modificarlo a mano):
+  ```
+  python3 strumenti/frasario/build_dati.py frasario/dati.json
+  ```
+  Scrive anche `frasario/deepl_en_it.tsv` e `deepl_it_en.tsv` (glossario per DeepL).
+  Traduzioni delle frasi: `it_*.txt` (riga `numero|testo`); tabelle ordini timone/macchina: `tavole.json`;
+  sezione GENERAL: `generale.py`; glossario SMCP: `glos_smcp_it.py`; altri termini: `glos_extra.txt` (`x` = non usare in DeepL).
+- Riconoscimento del testo da foto: Tesseract.js 7 in `frasario/ocr/` (inglese + italiano, ~7 MB scaricati solo al primo uso, cache `qp-ocr` nel service worker).
+- DeepL: funzione Supabase `traduci` (sorgente `strumenti/frasario/funzione-traduci.ts`), segreto `DEEPL_KEY`.
+  Solo utenti con accesso, max 300 caratteri, 30 richieste ogni 10 minuti. Legge il glossario dai TSV del sito:
+  se cambiano, crea da sola il nuovo glossario su DeepL. Controllo: GET `.../functions/v1/traduci?stato=1`.
+- Pagina iniziale: bolla e riquadro in `strumenti/home-aggiunte.html` (inclusi da `costruisci_pwa.py`).

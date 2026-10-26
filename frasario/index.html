@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="it" data-pagina="frasario">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Frasario e Traduttore SMCP · Quaderno Patentino</title>
+<meta name="description" content="Frasi standard IMO SMCP, glossario nautico italiano-inglese e traduttore.">
+<meta name="theme-color" content="#eaf2f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#06111b" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<script>
+/* stesso tema (chiaro/scuro) scelto nel Quaderno */
+try { var t = localStorage.getItem('qp-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<style>
+/* Frasario e Traduttore SMCP: stessa grafica "carta nautica" del Quaderno (strumenti/tema.css). Colonna unica larga 820px. */
+:root{
+  --paper:#eaf2f7; --sheet:#ffffff; --grid:rgba(10,76,171,.055); --line:#cdd9e3;
+  --ink:#0c1b2b; --muted:#43576a; --blue:#0a4cab; --red:#b31d17; --green:#14692a; --orange:#a65a00;
+  --chip:#e3ecf3; --acc:#b0137c; --acc-soft:#f8e6f1; --uk:#012169; --uk-red:#c8102e;
+  --f-body:"Fira Sans","Segoe UI",Roboto,Arial,sans-serif; --f-mono:"Fira Mono",ui-monospace,Consolas,monospace;
+  --r-lg:16px; --r-md:12px; --r-sm:8px; color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#06111b; --sheet:#0c1a27; --grid:rgba(143,194,255,.05); --line:#24394c;
+  --ink:#eef4f9; --muted:#a8bccc; --blue:#8fc2ff; --red:#ff8d84; --green:#7fe391; --orange:#ffbd5e;
+  --chip:#132636; --acc:#ff7fcb; --acc-soft:#2a1426; --uk:#0a2a7a; --uk-red:#e0384f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#06111b; --sheet:#0c1a27; --grid:rgba(143,194,255,.05); --line:#24394c;
+  --ink:#eef4f9; --muted:#a8bccc; --blue:#8fc2ff; --red:#ff8d84; --green:#7fe391; --orange:#ffbd5e;
+  --chip:#132636; --acc:#ff7fcb; --acc-soft:#2a1426; --uk:#0a2a7a; --uk-red:#e0384f; color-scheme:dark}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 60px)}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 var(--f-body);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+button,input,textarea{font:inherit;color:inherit}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+/* barra "torna al Quaderno" (uguale alle pagine Esercizi) */
+.qp-torna{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;gap:10px;padding-block:8px;
+  padding-left:max(14px,env(safe-area-inset-left,0px));padding-right:max(14px,env(safe-area-inset-right,0px));
+  background:color-mix(in srgb,var(--paper) 92%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);font:600 15px/1.2 var(--f-body)}
+.qp-torna a{flex:none;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:0 12px 0 8px;border-radius:999px;border:1.5px solid var(--line);background:var(--sheet);color:var(--ink);text-decoration:none}
+.qp-torna svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.qp-torna span{color:var(--muted);font-weight:500;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+
+.wrap{max-width:820px;margin:0 auto;padding-block:16px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:14px}
+h1{margin:0;font-size:1.5rem;line-height:1.2;text-wrap:balance}
+h1 small{display:block;font-size:.88rem;font-weight:500;color:var(--muted);margin-top:4px}
+.tabs{display:flex;gap:4px;background:var(--chip);padding:4px;border-radius:14px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 53px);z-index:4}
+.tab{flex:1;border:0;background:none;padding:9px 4px;border-radius:10px;font-weight:600;font-size:.9rem;color:var(--muted);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--sheet);color:var(--ink);box-shadow:0 1px 3px rgba(6,17,27,.12)}
+.sheet{background:var(--sheet);border:1px solid var(--line);border-radius:var(--r-lg);padding:16px;display:flex;flex-direction:column;gap:14px;min-width:0;box-shadow:0 1px 2px rgba(6,17,27,.05),0 12px 32px -14px rgba(6,17,27,.18)}
+
+/* ---------- traduttore ---------- */
+.dir{display:flex;align-items:center;gap:8px;font-weight:600;flex-wrap:wrap}
+.lang{padding:5px 10px;border-radius:999px;background:var(--chip);font-size:.82rem;letter-spacing:.04em}
+.dir .inv{border:1.5px solid var(--line);background:var(--sheet);border-radius:999px;width:40px;height:34px;cursor:pointer;display:grid;place-items:center}
+.dir svg,.campo svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.dir .auto{margin-left:auto;font-size:.76rem;color:var(--muted);font-weight:500}
+.campo{display:flex;align-items:flex-start;gap:6px;border:1.5px solid var(--line);border-radius:var(--r-md);padding:4px 6px 4px 12px;background:var(--paper)}
+.campo:focus-within{border-color:var(--blue)}
+.campo textarea{flex:1;min-width:0;border:0;background:none;padding:8px 0;font-size:1.05rem;line-height:1.4;outline:none;resize:none;min-height:2.2em;max-height:10em}
+.campo .ico{flex:none;width:40px;height:40px;border:0;border-radius:10px;background:none;color:var(--muted);cursor:pointer;display:grid;place-items:center}
+.campo .ico:hover{background:var(--chip);color:var(--ink)}
+.campo .foto{color:var(--blue)}
+.esempi{display:flex;flex-wrap:wrap;gap:6px}
+.esempi button{border:1px solid var(--line);background:var(--sheet);border-radius:999px;padding:4px 10px;font-size:.8rem;color:var(--muted);cursor:pointer}
+.esempi button:hover{color:var(--ink);border-color:var(--blue)}
+.blocco{display:flex;flex-direction:column;gap:12px;border:1px solid var(--line);border-radius:var(--r-md);padding:12px}
+.blocco>h2{margin:0;display:flex;align-items:center;gap:8px;font-size:.98rem;flex-wrap:wrap}
+.st{margin-left:auto;font:600 .68rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.06em;padding:4px 7px;border-radius:999px}
+.st.ok{color:var(--green);background:color-mix(in srgb,var(--green) 14%,transparent)}
+.st.auto{color:var(--orange);background:color-mix(in srgb,var(--orange) 15%,transparent)}
+.etich{font:600 .7rem/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+.etich .n{background:var(--chip);border-radius:999px;padding:3px 7px;letter-spacing:0}
+.voce{border-left:3px solid var(--blue);padding:1px 0 1px 12px;display:flex;flex-direction:column;gap:2px}
+.voce .riga{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 9px}
+.voce .da{font-weight:600}
+.voce .fr{color:var(--muted)}
+.voce .a{font-weight:700;color:var(--blue);font-size:1.05rem}
+.voce .def{color:var(--muted);font-size:.88rem}
+.voce .tag{font:500 .68rem/1 var(--f-mono);background:var(--chip);color:var(--muted);padding:3px 6px;border-radius:6px}
+.frase{display:grid;gap:3px;padding:10px 12px;border-radius:var(--r-md);background:var(--paper);border:1px solid var(--line)}
+.frase .ref{font:500 .72rem/1 var(--f-mono);color:var(--acc);border:0;background:none;padding:0;text-align:left;cursor:pointer;justify-self:start}
+.frase .ref:hover{text-decoration:underline}
+.frase .s1{font-weight:600}
+.frase .s2{color:var(--muted)}
+.frase ul{margin:2px 0 0;padding-left:18px;display:grid;gap:2px}
+.frase li{font-size:.94rem}
+.frase li .s2{display:block}
+mark{background:color-mix(in srgb,var(--acc) 22%,transparent);color:inherit;border-radius:3px;padding:0 1px}
+.vuoto{color:var(--muted);font-size:.92rem;margin:0}
+.altre{align-self:flex-start;border:1px solid var(--line);background:var(--sheet);border-radius:999px;padding:6px 12px;font-size:.84rem;cursor:pointer}
+.deepl{border-style:dashed}
+.deepl p{margin:0;font-size:.9rem;color:var(--muted)}
+.deepl .vai{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:9px 16px;background:var(--uk);color:#fff;font-weight:600;cursor:pointer;box-shadow:inset 0 -2px 0 var(--uk-red)}
+.deepl .vai[disabled]{opacity:.55;cursor:default}
+.deepl .ris{font-size:1.08rem;font-weight:600;line-height:1.45;padding:10px 12px;border-radius:var(--r-md);background:var(--paper);border:1px solid var(--line)}
+.deepl .err{color:var(--red);font-weight:600}
+.cont{font:500 .74rem/1 var(--f-mono);color:var(--muted)}
+.cont.troppo{color:var(--red)}
+.chips-t{display:flex;flex-wrap:wrap;gap:6px}
+.chips-t span{font-size:.82rem;padding:4px 8px;border-radius:8px;background:var(--chip)}
+.chips-t b{color:var(--blue)}
+.mini{border:1px solid var(--line);background:var(--sheet);border-radius:8px;padding:4px 10px;font-size:.8rem;cursor:pointer;align-self:flex-start}
+
+/* ---------- frasi ---------- */
+.studio{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--muted);flex-wrap:wrap}
+.studio label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.indice{display:flex;flex-direction:column;gap:2px}
+.indice .parte{font:700 .72rem/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:12px 0 4px}
+.indice .parte:first-child{margin-top:0}
+.cap{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:5.2em minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;padding:9px 10px;border-radius:10px}
+.cap:hover,.cap:focus-visible{background:var(--chip)}
+.cap .r{font:500 .78rem/1.3 var(--f-mono);color:var(--acc)}
+.cap .t{font-weight:600;line-height:1.3}
+.cap .t small{display:block;font-weight:400;color:var(--muted);font-size:.86rem}
+.cap .q{font:500 .74rem/1 var(--f-mono);color:var(--muted)}
+.lettura{display:flex;flex-direction:column;gap:10px}
+.lettura .nav{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.lettura .nav button{border:1.5px solid var(--line);background:var(--sheet);border-radius:999px;padding:6px 12px;font-weight:600;font-size:.86rem;cursor:pointer}
+.lettura h2{margin:6px 0 0;font-size:1.25rem;line-height:1.25}
+.lettura h2 small,.lettura h3 small{display:block;font-size:.88rem;color:var(--muted);font-weight:500}
+.lettura h3{margin:10px 0 0;font-size:1.04rem;line-height:1.3;padding-top:10px;border-top:1px solid var(--line)}
+.lettura h3 .r{font:500 .74rem/1 var(--f-mono);color:var(--acc);margin-right:6px}
+.nota{font-size:.88rem;color:var(--muted);padding:8px 12px;border-left:3px solid var(--line);background:color-mix(in srgb,var(--chip) 55%,transparent);border-radius:0 8px 8px 0}
+.nota .s2{display:block;margin-top:4px;color:var(--ink)}
+.tabw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-md)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--chip)}
+tr:last-child td{border-bottom:0}
+td.en{font-weight:600}
+td .s2{display:block;color:var(--muted);font-weight:400}
+.lampo{animation:lampo 1.6s ease-out}
+@keyframes lampo{0%{box-shadow:0 0 0 3px var(--acc)}100%{box-shadow:0 0 0 3px transparent}}
+body.nascondi .lettura .s2{filter:blur(5px);cursor:pointer;user-select:none;transition:filter .15s}
+body.nascondi .lettura .s2.vista{filter:none}
+
+/* ---------- glossario ---------- */
+.filtro{display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:var(--r-md);padding:0 12px;background:var(--paper)}
+.filtro input{flex:1;min-width:0;border:0;background:none;padding:10px 0;outline:none}
+.cats{display:flex;flex-wrap:wrap;gap:6px}
+.cats button{border:1px solid var(--line);background:var(--sheet);border-radius:999px;padding:5px 10px;font-size:.8rem;cursor:pointer;color:var(--muted)}
+.cats button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
+.lettere{display:flex;flex-wrap:wrap;gap:4px}
+.lettere button{font:600 .78rem/1 var(--f-mono);width:28px;height:28px;border-radius:6px;border:0;background:var(--chip);color:var(--muted);cursor:pointer}
+.lettere button:disabled{opacity:.35;cursor:default}
+.glist{display:flex;flex-direction:column;gap:12px}
+.glist .let{font:700 1rem/1 var(--f-mono);color:var(--acc);margin-top:6px}
+.fonte{font-size:.8rem;color:var(--muted);margin:0}
+
+/* ---------- foto e riconoscimento del testo ---------- */
+.ocr{position:fixed;inset:0;z-index:40;background:rgba(3,8,14,.92);display:flex;flex-direction:column;color:#eef4f9;
+  padding:calc(env(safe-area-inset-top,0px) + 10px) max(12px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 12px) max(12px,env(safe-area-inset-left,0px));gap:10px}
+.ocr .tit{font-weight:600;display:flex;align-items:center;gap:10px}
+.ocr .tit span{font-weight:400;font-size:.86rem;color:#a8bccc}
+.ocr .area{flex:1;min-height:0;display:grid;place-items:center;position:relative;touch-action:none}
+.ocr canvas{max-width:100%;max-height:100%;border-radius:8px;touch-action:none;cursor:crosshair}
+.ocr .btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.ocr .btns button{border:0;border-radius:999px;padding:11px 18px;font-weight:600;cursor:pointer;background:#24394c;color:#eef4f9}
+.ocr .btns .pri{background:#8fc2ff;color:#06111b}
+.ocr .prog{height:6px;border-radius:3px;background:#24394c;overflow:hidden}
+.ocr .prog i{display:block;height:100%;width:0;background:#8fc2ff;transition:width .2s}
+.ocr .msg{font-size:.88rem;color:#a8bccc;text-align:center;min-height:1.3em}
+@media (max-width:420px){h1{font-size:1.3rem}.tab{font-size:.82rem}.cap{grid-template-columns:4.4em minmax(0,1fr)}.cap .q{display:none}}
+@media (prefers-reduced-motion:reduce){.lampo{animation:none}}
+</style>
+</head>
+<body>
+<nav class="qp-torna" aria-label="Quaderno Patentino"><a href="../"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>Quaderno Patentino</a><span>Frasario e Traduttore SMCP</span></nav>
+
+<main class="wrap">
+  <h1>Frasario e Traduttore SMCP<small>IMO Standard Marine Communication Phrases · italiano ⇄ inglese, termini nautici</small></h1>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t-trad" aria-selected="true" aria-controls="p-trad">Traduttore</button>
+    <button class="tab" role="tab" id="t-frasi" aria-selected="false" aria-controls="p-frasi">Frasi SMCP</button>
+    <button class="tab" role="tab" id="t-glos" aria-selected="false" aria-controls="p-glos">Glossario</button>
+  </div>
+
+  <!-- TRADUTTORE -->
+  <section class="sheet" id="p-trad" role="tabpanel" aria-labelledby="t-trad">
+    <div class="dir">
+      <span class="lang" id="l1">IT</span>
+      <button class="inv" id="inverti" type="button" aria-label="Inverti la direzione"><svg viewBox="0 0 24 24"><path d="M4 8h15l-4-4M20 16H5l4 4"/></svg></button>
+      <span class="lang" id="l2">EN</span>
+      <span class="auto" id="auto">riconosce da solo la lingua</span>
+    </div>
+    <div class="campo">
+      <textarea id="q" rows="1" autocomplete="off" spellcheck="false" placeholder="Scrivi una parola o una frase…" aria-label="Testo da tradurre"></textarea>
+      <button class="ico foto" id="foto" type="button" aria-label="Foto: riconosci il testo" title="Foto: riconosci il testo"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3v11H4z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button>
+      <button class="ico" id="pulisci" type="button" aria-label="Cancella" title="Cancella"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <input type="file" id="file" accept="image/*" hidden>
+    <div class="esempi" id="esempi" aria-label="Prova con"></div>
+    <div class="blocco">
+      <h2>Traduzione offline · glossario e frasi SMCP <span class="st ok">verificata</span></h2>
+      <div id="ris"></div>
+    </div>
+    <div class="blocco deepl" id="deepl">
+      <h2>Traduzione DeepL <span class="st auto">automatica</span></h2>
+      <div id="dl"></div>
+    </div>
+  </section>
+
+  <!-- FRASI -->
+  <section class="sheet" id="p-frasi" role="tabpanel" aria-labelledby="t-frasi" hidden>
+    <div class="studio"><label><input type="checkbox" id="nascondi"> Studio: nascondi l'italiano (tocca per vederlo)</label></div>
+    <div class="indice" id="indice"></div>
+    <div class="lettura" id="lettura" hidden></div>
+  </section>
+
+  <!-- GLOSSARIO -->
+  <section class="sheet" id="p-glos" role="tabpanel" aria-labelledby="t-glos" hidden>
+    <label class="filtro"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="gq" type="search" placeholder="Filtra il glossario…" aria-label="Filtra il glossario"></label>
+    <div class="cats" id="cats"></div>
+    <div class="lettere" id="lettere"></div>
+    <div class="glist" id="glist"></div>
+  </section>
+
+  <p class="fonte">Testo inglese: IMO Res. A.918(22), Standard Marine Communication Phrases. La traduzione italiana non è un testo ufficiale IMO: usa la terminologia delle scuole nautiche italiane.</p>
+</main>
+
+<div class="ocr" id="ocr" hidden>
+  <div class="tit">Seleziona il testo <span id="ocr-sotto">trascina un riquadro sulle parole da riconoscere</span></div>
+  <div class="area"><canvas id="tela"></canvas></div>
+  <div class="prog" hidden id="prog"><i></i></div>
+  <div class="msg" id="ocr-msg"></div>
+  <div class="btns">
+    <button type="button" id="ocr-annulla">Annulla</button>
+    <button type="button" id="ocr-tutta">Tutta la foto</button>
+    <button type="button" class="pri" id="ocr-ok">Riconosci il riquadro</button>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+/* ---------- collegamenti ---------- */
+const SB = {url: 'https://cvyuytnouuapmazjnebc.supabase.co', chiave: 'sb_publishable_D6-pqLmc7Wmtl24AdNN89Q_N-r0wUp7'};
+const FUNZIONE = SB.url + '/functions/v1/traduci';
+const MAX = 300;
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[’‘`´]/g, "'").replace(/\s+/g, ' ').trim();
+const mem = {get(k){ try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }, set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }};
+
+let D = null, G = [], NODI = [], CAP = [];
+
+/* evidenzia nel testo originale le parole cercate (ignorando accenti e maiuscole) */
+function evid(testo, parole){
+  if (!parole.length) return esc(testo);
+  const n = norm(testo); if (n.length !== testo.length) return esc(testo);
+  const segni = new Array(testo.length).fill(false);
+  for (const p of parole) { if (p.length < 2) continue; let i = n.indexOf(p); while (i >= 0) { for (let k = i; k < i + p.length; k++) segni[k] = true; i = n.indexOf(p, i + p.length); } }
+  let h = '', dentro = false;
+  for (let i = 0; i < testo.length; i++) { if (segni[i] && !dentro) { h += '<mark>'; dentro = true; } if (!segni[i] && dentro) { h += '</mark>'; dentro = false; } h += esc(testo[i]); }
+  return h + (dentro ? '</mark>' : '');
+}
+
+/* ---------- dati ---------- */
+fetch('dati.json').then(r => r.json()).then(d => {
+  D = d; NODI = d.nodi; G = d.glos;
+  for (const g of G) { g._e = norm(g.en.replace(/\s*\((to|of [^)]*)\)/g, '')); g._i = norm(g.it); }
+  for (const n of NODI) if (n.t === 'p') {
+    n._e = norm(n.en + ' ' + n.alt.map(a => a[0]).join(' ')); n._i = norm(n.it + ' ' + n.alt.map(a => a[1]).join(' '));
+  }
+  capitoli(); indice(); glossario(); esempi();
+  const h = location.hash.slice(1); if (h === 'frasi' || h === 'glossario') scheda(h === 'frasi' ? 't-frasi' : 't-glos');
+  cerca();
+}).catch(() => { $('#ris').innerHTML = '<p class="vuoto">Non riesco a caricare il frasario. Apri la pagina una volta con internet: poi funziona anche offline.</p>'; });
+
+/* ---------- schede ---------- */
+const SCHEDE = [['t-trad', 'p-trad'], ['t-frasi', 'p-frasi'], ['t-glos', 'p-glos']];
+function scheda(t){ SCHEDE.forEach(([a, p]) => { $('#' + a).setAttribute('aria-selected', a === t); $('#' + p).hidden = a !== t; }); }
+SCHEDE.forEach(([a]) => $('#' + a).addEventListener('click', () => { scheda(a); scrollTo({top: 0}); }));
+
+/* ---------- traduttore ---------- */
+let lingua = 'it', manuale = false;
+const q = $('#q');
+const IT_PAROLE = new Set('il lo la le gli un una di da del della dei delle che non per con nel nella sono sei siete abbiamo ho ha hanno nave a è e sotto sopra verso dove come quando cosa'.split(' '));
+const EN_PAROLE = new Set('the a an of to is are i you we my your vessel ship in on at for with not do does have has will can what where when how please'.split(' '));
+function rileva(t){
+  const p = norm(t).split(/[^a-z']+/).filter(Boolean);
+  let it = 0, en = 0;
+  for (const w of p) { if (IT_PAROLE.has(w)) it++; if (EN_PAROLE.has(w)) en++; }
+  const n = norm(t);
+  if (it === en && p.length > 1) {   // conta le frasi SMCP che contengono tutte le parole
+    const w = p.filter(x => x.length > 1); let fe = 0, fi = 0;
+    for (const x of NODI) if (x.t === 'p') { if (w.every(v => x._e.includes(v))) fe++; if (w.every(v => x._i.includes(v))) fi++; }
+    en += fe > fi ? 2 : 0; it += fi > fe ? 2 : 0;
+  }
+  if (it === en) {           // conta nel glossario
+    for (const g of G) { if (g._e === n) en += 2; if (g._i === n || g._i.split(/[ ,(]/)[0] === n) it += 2; if (g._e.startsWith(n)) en++; if (g._i.startsWith(n)) it++; }
+  }
+  return en > it ? 'en' : it > en ? 'it' : lingua;
+}
+function segnaLingua(){ $('#l1').textContent = lingua === 'it' ? 'IT' : 'EN'; $('#l2').textContent = lingua === 'it' ? 'EN' : 'IT'; $('#auto').textContent = manuale ? 'direzione scelta da te' : 'riconosce da solo la lingua'; }
+$('#inverti').addEventListener('click', () => { lingua = lingua === 'it' ? 'en' : 'it'; manuale = true; segnaLingua(); cerca(); });
+q.addEventListener('input', () => { if (!q.value.trim()) manuale = false; alza(); cerca(); });
+$('#pulisci').addEventListener('click', () => { q.value = ''; manuale = false; alza(); cerca(); q.focus(); });
+function alza(){ q.style.height = 'auto'; q.style.height = Math.min(q.scrollHeight, 200) + 'px'; }
+
+function esempi(){
+  $('#esempi').innerHTML = ['sbandamento', 'air draft', 'uomo a mare', 'fire under control', 'dritta', 'set and drift', 'avanti adagio', 'I require tug assistance'].map(e => `<button type="button">${esc(e)}</button>`).join('');
+  $('#esempi').querySelectorAll('button').forEach(b => b.addEventListener('click', () => { q.value = b.textContent; manuale = false; alza(); cerca(); }));
+}
+
+/* termini del glossario contenuti in una frase (i più lunghi prima, senza sovrapposizioni) */
+function terminiNellaFrase(testo, da){
+  const n = ' ' + norm(testo).replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ') + ' ';
+  const cand = [];
+  for (const g of G) {
+    const t = (da === 'en' ? g._e.split(' / ')[0] : g._i.split(/, | \(/)[0]).replace(/[^a-z0-9' ]+/g, ' ').trim();
+    if (t.length < 3) continue;
+    const i = n.indexOf(' ' + t + ' ');
+    if (i >= 0) cand.push({g, t, i, l: t.length});
+  }
+  cand.sort((a, b) => b.l - a.l);
+  const presi = [], usati = [];
+  for (const c of cand) { if (usati.some(([s, e]) => c.i < e && c.i + c.l > s)) continue; usati.push([c.i, c.i + c.l]); presi.push(c); }
+  return presi.sort((a, b) => a.i - b.i).map(c => c.g);
+}
+
+let ultimo = '';
+function cerca(){
+  if (!D) return;
+  const testo = q.value.trim();
+  if (testo !== ultimo) { ultimo = testo; mostraDeepl(); }
+  if (!testo) { $('#ris').innerHTML = '<p class="vuoto">Scrivi o fotografa un termine o una frase, in italiano o in inglese: trovi la traduzione nautica del glossario e le frasi SMCP che lo contengono.</p>'; segnaLingua(); return; }
+  if (!manuale) lingua = rileva(testo);
+  segnaLingua();
+  const n = norm(testo), parole = n.split(/[^a-z0-9']+/).filter(w => w.length > 1);
+  const chiaveL = lingua === 'en' ? '_e' : '_i', altra = lingua === 'en' ? '_i' : '_e';
+  /* glossario: termine uguale, che inizia, che contiene */
+  const punti = g => { const t = g[chiaveL]; if (t === n || t.split(/[ ,(]/)[0] === n) return 0; if (t.startsWith(n)) return 1; if (t.includes(n)) return 2; if (g[altra].includes(n)) return 3; return 9; };
+  let gl = G.map(g => [punti(g), g]).filter(x => x[0] < 9).sort((a, b) => a[0] - b[0] || a[1].en.length - b[1].en.length).map(x => x[1]);
+  const nellaFrase = parole.length > 1 ? terminiNellaFrase(testo, lingua).filter(g => !gl.includes(g)) : [];
+  /* frasi: tutte le parole presenti */
+  const fr = [];
+  for (const x of NODI) if (x.t === 'p') {
+    const t = x[chiaveL];
+    if (parole.every(w => t.includes(w))) fr.push([(t.includes(n) ? 0 : 1) + (x.en.length > 160 ? 2 : 0), x]);
+  }
+  fr.sort((a, b) => a[0] - b[0] || a[1].en.length - b[1].en.length);
+  let h = '';
+  if (gl.length) {
+    h += `<div class="etich">Glossario nautico <span class="n">${gl.length}</span></div>` + gl.slice(0, 12).map(g => voce(g, parole)).join('');
+    if (gl.length > 12) h += `<p class="vuoto">Altri ${gl.length - 12} termini: affina la ricerca o apri la scheda Glossario.</p>`;
+  }
+  if (nellaFrase.length) h += `<div class="etich">Termini riconosciuti nella frase <span class="n">${nellaFrase.length}</span></div>` + nellaFrase.map(g => voce(g, [])).join('');
+  if (fr.length) {
+    h += `<div class="etich">Frasi SMCP <span class="n">${fr.length}</span></div><div id="fr-lista" style="display:grid;gap:8px">` + fr.slice(0, 15).map(x => frase(x[1], parole)).join('') + '</div>';
+    if (fr.length > 15) h += `<button class="altre" type="button" id="altre">Mostra altre ${fr.length - 15} frasi</button>`;
+  }
+  if (!h) h = '<p class="vuoto">Nessun risultato nel glossario o nelle frasi SMCP. Prova un\'altra parola, oppure usa la traduzione DeepL qui sotto.</p>';
+  $('#ris').innerHTML = h;
+  const al = $('#altre'); if (al) al.addEventListener('click', () => { $('#fr-lista').insertAdjacentHTML('beforeend', fr.slice(15, 60).map(x => frase(x[1], parole)).join('')); al.remove(); collegaRef(); });
+  collegaRef();
+}
+function voce(g, parole){
+  const daEn = lingua === 'en';
+  const da = daEn ? g.en : g.it, a = daEn ? g.it : g.en;
+  return `<div class="voce"><div class="riga"><span class="da">${evid(da, parole)}</span><span class="fr">→</span><span class="a">${esc(a)}</span><span class="tag">${esc(g.c)}</span></div>${g.d ? `<div class="def">${esc(g.d)}</div>` : ''}</div>`;
+}
+function frase(x, parole){
+  const en = lingua === 'en';
+  const s1 = en ? x.en : x.it, s2 = en ? x.it : x.en;
+  const alt = x.alt.length ? '<ul>' + x.alt.map(a => `<li><span class="s1">${evid(en ? a[0] : a[1], parole)}</span><span class="s2">${esc(en ? a[1] : a[0])}</span></li>`).join('') + '</ul>' : '';
+  return `<div class="frase"><button type="button" class="ref" data-u="${esc(x.u)}" title="Apri nel capitolo">${esc(x.id.replace(/~\d+$/, ''))}</button><span class="s1">${evid(s1, parole)}</span><span class="s2">${esc(s2)}</span>${alt}</div>`;
+}
+function collegaRef(){ document.querySelectorAll('#ris .ref').forEach(b => b.onclick = () => apriNodo(b.dataset.u)); }
+
+/* ---------- DeepL ---------- */
+function sessione(){ return mem.get('qp-sessione'); }
+async function token(){
+  const s = sessione(); if (!s || s.demo || !s.refresh) return null;
+  if (s.scade > Date.now()) return s.access;
+  const r = await fetch(SB.url + '/auth/v1/token?grant_type=refresh_token', {method: 'POST', headers: {apikey: SB.chiave, 'Content-Type': 'application/json'}, body: JSON.stringify({refresh_token: s.refresh})});
+  if (!r.ok) return null;
+  const j = await r.json();
+  const n = Object.assign({}, s, {access: j.access_token, refresh: j.refresh_token, scade: Date.now() + (j.expires_in || 3600) * 1000 - 60000});
+  mem.set('qp-sessione', n); return n.access;
+}
+function mostraDeepl(){
+  const t = q.value.trim(), s = sessione(), dentro = s && !s.demo && s.refresh;
+  let h = '';
+  if (!dentro) h = '<p>Per la traduzione DeepL serve l\'accesso: torna al Quaderno e tocca <b>Guest</b> in alto per entrare o registrarti. Glossario e frasi qui sopra funzionano per tutti, anche senza internet.</p>';
+  else if (!t) h = '<p>Scrivi una frase: DeepL la traduce usando il glossario nautico, così i termini tecnici restano quelli corretti. Controlla sempre il risultato con la traduzione offline qui sopra.</p>';
+  else {
+    const c = t.length;
+    h = `<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><button type="button" class="vai" id="vai" ${c > MAX ? 'disabled' : ''}>Traduci con DeepL</button><span class="cont ${c > MAX ? 'troppo' : ''}">${c}/${MAX} caratteri</span></div>` + (c > MAX ? '<p class="err">Testo troppo lungo per DeepL: accorcialo a 300 caratteri.</p>' : '');
+  }
+  $('#dl').innerHTML = h;
+  const v = $('#vai'); if (v) v.addEventListener('click', traduciDeepl);
+}
+async function traduciDeepl(){
+  const t = q.value.trim(), da = lingua, v = $('#vai');
+  if (!navigator.onLine) { esito('<p class="err">Serve internet per DeepL.</p>'); return; }
+  v.disabled = true; v.textContent = 'Traduco…';
+  try {
+    const tk = await token();
+    if (!tk) { esito('<p class="err">Accesso scaduto: rientra dal Quaderno (tasto in alto) e riprova.</p>'); return; }
+    const r = await fetch(FUNZIONE, {method: 'POST', headers: {apikey: SB.chiave, Authorization: 'Bearer ' + tk, 'Content-Type': 'application/json'}, body: JSON.stringify({testo: t, da})});
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) { esito(`<p class="err">${esc(j.messaggio || 'DeepL non risponde: riprova più tardi.')}</p>`); return; }
+    const termini = terminiNellaFrase(t, da);
+    esito(`<div class="ris" id="dl-ris">${esc(j.traduzione)}</div><button type="button" class="mini" id="copia">Copia</button>` +
+      (termini.length ? `<div class="etich">Termini del glossario nella frase: controllali</div><div class="chips-t">${termini.map(g => `<span>${esc(da === 'en' ? g.en : g.it)} → <b>${esc(da === 'en' ? g.it : g.en)}</b></span>`).join('')}</div>` : ''));
+    $('#copia').addEventListener('click', () => { navigator.clipboard?.writeText(j.traduzione).then(() => { $('#copia').textContent = 'Copiato'; }).catch(() => { const sel = getSelection(), rg = document.createRange(); rg.selectNodeContents($('#dl-ris')); sel.removeAllRanges(); sel.addRange(rg); }); });
+  } catch (e) { esito('<p class="err">Non riesco a collegarmi: controlla la connessione e riprova.</p>'); }
+  finally { const b = $('#vai'); if (b) { b.disabled = false; b.textContent = 'Traduci con DeepL'; } }
+}
+function esito(h){ let e = $('#dl-esito'); if (!e) { e = document.createElement('div'); e.id = 'dl-esito'; e.style.cssText = 'display:grid;gap:8px'; $('#dl').append(e); } e.innerHTML = h; }
+addEventListener('storage', e => { if (e.key === 'qp-sessione') mostraDeepl(); });
+
+/* ---------- frasi: capitoli e lettura ---------- */
+const PARTI = {G: 'Generale', A1: 'Parte A1 · Comunicazioni esterne', A2: 'Parte A2 · Comunicazioni a bordo', B1: 'Parte B1 · Conduzione della nave', B2: 'Parte B2 · Sicurezza a bordo', B3: 'Parte B3 · Carico', B4: 'Parte B4 · Passeggeri'};
+const TITOLI_PARTE = {A1: ['External communication phrases', 'Frasi per le comunicazioni esterne'], A2: ['On-board communication phrases', 'Frasi per le comunicazioni a bordo'], B1: ['Part B · Operative ship handling', 'Parte B · Conduzione operativa della nave'], B2: ['Safety on board', 'Sicurezza a bordo'], B3: ['Cargo and cargo handling', 'Carico e movimentazione'], B4: ['Passenger care', 'Assistenza ai passeggeri']};
+function capitoli(){
+  let C = [], c = null;
+  for (let i = 0; i < NODI.length; i++) {
+    const n = NODI[i];
+    const m = n.id.match(/^[AB]\d|^G/), parte = m ? m[0] : (c ? c.parte : 'A1');
+    const capo = n.t === 'h' && (/^G\d+$/.test(n.id) || /^[AB]\d\/\d+$/.test(n.id));
+    if (capo) { c = {n, da: i, a: i, parte}; C.push(c); }
+    else if (!c || parte !== c.parte) { const t = TITOLI_PARTE[parte] || ['General', 'Generale']; c = {n: {id: parte, en: t[0], it: t[1]}, da: i, a: i, parte}; C.push(c); }
+    c.a = i;
+  }
+  /* i capitoli fatti solo di titoli si uniscono al capitolo seguente */
+  CAP = [];
+  for (let j = 0; j < C.length; j++) {
+    const k = C[j];
+    let utili = 0; for (let i = k.da; i <= k.a; i++) if (NODI[i].t !== 'h') utili++;
+    if (!utili && j < C.length - 1) { C[j + 1].da = k.da; continue; }
+    CAP.push(k);
+  }
+  CAP.forEach((k, ci) => { k.frasi = 0; for (let i = k.da; i <= k.a; i++) { NODI[i]._cap = ci; if (NODI[i].t === 'p') k.frasi++; } });
+}
+function indice(){
+  let h = '', parte = '';
+  for (let i = 0; i < CAP.length; i++) {
+    const k = CAP[i];
+    if (k.parte !== parte) { parte = k.parte; h += `<div class="parte">${esc(PARTI[parte] || parte)}</div>`; }
+    h += `<button type="button" class="cap" data-c="${i}"><span class="r">${esc(k.n.id)}</span><span class="t">${esc(k.n.en)}<small>${esc(k.n.it)}</small></span><span class="q">${k.frasi || ''}</span></button>`;
+  }
+  $('#indice').innerHTML = h;
+  $('#indice').querySelectorAll('.cap').forEach(b => b.addEventListener('click', () => apriCap(+b.dataset.c)));
+}
+function nodoHtml(n){
+  const s = (en, it) => `<span class="s1">${esc(en)}</span>${it ? `<span class="s2">${esc(it)}</span>` : ''}`;
+  if (n.t === 'h') return `<h3 id="n-${esc(n.u)}"><span class="r">${esc(n.id)}</span>${esc(n.en)}<small class="s2">${esc(n.it)}</small></h3>`;
+  if (n.t === 'n') return `<div class="nota" id="n-${esc(n.u)}">${esc(n.en)}<span class="s2">${esc(n.it)}</span></div>`;
+  if (n.t === 'tab') {
+    const t = n.tab, due = t.intest[1] || t.righe.some(r => r[1]);
+    return `<div class="tabw" id="n-${esc(n.u)}"><table><thead><tr><th>${esc(t.intest[0])} · ${esc(t.intest[2])}</th>${due ? `<th>${esc(t.intest[1] || '')} · ${esc(t.intest[3] || '')}</th>` : ''}</tr></thead><tbody>` +
+      t.righe.map(r => `<tr><td class="en">${esc(r[0])}<span class="s2">${esc(r[2])}</span></td>${due ? `<td>${esc(r[1])}<span class="s2">${esc(r[3])}</span></td>` : ''}</tr>`).join('') + '</tbody></table></div>';
+  }
+  const alt = n.alt.length ? '<ul>' + n.alt.map(a => `<li>${s(a[0], a[1])}</li>`).join('') + '</ul>' : '';
+  return `<div class="frase" id="n-${esc(n.u)}"><span class="ref" style="cursor:default">${esc(n.id.replace(/~\d+$/, ''))}</span>${s(n.en, n.it)}${alt}</div>`;
+}
+let capAperto = -1;
+function apriCap(i, nodo){
+  const k = CAP[i]; capAperto = i;
+  let h = `<div class="nav"><button type="button" id="cap-ind">☰ Indice</button>${i > 0 ? '<button type="button" id="cap-prec">‹ Precedente</button>' : ''}${i < CAP.length - 1 ? '<button type="button" id="cap-succ">Successivo ›</button>' : ''}</div>`;
+  h += `<h2>${esc(k.n.id)} · ${esc(k.n.en)}<small class="s2">${esc(k.n.it)}</small></h2>`;
+  for (let j = k.da; j <= k.a; j++) { if (NODI[j] === k.n) continue; h += nodoHtml(NODI[j]); }
+  h += `<div class="nav">${i > 0 ? '<button type="button" class="cap-prec">‹ Precedente</button>' : ''}${i < CAP.length - 1 ? '<button type="button" class="cap-succ">Successivo ›</button>' : ''}<button type="button" class="cap-ind">☰ Indice</button></div>`;
+  const L = $('#lettura'); L.innerHTML = h; L.hidden = false; $('#indice').hidden = true;
+  L.querySelectorAll('#cap-ind,.cap-ind').forEach(b => b.onclick = () => { L.hidden = true; $('#indice').hidden = false; scrollTo({top: 0}); });
+  L.querySelectorAll('#cap-prec,.cap-prec').forEach(b => b.onclick = () => apriCap(i - 1));
+  L.querySelectorAll('#cap-succ,.cap-succ').forEach(b => b.onclick = () => apriCap(i + 1));
+  if (nodo) { const el = document.getElementById('n-' + nodo); if (el) { el.scrollIntoView({block: 'center'}); el.classList.add('lampo'); } }
+  else scrollTo({top: 0});
+}
+function apriNodo(u){
+  const n = NODI.find(x => x.u === u); if (!n) return;
+  scheda('t-frasi'); apriCap(n._cap, u);
+}
+$('#nascondi').addEventListener('change', e => { document.body.classList.toggle('nascondi', e.target.checked); mem.set('qp-frasario-studio', e.target.checked); });
+if (mem.get('qp-frasario-studio')) { $('#nascondi').checked = true; document.body.classList.add('nascondi'); }
+$('#lettura').addEventListener('click', e => { const s = e.target.closest('.s2'); if (s && document.body.classList.contains('nascondi')) s.classList.toggle('vista'); });
+
+/* ---------- glossario ---------- */
+let gCat = 'Tutte';
+function glossario(){
+  const cats = ['Tutte', ...Array.from(new Set(G.map(g => g.c)))];
+  $('#cats').innerHTML = cats.map(c => `<button type="button" aria-pressed="${c === gCat}">${esc(c)}</button>`).join('');
+  $('#cats').querySelectorAll('button').forEach(b => b.addEventListener('click', () => { gCat = b.textContent; $('#cats').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); elenco(); }));
+  $('#gq').addEventListener('input', elenco);
+  elenco();
+}
+function elenco(){
+  const f = norm($('#gq').value);
+  const v = G.filter(g => (gCat === 'Tutte' || g.c === gCat) && (!f || g._e.includes(f) || g._i.includes(f)));
+  const iniz = l => (l.en.replace(/^\W+/, '')[0] || '#').toUpperCase();
+  let h = '', ult = '';
+  for (const g of v) { const l = iniz(g); if (l !== ult) { ult = l; h += `<div class="let" id="let-${l}">${l}</div>`; } h += `<div class="voce"><div class="riga"><span class="da">${esc(g.en)}</span><span class="fr">→</span><span class="a">${esc(g.it)}</span><span class="tag">${esc(g.c)}</span></div>${g.d ? `<div class="def">${esc(g.d)}</div>` : ''}</div>`; }
+  $('#glist').innerHTML = h || '<p class="vuoto">Nessun termine trovato.</p>';
+  const presenti = new Set(v.map(iniz));
+  $('#lettere').innerHTML = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(c => `<button type="button" ${presenti.has(c) ? '' : 'disabled'}>${c}</button>`).join('');
+  $('#lettere').querySelectorAll('button:not([disabled])').forEach(b => b.addEventListener('click', () => document.getElementById('let-' + b.textContent)?.scrollIntoView({block: 'start'})));
+}
+
+/* ---------- foto: riconoscimento del testo (Tesseract, scaricato solo al primo uso) ---------- */
+const tela = $('#tela'), ctx = tela.getContext('2d');
+let img = null, sel = null, inizio = null, worker = null;
+$('#foto').addEventListener('click', () => $('#file').click());
+$('#file').addEventListener('change', e => {
+  const f = e.target.files && e.target.files[0]; e.target.value = ''; if (!f) return;
+  const u = URL.createObjectURL(f), im = new Image();
+  im.onload = () => { img = im; sel = null; $('#ocr').hidden = false; $('#ocr-msg').textContent = ''; $('#prog').hidden = true; disegna(); };
+  im.onerror = () => alertOcr('Non riesco ad aprire questa immagine.');
+  im.src = u;
+});
+function disegna(){
+  const area = tela.parentElement.getBoundingClientRect(), k = Math.min(area.width / img.width, area.height / img.height, 1);
+  tela.width = Math.round(img.width * k); tela.height = Math.round(img.height * k); tela._k = k;
+  ctx.drawImage(img, 0, 0, tela.width, tela.height);
+  if (sel) {
+    ctx.fillStyle = 'rgba(0,0,0,.45)'; ctx.fillRect(0, 0, tela.width, tela.height);
+    ctx.drawImage(img, sel.x / k, sel.y / k, sel.w / k, sel.h / k, sel.x, sel.y, sel.w, sel.h);
+    ctx.strokeStyle = '#8fc2ff'; ctx.lineWidth = 2; ctx.strokeRect(sel.x, sel.y, sel.w, sel.h);
+  }
+  $('#ocr-ok').disabled = !sel;
+}
+const pos = e => { const r = tela.getBoundingClientRect(); return {x: Math.max(0, Math.min(tela.width, e.clientX - r.left)), y: Math.max(0, Math.min(tela.height, e.clientY - r.top))}; };
+tela.addEventListener('pointerdown', e => { inizio = pos(e); tela.setPointerCapture(e.pointerId); sel = null; });
+tela.addEventListener('pointermove', e => { if (!inizio) return; const p = pos(e); sel = {x: Math.min(p.x, inizio.x), y: Math.min(p.y, inizio.y), w: Math.abs(p.x - inizio.x), h: Math.abs(p.y - inizio.y)}; disegna(); });
+tela.addEventListener('pointerup', () => { inizio = null; if (sel && (sel.w < 8 || sel.h < 8)) sel = null; disegna(); });
+addEventListener('resize', () => { if (!$('#ocr').hidden && img) { sel = null; disegna(); } });
+$('#ocr-annulla').addEventListener('click', chiudiOcr);
+$('#ocr-tutta').addEventListener('click', () => riconosci(null));
+$('#ocr-ok').addEventListener('click', () => riconosci(sel));
+function chiudiOcr(){ $('#ocr').hidden = true; img = null; }
+function alertOcr(m){ $('#ocr-msg').textContent = m; }
+function carica(src){ return new Promise((ok, no) => { if (window.Tesseract) return ok(); const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = no; document.head.append(s); }); }
+async function riconosci(r){
+  const k = tela._k, c = document.createElement('canvas');
+  const sx = r ? r.x / k : 0, sy = r ? r.y / k : 0, sw = r ? r.w / k : img.width, sh = r ? r.h / k : img.height;
+  const sc = Math.max(1, Math.min(3, 1400 / Math.max(sw, sh)));        // ingrandisce i ritagli piccoli
+  c.width = Math.round(sw * sc); c.height = Math.round(sh * sc);
+  const x = c.getContext('2d'); x.drawImage(img, sx, sy, sw, sh, 0, 0, c.width, c.height);
+  $('#ocr-ok').disabled = $('#ocr-tutta').disabled = true; $('#prog').hidden = false; $('#prog i').style.width = '5%';
+  try {
+    const base = new URL('ocr/', location.href).href;
+    if (!worker) {
+      alertOcr(navigator.onLine ? 'Preparo il riconoscimento (la prima volta scarica circa 7 MB)…' : 'Preparo il riconoscimento…');
+      await carica(base + 'tesseract.min.js');
+      worker = await Tesseract.createWorker(['eng', 'ita'], 1, {
+        workerPath: base + 'worker.min.js', corePath: base, langPath: base + 'lang', gzip: true,
+        logger: m => { if (typeof m.progress === 'number') $('#prog i').style.width = Math.round(5 + m.progress * 90) + '%'; if (m.status === 'recognizing text') alertOcr('Riconosco il testo…'); }
+      });
+    }
+    alertOcr('Riconosco il testo…');
+    const res = await worker.recognize(c);
+    const t = (res.data.text || '').replace(/-\n(?=\w)/g, '').replace(/\s+/g, ' ').trim();
+    if (!t) { alertOcr('Non ho trovato testo: prova un riquadro più preciso o una foto più nitida.'); return; }
+    chiudiOcr(); q.value = t; manuale = false; alza(); cerca(); q.focus();
+  } catch (e) { console.error(e); alertOcr(navigator.onLine ? 'Riconoscimento non riuscito: riprova.' : 'La prima volta serve internet per scaricare il riconoscimento del testo.'); }
+  finally { $('#ocr-ok').disabled = !sel; $('#ocr-tutta').disabled = false; $('#prog').hidden = true; }
+}
+addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#ocr').hidden) chiudiOcr(); });
+mostraDeepl();
+})();
+</script>
+</body>
+</html>

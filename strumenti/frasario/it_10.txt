@@ -1,0 +1,234 @@
+1727|Segnale di ritirata ... .
+1728|Fermate l'allagamento dall'interno / dall'esterno (spazio / area ...) e riferite.
+1729|Allagamento fermato.
+1730|Non è possibile fermare l'allagamento dall'interno / dall'esterno.
+1731|Cessato allarme
+1732|L'allagamento si è fermato?
+1733|Sì, l'allagamento (in ...) si è fermato.
+1734|No, l'allagamento (in ...) non si è (ancora) fermato (del tutto).
+1735|L'allagamento è sotto controllo?
+1736|Sì, allagamento (in ...) sotto controllo.
+1737|Allagamento (in ...) inferiore / superiore alla portata della pompa (delle pompe) (di sentina).
+1738|Allagamento circoscritto allo spazio / all'area ... .
+1739|Mettete una guardia controllo avarie e riferite.
+1740|Guardia controllo avarie messa (in ...).
+1741|Quanta acqua c'è nella nave?
+1742|Quantità d'acqua (in ...) circa ... tonnellate.
+1743|Quantità d'acqua (in ...) non pericolosa.
+1744|La pompa (le pompe) (di sentina) resta / restano pronta/e.
+1745|La sala macchine resta pronta.
+1746|Il generatore di emergenza supplementare resta pronto.
+1747|La squadra controllo avarie resta pronta.
+1748|Delimitate con cime l'area allagata.
+1749|Controllate la falla ogni ... minuti / ore e riferite.
+1750|Falla controllata - nessun allagamento.
+1751|Falla controllata - allagamento lieve / grave (in ...).
+1752|L'allagamento si è fermato.
+1753|L'allarme è cessato (con le seguenti limitazioni: ... ).
+1754|Incaglio
+1755|Vedere anche B2/1 "Attività generali".
+1756|Segnalare l'incaglio e dare gli ordini
+1757|Siamo incagliati.
+1758|Fermate la macchina (le macchine).
+1759|Chiudete le porte stagne e riferite.
+1760|Porte stagne chiuse.
+1761|La nave ha (ancora) abbrivio?
+1762|Sì, la nave ha abbrivio avanti / indietro.
+1763|No, la nave non ha abbrivio.
+1764|Fate i segnali di "nave incagliata".
+1765|Informate la sala macchine.
+1766|Quale parte è incagliata?
+1767|Nave incagliata a prora / a mezzanave / a poppa / per tutta la lunghezza.
+1768|Pronti al posto di manovra di prora e di poppa e riferite.
+1769|Posto di manovra di prora / di poppa pronto.
+1770|Pronti all'ancora di sinistra / di dritta.
+1771|Qual è la posizione?
+1772|Posizione ... .
+1773|Segnalare i danni
+1774|Riferite sui danni.
+1775|Nessun danno.
+1776|Crepa (crepe) nel fasciame / nel doppiofondo n. ... / nella stiva (nelle stive) / nella cisterna (nelle cisterne) n. ... / nel basamento della macchina principale (ausiliaria) / ... .
+1777|Deformazione/i / ammaccatura/e nel fasciame / in ... .
+1778|Deformazione/i / ammaccatura/e in ... .
+1779|Controllate l'allagamento e riferite.
+1780|Nessun allagamento.
+1781|Allagamento in ... .
+1782|C'è un pericolo imminente?
+1783|No, nessun pericolo imminente.
+1784|Sì, pericolo di
+1784~0|forte sbandamento (a sinistra / a dritta).
+1784~1|diminuzione della stabilità.
+1784~2|danni dal mare.
+1784~3|spezzarsi della nave.
+1784~4|inquinamento ambientale.
+1784~5|... .
+1785|Qual è la natura del fondale?
+1786|Fondale roccioso.
+1787|Fondale molle.
+1788|Qual è lo stato della marea?
+1789|Nessuna marea.
+1790|Marea ... metri / montante / calante / inverte alle ... UTC / entro ... ore.
+1791|Quali sono la forza e la direzione del vento?
+1792|Vento forza Beaufort ... da ... (punti cardinali).
+1793|Vento previsto in diminuzione / in aumento (nelle prossime ... ore).
+1794|Vento previsto in rotazione antioraria / oraria (nelle prossime ... ore). .6.1 Nessun cambiamento previsto (nelle prossime ... ore).
+1795|Qual è lo stato del mare?
+1796|Mare calmo / mosso / agitato / grosso, mare lungo debole / moderato / forte ... metri da ... (punti cardinali).
+1797|Mare calmo / mosso / agitato / grosso, mare lungo debole / moderato / forte ... previsto in diminuzione / in aumento (nelle prossime ... ore).
+1798|Nessun cambiamento previsto (nelle prossime ... ore).
+1799|Qual è il pescaggio?
+1800|Pescaggio ... metri (lato sinistro / lato dritto) a prora / a poppa / a mezzanave.
+1801|Qual è la profondità dell'acqua?
+1802|Massima profondità ... metri (lato sinistro / lato dritto) a prora / a poppa / a mezzanave.
+1803|Ordini per il disincaglio
+1804|Le pompe (di sentina) sono operative?
+1805|Sì, pompe (di sentina) operative.
+1806|No, pompe (di sentina) non (ancora) operative.
+1807|Le pompe (di sentina) saranno operative tra ... minuti.
+1808|Il materiale per il controllo delle avarie è disponibile?
+1809|Sì, materiale per il controllo delle avarie disponibile.
+1810|No, materiale per il controllo delle avarie non (ancora) disponibile.
+1811|Il materiale per il controllo delle avarie sarà disponibile tra ... minuti.
+1812|Pronti in sala macchine e riferite.
+1813|Sala macchine pronta.
+1814|Pronti a dare fondo a tutte le ancore.
+1815|Riferite la distribuzione del carico.
+1816|Stiva (stive) / cisterna (cisterne) n. ... : ... tonnellate (di carico ...).
+1817|Carico di coperta a prora / a poppa / a mezzanave: ... tonnellate (di ...).
+1818|Gavone di prora / di poppa: ... tonnellate.
+1819|Doppiofondo (doppifondi) n. ... : ... tonnellate (di zavorra / ...).
+1820|Trasferite il carico dalla stiva (dalle stive) / dalla cisterna (dalle cisterne) n. ... alla stiva (alle stive) / alla cisterna (alle cisterne) n. ... e riferite.
+1821|Carico della stiva (delle stive) / della cisterna (delle cisterne) n. ... trasferito alla stiva (alle stive) / alla cisterna (alle cisterne) n. ... .
+1822|Trasferite il carico di coperta da ... a ... e riferite.
+1823|Carico di coperta trasferito da ... a ... .
+1824|Svuotate il gavone di prora / di poppa e riferite.
+1825|Gavone di prora / di poppa svuotato.
+1826|Trasferite la zavorra / ... dal doppiofondo (dai doppifondi) n. ... al doppiofondo (ai doppifondi) n. ... e riferite.
+1827|Zavorra / ... del doppiofondo (dei doppifondi) n. ... trasferita al doppiofondo (ai doppifondi) n. ... .
+1828|Riempite il gavone di prora / di poppa.
+1829|Gettate a mare il carico da ... e riferite.
+1830|Carico da ... gettato a mare.
+1831|Macchina (macchine) indietro / avanti tutta / ... .
+1832|La nave si è disincagliata?
+1833|Sì, nave disincagliata.
+1834|No, nave non (ancora) disincagliata.
+1835|Verifica della navigabilità
+1836|Richiedete un'ispezione (subacquea).
+1837|Riferite il risultato dell'ispezione (subacquea).
+1838|Nessun danno.
+1839|I seguenti danni al fasciame:
+1840|Crepa (crepe) nella zona di ... .
+1841|Deformazione/i / ammaccatura/e nella zona di ... .
+1842|I seguenti danni alla macchina (alle macchine) / al tubo (ai tubi):
+1843|Crepa (crepe) nel basamento della macchina principale (delle macchine principali) / del motore ausiliario (dei motori ausiliari).
+1844|Deformazioni / rotture del tubo (dei tubi) in / fuori ... .
+1845|Rotture / piegature del bullone (dei bulloni) di ... .
+1846|I seguenti danni all'opera viva: (vedere anche .1.2.2)
+1847|Deformazione/i / ammaccatura/e alla presa (alle prese) / allo scarico (agli scarichi) a mare.
+1848|Deformazione/i / ammaccatura/e al dritto di prora / al bulbo.
+1849|Deformazione/i dell'elica (delle eliche).
+1850|Elica (eliche) (di sinistra / di dritta) mancante/i.
+1851|Deformazione del timone / di ... .
+1852|Si raccomanda / È necessario il bacino di carenaggio.
+1853|La nave è in condizioni di navigabilità?
+1854|Sì, la nave è in condizioni di navigabilità.
+1855|No, la nave non è (ancora) in condizioni di navigabilità.
+1856|La nave deve essere riparata e ispezionata di nuovo.
+1857|Richiedete ... rimorchiatori.
+1858|Attività di ricerca e soccorso a bordo
+1859|Per i dettagli vedere anche il Manuale IAMSAR, Londra/Montreal, 1998.
+1860|Controllo delle attrezzature
+1861|Controllate i salvagenti anulari e riferite.
+1862|Tutti i salvagenti anulari sono completi.
+1863|Il salvagente (i salvagenti) a ... è / sono danneggiato/i / mancante/i.
+1864|Sostituite il salvagente (i salvagenti) danneggiato/i / mancante/i.
+1865|Quando è stata l'ultima esercitazione di uomo a mare?
+1866|L'ultima esercitazione di uomo a mare è stata il ... (data).
+1867|Preparate un piano per l'esercitazione di uomo a mare.
+1868|Preparate un piano per
+1868~0|un'esercitazione annunciata / non annunciata.
+1868~1|un'esercitazione diurna / notturna.
+1868~2|un appello (a tutti i posti).
+1868~3|una manovra di recupero (con manichino / boa).
+1869|Fate un'esercitazione / una manovra / un appello il ... (data).
+1870|Attività di uomo a mare
+1871|Uomo a mare (a sinistra / a dritta / a poppa)!
+1872|Gettate il salvagente (i salvagenti).
+1873|Suonate l'allarme di "uomo a mare".
+1874|Issate la bandiera "Oscar".
+1875|Tutta barra a sinistra / a dritta.
+1876|La persona in acqua / il salvagente è localizzato/a?
+1877|Sì, persona in acqua / salvagente localizzato/a.
+1878|Riferite direzione e distanza della persona in acqua / del salvagente.
+1879|Direzione a ... quarte a sinistra / a dritta / ... gradi, distanza ... metri.
+1880|Mantenete il contatto visivo con la persona in acqua / il salvagente.
+1881|No, persona in acqua / salvagente non (ancora) localizzato/a.
+1882|Cercate con lo sguardo la persona in acqua / il salvagente e riferite.
+1883|Passeggero / membro dell'equipaggio disperso (da ... ore / dalle ... UTC) - ricerca a bordo negativa.
+1884|Fermate la macchina (le macchine).
+1885|Trasmettete il segnale di allarme - PAN-PAN / allarme di soccorso - MAYDAY alla stazione radio costiera / al Centro di coordinamento del soccorso marittimo / alle navi nelle vicinanze e riferite.
+1886|Segnale di allarme - PAN-PAN / allarme di soccorso - MAYDAY trasmesso / confermato da ... / non (ancora) confermato.
+1887|Manovra di ritorno! Sinistra / dritta, governate per ... gradi.
+1888|Riferite la posizione.
+1889|Posizione ... .
+1890|Riferite la situazione del traffico.
+1891|Nessuna nave nelle vicinanze.
+1892|Le seguenti navi nelle vicinanze ... .
+1893|Riferite la situazione meteo.
+1894|Mare calmo / mosso / agitato / grosso - mare lungo debole / moderato / forte da ... (punti cardinali).
+1895|Vento forza Beaufort ... da ... (punti cardinali).
+1896|Visibilità buona / moderata / scarsa.
+1897|Corrente ... nodi verso ... (punti cardinali).
+1898|Presidiate i posti di uomo a mare / le vedette a ... e riferite.
+1899|Posti di uomo a mare / vedette a ... presidiati.
+1900|Pronti al recupero dalla nave e riferite.
+1901|Pronti al recupero dalla nave.
+1902|Pronti ad ammainare l'imbarcazione / la lancia a motore n. ... e riferite.
+1903|Battello di emergenza / lancia a motore n. ... pronto/a per l'ammaino.
+1904|Ammainate il battello di emergenza / la lancia a motore.
+1905|Usate il canale VHF ... / la frequenza ... per comunicare.
+1906|Usate segnali luminosi / segnali con bandiere / il fischio per comunicare.
+1907|Qual è il segnale di ritirata per il battello di emergenza / la lancia a motore?
+1908|Segnale di ritirata ... .
+1909|Tenete pronti uno / due membri dell'equipaggio per il soccorso in acqua e riferite.
+1910|Uno / due membri dell'equipaggio pronti per il soccorso in acqua.
+1911|Persona caduta in mare soccorsa / recuperata.
+1912|Pronti imbarcazione / barella / rete / cestello / imbracatura di salvataggio e riferite.
+1913|Imbarcazione / barella / rete / cestello / imbracatura di salvataggio pronti.
+1914|Issate la persona e riferite.
+1915|Riferite le condizioni del superstite.
+1916|Il superstite
+1916~0|è in buone / cattive condizioni.
+1916~1|è in ipotermia.
+1916~2|è ferito.
+1916~3|è in stato di shock.
+1917|La persona è deceduta.
+1918|Operazione di soccorso - segnalare la prontezza a prestare assistenza
+1919|Vedere anche A1/1.2 "Comunicazioni di ricerca e soccorso".
+1920|Ricevuto un segnale di allarme / PAN-PAN / allarme di soccorso - MAYDAY alle ... UTC su ... (canale VHF / frequenza).
+1921|Osservato il seguente segnale di soccorso per ... gradi.
+1922|Riferite la posizione di soccorso.
+1923|Posizione di soccorso ... .
+1924|Il segnale di allarme / PAN-PAN / allarme di soccorso - MAYDAY è stato confermato?
+1925|Il segnale di allarme / PAN-PAN / allarme di soccorso - MAYDAY è stato confermato da ... / non è (ancora) stato confermato.
+1926|Confermate la ricezione del PAN-PAN / allarme di soccorso - MAYDAY RELAY.
+1927|Trasmettete un MAYDAY RELAY a ... (stazione radio).
+1928|Sorvegliate il radar.
+1929|Presidiate le vedette e riferite.
+1930|Vedette presidiate.
+1931|Contattate le navi nelle vicinanze del sinistro e riferite.
+1932|Siamo in contatto con le seguenti navi nelle vicinanze del sinistro: ... .
+1933|Non abbiamo (ancora) contatti.
+1934|Chiedete informazioni alla nave in pericolo e riferite.
+1935|Abbiamo le seguenti informazioni dalla nave in pericolo: ... .
+1936|Non abbiamo (ancora) informazioni.
+1937|Pronti cime / salvagenti / reti / picchi di carico / gru / ... e riferite.
+1938|Cime / lance / reti / picchi di carico / gru / ... pronti.
+1939|Pronti lance / battello di emergenza e riferite.
+1940|Lance / battello di emergenza pronti.
+1941|Pronte le zattere come stazioni di imbarco e riferite.
+1942|Zattere pronte come stazioni di imbarco.
+1943|Mettete a mare le zattere come stazioni di imbarco con ... membri dell'equipaggio (ciascuna).
+1944|Tenete pronti ... membri dell'equipaggio per assistere i superstiti in acqua e riferite.
+1945|... membri dell'equipaggio pronti per assistere i superstiti in acqua.
+1946|Accendete l'illuminazione di coperta / fuori bordo / i proiettori.

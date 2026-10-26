@@ -1,0 +1,222 @@
+2132|Rifiutate gli imballaggi di merci pericolose danneggiati / bagnati / ... .
+2133|Ventilate la stiva (le stive) prima di entrare.
+2134|Caricate / scaricate per prime le merci di classe IMO ... .
+2135|Vietato fumare durante la caricazione / discarica.
+2136|Segnalare gli incidenti
+2137|Brache con bombole / fusti / ... di merci di classe IMO ... sono cadute in coperta / nella stiva n. ... / sul molo ... .
+2138|Si sta spargendo liquido / polvere / gas.
+2139|Diversi fusti / barili / serbatoi / ... sono deformati (e perdono).
+2140|Il container ... con merci di classe IMO ... perde dalla porta.
+2141|Sostanze di classe IMO ... fuoriuscite sono finite in mare / nelle acque del porto.
+2142|Informate l'autorità antinquinamento.
+2143|La temperatura nel ripostiglio / nel container / ... con merci di classe IMO ... sta aumentando (rapidamente).
+2144|Fumo arancione / rosso / ... si sta sviluppando dalle merci di classe IMO ... (in coperta).
+2145|Esplosione nella stiva n. ... .
+2146|Danni al serbatoio del gas / al container / ... .
+2147|Incendio lieve / grave nella stiva n. ... .
+2148|Incendio spento.
+2149|Le merci di classe IMO ... si sono riaccese.
+2150|Incendio sotto controllo.
+2151|Incendio non (ancora) sotto controllo.
+2152|Azionate l'allarme generale di emergenza.
+2153|Chiamate i vigili del fuoco del porto / ... .
+2154|Riferite su feriti / vittime.
+2155|Nessun ferito.
+2156|Il numero di feriti / vittime è ... .
+2157|Azioni in caso di incidente
+2158|Agite secondo il piano di emergenza.
+2159|Mettete la nave fuori dal vento - il gas / il fumo che fuoriesce è tossico.
+2160|Indossate indumenti protettivi e autorespiratore.
+2161|Fermate la fuoriuscita.
+2162|Lasciate evaporare la sostanza fuoriuscita.
+2163|Rimuovete la sostanza fuoriuscita con palette sintetiche.
+2164|Usate materiali assorbenti sulla sostanza fuoriuscita.
+2165|Non toccate la sostanza fuoriuscita.
+2166|Separate la merce contaminata dall'altra merce.
+2167|Coprite la merce contaminata con teloni / ... .
+2168|Aprite il container / la stiva / il ripostiglio / ... solo quando il fumo è cessato.
+2169|Raffreddate il container / ... con acqua.
+2170|Ventilate la stiva (le stive) con cautela.
+2171|Chiudete il boccaporto - azionate l'impianto di estinzione.
+2172|Combattete l'incendio da grande distanza.
+2173|Allagate la stiva (le stive) n. ... .
+2174|Soccorrete le persone.
+2175|Portate feriti / vittime in un'area sicura.
+2176|Prestate il primo soccorso ai feriti.
+2177|Chiamate l'ambulanza.
+2178|Togliete ed eliminate gli indumenti contaminati.
+2179|Dirigete verso il porto più vicino (informate via radio).
+2180|Movimentazione di liquidi, combustibile e zavorra; prevenzione dell'inquinamento
+2181|Preparare le misure di sicurezza
+2182|Tappate gli ombrinali / le vaschette di raccolta e riferite.
+2183|Tutti gli ombrinali / le vaschette di raccolta sono tappati.
+2184|Chiudete le valvole a mare / gli scarichi e riferite.
+2185|Tutte le valvole a mare / gli scarichi sono chiusi.
+2186|Tenete pronti i materiali assorbenti e riferite.
+2187|Materiali assorbenti pronti.
+2188|Tenete pronta l'attrezzatura antinquinamento e riferite.
+2189|Attrezzatura antinquinamento pronta.
+2190|Tenete pronti la pompa antincendio di emergenza / il monitore a schiuma / gli estintori e riferite.
+2191|Pompa antincendio di emergenza / monitore a schiuma / estintori pronti.
+2192|Collegate il cavo di messa a terra (continuità elettrica) e riferite.
+2193|Il cavo di messa a terra è collegato.
+2194|Mantenete il contatto sul canale VHF ... con la bettolina del bunker / il terminale petrolifero.
+2195|È disponibile il piano di prevenzione dell'inquinamento da idrocarburi?
+2196|Sì, il piano di prevenzione dell'inquinamento da idrocarburi è disponibile.
+2197|No, il piano di prevenzione dell'inquinamento da idrocarburi non è (ancora) disponibile.
+2198|Il piano di prevenzione dell'inquinamento da idrocarburi sarà disponibile tra ... minuti.
+2199|Istruite il pompista / ... e riferite.
+2200|Il pompista / ... è istruito.
+2201|Uso delle pompe (comprese le frasi per comunicare con la bettolina del bunker / il terminale petrolifero)
+2202|Qual è il ritmo (massimo) di caricazione / di discarica?
+2203|Il ritmo (massimo) di caricazione / di discarica è: ... tonnellate all'ora.
+2204|L'impianto COW / l'impianto del gas inerte è operativo?
+2205|Sì, l'impianto COW / l'impianto del gas inerte è operativo.
+2206|No, l'impianto COW / l'impianto del gas inerte non è (ancora) operativo.
+2207|L'impianto COW / l'impianto del gas inerte sarà operativo tra ... minuti.
+2208|Quando inizierà il lavaggio con greggio?
+2209|Il lavaggio con greggio inizierà tra ... minuti.
+2210|Le vostre cisterne sono inertizzate?
+2211|Sì, le mie cisterne sono inertizzate.
+2212|No, le mie cisterne non sono (ancora) inertizzate.
+2213|Le mie cisterne saranno inertizzate tra ... minuti.
+2214|Qual è la pressione nelle cisterne inertizzate?
+2215|La pressione nelle cisterne inertizzate è ... bar.
+2216|Qual è la pressione di pompaggio?
+2217|La pressione di pompaggio è ... bar.
+2218|Possiamo collegare il braccio di carico?
+2219|Sì, potete collegare il braccio di carico.
+2220|No, non potete (ancora) collegare il braccio di carico.
+2221|Collegate il braccio di carico tra ... minuti.
+2222|Avvisate ... minuti prima che la caricazione / discarica inizi / finisca.
+2223|La caricazione / discarica inizierà / finirà tra ... minuti.
+2224|Qual è la contropressione per lo stripping?
+2225|La contropressione per lo stripping è ... bar.
+2226|Le manichette / i bracci del carico sono collegati?
+2227|Sì, le manichette / i bracci del carico sono collegati.
+2228|No, le manichette / i bracci del carico non sono (ancora) collegati.
+2229|Le manichette / i bracci del carico saranno collegati tra ... minuti.
+2230|Le manichette / i bracci del carico sono scollegati?
+2231|Sì, le manichette / i bracci del carico sono scollegati.
+2232|No, le manichette / i bracci del carico non sono (ancora) scollegati.
+2233|Le manichette / i bracci del carico saranno scollegati tra ... minuti.
+2234|Siete pronti a caricare / scaricare?
+2235|Sì, sono pronto a caricare / scaricare.
+2236|No, non sono (ancora) pronto a caricare / scaricare.
+2237|Sarò pronto a caricare / scaricare tra ... minuti.
+2238|Mantenete una pressione di lavoro sicura.
+2239|Aprite la valvola (le valvole) e riferite.
+2240|Tutto aperto a bordo / a terra.
+2241|Chiudete la valvola (le valvole) e riferite.
+2242|Tutto chiuso a bordo / a terra.
+2243|Iniziate a pompare (lentamente).
+2244|State pompando / ricevendo?
+2245|Sì, sto pompando / ricevendo.
+2246|No, non sto pompando / non sto ricevendo.
+2247|Aumentate / riducete il ritmo di pompaggio a ... giri / bar.
+2248|(Quantità ricevuta) - smettete di pompare.
+2249|Segnalare e ripulire le fuoriuscite
+2250|Perdita al collegamento del manifold!
+2251|Traboccamento a ... !
+2252|Smettete di pompare!
+2253|Quanto è fuoriuscito?
+2254|La fuoriuscita è di circa ... tonnellate.
+2255|Trattate la fuoriuscita con ... .
+2256|Tenete pronta la squadra di rimozione degli idrocarburi e riferite.
+2257|Squadra di rimozione degli idrocarburi pronta.
+2258|Tutto l'equipaggio aiuti a rimuovere la fuoriuscita.
+2259|Fuoriuscita fermata.
+2260|Fuoriuscita ripulita.
+2261|Residui della fuoriuscita raccolti nella vaschetta di contenimento / ... .
+2262|Petrolio / ... sta finendo in mare / nelle acque del porto!
+2263|Informate l'autorità antinquinamento!
+2264|Gestione della zavorra
+2265|Tappate gli ombrinali e riferite.
+2266|Tutti gli ombrinali sono tappati.
+2267|Aprite / chiudete la valvola di presa a mare / la valvola della cassa di zavorra n. ... e riferite.
+2268|La valvola di presa a mare / la valvola della cassa di zavorra n. ... è aperta / chiusa.
+2269|Avviate la pompa della zavorra e riferite.
+2270|Pompa della zavorra avviata.
+2271|Fermate la pompa della zavorra (traboccamento della zavorra) e riferite.
+2272|Pompa della zavorra fermata.
+2273|Svuotate la cassa di zavorra n. ... e riferite.
+2274|La cassa di zavorra n. ... è svuotata.
+2275|Fermate la pompa della zavorra - zavorra sporca!
+2276|Lavaggio delle cisterne
+2277|Pompate le slop nella cisterna slop.
+2278|Scaricate i fanghi nella cassa dei fanghi.
+2279|Ordinate una cisterna slop a terra / una bettolina per slop.
+2280|Abbiamo ... tonnellate di slop / fanghi.
+2281|Iniziate / smettete di pompare le slop.
+2282|Mantenete una pressione di lavoro sicura.
+2283|Preparazione per il mare
+2284|Chiudete e assicurate le coperture dei boccaporti per la navigazione e riferite.
+2285|Coperture dei boccaporti chiuse e assicurate.
+2286|Rizzate e assicurate la merce per la navigazione e riferite.
+2287|Merce rizzata e assicurata. (Sui traghetti ro-ro: l'esecuzione delle istruzioni 3, 4 e 5 date dalla plancia via radio deve essere confermata dal responsabile della relativa stazione con le frasi 3.1, 4.1 e 5.1.)
+2288|Chiudete e assicurate il portellone di prora / di poppa e riferite.
+2289|Portellone di prora / di poppa chiuso e assicurato.
+2290|Ripiegate e assicurate la rampa di prora / di poppa / laterale e riferite.
+2291|Rampa di prora / di poppa / laterale ripiegata e assicurata.
+2292|Rizzate e assicurate tutte le auto / i camion / i vagoni / ... e riferite.
+2293|Tutte le auto / i camion / i vagoni / ... rizzati e assicurati.
+2294|Abbassate e assicurate i picchi di carico / le gru e riferite.
+2295|Picchi di carico / gru abbassati e assicurati.
+2296|Controllate che le stive siano pronte per il mare e riferite.
+2297|Stive pronte per il mare.
+2298|Quanta zavorra possiamo imbarcare (fino alle marche)?
+2299|Possiamo imbarcare ... tonnellate di zavorra.
+2300|Controllate l'assetto.
+2301|Riempite il gavone di prora per ridurre l'appoppamento.
+2302|Riempite il doppiofondo (i doppifondi).
+2303|Pompate combustibile dalla cassa ... alla cassa ... per raddrizzare la nave.
+2304|Cura del carico
+2305|Uso delle attrezzature di bordo per la cura del carico
+2306|Le attrezzature per la cura del carico sono operative?
+2307|Sì, le attrezzature per la cura del carico sono operative.
+2308|No, ... (attrezzatura) non è (ancora) operativa.
+2309|... (attrezzatura) sarà operativa tra ... minuti.
+2310|Qual è il ricambio d'aria dei ventilatori di stiva?
+2311|Il ricambio d'aria dei ventilatori di stiva è di ... volte.
+2312|I registratori di temperatura / umidità nella stiva (nelle stive) sono operativi?
+2313|Sì, i registratori di temperatura / umidità nella stiva (nelle stive) sono operativi.
+2314|No, i registratori di temperatura / umidità nella stiva (nelle stive) non sono (ancora) operativi.
+2315|I registratori di temperatura / umidità nella stiva (nelle stive) saranno operativi tra ... minuti.
+2316|Istruite l'equipaggio su come collegare le prese dei reefer / i gruppi frigo clip-on / ... e riferite.
+2317|L'equipaggio è istruito su come collegare le prese dei reefer / i gruppi frigo clip-on / ... .
+2318|Misure per la cura del carico
+2319|Effettuare ispezioni
+2320|Le stive devono essere ispezionate dal perito prima della caricazione.
+2321|Controllate che le stive refrigerate siano pronte per la caricazione e riferite.
+2322|Le stive refrigerate sono pronte per la caricazione.
+2323|Le stive refrigerate non sono (ancora) pronte per la caricazione.
+2324|Le stive refrigerate saranno pronte per la caricazione tra ... minuti.
+2325|Le stive sono pulite (asciutte e senza odori)?
+2326|Sì, le stive sono pulite (asciutte e senza odori).
+2327|No, le stive non sono (ancora) pulite (asciutte e senza odori).
+2328|Le stive saranno pulite (asciutte e senza odori) tra ... minuti / ore.
+2329|Controllate il funzionamento dei ventilatori di stiva e riferite.
+2330|I ventilatori di stiva sono operativi.
+2331|I ventilatori di stiva (nella stiva / nelle stive n. ...) non sono (ancora) operativi.
+2332|I ventilatori di stiva (nella stiva / nelle stive n. ...) saranno operativi tra ... minuti.
+2333|Chiamate un perito per controllare le prese dei reefer / il fissaggio del carico.
+2334|Il certificato di ispezione è disponibile e completo?
+2335|Sì, il certificato di ispezione è disponibile e completo.
+2336|No, il certificato di ispezione non è (ancora) disponibile e completo.
+2337|Il certificato di ispezione sarà disponibile e completo tra ... minuti / ore.
+2338|Controllate rizze e fissaggi ogni giorno / ogni ... ore.
+2339|Registrate tutti i controlli nel giornale di bordo.
+2340|Prima della discarica aprite i boccaporti solo in presenza del perito.
+2341|Descrivere i danni al carico. Vedere anche la sezione B2/1.2.3 "Segnalare gli incidenti".
+2342|Il ... (carico) è in cattive condizioni.
+2343|I colli di ... (carico) sono
+2343~0|bagnati / umidi / ammuffiti.
+2343~1|segnati da acqua dolce / acqua di mare.
+2344|Il metallo di ... (carico) è arrugginito.
+2345|Le reggette di ... (carico) sono rotte / mancanti / arrugginite.
+2346|Le gabbie / casse con ... (carico) sono richiodate.
+2347|Le tavole delle gabbie / casse con ... (carico) sono staccate.
+2348|Le marcature / etichette su ... (carico) sono poco chiare / illeggibili / false.
+2349|Il contenuto dei fusti / barili / ... è sconosciuto.
+2350|Il peso del ... (carico) è sconosciuto.
+2351|Le scatole / gabbie / casse / ... con ... (carico) sono danneggiate.

@@ -1,0 +1,212 @@
+1947|Pronti con l'apparecchio lanciasagole e riferite.
+1948|Apparecchio lanciasagole pronto.
+1949|Condurre la ricerca
+1950|Noi / La M/N ... faremo / farà da Coordinatore sul posto.
+1951|Informate la stazione radio costiera (le stazioni) / l'MRCC / le navi nelle vicinanze.
+1952|Squadra di plancia / vedette pronte per informazioni / segnali del Coordinatore sul posto.
+1953|Ricevute le seguenti informazioni / il seguente segnale dal Coordinatore sul posto:
+1954|Eseguiamo lo schema di ricerca ... / una ricerca radar.
+1955|Iniziamo lo schema di ricerca ... / la ricerca radar alle ... UTC.
+1956|Informate l'equipaggio / le vedette / la sala macchine.
+1957|Squadra di plancia / vedette! Mantenete un'attenta vedetta per segnali / avvistamenti della nave in pericolo e riferite ogni ... minuti.
+1958|Segnali luminosi / fumogeni / sonori / ... per ... gradi.
+1959|Oggetti / nave in pericolo / lancia (lance) / zattera (zattere) / persona (persone) in acqua per ... gradi.
+1960|Pronti la squadra di soccorso / gli equipaggi delle imbarcazioni / la sala macchine e riferite.
+1961|Squadra di soccorso / equipaggi delle imbarcazioni / sala macchine pronti.
+1962|Trasmettete le seguenti informazioni / i seguenti segnali alla nave (alle navi) in ricerca: ... .
+1963|Attività di soccorso
+1964|Vedere anche B2/6.2 "Attività di uomo a mare".
+1965|Soccorrete le persone in questo ordine: - persone in acqua - feriti / persone non autosufficienti - donne e bambini - passeggeri - membri dell'equipaggio.
+1966|Chiedete ai superstiti le seguenti informazioni:
+1967|Qual era il numero totale delle persone a bordo della nave in pericolo?
+1968|Il numero totale delle persone era: ... .
+1969|Qual era il numero delle vittime?
+1970|Il numero delle vittime era: ... .
+1971|Qual era il numero delle lance / zattere messe a mare?
+1972|Il numero delle lance / zattere messe a mare era: ... .
+1973|Qual era il numero delle persone nelle lance / zattere?
+1974|Il numero delle persone nelle lance / zattere era: ... .
+1975|Qual era il numero delle persone in acqua?
+1976|Il numero delle persone in acqua era: ... .
+1977|Informate la stazione radio costiera di ... su nome / nominativo e destinazione della nave (delle navi) con i superstiti.
+1978|Informate sul numero dei superstiti su (ciascuna) nave.
+1979|Informate sulle condizioni dei superstiti.
+1980|Informate la stazione radio costiera di ... sulle condizioni della nave in pericolo:
+1981|La nave in pericolo
+1981~0|si è capovolta / è affondata / è alla deriva (vicino alla posizione ...) / deriva per ... gradi.
+1981~1|si è incagliata (nella posizione: ...).
+1981~2|è in fiamme.
+1981~3|non governa.
+1982|Trasmettete il seguente messaggio di sicurezza / avviso ai naviganti: nave in pericolo (nella posizione ...) pericolo per la navigazione.
+1983|Conclusione delle operazioni di ricerca e soccorso
+1984|Ricerca e soccorso concluse alle ... UTC.
+1985|Informate l'equipaggio / le vedette / la sala macchine.
+1986|Riprendiamo la normale routine di bordo alle ... UTC.
+1987|Informate la stazione radio costiera / le navi in ricerca della fine della ricerca e soccorso.
+1988|Proseguiamo il nostro viaggio.
+1989|Carico e movimentazione del carico
+1990|Movimentazione del carico
+1991|Caricazione e discarica
+1992|Capacità e quantità di carico
+1993|Qual è la portata lorda della nave?
+1994|La portata lorda è ... tonnellate.
+1995|Qual è la capacità delle stive in balle / in grani della nave?
+1996|La capacità in balle / in grani è ... metri cubi.
+1997|Qual è la capacità in container della nave?
+1998|La capacità in container è ... TEU.
+1999|Quanti container da 20' / 40' caricherà la nave?
+2000|La nave caricherà ... container da 20' / 40'.
+2001|Quanti metri cubi di spazio di carico servono?
+2002|Servono ... metri cubi di spazio di carico.
+2003|Quante tonnellate / metri cubi può ancora caricare la nave?
+2004|La nave può ancora caricare ... tonnellate / metri cubi.
+2005|Quanto carico di coperta può caricare la nave?
+2006|La nave può caricare in coperta ... tonnellate / metri cubi / ... container da 20' / 40'.
+2007|Quante auto / rimorchi / camion / ... può caricare la nave?
+2008|La nave può caricare ... auto / rimorchi / camion / ... .
+2009|Quali sono le dimensioni delle aperture dei boccaporti?
+2010|Le aperture dei boccaporti misurano ... per ... metri.
+2011|Qual è il carico ammissibile della stiva n. ... ?
+2012|Il carico ammissibile del ponte ... della stiva n. ... è ... tonnellate per metro quadrato.
+2013|La nave imbarcherà ancora ... tonnellate di combustibile / acqua dolce / ... .
+2014|Mezzi e attrezzature di movimentazione del carico di banchina / di bordo
+2015|Sono disponibili gru di banchina / gru galleggianti?
+2016|Sì, sono disponibili gru di banchina / gru galleggianti.
+2017|No, non sono disponibili gru di banchina / gru galleggianti.
+2018|Qual è il carico di lavoro sicuro della gru?
+2019|Il carico di lavoro sicuro della gru è ... tonnellate.
+2020|Qual è lo sbraccio massimo della gru?
+2021|Lo sbraccio massimo della gru è ... metri.
+2022|Qual è la capacità di movimentazione della gru per container / del portale?
+2023|La capacità di movimentazione della gru per container / del portale è ... container all'ora.
+2024|Qual è la capacità di movimentazione dell'elevatore per granaglie / del caricatore di minerale / ... ?
+2025|La capacità di movimentazione dell'elevatore per granaglie / del caricatore di minerale / ... è ... tonnellate / metri cubi all'ora.
+2026|Qual è la portata delle pompe del carico?
+2027|La portata delle pompe del carico è ... tonnellate all'ora.
+2028|Sono disponibili carrelli elevatori (leggeri) per le stive?
+2029|Sì, sono disponibili carrelli elevatori (leggeri).
+2030|No, non sono disponibili carrelli elevatori (leggeri).
+2031|Nelle stive usate solo carrelli elevatori elettrici.
+2032|Qual è il carico di lavoro sicuro del carrello elevatore?
+2033|Il carico di lavoro sicuro del carrello elevatore è ... tonnellate.
+2034|Qual è il carico di lavoro sicuro dei picchi di carico / delle gru della nave?
+2035|Il carico di lavoro sicuro dei picchi di carico / delle gru della nave è ... tonnellate.
+2036|Qual è il carico di lavoro sicuro delle brache ... ?
+2037|Il carico di lavoro sicuro delle brache ... è ... tonnellate.
+2038|Queste brache non permettono una movimentazione sicura del carico.
+2039|Sostituite le brache.
+2040|Sono disponibili bob-cat per lo spianamento del carico?
+2041|Sì, sono disponibili bob-cat per lo spianamento.
+2042|No, non sono disponibili bob-cat per lo spianamento.
+2043|Preparazione alla caricazione / discarica
+2044|Preparate la nave per la caricazione / la discarica.
+2045|Sbloccate le coperture dei boccaporti.
+2046|Armate le ringhiere di boccaporto nella stiva (nelle stive) n. ... .
+2047|Date l'avviso di prontezza alla caricazione / alla discarica entro le ... UTC / ora locale.
+2048|La lista del carico è disponibile e completa?
+2049|Sì, la lista del carico è disponibile e completa.
+2050|No, la lista del carico non è (ancora) disponibile e completa.
+2051|La lista del carico sarà disponibile e completa tra ... minuti.
+2052|Completate il piano di carico.
+2053|Fate il calcolo di stabilità.
+2054|Le stive sono pulite / asciutte / senza odori?
+2055|Sì, le stive sono pulite / asciutte / senza odori.
+2056|No, le stive non sono (ancora) pulite / asciutte / senza odori.
+2057|Le stive saranno pulite / asciutte / senza odori tra ... minuti / ore.
+2058|Pulite la stiva (le stive) / il ponte (i ponti).
+2059|Le sistemazioni di sicurezza nella stiva (nelle stive) sono operative?
+2060|Sì, le sistemazioni di sicurezza nella stiva (nelle stive) sono operative.
+2061|No, le sistemazioni di sicurezza nella stiva (nelle stive) non sono (ancora) operative.
+2062|Le sistemazioni di sicurezza nella stiva (nelle stive) saranno operative tra ... minuti.
+2063|Riempite il doppiofondo (i doppifondi) / la cassa (le casse) di zavorra prima di caricare i colli pesanti.
+2064|Qual è il ritmo massimo di caricazione / di discarica?
+2065|Il ritmo massimo di caricazione / di discarica è ... tonnellate all'ora.
+2066|Non superate il ritmo di caricazione / di discarica di ... tonnellate all'ora.
+2067|Uso delle attrezzature di carico e dei boccaporti
+2068|Aprite tutti i boccaporti prima della caricazione / discarica.
+2069|Le gru / i picchi di carico sono operativi?
+2070|Sì, le gru / i picchi di carico sono operativi.
+2071|No, le gru / i picchi di carico non sono (ancora) operativi.
+2072|Le gru / i picchi di carico saranno operativi tra ... minuti.
+2073|Armate il picco (i picchi) di carico / la gru (le gru) della stiva (delle stive) n. ... .
+2074|Controllate le ritenute.
+2075|Restate entro il carico di lavoro sicuro del picco (dei picchi) / della gru (delle gru).
+2076|Istruite i verricellisti / i gruisti.
+2077|Pulite il corridoio (i corridoi) prima di aprire la stiva (le stive) inferiore/i.
+2078|Accendete / spegnete la ventilazione della stiva.
+2079|Accendete / spegnete le luci della stiva.
+2080|Chiudete / aprite il portellone (i portelloni) di carico della stiva (delle stive) n. ... .
+2081|Manutenzione / riparazione delle attrezzature di carico
+2082|Controllate i danni alla stiva (alle stive) / alla copertura (alle coperture) dei boccaporti / al picco (ai picchi) di carico / ... e riferite.
+2083|La stiva (le stive) / la copertura (le coperture) dei boccaporti / il picco (i picchi) di carico / ... è / sono in ordine.
+2084|Le serrette sono danneggiate.
+2085|Le guarnizioni di gomma della copertura (delle coperture) dei boccaporti sono danneggiate.
+2086|La ritenuta (le ritenute) della stiva (delle stive) n. ... è / sono danneggiata/e.
+2087|Le rizze (dei container) sono danneggiate.
+2088|... è / sono danneggiato/i.
+2089|Sostituite il ... danneggiato.
+2090|La scala (le scale) di stiva è / sono piegata/e.
+2091|Raddrizzate la scala (le scale) di stiva.
+2092|I ventilatori di stiva sono operativi?
+2093|Sì, i ventilatori di stiva sono operativi.
+2094|No, i ventilatori di stiva non sono (ancora) operativi.
+2095|I ventilatori di stiva saranno operativi tra ... minuti.
+2096|I motori dei verricelli sono operativi?
+2097|Sì, i motori dei verricelli sono operativi.
+2098|No, il motore del verricello del picco n. ... non è (ancora) operativo.
+2099|Il motore del verricello del picco n. ... sarà operativo tra ... minuti.
+2100|Controllate di persona i lavori di riparazione.
+2101|Istruzioni su stivaggio e fissaggio
+2102|Controllate
+2102~0|lo stivaggio accurato e sicuro.
+2102~1|la discarica completa.
+2102~2|il corretto uso delle attrezzature.
+2102~3|l'accurata separazione delle diverse partite.
+2103|Chiudete i boccaporti in caso di pioggia / neve / ... .
+2104|Rifiutate scatole / cartoni / casse / gabbie / sacchi / ... danneggiati / schiacciati / richiodati / bagnati / strappati / ricuciti / ... .
+2105|Non stivate altra merce sopra i cartoni.
+2106|Non usate ganci per movimentare i sacchi.
+2107|Inserite condotti di ventilazione nel carico in sacchi.
+2108|Mettete legname di stivaggio (dunnage) tra gli strati.
+2109|Stivate
+2109~0|... nel corridoio della stiva n. ... .
+2109~1|i pallet / i cartoni / ... ben accostati.
+2109~2|... nella stiva refrigerata.
+2109~3|i container vuoti negli strati più alti.
+2109~4|il container (i container) sulla copertura (sulle coperture) dei boccaporti.
+2109~5|... .
+2110|Controllate
+2110~0|i danni ai container.
+2110~1|il corretto incastro dei pezzi di stivaggio.
+2110~2|il corretto fissaggio dei morsetti dei cavi.
+2111|Fissate subito il collo pesante (i colli pesanti).
+2112|Ripassate tutte le rizze.
+2113|Movimentazione delle merci pericolose
+2114|Vedere anche il Codice IMDG dell'IMO, Londra 1994, emendato.
+2115|Informazioni sulla natura delle merci pericolose
+2116|Qual è la classe IMO di queste merci?
+2117|La classe IMO di queste merci è: ... .
+2118|Questo collo contiene merci di classe IMO ... .
+2119|Queste merci sono infiammabili / velenose / ... .
+2120|Movimentate queste merci con cautela.
+2121|Queste merci emettono gas infiammabili a contatto con l'acqua.
+2122|Tenete asciutte queste merci.
+2123|Queste merci sono soggette a riscaldamento e combustione spontanei.
+2124|Non toccate ... .
+2125|Istruzioni su compatibilità e stivaggio
+2126|Rispettate il Codice IMDG nella caricazione / nello stivaggio.
+2127|Controllate
+2127~0|la corretta segregazione delle merci.
+2127~1|i nomi tecnici corretti nei documenti.
+2127~2|le marcature / le etichette corrette.
+2127~3|la compatibilità delle merci di classe IMO ... .
+2128|Stivate le merci di classe IMO ...
+2128~0|lontano dagli alloggi / lontano da ... .
+2128~1|separate (da una stiva) dalle merci di classe IMO ... .
+2128~2|sotto / in coperta.
+2129|Coprite con teloni / ... le merci di classe IMO ... in coperta.
+2130|Stivate
+2130~0|le merci infiammabili lontano dalla paratia della sala macchine / da ... .
+2130~1|le sostanze infettive separate dai generi alimentari da una stiva / un compartimento.
+2130~2|i fusti di ... lontano dalle merci di classe IMO ... ad almeno ... metri.
+2131|Informate gli stivatori sulle merci pericolose nella stiva (nelle stive) n. ... .

@@ -1,0 +1,104 @@
+839|Il pilotaggio alla stazione piloti di ... (nome) è sospeso fino a ... (data e ora locale).
+840|Il pilotaggio alla stazione piloti di ... (nome) è ripreso.
+841|Il pilota non può imbarcare alla stazione piloti di ... (nome) a causa di ... .
+842|Accettate l'assistenza alla navigazione da terra del centro VTS?
+843|Sì, accetto l'assistenza alla navigazione da terra.
+844|No, non accetto l'assistenza alla navigazione da terra.
+845|Rimarrò nella posizione ... fino a ... .
+846|Avete il permesso di procedere da soli (oppure attendete il pilota alla boa ...).
+847|Seguite la pilotina verso l'interno, dove imbarcherà il pilota.
+848|Imbarco / sbarco del pilota: vedere A1/4.2 "Imbarco / sbarco del pilota". Appendice ad A1 - Frasi per le comunicazioni esterne. Messaggi GMDSS standard. Per maggiori dettagli vedere il Manuale ITU per il servizio mobile marittimo e il servizio mobile marittimo via satellite, Ginevra. 1 Messaggio di soccorso standard
+849|Struttura. Ricevuta la conferma dell'allarme di soccorso DSC, la nave in pericolo inizia il traffico di soccorso su una delle frequenze internazionali di soccorso, come il canale VHF 16 o la frequenza 2182 kHz (se non è automatico), così: MAYDAY THIS IS - il codice MMSI di 9 cifre più nome / nominativo o altra identificazione della nave che chiama - la posizione della nave - la natura del pericolo - l'assistenza richiesta - ogni altra informazione utile al soccorso.
+850|Esempio (si trasmette in inglese): MAYDAY - THIS IS TWO-ONE-ONE-TWO-THREE-NINE-SIX-EIGHT-ZERO MOTOR VESSEL "BIRTE" CALL SIGN DELTA ALPHA MIKE KILO - POSITION SIX TWO DEGREES ONE ONE DECIMAL EIGHT MINUTES NORTH - ZERO ZERO SEVEN DEGREES FOUR FOUR MINUTES EAST - I AM ON FIRE AFTER EXPLOSION - I REQUIRE FIRE FIGHTING ASSISTANCE - SMOKE NOT TOXIC - OVER. (Sono in fiamme dopo un'esplosione - richiedo assistenza antincendio - fumo non tossico - passo.) 2 Messaggio di urgenza standard
+851|Struttura. Dopo aver trasmesso una chiamata di urgenza DSC, passare con il trasmettitore sul canale VHF 16 o sulla frequenza 2182 kHz (se non è automatico) e iniziare il traffico di urgenza così: PAN PAN (ripetuto tre volte) ALL STATIONS (ripetuto tre volte) THIS IS - l'MMSI di 9 cifre della nave più nome / nominativo o altra identificazione - la posizione della nave - il testo del messaggio di urgenza.
+852|Esempio (si trasmette in inglese): PAN PAN PAN PAN PAN PAN ALL STATIONS ALL STATIONS ALL STATIONS - THIS IS TWO-ONE-ONE-TWO-THREE-NINE-SIX-EIGHT-ZERO MOTOR VESSEL "BIRTE" CALL SIGN DELTA ALPHA MIKE KILO - POSITION SIX TWO DEGREES ONE ONE DECIMAL EIGHT MINUTES NORTH ZERO ZERO SEVEN DEGREES FOUR FOUR MINUTES EAST - I HAVE PROBLEMS WITH ENGINES - I REQUIRE TUG ASSISTANCE - OUT. (Ho problemi alle macchine - richiedo assistenza di rimorchiatori - chiudo.) 3 Messaggio di sicurezza standard
+853|Struttura. Dopo aver trasmesso una chiamata di sicurezza DSC, passare con il trasmettitore sul canale VHF 16 o sulla frequenza 2182 kHz (se non è automatico) e trasmettere il messaggio di sicurezza così: SÉCURITÉ (ripetuto tre volte) ALL STATIONS (oppure a tutte le navi di una zona geografica, o a una stazione determinata) (ripetuto tre volte) THIS IS - l'MMSI di 9 cifre della nave più nome / nominativo o altra identificazione - il testo del messaggio di sicurezza.
+854|Esempio (si trasmette in inglese): SÉCURITÉ SÉCURITÉ SÉCURITÉ ALL SHIPS ALL SHIPS ALL SHIPS IN AREA PETER REEF - THIS IS TWO-ONE-ONE-TWO-THREE-NINE-SIX-EIGHT-ZERO MOTOR VESSEL "BIRTE" CALL SIGN DELTA ALPHA MIKE KILO - DANGEROUS WRECK LOCATED IN POSITION TWO NAUTICAL MILES SOUTH OF PETER REEF - OVER. (Relitto pericoloso localizzato due miglia nautiche a sud di Peter Reef - passo.)
+855|FRASI PER LE COMUNICAZIONI A BORDO
+856|Ordini standard al timone
+857|Ogni ordine al timone deve essere ripetuto dal timoniere, e l'ufficiale di guardia deve accertarsi che sia eseguito correttamente e subito. Ogni ordine al timone resta valido finché non viene revocato. Il timoniere deve riferire subito se la nave non risponde al timone. Se si teme che il timoniere sia distratto, gli si chiede: "What is your heading?" (Qual è la vostra prora?) e lui risponde: "My heading is ... degrees." (La mia prora è ... gradi.)
+858|@
+859|@
+860|Quando l'ufficiale di guardia vuole far governare su una rotta bussola, indica il verso in cui girare la ruota e poi ogni cifra separatamente, zero compreso, per esempio:
+861|@
+862|@
+863|Ricevuto un ordine di governare, per esempio, per 182°, il timoniere lo ripete e porta la nave con regolarità sulla rotta ordinata. Quando la nave è stabile sulla rotta ordinata, il timoniere dice: "Steady on one eight two" (Ferma su uno otto due). Chi ha dato l'ordine conferma la risposta del timoniere.
+864|Se si vuole governare su un riferimento, si ordina al timoniere: "Steer on ... buoy / ... mark / ... beacon" (Governate sulla boa ... / sul segnale ... / sul meda ...). Chi ha dato l'ordine conferma la risposta del timoniere.
+865|Ordini standard alla macchina
+866|Ogni ordine alla macchina deve essere ripetuto da chi manovra il telegrafo di macchina in plancia, e l'ufficiale di guardia deve accertarsi che sia eseguito correttamente e subito.
+867|@
+868|@
+869|Sulle navi con due eliche si aggiunge la parola "both" (entrambe) a tutti gli ordini che riguardano i due assi, per esempio "Full ahead both" (avanti tutta entrambe) e "Slow astern both" (indietro adagio entrambe); per fermare si dice "Stop all engines" (stop tutte le macchine). Quando le due eliche vanno manovrate separatamente lo si indica, per esempio "Full ahead starboard" (avanti tutta dritta), "Half astern port" (indietro mezza sinistra), ecc.
+870|Dove si usano le eliche di manovra trasversali si danno questi ordini:
+871|@
+872|Il pilota in plancia
+873|Apparato propulsivo
+874|La macchina è un diesel o una turbina?
+875|La macchina è un diesel / una turbina.
+876|La sala macchine è presidiata o la macchina è comandata dalla plancia?
+877|La sala macchine è presidiata.
+878|La macchina è comandata dalla plancia.
+879|Quanto tempo serve per passare con la macchina da avanti a indietro?
+880|Servono ... secondi per passare con la macchina (da avanti a indietro).
+881|Quanto tempo serve per avviare la macchina da ferma? .4.1 Servono ... secondi per avviare la macchina (da ferma).
+882|È disponibile potenza extra in emergenza?
+883|Sì, è disponibile potenza extra.
+884|No, non è disponibile potenza extra.
+885|Avete un'elica a passo variabile o a passo fisso?
+886|Abbiamo un'elica a passo variabile.
+887|Abbiamo un'elica a passo fisso.
+888|Avete un'elica destrorsa o sinistrorsa?
+889|Abbiamo un'elica destrorsa / sinistrorsa.
+890|Avete un'elica sola o due eliche?
+891|Abbiamo un'elica sola / due eliche.
+892|Avete un'elica di manovra prodiera / poppiera?
+893|Abbiamo una / due / ... eliche di manovra prodiere / poppiere.
+894|Qual è la potenza massima di manovra avanti / indietro?
+895|La potenza massima di manovra avanti / indietro è di ... kilowatt.
+896|Quali sono i giri massimi avanti / indietro?
+897|I giri massimi avanti / indietro sono ... .
+898|Le due eliche girano verso l'interno o verso l'esterno in marcia avanti?
+899|Le due eliche girano verso l'interno / verso l'esterno (in marcia avanti).
+900|Manovra
+901|Mi servono la pilot card / i dati di manovra.
+902|Qual è il diametro della curva di evoluzione?
+903|Il diametro della curva di evoluzione è ... metri.
+904|Quali sono l'avanzo e la traslazione in un arresto d'emergenza?
+905|L'avanzo è di ... chilometri / miglia nautiche, la traslazione di ... (in un arresto d'emergenza).
+906|Quanto tempo serve da tutta barra a sinistra a tutta barra a dritta?
+907|Servono ... secondi (da tutta barra a sinistra a tutta barra a dritta).
+908|L'effetto evolutivo dell'elica è molto forte?
+909|Sì, l'effetto evolutivo (dell'elica) è molto forte.
+910|No, l'effetto evolutivo (dell'elica) non è molto forte.
+911|Dov'è il comando del fischio?
+912|Il comando del fischio è sulla consolle / su ... .
+913|Che preavviso serve per ridurre dalla velocità di mare piena alla velocità di manovra?
+914|Servono ... minuti di preavviso (per ridurre dalla velocità di mare piena alla velocità di manovra).
+915|Avete il pilota automatico?
+916|Sì, abbiamo il pilota automatico.
+917|No, non abbiamo il pilota automatico.
+918|Date ... suoni brevi / prolungati (con il fischio).
+919|Vedetta pronta
+919~0|in plancia.
+919~1|sul castello di prora.
+919~2|sull'aletta di sinistra / di dritta.
+920|Mantenete una velocità di ... nodi.
+921|Qual è la velocità (di manovra) con avanti tutta / mezza / adagio / molto adagio?
+922|La velocità di manovra con avanti tutta / mezza / adagio / molto adagio è ... nodi.
+923|Qual è la velocità di mare piena / la velocità nel canale?
+924|La velocità di mare piena / la velocità nel canale è ... nodi.
+925|Radar
+926|Il radar è operativo?
+927|Sì, il radar è operativo.
+928|No, il radar non è operativo.
+929|Dov'è l'antenna radar?
+930|L'antenna radar è su ... .
+931|Il radar ha settori ciechi?
+932|Sì, il radar ha settori ciechi da ... a ... gradi e da ... a ... gradi.
+933|No, il radar non ha settori ciechi.
+934|Passate il radar
+934~0|sulla scala da ... miglia.
+934~1|in moto relativo prora in alto / nord in alto / rotta in alto.
+934~2|in moto vero nord in alto / rotta in alto.
+935|Pescaggio e tirante d'aria
+936|Qual è il vostro pescaggio massimo attuale?

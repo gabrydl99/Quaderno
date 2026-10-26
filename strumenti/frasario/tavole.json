@@ -1,0 +1,42 @@
+{
+ "togli": [858, 861, 867],
+ "tab": {
+  "859": {"intest": ["Order", "Meaning", "Ordine", "Significato"], "righe": [
+   ["Midships", "Rudder to be held in the fore and aft position.", "Barra al centro", "Timone tenuto in posizione longitudinale (a zero)."],
+   ["Port / starboard five", "5° of port / starboard rudder to be held.", "Barra a sinistra / a dritta cinque", "Tenere 5° di barra a sinistra / a dritta."],
+   ["Port / starboard ten", "10° of port / starboard rudder to be held.", "Barra a sinistra / a dritta dieci", "Tenere 10° di barra a sinistra / a dritta."],
+   ["Port / starboard fifteen", "15° of port / starboard rudder to be held.", "Barra a sinistra / a dritta quindici", "Tenere 15° di barra a sinistra / a dritta."],
+   ["Port / starboard twenty", "20° of port / starboard rudder to be held.", "Barra a sinistra / a dritta venti", "Tenere 20° di barra a sinistra / a dritta."],
+   ["Port / starboard twenty-five", "25° of port / starboard rudder to be held.", "Barra a sinistra / a dritta venticinque", "Tenere 25° di barra a sinistra / a dritta."],
+   ["Hard-a-port / starboard", "Rudder to be held fully over to port / starboard.", "Tutta barra a sinistra / a dritta", "Timone tenuto tutto a sinistra / a dritta."],
+   ["Nothing to port / starboard", "Avoid allowing the vessel's head to go to port / starboard.", "Niente a sinistra / a dritta", "Non lasciare che la prora vada a sinistra / a dritta."],
+   ["Meet her", "Check the swing of the vessel's head in a turn.", "Scontra", "Frenare la rotazione della prora durante l'accostata."],
+   ["Steady", "Reduce swing as rapidly as possible.", "Ferma", "Ridurre la rotazione il più rapidamente possibile."],
+   ["Ease to five / ten / fifteen / twenty", "Reduce amount of rudder to 5° / 10° / 15° / 20° and hold.", "Riduci a cinque / dieci / quindici / venti", "Ridurre la barra a 5° / 10° / 15° / 20° e tenerla."],
+   ["Steady as she goes", "Steer a steady course on the compass heading indicated at the time of the order. The helmsman is to repeat the order and call out the compass heading on receiving the order. When the vessel is steady on that heading, the helmsman is to call out: \"Steady on ...\"", "Via così", "Governare su una rotta costante, la prora bussola del momento dell'ordine. Il timoniere ripete l'ordine e dice la prora bussola; quando la nave è stabile su quella prora dice: \"Steady on ...\" (Ferma su ...)."],
+   ["Keep the buoy / mark / beacon / ... on port side / starboard side.", "", "Tenete la boa / il segnale / il meda / ... sulla sinistra / sulla dritta.", ""],
+   ["Report if she does not answer the wheel.", "", "Riferite se la nave non risponde al timone.", ""],
+   ["Finished with wheel, no more steering.", "", "Timone libero, non si governa più.", ""]
+  ]},
+  "862": {"intest": ["Order", "Course to be steered", "Ordine", "Rotta da governare"], "righe": [
+   ["Port, steer one eight two", "182°", "Sinistra, governate uno otto due", "182°"],
+   ["Starboard, steer zero eight two", "082°", "Dritta, governate zero otto due", "082°"],
+   ["Port, steer three zero five", "305°", "Sinistra, governate tre zero cinque", "305°"]
+  ]},
+  "868": {"intest": ["Order", "", "Ordine", ""], "righe": [
+   ["(Port / starboard engines) Full ahead / astern", "", "(Macchina di sinistra / di dritta) Avanti tutta / Indietro tutta", ""],
+   ["(Port / starboard engines) Half ahead / astern", "", "(Macchina di sinistra / di dritta) Avanti mezza / Indietro mezza", ""],
+   ["(Port / starboard engines) Slow ahead / astern", "", "(Macchina di sinistra / di dritta) Avanti adagio / Indietro adagio", ""],
+   ["(Port / starboard engines) Dead slow ahead / astern", "", "(Macchina di sinistra / di dritta) Avanti molto adagio / Indietro molto adagio", ""],
+   ["Stop (port / starboard) engines", "", "Stop macchina (di sinistra / di dritta)", ""],
+   ["Emergency full ahead / astern", "", "Avanti tutta / Indietro tutta d'emergenza", ""],
+   ["Stand by engine", "Engine-room personnel fully ready to manoeuvre and bridge manned to relay engine orders.", "Pronti in macchina", "Personale di macchina pronto alla manovra e plancia presidiata per trasmettere gli ordini."],
+   ["Finished with engines – no more manoeuvring.", "Operation of engines no longer required.", "Fine manovra (macchina libera)", "Le macchine non servono più."]
+  ]},
+  "871": {"intest": ["Order", "", "Ordine", ""], "righe": [
+   ["Bow thruster full / half to port / starboard.", "", "Elica di prora tutta / mezza a sinistra / a dritta.", ""],
+   ["Stern thruster full / half to port / starboard.", "", "Elica di poppa tutta / mezza a sinistra / a dritta.", ""],
+   ["Bow / stern thruster stop.", "", "Stop elica di prora / di poppa.", ""]
+  ]}
+ }
+}

@@ -135,6 +135,8 @@ def costruisci(sorgente: str, versione: str | None, sfondo: bool = False, data: 
         c = json.loads(conf.read_text(encoding='utf8')) if conf.exists() and not senza_supabase else {}
         fb = re.sub(r'/\*SUPABASE\*/.*?/\*FINE\*/', lambda _m: json.dumps({'url': c.get('url', ''), 'chiave': c.get('chiave', '')}), fb, flags=re.S)
         extra += fb
+    # aggiunte alla pagina iniziale: "Come si usa l'app" compatto, bolla e riquadro del Frasario SMCP
+    extra += (RADICE / 'strumenti' / 'home-aggiunte.html').read_text(encoding='utf8')
     s = s.replace('</body></html>', extra + REGISTRA + '</body>\n</html>')
     if REGISTRA not in s:
         s = s.rstrip() + REGISTRA

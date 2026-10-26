@@ -1,0 +1,832 @@
+[
+{
+"parte": "1        General terms",
+"en": "Abandon vessel (to)",
+"def": "To evacuate crew and passengers from a vessel following a distress"
+},
+{
+"parte": "1        General terms",
+"en": "Accommodation ladder",
+"def": "Ladder attached to platform at vessel's side with flat steps and handrails enabling persons to embark / disembark from water or shore"
+},
+{
+"parte": "1        General terms",
+"en": "Adrift",
+"def": "Uncontrolled movement at sea under the influence of current, tide or wind"
+},
+{
+"parte": "1        General terms",
+"en": "Air draft",
+"def": "The height from the waterline to the highest point of the vessel"
+},
+{
+"parte": "1        General terms",
+"en": "Assembly station",
+"def": "Place on deck, in mess rooms, etc., assigned to crew and passengers where they have to meet according to the muster list when the corresponding alarm is released or announcement made"
+},
+{
+"parte": "1        General terms",
+"en": "Backing (of wind)",
+"def": "Shift of wind direction in an anticlockwise manner, for example from north to west (opposite of veering)"
+},
+{
+"parte": "1        General terms",
+"en": "Beach (to)",
+"def": "To run a vessel up on a beach to prevent its sinking in deep water"
+},
+{
+"parte": "1        General terms",
+"en": "Berth",
+"def": ".1 A sea room to be kept for safety around a vessel, rock, platform, etc. .2 The place assigned to a vessel when anchored or lying alongside a pier, etc."
+},
+{
+"parte": "1        General terms",
+"en": "Blast",
+"def": "A whistle signal made by the vessel"
+},
+{
+"parte": "1        General terms",
+"en": "Blind sector",
+"def": "An area which cannot be scanned by the ship’s radar because it is shielded by parts of the superstructure, masts, etc."
+},
+{
+"parte": "1        General terms",
+"en": "Boarding arrangements",
+"def": "All equipment, such as pilot ladder, accommodation ladder, hoist, etc., necessary for a safe transfer of the pilot"
+},
+{
+"parte": "1        General terms",
+"en": "Boarding speed",
+"def": "The speed of a vessel adjusted to that of a pilot boat at which the pilot can safely embark/disembark"
+},
+{
+"parte": "1        General terms",
+"en": "Bob-cat",
+"def": "A mini-caterpillar with push-blade used for the careful distribution of loose goods in cargo holds of bulk carriers"
+},
+{
+"parte": "1        General terms",
+"en": "Briefing",
+"def": "Concise explanatory information to crew and/or passengers"
+},
+{
+"parte": "1        General terms",
+"en": "Cable",
+"def": ".1 Chain connecting a vessel to the anchor(s) .2 Wire or rope primarily used for mooring a ship .3 (Measurement) one hundred fathoms or one tenth of a nautical mile"
+},
+{
+"parte": "1        General terms",
+"en": "Capsize (to)",
+"def": "To turn over"
+},
+{
+"parte": "1        General terms",
+"en": "Cardinal buoy",
+"def": "A seamark, i.e. a buoy, indicating the north, east, south or west, i.e. the cardinal points from a fixed point such as a wreck, shallow water, banks, etc."
+},
+{
+"parte": "1        General terms",
+"en": "Cardinal points",
+"def": "The four main points of the compass: north, east, south and west"
+},
+{
+"parte": "1        General terms",
+"en": "Casualty",
+"def": "Here: case of death in an accident or shipping disaster"
+},
+{
+"parte": "1        General terms",
+"en": "Check (to)",
+"def": ".1 To make sure that equipment etc. is in proper condition or that everything is correct and safe .2 To regulate motion of a cable, rope or wire when it is running out too fast"
+},
+{
+"parte": "1        General terms",
+"en": "Close-coupled towing",
+"def": "A method of towing vessels through polar ice by means of icebreaking tugs with a special stern notch suited to receive and hold the bow of the vessel to be towed"
+},
+{
+"parte": "1        General terms",
+"en": "Close up (to)",
+"def": "To decrease the distance to the vessel ahead by increasing one’s own speed"
+},
+{
+"parte": "1        General terms",
+"en": "Compatibility (of goods)",
+"def": "Indicates whether different goods can be safely stowed together in one cargo space or in an adjacent hold."
+},
+{
+"parte": "1        General terms",
+"en": "Vessel constrained",
+"def": "A vessel severely restricted by her draught in her ability to deviate from"
+},
+{
+"parte": "1        General terms",
+"en": "by her draft",
+"def": "the course followed in relation to the available depth and width of navigable water"
+},
+{
+"parte": "1        General terms",
+"en": "Convoy",
+"def": "A group of vessels which sail together, e.g. through a canal or ice"
+},
+{
+"parte": "1        General terms",
+"en": "Course",
+"def": "The intended direction of movement of a vessel through the water"
+},
+{
+"parte": "1        General terms",
+"en": "Course made good",
+"def": "That course which a vessel makes good over ground, after allowing for the effect of currents, tidal streams, and leeway caused by wind and sea"
+},
+{
+"parte": "1        General terms",
+"en": "COW",
+"def": "Crude Oil Washing: a system of cleaning the cargo tanks by washing them with the cargo of crude oil during discharge"
+},
+{
+"parte": "1        General terms",
+"en": "CPA/TCPA",
+"def": "Closest Point of Approach/Time to Closest Point of Approach: limit as defined by the observer to give warning when a tracked target or targets will close to within these limits"
+},
+{
+"parte": "1        General terms",
+"en": "Crash-stop",
+"def": "An emergency reversal operation of the main engine(s) to avoid a collision"
+},
+{
+"parte": "1        General terms",
+"en": "Damage control team",
+"def": "A group of crew members trained for fighting flooding in the vessel"
+},
+{
+"parte": "1        General terms",
+"en": "Datum",
+"def": ".1 The most probable position of a search target at a given time .2 The plane of reference to which all data as to the depth on charts are referenced"
+},
+{
+"parte": "1        General terms",
+"en": "Derelict",
+"def": "Vessel still afloat, abandoned at sea"
+},
+{
+"parte": "1        General terms",
+"en": "Destination",
+"def": "Port for which a vessel is bound"
+},
+{
+"parte": "1        General terms",
+"en": "Disabled",
+"def": "A vessel damaged or impaired in such a manner as to be incapable of proceeding on its voyage"
+},
+{
+"parte": "1        General terms",
+"en": "Disembark (to)",
+"def": "To go from a vessel"
+},
+{
+"parte": "1        General terms",
+"en": "Distress alert (GMDSS)",
+"def": "A radio signal from a distressed vessel automatically directed to an MRCC giving position, identification, course and speed of the vessel as well as the nature of distress"
+},
+{
+"parte": "1        General terms",
+"en": "Distress/",
+"def": "Here: the verbal exchange of information on radio from ship to shore"
+},
+{
+"parte": "1        General terms",
+"en": "Urgency traffic",
+"def": "and/or ship to ship / aircraft about a distress / urgency situation as defined in the relevant ITU Radio Regulations"
+},
+{
+"parte": "1        General terms",
+"en": "Draught (or draft)",
+"def": "Depth in water at which a vessel floats"
+},
+{
+"parte": "1        General terms",
+"en": "Dragging (of anchor)",
+"def": "Moving of an anchor over the sea bottom involuntarily because it is no longer preventing the movement of the vessel"
+},
+{
+"parte": "1        General terms",
+"en": "Dredging (of anchor)",
+"def": "Moving of an anchor over the sea bottom to control the movement of the vessel"
+},
+{
+"parte": "1        General terms",
+"en": "Drifting",
+"def": "Being driven along by the wind, tide or current"
+},
+{
+"parte": "1        General terms",
+"en": "Drop back (to)",
+"def": "To increase the distance from the vessel ahead by reducing one's own speed"
+},
+{
+"parte": "1        General terms",
+"en": "DSC",
+"def": "Digital Selective Calling (in the GMDSS system)"
+},
+{
+"parte": "1        General terms",
+"en": "Embark (to)",
+"def": "To go aboard a vessel"
+},
+{
+"parte": "1        General terms",
+"en": "EPIRB",
+"def": "Emergency Position Indicating Radio Beacon"
+},
+{
+"parte": "1        General terms",
+"en": "Escape route",
+"def": "A clearly marked way in the vessel which has to be followed in case of an emergency"
+},
+{
+"parte": "1        General terms",
+"en": "Escort",
+"def": "Attending a vessel to be available in case of need, e.g. ice-breaker, tug, etc."
+},
+{
+"parte": "1        General terms",
+"en": "ETA",
+"def": "Estimated Time of Arrival"
+},
+{
+"parte": "1        General terms",
+"en": "ETD",
+"def": "Estimated Time of Departure"
+},
+{
+"parte": "1        General terms",
+"en": "Fathom",
+"def": "A measure of 6 feet"
+},
+{
+"parte": "1        General terms",
+"en": "Fire patrol",
+"def": "A member of the watch going around the vessel at certain intervals so that an outbreak of fire may be promptly detected; mandatory in vessels carrying more than 36 passengers"
+},
+{
+"parte": "1        General terms",
+"en": "Flooding",
+"def": "Major uncontrolled flow of seawater into the vessel"
+},
+{
+"parte": "1        General terms",
+"en": "Fire monitor",
+"def": "Fixed foam/powder/water cannon shooting fire-extinguishing agents on tank deck, manifold etc."
+},
+{
+"parte": "1        General terms",
+"en": "Foul (of anchor)",
+"def": "Anchor has its own cable twisted around it or has fouled an obstruction"
+},
+{
+"parte": "1        General terms",
+"en": "Foul (of propeller)",
+"def": "A line, wire, net, etc., is wound round the propeller"
+},
+{
+"parte": "1        General terms",
+"en": "Full speed",
+"def": "Highest possible speed of a vessel"
+},
+{
+"parte": "1        General terms",
+"en": "Fumes",
+"def": "Often harmful gas produced by fires, chemicals, fuel, etc. General emergency alarm A sound signal of seven short blasts and one prolonged blast given with the vessel´s sound system"
+},
+{
+"parte": "1        General terms",
+"en": "Give way",
+"def": "To keep out of the way of another vessel"
+},
+{
+"parte": "1        General terms",
+"en": "GMDSS",
+"def": "Global Maritime Distress and Safety System"
+},
+{
+"parte": "1        General terms",
+"en": "(D) GPS",
+"def": "(Differential) Global (satellite) Positioning System"
+},
+{
+"parte": "1        General terms",
+"en": "Half cardinal points",
+"def": "The four main points lying between the cardinal points: north east, south east, south west and north west"
+},
+{
+"parte": "1        General terms",
+"en": "Hampered vessel",
+"def": "A vessel restricted by her ability to manoeuvre by the nature of her work"
+},
+{
+"parte": "1        General terms",
+"en": "Hatchrails",
+"def": "Ropes supported by stanchions around an open hatch to prevent persons from falling into a hold"
+},
+{
+"parte": "1        General terms",
+"en": "Heading",
+"def": "The horizontal direction of the vessel's bows at a given moment measured in degrees clockwise from north"
+},
+{
+"parte": "1        General terms",
+"en": "Hoist",
+"def": "Here: a cable used by helicopters for lifting or lowering persons in a pick-up operation"
+},
+{
+"parte": "1        General terms",
+"en": "Icing",
+"def": "Coating of ice on an object, e.g. the mast or superstructure of a vessel"
+},
+{
+"parte": "1        General terms",
+"en": "IMO Class",
+"def": "Group of dangerous or hazardous goods, harmful substances or marine pollutants in sea transport as classified in the International Maritime Dangerous Goods Code (IMDG Code)"
+},
+{
+"parte": "1        General terms",
+"en": "Inert (to)",
+"def": "To reduce the oxygen in a tank by inert gas to avoid an explosive atmosphere"
+},
+{
+"parte": "1        General terms",
+"en": "Initial course",
+"def": "Course directed by the OSC or other authorized person to be steered at the beginning of a search"
+},
+{
+"parte": "1        General terms",
+"en": "Inoperative",
+"def": "Not functioning"
+},
+{
+"parte": "1        General terms",
+"en": "Jettison (to) (of cargo)",
+"def": "To throw goods overboard in order to lighten the vessel or improve its stability in case of an emergency"
+},
+{
+"parte": "1        General terms",
+"en": "Launch (to)",
+"def": "To lower, e.g. lifeboats, to the water"
+},
+{
+"parte": "1        General terms",
+"en": "Leaking",
+"def": "Escape of liquids such as water, oil, etc., out of pipes, boilers, tanks, etc., or a minor inflow of seawater into the vessel due to damage to the hull"
+},
+{
+"parte": "1        General terms",
+"en": "Leeward",
+"def": "On or towards the sheltered side of a ship; opposite of windward"
+},
+{
+"parte": "1        General terms",
+"en": "Leeway",
+"def": "Vessel’s sideways drift leeward of the desired course"
+},
+{
+"parte": "1        General terms",
+"en": "Let go (to)",
+"def": "To set free, let loose, or cast off (of anchors, lines, etc.)"
+},
+{
+"parte": "1        General terms",
+"en": "Lifeboat station",
+"def": "Place assigned to crew and passengers to muster before being ordered into the lifeboats"
+},
+{
+"parte": "1        General terms",
+"en": "List",
+"def": "Here: inclination of the vessel to port side or starboard side"
+},
+{
+"parte": "1        General terms",
+"en": "Located",
+"def": "In navigational warnings: Position of object confirmed"
+},
+{
+"parte": "1        General terms",
+"en": "Make water (to)",
+"def": "To have seawater flowing into the vessel due to hull damage, or hatches awash and not properly closed"
+},
+{
+"parte": "1        General terms",
+"en": "MMSI",
+"def": "Maritime Mobile Service Identity number"
+},
+{
+"parte": "1        General terms",
+"en": "Moor (to)",
+"def": "To secure a vessel in a particular place by means of wires or ropes made fast to the shore, to anchors, or to anchored mooring buoys, or to ride with both anchors down"
+},
+{
+"parte": "1        General terms",
+"en": "MRCC",
+"def": "Maritime Rescue Co-ordination Centre: land-based authority responsible for promoting efficient organization of maritime search and rescue and for co-ordinating the conduct of search and rescue operations within a search and rescue region"
+},
+{
+"parte": "1        General terms",
+"en": "Muster (to)",
+"def": "To assemble crew, passengers or both in a special place for purposes of checking"
+},
+{
+"parte": "1        General terms",
+"en": "Muster list",
+"def": "List of crew, passengers and others on board and their functions in a distress or drill"
+},
+{
+"parte": "1        General terms",
+"en": "Not under command",
+"def": "(abbr. NUC): a vessel which through exceptional circumstances is unable to manoeuvre as required by the COLREGs"
+},
+{
+"parte": "1        General terms",
+"en": "Obstruction",
+"def": "An object such as a wreck, net, etc., which blocks a fairway, route, etc."
+},
+{
+"parte": "1        General terms",
+"en": "Off air",
+"def": "When the transmissions of a radio station, etc., have broken down, been switched off or suspended"
+},
+{
+"parte": "1        General terms",
+"en": "Off station (of buoys)",
+"def": "Not in charted position"
+},
+{
+"parte": "1        General terms",
+"en": "Oil clearance",
+"def": "Oil skimming from the surface of the water"
+},
+{
+"parte": "1        General terms",
+"en": "Operational",
+"def": "Ready for immediate use"
+},
+{
+"parte": "1        General terms",
+"en": "Ordnance exercise",
+"def": "Naval firing practice"
+},
+{
+"parte": "1        General terms",
+"en": "OSC",
+"def": "On-Scene Co-ordinator: A person designed to co-ordinate search and rescue operations within a specified area"
+},
+{
+"parte": "1        General terms",
+"en": "Overflow",
+"def": "Escape of oil or liquid from a tank because of a twofold condition as a result of overflowing, thermal expansion, change in vessel trim or vessel movement"
+},
+{
+"parte": "1        General terms",
+"en": "Polluter",
+"def": "A vessel emitting harmful substances into the air or spilling oil into the sea"
+},
+{
+"parte": "1        General terms",
+"en": "Preventers",
+"def": "Ropes or wires attached to derricks to prevent them from swinging during cargo handling operations"
+},
+{
+"parte": "1        General terms",
+"en": "Proceed (to)",
+"def": "To sail or head for a certain position or to continue with the voyage"
+},
+{
+"parte": "1        General terms",
+"en": "PA-system",
+"def": "Public address system: loudspeakers in the vessel's cabins, mess rooms, etc., and on deck through which important information can be broadcast from a central point, mostly from the navigation bridge"
+},
+{
+"parte": "1        General terms",
+"en": "Recover (to)",
+"def": "Here: to pick up shipwrecked persons"
+},
+{
+"parte": "1        General terms",
+"en": "Refloat (to)",
+"def": "To pull a vessel off after grounding; to set afloat again"
+},
+{
+"parte": "1        General terms",
+"en": "Rendez-vous",
+"def": "An appointment between vessels normally made on radio to meet in a certain area or position"
+},
+{
+"parte": "1        General terms",
+"en": "Reported",
+"def": "In navigational warnings: position of object unconfirmed"
+},
+{
+"parte": "1        General terms",
+"en": "Restricted area",
+"def": "A deck, space, area, etc., in vessels where, for safety reasons, entry is only permitted for authorized crew members"
+},
+{
+"parte": "1        General terms",
+"en": "Resume (to)",
+"def": "Here: to re-start a voyage, service or search"
+},
+{
+"parte": "1        General terms",
+"en": "Retreat signal",
+"def": "Sound, visual or other signal to a team ordering it to return to its base"
+},
+{
+"parte": "1        General terms",
+"en": "Rig move",
+"def": "The movement of an oil rig, drilling platform, etc., from one position to another"
+},
+{
+"parte": "1        General terms",
+"en": "Roll call",
+"def": "The act of checking how many passengers and crew members are present, e.g. at assembly stations, by reading aloud a list of their names"
+},
+{
+"parte": "1        General terms",
+"en": "Safe speed",
+"def": "That speed of a vessel allowing time for effective action to be taken under prevailing circumstances and conditions to avoid a collision and to be stopped within an appropriate distance"
+},
+{
+"parte": "1        General terms",
+"en": "SWL",
+"def": "Safe working load: maximum working load of lifting equipment that should not be exceeded"
+},
+{
+"parte": "1        General terms",
+"en": "Safe working pressure",
+"def": "The maximum permissible pressure in cargo hoses"
+},
+{
+"parte": "1        General terms",
+"en": "SAR",
+"def": "Search and Rescue"
+},
+{
+"parte": "1        General terms",
+"en": "SART",
+"def": "Search and Rescue Transponder"
+},
+{
+"parte": "1        General terms",
+"en": "Scene",
+"def": "The area or location where the event, e.g. an accident, has happened"
+},
+{
+"parte": "1        General terms",
+"en": "Search pattern",
+"def": "A pattern according to which vessels and/or aircraft may conduct a co-ordinated search (the IMOSAR offers seven search patterns)"
+},
+{
+"parte": "1        General terms",
+"en": "Search speed",
+"def": "The speed of searching vessels directed by the OSC"
+},
+{
+"parte": "1        General terms",
+"en": "Seamark",
+"def": "A navigational aid placed to act as a beacon or warning"
+},
+{
+"parte": "1        General terms",
+"en": "Segregation(of goods)",
+"def": "Separation of goods which for different reasons must not be stowed together"
+},
+{
+"parte": "1        General terms",
+"en": "Shackle",
+"def": ".1 Length of chain cable measuring 15 fathoms .2 U-shaped link closed with a pin used for connecting purposes"
+},
+{
+"parte": "1        General terms",
+"en": "Shifting cargo",
+"def": "Transverse movement of cargo, especially bulk cargo, caused by rolling or a heavy list"
+},
+{
+"parte": "1        General terms",
+"en": "Slings",
+"def": "Ropes, nets, and any other means for handling general cargoes"
+},
+{
+"parte": "1        General terms",
+"en": "Speed of advance",
+"def": "The speed at which a storm centre moves"
+},
+{
+"parte": "1        General terms",
+"en": "Spill",
+"def": "The accidental escape of oil, etc., from a vessel, container, etc., into the sea"
+},
+{
+"parte": "1        General terms",
+"en": "Spill control gear",
+"def": "Anti-pollution equipment for combating accidental spills of oils or chemicals"
+},
+{
+"parte": "1        General terms",
+"en": "Elongated spreader",
+"def": "Here: step of a pilot ladder which prevents the ladder from twisting"
+},
+{
+"parte": "1        General terms",
+"en": "Stand by (to)",
+"def": "To be in readiness or prepared to execute an order; to be readily available"
+},
+{
+"parte": "1        General terms",
+"en": "Stand clear (to)",
+"def": "Here: to keep a boat away from the vessel"
+},
+{
+"parte": "1        General terms",
+"en": "Standing orders",
+"def": "Orders of the Master to the officer of the watch which he/she must comply with"
+},
+{
+"parte": "1        General terms",
+"en": "Stand on (to)",
+"def": "To maintain course and speed"
+},
+{
+"parte": "1        General terms",
+"en": "Station",
+"def": "The allotted place or the duties of each person on board"
+},
+{
+"parte": "1        General terms",
+"en": "Stripping",
+"def": "Final pumping of tank’s residues"
+},
+{
+"parte": "1        General terms",
+"en": "Survivor",
+"def": "A person who continues to live in spite of being in an extremely dangerous situation, e.g. a shipping disaster."
+},
+{
+"parte": "1        General terms",
+"en": "Take off (to)",
+"def": "To lift off from a vessel's deck (helicopter)"
+},
+{
+"parte": "1        General terms",
+"en": "Target",
+"def": "The echo generated, e.g. by a vessel, on a radar screen"
+},
+{
+"parte": "1        General terms",
+"en": "Tension winch",
+"def": "A winch which applies tension to mooring lines to keep them tight"
+},
+{
+"parte": "1        General terms",
+"en": "TEU",
+"def": "Twenty Foot Equivalent Unit (standard container dimension)"
+},
+{
+"parte": "1        General terms",
+"en": "Track",
+"def": "The path followed, or to be followed, between one position and another"
+},
+{
+"parte": "1        General terms",
+"en": "Transit",
+"def": "Here: the passage of a vessel through a canal, fairway, etc."
+},
+{
+"parte": "1        General terms",
+"en": "Transit speed",
+"def": "Speed of a vessel required for passage through a canal, fairway, etc."
+},
+{
+"parte": "1        General terms",
+"en": "Transhipment (of cargo)",
+"def": "Here: the transfer of goods from one vessel to another outside harbours"
+},
+{
+"parte": "1        General terms",
+"en": "Underway",
+"def": "Describes a vessel which is not at anchor, or made fast to the shore, or aground"
+},
+{
+"parte": "1        General terms",
+"en": "Union purchase",
+"def": "A method of cargo handling by combining two derricks, one of which is fixed over the hatch, the other over the ship’s side"
+},
+{
+"parte": "1        General terms",
+"en": "Unlit",
+"def": "When the light of a buoy or a lighthouse are inoperative"
+},
+{
+"parte": "1        General terms",
+"en": "UTC",
+"def": "Universal Time Co-ordinated (GMT)"
+},
+{
+"parte": "1        General terms",
+"en": "Variable (of winds)",
+"def": "A wind that is constantly changing speed and direction"
+},
+{
+"parte": "1        General terms",
+"en": "Veering (of winds)",
+"def": "Clockwise change in the direction of the wind; opposite of backing Veer out (to)(of anchors) To let out a greater length of cable"
+},
+{
+"parte": "1        General terms",
+"en": "VHF",
+"def": "Very High Frequency (30-300 MHz) Walk out (to) (of anchors) To reverse the action of a windlass to lower the anchor until it is clear of the hawse pipe and ready for dropping"
+},
+{
+"parte": "1        General terms",
+"en": "Walk back (to)",
+"def": "To reverse the action of a windlass to ease the cable (of anchors)"
+},
+{
+"parte": "1        General terms",
+"en": "Waypoint",
+"def": "A position a vessel has to pass or at which she has to alter course according to her voyage plan"
+},
+{
+"parte": "1        General terms",
+"en": "Windward",
+"def": "The general direction from which the wind blows; opposite of leeward"
+},
+{
+"parte": "1        General terms",
+"en": "Wreck",
+"def": "A vessel which has been destroyed, sunk or abandoned at sea"
+},
+{
+"parte": "2       VTS special terms",
+"en": "Fairway",
+"def": "Navigable part of a waterway"
+},
+{
+"parte": "2       VTS special terms",
+"en": "Fairway speed",
+"def": "Mandatory speed in a fairway"
+},
+{
+"parte": "2       VTS special terms",
+"en": "ITZ",
+"def": "Inshore Traffic Zone (of a TSS): A routing measure comprising a designated area between the landward boundary of a TSS and the adjacent coast"
+},
+{
+"parte": "2       VTS special terms",
+"en": "Manoeuvring speed",
+"def": "A vessel’s reduced speed in circumstances where it may be required to use the engines at short notice"
+},
+{
+"parte": "2       VTS special terms",
+"en": "Receiving point",
+"def": "A mark or place at which a vessel comes under obligatory entry, transit, or escort procedure"
+},
+{
+"parte": "2       VTS special terms",
+"en": "Reference line",
+"def": "A line displayed on the radar screens in VTS Centres and/or electronic sea-charts separating the fairway for inbound and outbound vessels so that they can safely pass each other"
+},
+{
+"parte": "2       VTS special terms",
+"en": "Reporting point",
+"def": "A mark or position at which a vessel is required to report to the local VTS Station to establish its position"
+},
+{
+"parte": "2       VTS special terms",
+"en": "Separation zone / line",
+"def": "A zone or line separating the traffic lanes in which vessels are proceeding in opposite or nearly opposite directions; or separating a traffic lane from the adjacent sea area; or separating traffic lanes designated for particular classes of vessels proceeding in the same direction"
+},
+{
+"parte": "2       VTS special terms",
+"en": "Traffic clearance",
+"def": "VTS authorization for a vessel to proceed under conditions specified"
+},
+{
+"parte": "2       VTS special terms",
+"en": "Traffic lane",
+"def": "An area within defined limits in which one-way traffic is established"
+},
+{
+"parte": "2       VTS special terms",
+"en": "TSS",
+"def": "Traffic Separation Scheme: a routeing measure aimed at the separation of opposing streams of traffic by appropriate means and by the establishment of traffic lanes"
+},
+{
+"parte": "2       VTS special terms",
+"en": "VTS",
+"def": "Vessel Traffic Services: services designed to improve the safety and efficiency of vessel traffic and to protect the environment"
+},
+{
+"parte": "2       VTS special terms",
+"en": "VTS area",
+"def": "Area controlled by a VTS Centre or VTS Station"
+}
+]

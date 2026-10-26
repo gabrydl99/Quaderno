@@ -1,0 +1,154 @@
+208~3|organizzerò / organizzerà una consulenza medica via radio sul canale VHF ... / frequenza ... .
+209|Imbarcazione / elicottero ETA alle ... UTC / entro ... ore.
+210|Avete un medico a bordo?
+211|Sì, ho un medico a bordo.
+212|No, non ho un medico a bordo.
+213|Potete fare rendez-vous nella posizione ... ?
+214|Sì, posso fare rendez-vous nella posizione ... alle ... UTC / entro ... ore.
+215|No, non posso fare rendez-vous.
+216|Io / La M/N ... invierò / invierà un'imbarcazione / un elicottero per trasferire il medico.
+217|Trasferite la persona (le persone) sulla mia nave / sulla M/N ... con un'imbarcazione / un elicottero.
+218|Trasferimento della persona (delle persone) non possibile.
+219|Traffico di urgenza
+220|Sicurezza di una nave (situazioni diverse dal pericolo grave). Nota: il traffico di urgenza deve sempre iniziare indicando la posizione della nave chiamante, se non è già contenuta nell'allarme DSC.
+221|Avaria tecnica
+222|Non governo / La M/N ... non governa.
+223|Che problemi avete / ha la M/N ... ?
+224|Ho / La M/N ... ha problemi alla macchina (alle macchine) / all'agghiaccio / all'elica / ... .
+225|Sto manovrando / La M/N ... sta manovrando con difficoltà.
+226|Tenetevi lontani da me / dalla M/N ... .
+227|Navigate con prudenza.
+228|Richiedo / La M/N ... richiede assistenza di rimorchiatori / scorta / ... .
+229|Provo / La M/N ... prova a procedere senza assistenza.
+230|Rimanete in ascolto sul canale VHF ... / frequenza ... .
+231|In ascolto sul canale VHF ... / frequenza ... .
+232|Carico
+233|Ho / La M/N ... ha perso merci pericolose di classe IMO ... nella posizione ... .
+234|Container / barili / fusti / sacchi / ... con merci pericolose di classe IMO ... alla deriva vicino alla posizione ... .
+235|Sto / La M/N ... sta perdendo (sversando)
+235~0|merci pericolose di classe IMO ... nella posizione ... .
+235~1|petrolio greggio / ... nella posizione ... .
+236|Richiedo / La M/N ... richiede assistenza per la rimozione degli idrocarburi - pericolo di inquinamento.
+237|Sono / La M/N ... è una fonte pericolosa di radiazioni.
+238|Danni da ghiaccio
+239|Ho / La M/N ... ha danni sopra / sotto la linea di galleggiamento.
+240|Che tipo di assistenza è richiesta?
+241|Richiedo / La M/N ... richiede
+241~0|assistenza di rimorchiatori.
+241~1|assistenza di rompighiaccio / scorta / ... .
+242|Ho / La M/N ... ha problemi di stabilità per forte formazione di ghiaccio.
+243|Potete procedere senza assistenza?
+244|Sì, posso procedere senza assistenza.
+245|No, non posso procedere senza assistenza.
+246|Rimanete in ascolto sul canale VHF ... / frequenza ... .
+247|In ascolto sul canale VHF ... / frequenza ... .
+248|Comunicazioni di sicurezza
+249|Condizioni meteorologiche e idrologiche
+250|Venti, tempeste, tempeste tropicali, stato del mare
+251|Quali sono direzione e forza del vento nella vostra posizione / nella posizione ... ?
+252|Direzione del vento ... (punti cardinali), forza Beaufort ... nella mia posizione / nella posizione ... .
+253|Che vento è previsto nella mia posizione / nella posizione ... ?
+254|Il vento nella vostra posizione / nella posizione ... è previsto
+254~0|da direzione ... (punti cardinali), forza Beaufort ... .
+254~1|in aumento / in diminuzione.
+254~2|variabile.
+255|Qual è l'ultimo avviso di burrasca / di tempesta?
+256|L'ultimo avviso di burrasca / di tempesta è il seguente: Avviso di burrasca / di tempesta. Venti alle ... UTC nell'area ... (area meteo) da direzione ... (punti cardinali) e forza Beaufort ... in rotazione antioraria / oraria verso ... (punti cardinali).
+257|Qual è l'ultimo avviso di tempesta tropicale?
+258|L'ultimo avviso di tempesta tropicale è il seguente: Avviso di tempesta tropicale alle ... UTC. Uragano ... (nome) / ciclone tropicale / tornado / willy-willy / tifone ... (nome) con pressione centrale di ... millibar / ettopascal localizzato nella posizione ... Movimento attuale ... (punti cardinali) a ... nodi. Venti di ... nodi entro un raggio di ... miglia dal centro. Mare calmo / mosso / agitato / grosso. Ulteriori informazioni sul canale VHF ... / frequenza ... .
+259|Qual è la pressione atmosferica nella vostra posizione / nella posizione ... ?
+260|La pressione atmosferica nella vostra posizione / nella posizione ... è di ... millibar / ettopascal.
+261|Qual è la variazione barometrica nella vostra posizione / nella posizione ... ?
+262|La variazione barometrica nella vostra posizione / nella posizione ... è di ... millibar / ettopascal all'ora / nelle ultime ... ore.
+263|Il barometro è stazionario / in calo (rapido) / in aumento (rapido).
+264|Quali venti massimi sono previsti nell'area della tempesta?
+265|Sono previsti venti massimi di ... nodi
+265~0|nell'area della tempesta.
+265~1|entro un raggio di ... chilometri / miglia dal centro.
+265~2|nel semicerchio maneggevole / pericoloso.
+266|Qual è lo stato del mare nella vostra posizione / nella posizione ... ?
+267|Il mare calmo / mosso / agitato / grosso, mare lungo debole / moderato / forte nella mia posizione / nella posizione ... è di ... metri da ... (punti cardinali).
+268|È previsto un cambiamento dello stato del mare (nelle prossime ore)?
+269|No, non è previsto un cambiamento dello stato del mare (nelle prossime ore).
+270|Sì, è previsto mare / mare lungo di ... metri da ... (punti cardinali) (- nelle prossime ore).
+271|È previsto uno tsunami / un'onda anomala entro le ... UTC.
+272|Visibilità ridotta
+273|Qual è la visibilità nella vostra posizione / nella posizione ... ?
+274|La visibilità nella mia posizione / nella posizione ... è di ... metri / miglia nautiche.
+275|La visibilità è ridotta per foschia / nebbia / neve / polvere / pioggia.
+276|La visibilità è in aumento / in diminuzione / variabile.
+277|È previsto un cambiamento della visibilità nella mia posizione / nella posizione ... (nelle prossime ore)?
+278|No, non è previsto un cambiamento della visibilità nella vostra posizione / nella posizione ... (nelle prossime ore).
+279|Sì, la visibilità è prevista in aumento / in diminuzione fino a ... metri / miglia nautiche nella vostra posizione / nella posizione ... (nelle prossime ore).
+280|La visibilità è prevista variabile tra ... metri / miglia nautiche nella vostra posizione / nella posizione ... (nelle prossime ore).
+281|Ghiaccio
+282|Quali sono le ultime informazioni sul ghiaccio?
+283|Avviso ghiaccio. Ghiaccio / iceberg localizzato/i nella posizione ... / segnalato/i nell'area intorno a ... .
+284|Nessun ghiaccio localizzato nella posizione ... / segnalato nell'area intorno a ... .
+285|Che situazione del ghiaccio è prevista nella mia posizione / nell'area intorno a ... ?
+286|La situazione del ghiaccio
+286~0|non dovrebbe cambiare nella vostra posizione / nell'area intorno a ... .
+286~1|dovrebbe migliorare / peggiorare nella vostra posizione / nell'area intorno a ... .
+287|Lo spessore del ghiaccio è previsto in aumento / in diminuzione nella vostra posizione / nell'area intorno a ... .
+288|La navigazione è pericolosa nell'area intorno a ... per ghiaccio galleggiante / pack / iceberg.
+289|La navigazione nell'area intorno a ... è possibile solo
+289~0|per navi di grande potenza e costruzione robusta.
+289~1|con l'assistenza di un rompighiaccio.
+290|Area intorno a ... temporaneamente chiusa alla navigazione.
+291|Pericolo di formazione di ghiaccio nell'area intorno a ... .
+292|Maree anomale
+293|La marea attuale è ... metri sopra / sotto lo zero idrografico nella posizione ... .
+294|La marea è ... metri sopra / sotto la previsione.
+295|La marea è montante / calante.
+296|Attendete l'alta / la bassa marea.
+297|Sono previste maree eccezionalmente alte / basse nella posizione ... verso le ... UTC / entro ... ore.
+298|La profondità dell'acqua è sufficiente nella posizione ... ?
+299|Sì, la profondità dell'acqua è sufficiente nella posizione ... .
+300|No, la profondità dell'acqua non è sufficiente nella posizione ... .
+301|La profondità dell'acqua è di ... metri nella posizione ... .
+302|Il mio pescaggio è di ... metri - posso entrare / passare ... (nome sulla carta del luogo)?
+303|Sì, potete entrare / passare (nome sulla carta del luogo).
+304|No, non potete entrare / passare (nome sulla carta del luogo) - attendete fino alle ... UTC.
+305|La profondità indicata sulla carta è aumentata / diminuita di ... metri per lo stato del mare / i venti.
+306|Avvisi ai naviganti riguardanti
+307|Segnali terrestri o marittimi. Avarie
+308|... (nome sulla carta del faro / della boa) nella posizione ...
+308~0|spento / inaffidabile / danneggiato / distrutto / fuori posizione / mancante. Modifiche
+309|... (nome sulla carta della boa luminosa / della boa) nella posizione ...
+309~0|(temporaneamente) cambiato in ... (caratteristiche complete).
+309~1|(temporaneamente) rimosso.
+309~2|(temporaneamente) sospeso. Nuovi e spostati
+310|... (nome sulla carta del faro / della boa) ... (caratteristiche complete)
+310~0|istituito nella posizione ... .
+310~1|ripristinato nella posizione ... .
+310~2|spostato di ... chilometri / miglia nautiche verso ... (direzione) nella posizione ... .
+311|(Nota: solo per le principali stazioni di segnalazione da nebbia). Segnale da nebbia ... (nome sulla carta del faro / della boa) nella posizione ... fuori servizio.
+312|Oggetti alla deriva
+313|Superboa / mina / relitto alla deriva non illuminato / ... (numero) container alla deriva nelle vicinanze di ... (posizione) alle ... (data e ora se note).
+314|Aiuti elettronici alla navigazione
+315|Satellite GPS / GLONASS ... (numero) inutilizzabile dalle ... (data e ora) alle ... (data e ora). Annullare un'ora dopo il ripristino.
+316|Stazione LORAN ... (nome o numero della principale / secondaria) fuori onda dalle ... (data e ora) alle ... (data e ora). Annullare un'ora dopo il ripristino.
+317|RACON / RAMARK / ERICON ... (nome della stazione) nella posizione ... fuori onda dalle ... (data e ora) alle ... (data e ora). Annullare un'ora dopo il ripristino.
+318|Caratteristiche del fondale, relitti. Usate SEGNALATO (REPORTED) quando la posizione non è confermata e LOCALIZZATO (LOCATED) quando la posizione è stata confermata da un rilievo o con altri mezzi.
+319|Scogliera / scoglio / secca / relitto pericoloso / ostruzione non segnati sulla carta segnalati / localizzati nella posizione ... .
+320|Relitto pericoloso nella posizione ... segnalato da boa ... (tipo) ... (distanza in chilometri / miglia nautiche) ... (direzione).
+321|Varie
+322|Operazioni su cavi, condotte e operazioni sismiche / idrografiche
+323|Operazioni su cavi / condotte da parte di ... (nave) nelle vicinanze di / lungo la linea che unisce ... (posizioni) dalle ... (data e ora) alle ... (data e ora). Si richiede di passare ben al largo (se richiesto). Contattare sul canale VHF ... (se richiesto).
+324|Rilievo sismico / operazioni idrografiche da parte di ... (nave) dalle ... (data e ora) alle ... (data e ora) in ... (posizione). Si richiede di passare ben al largo (se richiesto). Contattare sul canale VHF ... (se richiesto).
+325|La nave idrografica ... (nome) rimorchia ... (lunghezza) di cavo sismico lungo la linea che unisce / nell'area delimitata da / nelle vicinanze di ... (posizione) dalle ... (data e ora) alle ... (data e ora). Si richiede di passare ben al largo (se richiesto). Contattare sul canale VHF ... (se richiesto).
+326|Operazioni pericolose da parte di ... (nave) nell'area delimitata da / nelle vicinanze di ... (posizione) dalle ... (data e ora) alle ... (data e ora). Si richiede di passare ben al largo (se richiesto). Contattare sul canale VHF ... (se richiesto).
+327|Correntometri / strumenti idrografici ormeggiati in ... (posizione). Si richiede di passare ben al largo (se richiesto).
+328|Operazioni subacquee, di rimorchio e di dragaggio
+329|Operazioni subacquee / di dragaggio da parte della nave ... (nome) dalle ... (data e ora) alle ... (data e ora) nella posizione ... . Si richiede di passare ben al largo (se richiesto).
+330|Rimorchio difficoltoso da ... (porto di partenza) il ... (data) a ... (destinazione) il ... (data). Si richiede di passare ben al largo.
+331|Trasbordo da nave cisterna
+332|Trasbordo di ... (tipo di carico) nella posizione ... . Si richiede di passare ben al largo.
+333|Sto / La M/C ... sta perdendo petrolio / prodotti chimici / ... nella posizione ... . Si richiede di passare ben al largo.
+334|Sto / La gasiera GNL / GPL ... sta perdendo gas nella posizione ... . Evitate di passare sottovento.
+335|Operazioni di rimozione degli idrocarburi vicino alla M/C ... nella posizione ... . Si richiede di passare ben al largo.
+336|Installazioni offshore, spostamenti di piattaforme
+337|Piattaforma ... (nome / numero se disponibile) segnalata / installata nella posizione ... alle ... (data e ora). Si richiede di passare ben al largo (se richiesto).
+338|Piattaforma ... (nome / numero se disponibile) rimossa da ... (posizione) il ... (data).
+339|Condotta / piattaforma ... (nome / numero se disponibile) nella posizione ... perde petrolio / gas. Si richiede di passare ben al largo.
+340|Piattaforma abbandonata ... (nome / numero se disponibile) in corso di rimozione da ... (posizione) alle ... (data e ora). Si richiede di passare ben al largo.

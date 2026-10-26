@@ -1,0 +1,249 @@
+666|La mia rotta attuale è ... gradi, la mia velocità è ... nodi.
+667|Qual è la rotta per raggiungervi?
+668|La rotta per raggiungermi è ... gradi.
+669|Il vostro radar è in funzione?
+670|Sì, il mio radar è in funzione.
+671|No, il mio radar non è in funzione.
+672|Quale scala di portata state usando?
+673|Sto usando la scala da ... miglia.
+674|Passate a una scala di portata maggiore / minore.
+675|State uscendo dal mio schermo radar.
+676|Passate al radar ... (nome) canale VHF ... .
+677|Ho perso il contatto radar.
+678|Posizione
+679|State entrando in ... .
+680|La vostra posizione è ... / rilevamento ... gradi, distanza ... chilometri / miglia nautiche da ... .
+681|State passando ... . Siete
+681~0|al centro del canale.
+681~1|sulla / fuori dalla linea di riferimento radar (del canale).
+681~2|sul lato ... (punti cardinali) del canale.
+682|Vi state avvicinando al limite ... (punti cardinali) del canale.
+683|La vostra posizione è boa numero ... distanza ... metri / decimi di miglio a ... (punti cardinali) della linea di riferimento radar.
+684|La vostra posizione è distanza ... metri / decimi di miglio dall'incrocio della linea di riferimento radar ... con la linea di riferimento radar ... e distanza ... metri / decimi di miglio a ... (punti cardinali) della linea di riferimento radar ... .
+685|La M/N ... ha chiamato al punto di riporto ... .
+686|Vi state avvicinando alla nave ... (punti cardinali) a voi.
+687|La nave con rotta opposta sta passando a ... (punti cardinali) di voi.
+688|La M/N ... è a ... metri / decimi di miglio ... (punti cardinali) di voi.
+688~0|è in entrata / in uscita.
+688~1|si è fermata.
+688~2|è alla fonda.
+688~3|ha rotta opposta.
+688~4|vi sorpasserà a ... (punti cardinali).
+689|Una nave ha dato fondo a ... metri / decimi di miglio ... (punti cardinali) di voi nella posizione ... .
+690|La nave a ... (punti cardinali) di voi ostacola i vostri movimenti.
+691|Incontrerete traffico che incrocia nella posizione ... .
+692|Una nave sta entrando nel / uscendo dal canale a ... .
+693|Boa ... distanza ... metri / decimi di miglio ... (punti cardinali).
+694|La nave a ... (punti cardinali) di voi sta
+694~0|accostando.
+694~1|dando fondo.
+694~2|aumentando / riducendo la velocità.
+694~3|sorpassandovi.
+694~4|e non governa.
+695|Rotta. Nota: chi usa questa frase deve conoscere bene il significato di termini come "track" (traiettoria), "heading" (prora) e "course made good" (rotta effettiva).
+696|La vostra traiettoria è
+696~0|parallela alla linea di riferimento.
+696~1|divergente dalla linea di riferimento.
+696~2|convergente verso la linea di riferimento.
+697|Qual è la vostra rotta / prora attuale?
+698|La mia rotta / prora attuale è ... gradi.
+699|State governando su una rotta pericolosa.
+700|La rotta da fare è ... gradi.
+701|La nave a ... (punti cardinali) di voi ha la stessa rotta ... gradi.
+702|Vi consiglio
+702~0|di mantenere la rotta attuale.
+702~1|una nuova rotta di ... gradi.
+703|Avete cambiato rotta?
+704|Sì, ho cambiato rotta - la mia nuova rotta è ... gradi.
+705|No, non ho cambiato rotta - la mia rotta è ... gradi.
+706|State andando incontro a un pericolo -
+706~0|bassi fondali a ... (punti cardinali) di voi.
+706~1|relitto sommerso a ... (punti cardinali) di voi.
+706~2|banco di nebbia a ... (punti cardinali) di voi.
+706~3|rischio di collisione (con una nave per rilevamento ... gradi, distanza ... chilometri / miglia nautiche).
+706~4|il ponte è in avaria / ... .
+707|Servizio di organizzazione del traffico
+708|Autorizzazioni, pianificazione
+709|È necessaria l'autorizzazione al traffico prima di entrare in ... .
+710|Non entrate nella corsia di traffico / ... .
+711|Procedete all'ancoraggio di emergenza.
+712|Tenetevi lontani da ... / evitate ... .
+713|Avete il permesso
+713~0|di entrare nella corsia di traffico / nella rotta - autorizzazione al traffico concessa.
+713~1|di entrare nella corsia di traffico / nella rotta nella posizione ... alle ... UTC.
+714|Non superate il punto di riporto ... prima delle ... UTC.
+715|Chiamate al prossimo waypoint / al waypoint ... / alle ... UTC.
+716|Dovete arrivare al waypoint ... alle ... UTC - il vostro ormeggio è libero.
+717|Non arrivate nella posizione ... prima / dopo le ... UTC.
+718|La marea è a favore / contro.
+719|Ancoraggio
+720|Dovete dare fondo
+720~0|alle ... UTC.
+720~1|finché arriva il pilota.
+720~2|in una posizione diversa.
+720~3|fuori dal canale.
+721|Non date fondo nella posizione ... .
+722|L'ancoraggio è vietato.
+723|Dovete salpare l'ancora.
+724|Siete alla fonda in una posizione sbagliata.
+725|Tenete pronto l'equipaggio per salpare l'ancora quando imbarca il pilota.
+726|Avete il permesso di dare fondo (alle ... UTC)
+726~0|nella posizione ... .
+726~1|finché arriva il pilota.
+726~2|finché arrivano i rimorchiatori.
+726~3|finché c'è acqua sufficiente.
+727|State ostruendo il canale / l'altro traffico.
+728|La vostra ancora sta arando / la state dragando?
+729|Sì, la mia ancora sta arando / la sto dragando.
+730|No, la mia ancora non sta arando / non la sto dragando.
+731|Non dragate l'ancora.
+732|Arrivo, ormeggio e partenza
+733|I vostri ordini sono di ormeggiare a ... .
+734|I vostri ordini sono cambiati: procedete a ... .
+735|Procedete a ... per ricevere ordini.
+736|Avete il permesso di entrare / di procedere alle ... UTC.
+737|Una nave sta evoluendo / manovrando nella posizione ... .
+738|La M/N ...
+738~0|evolverà nella posizione ... .
+738~1|lascerà ... alle ... UTC.
+738~2|sta lasciando ... .
+738~3|ha lasciato ... .
+738~4|è entrata nel canale nella posizione ... .
+739|Il vostro ormeggio non è libero (fino alle ... UTC).
+740|Il vostro ormeggio sarà libero alle ... UTC.
+741|Ormeggerete / entrerete in bacino alle ... UTC.
+742|L'ormeggio è stato ritardato di ... ore.
+743|Siate pronti a muovere.
+744|Sono pronto a muovere.
+745|Muovete (mettetevi in navigazione).
+746|Siete in navigazione?
+747|Sì, sono in navigazione.
+748|No, non sono in navigazione.
+749|Spostatevi avanti / indietro di ... metri.
+750|La vostra nave è in posizione - date volta.
+751|Applicazione delle norme
+752|Secondo il mio radar, la vostra rotta non rispetta la Regola 10 del COLREG.
+753|Le vostre azioni saranno segnalate alle autorità.
+754|Voi
+754~0|non state rispettando le norme sul traffico.
+754~1|non state tenendo la corsia di traffico corretta.
+755|Tenete in funzione tutti gli strumenti di navigazione prima di entrare in quest'area / nell'area ... .
+756|I vostri fanali di navigazione non sono visibili.
+757|Recuperate i vostri attrezzi da pesca.
+758|State pescando nel canale.
+759|Gli attrezzi da pesca sono a ... (punti cardinali) di voi.
+760|La pesca nell'area ... è vietata.
+761|Vi state avvicinando a una zona di pesca vietata.
+762|La velocità nel canale è ... nodi.
+763|Evitare situazioni pericolose, garantire movimenti sicuri
+764|È pericoloso
+764~0|dare fondo nella vostra posizione attuale.
+764~1|restare nella vostra posizione attuale.
+764~2|accostare verso ... (punti cardinali).
+765|Una grande nave sta uscendo dal canale - tenetevi lontani dall'imboccatura del canale.
+766|Reti con boe / senza boe in quest'area - navigate con prudenza.
+767|Collisione nella posizione ... .
+768|La M/N ... è incagliata / in fiamme / ... nella posizione ... .
+769|Rimanete pronti a prestare assistenza.
+770|Le navi devono
+770~0|tenersi lontane da quest'area / dall'area ... .
+770~1|evitare quest'area / l'area ... .
+770~2|navigare con prudenza.
+771|Tenetevi lontani da ... - ricerca e soccorso in corso.
+772|La vostra rotta attuale è troppo vicina
+772~0|alla nave in entrata / in uscita.
+772~1|alla nave che state sorpassando.
+772~2|al limite ... (punti cardinali) del canale.
+773|La vostra rotta si sta allontanando dalla linea di riferimento radar.
+774|State andando incontro a un pericolo
+774~0|bassi fondali a ... (punti cardinali) di voi.
+774~1|relitto sommerso a ... (punti cardinali) di voi.
+774~2|banco di nebbia a ... (punti cardinali) di voi.
+774~3|rischio di collisione (con una nave per rilevamento ... gradi, distanza ... chilometri / miglia nautiche).
+774~4|il ponte è in avaria.
+775|State procedendo a velocità pericolosa.
+776|Dovete
+776~0|procedere per il canale / la rotta ... .
+776~1|tenervi a ... (punti cardinali) della linea del canale / della linea di riferimento radar.
+776~2|restare fuori dal canale.
+777|Dovete aspettare che la M/N ... vi attraversi la prora.
+778|Dovete aspettare che la M/N ... liberi ... prima di
+778~0|entrare nel canale.
+778~1|muovere.
+778~2|lasciare l'ormeggio.
+779|Non
+779~0|sorpassate.
+779~1|attraversate il canale.
+780|Accostate verso ... (punti cardinali).
+781|Passate a ... (punti cardinali)
+781~0|della nave in entrata / in uscita / alla fonda / in avaria.
+781~1|del segnale ... / ... .
+782|Fermate la macchina (le macchine).
+783|La M/N ...
+783~0|desidera sorpassarvi a ... (punti cardinali).
+783~1|accetta / non accetta di essere sorpassata.
+783~2|si sta avvicinando a una zona coperta alla vista ... - le navi in avvicinamento confermino.
+784|Operazioni in canali e chiuse
+785|Dovete
+785~0|avvicinarvi alla nave che vi precede.
+785~1|distanziarvi dalla nave che vi precede.
+785~2|attendere a ... .
+785~3|ormeggiare a ... .
+785~4|attendere l'autorizzazione per la chiusa a ... fino alle ... UTC.
+786|Il convoglio ... deve attendere / ormeggiare a ... .
+787|Voi
+787~0|vi unirete al convoglio ... alle ... UTC.
+787~1|entrerete nel canale / nella chiusa alle ... UTC.
+788|Il transito inizierà alle ... UTC.
+789|Il vostro posto nel convoglio è il numero ... .
+790|La velocità di transito / del convoglio è ... nodi.
+791|I convogli / le navi si incroceranno nell'area ... .
+792|Passaggio a un altro VTS
+793|... VTS qui ... VTS: la posizione della M/N ... è rilevamento ... gradi, distanza ... chilometri / miglia nautiche da ... ; frequenza di lavoro canale VHF ... . Vostro bersaglio. Confermate prego.
+794|... VTS qui ... VTS: la posizione della M/N ... è rilevamento ... gradi, distanza ... chilometri / miglia nautiche da ... . Confermo. Mio bersaglio.
+795|... VTS qui ... VTS: la posizione della M/N ... è rilevamento ... gradi, distanza ... chilometri / miglia nautiche da ... . Non posso prendere in carico questo bersaglio.
+796|Frasi per comunicare con i servizi di emergenza e i servizi collegati
+797|Servizi di emergenza (SAR, antincendio, antinquinamento). Vedere A1/1.1 "Comunicazioni di soccorso".
+798|Servizi di rimorchio. Vedere anche A2/3.6 "Assistenza dei rimorchiatori".
+799|Di quanti rimorchiatori avete bisogno?
+800|Richiedo ... rimorchiatori.
+801|Dovete prendere
+801~0|... rimorchiatori secondo il regolamento del porto.
+801~1|... rimorchiatori a prora e ... rimorchiatori a poppa.
+802|Attendete i rimorchiatori nella posizione ... .
+803|I rimorchiatori vi incontreranno nella posizione ... alle ... UTC.
+804|Il servizio di rimorchio è sospeso fino a ... (data e ora) / riprenderà il ... (data e ora).
+805|Richiesta del pilota
+806|Devo prendere il pilota?
+807|Sì, dovete prendere il pilota - il pilotaggio è obbligatorio.
+808|No, non dovete prendere il pilota.
+809|Richiedete un pilota?
+810|Sì, richiedo un pilota.
+811|No, non richiedo un pilota - ho il certificato di esenzione dal pilotaggio (n. ...).
+812|Siete esentati dal pilotaggio.
+813|Richiedete un pilota alla stazione piloti di ... (nome)?
+814|Sì, richiedo un pilota alla stazione piloti di ... (nome).
+815|No, non richiedo un pilota alla stazione piloti di ... (nome) - richiedo un pilota nella posizione ... .
+816|Qual è la vostra ETA alla stazione piloti di ... (nome) in ora locale?
+817|La mia ETA alla stazione piloti di ... (nome) è alle ... ora locale.
+818|Che ora è (ora locale)?
+819|L'ora locale è ... .
+820|Qual è la vostra posizione?
+821|La mia posizione è ... .
+822|Qual è la vostra distanza dalla stazione piloti di ... (nome)?
+823|La mia distanza dalla stazione piloti di ... (nome) è ... chilometri / miglia nautiche.
+824|La pilotina è in posizione?
+825|Sì, la pilotina è in posizione.
+826|No, la pilotina non è in posizione.
+827|La pilotina sarà in posizione alle ... ora locale.
+828|In quale posizione posso prendere il pilota?
+829|Prendete il pilota a ... (stazione piloti) / vicino alla posizione ... .
+830|Quando imbarcherà il pilota?
+831|Il pilota imbarcherà alle ... ora locale.
+832|La pilotina sta venendo da voi.
+833|Fermatevi nella posizione attuale e attendete il pilota.
+834|Tenete la pilotina a ... (punti cardinali) di voi.
+835|Qual è il vostro bordo libero?
+836|Il mio bordo libero è ... metri.
+837|Passate al canale VHF ... per il trasbordo del pilota.
+838|Rimanete in ascolto sul canale VHF ... finché il trasbordo del pilota è completato.

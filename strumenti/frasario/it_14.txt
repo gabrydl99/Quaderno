@@ -1,0 +1,29 @@
+2475|Pompate fuori l'acqua / svuotate la lancia / la zattera dall'acqua.
+2476|Chi ha bisogno di primo soccorso?
+2477|Tutti riceveranno la stessa razione di viveri e acqua.
+2478|Attenzione! Non bevete acqua di mare in nessun caso.
+2479|Invieremo un MAYDAY.
+2480|Lanceremo razzi / useremo boette fumogene / ... per attirare l'attenzione.
+2481|Raggiungeremo le altre lance / zattere.
+2482|Assistenza ai passeggeri in emergenza
+2483|Informare sulla situazione attuale
+2484|La nave è stata abbandonata nella posizione ... per incendio / incaglio / collisione / allagamento / forte sbandamento / gravi danni / ... .
+2485|Mantenete la calma. Non c'è motivo di farsi prendere dal panico. Gli ufficiali / i capilancia sanno esattamente cosa fare.
+2486|Ci sono mezzi di salvataggio sufficienti per tutti a bordo.
+2487|Il Centro di coordinamento del soccorso marittimo / le navi nelle vicinanze sono già stati informati della nostra situazione.
+2488|Navi / elicotteri / aerei stanno venendo a soccorrerci.
+2489|Navi / elicotteri / aerei ci raggiungeranno entro ... ore.
+2490|Siamo in contatto radio con i mezzi di soccorso.
+2491|Ci sono viveri e acqua potabile sufficienti per 48 ore.
+2492|Le medicine contro il mal di mare le avete dal capolancia.
+2493|Accompagnare i passeggeri non autosufficienti
+2494|... persone sono disperse.
+2495|Cercate i dispersi in tutte le cabine / i bagni / le docce.
+2496|Aiutate chi ha bisogno.
+2497|Aiutate bambini, anziani, disabili, feriti e malati a indossare il giubbotto di salvataggio.
+2498|Prestate assistenza quando si sale sulle lance / zattere.
+2499|Ci servono abiti caldi e coperte per bambini / anziani / disabili / feriti / malati.
+2500|Ci serve una barella per disabili / feriti / malati.
+2501|Tutti, per favore, stringetevi.
+2502|Anziani / disabili / feriti / malati hanno bisogno di spazio per sdraiarsi.
+2503|Tutti, per favore, fate silenzio. I bambini / i malati hanno bisogno di riposo.

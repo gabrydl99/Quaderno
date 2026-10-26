@@ -144,7 +144,7 @@
     const h2 = how.querySelector('h2'), ol = how.querySelector('.how-corpo') || how.querySelector('ol');
     const b = document.createElement('button'); b.type = 'button'; b.className = 'how-card';
     b.setAttribute('aria-expanded', 'false'); if (ol) { ol.id = ol.id || 'howto-lista'; b.setAttribute('aria-controls', ol.id); }
-    b.innerHTML = '<span class="n">Come si usa</span><span class="d">Sezioni, audio delle lezioni, ricerca, uso senza internet e installazione.</span>';
+    b.innerHTML = '<span class="n">Come si usa l\'app</span>';
     h2.textContent = ''; h2.append(b);
     if (ol) ol.hidden = true;
     const home = document.getElementById('home'); if (home) home.insertBefore(how, home.firstChild);

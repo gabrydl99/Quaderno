@@ -3,7 +3,7 @@
    - Pagina: prima prova la rete (così vedi subito gli aggiornamenti), se non c'è usa la copia salvata.
    - Audio: alla prima riproduzione il file viene salvato intero; dopo si ascolta anche offline.
    - Frasario: pagina e dati salvati subito; il riconoscimento del testo da foto (frasario/ocr/) si scarica al primo uso e resta salvato. */
-const VERSIONE = 'v44';
+const VERSIONE = 'v45';
 const CACHE = 'qp-app-' + VERSIONE;
 const CACHE_AUDIO = 'qp-audio';
 const CACHE_OCR = 'qp-ocr';

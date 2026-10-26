@@ -205,6 +205,10 @@ body.nascondi .lettura .s2.vista{filter:none}
       <h2>Traduzione offline · glossario e frasi SMCP <span class="st ok">verificata</span></h2>
       <div id="ris"></div>
     </div>
+    <div class="blocco deepl" id="gemini" hidden>
+      <h2>Traduzione tecnica Gemini <span class="st auto">AI</span></h2>
+      <div id="gm"></div>
+    </div>
     <div class="blocco deepl" id="deepl">
       <h2>Traduzione DeepL <span class="st auto">automatica</span></h2>
       <div id="dl"></div>
@@ -334,7 +338,7 @@ let ultimo = '';
 function cerca(){
   if (!D) return;
   const testo = q.value.trim();
-  if (testo !== ultimo) { ultimo = testo; mostraDeepl(); }
+  if (testo !== ultimo) { ultimo = testo; mostraDeepl(); mostraGemini(); }
   if (!testo) { $('#ris').innerHTML = '<p class="vuoto">Scrivi o fotografa un termine o una frase, in italiano o in inglese: trovi la traduzione nautica del glossario e le frasi SMCP che lo contengono.</p>'; segnaLingua(); return; }
   if (!manuale) lingua = rileva(testo);
   segnaLingua();
@@ -419,8 +423,49 @@ async function traduciDeepl(){
   } catch (e) { esito('<p class="err">Non riesco a collegarmi: controlla la connessione e riprova.</p>'); }
   finally { const b = $('#vai'); if (b) { b.disabled = false; b.textContent = 'Traduci con DeepL'; } }
 }
-function esito(h){ let e = $('#dl-esito'); if (!e) { e = document.createElement('div'); e.id = 'dl-esito'; e.style.cssText = 'display:grid;gap:8px'; $('#dl').append(e); } e.innerHTML = h; }
-addEventListener('storage', e => { if (e.key === 'qp-sessione') mostraDeepl(); });
+function esito(h, dove = 'dl'){ let e = $('#' + dove + '-esito'); if (!e) { e = document.createElement('div'); e.id = dove + '-esito'; e.style.cssText = 'display:grid;gap:8px'; $('#' + dove).append(e); } e.innerHTML = h; }
+addEventListener('storage', e => { if (e.key === 'qp-sessione') { mostraDeepl(); controlloGemini(); } });
+
+/* ---------- Gemini: traduzione tecnica, solo per gli account abilitati ---------- */
+let conGemini = false;
+async function controlloGemini(){
+  const s = sessione();
+  conGemini = false;
+  if (s && !s.demo && s.refresh && navigator.onLine) {
+    try {
+      const tk = await token();
+      if (tk) {
+        const r = await fetch(FUNZIONE, {method: 'POST', headers: {apikey: SB.chiave, Authorization: 'Bearer ' + tk, 'Content-Type': 'application/json'}, body: JSON.stringify({controllo: true})});
+        conGemini = r.ok && !!(await r.json()).gemini;
+      }
+    } catch (e) {}
+  }
+  $('#gemini').hidden = !conGemini;
+  mostraGemini();
+}
+function mostraGemini(){
+  if (!conGemini) return;
+  const t = q.value.trim(), c = t.length;
+  $('#gm').innerHTML = !t
+    ? '<p>Scrivi una frase: Gemini la traduce come un traduttore di inglese nautico, con i termini tecnici e le frasi SMCP. Controlla sempre il risultato con la traduzione offline qui sopra.</p>'
+    : `<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><button type="button" class="vai" id="vai-g" ${c > MAX ? 'disabled' : ''}>Traduci con Gemini</button><span class="cont ${c > MAX ? 'troppo' : ''}">${c}/${MAX} caratteri</span></div>` + (c > MAX ? '<p class="err">Testo troppo lungo per Gemini: accorcialo a 300 caratteri.</p>' : '');
+  const v = $('#vai-g'); if (v) v.addEventListener('click', traduciGemini);
+}
+async function traduciGemini(){
+  const t = q.value.trim(), da = lingua, v = $('#vai-g');
+  if (!navigator.onLine) { esito('<p class="err">Serve internet per Gemini.</p>', 'gm'); return; }
+  v.disabled = true; v.textContent = 'Traduco…';
+  try {
+    const tk = await token();
+    if (!tk) { esito('<p class="err">Accesso scaduto: rientra dal Quaderno (tasto in alto) e riprova.</p>', 'gm'); return; }
+    const r = await fetch(FUNZIONE, {method: 'POST', headers: {apikey: SB.chiave, Authorization: 'Bearer ' + tk, 'Content-Type': 'application/json'}, body: JSON.stringify({testo: t, da, motore: 'gemini'})});
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) { esito(`<p class="err">${esc(j.messaggio || 'Gemini non risponde: riprova più tardi.')}</p>`, 'gm'); return; }
+    esito(`<div class="ris" id="gm-ris">${esc(j.traduzione)}</div><button type="button" class="mini" id="copia-g">Copia</button>`, 'gm');
+    $('#copia-g').addEventListener('click', () => { navigator.clipboard?.writeText(j.traduzione).then(() => { $('#copia-g').textContent = 'Copiato'; }).catch(() => { const sel = getSelection(), rg = document.createRange(); rg.selectNodeContents($('#gm-ris')); sel.removeAllRanges(); sel.addRange(rg); }); });
+  } catch (e) { esito('<p class="err">Non riesco a collegarmi: controlla la connessione e riprova.</p>', 'gm'); }
+  finally { const b = $('#vai-g'); if (b) { b.disabled = false; b.textContent = 'Traduci con Gemini'; } }
+}
 
 /* ---------- frasi: capitoli e lettura ---------- */
 const PARTI = {G: 'Generale', A1: 'Parte A1 · Comunicazioni esterne', A2: 'Parte A2 · Comunicazioni a bordo', B1: 'Parte B1 · Conduzione della nave', B2: 'Parte B2 · Sicurezza a bordo', B3: 'Parte B3 · Carico', B4: 'Parte B4 · Passeggeri'};
@@ -570,6 +615,7 @@ async function riconosci(r){
 }
 addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#ocr').hidden) chiudiOcr(); });
 mostraDeepl();
+controlloGemini();
 })();
 </script>
 </body>

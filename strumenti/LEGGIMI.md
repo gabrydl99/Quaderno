@@ -42,4 +42,10 @@ Frasi IMO SMCP (Ris. A.918(22), dal PDF "frasi inglesi") con traduzione italiana
 - DeepL: funzione Supabase `traduci` (sorgente `strumenti/frasario/funzione-traduci.ts`), segreto `DEEPL_KEY`.
   Solo utenti con accesso, max 300 caratteri, 30 richieste ogni 10 minuti. Un solo glossario DeepL multilingue (API v3, il piano Free ne accetta pochi). Legge i TSV del sito:
   se cambiano, crea da sola il nuovo glossario su DeepL. Controllo: GET `.../functions/v1/traduci?stato=1`.
+- Gemini (traduzione tecnica AI): stessa funzione `traduci`, POST con `motore: "gemini"`, segreto `GEMINI_KEY` (facoltativo `GEMINI_MODEL`,
+  altrimenti sceglie da sola il miglior modello "flash"). Passa a Gemini i termini dei TSV presenti nella frase.
+  Solo per gli account con `app_metadata.ruolo = 'admin'` o `app_metadata.gemini = true` (la registrazione è libera, quindi non si apre da sola
+  ai nuovi account; condizioni Google: servizi a pagamento per utenti UE, niente minorenni). Abilitare un account:
+  `update auth.users set raw_app_meta_data = raw_app_meta_data || '{"gemini": true}' where email = 'nome@gabrydl99.github.io';`
+  La pagina chiede `{controllo: true}` all'avvio e mostra il riquadro Gemini solo se l'account è abilitato.
 - Pagina iniziale: bolla e riquadro in `strumenti/home-aggiunte.html` (inclusi da `costruisci_pwa.py`).

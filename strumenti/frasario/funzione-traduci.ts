@@ -2,7 +2,7 @@
 // - Solo per chi ha fatto l'accesso nell'app (token dell'utente verificato su Supabase Auth).
 // - Massimo 300 caratteri per richiesta, massimo 30 richieste ogni 10 minuti per utente.
 // - La chiave DeepL resta qui, nel segreto DEEPL_KEY: l'app non la vede mai.
-// - GET ?stato=1 : controllo (chiave presente, uso del mese, glossari pronti) senza tradurre nulla.
+// - GET ?stato=1 : controllo (chiave presente, uso del mese, glossario pronto) senza tradurre nulla.
 // Il glossario sta nel sito dell'app (frasario/deepl_en_it.tsv e deepl_it_en.tsv): se cambia, qui si crea da solo il nuovo glossario DeepL.
 const SITO = "https://gabrydl99.github.io/Quaderno/frasario/";
 
@@ -28,32 +28,38 @@ function cors(req: Request) {
 const json = (req: Request, corpo: unknown, stato = 200) =>
   new Response(JSON.stringify(corpo), { status: stato, headers: { ...cors(req), "Content-Type": "application/json" } });
 
-/* glossari: il TSV viene dal sito; il nome contiene un'impronta del contenuto, così una modifica crea un glossario nuovo */
-const glossari: Record<string, { id: string; quando: number }> = {};
+/* glossario: UN solo glossario DeepL "multilingue" (API v3) con le due direzioni EN>IT e IT>EN.
+   Il piano Free accetta pochi glossari, quindi prima di crearne uno nuovo si cancellano i vecchi "qp-smcp-".
+   I TSV vengono dal sito; il nome contiene un'impronta del contenuto, così una modifica crea il glossario nuovo. */
+let glos: { id: string; quando: number } | null = null;
 async function impronta(t: string) {
   const h = await crypto.subtle.digest("SHA-1", new TextEncoder().encode(t));
   return [...new Uint8Array(h)].slice(0, 5).map((b) => b.toString(16).padStart(2, "0")).join("");
 }
-async function glossario(da: "en" | "it"): Promise<string | null> {
-  const a = da === "en" ? "it" : "en";
-  const c = glossari[da];
-  if (c && Date.now() - c.quando < 6 * 3600 * 1000) return c.id;      // ricontrolla il sito ogni 6 ore
-  const f = await fetch(SITO + `deepl_${da}_${a}.tsv`, { cache: "no-store" });
-  if (!f.ok) { console.error("tsv", f.status); return c?.id ?? null; }
-  const tsv = (await f.text()).trim();
-  const prefisso = `qp-smcp-${da}-${a}-`, nome = prefisso + await impronta(tsv);
-  const r = await dl("/v2/glossaries");
+async function glossario(): Promise<string | null> {
+  if (glos && Date.now() - glos.quando < 6 * 3600 * 1000) return glos.id;     // ricontrolla il sito ogni 6 ore
+  const [f1, f2] = await Promise.all([fetch(SITO + "deepl_en_it.tsv", { cache: "no-store" }), fetch(SITO + "deepl_it_en.tsv", { cache: "no-store" })]);
+  if (!f1.ok || !f2.ok) { console.error("tsv", f1.status, f2.status); return glos?.id ?? null; }
+  const enIt = (await f1.text()).trim(), itEn = (await f2.text()).trim();
+  const nome = "qp-smcp-" + await impronta(enIt + "\n#\n" + itEn);
+  const r = await dl("/v3/glossaries");
   const lista: { name: string; glossary_id: string }[] = r.ok ? ((await r.json()).glossaries ?? []) : [];
   const g = lista.find((x) => x.name === nome);
-  if (g) { glossari[da] = { id: g.glossary_id, quando: Date.now() }; return g.glossary_id; }
-  const n = await dl("/v2/glossaries", {
+  if (g) { glos = { id: g.glossary_id, quando: Date.now() }; return g.glossary_id; }
+  for (const v of lista) if (v.name.startsWith("qp-smcp-")) await dl("/v3/glossaries/" + v.glossary_id, { method: "DELETE" });   // toglie le versioni vecchie
+  const r2 = await dl("/v2/glossaries");                                                                                           // e quelle create con l'API v2
+  if (r2.ok) for (const v of ((await r2.json()).glossaries ?? []) as { name: string; glossary_id: string }[])
+    if (v.name.startsWith("qp-smcp-")) await dl("/v2/glossaries/" + v.glossary_id, { method: "DELETE" });
+  const n = await dl("/v3/glossaries", {
     method: "POST",
-    body: JSON.stringify({ name: nome, source_lang: da, target_lang: a, entries: tsv, entries_format: "tsv" }),
+    body: JSON.stringify({ name: nome, dictionaries: [
+      { source_lang: "en", target_lang: "it", entries: enIt, entries_format: "tsv" },
+      { source_lang: "it", target_lang: "en", entries: itEn, entries_format: "tsv" },
+    ] }),
   });
-  if (!n.ok) { console.error("glossario", nome, n.status, await n.text()); return c?.id ?? null; }
+  if (!n.ok) { console.error("glossario", nome, n.status, await n.text()); return null; }
   const id = (await n.json()).glossary_id;
-  glossari[da] = { id, quando: Date.now() };
-  for (const v of lista) if (v.name.startsWith(prefisso)) await dl("/v2/glossaries/" + v.glossary_id, { method: "DELETE" });   // toglie le versioni vecchie
+  glos = { id, quando: Date.now() };
   return id;
 }
 
@@ -83,8 +89,8 @@ Deno.serve(async (req) => {
     if (!chiave()) return json(req, { chiave: false });
     const u = await dl("/v2/usage");
     const uso = u.ok ? await u.json() : null;
-    const [g1, g2] = [await glossario("en"), await glossario("it")];
-    return json(req, { chiave: u.ok, piano: chiave().endsWith(":fx") ? "free" : "pro", uso, glossari: { en_it: !!g1, it_en: !!g2 } });
+    const g = await glossario();
+    return json(req, { chiave: u.ok, piano: chiave().endsWith(":fx") ? "free" : "pro", uso, glossario: !!g });
   }
   if (req.method !== "POST") return json(req, { errore: "metodo" }, 405);
 
@@ -100,14 +106,16 @@ Deno.serve(async (req) => {
   if (!testo) return json(req, { errore: "vuoto" }, 400);
   if (testo.length > MAX_CARATTERI) return json(req, { errore: "lungo", messaggio: `Massimo ${MAX_CARATTERI} caratteri.` }, 400);
 
-  const gid = await glossario(da);
-  const r = await dl("/v2/translate", {
+  let gid = await glossario();
+  const traduci = (g: string | null) => dl("/v2/translate", {
     method: "POST",
     body: JSON.stringify({
       text: [testo], source_lang: da.toUpperCase(), target_lang: da === "en" ? "IT" : "EN-GB",
-      ...(gid ? { glossary_id: gid } : {}),
+      ...(g ? { glossary_id: g } : {}),
     }),
   });
+  let r = await traduci(gid);
+  if (gid && (r.status === 400 || r.status === 404)) { console.error("glossario rifiutato", r.status, await r.text()); gid = null; r = await traduci(null); }
   if (r.status === 456) return json(req, { errore: "quota", messaggio: "Caratteri DeepL del mese finiti." }, 503);
   if (!r.ok) { console.error("translate", r.status, await r.text()); return json(req, { errore: "deepl", messaggio: "DeepL non risponde: riprova." }, 502); }
   const j = await r.json();

@@ -40,6 +40,6 @@ Frasi IMO SMCP (Ris. A.918(22), dal PDF "frasi inglesi") con traduzione italiana
   sezione GENERAL: `generale.py`; glossario SMCP: `glos_smcp_it.py`; altri termini: `glos_extra.txt` (`x` = non usare in DeepL).
 - Riconoscimento del testo da foto: Tesseract.js 7 in `frasario/ocr/` (inglese + italiano, ~7 MB scaricati solo al primo uso, cache `qp-ocr` nel service worker).
 - DeepL: funzione Supabase `traduci` (sorgente `strumenti/frasario/funzione-traduci.ts`), segreto `DEEPL_KEY`.
-  Solo utenti con accesso, max 300 caratteri, 30 richieste ogni 10 minuti. Legge il glossario dai TSV del sito:
+  Solo utenti con accesso, max 300 caratteri, 30 richieste ogni 10 minuti. Un solo glossario DeepL multilingue (API v3, il piano Free ne accetta pochi). Legge i TSV del sito:
   se cambiano, crea da sola il nuovo glossario su DeepL. Controllo: GET `.../functions/v1/traduci?stato=1`.
 - Pagina iniziale: bolla e riquadro in `strumenti/home-aggiunte.html` (inclusi da `costruisci_pwa.py`).

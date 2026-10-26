@@ -1,27 +1,24 @@
-// Funzione "traduci" del Quaderno Patentino: traduzione DeepL con il glossario nautico del Frasario SMCP,
-// e traduzione tecnica con Gemini per gli account abilitati.
+// Funzione "traduci" del Quaderno Patentino: traduzione tecnica di inglese nautico con Gemini.
 // - Solo per chi ha fatto l'accesso nell'app (token dell'utente verificato su Supabase Auth).
 // - Massimo 300 caratteri per richiesta, massimo 30 richieste ogni 10 minuti per utente.
-// - Le chiavi restano qui, nei segreti DEEPL_KEY e GEMINI_KEY: l'app non le vede mai.
-// - Gemini solo per gli account con app_metadata.ruolo = 'admin' oppure app_metadata.gemini = true
-//   (la registrazione è libera: Gemini non si apre da solo ai nuovi account). Modello: segreto GEMINI_MODEL, se c'è,
-//   altrimenti il miglior "flash" disponibile con la chiave.
-// - GET ?stato=1 : controllo (chiavi presenti, uso DeepL del mese, glossario pronto, modello Gemini) senza tradurre nulla.
+// - La chiave resta qui, nel segreto GEMINI_KEY: l'app non la vede mai.
+// - GEMINI_PER_TUTTI = true: la usano tutti gli account registrati (scelta dell'utente, 26/10/2026).
+//   Con false solo gli account con app_metadata.ruolo = 'admin' oppure app_metadata.gemini = true.
+// - Modello: segreto GEMINI_MODEL, se c'è; altrimenti i modelli "flash" disponibili con la chiave, dal più recente
+//   (prima i flash, poi i flash-lite). Se un modello è occupato o al limite si passa al successivo e lo si salta
+//   per qualche minuto (ritirato: per un giorno).
+// - I termini del glossario del sito (frasario/deepl_it_en.tsv e deepl_en_it.tsv) presenti nella frase vengono passati a Gemini.
+// - GET ?stato=1 : controllo (chiave presente, modelli) senza tradurre nulla.
 // - POST {controllo: true} : dice all'app se l'account può usare Gemini.
-// Il glossario sta nel sito dell'app (frasario/deepl_en_it.tsv e deepl_it_en.tsv): se cambia, qui si crea da solo il nuovo glossario DeepL,
-// e gli stessi termini vengono passati a Gemini quando compaiono nella frase.
 const SITO = "https://gabrydl99.github.io/Quaderno/frasario/";
 const GEM = "https://generativelanguage.googleapis.com/v1beta";
 
+const GEMINI_PER_TUTTI = true;   // false = solo admin e account abilitati uno per uno
 const MAX_CARATTERI = 300;
 const LIMITE = 30, FINESTRA_MS = 10 * 60 * 1000;
 const ORIGINI = [/^https:\/\/gabrydl99\.github\.io$/, /^http:\/\/localhost(:\d+)?$/, /^http:\/\/127\.0\.0\.1(:\d+)?$/];
 
-const chiave = () => Deno.env.get("DEEPL_KEY") ?? "";
 const gkey = () => Deno.env.get("GEMINI_KEY") ?? "";
-const base = () => (chiave().endsWith(":fx") ? "https://api-free.deepl.com" : "https://api.deepl.com");
-const dl = (percorso: string, init: RequestInit = {}) =>
-  fetch(base() + percorso, { ...init, headers: { Authorization: "DeepL-Auth-Key " + chiave(), "Content-Type": "application/json", ...(init.headers ?? {}) } });
 
 function cors(req: Request) {
   const o = req.headers.get("origin") ?? "";
@@ -36,51 +33,6 @@ function cors(req: Request) {
 const json = (req: Request, corpo: unknown, stato = 200) =>
   new Response(JSON.stringify(corpo), { status: stato, headers: { ...cors(req), "Content-Type": "application/json" } });
 
-/* TSV del glossario dal sito (ricontrollati ogni 6 ore): usati per il glossario DeepL e per i termini da passare a Gemini */
-let fonte: { enIt: string; itEn: string; quando: number } | null = null;
-async function tsv() {
-  if (fonte && Date.now() - fonte.quando < 6 * 3600 * 1000) return fonte;
-  const [f1, f2] = await Promise.all([fetch(SITO + "deepl_en_it.tsv", { cache: "no-store" }), fetch(SITO + "deepl_it_en.tsv", { cache: "no-store" })]);
-  if (!f1.ok || !f2.ok) { console.error("tsv", f1.status, f2.status); return fonte; }
-  fonte = { enIt: (await f1.text()).trim(), itEn: (await f2.text()).trim(), quando: Date.now() };
-  return fonte;
-}
-
-/* glossario: UN solo glossario DeepL "multilingue" (API v3) con le due direzioni EN>IT e IT>EN.
-   Il piano Free accetta pochi glossari, quindi prima di crearne uno nuovo si cancellano i vecchi "qp-smcp-".
-   Il nome contiene un'impronta del contenuto, così una modifica crea il glossario nuovo. */
-let glos: { id: string; quando: number } | null = null;
-async function impronta(t: string) {
-  const h = await crypto.subtle.digest("SHA-1", new TextEncoder().encode(t));
-  return [...new Uint8Array(h)].slice(0, 5).map((b) => b.toString(16).padStart(2, "0")).join("");
-}
-async function glossario(): Promise<string | null> {
-  if (glos && Date.now() - glos.quando < 6 * 3600 * 1000) return glos.id;     // ricontrolla il sito ogni 6 ore
-  const f = await tsv();
-  if (!f) return glos?.id ?? null;
-  const { enIt, itEn } = f;
-  const nome = "qp-smcp-" + await impronta(enIt + "\n#\n" + itEn);
-  const r = await dl("/v3/glossaries");
-  const lista: { name: string; glossary_id: string }[] = r.ok ? ((await r.json()).glossaries ?? []) : [];
-  const g = lista.find((x) => x.name === nome);
-  if (g) { glos = { id: g.glossary_id, quando: Date.now() }; return g.glossary_id; }
-  for (const v of lista) if (v.name.startsWith("qp-smcp-")) await dl("/v3/glossaries/" + v.glossary_id, { method: "DELETE" });   // toglie le versioni vecchie
-  const r2 = await dl("/v2/glossaries");                                                                                           // e quelle create con l'API v2
-  if (r2.ok) for (const v of ((await r2.json()).glossaries ?? []) as { name: string; glossary_id: string }[])
-    if (v.name.startsWith("qp-smcp-")) await dl("/v2/glossaries/" + v.glossary_id, { method: "DELETE" });
-  const n = await dl("/v3/glossaries", {
-    method: "POST",
-    body: JSON.stringify({ name: nome, dictionaries: [
-      { source_lang: "en", target_lang: "it", entries: enIt, entries_format: "tsv" },
-      { source_lang: "it", target_lang: "en", entries: itEn, entries_format: "tsv" },
-    ] }),
-  });
-  if (!n.ok) { console.error("glossario", nome, n.status, await n.text()); return null; }
-  const id = (await n.json()).glossary_id;
-  glos = { id, quando: Date.now() };
-  return id;
-}
-
 /* utente: il token dell'app deve essere valido; dall'account si legge anche se può usare Gemini */
 async function utente(req: Request): Promise<{ id: string; gemini: boolean } | null> {
   const auth = req.headers.get("authorization") ?? "";
@@ -91,7 +43,7 @@ async function utente(req: Request): Promise<{ id: string; gemini: boolean } | n
   const u = await r.json();
   if (!u?.id) return null;
   const m = u.app_metadata ?? {};
-  return { id: u.id, gemini: m.ruolo === "admin" || m.gemini === true };
+  return { id: u.id, gemini: GEMINI_PER_TUTTI || m.ruolo === "admin" || m.gemini === true };
 }
 
 const usi = new Map<string, number[]>();
@@ -101,33 +53,48 @@ function troppe(id: string) {
   l.push(ora); usi.set(id, l); return false;
 }
 
-/* ---------- Gemini ---------- */
-let modelloScelto: { nome: string; quando: number } | null = null;
-async function modello(): Promise<string | null> {
-  const fisso = Deno.env.get("GEMINI_MODEL");
-  if (fisso) return fisso;
-  if (modelloScelto && Date.now() - modelloScelto.quando < 24 * 3600 * 1000) return modelloScelto.nome;
-  const r = await fetch(GEM + "/models?pageSize=200", { headers: { "x-goog-api-key": gkey() } });
-  if (!r.ok) { console.error("modelli", r.status, await r.text()); return modelloScelto?.nome ?? null; }
-  const lista: string[] = ((await r.json()).models ?? [])
-    .filter((m: { name: string; supportedGenerationMethods?: string[] }) =>
-      /flash/i.test(m.name) && !/image|tts|audio|live|embed|omni/i.test(m.name) &&
-      (m.supportedGenerationMethods ?? []).includes("generateContent"))
-    .map((m: { name: string }) => m.name.replace(/^models\//, ""));
-  const voto = (n: string) => parseFloat((n.match(/gemini-(\d+(\.\d+)?)/) ?? [])[1] ?? "0") * 10
-    - (/lite/.test(n) ? 3 : 0) - (/preview|exp/.test(n) ? 1 : 0) - (/latest/.test(n) ? 0.5 : 0);
-  const nome = lista.sort((a, b) => voto(b) - voto(a))[0] ?? null;
-  if (nome) modelloScelto = { nome, quando: Date.now() };
-  return nome;
+/* glossario del sito (ricontrollato ogni 6 ore) */
+let fonte: { itEn: [string, string][]; enIt: [string, string][]; quando: number } | null = null;
+async function glossario() {
+  if (fonte && Date.now() - fonte.quando < 6 * 3600 * 1000) return fonte;
+  const [f1, f2] = await Promise.all([fetch(SITO + "deepl_it_en.tsv", { cache: "no-store" }), fetch(SITO + "deepl_en_it.tsv", { cache: "no-store" })]);
+  if (!f1.ok || !f2.ok) { console.error("tsv", f1.status, f2.status); return fonte; }
+  const righe = (t: string) => t.trim().split("\n").map((l) => l.split("\t") as [string, string]).filter((x) => x.length === 2);
+  fonte = { itEn: righe(await f1.text()), enIt: righe(await f2.text()), quando: Date.now() };
+  return fonte;
 }
-
 const normale = (s: string) => " " + s.toLowerCase().replace(/[’‘`´]/g, "'").replace(/[^\p{L}\p{N}' ]+/gu, " ").replace(/\s+/g, " ").trim() + " ";
 async function termini(testo: string, da: string): Promise<[string, string][]> {
-  const f = await tsv();
-  if (!f) return [];
-  const righe = (da === "it" ? f.itEn : f.enIt).split("\n").map((l) => l.split("\t") as [string, string]).filter((x) => x.length === 2);
+  const g = await glossario();
+  if (!g) return [];
   const t = normale(testo);
-  return righe.filter(([s]) => s.length > 2 && t.includes(normale(s))).slice(0, 30);
+  return (da === "it" ? g.itEn : g.enIt).filter(([s]) => s.length > 2 && t.includes(normale(s))).slice(0, 30);
+}
+
+/* modelli: i "flash" disponibili, dal più recente; prima i flash, poi i flash-lite, per ultimi gli alias "latest".
+   Un modello occupato (503) o al limite (429) si salta per 3 minuti, uno ritirato (404) per un giorno. */
+let elenco: { nomi: string[]; quando: number } | null = null;
+const fermo = new Map<string, number>();
+async function modelli(): Promise<string[]> {
+  const fisso = Deno.env.get("GEMINI_MODEL");
+  if (fisso) return [fisso];
+  if (!elenco || Date.now() - elenco.quando > 24 * 3600 * 1000) {
+    const r = await fetch(GEM + "/models?pageSize=200", { headers: { "x-goog-api-key": gkey() } });
+    if (r.ok) {
+      const voto = (n: string) => parseFloat((n.match(/gemini-(\d+(\.\d+)?)/) ?? [])[1] ?? "0")
+        - (/lite/.test(n) ? 100 : 0) - (/preview|exp/.test(n) ? 0.05 : 0) - (/latest/.test(n) ? 1000 : 0);
+      const nomi: string[] = ((await r.json()).models ?? [])
+        .filter((m: { name: string; supportedGenerationMethods?: string[] }) =>
+          /flash/i.test(m.name) && !/image|tts|audio|live|embed|omni/i.test(m.name) &&
+          (m.supportedGenerationMethods ?? []).includes("generateContent"))
+        .map((m: { name: string }) => m.name.replace(/^models\//, ""))
+        .sort((a: string, b: string) => voto(b) - voto(a));
+      if (nomi.length) elenco = { nomi, quando: Date.now() };
+    } else console.error("modelli", r.status, await r.text());
+  }
+  const nomi = elenco?.nomi ?? ["gemini-flash-latest", "gemini-flash-lite-latest"];
+  const liberi = nomi.filter((n) => (fermo.get(n) ?? 0) < Date.now());
+  return liberi.length ? liberi : nomi;
 }
 
 function istruzioni(da: string, voci: [string, string][]) {
@@ -143,24 +110,34 @@ function istruzioni(da: string, voci: [string, string][]) {
 }
 
 async function gemini(testo: string, da: string): Promise<{ ok: true; testo: string; modello: string } | { ok: false; stato: number; messaggio: string }> {
-  const m = await modello();
-  if (!m) return { ok: false, stato: 502, messaggio: "Gemini non risponde: riprova." };
   const corpo = JSON.stringify({
     systemInstruction: { parts: [{ text: istruzioni(da, await termini(testo, da)) }] },
     contents: [{ role: "user", parts: [{ text: testo }] }],
     generationConfig: { temperature: 0.2, maxOutputTokens: 4096 },
   });
-  const r = await fetch(`${GEM}/models/${m}:generateContent`, {
-    method: "POST", headers: { "x-goog-api-key": gkey(), "Content-Type": "application/json" }, body: corpo,
-  });
-  if (r.status === 429) return { ok: false, stato: 429, messaggio: "Limite gratuito di Gemini raggiunto: riprova tra un minuto." };
-  if (r.status === 404) modelloScelto = null;                       // modello ritirato: alla prossima richiesta se ne sceglie un altro
-  if (!r.ok) { console.error("gemini", m, r.status, await r.text()); return { ok: false, stato: 502, messaggio: "Gemini non risponde: riprova." }; }
-  const j = await r.json();
-  const parti: { text?: string; thought?: boolean }[] = j.candidates?.[0]?.content?.parts ?? [];
-  const out = parti.filter((p) => !p.thought).map((p) => p.text ?? "").join("").trim();
-  if (!out) { console.error("gemini vuoto", m, JSON.stringify(j).slice(0, 500)); return { ok: false, stato: 502, messaggio: "Gemini non ha dato una traduzione: riprova." }; }
-  return { ok: true, testo: out, modello: m };
+  let limite = false;
+  const tutti = await modelli(), lite = (n: string) => /lite/.test(n);
+  const prove = [...tutti.filter((n) => !lite(n)).slice(0, 2), ...tutti.filter(lite).slice(0, 2)];   // al massimo 2 flash, poi 2 flash-lite
+  for (const m of prove.length ? prove : tutti.slice(0, 4)) {
+    const r = await fetch(`${GEM}/models/${m}:generateContent`, {
+      method: "POST", headers: { "x-goog-api-key": gkey(), "Content-Type": "application/json" }, body: corpo,
+    });
+    if (r.status === 429 || r.status === 503 || r.status === 404 || r.status === 500) {   // occupato, al limite o ritirato: prova il prossimo
+      if (r.status === 429) limite = true;
+      console.error("gemini", m, r.status);
+      fermo.set(m, Date.now() + (r.status === 404 ? 24 * 3600 : 180) * 1000);
+      continue;
+    }
+    if (!r.ok) { console.error("gemini", m, r.status, await r.text()); return { ok: false, stato: 502, messaggio: "Gemini non risponde: riprova." }; }
+    const j = await r.json();
+    const parti: { text?: string; thought?: boolean }[] = j.candidates?.[0]?.content?.parts ?? [];
+    const out = parti.filter((p) => !p.thought).map((p) => p.text ?? "").join("").trim();
+    if (!out) { console.error("gemini vuoto", m, JSON.stringify(j).slice(0, 500)); continue; }
+    return { ok: true, testo: out, modello: m };
+  }
+  return limite
+    ? { ok: false, stato: 429, messaggio: "Limite gratuito di Gemini raggiunto: riprova tra un minuto." }
+    : { ok: false, stato: 503, messaggio: "Gemini è molto occupato in questo momento: riprova tra poco." };
 }
 
 Deno.serve(async (req) => {
@@ -168,25 +145,18 @@ Deno.serve(async (req) => {
   const url = new URL(req.url);
 
   if (req.method === "GET" && url.searchParams.has("stato")) {
-    const g = gkey() ? { chiave: true, modello: await modello() } : { chiave: false };
-    if (!chiave()) return json(req, { chiave: false, gemini: g });
-    const u = await dl("/v2/usage");
-    const uso = u.ok ? await u.json() : null;
-    const gl = await glossario();
-    return json(req, { chiave: u.ok, piano: chiave().endsWith(":fx") ? "free" : "pro", uso, glossario: !!gl, gemini: g });
+    return json(req, gkey() ? { chiave: true, modelli: await modelli(), per_tutti: GEMINI_PER_TUTTI } : { chiave: false });
   }
   if (req.method !== "POST") return json(req, { errore: "metodo" }, 405);
 
-  let corpo: { testo?: string; da?: string; motore?: string; controllo?: boolean };
+  let corpo: { testo?: string; da?: string; controllo?: boolean };
   try { corpo = await req.json(); } catch { return json(req, { errore: "formato" }, 400); }
 
   const ut = await utente(req);
-  if (corpo.controllo) return json(req, { gemini: !!ut?.gemini, pronto: !!gkey() });
-  const conGemini = corpo.motore === "gemini";
-  const nome = conGemini ? "Gemini" : "DeepL";
-  if (!ut) return json(req, { errore: "accesso", messaggio: `Per la traduzione ${nome} serve l'accesso con il tuo account.` }, 401);
-  if (conGemini && !ut.gemini) return json(req, { errore: "gemini", messaggio: "Gemini non è attivo per questo account." }, 403);
-  if (conGemini ? !gkey() : !chiave()) return json(req, { errore: "chiave", messaggio: `${nome} non è ancora configurato.` }, 503);
+  if (corpo.controllo) return json(req, { gemini: !!ut?.gemini, aperto: GEMINI_PER_TUTTI, pronto: !!gkey() });
+  if (!ut) return json(req, { errore: "accesso", messaggio: "Per la traduzione Gemini serve l'accesso con il tuo account." }, 401);
+  if (!ut.gemini) return json(req, { errore: "gemini", messaggio: "Gemini non è attivo per questo account." }, 403);
+  if (!gkey()) return json(req, { errore: "chiave", messaggio: "Gemini non è ancora configurato." }, 503);
   if (troppe(ut.id)) return json(req, { errore: "limite", messaggio: "Troppe richieste: riprova tra qualche minuto." }, 429);
 
   const testo = (corpo.testo ?? "").trim();
@@ -194,24 +164,7 @@ Deno.serve(async (req) => {
   if (!testo) return json(req, { errore: "vuoto" }, 400);
   if (testo.length > MAX_CARATTERI) return json(req, { errore: "lungo", messaggio: `Massimo ${MAX_CARATTERI} caratteri.` }, 400);
 
-  if (conGemini) {
-    const g = await gemini(testo, da);
-    if (!g.ok) return json(req, { errore: "gemini", messaggio: g.messaggio }, g.stato);
-    return json(req, { traduzione: g.testo, da, a: da === "en" ? "it" : "en", motore: "gemini", modello: g.modello });
-  }
-
-  let gid = await glossario();
-  const traduci = (g: string | null) => dl("/v2/translate", {
-    method: "POST",
-    body: JSON.stringify({
-      text: [testo], source_lang: da.toUpperCase(), target_lang: da === "en" ? "IT" : "EN-GB",
-      ...(g ? { glossary_id: g } : {}),
-    }),
-  });
-  let r = await traduci(gid);
-  if (gid && (r.status === 400 || r.status === 404)) { console.error("glossario rifiutato", r.status, await r.text()); gid = null; r = await traduci(null); }
-  if (r.status === 456) return json(req, { errore: "quota", messaggio: "Caratteri DeepL del mese finiti." }, 503);
-  if (!r.ok) { console.error("translate", r.status, await r.text()); return json(req, { errore: "deepl", messaggio: "DeepL non risponde: riprova." }, 502); }
-  const j = await r.json();
-  return json(req, { traduzione: j.translations?.[0]?.text ?? "", da, a: da === "en" ? "it" : "en", glossario: !!gid });
+  const g = await gemini(testo, da);
+  if (!g.ok) return json(req, { errore: "gemini", messaggio: g.messaggio }, g.stato);
+  return json(req, { traduzione: g.testo, da, a: da === "en" ? "it" : "en", modello: g.modello });
 });

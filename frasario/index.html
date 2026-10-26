@@ -98,12 +98,12 @@ h1 small{display:block;font-size:.88rem;font-weight:500;color:var(--muted);margi
 mark{background:color-mix(in srgb,var(--acc) 22%,transparent);color:inherit;border-radius:3px;padding:0 1px}
 .vuoto{color:var(--muted);font-size:.92rem;margin:0}
 .altre{align-self:flex-start;border:1px solid var(--line);background:var(--sheet);border-radius:999px;padding:6px 12px;font-size:.84rem;cursor:pointer}
-.deepl{border-style:dashed}
-.deepl p{margin:0;font-size:.9rem;color:var(--muted)}
-.deepl .vai{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:9px 16px;background:var(--uk);color:#fff;font-weight:600;cursor:pointer;box-shadow:inset 0 -2px 0 var(--uk-red)}
-.deepl .vai[disabled]{opacity:.55;cursor:default}
-.deepl .ris{font-size:1.08rem;font-weight:600;line-height:1.45;padding:10px 12px;border-radius:var(--r-md);background:var(--paper);border:1px solid var(--line)}
-.deepl .err{color:var(--red);font-weight:600}
+.ia{border-style:dashed}
+.ia p{margin:0;font-size:.9rem;color:var(--muted)}
+.ia .vai{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:9px 16px;background:var(--uk);color:#fff;font-weight:600;cursor:pointer}
+.ia .vai[disabled]{opacity:.55;cursor:default}
+.ia .ris{font-size:1.08rem;font-weight:600;line-height:1.45;padding:10px 12px;border-radius:var(--r-md);background:var(--paper);border:1px solid var(--line)}
+.ia .err{color:var(--red);font-weight:600}
 .cont{font:500 .74rem/1 var(--f-mono);color:var(--muted)}
 .cont.troppo{color:var(--red)}
 .chips-t{display:flex;flex-wrap:wrap;gap:6px}
@@ -205,13 +205,9 @@ body.nascondi .lettura .s2.vista{filter:none}
       <h2>Traduzione offline · glossario e frasi SMCP <span class="st ok">verificata</span></h2>
       <div id="ris"></div>
     </div>
-    <div class="blocco deepl" id="gemini" hidden>
+    <div class="blocco ia" id="gemini" hidden>
       <h2>Traduzione tecnica Gemini <span class="st auto">AI</span></h2>
       <div id="gm"></div>
-    </div>
-    <div class="blocco deepl" id="deepl">
-      <h2>Traduzione DeepL <span class="st auto">automatica</span></h2>
-      <div id="dl"></div>
     </div>
   </section>
 
@@ -338,7 +334,7 @@ let ultimo = '';
 function cerca(){
   if (!D) return;
   const testo = q.value.trim();
-  if (testo !== ultimo) { ultimo = testo; mostraDeepl(); mostraGemini(); }
+  if (testo !== ultimo) { ultimo = testo; mostraGemini(); }
   if (!testo) { $('#ris').innerHTML = '<p class="vuoto">Scrivi o fotografa un termine o una frase, in italiano o in inglese: trovi la traduzione nautica del glossario e le frasi SMCP che lo contengono.</p>'; segnaLingua(); return; }
   if (!manuale) lingua = rileva(testo);
   segnaLingua();
@@ -365,7 +361,7 @@ function cerca(){
     h += `<div class="etich">Frasi SMCP <span class="n">${fr.length}</span></div><div id="fr-lista" style="display:grid;gap:8px">` + fr.slice(0, 15).map(x => frase(x[1], parole)).join('') + '</div>';
     if (fr.length > 15) h += `<button class="altre" type="button" id="altre">Mostra altre ${fr.length - 15} frasi</button>`;
   }
-  if (!h) h = '<p class="vuoto">Nessun risultato nel glossario o nelle frasi SMCP. Prova un\'altra parola, oppure usa la traduzione DeepL qui sotto.</p>';
+  if (!h) h = '<p class="vuoto">Nessun risultato nel glossario o nelle frasi SMCP. Prova un\'altra parola, oppure usa la traduzione Gemini qui sotto.</p>';
   $('#ris').innerHTML = h;
   const al = $('#altre'); if (al) al.addEventListener('click', () => { $('#fr-lista').insertAdjacentHTML('beforeend', fr.slice(15, 60).map(x => frase(x[1], parole)).join('')); al.remove(); collegaRef(); });
   collegaRef();
@@ -383,7 +379,7 @@ function frase(x, parole){
 }
 function collegaRef(){ document.querySelectorAll('#ris .ref').forEach(b => b.onclick = () => apriNodo(b.dataset.u)); }
 
-/* ---------- DeepL ---------- */
+/* ---------- accesso ---------- */
 function sessione(){ return mem.get('qp-sessione'); }
 async function token(){
   const s = sessione(); if (!s || s.demo || !s.refresh) return null;
@@ -394,56 +390,28 @@ async function token(){
   const n = Object.assign({}, s, {access: j.access_token, refresh: j.refresh_token, scade: Date.now() + (j.expires_in || 3600) * 1000 - 60000});
   mem.set('qp-sessione', n); return n.access;
 }
-function mostraDeepl(){
-  const t = q.value.trim(), s = sessione(), dentro = s && !s.demo && s.refresh;
-  let h = '';
-  if (!dentro) h = '<p>Per la traduzione DeepL serve l\'accesso: torna al Quaderno e tocca <b>Guest</b> in alto per entrare o registrarti. Glossario e frasi qui sopra funzionano per tutti, anche senza internet.</p>';
-  else if (!t) h = '<p>Scrivi una frase: DeepL la traduce usando il glossario nautico, così i termini tecnici restano quelli corretti. Controlla sempre il risultato con la traduzione offline qui sopra.</p>';
-  else {
-    const c = t.length;
-    h = `<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><button type="button" class="vai" id="vai" ${c > MAX ? 'disabled' : ''}>Traduci con DeepL</button><span class="cont ${c > MAX ? 'troppo' : ''}">${c}/${MAX} caratteri</span></div>` + (c > MAX ? '<p class="err">Testo troppo lungo per DeepL: accorcialo a 300 caratteri.</p>' : '');
-  }
-  $('#dl').innerHTML = h;
-  const v = $('#vai'); if (v) v.addEventListener('click', traduciDeepl);
-}
-async function traduciDeepl(){
-  const t = q.value.trim(), da = lingua, v = $('#vai');
-  if (!navigator.onLine) { esito('<p class="err">Serve internet per DeepL.</p>'); return; }
-  v.disabled = true; v.textContent = 'Traduco…';
-  try {
-    const tk = await token();
-    if (!tk) { esito('<p class="err">Accesso scaduto: rientra dal Quaderno (tasto in alto) e riprova.</p>'); return; }
-    const r = await fetch(FUNZIONE, {method: 'POST', headers: {apikey: SB.chiave, Authorization: 'Bearer ' + tk, 'Content-Type': 'application/json'}, body: JSON.stringify({testo: t, da})});
-    const j = await r.json().catch(() => ({}));
-    if (!r.ok) { esito(`<p class="err">${esc(j.messaggio || 'DeepL non risponde: riprova più tardi.')}</p>`); return; }
-    const termini = terminiNellaFrase(t, da);
-    esito(`<div class="ris" id="dl-ris">${esc(j.traduzione)}</div><button type="button" class="mini" id="copia">Copia</button>` +
-      (termini.length ? `<div class="etich">Termini del glossario nella frase: controllali</div><div class="chips-t">${termini.map(g => `<span>${esc(da === 'en' ? g.en : g.it)} → <b>${esc(da === 'en' ? g.it : g.en)}</b></span>`).join('')}</div>` : ''));
-    $('#copia').addEventListener('click', () => { navigator.clipboard?.writeText(j.traduzione).then(() => { $('#copia').textContent = 'Copiato'; }).catch(() => { const sel = getSelection(), rg = document.createRange(); rg.selectNodeContents($('#dl-ris')); sel.removeAllRanges(); sel.addRange(rg); }); });
-  } catch (e) { esito('<p class="err">Non riesco a collegarmi: controlla la connessione e riprova.</p>'); }
-  finally { const b = $('#vai'); if (b) { b.disabled = false; b.textContent = 'Traduci con DeepL'; } }
-}
-function esito(h, dove = 'dl'){ let e = $('#' + dove + '-esito'); if (!e) { e = document.createElement('div'); e.id = dove + '-esito'; e.style.cssText = 'display:grid;gap:8px'; $('#' + dove).append(e); } e.innerHTML = h; }
-addEventListener('storage', e => { if (e.key === 'qp-sessione') { mostraDeepl(); controlloGemini(); } });
+function esito(h, dove = 'gm'){ let e = $('#' + dove + '-esito'); if (!e) { e = document.createElement('div'); e.id = dove + '-esito'; e.style.cssText = 'display:grid;gap:8px'; $('#' + dove).append(e); } e.innerHTML = h; }
+addEventListener('storage', e => { if (e.key === 'qp-sessione') controlloGemini(); });
 
-/* ---------- Gemini: traduzione tecnica, solo per gli account abilitati ---------- */
-let conGemini = false;
+/* ---------- Gemini: traduzione tecnica per gli account (la funzione decide chi può usarla) ---------- */
+let conGemini = false, geminiOspite = false;
 async function controlloGemini(){
-  const s = sessione();
-  conGemini = false;
-  if (s && !s.demo && s.refresh && navigator.onLine) {
+  const s = sessione(), dentro = s && !s.demo && s.refresh;
+  conGemini = false; geminiOspite = false;
+  if (navigator.onLine) {
     try {
-      const tk = await token();
-      if (tk) {
-        const r = await fetch(FUNZIONE, {method: 'POST', headers: {apikey: SB.chiave, Authorization: 'Bearer ' + tk, 'Content-Type': 'application/json'}, body: JSON.stringify({controllo: true})});
-        conGemini = r.ok && !!(await r.json()).gemini;
-      }
+      const tk = dentro ? await token() : null;
+      const h = {apikey: SB.chiave, 'Content-Type': 'application/json'}; if (tk) h.Authorization = 'Bearer ' + tk;
+      const r = await fetch(FUNZIONE, {method: 'POST', headers: h, body: JSON.stringify({controllo: true})});
+      const j = r.ok ? await r.json() : {};
+      conGemini = !!j.gemini; geminiOspite = !dentro && !!j.aperto;
     } catch (e) {}
   }
-  $('#gemini').hidden = !conGemini;
+  $('#gemini').hidden = !(conGemini || geminiOspite);
   mostraGemini();
 }
 function mostraGemini(){
+  if (geminiOspite) { $('#gm').innerHTML = '<p>Per la traduzione Gemini serve l\'accesso: torna al Quaderno e tocca <b>Guest</b> in alto per entrare o registrarti. Glossario e frasi qui sopra funzionano per tutti, anche senza internet.</p>'; return; }
   if (!conGemini) return;
   const t = q.value.trim(), c = t.length;
   $('#gm').innerHTML = !t
@@ -461,7 +429,9 @@ async function traduciGemini(){
     const r = await fetch(FUNZIONE, {method: 'POST', headers: {apikey: SB.chiave, Authorization: 'Bearer ' + tk, 'Content-Type': 'application/json'}, body: JSON.stringify({testo: t, da, motore: 'gemini'})});
     const j = await r.json().catch(() => ({}));
     if (!r.ok) { esito(`<p class="err">${esc(j.messaggio || 'Gemini non risponde: riprova più tardi.')}</p>`, 'gm'); return; }
-    esito(`<div class="ris" id="gm-ris">${esc(j.traduzione)}</div><button type="button" class="mini" id="copia-g">Copia</button>`, 'gm');
+    const termini = terminiNellaFrase(t, da);
+    esito(`<div class="ris" id="gm-ris">${esc(j.traduzione)}</div><button type="button" class="mini" id="copia-g">Copia</button>` +
+      (termini.length ? `<div class="etich">Termini del glossario nella frase: controllali</div><div class="chips-t">${termini.map(g => `<span>${esc(da === 'en' ? g.en : g.it)} → <b>${esc(da === 'en' ? g.it : g.en)}</b></span>`).join('')}</div>` : ''), 'gm');
     $('#copia-g').addEventListener('click', () => { navigator.clipboard?.writeText(j.traduzione).then(() => { $('#copia-g').textContent = 'Copiato'; }).catch(() => { const sel = getSelection(), rg = document.createRange(); rg.selectNodeContents($('#gm-ris')); sel.removeAllRanges(); sel.addRange(rg); }); });
   } catch (e) { esito('<p class="err">Non riesco a collegarmi: controlla la connessione e riprova.</p>', 'gm'); }
   finally { const b = $('#vai-g'); if (b) { b.disabled = false; b.textContent = 'Traduci con Gemini'; } }
@@ -614,7 +584,6 @@ async function riconosci(r){
   finally { $('#ocr-ok').disabled = !sel; $('#ocr-tutta').disabled = false; $('#prog').hidden = true; }
 }
 addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#ocr').hidden) chiudiOcr(); });
-mostraDeepl();
 controlloGemini();
 })();
 </script>

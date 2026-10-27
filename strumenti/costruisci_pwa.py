@@ -47,6 +47,13 @@ TESTA = '''<!doctype html>
 <link rel="stylesheet" href="fonts/fonts.css">
 '''
 
+# dalla 1.1 l'app si apre solo con l'account: se c'è una sessione salvata il contenuto si vede subito,
+# altrimenti resta coperto dalla schermata d'accesso (tema.css + strumenti/account.html)
+PORTA = '<script>try{if(localStorage.getItem("qp-sessione"))document.documentElement.classList.add("qp-ok")}catch(e){}</script>\n'
+# pagine a parte (frasario, esercizi): senza account si torna alla schermata d'accesso
+PORTA_SOTTO = '<script>try{if(!localStorage.getItem("qp-sessione"))location.replace("../")}catch(e){location.replace("../")}</script>\n'
+TESTA = TESTA + PORTA
+
 PIEDE = '\n<p class="ver-fondo" title="Versione dell\'app e data dell\'ultimo aggiornamento">Versione <b>{v}</b> · {data}</p>'
 
 REGISTRA = '''

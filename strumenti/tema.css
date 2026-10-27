@@ -176,11 +176,6 @@ figure.fig.sym .svgbox{border:0}
 .how-card:focus-visible{outline:2px solid var(--blue);outline-offset:-3px}
 #home .howto .how-corpo{border-top:1px solid var(--line)}
 #home .howto ol{margin:0;padding:4px 20px 16px 40px;line-height:1.5}
-#home .howto .consiglio{margin:12px 14px 4px;padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--blue) 10%,var(--sheet));border:1px solid color-mix(in srgb,var(--blue) 30%,var(--line));line-height:1.45;font-size:.92rem;color:var(--ink)}
-#home .howto .consiglio b{color:var(--blue)}
-#home .howto .crea-account{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;margin-top:10px;min-height:40px;padding:0 16px;border-radius:999px;background:var(--ink);color:var(--sheet);font:600 .9rem/1 var(--f-body)}
-#home .howto .crea-account:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
-#home .howto .consiglio[hidden]{display:none}
 #home .howto ol li{margin:10px 0}
 @media (prefers-reduced-motion:reduce){.how-card .n::after{transition:none}}
 
@@ -225,3 +220,7 @@ article.topic{box-shadow:0 1px 2px rgba(6,17,27,.04),0 10px 28px -16px rgba(6,17
 /* versione dell'app in fondo alla pagina iniziale (dalla 1.0) */
 .ver-fondo{display:table;margin:12px auto 6px;padding:5px 12px;border-radius:999px;font:500 .76rem/1.4 var(--f-body);color:var(--muted);background:color-mix(in srgb,var(--sheet) 85%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line)}
 .ver-fondo b{font-weight:700;color:var(--ink)}
+/* senza account l'app resta coperta dalla schermata d'accesso (strumenti/account.html); qp-ok lo mette
+   lo script in testa alla pagina se c'è una sessione salvata, così chi è già entrato non vede lampi */
+html:not(.qp-ok) body{overflow:hidden}
+html:not(.qp-ok) body > :not(.gate){visibility:hidden}

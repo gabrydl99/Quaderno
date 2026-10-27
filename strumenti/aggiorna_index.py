@@ -15,7 +15,7 @@ from zoneinfo import ZoneInfo
 RADICE = pathlib.Path(__file__).resolve().parent.parent
 PARTI = ['tema.css', 'istruzioni.html', 'installa.html', 'pagina.html', 'sfondo.html', 'account.html', 'feedback.html', 'home-aggiunte.html']
 sys.path.insert(0, str(RADICE / 'strumenti'))
-from costruisci_pwa import PIEDE  # noqa: E402
+from costruisci_pwa import PIEDE, PORTA, PORTA_SOTTO  # noqa: E402
 
 
 def con_supabase(t: str) -> str:
@@ -51,7 +51,21 @@ def main():
     else:
         k = s.find('</section>', s.find('<section class="howto"')) + len('</section>')
         s = s[:k] + piede + s[k:]
+    # schermata d'accesso: script in testa (dalla 1.1)
+    if PORTA.strip() not in s:
+        k = s.find('<link rel="stylesheet" href="fonts/fonts.css">')
+        k = s.find('\n', k) + 1
+        s = s[:k] + PORTA + s[k:]
     idx.write_text(s, encoding='utf8')
+    for sotto in ['frasario/index.html']:            # assetto/ e carteggio/: già in costruisci_esercizi.py
+        f = RADICE / sotto
+        if f.exists():
+            h = f.read_text(encoding='utf8')
+            if PORTA_SOTTO.strip() not in h:
+                k = h.find('<head>') + len('<head>')
+                k = h.find('\n', k) + 1 if h[k:k + 1] == '\n' else k
+                f.write_text(h[:k] + PORTA_SOTTO + h[k:], encoding='utf8')
+                print('accesso richiesto anche in', sotto)
     sw = RADICE / 'sw.js'
     sw.write_text(re.sub(r"const VERSIONE = '[^']*'", f"const VERSIONE = '{v}'", sw.read_text(encoding='utf8')), encoding='utf8')
     print('index.html e sw.js: versione', v, data)

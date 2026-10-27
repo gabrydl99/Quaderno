@@ -136,6 +136,19 @@ textarea.in{min-height:150px;resize:vertical;line-height:1.5}
 .ac-riga .t b{color:var(--ink)}
 .ac-riga .t time{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .ac-riga .d{font-size:.8rem;line-height:1.4;color:var(--ink);overflow-wrap:anywhere}
+/* codice d'accesso per registrarsi (admin e super-admin lo vedono e lo cambiano) */
+.cod{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 14px}
+.cod-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cod-t{flex:1;min-width:0}
+.cod-t span{display:block;font:600 .8rem/1.3 var(--f-body);color:var(--muted)}
+.cod-t b{display:block;margin-top:3px;font:600 1.15rem/1.3 var(--f-mono,monospace);letter-spacing:.03em;color:var(--ink);overflow-wrap:anywhere}
+.cod small{display:block;margin-top:6px;font-size:.76rem;color:var(--muted)}
+.cod .btn{min-height:38px;padding:0 16px;font-size:.88rem}
+.cod form{margin-top:10px;display:grid;gap:8px}
+.cod .in{font-family:var(--f-mono,monospace);letter-spacing:.03em}
+.cod .azioni .btn.pri{background:var(--blue);border-color:var(--blue);color:var(--sheet)}
+.cod .err{margin:0;font-size:.84rem;min-height:0}
+.cod .ok-msg{margin:6px 0 0;font-size:.82rem;font-weight:600;color:var(--green)}
 /* termini di servizio, sotto "Segnalazioni e feedback" */
 .tos{margin:10px 0 0}
 .tos summary{display:flex;align-items:center;gap:6px;width:max-content;max-width:100%;box-sizing:border-box;cursor:pointer;list-style:none;padding:8px 14px 8px 10px;border-radius:999px;font:600 .82rem/1.2 var(--f-body);color:var(--ink);background:color-mix(in srgb,var(--sheet) 85%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line)}
@@ -187,7 +200,7 @@ body.fb-aperto{overflow:hidden}
   const srv = {
     async invia(m){
       if (DEMO) { const l = mem.get('qp-demo-msg') || []; l.unshift({...m, id: Date.now(), creato: new Date().toISOString(), letto: false}); mem.set('qp-demo-msg', l); return; }
-      const r = await fetch(CFG.url + '/rest/v1/segnalazioni', {method: 'POST', headers: {...H(), Prefer: 'return=minimal'}, body: JSON.stringify(m)});
+      const r = await fetch(CFG.url + '/rest/v1/segnalazioni', {method: 'POST', headers: {...H(await QP.token()), Prefer: 'return=minimal'}, body: JSON.stringify(m)});
       if (!r.ok) throw new Error('invio ' + r.status);
     },
     async elenco(){
@@ -209,7 +222,7 @@ body.fb-aperto{overflow:hidden}
 
   /* ---------- coda: se manca internet il messaggio parte dopo ---------- */
   async function svuota(){
-    const coda = mem.get('qp-coda') || []; if (!coda.length || !navigator.onLine) return;
+    const coda = mem.get('qp-coda') || []; if (!coda.length || !navigator.onLine || !QP.sessione()) return;
     const resto = [];
     for (const m of coda) { try { await srv.invia(m); } catch (e) { resto.push(m); } }
     mem.set('qp-coda', resto);
@@ -316,7 +329,7 @@ body.fb-aperto{overflow:hidden}
   document.body.append(A);
   const AI = $('.adm-in', A);
   const FR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 15.5 12 9 18.5"/></svg>';
-  let scheda = 'utenti', filtro = 'nuove', lista = [], utenti = [], registro = [], aperto = null, giro = null;
+  let scheda = 'utenti', filtro = 'nuove', lista = [], utenti = [], registro = [], aperto = null, giro = null, codice = null, codOk = '';
   $('.chiudi', A).addEventListener('click', () => { history.length > 1 && location.hash === '#admin' ? history.back() : (location.hash = ''); });
   const dataIt = s => new Date(s).toLocaleString('it-IT', {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'});
   const giorno = s => new Date(s).toLocaleDateString('it-IT', {day: '2-digit', month: '2-digit', year: 'numeric'});
@@ -352,6 +365,14 @@ body.fb-aperto{overflow:hidden}
       if (DEMO) { const v = mem.get('qp-demo-ut-via') || []; v.push(chi); mem.set('qp-demo-ut-via', v); return; }
       await QP.rpc('elimina_utente', {chi});
     },
+    async codice(){
+      if (DEMO) return {codice: QP.CODICE_DEMO(), aggiornato: mem.get('qp-demo-codice-quando'), da: mem.get('qp-demo-codice-da')};
+      return QP.rpc('codice_accesso');
+    },
+    async cambiaCodice(nuovo){
+      if (DEMO) { mem.set('qp-demo-codice', nuovo); mem.set('qp-demo-codice-quando', new Date().toISOString()); mem.set('qp-demo-codice-da', QP.nome()); return; }
+      await QP.rpc('cambia_codice', {nuovo});
+    },
     async ruolo(chi, r){
       if (DEMO) { const u = DEMO_UT().map(x => x.id === chi ? Object.assign(x, {ruolo: r}) : x); mem.set('qp-demo-ut', u); return; }
       await QP.rpc('imposta_ruolo', {chi, ruolo: r});
@@ -360,11 +381,8 @@ body.fb-aperto{overflow:hidden}
   const errMsg = x => (x && x.message === 'fuori') ? 'Accesso scaduto: rientra dal profilo.' : (navigator.onLine ? ((x && x.message && !/^rpc \d/.test(x.message)) ? x.message : 'Qualcosa non ha funzionato: riprova.') : 'Sei senza internet.');
 
   function login(){
-    const ospite = !QP.sessione();
     $('#adm-t', A).innerHTML = 'Area admin<small>Riservata</small>';
-    AI.innerHTML = '<div class="adm-login"><p>' + (ospite ? 'Quest\'area è solo per gli amministratori. Entra dal profilo con il tuo nome utente e la password.' : 'Il tuo account non è amministratore: quest\'area è riservata.') + '</p>' +
-      (ospite ? '<button type="button" class="btn pri entra">Entra</button>' : '') + '</div>';
-    const b = $('.entra', AI); if (b) { b.addEventListener('click', () => QP.apriProfilo()); b.focus(); }
+    AI.innerHTML = '<div class="adm-login"><p>Il tuo account non è amministratore: quest\'area è riservata.</p></div>';
   }
   function intestazione(){
     const sup = QP.superadmin();
@@ -380,7 +398,7 @@ body.fb-aperto{overflow:hidden}
     try {
       if (scheda === 'segnalazioni') lista = await srv.elenco();
       else if (scheda === 'accessi') { [registro, utenti] = await Promise.all([serv.registro(null, 150), serv.utenti()]); }
-      else utenti = await serv.utenti();
+      else { [utenti, codice] = await Promise.all([serv.utenti(), serv.codice().catch(() => null)]); }
     } catch (x) {
       if (!QP.admin()) { login(); return; }
       if (silenzioso) return;
@@ -416,16 +434,49 @@ body.fb-aperto{overflow:hidden}
   /* admin: solo nome e foto */
   function disegnaGriglia(C){
     C.innerHTML = '<p class="adm-nota"><span>' + utenti.length + ' utenti registrati</span><span class="sp"></span><button type="button" class="agg">Aggiorna</button></p><div class="ut-griglia"></div>';
+    C.prepend(boxCodice());
     $('.agg', C).addEventListener('click', () => mostraAdmin());
     const G = $('.ut-griglia', C);
     if (!utenti.length) { G.outerHTML = '<p class="vuoto">Ancora nessun utente.</p>'; return; }
     utenti.forEach(u => { const c = document.createElement('div'); c.className = 'ut-c'; c.append(av(u)); const n = document.createElement('span'); n.textContent = u.nome; c.append(n); G.append(c); });
+  }
+  /* codice d'accesso: chi si registra deve scriverlo; admin e super-admin lo cambiano qui */
+  const COD_OK = /^[A-Za-z0-9._-]{4,30}$/;
+  function boxCodice(){
+    const b = document.createElement('section'); b.className = 'cod'; b.setAttribute('aria-label', 'Codice d\'accesso per registrarsi');
+    if (!codice) { b.innerHTML = '<div class="cod-t"><span>Codice d\'accesso per registrarsi</span></div><small>Non riesco a leggerlo: tocca Aggiorna.</small>'; return b; }
+    b.innerHTML = '<div class="cod-top"><div class="cod-t"><span>Codice d\'accesso per registrarsi</span><b></b></div><button type="button" class="btn cambia">Cambia</button></div>' +
+      '<small></small>' + (codOk ? '<p class="ok-msg" role="status"></p>' : '');
+    $('.cod-t b', b).textContent = codice.codice;
+    $('small', b).textContent = (codice.aggiornato ? 'Cambiato ' + quando(codice.aggiornato) + (codice.da ? ' da ' + codice.da : '') + '. ' : '') + 'Serve solo per creare un account nuovo: chi ce l\'ha già entra come sempre.';
+    if (codOk) { $('.ok-msg', b).textContent = codOk; codOk = ''; }
+    $('.cambia', b).addEventListener('click', () => modulo(b));
+    return b;
+  }
+  function modulo(b){
+    const f = document.createElement('form'); f.noValidate = true;
+    f.innerHTML = '<label class="fl" for="cod-n">Nuovo codice</label><input class="in" id="cod-n" maxlength="30" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">' +
+      '<p class="aiuto" style="margin:0">Da 4 a 30 caratteri: lettere, numeri, punto, trattino o trattino basso. Maiuscole e minuscole non contano.</p><p class="err" role="alert"></p>' +
+      '<div class="azioni"><button type="submit" class="btn pri">Salva</button><button type="button" class="btn no">Annulla</button></div>';
+    $('.cambia', b).hidden = true; b.append(f);
+    const inp = $('#cod-n', f), e = $('.err', f); inp.value = codice.codice; inp.focus(); inp.select();
+    inp.addEventListener('input', () => { e.textContent = ''; });
+    $('.no', f).addEventListener('click', () => { f.remove(); $('.cambia', b).hidden = false; });
+    f.addEventListener('submit', async ev => {
+      ev.preventDefault(); const n = inp.value.trim(); e.textContent = '';
+      if (!COD_OK.test(n)) { e.textContent = 'Da 4 a 30 caratteri: lettere, numeri, punto, trattino o trattino basso (niente spazi).'; inp.focus(); return; }
+      if (n === codice.codice) { f.remove(); $('.cambia', b).hidden = false; return; }
+      const s = $('button[type=submit]', f); s.disabled = true; s.textContent = 'Salvo…';
+      try { await serv.cambiaCodice(n); codice = await serv.codice().catch(() => ({codice: n})); codOk = 'Codice cambiato: dallo solo a chi deve registrarsi.'; b.replaceWith(boxCodice()); }
+      catch (x) { e.textContent = errMsg(x); s.disabled = false; s.textContent = 'Salva'; }
+    });
   }
   /* super-admin: tutti i dettagli */
   function stato(u){ return u.in_linea ? 'In linea ora' : 'Ultimo accesso: ' + quando(u.ultimo_accesso); }
   function disegnaUtenti(C){
     const inLinea = utenti.filter(u => u.in_linea).length;
     C.innerHTML = '<p class="adm-nota"><span>' + utenti.length + ' utenti · <b class="n-on">' + inLinea + '</b> in linea</span><span class="sp"></span><button type="button" class="agg">Aggiorna</button></p><div class="ut-lista"></div>';
+    C.prepend(boxCodice());
     $('.agg', C).addEventListener('click', () => mostraAdmin());
     const L = $('.ut-lista', C);
     if (!utenti.length) { L.innerHTML = '<p class="vuoto">Ancora nessun utente.</p>'; return; }

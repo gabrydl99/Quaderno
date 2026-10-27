@@ -15,6 +15,7 @@
 <link rel="icon" href="icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="stylesheet" href="fonts/fonts.css">
+<script>try{if(localStorage.getItem("qp-sessione"))document.documentElement.classList.add("qp-ok")}catch(e){}</script>
 <style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
 </head>
 <body>
@@ -594,11 +595,6 @@ figure.fig.sym .svgbox{border:0}
 .how-card:focus-visible{outline:2px solid var(--blue);outline-offset:-3px}
 #home .howto .how-corpo{border-top:1px solid var(--line)}
 #home .howto ol{margin:0;padding:4px 20px 16px 40px;line-height:1.5}
-#home .howto .consiglio{margin:12px 14px 4px;padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--blue) 10%,var(--sheet));border:1px solid color-mix(in srgb,var(--blue) 30%,var(--line));line-height:1.45;font-size:.92rem;color:var(--ink)}
-#home .howto .consiglio b{color:var(--blue)}
-#home .howto .crea-account{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;margin-top:10px;min-height:40px;padding:0 16px;border-radius:999px;background:var(--ink);color:var(--sheet);font:600 .9rem/1 var(--f-body)}
-#home .howto .crea-account:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
-#home .howto .consiglio[hidden]{display:none}
 #home .howto ol li{margin:10px 0}
 @media (prefers-reduced-motion:reduce){.how-card .n::after{transition:none}}
 
@@ -643,6 +639,10 @@ article.topic{box-shadow:0 1px 2px rgba(6,17,27,.04),0 10px 28px -16px rgba(6,17
 /* versione dell'app in fondo alla pagina iniziale (dalla 1.0) */
 .ver-fondo{display:table;margin:12px auto 6px;padding:5px 12px;border-radius:999px;font:500 .76rem/1.4 var(--f-body);color:var(--muted);background:color-mix(in srgb,var(--sheet) 85%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line)}
 .ver-fondo b{font-weight:700;color:var(--ink)}
+/* senza account l'app resta coperta dalla schermata d'accesso (strumenti/account.html); qp-ok lo mette
+   lo script in testa alla pagina se c'è una sessione salvata, così chi è già entrato non vede lampi */
+html:not(.qp-ok) body{overflow:hidden}
+html:not(.qp-ok) body > :not(.gate){visibility:hidden}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -684,22 +684,21 @@ article.topic{box-shadow:0 1px 2px rgba(6,17,27,.04),0 10px 28px -16px rgba(6,17
 <section class="howto" aria-labelledby="howto-t">
 <h2 id="howto-t">Come si usa l'app</h2>
 <div class="how-corpo" id="howto-corpo">
-<p class="consiglio"><span><b>Consigliato:</b> crea un account (nome utente e password, niente email) per salvare i progressi su ogni telefono.</span> <button type="button" class="crea-account">Crea un account</button></p>
 <ul class="brevi">
 <li><b>Sezioni</b><span>Tocca un riquadro o una bolla in alto, poi un argomento. ‹ › per passare al vicino, ☰ per l'elenco.</span></li>
 <li><b>Audio</b><span>🎧 nell'indice = c'è la lezione. Sotto il titolo: ▶ Ascolta. Lettore in basso: ±15 s, velocità, Trascrizione.</span></li>
 <li><b>Ricerca</b><span>Scrivi nella barra in alto: la parola si evidenzia nel testo.</span></li>
 <li><b>Disegni</b><span>Tocca per ingrandire, + e − per lo zoom.</span></li>
 <li><b>Esercizi</b><span>Assetto e pescaggi, Carteggio 5D: pagine a parte, torni qui con ‹ Quaderno Patentino.</span></li>
-<li><b>Frasario</b><span>Frasi SMCP, glossario nautico e traduttore IT ⇄ EN, anche da foto. Gemini solo con l'accesso.</span></li>
-<li><b>Profilo</b><span>Tocca Guest per entrare. In fondo a ogni argomento: Segna come letto; nel profilo vedi i progressi e metti la tua foto.</span></li>
+<li><b>Frasario</b><span>Frasi SMCP, glossario nautico e traduttore IT ⇄ EN, anche da foto.</span></li>
+<li><b>Profilo</b><span>Tocca il tuo nome in alto: progressi, foto ed Esci. In fondo a ogni argomento: Segna come letto.</span></li>
 <li><b>Segnalazioni</b><span>Riquadro in fondo alla pagina o Segnala un errore sotto un argomento.</span></li>
 <li><b>In alto</b><span>Casetta = Home, sole / luna = tema chiaro / scuro. In fondo alla pagina: termini di servizio e versione.</span></li>
 <li><b>Offline</b><span>Funziona senza internet; gli audio ascoltati restano sul telefono. Tasto Installa per averla tra le app.</span></li>
 </ul>
 </div>
 </section>
-<p class="ver-fondo" title="Versione dell'app e data dell'ultimo aggiornamento">Versione <b>1.0</b> · 26/10/2026</p>
+<p class="ver-fondo" title="Versione dell'app e data dell'ultimo aggiornamento">Versione <b>1.1</b> · 27/10/2026</p>
 
   </div>
   <div id="results" hidden></div>
@@ -16510,6 +16509,41 @@ Il giornale di navigazione è scritto e firmato dal Comandante per le guardie da
 .del-box .azioni{display:flex;gap:8px;flex-wrap:wrap}
 .acc .btn.rosso{background:var(--red);border-color:var(--red);color:var(--sheet)}
 body.acc-aperto{overflow:hidden}
+
+/* schermata d'accesso: senza account l'app non si apre (dalla 1.1).
+   Il contenuto resta nascosto da html:not(.qp-ok) in tema.css, già dal primo disegno della pagina. */
+.gate{position:fixed;inset:0;z-index:80;overflow:auto;overscroll-behavior:contain;background:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;
+  padding:calc(env(safe-area-inset-top,0px) + 28px) max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 28px) max(16px,env(safe-area-inset-left,0px))}
+.gate[hidden]{display:none!important}
+.gate-in{max-width:420px;margin:0 auto}
+.gate-testa{display:flex;align-items:center;gap:12px;margin:0 0 6px}
+.gate-testa img{width:52px;height:52px;border-radius:14px;flex:none;box-shadow:0 2px 8px rgba(6,17,27,.18)}
+.gate-testa h1{margin:0;font:700 1.6rem/1.1 var(--f-body);color:var(--ink);letter-spacing:-.01em}
+.gate-testa h1 span{color:var(--blue);font-weight:500}
+.gate-sub{margin:0 0 18px;color:var(--muted);font-size:.95rem;line-height:1.45}
+.gate .seg{margin-bottom:14px}
+.gate form{background:var(--sheet);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 1px 2px rgba(6,17,27,.05),0 12px 32px -14px rgba(6,17,27,.22)}
+.gate .campo{margin:0 0 14px}
+.gate .fl{display:block;margin:0 0 6px;font:700 .9rem/1.3 var(--f-body);color:var(--ink)}
+.gate .in{width:100%;box-sizing:border-box;font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;outline:none}
+.gate .in:focus{border-color:var(--blue);box-shadow:0 0 0 3px color-mix(in srgb,var(--blue) 20%,transparent)}
+.gate .aiuto{margin:5px 0 0;font-size:.8rem;color:var(--muted)}
+.gate .err{min-height:1.2em;margin:0 0 10px;color:var(--red);font-weight:600;font-size:.88rem}
+.gate .btn{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;border-radius:999px;font:600 1rem/1 var(--f-body);background:var(--ink);color:var(--sheet)}
+.gate .btn[disabled]{opacity:.5;cursor:default}
+.gate .btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.gate .nota{margin:14px 4px 0;font-size:.84rem;line-height:1.45;color:var(--muted)}
+.gate .avviso{margin:0 0 14px;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--blue) 10%,var(--sheet));border:1px solid color-mix(in srgb,var(--blue) 30%,var(--line));font-size:.9rem;color:var(--ink)}
+.gate .demo{margin:0 0 14px;padding:9px 12px;border-radius:12px;background:color-mix(in srgb,var(--orange) 14%,var(--sheet));color:var(--ink);font-size:.84rem;line-height:1.4;border:1px solid color-mix(in srgb,var(--orange) 35%,var(--line))}
+.gate .in.codice{font-family:var(--f-mono,monospace);letter-spacing:.04em}
+/* occhio: mostra / nascondi la password */
+.pw{position:relative}
+.pw .in{padding-right:50px}
+.occhio{all:unset;box-sizing:border-box;position:absolute;top:50%;right:3px;transform:translateY(-50%);display:grid;place-items:center;width:44px;height:40px;border-radius:10px;cursor:pointer;color:var(--muted)}
+.occhio:hover{color:var(--ink);background:var(--chip)}
+.occhio:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+.occhio svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.occhio[aria-pressed="true"]{color:var(--blue)}
 </style>
 <script>
 (function(){
@@ -16532,21 +16566,25 @@ body.acc-aperto{overflow:hidden}
     ok: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
     cam: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.6-2.4h6.8L17 8h3v11H4z"/><circle cx="12" cy="13.2" r="3.6"/></svg>',
     img: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="m4 17 5-4.5 3.5 3 3-2.5 4.5 4"/></svg>',
-    via: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12"/></svg>'
+    via: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12"/></svg>',
+    occhio: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+    occhioNo: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.6 5.6c.5-.1.9-.1 1.4-.1 6 0 9.5 6.5 9.5 6.5a17 17 0 0 1-2.6 3.4M6.6 6.6C4 8.3 2.5 12 2.5 12S6 18.5 12 18.5c1.9 0 3.5-.6 4.9-1.5"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/><path d="M3.5 3.5l17 17"/></svg>'
   };
+  /* codice d'accesso per registrarsi: lo controlla il database (impostazioni.codice_registrazione); in anteprima resta qui */
+  const CODICE_DEMO = () => mem.get('qp-demo-codice') || 'prova123';      // solo anteprima: il codice vero sta solo nel database
   /* termini di servizio: un solo testo, mostrato in pagina iniziale e alla registrazione */
   const TERMINI = '<div class="tos-testo"><ul>' +
     '<li><b>Cos\'è.</b> App gratuita di studio con gli appunti per il patentino nautico. Può contenere errori: non sostituisce i testi ufficiali né l\'istruttore.</li>' +
-    '<li><b>Senza account (Guest)</b> usi tutto tranne progressi e traduttore Gemini, e non viene registrato nessun accesso.</li>' +
+    '<li><b>Accesso.</b> Per usare l\'app serve un account. Per crearlo serve il codice d\'accesso, che danno gli amministratori.</li>' +
     '<li><b>Con l\'account</b> si salvano nome utente, password (cifrata), foto del profilo se la metti e argomenti segnati come letti. Nessuna email.</li>' +
-    '<li><b>Registro degli accessi.</b> Per sicurezza e contro gli abusi, quando usi l\'app con l\'account si registrano data e ora, indirizzo IP e dispositivo (modello, sistema e browser, se il telefono li comunica). Li vede solo il super-admin; gli admin vedono solo nome e foto.</li>' +
+    '<li><b>Registro degli accessi.</b> Per sicurezza e contro gli abusi, quando usi l\'app si registrano data e ora, indirizzo IP e dispositivo (modello, sistema e browser, se il telefono li comunica). Li vede solo il super-admin; gli admin vedono solo nome e foto.</li>' +
     '<li><b>Quanto restano.</b> Gli accessi si cancellano da soli dopo 6 mesi. Un account non usato per 12 mesi viene cancellato con tutti i suoi dati.</li>' +
     '<li><b>I tuoi diritti.</b> Puoi eliminare l\'account quando vuoi dal profilo: si cancella tutto. Per altre richieste scrivi in Segnalazioni e feedback.</li>' +
     '<li><b>Segnalazioni</b>: le legge solo il super-admin; puoi inviarle anche anonime.</li>' +
     '<li><b>Traduttore Gemini</b>: il testo che invii passa a Google per la traduzione, quindi non scriverci dati personali. Riservato a chi ha almeno 18 anni.</li>' +
     '<li><b>Sul telefono</b> l\'app salva solo ciò che le serve (accesso, preferenze, audio ascoltati): niente pubblicità né cookie di profilazione.</li>' +
     '<li><b>Servizi usati</b>: GitHub Pages (sito), Supabase (account e dati), Google Gemini (traduttore).</li>' +
-    '</ul><p>Titolare: l\'amministratore dell\'app (Gabrydl). Aggiornati il 26/10/2026.</p></div>';
+    '</ul><p>Titolare: l\'amministratore dell\'app (Gabrydl). Aggiornati il 27/10/2026.</p></div>';
 
   /* ---------- sessione ---------- */
   const sess = () => mem.get('qp-sessione');
@@ -16583,6 +16621,7 @@ body.acc-aperto{overflow:hidden}
     if (c === 'signup_disabled' || m.includes('signups not allowed')) return 'Le registrazioni sono chiuse in questo momento.';
     if (c === 'invalid_credentials' || m.includes('invalid login')) return 'Nome utente o password sbagliati.';
     if (c === 'over_request_rate_limit' || c === 'over_email_send_rate_limit') return 'Troppi tentativi: riprova tra qualche minuto.';
+    if (m.includes('database error saving new user')) return 'Codice d\'accesso sbagliato: chiedi quello giusto a un amministratore.';
     return def;
   };
   async function entra(nome, pw){
@@ -16594,13 +16633,15 @@ body.acc-aperto{overflow:hidden}
     if (!r.ok) throw new Error(errore(j, 'Nome utente o password sbagliati.'));
     daRisposta(j); await prog.scarica(); emetti(); battito.avvia();
   }
-  async function registra(nome, pw){
-    nome = nome.trim();
+  async function registra(nome, pw, codice){
+    nome = nome.trim(); codice = (codice || '').trim();
     if (!NOME_OK.test(nome)) throw new Error('Il nome utente deve avere da 3 a 20 caratteri: lettere, numeri, punto, trattino o trattino basso.');
     if (pw.length < 6) throw new Error('Password troppo corta: usa almeno 6 caratteri.');
+    if (!codice) throw new Error('Scrivi il codice d\'accesso: te lo dà un amministratore.');
+    if (DEMO && codice.toLowerCase() !== CODICE_DEMO().toLowerCase()) throw new Error('Codice d\'accesso sbagliato: chiedi quello giusto a un amministratore.');
     if (DEMO) { const n = mem.get('qp-demo-nomi') || {}; if (n[nome.toLowerCase()]) throw new Error('Questo nome utente è già preso: scegline un altro.'); n[nome.toLowerCase()] = nome; mem.set('qp-demo-nomi', n); return entra(nome, pw); }
     if (!navigator.onLine) throw new Error('Serve internet per registrarti.');
-    let r; try { r = await fetch(CFG.url + '/auth/v1/signup', {method: 'POST', headers: H(), body: JSON.stringify({email: nome.toLowerCase() + '@' + DOMINIO, password: pw, data: {nome}})}); } catch (e) { throw new Error(RETE); }
+    let r; try { r = await fetch(CFG.url + '/auth/v1/signup', {method: 'POST', headers: H(), body: JSON.stringify({email: nome.toLowerCase() + '@' + DOMINIO, password: pw, data: {nome, codice}})}); } catch (e) { throw new Error(RETE); }
     const j = await r.json().catch(() => ({}));
     if (!r.ok) throw new Error(errore(j, 'Registrazione non riuscita: riprova.'));
     if (!j.access_token) throw new Error('Registrazione ricevuta, ma l\'accesso non è ancora attivo: avvisa l\'amministratore.');
@@ -16777,7 +16818,7 @@ body.acc-aperto{overflow:hidden}
   const conta = ids => { let n = 0; ids.forEach(i => { if (prog.fatti.has(i)) n++; }); return n; };
   const pc = (n, t) => t ? Math.round(n / t * 100) : 0;
 
-  /* ---------- tasto in alto: Guest / nome ---------- */
+  /* ---------- tasto in alto: nome e foto (apre il profilo) ---------- */
   const cerca = $('.top .search');
   let riga = cerca && cerca.closest('.cerca-riga');
   if (cerca && !riga) { riga = document.createElement('div'); riga.className = 'cerca-riga'; cerca.parentNode.insertBefore(riga, cerca); riga.append(cerca); }
@@ -16793,10 +16834,7 @@ body.acc-aperto{overflow:hidden}
     const sz = a.closest('section.sec'); if (sz && NO_PROG.includes(sz.id)) { f.classList.add('solo-segnala'); a.append(f); return; }
     const b = document.createElement('button'); b.type = 'button'; b.className = 'letto'; b.setAttribute('aria-pressed', 'false');
     b.innerHTML = '<span class="ck">' + ICO.ok + '</span><span class="tx">Segna come letto</span>';
-    b.addEventListener('click', () => {
-      if (!sess()) { apri('Entra o registrati per segnare gli argomenti che hai letto e vedere i tuoi progressi.', () => prog.segna(a.id, true)); return; }
-      prog.segna(a.id, !prog.fatti.has(a.id));
-    });
+    b.addEventListener('click', () => { if (sess()) prog.segna(a.id, !prog.fatti.has(a.id)); });
     f.append(b); a.append(f); tasti[a.id] = b;
   });
 
@@ -16806,15 +16844,15 @@ body.acc-aperto{overflow:hidden}
   P.innerHTML = '<div class="acc-bar"><button type="button" class="x" aria-label="Chiudi il profilo">' + ICO.x + '</button><h2 id="acc-t">Profilo</h2></div><div class="acc-body"><div class="acc-in"></div></div>';
   document.body.append(P);
   const PI = $('.acc-in', P);
-  let avviso = '', scheda = 'entra', dopo = null;
+  let avviso = '', scheda = 'entra';
   $('.x', P).addEventListener('click', chiudi);
-  function apri(msg, poi){ avviso = msg || ''; dopo = poi || null; if (location.hash !== '#profilo') location.hash = 'profilo'; else disegna(); }
+  function apri(){ if (!sess()) return; if (location.hash !== '#profilo') location.hash = 'profilo'; else disegna(); }
   function chiudi(){ if (history.length > 1 && location.hash === '#profilo') history.back(); else location.hash = ''; }
 
   function disegna(){
     const s = sess();
-    $('#acc-t', P).textContent = s ? 'Il tuo profilo' : 'Entra o registrati';
-    if (!s) return disegnaOspite();
+    if (!s) return;
+    $('#acc-t', P).textContent = 'Il tuo profilo';
     const n = conta(TUTTI), t = TUTTI.length, p = pc(n, t), r = ruoloDi(s), mia = foto.mia();
     PI.innerHTML = (DEMO ? '<p class="demo"><b>Anteprima</b>: i progressi e la foto restano su questo telefono.</p>' : '') +
       '<div class="ciao"><span class="av io"></span><div><h3></h3><p></p></div></div>' +
@@ -16822,8 +16860,8 @@ body.acc-aperto{overflow:hidden}
       (mia ? '<button type="button" class="via f-via">' + ICO.via + 'Togli</button>' : '') + '<p class="err" role="alert"></p>' +
       '<input type="file" accept="image/*" capture="user" class="f-in-cam" hidden><input type="file" accept="image/*" class="f-in-gal" hidden></div>' +
       '<div class="tot"><div class="tot-n"><b>' + p + '%</b><span>' + n + ' argomenti letti su ' + t + '</span></div><span class="bar' + (p === 100 ? ' ok' : '') + '" role="progressbar" aria-label="Avanzamento totale" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + p + '"><i style="width:' + p + '%"></i></span></div>' +
-      (r === 'superadmin' ? '<div class="adm-box sa"><p><b>Area super-admin</b>Utenti, accessi e segnalazioni' + (window.QP.nuove ? ' · ' + window.QP.nuove + ' da leggere' : '') + '</p><button type="button" class="btn adm-go">Apri</button></div>' :
-       r === 'admin' ? '<div class="adm-box"><p><b>Area admin</b>Utenti registrati</p><button type="button" class="btn adm-go">Apri</button></div>' : '') +
+      (r === 'superadmin' ? '<div class="adm-box sa"><p><b>Area super-admin</b>Utenti, accessi, segnalazioni e codice' + (window.QP.nuove ? ' · ' + window.QP.nuove + ' da leggere' : '') + '</p><button type="button" class="btn adm-go">Apri</button></div>' :
+       r === 'admin' ? '<div class="adm-box"><p><b>Area admin</b>Utenti registrati e codice d\'accesso</p><button type="button" class="btn adm-go">Apri</button></div>' : '') +
       '<h4>Capitoli</h4><ul class="cap"></ul>' +
       '<button type="button" class="btn largo esci">Esci</button>' +
       (r === 'superadmin' ? '' : '<button type="button" class="elimina" aria-expanded="false" aria-controls="del-box">Elimina l\'account</button>' +
@@ -16859,7 +16897,8 @@ body.acc-aperto{overflow:hidden}
       }
       L.append(li);
     });
-    $('.esci', PI).addEventListener('click', async () => { await esci(); scheda = 'entra'; disegna(); });
+    /* uscendo, aggiorna() chiude il profilo e mostra la schermata d'accesso (un solo "indietro") */
+    $('.esci', PI).addEventListener('click', async () => { scheda = 'entra'; avviso = ''; await esci(); });
     const el = $('.elimina', PI), db = $('#del-box', PI);
     if (el) {
       $('.del-nome', db).textContent = s.nome;
@@ -16867,7 +16906,7 @@ body.acc-aperto{overflow:hidden}
       $('.del-no', db).addEventListener('click', () => { db.hidden = true; el.hidden = false; el.setAttribute('aria-expanded', 'false'); el.focus(); });
       $('.del-si', db).addEventListener('click', async () => {
         const b = $('.del-si', db), e = $('.err', db); b.disabled = true; b.textContent = 'Elimino…'; e.textContent = '';
-        try { await eliminaAccount(); scheda = 'entra'; avviso = 'Account eliminato. Se vuoi, puoi crearne uno nuovo quando vuoi.'; disegna(); }
+        try { scheda = 'entra'; await eliminaAccount(); avviso = 'Account eliminato.'; disegnaGate(); }
         catch (x) { e.textContent = x.message; b.disabled = false; b.textContent = 'Elimina definitivamente'; }
       });
     }
@@ -16880,38 +16919,68 @@ body.acc-aperto{overflow:hidden}
     $('.c-t', b).textContent = nome; b.setAttribute('aria-label', nome + ': ' + n + ' argomenti letti su ' + t + ', ' + p + ' per cento');
     b.addEventListener('click', vai); return b;
   }
-  function disegnaOspite(){
+  /* ---------- schermata d'accesso (prima pagina se non sei entrato) ---------- */
+  const GT = document.createElement('div'); GT.className = 'gate'; GT.id = 'qp-accesso'; GT.hidden = true;
+  GT.setAttribute('role', 'dialog'); GT.setAttribute('aria-modal', 'true'); GT.setAttribute('aria-labelledby', 'gate-t');
+  document.body.append(GT);
+  /* campo password con l'occhio per vedere cosa hai scritto */
+  const campoPw = (id, etich, ac, aiuto) => '<div class="campo"><label class="fl" for="' + id + '">' + etich + '</label><div class="pw"><input class="in" id="' + id + '" type="password" autocomplete="' + ac + '" autocapitalize="none" autocorrect="off" spellcheck="false" required>' +
+    '<button type="button" class="occhio" aria-controls="' + id + '" aria-pressed="false" aria-label="Mostra la password" title="Mostra la password">' + ICO.occhio + '</button></div>' + (aiuto ? '<p class="aiuto">' + aiuto + '</p>' : '') + '</div>';
+  function collegaOcchi(r){
+    r.querySelectorAll('.occhio').forEach(b => {
+      const inp = document.getElementById(b.getAttribute('aria-controls'));
+      b.addEventListener('pointerdown', e => e.preventDefault());      // la tastiera resta aperta sul campo
+      b.addEventListener('click', () => {
+        const vedi = inp.type === 'password'; inp.type = vedi ? 'text' : 'password';
+        b.setAttribute('aria-pressed', vedi); b.innerHTML = vedi ? ICO.occhioNo : ICO.occhio;
+        const t = vedi ? 'Nascondi la password' : 'Mostra la password'; b.setAttribute('aria-label', t); b.title = t;
+      });
+    });
+  }
+  function disegnaGate(){
     const reg = scheda === 'registrati';
-    PI.innerHTML = (DEMO ? '<p class="demo"><b>Anteprima</b>: va bene qualsiasi nome utente e password; con <b>Gabrydl</b> vedi anche l\'area admin.</p>' : '') +
+    GT.innerHTML = '<div class="gate-in">' +
+      '<div class="gate-testa"><img src="icons/icon-192.png" alt=""><h1 id="gate-t">Quaderno <span>Patentino</span></h1></div>' +
+      '<p class="gate-sub">Appunti, disegni e audio delle lezioni per il patentino nautico. Entra con il tuo account.</p>' +
+      (DEMO ? '<p class="demo"><b>Anteprima</b>: va bene qualsiasi nome e password (con <b>Gabrydl</b> sei super-admin, con un nome che inizia per <b>admin</b> sei admin). Codice: <b>' + CODICE_DEMO().replace(/[<>&"]/g, '') + '</b>.</p>' : '') +
       (avviso ? '<p class="avviso"></p>' : '') +
-      '<p class="acc-intro">Con un account puoi segnare gli argomenti che hai studiato e vedere i tuoi progressi capitolo per capitolo. Basta un nome utente e una password, niente email.</p>' +
       '<div class="seg" role="tablist" aria-label="Accesso"><button type="button" role="tab" data-s="entra" aria-selected="' + !reg + '">Entra</button><button type="button" role="tab" data-s="registrati" aria-selected="' + reg + '">Registrati</button></div>' +
       '<form novalidate>' +
       '<div class="campo"><label class="fl" for="acc-u">Nome utente</label><input class="in" id="acc-u" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="20" required>' +
-      (reg ? '<p class="aiuto">Da 3 a 20 caratteri: lettere, numeri, punto, trattino o trattino basso. È il nome che vedrai in alto.</p>' : '') + '</div>' +
-      '<div class="campo"><label class="fl" for="acc-p">Password</label><input class="in" id="acc-p" type="password" autocomplete="' + (reg ? 'new-password' : 'current-password') + '" required>' +
-      (reg ? '<p class="aiuto">Almeno 6 caratteri.</p>' : '') + '</div>' +
-      (reg ? '<div class="campo"><label class="fl" for="acc-p2">Ripeti la password</label><input class="in" id="acc-p2" type="password" autocomplete="new-password" required></div>' : '') +
-      '<p class="err" role="alert"></p><button type="submit" class="btn pri largo">' + (reg ? 'Crea l\'account' : 'Entra') + '</button>' +
+      (reg ? '<p class="aiuto">Da 3 a 20 caratteri: lettere, numeri, punto, trattino o trattino basso.</p>' : '') + '</div>' +
+      campoPw('acc-p', 'Password', reg ? 'new-password' : 'current-password', reg ? 'Almeno 6 caratteri.' : '') +
+      (reg ? campoPw('acc-p2', 'Ripeti la password', 'new-password', '') +
+        '<div class="campo"><label class="fl" for="acc-c">Codice d\'accesso</label><input class="in codice" id="acc-c" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="30" required><p class="aiuto">Te lo dà un amministratore.</p></div>' : '') +
+      '<p class="err" role="alert"></p><button type="submit" class="btn">' + (reg ? 'Crea l\'account' : 'Entra') + '</button>' +
       (reg ? '<details class="tos-reg"><summary>Creando l\'account accetti i <u>termini di servizio</u></summary>' + TERMINI + '</details>' : '') + '</form>' +
-      '<p class="nota">' + (reg ? 'Senza email la password non si può recuperare da soli: se la dimentichi, scrivilo in <b>Segnalazioni e feedback</b> e l\'amministratore te la cambia.' : 'Non hai un account? Tocca <b>Registrati</b>: ci vogliono pochi secondi.') + '</p>';
-    if (avviso) $('.avviso', PI).textContent = avviso;
-    PI.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => { scheda = b.dataset.s; disegnaOspite(); $('#acc-u', PI).focus(); }));
-    const f = $('form', PI), e = $('.err', f), btn = $('button[type=submit]', f);
+      '<p class="nota">' + (reg ? 'Senza email la password non si recupera da soli: se la dimentichi, chiedi all\'amministratore di cambiartela.' : 'Non hai un account? Tocca <b>Registrati</b>: ti serve il codice d\'accesso.') + '</p></div>';
+    if (avviso) $('.avviso', GT).textContent = avviso;
+    collegaOcchi(GT);
+    GT.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => { if (scheda === b.dataset.s) return; scheda = b.dataset.s; avviso = ''; disegnaGate(); $('#acc-u', GT).focus(); }));
+    const f = $('form', GT), e = $('.err', f), btn = $('button[type=submit]', f);
     f.addEventListener('submit', async ev => {
       ev.preventDefault(); e.textContent = '';
       const u = $('#acc-u', f).value, pw = $('#acc-p', f).value;
       if (!u.trim() || !pw) { e.textContent = 'Scrivi nome utente e password.'; return; }
-      if (reg && pw !== $('#acc-p2', f).value) { e.textContent = 'Le due password non coincidono.'; return; }
+      if (reg && pw !== $('#acc-p2', f).value) { e.textContent = 'Le due password non coincidono: tocca l\'occhio per controllarle.'; return; }
+      if (reg && !$('#acc-c', f).value.trim()) { e.textContent = 'Scrivi il codice d\'accesso: te lo dà un amministratore.'; $('#acc-c', f).focus(); return; }
       btn.disabled = true; btn.textContent = reg ? 'Creo l\'account…' : 'Accesso…';
-      try { reg ? await registra(u, pw) : await entra(u, pw); avviso = ''; if (dopo) { const f2 = dopo; dopo = null; f2(); chiudi(); } else disegna(); }
+      try { reg ? await registra(u, pw, $('#acc-c', f).value) : await entra(u, pw); avviso = ''; scheda = 'entra'; }
       catch (x) { e.textContent = x.message || 'Qualcosa non ha funzionato: riprova.'; btn.disabled = false; btn.textContent = reg ? 'Crea l\'account' : 'Entra'; }
     });
   }
+  /* mostra o toglie la schermata d'accesso */
+  function porta(){
+    const s = sess(), era = !GT.hidden;
+    document.documentElement.classList.toggle('qp-ok', !!s);
+    if (s) { if (era) { GT.hidden = true; GT.innerHTML = ''; } return; }
+    if (!era) { GT.hidden = false; disegnaGate(); }
+    else if (!GT.firstChild) disegnaGate();
+  }
   function rotta(){
-    const on = location.hash === '#profilo';
+    const on = location.hash === '#profilo' && !!sess();
     if (on) { if (P.hidden) { P.hidden = false; document.body.classList.add('acc-aperto'); } disegna(); $('.x', P).focus(); }
-    else if (!P.hidden) { P.hidden = true; avviso = ''; dopo = null; document.body.classList.remove('acc-aperto'); }
+    else if (!P.hidden) { P.hidden = true; document.body.classList.remove('acc-aperto'); }
   }
   addEventListener('hashchange', rotta);
 
@@ -16919,10 +16988,11 @@ body.acc-aperto{overflow:hidden}
   function aggiorna(){
     const s = sess();
     const r = ruoloDi(s);
+    porta();
     chip.classList.toggle('in', !!s); chip.classList.toggle('ad', r === 'admin'); chip.classList.toggle('sa', r === 'superadmin');
     const av = $('.av', chip); if (s) { avatar(av, s.nome, foto.mia(), ''); } else { av.innerHTML = ICO.utente; }
-    $('.nm', chip).textContent = s ? s.nome : 'Guest';
-    chip.setAttribute('aria-label', s ? 'Profilo di ' + s.nome + (r ? ' (' + NOME_RUOLO[r] + ')' : '') : 'Guest: entra o registrati');
+    $('.nm', chip).textContent = s ? s.nome : '';
+    chip.setAttribute('aria-label', s ? 'Profilo di ' + s.nome + (r ? ' (' + NOME_RUOLO[r] + ')' : '') : 'Profilo');
     Object.keys(tasti).forEach(id => {
       const b = tasti[id], on = !!s && prog.fatti.has(id);
       b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false');
@@ -16942,19 +17012,17 @@ body.acc-aperto{overflow:hidden}
       c.classList.add('con-pr'); $('.bar', pr).classList.toggle('ok', p === 100); $('.bar i', pr).style.width = p + '%';
       $('.pr-n', pr).textContent = n + '/' + t + ' · ' + p + '%';
     });
-    const cons = $('#home .howto .consiglio'); if (cons) cons.hidden = !!s;
-    const hd = $('#home .how-card .d'); if (hd) hd.textContent = s ? 'Sezioni, audio delle lezioni, ricerca, profilo e progressi, uso senza internet e installazione.' : 'Consigliato: crea un account per salvare i tuoi progressi. Qui trovi anche come usare sezioni, audio e ricerca.';
-    if (!P.hidden) disegna();
+    const hd = $('#home .how-card .d'); if (hd) hd.textContent = 'Sezioni, audio delle lezioni, ricerca, profilo e progressi, uso senza internet e installazione.';
+    if (!P.hidden) { if (s) disegna(); else chiudi(); }
   }
   subs.push(aggiorna);
-  const ca = $('#home .howto .crea-account'); if (ca) ca.addEventListener('click', () => { scheda = 'registrati'; apri(); });
 
   /* ---------- per gli altri moduli (segnalazioni) ---------- */
   window.QP = {CFG, DEMO, H, rest, rpc, token, sessione: sess, ruolo, NOME_RUOLO, avatar, TERMINI, foto: () => foto.mia(),
     admin: () => ruolo() === 'admin' || ruolo() === 'superadmin',       // può aprire l'area admin (utenti)
     superadmin: () => ruolo() === 'superadmin',                           // accessi, segnalazioni, elimina account
     nome: () => { const s = sess(); return s ? s.nome : ''; },
-    on: f => subs.push(f), apriProfilo: apri, nuove: 0, ridisegna: () => { if (!P.hidden) disegna(); }};
+    on: f => subs.push(f), apriProfilo: apri, nuove: 0, ridisegna: () => { if (!P.hidden) disegna(); }, CODICE_DEMO};
 
   aggiorna(); rotta();
   if (sess() && !DEMO) { prog.scarica().then(aggiorna); battito.avvia(); }
@@ -17098,6 +17166,19 @@ textarea.in{min-height:150px;resize:vertical;line-height:1.5}
 .ac-riga .t b{color:var(--ink)}
 .ac-riga .t time{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .ac-riga .d{font-size:.8rem;line-height:1.4;color:var(--ink);overflow-wrap:anywhere}
+/* codice d'accesso per registrarsi (admin e super-admin lo vedono e lo cambiano) */
+.cod{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 14px}
+.cod-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cod-t{flex:1;min-width:0}
+.cod-t span{display:block;font:600 .8rem/1.3 var(--f-body);color:var(--muted)}
+.cod-t b{display:block;margin-top:3px;font:600 1.15rem/1.3 var(--f-mono,monospace);letter-spacing:.03em;color:var(--ink);overflow-wrap:anywhere}
+.cod small{display:block;margin-top:6px;font-size:.76rem;color:var(--muted)}
+.cod .btn{min-height:38px;padding:0 16px;font-size:.88rem}
+.cod form{margin-top:10px;display:grid;gap:8px}
+.cod .in{font-family:var(--f-mono,monospace);letter-spacing:.03em}
+.cod .azioni .btn.pri{background:var(--blue);border-color:var(--blue);color:var(--sheet)}
+.cod .err{margin:0;font-size:.84rem;min-height:0}
+.cod .ok-msg{margin:6px 0 0;font-size:.82rem;font-weight:600;color:var(--green)}
 /* termini di servizio, sotto "Segnalazioni e feedback" */
 .tos{margin:10px 0 0}
 .tos summary{display:flex;align-items:center;gap:6px;width:max-content;max-width:100%;box-sizing:border-box;cursor:pointer;list-style:none;padding:8px 14px 8px 10px;border-radius:999px;font:600 .82rem/1.2 var(--f-body);color:var(--ink);background:color-mix(in srgb,var(--sheet) 85%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line)}
@@ -17149,7 +17230,7 @@ body.fb-aperto{overflow:hidden}
   const srv = {
     async invia(m){
       if (DEMO) { const l = mem.get('qp-demo-msg') || []; l.unshift({...m, id: Date.now(), creato: new Date().toISOString(), letto: false}); mem.set('qp-demo-msg', l); return; }
-      const r = await fetch(CFG.url + '/rest/v1/segnalazioni', {method: 'POST', headers: {...H(), Prefer: 'return=minimal'}, body: JSON.stringify(m)});
+      const r = await fetch(CFG.url + '/rest/v1/segnalazioni', {method: 'POST', headers: {...H(await QP.token()), Prefer: 'return=minimal'}, body: JSON.stringify(m)});
       if (!r.ok) throw new Error('invio ' + r.status);
     },
     async elenco(){
@@ -17171,7 +17252,7 @@ body.fb-aperto{overflow:hidden}
 
   /* ---------- coda: se manca internet il messaggio parte dopo ---------- */
   async function svuota(){
-    const coda = mem.get('qp-coda') || []; if (!coda.length || !navigator.onLine) return;
+    const coda = mem.get('qp-coda') || []; if (!coda.length || !navigator.onLine || !QP.sessione()) return;
     const resto = [];
     for (const m of coda) { try { await srv.invia(m); } catch (e) { resto.push(m); } }
     mem.set('qp-coda', resto);
@@ -17278,7 +17359,7 @@ body.fb-aperto{overflow:hidden}
   document.body.append(A);
   const AI = $('.adm-in', A);
   const FR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 15.5 12 9 18.5"/></svg>';
-  let scheda = 'utenti', filtro = 'nuove', lista = [], utenti = [], registro = [], aperto = null, giro = null;
+  let scheda = 'utenti', filtro = 'nuove', lista = [], utenti = [], registro = [], aperto = null, giro = null, codice = null, codOk = '';
   $('.chiudi', A).addEventListener('click', () => { history.length > 1 && location.hash === '#admin' ? history.back() : (location.hash = ''); });
   const dataIt = s => new Date(s).toLocaleString('it-IT', {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'});
   const giorno = s => new Date(s).toLocaleDateString('it-IT', {day: '2-digit', month: '2-digit', year: 'numeric'});
@@ -17314,6 +17395,14 @@ body.fb-aperto{overflow:hidden}
       if (DEMO) { const v = mem.get('qp-demo-ut-via') || []; v.push(chi); mem.set('qp-demo-ut-via', v); return; }
       await QP.rpc('elimina_utente', {chi});
     },
+    async codice(){
+      if (DEMO) return {codice: QP.CODICE_DEMO(), aggiornato: mem.get('qp-demo-codice-quando'), da: mem.get('qp-demo-codice-da')};
+      return QP.rpc('codice_accesso');
+    },
+    async cambiaCodice(nuovo){
+      if (DEMO) { mem.set('qp-demo-codice', nuovo); mem.set('qp-demo-codice-quando', new Date().toISOString()); mem.set('qp-demo-codice-da', QP.nome()); return; }
+      await QP.rpc('cambia_codice', {nuovo});
+    },
     async ruolo(chi, r){
       if (DEMO) { const u = DEMO_UT().map(x => x.id === chi ? Object.assign(x, {ruolo: r}) : x); mem.set('qp-demo-ut', u); return; }
       await QP.rpc('imposta_ruolo', {chi, ruolo: r});
@@ -17322,11 +17411,8 @@ body.fb-aperto{overflow:hidden}
   const errMsg = x => (x && x.message === 'fuori') ? 'Accesso scaduto: rientra dal profilo.' : (navigator.onLine ? ((x && x.message && !/^rpc \d/.test(x.message)) ? x.message : 'Qualcosa non ha funzionato: riprova.') : 'Sei senza internet.');
 
   function login(){
-    const ospite = !QP.sessione();
     $('#adm-t', A).innerHTML = 'Area admin<small>Riservata</small>';
-    AI.innerHTML = '<div class="adm-login"><p>' + (ospite ? 'Quest\'area è solo per gli amministratori. Entra dal profilo con il tuo nome utente e la password.' : 'Il tuo account non è amministratore: quest\'area è riservata.') + '</p>' +
-      (ospite ? '<button type="button" class="btn pri entra">Entra</button>' : '') + '</div>';
-    const b = $('.entra', AI); if (b) { b.addEventListener('click', () => QP.apriProfilo()); b.focus(); }
+    AI.innerHTML = '<div class="adm-login"><p>Il tuo account non è amministratore: quest\'area è riservata.</p></div>';
   }
   function intestazione(){
     const sup = QP.superadmin();
@@ -17342,7 +17428,7 @@ body.fb-aperto{overflow:hidden}
     try {
       if (scheda === 'segnalazioni') lista = await srv.elenco();
       else if (scheda === 'accessi') { [registro, utenti] = await Promise.all([serv.registro(null, 150), serv.utenti()]); }
-      else utenti = await serv.utenti();
+      else { [utenti, codice] = await Promise.all([serv.utenti(), serv.codice().catch(() => null)]); }
     } catch (x) {
       if (!QP.admin()) { login(); return; }
       if (silenzioso) return;
@@ -17378,16 +17464,49 @@ body.fb-aperto{overflow:hidden}
   /* admin: solo nome e foto */
   function disegnaGriglia(C){
     C.innerHTML = '<p class="adm-nota"><span>' + utenti.length + ' utenti registrati</span><span class="sp"></span><button type="button" class="agg">Aggiorna</button></p><div class="ut-griglia"></div>';
+    C.prepend(boxCodice());
     $('.agg', C).addEventListener('click', () => mostraAdmin());
     const G = $('.ut-griglia', C);
     if (!utenti.length) { G.outerHTML = '<p class="vuoto">Ancora nessun utente.</p>'; return; }
     utenti.forEach(u => { const c = document.createElement('div'); c.className = 'ut-c'; c.append(av(u)); const n = document.createElement('span'); n.textContent = u.nome; c.append(n); G.append(c); });
+  }
+  /* codice d'accesso: chi si registra deve scriverlo; admin e super-admin lo cambiano qui */
+  const COD_OK = /^[A-Za-z0-9._-]{4,30}$/;
+  function boxCodice(){
+    const b = document.createElement('section'); b.className = 'cod'; b.setAttribute('aria-label', 'Codice d\'accesso per registrarsi');
+    if (!codice) { b.innerHTML = '<div class="cod-t"><span>Codice d\'accesso per registrarsi</span></div><small>Non riesco a leggerlo: tocca Aggiorna.</small>'; return b; }
+    b.innerHTML = '<div class="cod-top"><div class="cod-t"><span>Codice d\'accesso per registrarsi</span><b></b></div><button type="button" class="btn cambia">Cambia</button></div>' +
+      '<small></small>' + (codOk ? '<p class="ok-msg" role="status"></p>' : '');
+    $('.cod-t b', b).textContent = codice.codice;
+    $('small', b).textContent = (codice.aggiornato ? 'Cambiato ' + quando(codice.aggiornato) + (codice.da ? ' da ' + codice.da : '') + '. ' : '') + 'Serve solo per creare un account nuovo: chi ce l\'ha già entra come sempre.';
+    if (codOk) { $('.ok-msg', b).textContent = codOk; codOk = ''; }
+    $('.cambia', b).addEventListener('click', () => modulo(b));
+    return b;
+  }
+  function modulo(b){
+    const f = document.createElement('form'); f.noValidate = true;
+    f.innerHTML = '<label class="fl" for="cod-n">Nuovo codice</label><input class="in" id="cod-n" maxlength="30" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">' +
+      '<p class="aiuto" style="margin:0">Da 4 a 30 caratteri: lettere, numeri, punto, trattino o trattino basso. Maiuscole e minuscole non contano.</p><p class="err" role="alert"></p>' +
+      '<div class="azioni"><button type="submit" class="btn pri">Salva</button><button type="button" class="btn no">Annulla</button></div>';
+    $('.cambia', b).hidden = true; b.append(f);
+    const inp = $('#cod-n', f), e = $('.err', f); inp.value = codice.codice; inp.focus(); inp.select();
+    inp.addEventListener('input', () => { e.textContent = ''; });
+    $('.no', f).addEventListener('click', () => { f.remove(); $('.cambia', b).hidden = false; });
+    f.addEventListener('submit', async ev => {
+      ev.preventDefault(); const n = inp.value.trim(); e.textContent = '';
+      if (!COD_OK.test(n)) { e.textContent = 'Da 4 a 30 caratteri: lettere, numeri, punto, trattino o trattino basso (niente spazi).'; inp.focus(); return; }
+      if (n === codice.codice) { f.remove(); $('.cambia', b).hidden = false; return; }
+      const s = $('button[type=submit]', f); s.disabled = true; s.textContent = 'Salvo…';
+      try { await serv.cambiaCodice(n); codice = await serv.codice().catch(() => ({codice: n})); codOk = 'Codice cambiato: dallo solo a chi deve registrarsi.'; b.replaceWith(boxCodice()); }
+      catch (x) { e.textContent = errMsg(x); s.disabled = false; s.textContent = 'Salva'; }
+    });
   }
   /* super-admin: tutti i dettagli */
   function stato(u){ return u.in_linea ? 'In linea ora' : 'Ultimo accesso: ' + quando(u.ultimo_accesso); }
   function disegnaUtenti(C){
     const inLinea = utenti.filter(u => u.in_linea).length;
     C.innerHTML = '<p class="adm-nota"><span>' + utenti.length + ' utenti · <b class="n-on">' + inLinea + '</b> in linea</span><span class="sp"></span><button type="button" class="agg">Aggiorna</button></p><div class="ut-lista"></div>';
+    C.prepend(boxCodice());
     $('.agg', C).addEventListener('click', () => mostraAdmin());
     const L = $('.ut-lista', C);
     if (!utenti.length) { L.innerHTML = '<p class="vuoto">Ancora nessun utente.</p>'; return; }
@@ -17517,8 +17636,6 @@ body.fb-aperto{overflow:hidden}
 /* aggiunte alla pagina iniziale (26/10/2026): "Come si usa l'app" compatto, bolla e riquadro del Frasario SMCP */
 .how-card{padding:9px 16px!important}
 .how-card .n{font-size:1rem!important}
-#home .howto .consiglio{margin:10px 12px 2px;padding:9px 12px;font-size:.86rem;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
-#home .howto .crea-account{margin-top:0;min-height:34px;padding:0 14px;font-size:.84rem}
 #home .howto ul.brevi{list-style:none;margin:0;padding:6px 14px 12px;display:grid;gap:0}
 #home .howto ul.brevi li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:8px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.86rem;line-height:1.4;color:var(--muted)}
 #home .howto ul.brevi li:last-child{border-bottom:0}

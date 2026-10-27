@@ -34,6 +34,15 @@ Sorgenti: gli artefatti "Assetto e Pescaggi" e "Carteggio con carta 5D". Grafica
 ## Supabase (progetto cvyuytnouuapmazjnebc)
 Accesso con nome utente: l'app usa `nome@gabrydl99.github.io` come indirizzo (nessuna email inviata).
 
+**Dalla 1.1 niente Guest**: senza account l'app mostra solo la schermata d'accesso (Entra / Registrati, in
+`account.html`); il contenuto resta nascosto da `html:not(.qp-ok)` in `tema.css`, e lo script `PORTA` in testa
+alla pagina mette `qp-ok` se c'è una sessione salvata. Frasario ed Esercizi senza sessione tornano a `../`.
+È una schermata d'accesso, non una cifratura: gli appunti restano nel codice della pagina e su GitHub.
+Per registrarsi serve il **codice d'accesso** (`impostazioni.codice_registrazione`, maiuscole indifferenti):
+lo controlla il trigger `controlla_codice_registrazione` su `auth.users` (l'app lo manda in `data.codice`,
+non resta salvato). Admin e super-admin lo vedono e lo cambiano nell'area admin (`codice_accesso()`,
+`cambia_codice(nuovo)`). Codice sbagliato → Supabase risponde "Database error saving new user".
+
 Ruoli (`app_metadata.ruolo`, letto dal database con `mio_ruolo()`: un cambio vale subito):
 - `superadmin` (Gabrydl, giallo racing): elenco utenti con ultimo accesso, "in linea", registro di IP e dispositivo,
   segnalazioni, può eliminare account e nominare/togliere admin. Non si elimina dall'app.
@@ -49,7 +58,7 @@ della richiesta), `salva_foto`, `elenco_utenti`, `registro_accessi`, `elimina_ut
 Pulizia automatica con pg_cron (`quaderno-pulizia`, ogni notte alle 03:17): accessi più vecchi di 6 mesi,
 account non usati da 12 mesi (mai il super-admin). Termini di servizio: testo `TERMINI` in `account.html`,
 mostrato sotto "Segnalazioni e feedback" e alla registrazione.
-SQL in `strumenti/sql/` (01 tabelle e funzioni; 02 super-admin, regole delle segnalazioni, pulizia).
+SQL in `strumenti/sql/` (01 tabelle e funzioni; 02 super-admin, regole delle segnalazioni, pulizia; 03 codice d'accesso, segnalazioni solo dagli account).
 
 ## Frasario e Traduttore SMCP (pagina `frasario/`)
 Frasi IMO SMCP (Ris. A.918(22), dal PDF "frasi inglesi") con traduzione italiana, glossario nautico IT ⇄ EN, traduttore Gemini.

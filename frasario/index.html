@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="it" data-pagina="frasario">
 <head>
+<script>try{if(!localStorage.getItem("qp-sessione"))location.replace("../")}catch(e){location.replace("../")}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Frasario e Traduttore SMCP · Quaderno Patentino</title>
@@ -407,27 +408,26 @@ async function token(){
   mem.set('qp-sessione', n); return n.access;
 }
 function esito(h, dove = 'gm'){ let e = $('#' + dove + '-esito'); if (!e) { e = document.createElement('div'); e.id = dove + '-esito'; e.style.cssText = 'display:grid;gap:8px'; $('#' + dove).append(e); } e.innerHTML = h; }
-addEventListener('storage', e => { if (e.key === 'qp-sessione') controlloGemini(); });
+addEventListener('storage', e => { if (e.key !== 'qp-sessione') return; if (!e.newValue) location.replace('../'); else controlloGemini(); });
 
-/* ---------- Gemini: traduzione tecnica per gli account (la funzione decide chi può usarla) ---------- */
-let conGemini = false, geminiOspite = false;
+/* ---------- Gemini: traduzione tecnica (la funzione sul server decide chi può usarla) ---------- */
+let conGemini = false;
 async function controlloGemini(){
   const s = sessione(), dentro = s && !s.demo && s.refresh;
-  conGemini = false; geminiOspite = false;
+  conGemini = false;
   if (navigator.onLine) {
     try {
       const tk = dentro ? await token() : null;
       const h = {apikey: SB.chiave, 'Content-Type': 'application/json'}; if (tk) h.Authorization = 'Bearer ' + tk;
       const r = await fetch(FUNZIONE, {method: 'POST', headers: h, body: JSON.stringify({controllo: true})});
       const j = r.ok ? await r.json() : {};
-      conGemini = !!j.gemini; geminiOspite = !dentro && !!j.aperto;
+      conGemini = !!j.gemini;
     } catch (e) {}
   }
-  $('#gemini').hidden = !(conGemini || geminiOspite);
+  $('#gemini').hidden = !conGemini;
   mostraGemini();
 }
 function mostraGemini(){
-  if (geminiOspite) { $('#gm').innerHTML = '<p>Per la traduzione Gemini serve l\'accesso: torna al Quaderno e tocca <b>Guest</b> in alto per entrare o registrarti. Glossario e frasi qui sopra funzionano per tutti, anche senza internet.</p>'; return; }
   if (!conGemini) return;
   const t = q.value.trim(), c = t.length;
   $('#gm').innerHTML = !t

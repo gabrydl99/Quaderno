@@ -11,6 +11,8 @@
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="stylesheet" href="../fonts/fonts.css">
 <script>
+/* senza account si torna alla schermata d'accesso del Quaderno (dalla 1.1) */
+try { if (!localStorage.getItem('qp-sessione')) location.replace('../'); } catch (e) { location.replace('../'); }
 /* stesso tema (chiaro/scuro) scelto nel Quaderno */
 try { var t = localStorage.getItem('qp-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
 </script>

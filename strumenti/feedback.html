@@ -200,8 +200,7 @@ body.fb-aperto{overflow:hidden}
   const srv = {
     async invia(m){
       if (DEMO) { const l = mem.get('qp-demo-msg') || []; l.unshift({...m, id: Date.now(), creato: new Date().toISOString(), letto: false}); mem.set('qp-demo-msg', l); return; }
-      const r = await fetch(CFG.url + '/rest/v1/segnalazioni', {method: 'POST', headers: {...H(await QP.token()), Prefer: 'return=minimal'}, body: JSON.stringify(m)});
-      if (!r.ok) throw new Error('invio ' + r.status);
+      await QP.rest('segnalazioni', 'POST', '', m);        // errori: 'fuori' (accesso scaduto), 'rete', TypeError (niente internet), 'POST 4xx/5xx'
     },
     async elenco(){
       if (DEMO) return (mem.get('qp-demo-msg') || []).concat(DEMO_ESEMPI.map(e => ({...e, letto: (mem.get('qp-demo-letti') || {})[e.id] ?? e.letto}))).filter(e => !(mem.get('qp-demo-via') || []).includes(e.id));
@@ -220,14 +219,27 @@ body.fb-aperto{overflow:hidden}
   const api = (metodo, q, corpo) => QP.rest('segnalazioni', metodo, q, corpo);
   const admin = QP.superadmin;                        // le segnalazioni le legge solo il super-admin
 
-  /* ---------- coda: se manca internet il messaggio parte dopo ---------- */
+  /* ---------- coda: se manca internet (o l'accesso è scaduto) il messaggio parte dopo; una coda per account ---------- */
+  const codaDi = id => 'qp-coda-' + id;
+  function accoda(id, m){ const k = codaDi(id), c = mem.get(k) || []; c.push(m); mem.set(k, c); }
+  const rete = x => !navigator.onLine || x instanceof TypeError || (x && x.message === 'rete');
+  let svuotando = false;
   async function svuota(){
-    const coda = mem.get('qp-coda') || []; if (!coda.length || !navigator.onLine || !QP.sessione()) return;
-    const resto = [];
-    for (const m of coda) { try { await srv.invia(m); } catch (e) { resto.push(m); } }
-    mem.set('qp-coda', resto);
+    const s = QP.sessione(); if (svuotando || !s || !navigator.onLine) return;
+    const k = codaDi(s.id), vecchia = mem.get('qp-coda');          // fino alla 1.3 la coda era una sola: la invia chi è collegato
+    if (vecchia) { mem.set(k, (mem.get(k) || []).concat(vecchia)); mem.del('qp-coda'); }
+    if (!(mem.get(k) || []).length) return;
+    svuotando = true;
+    try {
+      for (const m of (mem.get(k) || [])) {
+        try { await srv.invia(m); }
+        catch (x) { if (!(x && /^POST 4(?!01|29)\d\d$/.test(x.message))) break; }   // rete, accesso o server: riprova dopo; 4xx: messaggio non valido, si scarta
+        const ora = mem.get(k) || [], i = ora.findIndex(o => JSON.stringify(o) === JSON.stringify(m));   // tolgo solo quello inviato
+        if (i >= 0) { ora.splice(i, 1); mem.set(k, ora); }
+      }
+    } finally { svuotando = false; }
   }
-  addEventListener('online', svuota); svuota();
+  addEventListener('online', svuota); svuota(); QP.on(svuota);
 
   /* ---------- riquadro nella pagina iniziale ---------- */
   const cards = document.getElementById('cards');
@@ -307,14 +319,25 @@ body.fb-aperto{overflow:hidden}
     const testo = txt.value.trim();
     if (!testo) { err.textContent = 'Scrivi il messaggio prima di inviare.'; txt.focus(); return; }
     const m = {tipo: F.tipo.value, argomento: $('#fb-arg', P).value.trim().slice(0, 160), rif, messaggio: testo.slice(0, MAX), nome: $('#fb-nome', P).value.trim().slice(0, 60), versione: ver};
-    const btn = $('button[type=submit]', F); btn.disabled = true; btn.textContent = 'Invio…';
-    let offline = !navigator.onLine;
-    if (!offline) { try { await srv.invia(m); } catch (x) { offline = true; } }
-    if (offline) { const c = mem.get('qp-coda') || []; c.push(m); mem.set('qp-coda', c); }
+    const btn = $('button[type=submit]', F), sid = (QP.sessione() || {}).id; btn.disabled = true; btn.textContent = 'Invio…';
+    const riprova = t => { err.textContent = t; btn.disabled = false; btn.textContent = 'Invia'; };
+    let stato = 'inviata';
+    if (!navigator.onLine) stato = 'coda';
+    else {
+      try { await srv.invia(m); }
+      catch (x) {
+        if (x && x.message === 'fuori') stato = 'fuori';
+        else if (rete(x)) stato = 'coda';
+        else { riprova('Invio non riuscito: riprova tra poco.'); return; }      // errore del server: il modulo resta com'è
+      }
+    }
+    if (stato !== 'inviata') { if (!sid) { riprova('Invio non riuscito: rientra con il tuo account e riprova.'); return; } accoda(sid, m); }
     btn.disabled = false; btn.textContent = 'Invia';
     F.hidden = true; esito.hidden = false;
-    esito.innerHTML = '<div class="ok">' + ICO.ok + '</div><h3>' + (offline ? 'Segnalazione salvata' : 'Segnalazione inviata') + '</h3><p>' +
-      (offline ? 'Sei senza internet: la invio da sola appena torna la connessione.' : 'Grazie! L\'amministratore la leggerà presto.') + '</p><button type="button" class="btn pri">Chiudi</button>';
+    const [tit, sotto] = {inviata: ['Segnalazione inviata', 'Grazie! L\'amministratore la leggerà presto.'],
+      coda: ['Segnalazione salvata', 'Sei senza internet: la invio da sola appena torna la connessione.'],
+      fuori: ['Segnalazione salvata', 'L\'accesso è scaduto: la invio da sola appena rientri con il tuo account.']}[stato];
+    esito.innerHTML = '<div class="ok">' + ICO.ok + '</div><h3>' + tit + '</h3><p>' + sotto + '</p><button type="button" class="btn pri">Chiudi</button>';
     $('button', esito).addEventListener('click', chiudiModulo); $('button', esito).focus();
     conta();
   });
@@ -390,11 +413,14 @@ body.fb-aperto{overflow:hidden}
     $('#adm-t', A).innerHTML = esc(tit) + (sup ? '<small class="sa">Area super-admin</small>' : '<small>Area admin</small>');
   }
   /* carica i dati della scheda aperta e disegna */
+  /* dettagli, moduli (es. "Cambia codice") e conferme aperti: l'aggiornamento automatico non li richiude */
+  const occupato = () => !!(aperto || AI.querySelector('form, .msg-bot .si, .ut-az .si'));
   async function mostraAdmin(silenzioso){
     if (!QP.admin()) { ferma(); login(); return; }
     if (!QP.superadmin()) scheda = 'utenti';
     intestazione();
     if (!silenzioso) AI.innerHTML = '<p class="vuoto">Caricamento…</p>';
+    const prima = utenti.map(u => u.id).join(), codPrima = JSON.stringify(codice);
     try {
       if (scheda === 'segnalazioni') lista = await srv.elenco();
       else if (scheda === 'accessi') { [registro, utenti] = await Promise.all([serv.registro(null, 150), serv.utenti()]); }
@@ -405,7 +431,14 @@ body.fb-aperto{overflow:hidden}
       AI.innerHTML = '<p class="vuoto">' + esc(errMsg(x)) + '</p><div class="azioni" style="justify-content:center"><button type="button" class="btn pri ricarica">Aggiorna</button></div>';
       $('.ricarica', AI).addEventListener('click', () => mostraAdmin()); return;
     }
-    if (silenzioso && aperto) { aggiornaStati(); return; }      // non richiudere i dettagli aperti
+    if (silenzioso && $('.adm-cont', AI)) {
+      if (occupato()) { aggiornaStati(); return; }
+      if (scheda === 'utenti' && utenti.map(u => u.id).join() === prima) {      // stessi utenti: aggiorno solo stato e codice
+        aggiornaStati();
+        if (JSON.stringify(codice) !== codPrima) { const cb = $('.cod', AI); if (cb) cb.replaceWith(boxCodice()); }
+        return;
+      }
+    }
     disegnaAdmin();
   }
   function schede(){

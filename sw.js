@@ -3,7 +3,7 @@
    - Pagina: prima prova la rete (così vedi subito gli aggiornamenti), se non c'è usa la copia salvata.
    - Audio: alla prima riproduzione il file viene salvato intero; dopo si ascolta anche offline.
    - Frasario: pagina e dati salvati subito; il riconoscimento del testo da foto (frasario/ocr/) si scarica al primo uso e resta salvato. */
-const VERSIONE = '1.3';
+const VERSIONE = '1.4';
 const CACHE = 'qp-app-' + VERSIONE;
 const CACHE_AUDIO = 'qp-audio';
 const CACHE_OCR = 'qp-ocr';
@@ -12,8 +12,9 @@ const FONT = ['400', '500', '600', '700'].flatMap(w => ['latin', 'latin-ext', 'g
   .concat(['400', '500'].flatMap(w => ['latin', 'latin-ext', 'greek', 'greek-ext'].map(s => `fonts/fira-mono-${s}-${w}-normal.woff2`)));
 const BASE = ['./', 'manifest.webmanifest', 'fonts/fonts.css', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'img/sfondo-home.jpg', 'assetto/', 'carteggio/', 'frasario/', 'frasario/dati.json', 'fonts/esercizi.css', ...FONT];
 
+/* {cache: 'reload'}: copie prese dal sito, non dalla memoria del browser (che potrebbe avere ancora quelle della versione prima) */
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(BASE)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(BASE.map(u => new Request(u, {cache: 'reload'})))).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {
@@ -50,14 +51,21 @@ async function pagina(req) {
   }
 }
 
-/* audio: risponde dalla copia salvata (anche a pezzi, come vuole il lettore); altrimenti dalla rete e intanto lo salva */
+/* audio: risponde dalla copia salvata (anche a pezzi, come vuole il lettore); altrimenti dalla rete e intanto lo salva.
+   Prima richiesta dall'inizio del file (Chrome, Android): un solo download, diviso tra il lettore e la copia offline.
+   Altre richieste (Safari, salti avanti durante il primo ascolto): come prima, rete + copia scaricata a parte. */
 const inCorso = new Map();
 async function audio(e) {
   const req = e.request;
   const chiave = req.url.split('#')[0].split('?')[0];
   const cache = await caches.open(CACHE_AUDIO);
+  const range = req.headers.get('range');
   const hit = await cache.match(chiave);
-  if (hit) return aPezzi(hit, req.headers.get('range'));
+  if (hit) return aPezzi(hit, range);
+  if (!inCorso.has(chiave) && (!range || /^bytes=0-$/.test(range))) {
+    const unico = await unSoloDownload(e, cache, chiave, range);
+    if (unico) return unico;
+  }
   if (!inCorso.has(chiave)) {
     const p = fetch(chiave).then(r => (r.ok && r.status === 200) ? cache.put(chiave, r) : null)
       .catch(() => {}).finally(() => inCorso.delete(chiave));
@@ -65,6 +73,21 @@ async function audio(e) {
     e.waitUntil(p);
   }
   return fetch(req);
+}
+
+async function unSoloDownload(e, cache, chiave, range) {
+  let r, fatto;
+  const libera = () => { inCorso.delete(chiave); fatto(); };
+  inCorso.set(chiave, new Promise(ok => { fatto = ok; }));             // segnato subito: due richieste insieme non scaricano due volte
+  try { r = await fetch(chiave); } catch (err) { libera(); return null; }      // senza rete: prova la strada di prima
+  if (r.status !== 200 || !r.body) { libera(); return r; }
+  const [lettore, copia] = r.body.tee();
+  e.waitUntil(cache.put(chiave, new Response(copia, {status: 200, headers: r.headers})).catch(() => {}).finally(libera));
+  const n = +r.headers.get('content-length');
+  if (!range || !n || r.headers.get('content-encoding')) return new Response(lettore, {status: 200, headers: r.headers});
+  const h = new Headers(r.headers);
+  h.set('Content-Range', `bytes 0-${n - 1}/${n}`); h.set('Accept-Ranges', 'bytes');
+  return new Response(lettore, {status: 206, headers: h});
 }
 
 async function aPezzi(resp, range) {

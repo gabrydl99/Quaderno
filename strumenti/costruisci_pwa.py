@@ -69,6 +69,49 @@ if ('serviceWorker' in navigator) {
 '''
 
 
+def ids_unici(s: str) -> str:
+    """Rende unici gli id ripetuti dentro i disegni (sfumature, ritagli…): con due id uguali il browser usa il primo,
+    e se quel disegno è nascosto (altro argomento aperto) la sfumatura sparisce. Il disegno non cambia: si rinomina
+    l'id e i suoi richiami (url(#…), href="#…") solo dentro lo stesso <svg>. Gli script non si toccano."""
+    pezzi = re.split(r'(<script\b.*?</script>)', s, flags=re.S | re.I)
+    visti, out = set(), []
+    for k, p in enumerate(pezzi):
+        if k % 2:                        # script: invariato
+            out.append(p)
+            continue
+        buf, pos, prof, inizio = [], 0, 0, None
+        for m in re.finditer(r'<svg\b|</svg>', p):
+            if m.group(0) != '</svg>':
+                if prof == 0:
+                    testo = p[pos:m.start()]
+                    visti.update(re.findall(r'\sid="([^"]+)"', testo))
+                    buf.append(testo)
+                    inizio = m.start()
+                prof += 1
+            elif prof:
+                prof -= 1
+                if prof == 0:
+                    svg = p[inizio:m.end()]
+                    for v in dict.fromkeys(re.findall(r'\sid="([^"]+)"', svg)):
+                        if v in visti:
+                            n = 2
+                            while f'{v}-{n}' in visti or f'id="{v}-{n}"' in s:
+                                n += 1
+                            nuovo = f'{v}-{n}'
+                            svg = re.sub(r'(\sid=")' + re.escape(v) + '"', r'\g<1>' + nuovo + '"', svg)
+                            svg = re.sub(r'url\(\s*#' + re.escape(v) + r'\s*\)', f'url(#{nuovo})', svg)
+                            svg = re.sub(r'((?:xlink:)?href=")#' + re.escape(v) + '"', r'\g<1>#' + nuovo + '"', svg)
+                            v = nuovo
+                        visti.add(v)
+                    buf.append(svg)
+                    pos = m.end()
+        resto = p[pos:]
+        visti.update(re.findall(r'\sid="([^"]+)"', resto))
+        buf.append(resto)
+        out.append(''.join(buf))
+    return ''.join(out)
+
+
 def costruisci(sorgente: str, versione: str | None, sfondo: bool = False, data: str | None = None, feedback: bool = False, senza_supabase: bool = False) -> str:
     s = sorgente
 
@@ -151,7 +194,7 @@ def costruisci(sorgente: str, versione: str | None, sfondo: bool = False, data: 
     s = s.replace('</body></html>', extra + REGISTRA + '</body>\n</html>')
     if REGISTRA not in s:
         s = s.rstrip() + REGISTRA
-    return s
+    return ids_unici(s)
 
 
 def main():

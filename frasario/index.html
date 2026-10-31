@@ -358,12 +358,13 @@ function cerca(){
   const n = norm(testo), parole = n.split(/[^a-z0-9']+/).filter(w => w.length > 1);
   const chiaveL = lingua === 'en' ? '_e' : '_i', altra = lingua === 'en' ? '_i' : '_e';
   /* glossario: termine uguale, che inizia, che contiene */
-  const punti = g => { const t = g[chiaveL]; if (t === n || t.split(/[ ,(]/)[0] === n) return 0; if (t.startsWith(n)) return 1; if (t.includes(n)) return 2; if (g[altra].includes(n)) return 3; return 9; };
+  const corta = !parole.length;          // una lettera sola: nel glossario solo i termini che iniziano così, niente frasi
+  const punti = g => { const t = g[chiaveL]; if (t === n || t.split(/[ ,(]/)[0] === n) return 0; if (t.startsWith(n)) return 1; if (corta) return 9; if (t.includes(n)) return 2; if (g[altra].includes(n)) return 3; return 9; };
   let gl = G.map(g => [punti(g), g]).filter(x => x[0] < 9).sort((a, b) => a[0] - b[0] || a[1].en.length - b[1].en.length).map(x => x[1]);
   const nellaFrase = parole.length > 1 ? terminiNellaFrase(testo, lingua).filter(g => !gl.includes(g)) : [];
   /* frasi: tutte le parole presenti */
   const fr = [];
-  for (const x of NODI) if (x.t === 'p') {
+  if (!corta) for (const x of NODI) if (x.t === 'p') {
     const t = x[chiaveL];
     if (parole.every(w => t.includes(w))) fr.push([(t.includes(n) ? 0 : 1) + (x.en.length > 160 ? 2 : 0), x]);
   }
@@ -376,11 +377,23 @@ function cerca(){
   if (nellaFrase.length) h += `<div class="etich">Termini riconosciuti nella frase <span class="n">${nellaFrase.length}</span></div>` + nellaFrase.map(g => voce(g, [])).join('');
   if (fr.length) {
     h += `<div class="etich">Frasi SMCP <span class="n">${fr.length}</span></div><div id="fr-lista" style="display:grid;gap:8px">` + fr.slice(0, 15).map(x => frase(x[1], parole)).join('') + '</div>';
-    if (fr.length > 15) h += `<button class="altre" type="button" id="altre">Mostra altre ${fr.length - 15} frasi</button>`;
+    if (fr.length > 15) h += `<button class="altre" type="button" id="altre"></button>`;
   }
-  if (!h) h = '<p class="vuoto">Nessun risultato nel glossario o nelle frasi SMCP. Prova un\'altra parola, oppure usa la traduzione Gemini qui sotto.</p>';
+  if (corta) h += '<p class="vuoto">Scrivi almeno 2 lettere per cercare anche nelle frasi SMCP.</p>';
+  else if (!h) h = '<p class="vuoto">Nessun risultato nel glossario o nelle frasi SMCP. Prova un\'altra parola, oppure usa la traduzione Gemini qui sotto.</p>';
   $('#ris').innerHTML = h;
-  const al = $('#altre'); if (al) al.addEventListener('click', () => { $('#fr-lista').insertAdjacentHTML('beforeend', fr.slice(15, 60).map(x => frase(x[1], parole)).join('')); al.remove(); collegaRef(); });
+  /* "Mostra altre": 30 frasi alla volta finché ce ne sono */
+  const al = $('#altre');
+  if (al) {
+    let mostrate = 15;
+    const scritta = () => { const r = fr.length - mostrate; al.textContent = `Mostra altre ${Math.min(r, 30)} frasi` + (r > 30 ? ` (ne restano ${r})` : ''); };
+    scritta();
+    al.addEventListener('click', () => {
+      $('#fr-lista').insertAdjacentHTML('beforeend', fr.slice(mostrate, mostrate + 30).map(x => frase(x[1], parole)).join(''));
+      mostrate += 30; collegaRef();
+      if (mostrate >= fr.length) al.remove(); else scritta();
+    });
+  }
   collegaRef();
 }
 function voce(g, parole){

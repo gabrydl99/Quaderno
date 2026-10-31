@@ -217,8 +217,10 @@ body.acc-aperto{overflow:hidden}
   const subs = [];
   function daRisposta(j){
     const u = j.user || {}, md = u.user_metadata || {}, am = u.app_metadata || {};
+    /* il nome mostrato è il nome utente con cui si entra (le maiuscole scelte alla registrazione restano) */
+    const loc = (u.email || '').split('@')[0], nome = typeof md.nome === 'string' && md.nome.toLowerCase() === loc ? md.nome : loc;
     const s = {access: j.access_token, refresh: j.refresh_token, scade: Date.now() + (j.expires_in || 3600) * 1000 - 60000,
-      id: u.id, nome: md.nome || (u.email || '').split('@')[0], ruolo: am.ruolo || ''};
+      id: u.id, nome, ruolo: am.ruolo || ''};
     mem.set('qp-sessione', s); return s;
   }
   async function token(){
@@ -278,7 +280,7 @@ body.acc-aperto{overflow:hidden}
       if (!r.ok) throw new Error('Non sono riuscito a eliminare l\'account: riprova più tardi.');
     }
     const k = prog.k(); if (k) { mem.del(k); mem.del(k + '-coda'); }
-    mem.del('qp-foto-' + s.id); battito.ferma();
+    mem.del('qp-foto-' + s.id); mem.del('qp-coda-' + s.id); battito.ferma();
     if (s.demo) { const n = mem.get('qp-demo-nomi') || {}; delete n[s.nome.toLowerCase()]; mem.set('qp-demo-nomi', n); }
     mem.del('qp-sessione'); prog.leggi(); emetti();
   }
@@ -403,18 +405,21 @@ body.acc-aperto{overflow:hidden}
       const ck = this.k() + '-coda', coda = (mem.get(ck) || []).filter(o => o.a !== id); coda.push({a: id, si}); mem.set(ck, coda);
       this.invia();
     },
-    async invia(){
+    /* un invio alla volta, nell'ordine: toccando "letto" due volte di fila non si incrociano */
+    invia(){ const p = (this.fila || Promise.resolve()).then(() => this.inviaOra()); this.fila = p.catch(() => false); return p; },
+    async inviaOra(){
       const s = sess(); if (!s || DEMO || !navigator.onLine) return false;
-      const ck = this.k() + '-coda'; let coda = mem.get(ck) || [];
-      while (coda.length) {
+      const ck = 'qp-prog-' + s.id + '-coda';
+      for (;;) {
+        const coda = mem.get(ck) || []; if (!coda.length) return true;
         const o = coda[0];
         try {
           if (o.si) await rest('progressi', 'POST', '', {argomento: o.a}, 'return=minimal,resolution=ignore-duplicates');
           else await rest('progressi', 'DELETE', '?argomento=eq.' + encodeURIComponent(o.a));
         } catch (e) { return false; }
-        coda = coda.slice(1); mem.set(ck, coda);
+        const ora = mem.get(ck) || [];                       // nel frattempo può essere cambiata: tolgo solo ciò che ho inviato
+        if (ora.length && ora[0].a === o.a && ora[0].si === o.si) { ora.shift(); mem.set(ck, ora); }
       }
-      return true;
     },
     async scarica(){
       this.leggi();

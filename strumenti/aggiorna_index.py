@@ -15,7 +15,7 @@ from zoneinfo import ZoneInfo
 RADICE = pathlib.Path(__file__).resolve().parent.parent
 PARTI = ['tema.css', 'istruzioni.html', 'installa.html', 'pagina.html', 'sfondo.html', 'account.html', 'feedback.html', 'home-aggiunte.html']
 sys.path.insert(0, str(RADICE / 'strumenti'))
-from costruisci_pwa import PIEDE, PORTA, PORTA_SOTTO  # noqa: E402
+from costruisci_pwa import PIEDE, PORTA, PORTA_SOTTO, ids_unici  # noqa: E402
 
 
 def con_supabase(t: str) -> str:
@@ -56,6 +56,7 @@ def main():
         k = s.find('<link rel="stylesheet" href="fonts/fonts.css">')
         k = s.find('\n', k) + 1
         s = s[:k] + PORTA + s[k:]
+    s = ids_unici(s)                                   # id ripetuti nei disegni (dalla 1.4)
     idx.write_text(s, encoding='utf8')
     for sotto in ['frasario/index.html']:            # assetto/ e carteggio/: già in costruisci_esercizi.py
         f = RADICE / sotto

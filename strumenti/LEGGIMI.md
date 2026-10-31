@@ -58,7 +58,11 @@ della richiesta), `salva_foto`, `elenco_utenti`, `registro_accessi`, `elimina_ut
 Pulizia automatica con pg_cron (`quaderno-pulizia`, ogni notte alle 03:17): accessi più vecchi di 6 mesi,
 account non usati da 12 mesi (mai il super-admin). Termini di servizio: testo `TERMINI` in `account.html`,
 mostrato sotto "Segnalazioni e feedback" e alla registrazione.
-SQL in `strumenti/sql/` (01 tabelle e funzioni; 02 super-admin, regole delle segnalazioni, pulizia; 03 codice d'accesso, segnalazioni solo dagli account).
+SQL in `strumenti/sql/` (01 tabelle e funzioni; 02 super-admin, regole delle segnalazioni, pulizia; 03 codice d'accesso, segnalazioni solo dagli account;
+04 nome mostrato = nome utente con cui si entra, `nome_utente(meta, email)`: `user_metadata.nome` vale solo se coincide, maiuscole a parte).
+Dalla 1.4: segnalazioni in attesa in una coda per account (`qp-coda-ID` sul telefono); "letto" inviato un passo alla volta;
+`costruisci_pwa.py` e `aggiorna_index.py` rendono unici gli id ripetuti nei disegni (`ids_unici`).
+Funzione `traduci`: dopo ogni modifica di `strumenti/frasario/funzione-traduci.ts` va ripubblicata su Supabase.
 
 ## Frasario e Traduttore SMCP (pagina `frasario/`)
 Frasi IMO SMCP (Ris. A.918(22), dal PDF "frasi inglesi") con traduzione italiana, glossario nautico IT ⇄ EN, traduttore Gemini.

@@ -48,6 +48,13 @@ Ruoli (`app_metadata.ruolo`, letto dal database con `mio_ruolo()`: un cambio val
   segnalazioni, può eliminare account e nominare/togliere admin. Non si elimina dall'app.
 - `admin`: vede solo nome e foto degli utenti registrati (niente IP, dispositivi, accessi, segnalazioni).
 
+**Messaggi e annunci (1.6)**: scheda "Messaggi" dell'area admin. Admin e super-admin scrivono al singolo utente
+(anche toccando il nome nella griglia o "Scrivi" nei dettagli); solo il super-admin manda annunci a tutti.
+Il messaggio arriva con `segnale()` e compare in primo piano (`avvisi` in `account.html`) finché non si preme OK;
+chi l'ha inviato vede "Letto …" / "Letto da N su M" e può ritirarlo. SQL: `sql/05_messaggi.sql`.
+Nota: dalla 1.5 `account.html` e `feedback.html` erano rimasti indietro rispetto a `index.html`: alla 1.6 sono stati
+riallineati estraendoli da `index.html`.
+
 Tabelle: `segnalazioni` (chiunque invia, legge solo il super-admin), `progressi` (ognuno solo i suoi),
 `profili` (foto ~15 KB come data URL, ultimo segnale) e `accessi` (inizio, fine, IP, modello, sistema, browser):
 queste due non si leggono direttamente, solo con le funzioni.

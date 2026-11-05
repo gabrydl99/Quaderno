@@ -86,11 +86,32 @@ textarea.in{min-height:150px;resize:vertical;line-height:1.5}
 
 /* area admin: utenti (admin: nome e foto; super-admin: tutto), accessi, segnalazioni */
 .adm-bar h2 small.sa{display:block;width:max-content;margin-top:3px;padding:2px 8px;border-radius:999px;background:var(--racing);color:var(--on-racing);box-shadow:inset 0 0 0 1px var(--racing-bd)}
-.adm-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:4px;margin:0 0 14px;border-radius:999px;background:var(--chip)}
+.adm-tabs{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:4px;padding:4px;margin:0 0 14px;border-radius:999px;background:var(--chip)}
 .adm-tabs button{all:unset;box-sizing:border-box;cursor:pointer;text-align:center;padding:9px 4px;border-radius:999px;font:600 .86rem/1 var(--f-body);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .adm-tabs button[aria-selected="true"]{background:var(--sheet);color:var(--ink);box-shadow:0 1px 4px rgba(6,17,27,.12)}
 .adm-tabs button:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 .adm-tabs .n{font-variant-numeric:tabular-nums}
+.adm-tabs.t4 button{padding:9px 2px;font-size:.8rem}
+/* messaggi e annunci (1.6) */
+.msg-n{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:12px 14px 14px;margin:0 0 16px;display:grid;gap:8px}
+.msg-n h3{margin:0 0 2px;font:700 1rem/1.25 var(--f-body);color:var(--ink)}
+.msg-n .fl{margin:4px 0 0}
+.msg-n select.in{-webkit-appearance:none;appearance:none;padding-right:38px;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat;cursor:pointer}
+.msg-n textarea.in{min-height:110px}
+.msg-n .aiuto{margin:0;font-size:.8rem;line-height:1.45;color:var(--muted)}
+.msg-n .err{margin:0;font-size:.84rem}
+.msg-n .err:empty{display:none}
+.msg-n .azioni .btn.pri{background:var(--blue);border-color:var(--blue);color:var(--sheet)}
+.msg-n .azioni .btn.pri.ann{background:var(--racing);border-color:var(--racing-bd);color:var(--on-racing)}
+.msg-n .cont{margin-left:auto;font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.msg-n .ok-msg{margin:0;font-size:.84rem;font-weight:600;color:var(--green)}
+.tag.t-ann{background:var(--racing);color:var(--on-racing)}
+.tag.t-dm{background:color-mix(in srgb,var(--blue) 14%,var(--sheet));color:var(--blue);overflow-wrap:anywhere}
+.msg.mi .stato.ok-l{color:var(--green);font-weight:600}
+button.ut-c{cursor:pointer;width:100%;box-sizing:border-box;-webkit-appearance:none;appearance:none;color:var(--ink)}
+button.ut-c:hover{border-color:var(--blue)}
+button.ut-c:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.ut-az .btn.scrivi{background:var(--blue);border-color:var(--blue);color:var(--sheet)}
 .adm-nota{margin:0 0 12px;font-size:.8rem;line-height:1.4;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .adm-nota .sp{flex:1}
 .adm-nota button{all:unset;cursor:pointer;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--sheet);font:600 .82rem/1 var(--f-body);color:var(--ink)}
@@ -136,6 +157,33 @@ textarea.in{min-height:150px;resize:vertical;line-height:1.5}
 .ac-riga .t b{color:var(--ink)}
 .ac-riga .t time{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .ac-riga .d{font-size:.8rem;line-height:1.4;color:var(--ink);overflow-wrap:anywhere}
+/* accessi raggruppati per dispositivo (1.5): tocca per vedere gli orari */
+.dsp{background:var(--sheet);border:1px solid var(--line);border-radius:12px;margin:0 0 8px;overflow:hidden}
+.dsp-top{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;width:100%;padding:10px 12px}
+.dsp.con-nome .dsp-top{grid-template-columns:auto minmax(0,1fr) auto}
+.dsp-top:focus-visible{outline:2px solid var(--blue);outline-offset:-3px}
+.dsp .av{width:34px;height:34px;font-size:.85rem}
+.dsp-t{min-width:0;display:grid;gap:2px}
+.dsp-n{color:var(--ink);font-weight:700}
+.dsp-m{font-size:.84rem;line-height:1.35;color:var(--ink);overflow-wrap:anywhere}
+.dsp-s{font-size:.78rem;line-height:1.35;color:var(--muted);font-variant-numeric:tabular-nums}
+.dsp-top[aria-expanded="true"] .ut-fr svg{transform:rotate(90deg)}
+.dsp-det{border-top:1px solid var(--line);padding:8px 12px 12px;background:color-mix(in srgb,var(--chip) 45%,var(--sheet))}
+.dsp-det[hidden]{display:none}
+.dsp-det h6{margin:10px 0 4px;font:700 .78rem/1.2 var(--f-body);color:var(--ink);text-transform:capitalize}
+.dsp-tot,.dsp-alt{margin:2px 0 0;font-size:.78rem;line-height:1.45;color:var(--muted);overflow-wrap:anywhere}
+.dsp-alt{margin:2px 0 6px;padding:6px 9px;border-radius:9px;color:var(--ink);background:color-mix(in srgb,var(--orange) 14%,var(--sheet));border:1px solid color-mix(in srgb,var(--orange) 35%,var(--line))}
+.orari{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.orari li{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:6px 9px;border-radius:9px;background:var(--sheet);border:1px solid var(--line);font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.orari li b{color:var(--ink);font-weight:600;min-width:7.2em}
+.orari .ip{margin-left:auto}
+.disp-l{margin:0 0 14px}
+.disp-l .vuoto-p{margin:0;font-size:.8rem;color:var(--muted)}
+.ut-info .prima{display:block;color:var(--muted);overflow-wrap:anywhere}
+.nomi-log{margin:0 0 12px;background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:0 12px}
+.nomi-log summary{cursor:pointer;padding:10px 0;font:600 .86rem/1.2 var(--f-body);color:var(--ink)}
+.nomi-log summary .n{color:var(--muted);font-variant-numeric:tabular-nums}
+.nomi-log .reg{margin:0 0 12px}
 /* codice d'accesso per registrarsi (admin e super-admin lo vedono e lo cambiano) */
 .cod{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 14px}
 .cod-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
@@ -352,7 +400,9 @@ body.fb-aperto{overflow:hidden}
   document.body.append(A);
   const AI = $('.adm-in', A);
   const FR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 15.5 12 9 18.5"/></svg>';
-  let scheda = 'utenti', filtro = 'nuove', lista = [], utenti = [], registro = [], aperto = null, giro = null, codice = null, codOk = '';
+  let scheda = 'utenti', filtro = 'nuove', lista = [], utenti = [], registro = [], nomiLog = [], aperto = null, giro = null, codice = null, codOk = '';
+  let inviati = [], msgA = '', msgOk = '', msgFuoco = false;      // messaggi (1.6): destinatario scelto, esito, cursore nel testo
+  const accAperti = new Set();          // dispositivi aperti nella scheda Accessi (restano aperti agli aggiornamenti)
   $('.chiudi', A).addEventListener('click', () => { history.length > 1 && location.hash === '#admin' ? history.back() : (location.hash = ''); });
   const dataIt = s => new Date(s).toLocaleString('it-IT', {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'});
   const giorno = s => new Date(s).toLocaleDateString('it-IT', {day: '2-digit', month: '2-digit', year: 'numeric'});
@@ -375,14 +425,35 @@ body.fb-aperto{overflow:hidden}
     {id: 'd2', nome: 'esempio.sara', ruolo: '', foto: null, registrato: iso(T - 9 * 864e5), ultimo_accesso: iso(T - 40 * 6e4), in_linea: true, letti: 5, n_accessi: 2, ultimo: {ip: '2.36.120.9', modello: '2201117TY', sistema: 'Android 13', browser: 'Chrome 129', inizio: iso(T - 40 * 6e4), fine: iso(T - 1 * 6e4)}},
     {id: 'd3', nome: 'esempio.luca', ruolo: '', foto: null, registrato: iso(T - 60 * 864e5), ultimo_accesso: iso(T - 5 * 864e5), in_linea: false, letti: 0, n_accessi: 1, ultimo: {ip: '79.20.88.150', modello: '', sistema: 'Windows 11', browser: 'Edge 130', inizio: iso(T - 5 * 864e5), fine: iso(T - 5 * 864e5 + 18e5)}}
   ];
+  /* anteprima: più accessi dagli stessi dispositivi (e uno condiviso tra due account) */
+  const DEMO_REG = () => {
+    const r = [], s = (u, nome, d, ip, oreFa, min) => r.push({utente: u, nome, ip, modello: d[0], sistema: d[1], browser: d[2], dispositivo: d[3], inizio: iso(T - oreFa * 36e5), fine: iso(T - oreFa * 36e5 + min * 6e4)});
+    const S23 = ['SM-S918B', 'Android 14', 'Chrome 130 · app installata', 'demo-a1'], PC = ['', 'Windows 11', 'Edge 130', 'demo-a2'],
+      IP = ['iPhone', 'iOS 18.1', 'Safari 18.1', 'demo-b1'], RM = ['2201117TY', 'Android 13', 'Chrome 129', 'demo-c1'];
+    [[0, 25], [5, 40], [26, 12], [29, 55], [50, 8], [74, 33], [98, 20]].forEach(([h, m], i) => s('d0', 'Gabrydl', S23, i % 3 ? '93.45.12.208' : '151.19.7.40', h, m));
+    [[20, 90], [44, 45]].forEach(([h, m]) => s('d0', 'Gabrydl', PC, '93.45.12.208', h, m));
+    [[4, 60], [27, 15], [52, 30], [120, 10]].forEach(([h, m]) => s('d1', 'esempio.marco', IP, '151.38.4.77', h, m));
+    [[0.7, 39], [23, 18]].forEach(([h, m]) => s('d2', 'esempio.sara', RM, '2.36.120.9', h, m));
+    s('d3', 'esempio.luca', RM, '2.36.120.9', 120, 30);
+    return r.sort((a, b) => b.fine.localeCompare(a.fine));
+  };
+  const DEMO_NOMI = () => [{utente: 'd2', nome: 'esempio.sara', vecchio: 'sara_99', nuovo: 'esempio.sara', quando: iso(T - 3 * 864e5)}, {utente: 'd2', nome: 'esempio.sara', vecchio: 'sarina', nuovo: 'sara_99', quando: iso(T - 8 * 864e5)}];
   const serv = {
+    async nomi(){
+      if (DEMO) return (mem.get('qp-demo-nomi-log') || []).map(x => Object.assign({nome: x.nuovo}, x)).concat(DEMO_NOMI());
+      return (await QP.rpc('registro_nomi')) || [];
+    },
     async utenti(){
-      if (DEMO) { const u = (mem.get('qp-demo-ut') || DEMO_UT()).filter(x => !(mem.get('qp-demo-ut-via') || []).includes(x.id)); return QP.superadmin() ? u : u.map(x => ({nome: x.nome, foto: x.foto})); }
+      if (DEMO) {
+        const u = (mem.get('qp-demo-ut') || DEMO_UT()).filter(x => !(mem.get('qp-demo-ut-via') || []).includes(x.id)), reg = DEMO_REG(), nl = DEMO_NOMI();
+        u.forEach(x => { const r = reg.filter(a => a.utente === x.id); if (r.length) { x.n_accessi = r.length; x.ultimo = r[0]; } const n = nl.filter(a => a.utente === x.id); if (n.length) x.nomi = n; });
+        return QP.superadmin() ? u : u.map(x => ({nome: x.nome, foto: x.foto}));
+      }
       return (await QP.rpc('elenco_utenti')) || [];
     },
     async registro(chi, quanti){
-      if (DEMO) { return (await this.utenti()).filter(u => u.ultimo && (!chi || u.id === chi)).map(u => Object.assign({utente: u.id, nome: u.nome}, u.ultimo)); }
-      return (await QP.rpc('registro_accessi', chi ? {chi, quanti: quanti || 20} : {quanti: quanti || 150})) || [];
+      if (DEMO) { const ok = new Set((await this.utenti()).map(u => u.id)); return DEMO_REG().filter(a => ok.has(a.utente) && (!chi || a.utente === chi)); }
+      return (await QP.rpc('registro_accessi', chi ? {chi, quanti: quanti || 500} : {quanti: quanti || 2000})) || [];
     },
     async elimina(chi){
       if (DEMO) { const v = mem.get('qp-demo-ut-via') || []; v.push(chi); mem.set('qp-demo-ut-via', v); return; }
@@ -395,6 +466,23 @@ body.fb-aperto{overflow:hidden}
     async cambiaCodice(nuovo){
       if (DEMO) { mem.set('qp-demo-codice', nuovo); mem.set('qp-demo-codice-quando', new Date().toISOString()); mem.set('qp-demo-codice-da', QP.nome()); return; }
       await QP.rpc('cambia_codice', {nuovo});
+    },
+    /* messaggi (1.6): admin e super-admin al singolo utente; annuncio a tutti (a = null) solo il super-admin */
+    async inviati(){
+      if (DEMO) return mem.get('qp-demo-msg') || [];
+      return (await QP.rpc('messaggi_inviati')) || [];
+    },
+    async invia(a, testo){
+      if (DEMO) {
+        const l = mem.get('qp-demo-msg') || [], u = a && utenti.find(x => x.id === a);
+        l.unshift({id: Date.now(), testo, creato: new Date().toISOString(), mittente_nome: QP.nome(), mio: true, destinatario: a || null, dest_nome: u ? u.nome : null, letto: null, letti: 0, totale: a ? 1 : Math.max(utenti.length - 1, 0)});
+        mem.set('qp-demo-msg', l); return;
+      }
+      await QP.rpc('invia_messaggio', {a: a || null, testo});
+    },
+    async ritira(id){
+      if (DEMO) { mem.set('qp-demo-msg', (mem.get('qp-demo-msg') || []).filter(m => m.id !== id)); return; }
+      await QP.rpc('ritira_messaggio', {chi: id});
     },
     async ruolo(chi, r){
       if (DEMO) { const u = DEMO_UT().map(x => x.id === chi ? Object.assign(x, {ruolo: r}) : x); mem.set('qp-demo-ut', u); return; }
@@ -409,7 +497,7 @@ body.fb-aperto{overflow:hidden}
   }
   function intestazione(){
     const sup = QP.superadmin();
-    const tit = !sup ? 'Utenti registrati' : scheda === 'accessi' ? 'Registro accessi' : scheda === 'segnalazioni' ? 'Segnalazioni' : 'Utenti registrati';
+    const tit = scheda === 'messaggi' ? 'Messaggi' : !sup ? 'Utenti registrati' : scheda === 'accessi' ? 'Registro accessi' : scheda === 'segnalazioni' ? 'Segnalazioni' : 'Utenti registrati';
     $('#adm-t', A).innerHTML = esc(tit) + (sup ? '<small class="sa">Area super-admin</small>' : '<small>Area admin</small>');
   }
   /* carica i dati della scheda aperta e disegna */
@@ -417,13 +505,14 @@ body.fb-aperto{overflow:hidden}
   const occupato = () => !!(aperto || AI.querySelector('form, .msg-bot .si, .ut-az .si'));
   async function mostraAdmin(silenzioso){
     if (!QP.admin()) { ferma(); login(); return; }
-    if (!QP.superadmin()) scheda = 'utenti';
+    if (!QP.superadmin() && scheda !== 'messaggi') scheda = 'utenti';
     intestazione();
     if (!silenzioso) AI.innerHTML = '<p class="vuoto">Caricamento…</p>';
     const prima = utenti.map(u => u.id).join(), codPrima = JSON.stringify(codice);
     try {
       if (scheda === 'segnalazioni') lista = await srv.elenco();
-      else if (scheda === 'accessi') { [registro, utenti] = await Promise.all([serv.registro(null, 150), serv.utenti()]); }
+      else if (scheda === 'messaggi') { [inviati, utenti] = await Promise.all([serv.inviati(), serv.utenti()]); }
+      else if (scheda === 'accessi') { [registro, utenti, nomiLog] = await Promise.all([serv.registro(null, 2000), serv.utenti(), serv.nomi().catch(() => [])]); }
       else { [utenti, codice] = await Promise.all([serv.utenti(), serv.codice().catch(() => null)]); }
     } catch (x) {
       if (!QP.admin()) { login(); return; }
@@ -432,7 +521,8 @@ body.fb-aperto{overflow:hidden}
       $('.ricarica', AI).addEventListener('click', () => mostraAdmin()); return;
     }
     if (silenzioso && $('.adm-cont', AI)) {
-      if (occupato()) { aggiornaStati(); return; }
+      if (scheda === 'messaggi') { if ($('.msg-inv', AI) && !AI.querySelector('.msg-inv .si')) disegnaInviati(); return; }
+      if (occupato() || (scheda === 'accessi' && accAperti.size)) { aggiornaStati(); return; }
       if (scheda === 'utenti' && utenti.map(u => u.id).join() === prima) {      // stessi utenti: aggiorno solo stato e codice
         aggiornaStati();
         if (JSON.stringify(codice) !== codPrima) { const cb = $('.cod', AI); if (cb) cb.replaceWith(boxCodice()); }
@@ -442,21 +532,110 @@ body.fb-aperto{overflow:hidden}
     disegnaAdmin();
   }
   function schede(){
-    if (!QP.superadmin()) return '';
-    const n = lista.filter(m => !m.letto).length;
-    return '<div class="adm-tabs" role="tablist" aria-label="Area super-admin">' +
-      [['utenti', 'Utenti'], ['accessi', 'Accessi'], ['segnalazioni', 'Segnalazioni' + (QP.nuove || n ? ' <span class="n">(' + (QP.nuove || n) + ')</span>' : '')]]
-        .map(([k, t]) => '<button type="button" role="tab" data-s="' + k + '" aria-selected="' + (scheda === k) + '">' + t + '</button>').join('') + '</div>';
+    if (!QP.admin()) return '';
+    const sup = QP.superadmin(), n = lista.filter(m => !m.letto).length;
+    const t = sup ? [['utenti', 'Utenti'], ['accessi', 'Accessi'], ['segnalazioni', 'Segnalazioni' + (QP.nuove || n ? ' <span class="n">(' + (QP.nuove || n) + ')</span>' : '')], ['messaggi', 'Messaggi']]
+      : [['utenti', 'Utenti'], ['messaggi', 'Messaggi']];
+    return '<div class="adm-tabs' + (t.length > 3 ? ' t4' : '') + '" role="tablist" aria-label="' + (sup ? 'Area super-admin' : 'Area admin') + '">' +
+      t.map(([k, t]) => '<button type="button" role="tab" data-s="' + k + '" aria-selected="' + (scheda === k) + '">' + t + '</button>').join('') + '</div>';
   }
   function disegnaAdmin(){
     intestazione();
     const demo = DEMO ? '<p class="demo"><b>Anteprima</b>: dati d\'esempio, nulla viene inviato.</p>' : '';
     AI.innerHTML = demo + schede() + '<div class="adm-cont"></div>';
-    AI.querySelectorAll('.adm-tabs button').forEach(b => b.addEventListener('click', () => { if (scheda === b.dataset.s) return; scheda = b.dataset.s; aperto = null; mostraAdmin(); }));
+    AI.querySelectorAll('.adm-tabs button').forEach(b => b.addEventListener('click', () => { if (scheda === b.dataset.s) return; scheda = b.dataset.s; aperto = null; accAperti.clear(); mostraAdmin(); }));
     const C = $('.adm-cont', AI);
     if (scheda === 'segnalazioni') return disegnaSegnalazioni(C);
     if (scheda === 'accessi') return disegnaAccessi(C);
+    if (scheda === 'messaggi') return disegnaMessaggi(C);
     return QP.superadmin() ? disegnaUtenti(C) : disegnaGriglia(C);
+  }
+  /* ---------- messaggi e annunci (1.6) ----------
+     il destinatario li vede in primo piano (all'apertura dell'app o entro un minuto se è in linea) finché non preme OK */
+  function scrivi(id){ msgA = id || ''; msgOk = ''; msgFuoco = true; scheda = 'messaggi'; aperto = null; accAperti.clear(); mostraAdmin(); }
+  function disegnaMessaggi(C){
+    const sup = QP.superadmin(), io = QP.sessione() ? QP.sessione().id : '';
+    const altri = utenti.filter(u => u.id && u.id !== io);
+    if (msgA && !altri.some(u => u.id === msgA)) msgA = '';
+    const f = document.createElement('form'); f.className = 'msg-n'; f.noValidate = true;
+    f.innerHTML = '<h3>Nuovo messaggio</h3>' +
+      '<label class="fl" for="msg-a">A chi</label><select class="in" id="msg-a"></select>' +
+      '<label class="fl" for="msg-t">Messaggio</label><textarea class="in" id="msg-t" maxlength="1000" placeholder="Scrivi qui il messaggio."></textarea>' +
+      '<p class="aiuto"></p><p class="err" role="alert"></p>' +
+      '<div class="azioni"><button type="submit" class="btn pri">Invia</button><span class="cont">0/1000</span></div>' + (msgOk ? '<p class="ok-msg" role="status"></p>' : '');
+    const sel = $('#msg-a', f), ta = $('#msg-t', f), e = $('.err', f), aiuto = $('.aiuto', f), inv = $('button[type=submit]', f), cont = $('.cont', f);
+    sel.append(new Option(sup ? 'Tutti (annuncio)' : 'Scegli un utente…', ''));
+    altri.forEach(u => sel.append(new Option(u.nome + (u.ruolo ? ' · ' + (QP.NOME_RUOLO[u.ruolo] || u.ruolo) : ''), u.id)));
+    sel.value = msgA;
+    if (msgOk) { $('.ok-msg', f).textContent = msgOk; msgOk = ''; }
+    const spiega = () => {
+      const tutti = sup && !sel.value;
+      aiuto.textContent = tutti ? 'Annuncio: compare in primo piano a tutti gli utenti, anche a chi si registra dopo, finché non premono OK.'
+        : sel.value ? 'Compare in primo piano solo a questo utente (all\'apertura dell\'app, o entro un minuto se è in linea) finché non preme OK.'
+        : 'Scegli a chi scrivere: il messaggio comparirà in primo piano solo a quell\'utente finché non preme OK.';
+      inv.textContent = tutti ? 'Invia a tutti' : 'Invia'; inv.classList.toggle('ann', tutti);
+    };
+    spiega();
+    sel.addEventListener('change', () => { msgA = sel.value; e.textContent = ''; spiega(); });
+    ta.addEventListener('input', () => { e.textContent = ''; cont.textContent = ta.value.length + '/1000'; });
+    f.addEventListener('submit', async ev => {
+      ev.preventDefault(); e.textContent = '';
+      const t = ta.value.trim(), a = sel.value;
+      if (!sup && !a) { e.textContent = 'Scegli a chi scrivere.'; sel.focus(); return; }
+      if (!t) { e.textContent = 'Scrivi il messaggio.'; ta.focus(); return; }
+      const u = altri.find(x => x.id === a);
+      inv.disabled = true; inv.textContent = 'Invio…';
+      try {
+        await serv.invia(a, t);
+        msgOk = a ? 'Inviato a ' + (u ? u.nome : 'utente') + ': lo vedrà in primo piano.' : 'Annuncio inviato a tutti.';
+        msgA = a; inviati = await serv.inviati().catch(() => inviati); disegnaMessaggi(C);
+      } catch (x) { e.textContent = errMsg(x); inv.disabled = false; spiega(); }
+    });
+    C.innerHTML = '';
+    C.append(f);
+    const nota = document.createElement('p'); nota.className = 'adm-nota';
+    nota.innerHTML = '<span>' + (sup ? 'Messaggi inviati (tutti gli amministratori)' : 'Messaggi che hai inviato') + '</span><span class="sp"></span><button type="button" class="agg">Aggiorna</button>';
+    $('.agg', nota).addEventListener('click', () => mostraAdmin());
+    const L = document.createElement('div'); L.className = 'msg-inv';
+    C.append(nota, L);
+    disegnaInviati();
+    if (msgFuoco) { msgFuoco = false; (sel.value || sup ? ta : sel).focus(); }
+  }
+  function disegnaInviati(){
+    const L = $('.msg-inv', AI); if (!L) return;
+    L.innerHTML = '';
+    if (!inviati.length) { L.innerHTML = '<p class="vuoto">Nessun messaggio inviato.</p>'; return; }
+    const sup = QP.superadmin();
+    inviati.forEach(m => {
+      const a = document.createElement('article'); a.className = 'msg mi';
+      a.innerHTML = '<div class="msg-top"><span class="tag"></span><time></time></div><p class="msg-txt"></p><div class="msg-bot"><span class="chi stato"></span><button type="button" class="del">Ritira</button></div>';
+      const tg = $('.tag', a), ann = !m.destinatario;
+      tg.classList.add(ann ? 't-ann' : 't-dm'); tg.textContent = ann ? 'Annuncio a tutti' : 'A ' + (m.dest_nome || 'utente eliminato');
+      $('time', a).textContent = quando(m.creato); $('time', a).dateTime = m.creato;
+      $('.msg-txt', a).textContent = m.testo;
+      const st = $('.stato', a);
+      st.textContent = (sup && !m.mio ? 'Da ' + m.mittente_nome + ' · ' : '') +
+        (ann ? 'Letto da ' + (m.letti || 0) + ' su ' + (m.totale || 0) : m.letto ? 'Letto ' + quando(m.letto) : 'Non ancora letto');
+      st.classList.toggle('ok-l', ann ? m.totale > 0 && m.letti >= m.totale : !!m.letto);
+      bottoniRitira(a, m);
+      L.append(a);
+    });
+  }
+  function bottoniRitira(a, m){
+    const B = $('.msg-bot', a), st = $('.stato', a);
+    $('.del', B).addEventListener('click', () => {
+      B.querySelectorAll('button').forEach(b => b.remove());
+      const testo = document.createElement('span'); testo.className = 'chi'; testo.textContent = 'Ritirarlo? Chi non l\'ha ancora letto non lo vedrà più.';
+      const si = document.createElement('button'); si.type = 'button'; si.className = 'si'; si.textContent = 'Ritira';
+      const no = document.createElement('button'); no.type = 'button'; no.textContent = 'Annulla';
+      B.append(testo, si, no); no.focus();
+      no.addEventListener('click', () => disegnaInviati());
+      si.addEventListener('click', async () => {
+        si.disabled = true; si.textContent = 'Ritiro…';
+        try { await serv.ritira(m.id); inviati = inviati.filter(x => x.id !== m.id); disegnaInviati(); }
+        catch (x) { testo.textContent = errMsg(x); si.disabled = false; si.textContent = 'Ritira'; }
+      });
+    });
   }
   function av(u, dot){
     const s = document.createElement('span'); s.className = 'av';
@@ -466,12 +645,18 @@ body.fb-aperto{overflow:hidden}
   }
   /* admin: solo nome e foto */
   function disegnaGriglia(C){
-    C.innerHTML = '<p class="adm-nota"><span>' + utenti.length + ' utenti registrati</span><span class="sp"></span><button type="button" class="agg">Aggiorna</button></p><div class="ut-griglia"></div>';
+    C.innerHTML = '<p class="adm-nota"><span>' + utenti.length + ' utenti registrati · tocca un nome per scrivergli</span><span class="sp"></span><button type="button" class="agg">Aggiorna</button></p><div class="ut-griglia"></div>';
     C.prepend(boxCodice());
     $('.agg', C).addEventListener('click', () => mostraAdmin());
     const G = $('.ut-griglia', C);
     if (!utenti.length) { G.outerHTML = '<p class="vuoto">Ancora nessun utente.</p>'; return; }
-    utenti.forEach(u => { const c = document.createElement('div'); c.className = 'ut-c'; c.append(av(u)); const n = document.createElement('span'); n.textContent = u.nome; c.append(n); G.append(c); });
+    const io = QP.sessione() ? QP.sessione().id : '';
+    utenti.forEach(u => {
+      const puo = u.id && u.id !== io;
+      const c = document.createElement(puo ? 'button' : 'div'); c.className = 'ut-c'; c.append(av(u)); const n = document.createElement('span'); n.textContent = u.nome; c.append(n);
+      if (puo) { c.type = 'button'; c.setAttribute('aria-label', 'Scrivi a ' + u.nome); c.addEventListener('click', () => scrivi(u.id)); }
+      G.append(c);
+    });
   }
   /* codice d'accesso: chi si registra deve scriverlo; admin e super-admin lo cambiano qui */
   const COD_OK = /^[A-Za-z0-9._-]{4,30}$/;
@@ -526,6 +711,7 @@ body.fb-aperto{overflow:hidden}
     const st = $('.ut-st', a); st.textContent = stato(u); st.classList.toggle('on', !!u.in_linea);
     $('.disp', a).innerHTML = u.ultimo ? esc(dispTesto(u.ultimo)) + (u.ultimo.ip ? ' · IP <span class="ip">' + esc(u.ultimo.ip) + '</span>' : '') : 'Nessun accesso registrato dalla versione 1.0';
     $('.reg-i', a).textContent = 'Registrato il ' + giorno(u.registrato) + ' · ' + u.letti + ' argomenti letti · ' + u.n_accessi + (u.n_accessi === 1 ? ' accesso' : ' accessi');
+    if (u.nomi && u.nomi.length) { const pr = document.createElement('span'); pr.className = 'prima'; pr.textContent = 'Prima: ' + [...new Set(u.nomi.map(x => x.vecchio))].join(', '); $('.ut-info', a).append(pr); }
     const top = $('.ut-top', a), det = $('.ut-det', a);
     top.setAttribute('aria-label', u.nome + ', ' + stato(u) + '. Mostra accessi e azioni');
     top.addEventListener('click', () => { const on = det.hidden; chiudiDettagli(); if (on) apriDettagli(a, u); });
@@ -535,18 +721,24 @@ body.fb-aperto{overflow:hidden}
   async function apriDettagli(a, u){
     const det = $('.ut-det', a), top = $('.ut-top', a); aperto = u.id;
     det.hidden = false; top.setAttribute('aria-expanded', 'true');
-    det.innerHTML = '<h5>Ultimi accessi</h5><ul class="reg"><li>Caricamento…</li></ul><div class="ut-az"></div>';
+    det.innerHTML = (u.nomi && u.nomi.length ? '<h5>Cambi di nome</h5><ul class="reg nomi">' + u.nomi.map(x => '<li><b>' + esc(x.vecchio) + ' → ' + esc(x.nuovo) + '</b><br>' + esc(quando(x.quando)) + '</li>').join('') + '</ul>' : '') +
+      '<h5>Accessi per dispositivo</h5><div class="disp-l"><p class="vuoto-p">Caricamento…</p></div><div class="ut-az"></div>';
     azioni(det, u);
     try {
-      const r = await serv.registro(u.id, 20); if (aperto !== u.id) return;
-      $('.reg', det).innerHTML = r.length ? r.map(x => '<li><b>' + esc(periodo(x)) + '</b><br>' + esc(dispTesto(x)) + (x.ip ? ' · IP <span class="ip">' + esc(x.ip) + '</span>' : '') + '</li>').join('') : '<li>Nessun accesso registrato.</li>';
-    } catch (x) { $('.reg', det).innerHTML = '<li>' + esc(errMsg(x)) + '</li>'; }
+      const r = await serv.registro(u.id, 500); if (aperto !== u.id) return;
+      const L = $('.disp-l', det); L.innerHTML = '';
+      const gr = gruppi(r);
+      if (!gr.length) L.innerHTML = '<p class="vuoto-p">Nessun accesso registrato.</p>';
+      gr.forEach(g => L.append(cartaDisp(g, false, new Set())));
+    } catch (x) { $('.disp-l', det).innerHTML = '<p class="vuoto-p">' + esc(errMsg(x)) + '</p>'; }
   }
   function azioni(det, u){
     const Z = $('.ut-az', det), io = QP.sessione() && u.id === QP.sessione().id;
-    if (io || u.ruolo === 'superadmin') { Z.innerHTML = '<p class="conf" style="color:var(--muted)">Il super-admin non si modifica né si elimina da qui.</p>'; return; }
-    Z.innerHTML = '<button type="button" class="btn ruolo-b">' + (u.ruolo === 'admin' ? 'Togli admin' : 'Rendi admin') + '</button><button type="button" class="btn del">Elimina account</button><p class="err" role="alert"></p>';
-    const e = $('.err', Z);
+    const sc = io ? '' : '<button type="button" class="btn scrivi">Scrivi</button>';
+    const legaScrivi = () => { const b = $('.scrivi', Z); if (b) b.addEventListener('click', () => scrivi(u.id)); };
+    if (io || u.ruolo === 'superadmin') { Z.innerHTML = sc + '<p class="conf" style="color:var(--muted)">Il super-admin non si modifica né si elimina da qui.</p>'; legaScrivi(); return; }
+    Z.innerHTML = sc + '<button type="button" class="btn ruolo-b">' + (u.ruolo === 'admin' ? 'Togli admin' : 'Rendi admin') + '</button><button type="button" class="btn del">Elimina account</button><p class="err" role="alert"></p>';
+    const e = $('.err', Z); legaScrivi();
     $('.ruolo-b', Z).addEventListener('click', async ev => {
       const b = ev.currentTarget; b.disabled = true; e.textContent = '';
       try { await serv.ruolo(u.id, u.ruolo === 'admin' ? '' : 'admin'); aperto = null; await mostraAdmin(); }
@@ -572,21 +764,77 @@ body.fb-aperto{overflow:hidden}
     });
     const n = AI.querySelector('.n-on'); if (n) n.textContent = utenti.filter(u => u.in_linea).length;
   }
-  function disegnaAccessi(C){
-    const foto = Object.fromEntries(utenti.map(u => [u.id, u]));
-    C.innerHTML = '<p class="adm-nota"><span>Ultimi ' + registro.length + ' accessi · si cancellano dopo 6 mesi</span><span class="sp"></span><button type="button" class="agg">Aggiorna</button></p><div class="ac-lista"></div>';
-    $('.agg', C).addEventListener('click', () => mostraAdmin());
-    const L = $('.ac-lista', C);
-    if (!registro.length) { L.innerHTML = '<p class="vuoto">Ancora nessun accesso registrato.</p>'; return; }
-    registro.forEach(x => {
-      const u = foto[x.utente] || {nome: x.nome};
-      const r = document.createElement('div'); r.className = 'ac-riga';
-      r.innerHTML = '<span class="av-p"></span><div><div class="t"><b></b><time></time></div><div class="d"></div></div>';
-      $('.av-p', r).replaceWith(av(u));
-      $('b', r).textContent = x.nome; $('time', r).textContent = periodo(x); $('time', r).dateTime = x.inizio;
-      $('.d', r).innerHTML = esc(dispTesto(x)) + (x.ip ? ' · IP <span class="ip">' + esc(x.ip) + '</span>' : '');
-      L.append(r);
+  /* accessi uniti per account + dispositivo: il codice casuale del dispositivo (dalla 1.5) oppure, per quelli più vecchi,
+     modello + sistema + browser senza numeri di versione */
+  const firma = a => [a.modello || '', (a.sistema || '').replace(/[\d.]+/g, '').trim(), (a.browser || '').replace(/[\d.]+/g, '').replace(/\s+/g, ' ').trim()].join('|');
+  function gruppi(reg){
+    const m = new Map();
+    reg.forEach(a => {
+      const k = a.utente + '#' + (a.dispositivo ? 'id:' + a.dispositivo : 'f:' + firma(a));
+      if (!m.has(k)) m.set(k, {k, utente: a.utente, nome: a.nome, id: a.dispositivo || null, firma: firma(a), righe: []});
+      m.get(k).righe.push(a);
     });
+    /* gli accessi vecchi senza codice vanno nel dispositivo con lo stesso modello/sistema/browser (se ce n'è uno solo) */
+    [...m.values()].filter(g => !g.id).forEach(g => {
+      const c = [...m.values()].filter(h => h.id && h.utente === g.utente && h.firma === g.firma);
+      if (c.length === 1) { c[0].righe.push(...g.righe); m.delete(g.k); }
+    });
+    /* stesso dispositivo usato da più account */
+    const per = {};
+    m.forEach(g => { if (g.id) (per[g.id] = per[g.id] || new Set()).add(g.nome); });
+    const out = [...m.values()];
+    out.forEach(g => {
+      g.righe.sort((a, b) => String(b.fine).localeCompare(String(a.fine)));
+      g.ultimo = g.righe[0]; g.primo = g.righe[g.righe.length - 1];
+      g.ips = [...new Set(g.righe.map(a => a.ip).filter(Boolean))];
+      g.altri = g.id && per[g.id] ? [...per[g.id]].filter(n => n !== g.nome) : [];
+    });
+    return out.sort((a, b) => String(b.ultimo.fine).localeCompare(String(a.ultimo.fine)));
+  }
+  const durata = a => { const m = Math.round((new Date(a.fine) - new Date(a.inizio)) / 6e4); return m < 1 ? '' : m < 60 ? m + ' min' : Math.floor(m / 60) + ' h' + (m % 60 ? ' ' + (m % 60) + ' min' : ''); };
+  /* un dispositivo: riga cliccabile che apre gli orari di accesso, giorno per giorno */
+  function cartaDisp(g, conNome, aperti){
+    const c = document.createElement('article'); c.className = 'dsp' + (conNome ? ' con-nome' : '');
+    const n = g.righe.length, idx = 'dsp-' + Math.random().toString(36).slice(2, 9);
+    c.innerHTML = '<button type="button" class="dsp-top" aria-expanded="false" aria-controls="' + idx + '">' + (conNome ? '<span class="av-p"></span>' : '') +
+      '<span class="dsp-t">' + (conNome ? '<b class="dsp-n"></b>' : '') + '<span class="dsp-m"></span><span class="dsp-s"></span></span><span class="ut-fr">' + FR + '</span></button>' +
+      '<div class="dsp-det" id="' + idx + '" hidden></div>';
+    if (conNome) { const u = utenti.find(x => x.id === g.utente) || {nome: g.nome}; $('.av-p', c).replaceWith(av(u)); $('.dsp-n', c).textContent = g.nome; }
+    $('.dsp-m', c).textContent = dispTesto(g.ultimo);
+    $('.dsp-s', c).textContent = 'Ultimo: ' + quando(g.ultimo.fine) + ' · ' + n + (n === 1 ? ' accesso' : ' accessi') + (g.ips.length > 1 ? ' · ' + g.ips.length + ' IP' : '');
+    const b = $('.dsp-top', c), d = $('.dsp-det', c);
+    const apri = on => {
+      b.setAttribute('aria-expanded', on); d.hidden = !on;
+      on ? aperti.add(g.k) : aperti.delete(g.k);
+      if (!on || d.firstChild) return;
+      let html = g.altri.length ? '<p class="dsp-alt">Stesso dispositivo usato anche da: <b>' + g.altri.map(esc).join(', ') + '</b></p>' : '';
+      html += '<p class="dsp-tot">Dal ' + esc(giorno(g.primo.inizio)) + (g.ips.length ? ' · IP: ' + g.ips.map(ip => '<span class="ip">' + esc(ip) + '</span>').join(', ') : '') + '</p>';
+      let gg = '';
+      g.righe.forEach(a => {
+        const gio = new Date(a.inizio).toDateString();
+        if (gio !== gg) { if (gg) html += '</ul>'; gg = gio; html += '<h6>' + esc(quando(a.inizio).replace(/ alle .*/, '')) + '</h6><ul class="orari">'; }
+        const fine = a.fine && ora(a.fine) !== ora(a.inizio) ? '–' + ora(a.fine) : '';
+        html += '<li><b>' + esc(ora(a.inizio) + fine) + '</b>' + (durata(a) ? '<span class="du">' + esc(durata(a)) + '</span>' : '') + (a.ip ? '<span class="ip">' + esc(a.ip) + '</span>' : '') + '</li>';
+      });
+      d.innerHTML = html + (gg ? '</ul>' : '');
+    };
+    b.addEventListener('click', () => apri(d.hidden));
+    if (aperti.has(g.k)) apri(true);
+    return c;
+  }
+  function disegnaAccessi(C){
+    const gr = gruppi(registro);
+    C.innerHTML = '<p class="adm-nota"><span>' + gr.length + (gr.length === 1 ? ' dispositivo' : ' dispositivi') + ' · ' + registro.length + ' accessi · si cancellano dopo 6 mesi</span><span class="sp"></span><button type="button" class="agg">Aggiorna</button></p>' +
+      (nomiLog.length ? '<details class="nomi-log"><summary>Cambi di nome <span class="n">(' + nomiLog.length + ')</span></summary><ul class="reg nomi"></ul></details>' : '') + '<div class="ac-lista"></div>';
+    $('.agg', C).addEventListener('click', () => mostraAdmin());
+    if (nomiLog.length) {
+      const ul = $('.nomi-log ul', C);
+      nomiLog.forEach(x => { const li = document.createElement('li'); li.innerHTML = '<b></b><br><span></span>'; $('b', li).textContent = x.vecchio + ' → ' + x.nuovo; $('span', li).textContent = quando(x.quando) + (x.nome && x.nome !== x.nuovo ? ' · ora si chiama ' + x.nome : ''); ul.append(li); });
+    }
+    const L = $('.ac-lista', C);
+    if (!gr.length) { L.innerHTML = '<p class="vuoto">Ancora nessun accesso registrato.</p>'; return; }
+    const ks = new Set(gr.map(g => g.k)); [...accAperti].forEach(k => { if (!ks.has(k)) accAperti.delete(k); });
+    gr.forEach(g => L.append(cartaDisp(g, true, accAperti)));
   }
   /* segnalazioni (solo super-admin) */
   function disegnaSegnalazioni(C){
@@ -625,7 +873,7 @@ body.fb-aperto{overflow:hidden}
   function rotta(){
     const on = location.hash === '#admin';
     if (on && A.hidden) {
-      A.hidden = false; document.body.classList.add('fb-aperto'); scheda = 'utenti'; aperto = null; mostraAdmin(); $('.chiudi', A).focus();
+      A.hidden = false; document.body.classList.add('fb-aperto'); scheda = 'utenti'; aperto = null; accAperti.clear(); mostraAdmin(); $('.chiudi', A).focus();
       ferma(); giro = setInterval(() => { if (!document.hidden && scheda === 'utenti' && QP.superadmin()) mostraAdmin(true); }, 30000);
     }
     else if (!on && !A.hidden) { A.hidden = true; ferma(); document.body.classList.remove('fb-aperto'); conta(); }

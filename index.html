@@ -707,7 +707,7 @@ html:not(.qp-ok) body > :not(.gate){visibility:hidden}
 </ul>
 </div>
 </section>
-<p class="ver-fondo" title="Versione dell'app e data dell'ultimo aggiornamento">Versione <b>1.5</b> · 01/11/2026</p>
+<p class="ver-fondo" title="Versione dell'app e data dell'ultimo aggiornamento">Versione <b>1.6</b> · 05/11/2026</p>
 
   </div>
   <div id="results" hidden></div>
@@ -17536,6 +17536,29 @@ body.acc-aperto{overflow:hidden}
 .occhio:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 .occhio svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .occhio[aria-pressed="true"]{color:var(--blue)}
+/* messaggi e annunci degli amministratori (1.6): in primo piano, si chiudono solo con OK */
+.avv-velo{position:fixed;inset:0;z-index:95;display:grid;place-items:center;box-sizing:border-box;padding:max(16px,env(safe-area-inset-top,0px)) 16px max(16px,env(safe-area-inset-bottom,0px));background:rgba(6,17,27,.58);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);animation:avv-in .2s ease-out}
+.avv-velo.via{opacity:0;transition:opacity .18s}
+.avv{width:min(440px,100%);max-height:100%;overflow:auto;box-sizing:border-box;background:var(--sheet);color:var(--ink);border:1px solid var(--line);border-top:5px solid var(--blue);border-radius:20px;padding:16px 18px 16px;box-shadow:0 24px 60px rgba(6,17,27,.35);animation:avv-su .22s ease-out}
+.avv.ann{border-top-color:var(--racing)}
+.avv-top{display:flex;align-items:center;gap:8px;margin:0 0 14px}
+.avv-tag{display:inline-block;padding:5px 10px;border-radius:999px;font:700 .76rem/1 var(--f-body);letter-spacing:.03em;text-transform:uppercase;background:color-mix(in srgb,var(--blue) 14%,var(--sheet));color:var(--blue)}
+.avv.ann .avv-tag{background:var(--racing);color:var(--on-racing);box-shadow:inset 0 0 0 1px var(--racing-bd)}
+.avv-n{margin-left:auto;font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.avv-da{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+.avv-da .av{position:relative;flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;overflow:hidden;background:var(--chip);color:var(--muted);font:700 1rem/1 var(--f-body);text-transform:uppercase}
+.avv-da .av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
+.avv-da .av.sa{background:var(--racing);color:var(--on-racing)}
+.avv-da .av.ad{background:var(--blue);color:var(--sheet)}
+.avv-chi{display:grid;gap:2px;min-width:0}
+.avv-chi b{font:700 .95rem/1.25 var(--f-body);overflow-wrap:anywhere}
+.avv-chi time{font-size:.78rem;color:var(--muted)}
+.avv-txt{margin:0 0 18px;font-size:1.02rem;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+.avv .avv-ok{width:100%;min-height:48px;font-size:1rem}
+body.avv-aperto{overflow:hidden}
+@keyframes avv-in{from{opacity:0}to{opacity:1}}
+@keyframes avv-su{from{transform:translateY(14px) scale(.98)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.avv-velo,.avv{animation:none}.avv-velo.via{transition:none}}
 </style>
 <script>
 (function(){
@@ -17574,10 +17597,11 @@ body.acc-aperto{overflow:hidden}
     '<li><b>Quanto restano.</b> Gli accessi si cancellano da soli dopo 6 mesi. Un account non usato per 12 mesi viene cancellato con tutti i suoi dati.</li>' +
     '<li><b>I tuoi diritti.</b> Puoi eliminare l\'account quando vuoi dal profilo: si cancella tutto. Per altre richieste scrivi in Segnalazioni e feedback.</li>' +
     '<li><b>Segnalazioni</b>: le legge solo il super-admin; puoi inviarle anche anonime.</li>' +
+    '<li><b>Messaggi e annunci.</b> Gli amministratori possono mandarti messaggi o annunci, che compaiono in primo piano finché non premi OK; chi li ha inviati vede se li hai letti. Si cancellano dopo 12 mesi.</li>' +
     '<li><b>Traduttore Gemini</b>: il testo che invii passa a Google per la traduzione, quindi non scriverci dati personali. Riservato a chi ha almeno 18 anni.</li>' +
     '<li><b>Sul telefono</b> l\'app salva solo ciò che le serve (accesso, preferenze, audio ascoltati): niente pubblicità né cookie di profilazione.</li>' +
     '<li><b>Servizi usati</b>: GitHub Pages (sito), Supabase (account e dati), Google Gemini (traduttore).</li>' +
-    '</ul><p>Titolare: l\'amministratore dell\'app (Gabrydl). Aggiornati il 01/11/2026.</p></div>';
+    '</ul><p>Titolare: l\'amministratore dell\'app (Gabrydl). Aggiornati il 05/11/2026.</p></div>';
 
   /* ---------- sessione ---------- */
   const sess = () => mem.get('qp-sessione');
@@ -17677,7 +17701,7 @@ body.acc-aperto{overflow:hidden}
   async function esci(){
     const s = sess();
     if (s && !s.demo && navigator.onLine) { try { await fetch(CFG.url + '/auth/v1/logout', {method: 'POST', headers: H(s.access)}); } catch (e) {} }
-    battito.ferma(); mem.del('qp-sessione'); prog.leggi(); emetti();
+    battito.ferma(); avvisi.chiudi(); mem.del('qp-sessione'); prog.leggi(); emetti();
   }
 
   /* ---------- rpc sul database (funzioni che controllano chi le chiama) ---------- */
@@ -17742,6 +17766,7 @@ body.acc-aperto{overflow:hidden}
         const j = await rpc('segnale', {d: Object.assign({}, this.disp, prima ? {foto: '1'} : {})});
         this.prima = false;
         const s2 = sess(); if (!s2 || !j) return;
+        avvisi.arriva(j.messaggi || []);
         let cambia = false;
         if ((j.ruolo || '') !== ruoloDi(s2)) { s2.ruolo = j.ruolo || ''; delete s2.admin; mem.set('qp-sessione', s2); cambia = true; }
         if (prima && 'foto' in j && (j.foto || null) !== foto.mia()) { foto.metti(j.foto || null); cambia = true; }
@@ -17791,6 +17816,62 @@ body.acc-aperto{overflow:hidden}
     else el.textContent = (nome || '?').charAt(0);
     el.classList.toggle('sa', r === 'superadmin'); el.classList.toggle('ad', r === 'admin');
   }
+
+  /* ---------- messaggi e annunci dagli amministratori (1.6) ----------
+     arrivano con il segnale (all'apertura e ogni minuto); restano in primo piano finché non si preme OK.
+     Se OK si preme senza rete, l'id resta qui e la conferma si riprova al segnale dopo. */
+  const avvisi = {
+    coda: [], ora: null, el: null, prima: null,
+    k(){ const s = sess(); return s ? 'qp-msg-ok-' + s.id : null; },
+    arriva(l){
+      if (!Array.isArray(l) || !sess()) return;
+      const k = this.k(), ids = new Set(l.map(m => m && m.id)), f = new Set((mem.get(k) || []).filter(i => ids.has(i)));
+      mem.set(k, [...f]);
+      l.forEach(m => {
+        if (!m || m.id == null) return;
+        if (f.has(m.id)) { rpc('conferma_messaggio', {chi: m.id}).catch(() => {}); return; }
+        if ((this.ora && this.ora.id === m.id) || this.coda.some(x => x.id === m.id)) return;
+        this.coda.push(m);
+      });
+      this.mostra();
+    },
+    mostra(){
+      if (this.ora || !this.coda.length || !sess()) { this.conta(); return; }
+      const m = this.ora = this.coda.shift();
+      this.prima = document.activeElement;
+      const d = this.el = document.createElement('div'); d.className = 'avv-velo';
+      d.innerHTML = '<div class="avv' + (m.annuncio ? ' ann' : '') + '" role="alertdialog" aria-modal="true" aria-labelledby="avv-tag" aria-describedby="avv-txt">' +
+        '<div class="avv-top"><span class="avv-tag" id="avv-tag"></span><span class="avv-n"></span></div>' +
+        '<div class="avv-da"><span class="av"></span><span class="avv-chi"><b></b><time></time></span></div>' +
+        '<p class="avv-txt" id="avv-txt"></p><button type="button" class="btn pri avv-ok">OK</button></div>';
+      $('.avv-tag', d).textContent = m.annuncio ? 'Annuncio' : 'Messaggio per te';
+      avatar($('.av', d), m.da, m.foto_da, m.ruolo_da || '');
+      $('.avv-chi b', d).textContent = 'Da ' + (m.da || 'amministratore');
+      if (m.ruolo_da) { const b = document.createElement('span'); b.className = 'badge' + (m.ruolo_da === 'superadmin' ? ' sa' : ''); b.textContent = NOME_RUOLO[m.ruolo_da] || m.ruolo_da; $('.avv-chi b', d).append(b); }
+      const t = $('time', d); t.dateTime = m.creato || ''; t.textContent = m.creato ? new Date(m.creato).toLocaleString('it-IT', {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'}) : '';
+      $('.avv-txt', d).textContent = m.testo || '';
+      const ok = $('.avv-ok', d);
+      ok.addEventListener('click', () => this.ok());
+      d.addEventListener('keydown', e => { if (e.key === 'Tab') { e.preventDefault(); ok.focus(); } });
+      document.body.append(d); document.body.classList.add('avv-aperto');
+      this.conta(); ok.focus();
+    },
+    conta(){ if (this.el) $('.avv-n', this.el).textContent = this.coda.length ? 'altri ' + this.coda.length : ''; },
+    ok(){
+      const m = this.ora; if (!m) return;
+      const k = this.k(); if (k) { const f = new Set(mem.get(k) || []); f.add(m.id); mem.set(k, [...f]); }
+      rpc('conferma_messaggio', {chi: m.id}).then(() => { const f = (mem.get(k) || []).filter(i => i !== m.id); mem.set(k, f); }).catch(() => {});
+      this.togli();
+      if (this.coda.length) setTimeout(() => this.mostra(), 220);
+      else if (this.prima && this.prima.focus && document.contains(this.prima)) { try { this.prima.focus(); } catch (e) {} }
+    },
+    togli(){
+      const e = this.el; this.el = null; this.ora = null;
+      if (e) { e.classList.add('via'); setTimeout(() => e.remove(), 190); }
+      document.body.classList.remove('avv-aperto');
+    },
+    chiudi(){ this.coda = []; this.togli(); }
+  };
 
   /* ---------- argomenti letti ---------- */
   const prog = {
@@ -17889,8 +17970,8 @@ body.acc-aperto{overflow:hidden}
       '<p class="aiuto">Da 3 a 20 caratteri: lettere, numeri, punto, trattino o trattino basso. Da ora entrerai con il nuovo nome, la password resta la stessa.</p><p class="err" role="alert"></p>' +
       '<div class="azioni"><button type="submit" class="btn pri">Salva</button><button type="button" class="btn n-no">Annulla</button></div></form>' + (nomeOk ? '<p class="ok-nome" role="status"></p>' : '') +
       '<div class="tot"><div class="tot-n"><b>' + p + '%</b><span>' + n + ' argomenti letti su ' + t + '</span></div><span class="bar' + (p === 100 ? ' ok' : '') + '" role="progressbar" aria-label="Avanzamento totale" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + p + '"><i style="width:' + p + '%"></i></span></div>' +
-      (r === 'superadmin' ? '<div class="adm-box sa"><p><b>Area super-admin</b>Utenti, accessi, segnalazioni e codice' + (window.QP.nuove ? ' · ' + window.QP.nuove + ' da leggere' : '') + '</p><button type="button" class="btn adm-go">Apri</button></div>' :
-       r === 'admin' ? '<div class="adm-box"><p><b>Area admin</b>Utenti registrati e codice d\'accesso</p><button type="button" class="btn adm-go">Apri</button></div>' : '') +
+      (r === 'superadmin' ? '<div class="adm-box sa"><p><b>Area super-admin</b>Utenti, accessi, segnalazioni, messaggi e codice' + (window.QP.nuove ? ' · ' + window.QP.nuove + ' da leggere' : '') + '</p><button type="button" class="btn adm-go">Apri</button></div>' :
+       r === 'admin' ? '<div class="adm-box"><p><b>Area admin</b>Utenti, messaggi e codice d\'accesso</p><button type="button" class="btn adm-go">Apri</button></div>' : '') +
       '<h4>Capitoli</h4><ul class="cap"></ul>' +
       '<button type="button" class="btn largo esci">Esci</button>' +
       (r === 'superadmin' ? '' : '<button type="button" class="elimina" aria-expanded="false" aria-controls="del-box">Elimina l\'account</button>' +
@@ -18159,11 +18240,32 @@ textarea.in{min-height:150px;resize:vertical;line-height:1.5}
 
 /* area admin: utenti (admin: nome e foto; super-admin: tutto), accessi, segnalazioni */
 .adm-bar h2 small.sa{display:block;width:max-content;margin-top:3px;padding:2px 8px;border-radius:999px;background:var(--racing);color:var(--on-racing);box-shadow:inset 0 0 0 1px var(--racing-bd)}
-.adm-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:4px;margin:0 0 14px;border-radius:999px;background:var(--chip)}
+.adm-tabs{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:4px;padding:4px;margin:0 0 14px;border-radius:999px;background:var(--chip)}
 .adm-tabs button{all:unset;box-sizing:border-box;cursor:pointer;text-align:center;padding:9px 4px;border-radius:999px;font:600 .86rem/1 var(--f-body);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .adm-tabs button[aria-selected="true"]{background:var(--sheet);color:var(--ink);box-shadow:0 1px 4px rgba(6,17,27,.12)}
 .adm-tabs button:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 .adm-tabs .n{font-variant-numeric:tabular-nums}
+.adm-tabs.t4 button{padding:9px 2px;font-size:.8rem}
+/* messaggi e annunci (1.6) */
+.msg-n{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:12px 14px 14px;margin:0 0 16px;display:grid;gap:8px}
+.msg-n h3{margin:0 0 2px;font:700 1rem/1.25 var(--f-body);color:var(--ink)}
+.msg-n .fl{margin:4px 0 0}
+.msg-n select.in{-webkit-appearance:none;appearance:none;padding-right:38px;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat;cursor:pointer}
+.msg-n textarea.in{min-height:110px}
+.msg-n .aiuto{margin:0;font-size:.8rem;line-height:1.45;color:var(--muted)}
+.msg-n .err{margin:0;font-size:.84rem}
+.msg-n .err:empty{display:none}
+.msg-n .azioni .btn.pri{background:var(--blue);border-color:var(--blue);color:var(--sheet)}
+.msg-n .azioni .btn.pri.ann{background:var(--racing);border-color:var(--racing-bd);color:var(--on-racing)}
+.msg-n .cont{margin-left:auto;font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.msg-n .ok-msg{margin:0;font-size:.84rem;font-weight:600;color:var(--green)}
+.tag.t-ann{background:var(--racing);color:var(--on-racing)}
+.tag.t-dm{background:color-mix(in srgb,var(--blue) 14%,var(--sheet));color:var(--blue);overflow-wrap:anywhere}
+.msg.mi .stato.ok-l{color:var(--green);font-weight:600}
+button.ut-c{cursor:pointer;width:100%;box-sizing:border-box;-webkit-appearance:none;appearance:none;color:var(--ink)}
+button.ut-c:hover{border-color:var(--blue)}
+button.ut-c:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.ut-az .btn.scrivi{background:var(--blue);border-color:var(--blue);color:var(--sheet)}
 .adm-nota{margin:0 0 12px;font-size:.8rem;line-height:1.4;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .adm-nota .sp{flex:1}
 .adm-nota button{all:unset;cursor:pointer;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--sheet);font:600 .82rem/1 var(--f-body);color:var(--ink)}
@@ -18453,6 +18555,7 @@ body.fb-aperto{overflow:hidden}
   const AI = $('.adm-in', A);
   const FR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 15.5 12 9 18.5"/></svg>';
   let scheda = 'utenti', filtro = 'nuove', lista = [], utenti = [], registro = [], nomiLog = [], aperto = null, giro = null, codice = null, codOk = '';
+  let inviati = [], msgA = '', msgOk = '', msgFuoco = false;      // messaggi (1.6): destinatario scelto, esito, cursore nel testo
   const accAperti = new Set();          // dispositivi aperti nella scheda Accessi (restano aperti agli aggiornamenti)
   $('.chiudi', A).addEventListener('click', () => { history.length > 1 && location.hash === '#admin' ? history.back() : (location.hash = ''); });
   const dataIt = s => new Date(s).toLocaleString('it-IT', {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'});
@@ -18518,6 +18621,23 @@ body.fb-aperto{overflow:hidden}
       if (DEMO) { mem.set('qp-demo-codice', nuovo); mem.set('qp-demo-codice-quando', new Date().toISOString()); mem.set('qp-demo-codice-da', QP.nome()); return; }
       await QP.rpc('cambia_codice', {nuovo});
     },
+    /* messaggi (1.6): admin e super-admin al singolo utente; annuncio a tutti (a = null) solo il super-admin */
+    async inviati(){
+      if (DEMO) return mem.get('qp-demo-msg') || [];
+      return (await QP.rpc('messaggi_inviati')) || [];
+    },
+    async invia(a, testo){
+      if (DEMO) {
+        const l = mem.get('qp-demo-msg') || [], u = a && utenti.find(x => x.id === a);
+        l.unshift({id: Date.now(), testo, creato: new Date().toISOString(), mittente_nome: QP.nome(), mio: true, destinatario: a || null, dest_nome: u ? u.nome : null, letto: null, letti: 0, totale: a ? 1 : Math.max(utenti.length - 1, 0)});
+        mem.set('qp-demo-msg', l); return;
+      }
+      await QP.rpc('invia_messaggio', {a: a || null, testo});
+    },
+    async ritira(id){
+      if (DEMO) { mem.set('qp-demo-msg', (mem.get('qp-demo-msg') || []).filter(m => m.id !== id)); return; }
+      await QP.rpc('ritira_messaggio', {chi: id});
+    },
     async ruolo(chi, r){
       if (DEMO) { const u = DEMO_UT().map(x => x.id === chi ? Object.assign(x, {ruolo: r}) : x); mem.set('qp-demo-ut', u); return; }
       await QP.rpc('imposta_ruolo', {chi, ruolo: r});
@@ -18531,7 +18651,7 @@ body.fb-aperto{overflow:hidden}
   }
   function intestazione(){
     const sup = QP.superadmin();
-    const tit = !sup ? 'Utenti registrati' : scheda === 'accessi' ? 'Registro accessi' : scheda === 'segnalazioni' ? 'Segnalazioni' : 'Utenti registrati';
+    const tit = scheda === 'messaggi' ? 'Messaggi' : !sup ? 'Utenti registrati' : scheda === 'accessi' ? 'Registro accessi' : scheda === 'segnalazioni' ? 'Segnalazioni' : 'Utenti registrati';
     $('#adm-t', A).innerHTML = esc(tit) + (sup ? '<small class="sa">Area super-admin</small>' : '<small>Area admin</small>');
   }
   /* carica i dati della scheda aperta e disegna */
@@ -18539,12 +18659,13 @@ body.fb-aperto{overflow:hidden}
   const occupato = () => !!(aperto || AI.querySelector('form, .msg-bot .si, .ut-az .si'));
   async function mostraAdmin(silenzioso){
     if (!QP.admin()) { ferma(); login(); return; }
-    if (!QP.superadmin()) scheda = 'utenti';
+    if (!QP.superadmin() && scheda !== 'messaggi') scheda = 'utenti';
     intestazione();
     if (!silenzioso) AI.innerHTML = '<p class="vuoto">Caricamento…</p>';
     const prima = utenti.map(u => u.id).join(), codPrima = JSON.stringify(codice);
     try {
       if (scheda === 'segnalazioni') lista = await srv.elenco();
+      else if (scheda === 'messaggi') { [inviati, utenti] = await Promise.all([serv.inviati(), serv.utenti()]); }
       else if (scheda === 'accessi') { [registro, utenti, nomiLog] = await Promise.all([serv.registro(null, 2000), serv.utenti(), serv.nomi().catch(() => [])]); }
       else { [utenti, codice] = await Promise.all([serv.utenti(), serv.codice().catch(() => null)]); }
     } catch (x) {
@@ -18554,6 +18675,7 @@ body.fb-aperto{overflow:hidden}
       $('.ricarica', AI).addEventListener('click', () => mostraAdmin()); return;
     }
     if (silenzioso && $('.adm-cont', AI)) {
+      if (scheda === 'messaggi') { if ($('.msg-inv', AI) && !AI.querySelector('.msg-inv .si')) disegnaInviati(); return; }
       if (occupato() || (scheda === 'accessi' && accAperti.size)) { aggiornaStati(); return; }
       if (scheda === 'utenti' && utenti.map(u => u.id).join() === prima) {      // stessi utenti: aggiorno solo stato e codice
         aggiornaStati();
@@ -18564,11 +18686,12 @@ body.fb-aperto{overflow:hidden}
     disegnaAdmin();
   }
   function schede(){
-    if (!QP.superadmin()) return '';
-    const n = lista.filter(m => !m.letto).length;
-    return '<div class="adm-tabs" role="tablist" aria-label="Area super-admin">' +
-      [['utenti', 'Utenti'], ['accessi', 'Accessi'], ['segnalazioni', 'Segnalazioni' + (QP.nuove || n ? ' <span class="n">(' + (QP.nuove || n) + ')</span>' : '')]]
-        .map(([k, t]) => '<button type="button" role="tab" data-s="' + k + '" aria-selected="' + (scheda === k) + '">' + t + '</button>').join('') + '</div>';
+    if (!QP.admin()) return '';
+    const sup = QP.superadmin(), n = lista.filter(m => !m.letto).length;
+    const t = sup ? [['utenti', 'Utenti'], ['accessi', 'Accessi'], ['segnalazioni', 'Segnalazioni' + (QP.nuove || n ? ' <span class="n">(' + (QP.nuove || n) + ')</span>' : '')], ['messaggi', 'Messaggi']]
+      : [['utenti', 'Utenti'], ['messaggi', 'Messaggi']];
+    return '<div class="adm-tabs' + (t.length > 3 ? ' t4' : '') + '" role="tablist" aria-label="' + (sup ? 'Area super-admin' : 'Area admin') + '">' +
+      t.map(([k, t]) => '<button type="button" role="tab" data-s="' + k + '" aria-selected="' + (scheda === k) + '">' + t + '</button>').join('') + '</div>';
   }
   function disegnaAdmin(){
     intestazione();
@@ -18578,7 +18701,95 @@ body.fb-aperto{overflow:hidden}
     const C = $('.adm-cont', AI);
     if (scheda === 'segnalazioni') return disegnaSegnalazioni(C);
     if (scheda === 'accessi') return disegnaAccessi(C);
+    if (scheda === 'messaggi') return disegnaMessaggi(C);
     return QP.superadmin() ? disegnaUtenti(C) : disegnaGriglia(C);
+  }
+  /* ---------- messaggi e annunci (1.6) ----------
+     il destinatario li vede in primo piano (all'apertura dell'app o entro un minuto se è in linea) finché non preme OK */
+  function scrivi(id){ msgA = id || ''; msgOk = ''; msgFuoco = true; scheda = 'messaggi'; aperto = null; accAperti.clear(); mostraAdmin(); }
+  function disegnaMessaggi(C){
+    const sup = QP.superadmin(), io = QP.sessione() ? QP.sessione().id : '';
+    const altri = utenti.filter(u => u.id && u.id !== io);
+    if (msgA && !altri.some(u => u.id === msgA)) msgA = '';
+    const f = document.createElement('form'); f.className = 'msg-n'; f.noValidate = true;
+    f.innerHTML = '<h3>Nuovo messaggio</h3>' +
+      '<label class="fl" for="msg-a">A chi</label><select class="in" id="msg-a"></select>' +
+      '<label class="fl" for="msg-t">Messaggio</label><textarea class="in" id="msg-t" maxlength="1000" placeholder="Scrivi qui il messaggio."></textarea>' +
+      '<p class="aiuto"></p><p class="err" role="alert"></p>' +
+      '<div class="azioni"><button type="submit" class="btn pri">Invia</button><span class="cont">0/1000</span></div>' + (msgOk ? '<p class="ok-msg" role="status"></p>' : '');
+    const sel = $('#msg-a', f), ta = $('#msg-t', f), e = $('.err', f), aiuto = $('.aiuto', f), inv = $('button[type=submit]', f), cont = $('.cont', f);
+    sel.append(new Option(sup ? 'Tutti (annuncio)' : 'Scegli un utente…', ''));
+    altri.forEach(u => sel.append(new Option(u.nome + (u.ruolo ? ' · ' + (QP.NOME_RUOLO[u.ruolo] || u.ruolo) : ''), u.id)));
+    sel.value = msgA;
+    if (msgOk) { $('.ok-msg', f).textContent = msgOk; msgOk = ''; }
+    const spiega = () => {
+      const tutti = sup && !sel.value;
+      aiuto.textContent = tutti ? 'Annuncio: compare in primo piano a tutti gli utenti, anche a chi si registra dopo, finché non premono OK.'
+        : sel.value ? 'Compare in primo piano solo a questo utente (all\'apertura dell\'app, o entro un minuto se è in linea) finché non preme OK.'
+        : 'Scegli a chi scrivere: il messaggio comparirà in primo piano solo a quell\'utente finché non preme OK.';
+      inv.textContent = tutti ? 'Invia a tutti' : 'Invia'; inv.classList.toggle('ann', tutti);
+    };
+    spiega();
+    sel.addEventListener('change', () => { msgA = sel.value; e.textContent = ''; spiega(); });
+    ta.addEventListener('input', () => { e.textContent = ''; cont.textContent = ta.value.length + '/1000'; });
+    f.addEventListener('submit', async ev => {
+      ev.preventDefault(); e.textContent = '';
+      const t = ta.value.trim(), a = sel.value;
+      if (!sup && !a) { e.textContent = 'Scegli a chi scrivere.'; sel.focus(); return; }
+      if (!t) { e.textContent = 'Scrivi il messaggio.'; ta.focus(); return; }
+      const u = altri.find(x => x.id === a);
+      inv.disabled = true; inv.textContent = 'Invio…';
+      try {
+        await serv.invia(a, t);
+        msgOk = a ? 'Inviato a ' + (u ? u.nome : 'utente') + ': lo vedrà in primo piano.' : 'Annuncio inviato a tutti.';
+        msgA = a; inviati = await serv.inviati().catch(() => inviati); disegnaMessaggi(C);
+      } catch (x) { e.textContent = errMsg(x); inv.disabled = false; spiega(); }
+    });
+    C.innerHTML = '';
+    C.append(f);
+    const nota = document.createElement('p'); nota.className = 'adm-nota';
+    nota.innerHTML = '<span>' + (sup ? 'Messaggi inviati (tutti gli amministratori)' : 'Messaggi che hai inviato') + '</span><span class="sp"></span><button type="button" class="agg">Aggiorna</button>';
+    $('.agg', nota).addEventListener('click', () => mostraAdmin());
+    const L = document.createElement('div'); L.className = 'msg-inv';
+    C.append(nota, L);
+    disegnaInviati();
+    if (msgFuoco) { msgFuoco = false; (sel.value || sup ? ta : sel).focus(); }
+  }
+  function disegnaInviati(){
+    const L = $('.msg-inv', AI); if (!L) return;
+    L.innerHTML = '';
+    if (!inviati.length) { L.innerHTML = '<p class="vuoto">Nessun messaggio inviato.</p>'; return; }
+    const sup = QP.superadmin();
+    inviati.forEach(m => {
+      const a = document.createElement('article'); a.className = 'msg mi';
+      a.innerHTML = '<div class="msg-top"><span class="tag"></span><time></time></div><p class="msg-txt"></p><div class="msg-bot"><span class="chi stato"></span><button type="button" class="del">Ritira</button></div>';
+      const tg = $('.tag', a), ann = !m.destinatario;
+      tg.classList.add(ann ? 't-ann' : 't-dm'); tg.textContent = ann ? 'Annuncio a tutti' : 'A ' + (m.dest_nome || 'utente eliminato');
+      $('time', a).textContent = quando(m.creato); $('time', a).dateTime = m.creato;
+      $('.msg-txt', a).textContent = m.testo;
+      const st = $('.stato', a);
+      st.textContent = (sup && !m.mio ? 'Da ' + m.mittente_nome + ' · ' : '') +
+        (ann ? 'Letto da ' + (m.letti || 0) + ' su ' + (m.totale || 0) : m.letto ? 'Letto ' + quando(m.letto) : 'Non ancora letto');
+      st.classList.toggle('ok-l', ann ? m.totale > 0 && m.letti >= m.totale : !!m.letto);
+      bottoniRitira(a, m);
+      L.append(a);
+    });
+  }
+  function bottoniRitira(a, m){
+    const B = $('.msg-bot', a), st = $('.stato', a);
+    $('.del', B).addEventListener('click', () => {
+      B.querySelectorAll('button').forEach(b => b.remove());
+      const testo = document.createElement('span'); testo.className = 'chi'; testo.textContent = 'Ritirarlo? Chi non l\'ha ancora letto non lo vedrà più.';
+      const si = document.createElement('button'); si.type = 'button'; si.className = 'si'; si.textContent = 'Ritira';
+      const no = document.createElement('button'); no.type = 'button'; no.textContent = 'Annulla';
+      B.append(testo, si, no); no.focus();
+      no.addEventListener('click', () => disegnaInviati());
+      si.addEventListener('click', async () => {
+        si.disabled = true; si.textContent = 'Ritiro…';
+        try { await serv.ritira(m.id); inviati = inviati.filter(x => x.id !== m.id); disegnaInviati(); }
+        catch (x) { testo.textContent = errMsg(x); si.disabled = false; si.textContent = 'Ritira'; }
+      });
+    });
   }
   function av(u, dot){
     const s = document.createElement('span'); s.className = 'av';
@@ -18588,12 +18799,18 @@ body.fb-aperto{overflow:hidden}
   }
   /* admin: solo nome e foto */
   function disegnaGriglia(C){
-    C.innerHTML = '<p class="adm-nota"><span>' + utenti.length + ' utenti registrati</span><span class="sp"></span><button type="button" class="agg">Aggiorna</button></p><div class="ut-griglia"></div>';
+    C.innerHTML = '<p class="adm-nota"><span>' + utenti.length + ' utenti registrati · tocca un nome per scrivergli</span><span class="sp"></span><button type="button" class="agg">Aggiorna</button></p><div class="ut-griglia"></div>';
     C.prepend(boxCodice());
     $('.agg', C).addEventListener('click', () => mostraAdmin());
     const G = $('.ut-griglia', C);
     if (!utenti.length) { G.outerHTML = '<p class="vuoto">Ancora nessun utente.</p>'; return; }
-    utenti.forEach(u => { const c = document.createElement('div'); c.className = 'ut-c'; c.append(av(u)); const n = document.createElement('span'); n.textContent = u.nome; c.append(n); G.append(c); });
+    const io = QP.sessione() ? QP.sessione().id : '';
+    utenti.forEach(u => {
+      const puo = u.id && u.id !== io;
+      const c = document.createElement(puo ? 'button' : 'div'); c.className = 'ut-c'; c.append(av(u)); const n = document.createElement('span'); n.textContent = u.nome; c.append(n);
+      if (puo) { c.type = 'button'; c.setAttribute('aria-label', 'Scrivi a ' + u.nome); c.addEventListener('click', () => scrivi(u.id)); }
+      G.append(c);
+    });
   }
   /* codice d'accesso: chi si registra deve scriverlo; admin e super-admin lo cambiano qui */
   const COD_OK = /^[A-Za-z0-9._-]{4,30}$/;
@@ -18671,9 +18888,11 @@ body.fb-aperto{overflow:hidden}
   }
   function azioni(det, u){
     const Z = $('.ut-az', det), io = QP.sessione() && u.id === QP.sessione().id;
-    if (io || u.ruolo === 'superadmin') { Z.innerHTML = '<p class="conf" style="color:var(--muted)">Il super-admin non si modifica né si elimina da qui.</p>'; return; }
-    Z.innerHTML = '<button type="button" class="btn ruolo-b">' + (u.ruolo === 'admin' ? 'Togli admin' : 'Rendi admin') + '</button><button type="button" class="btn del">Elimina account</button><p class="err" role="alert"></p>';
-    const e = $('.err', Z);
+    const sc = io ? '' : '<button type="button" class="btn scrivi">Scrivi</button>';
+    const legaScrivi = () => { const b = $('.scrivi', Z); if (b) b.addEventListener('click', () => scrivi(u.id)); };
+    if (io || u.ruolo === 'superadmin') { Z.innerHTML = sc + '<p class="conf" style="color:var(--muted)">Il super-admin non si modifica né si elimina da qui.</p>'; legaScrivi(); return; }
+    Z.innerHTML = sc + '<button type="button" class="btn ruolo-b">' + (u.ruolo === 'admin' ? 'Togli admin' : 'Rendi admin') + '</button><button type="button" class="btn del">Elimina account</button><p class="err" role="alert"></p>';
+    const e = $('.err', Z); legaScrivi();
     $('.ruolo-b', Z).addEventListener('click', async ev => {
       const b = ev.currentTarget; b.disabled = true; e.textContent = '';
       try { await serv.ruolo(u.id, u.ruolo === 'admin' ? '' : 'admin'); aperto = null; await mostraAdmin(); }

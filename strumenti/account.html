@@ -86,6 +86,12 @@
 .foto-az button[disabled]{opacity:.5;cursor:default}
 .foto-az button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .foto-az .err{flex-basis:100%;min-height:0;margin:2px 2px 0}
+.foto-az .f-nome[hidden]{display:none}
+.nome-box{margin:-6px 0 16px;background:var(--sheet);border:1px solid var(--line);border-radius:16px;padding:14px}
+.nome-box[hidden]{display:none}
+.nome-box .err{margin:6px 0 4px;min-height:0}
+.nome-box .azioni{display:flex;gap:8px;flex-wrap:wrap}
+.ok-nome{margin:-8px 0 14px;font-size:.86rem;font-weight:600;color:var(--green)}
 /* termini di servizio (testo in comune tra pagina iniziale e registrazione) */
 .tos-testo{font-size:.82rem;line-height:1.45;color:var(--muted)}
 .tos-testo ul{margin:0;padding:0 0 0 18px;display:grid;gap:5px}
@@ -165,6 +171,29 @@ body.acc-aperto{overflow:hidden}
 .occhio:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 .occhio svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .occhio[aria-pressed="true"]{color:var(--blue)}
+/* messaggi e annunci degli amministratori (1.6): in primo piano, si chiudono solo con OK */
+.avv-velo{position:fixed;inset:0;z-index:95;display:grid;place-items:center;box-sizing:border-box;padding:max(16px,env(safe-area-inset-top,0px)) 16px max(16px,env(safe-area-inset-bottom,0px));background:rgba(6,17,27,.58);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);animation:avv-in .2s ease-out}
+.avv-velo.via{opacity:0;transition:opacity .18s}
+.avv{width:min(440px,100%);max-height:100%;overflow:auto;box-sizing:border-box;background:var(--sheet);color:var(--ink);border:1px solid var(--line);border-top:5px solid var(--blue);border-radius:20px;padding:16px 18px 16px;box-shadow:0 24px 60px rgba(6,17,27,.35);animation:avv-su .22s ease-out}
+.avv.ann{border-top-color:var(--racing)}
+.avv-top{display:flex;align-items:center;gap:8px;margin:0 0 14px}
+.avv-tag{display:inline-block;padding:5px 10px;border-radius:999px;font:700 .76rem/1 var(--f-body);letter-spacing:.03em;text-transform:uppercase;background:color-mix(in srgb,var(--blue) 14%,var(--sheet));color:var(--blue)}
+.avv.ann .avv-tag{background:var(--racing);color:var(--on-racing);box-shadow:inset 0 0 0 1px var(--racing-bd)}
+.avv-n{margin-left:auto;font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.avv-da{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+.avv-da .av{position:relative;flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;overflow:hidden;background:var(--chip);color:var(--muted);font:700 1rem/1 var(--f-body);text-transform:uppercase}
+.avv-da .av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
+.avv-da .av.sa{background:var(--racing);color:var(--on-racing)}
+.avv-da .av.ad{background:var(--blue);color:var(--sheet)}
+.avv-chi{display:grid;gap:2px;min-width:0}
+.avv-chi b{font:700 .95rem/1.25 var(--f-body);overflow-wrap:anywhere}
+.avv-chi time{font-size:.78rem;color:var(--muted)}
+.avv-txt{margin:0 0 18px;font-size:1.02rem;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+.avv .avv-ok{width:100%;min-height:48px;font-size:1rem}
+body.avv-aperto{overflow:hidden}
+@keyframes avv-in{from{opacity:0}to{opacity:1}}
+@keyframes avv-su{from{transform:translateY(14px) scale(.98)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.avv-velo,.avv{animation:none}.avv-velo.via{transition:none}}
 </style>
 <script>
 (function(){
@@ -188,6 +217,7 @@ body.acc-aperto{overflow:hidden}
     cam: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.6-2.4h6.8L17 8h3v11H4z"/><circle cx="12" cy="13.2" r="3.6"/></svg>',
     img: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="m4 17 5-4.5 3.5 3 3-2.5 4.5 4"/></svg>',
     via: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12"/></svg>',
+    penna: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>',
     occhio: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg>',
     occhioNo: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.6 5.6c.5-.1.9-.1 1.4-.1 6 0 9.5 6.5 9.5 6.5a17 17 0 0 1-2.6 3.4M6.6 6.6C4 8.3 2.5 12 2.5 12S6 18.5 12 18.5c1.9 0 3.5-.6 4.9-1.5"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/><path d="M3.5 3.5l17 17"/></svg>'
   };
@@ -197,15 +227,16 @@ body.acc-aperto{overflow:hidden}
   const TERMINI = '<div class="tos-testo"><ul>' +
     '<li><b>Cos\'è.</b> App gratuita di studio con gli appunti per il patentino nautico. Può contenere errori: non sostituisce i testi ufficiali né l\'istruttore.</li>' +
     '<li><b>Accesso.</b> Per usare l\'app serve un account. Per crearlo serve il codice d\'accesso, che danno gli amministratori.</li>' +
-    '<li><b>Con l\'account</b> si salvano nome utente, password (cifrata), foto del profilo se la metti e argomenti segnati come letti. Nessuna email.</li>' +
-    '<li><b>Registro degli accessi.</b> Per sicurezza e contro gli abusi, quando usi l\'app si registrano data e ora, indirizzo IP e dispositivo (modello, sistema e browser, se il telefono li comunica). Li vede solo il super-admin; gli admin vedono solo nome e foto.</li>' +
+    '<li><b>Con l\'account</b> si salvano nome utente, password (cifrata), foto del profilo se la metti e argomenti segnati come letti. Nessuna email. Il nome utente si può cambiare dal profilo: i nomi usati prima restano registrati e li vede solo il super-admin.</li>' +
+    '<li><b>Registro degli accessi.</b> Per sicurezza e contro gli abusi, quando usi l\'app si registrano data e ora, indirizzo IP e dispositivo (modello, sistema e browser, se il telefono li comunica, più un codice casuale salvato nell\'app per riconoscere lo stesso dispositivo). Li vede solo il super-admin; gli admin vedono solo nome e foto.</li>' +
     '<li><b>Quanto restano.</b> Gli accessi si cancellano da soli dopo 6 mesi. Un account non usato per 12 mesi viene cancellato con tutti i suoi dati.</li>' +
     '<li><b>I tuoi diritti.</b> Puoi eliminare l\'account quando vuoi dal profilo: si cancella tutto. Per altre richieste scrivi in Segnalazioni e feedback.</li>' +
     '<li><b>Segnalazioni</b>: le legge solo il super-admin; puoi inviarle anche anonime.</li>' +
+    '<li><b>Messaggi e annunci.</b> Gli amministratori possono mandarti messaggi o annunci, che compaiono in primo piano finché non premi OK; chi li ha inviati vede se li hai letti. Si cancellano dopo 12 mesi.</li>' +
     '<li><b>Traduttore Gemini</b>: il testo che invii passa a Google per la traduzione, quindi non scriverci dati personali. Riservato a chi ha almeno 18 anni.</li>' +
     '<li><b>Sul telefono</b> l\'app salva solo ciò che le serve (accesso, preferenze, audio ascoltati): niente pubblicità né cookie di profilazione.</li>' +
     '<li><b>Servizi usati</b>: GitHub Pages (sito), Supabase (account e dati), Google Gemini (traduttore).</li>' +
-    '</ul><p>Titolare: l\'amministratore dell\'app (Gabrydl). Aggiornati il 27/10/2026.</p></div>';
+    '</ul><p>Titolare: l\'amministratore dell\'app (Gabrydl). Aggiornati il 05/11/2026.</p></div>';
 
   /* ---------- sessione ---------- */
   const sess = () => mem.get('qp-sessione');
@@ -271,6 +302,24 @@ body.acc-aperto{overflow:hidden}
     daRisposta(j); await prog.scarica(); emetti(); battito.avvia();
   }
   function avvia(s){ mem.set('qp-sessione', s); prog.leggi(); emetti(); }
+  /* cambia il nome utente (e quindi il nome con cui si entra): il database tiene il registro dei nomi precedenti */
+  async function cambiaNome(nuovo){
+    nuovo = (nuovo || '').trim();
+    const s = sess(); if (!s) throw new Error('fuori');
+    if (!NOME_OK.test(nuovo)) throw new Error('Da 3 a 20 caratteri: lettere, numeri, punto, trattino o trattino basso (niente spazi).');
+    if (nuovo === s.nome) return;
+    if (s.demo) {
+      const n = mem.get('qp-demo-nomi') || {}, k = nuovo.toLowerCase();
+      if (k !== s.nome.toLowerCase() && n[k]) throw new Error('Questo nome utente è già preso: scegline un altro.');
+      delete n[s.nome.toLowerCase()]; n[k] = nuovo; mem.set('qp-demo-nomi', n);
+      const lg = mem.get('qp-demo-nomi-log') || []; lg.unshift({utente: s.id, vecchio: s.nome, nuovo, quando: new Date().toISOString()}); mem.set('qp-demo-nomi-log', lg);
+    } else {
+      if (!navigator.onLine) throw new Error('Serve internet per cambiare il nome.');
+      await rpc('cambia_nome', {nuovo});
+    }
+    const s2 = sess(); if (s2) { s2.nome = nuovo; mem.set('qp-sessione', s2); }
+    emetti();
+  }
   /* elimina per sempre l'account e i suoi progressi (funzione elimina_account sul database) */
   async function eliminaAccount(){
     const s = sess(); if (!s) return;
@@ -287,7 +336,7 @@ body.acc-aperto{overflow:hidden}
   async function esci(){
     const s = sess();
     if (s && !s.demo && navigator.onLine) { try { await fetch(CFG.url + '/auth/v1/logout', {method: 'POST', headers: H(s.access)}); } catch (e) {} }
-    battito.ferma(); mem.del('qp-sessione'); prog.leggi(); emetti();
+    battito.ferma(); avvisi.chiudi(); mem.del('qp-sessione'); prog.leggi(); emetti();
   }
 
   /* ---------- rpc sul database (funzioni che controllano chi le chiama) ---------- */
@@ -297,6 +346,16 @@ body.acc-aperto{overflow:hidden}
     const j = await r.json().catch(() => null);
     if (!r.ok) throw new Error((j && j.message) || ('rpc ' + r.status));
     return j;
+  }
+
+  /* ---------- codice casuale di questo dispositivo (resta nell'app): serve a unire gli accessi dello stesso telefono ---------- */
+  function idDispositivo(){
+    let d = mem.get('qp-dispositivo');
+    if (typeof d !== 'string' || !/^[A-Za-z0-9-]{8,40}$/.test(d)) {
+      d = (crypto.randomUUID ? crypto.randomUUID() : Array.from(crypto.getRandomValues(new Uint8Array(16)), b => b.toString(16).padStart(2, '0')).join(''));
+      mem.set('qp-dispositivo', d);
+    }
+    return d;
   }
 
   /* ---------- dispositivo: modello (se il telefono lo comunica), sistema e browser ---------- */
@@ -328,7 +387,7 @@ body.acc-aperto{overflow:hidden}
     }
     if (!modello && (m = ua.match(/Android [\d.]+; ([^;)]+)\)/)) && m[1] !== 'K') modello = m[1].replace(/\s*Build\/.*$/, '').trim();
     if (matchMedia('(display-mode: standalone)').matches) browser += (browser ? ' · ' : '') + 'app installata';
-    return {modello: modello.slice(0, 60), sistema: sistema.slice(0, 40), browser: browser.slice(0, 40)};
+    return {modello: modello.slice(0, 60), sistema: sistema.slice(0, 40), browser: browser.slice(0, 40), dispositivo: idDispositivo()};
   }
 
   /* ---------- segnale: "in linea" e registro degli accessi (solo con l'account, ogni minuto mentre l'app è aperta) ---------- */
@@ -342,6 +401,7 @@ body.acc-aperto{overflow:hidden}
         const j = await rpc('segnale', {d: Object.assign({}, this.disp, prima ? {foto: '1'} : {})});
         this.prima = false;
         const s2 = sess(); if (!s2 || !j) return;
+        avvisi.arriva(j.messaggi || []);
         let cambia = false;
         if ((j.ruolo || '') !== ruoloDi(s2)) { s2.ruolo = j.ruolo || ''; delete s2.admin; mem.set('qp-sessione', s2); cambia = true; }
         if (prima && 'foto' in j && (j.foto || null) !== foto.mia()) { foto.metti(j.foto || null); cambia = true; }
@@ -391,6 +451,62 @@ body.acc-aperto{overflow:hidden}
     else el.textContent = (nome || '?').charAt(0);
     el.classList.toggle('sa', r === 'superadmin'); el.classList.toggle('ad', r === 'admin');
   }
+
+  /* ---------- messaggi e annunci dagli amministratori (1.6) ----------
+     arrivano con il segnale (all'apertura e ogni minuto); restano in primo piano finché non si preme OK.
+     Se OK si preme senza rete, l'id resta qui e la conferma si riprova al segnale dopo. */
+  const avvisi = {
+    coda: [], ora: null, el: null, prima: null,
+    k(){ const s = sess(); return s ? 'qp-msg-ok-' + s.id : null; },
+    arriva(l){
+      if (!Array.isArray(l) || !sess()) return;
+      const k = this.k(), ids = new Set(l.map(m => m && m.id)), f = new Set((mem.get(k) || []).filter(i => ids.has(i)));
+      mem.set(k, [...f]);
+      l.forEach(m => {
+        if (!m || m.id == null) return;
+        if (f.has(m.id)) { rpc('conferma_messaggio', {chi: m.id}).catch(() => {}); return; }
+        if ((this.ora && this.ora.id === m.id) || this.coda.some(x => x.id === m.id)) return;
+        this.coda.push(m);
+      });
+      this.mostra();
+    },
+    mostra(){
+      if (this.ora || !this.coda.length || !sess()) { this.conta(); return; }
+      const m = this.ora = this.coda.shift();
+      this.prima = document.activeElement;
+      const d = this.el = document.createElement('div'); d.className = 'avv-velo';
+      d.innerHTML = '<div class="avv' + (m.annuncio ? ' ann' : '') + '" role="alertdialog" aria-modal="true" aria-labelledby="avv-tag" aria-describedby="avv-txt">' +
+        '<div class="avv-top"><span class="avv-tag" id="avv-tag"></span><span class="avv-n"></span></div>' +
+        '<div class="avv-da"><span class="av"></span><span class="avv-chi"><b></b><time></time></span></div>' +
+        '<p class="avv-txt" id="avv-txt"></p><button type="button" class="btn pri avv-ok">OK</button></div>';
+      $('.avv-tag', d).textContent = m.annuncio ? 'Annuncio' : 'Messaggio per te';
+      avatar($('.av', d), m.da, m.foto_da, m.ruolo_da || '');
+      $('.avv-chi b', d).textContent = 'Da ' + (m.da || 'amministratore');
+      if (m.ruolo_da) { const b = document.createElement('span'); b.className = 'badge' + (m.ruolo_da === 'superadmin' ? ' sa' : ''); b.textContent = NOME_RUOLO[m.ruolo_da] || m.ruolo_da; $('.avv-chi b', d).append(b); }
+      const t = $('time', d); t.dateTime = m.creato || ''; t.textContent = m.creato ? new Date(m.creato).toLocaleString('it-IT', {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'}) : '';
+      $('.avv-txt', d).textContent = m.testo || '';
+      const ok = $('.avv-ok', d);
+      ok.addEventListener('click', () => this.ok());
+      d.addEventListener('keydown', e => { if (e.key === 'Tab') { e.preventDefault(); ok.focus(); } });
+      document.body.append(d); document.body.classList.add('avv-aperto');
+      this.conta(); ok.focus();
+    },
+    conta(){ if (this.el) $('.avv-n', this.el).textContent = this.coda.length ? 'altri ' + this.coda.length : ''; },
+    ok(){
+      const m = this.ora; if (!m) return;
+      const k = this.k(); if (k) { const f = new Set(mem.get(k) || []); f.add(m.id); mem.set(k, [...f]); }
+      rpc('conferma_messaggio', {chi: m.id}).then(() => { const f = (mem.get(k) || []).filter(i => i !== m.id); mem.set(k, f); }).catch(() => {});
+      this.togli();
+      if (this.coda.length) setTimeout(() => this.mostra(), 220);
+      else if (this.prima && this.prima.focus && document.contains(this.prima)) { try { this.prima.focus(); } catch (e) {} }
+    },
+    togli(){
+      const e = this.el; this.el = null; this.ora = null;
+      if (e) { e.classList.add('via'); setTimeout(() => e.remove(), 190); }
+      document.body.classList.remove('avv-aperto');
+    },
+    chiudi(){ this.coda = []; this.togli(); }
+  };
 
   /* ---------- argomenti letti ---------- */
   const prog = {
@@ -470,7 +586,7 @@ body.acc-aperto{overflow:hidden}
   P.innerHTML = '<div class="acc-bar"><button type="button" class="x" aria-label="Chiudi il profilo">' + ICO.x + '</button><h2 id="acc-t">Profilo</h2></div><div class="acc-body"><div class="acc-in"></div></div>';
   document.body.append(P);
   const PI = $('.acc-in', P);
-  let avviso = '', scheda = 'entra';
+  let avviso = '', scheda = 'entra', nomeOk = '';
   $('.x', P).addEventListener('click', chiudi);
   function apri(){ if (!sess()) return; if (location.hash !== '#profilo') location.hash = 'profilo'; else disegna(); }
   function chiudi(){ if (history.length > 1 && location.hash === '#profilo') history.back(); else location.hash = ''; }
@@ -483,11 +599,14 @@ body.acc-aperto{overflow:hidden}
     PI.innerHTML = (DEMO ? '<p class="demo"><b>Anteprima</b>: i progressi e la foto restano su questo telefono.</p>' : '') +
       '<div class="ciao"><span class="av io"></span><div><h3></h3><p></p></div></div>' +
       '<div class="foto-az" role="group" aria-label="Foto del profilo"><button type="button" class="f-cam">' + ICO.cam + 'Scatta foto</button><button type="button" class="f-gal">' + ICO.img + 'Galleria</button>' +
-      (mia ? '<button type="button" class="via f-via">' + ICO.via + 'Togli</button>' : '') + '<p class="err" role="alert"></p>' +
+      (mia ? '<button type="button" class="via f-via">' + ICO.via + 'Togli</button>' : '') + '<button type="button" class="f-nome" aria-expanded="false" aria-controls="nome-box">' + ICO.penna + 'Cambia nome</button><p class="err" role="alert"></p>' +
       '<input type="file" accept="image/*" capture="user" class="f-in-cam" hidden><input type="file" accept="image/*" class="f-in-gal" hidden></div>' +
+      '<form class="nome-box" id="nome-box" hidden novalidate><label class="fl" for="nome-n">Nuovo nome utente</label><input class="in" id="nome-n" maxlength="20" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">' +
+      '<p class="aiuto">Da 3 a 20 caratteri: lettere, numeri, punto, trattino o trattino basso. Da ora entrerai con il nuovo nome, la password resta la stessa.</p><p class="err" role="alert"></p>' +
+      '<div class="azioni"><button type="submit" class="btn pri">Salva</button><button type="button" class="btn n-no">Annulla</button></div></form>' + (nomeOk ? '<p class="ok-nome" role="status"></p>' : '') +
       '<div class="tot"><div class="tot-n"><b>' + p + '%</b><span>' + n + ' argomenti letti su ' + t + '</span></div><span class="bar' + (p === 100 ? ' ok' : '') + '" role="progressbar" aria-label="Avanzamento totale" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + p + '"><i style="width:' + p + '%"></i></span></div>' +
-      (r === 'superadmin' ? '<div class="adm-box sa"><p><b>Area super-admin</b>Utenti, accessi, segnalazioni e codice' + (window.QP.nuove ? ' · ' + window.QP.nuove + ' da leggere' : '') + '</p><button type="button" class="btn adm-go">Apri</button></div>' :
-       r === 'admin' ? '<div class="adm-box"><p><b>Area admin</b>Utenti registrati e codice d\'accesso</p><button type="button" class="btn adm-go">Apri</button></div>' : '') +
+      (r === 'superadmin' ? '<div class="adm-box sa"><p><b>Area super-admin</b>Utenti, accessi, segnalazioni, messaggi e codice' + (window.QP.nuove ? ' · ' + window.QP.nuove + ' da leggere' : '') + '</p><button type="button" class="btn adm-go">Apri</button></div>' :
+       r === 'admin' ? '<div class="adm-box"><p><b>Area admin</b>Utenti, messaggi e codice d\'accesso</p><button type="button" class="btn adm-go">Apri</button></div>' : '') +
       '<h4>Capitoli</h4><ul class="cap"></ul>' +
       '<button type="button" class="btn largo esci">Esci</button>' +
       (r === 'superadmin' ? '' : '<button type="button" class="elimina" aria-expanded="false" aria-controls="del-box">Elimina l\'account</button>' +
@@ -507,6 +626,20 @@ body.acc-aperto{overflow:hidden}
       try { await foto.salva(await foto.riduci(f)); }
       catch (x) { fe.textContent = x.message === 'fuori' ? 'Accesso scaduto: rientra e riprova.' : (x.message || 'Non sono riuscito a salvare la foto.'); fa.querySelectorAll('button').forEach(b => { b.disabled = false; }); }
     }));
+    /* nome utente: modulo che si apre sotto i tasti */
+    const fn = $('.f-nome', fa), nb = $('#nome-box', PI), ni = $('#nome-n', nb), ne = $('.err', nb);
+    if (nomeOk) { $('.ok-nome', PI).textContent = nomeOk; nomeOk = ''; }
+    fn.addEventListener('click', () => { nb.hidden = false; fn.setAttribute('aria-expanded', 'true'); fn.hidden = true; ni.value = s.nome; ni.focus(); ni.select(); });
+    $('.n-no', nb).addEventListener('click', () => { nb.hidden = true; fn.hidden = false; fn.setAttribute('aria-expanded', 'false'); ne.textContent = ''; fn.focus(); });
+    ni.addEventListener('input', () => { ne.textContent = ''; });
+    nb.addEventListener('submit', async ev => {
+      ev.preventDefault(); ne.textContent = '';
+      const v = ni.value.trim(), b = $('button[type=submit]', nb);
+      if (v === s.nome) { $('.n-no', nb).click(); return; }
+      b.disabled = true; b.textContent = 'Salvo…';
+      try { await cambiaNome(v); nomeOk = 'Nome cambiato: da ora entri come ' + v + '.'; disegna(); }
+      catch (x) { ne.textContent = x.message === 'fuori' ? 'Accesso scaduto: rientra e riprova.' : (x.message || 'Non sono riuscito a cambiare il nome.'); b.disabled = false; b.textContent = 'Salva'; ni.focus(); }
+    });
     const fv = $('.f-via', fa);
     if (fv) fv.addEventListener('click', async () => {
       fe.textContent = ''; fv.disabled = true;
@@ -648,7 +781,7 @@ body.acc-aperto{overflow:hidden}
     admin: () => ruolo() === 'admin' || ruolo() === 'superadmin',       // può aprire l'area admin (utenti)
     superadmin: () => ruolo() === 'superadmin',                           // accessi, segnalazioni, elimina account
     nome: () => { const s = sess(); return s ? s.nome : ''; },
-    on: f => subs.push(f), apriProfilo: apri, nuove: 0, ridisegna: () => { if (!P.hidden) disegna(); }, CODICE_DEMO};
+    on: f => subs.push(f), apriProfilo: apri, cambiaNome, nuove: 0, ridisegna: () => { if (!P.hidden) disegna(); }, CODICE_DEMO};
 
   aggiorna(); rotta();
   if (sess() && !DEMO) { prog.scarica().then(aggiorna); battito.avvia(); }

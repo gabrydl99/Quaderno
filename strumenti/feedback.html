@@ -6,7 +6,7 @@
 .fb-card .n{display:block;font:700 1.05rem/1.25 var(--f-body);color:var(--ink)}
 .fb-card .d{display:block;font-size:.84rem;line-height:1.35;color:var(--muted)}
 .fb-adm{display:flex;align-items:center;gap:8px;border-top:1px solid var(--line);font:600 .88rem/1.2 var(--f-body);color:var(--ink);padding-block:10px}
-.fb-adm .cnt{margin-left:auto;min-width:22px;height:22px;padding:0 7px;box-sizing:border-box;border-radius:999px;background:var(--acc);color:var(--on-acc,#fff);font:700 .78rem/22px var(--f-body);text-align:center}
+.fb-adm .cnt{margin-left:auto;min-width:22px;height:22px;padding:0 7px;box-sizing:border-box;border-radius:999px;background:var(--red);color:var(--sheet);font:700 .78rem/22px var(--f-body);text-align:center;font-variant-numeric:tabular-nums}
 .fb-adm.sa svg{color:var(--racing-bd)}
 .fb-adm .cnt[hidden]{display:none}
 .fb-card:focus-visible,.fb-adm:focus-visible{outline:2px solid var(--blue);outline-offset:-3px}
@@ -75,6 +75,33 @@ textarea.in{min-height:150px;resize:vertical;line-height:1.5}
 .msg-arg:focus-visible{outline:2px solid var(--blue)}
 .msg-arg.nolink{cursor:default;color:var(--muted)}
 .msg-txt{margin:0 0 8px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5;color:var(--ink)}
+/* allegati delle segnalazioni (1.01.00) */
+.all-l{display:grid;gap:6px;margin:0 0 8px}
+.all-l:empty{display:none}
+.all-i{display:flex;align-items:center;gap:8px;min-width:0;padding:6px 6px 6px 10px;border:1px solid var(--line);border-radius:10px;background:var(--sheet);font-size:.86rem;color:var(--ink)}
+.all-i .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.all-i .dim{flex:none;font-size:.76rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.all-i img{flex:none;width:34px;height:34px;object-fit:cover;border-radius:6px;background:var(--chip)}
+.all-i button{all:unset;flex:none;cursor:pointer;display:grid;place-items:center;width:30px;height:30px;border-radius:8px;color:var(--muted)}
+.all-i button:hover{background:var(--chip);color:var(--ink)}
+.all-i button:focus-visible{outline:2px solid var(--blue)}
+.all-i svg,.all-az svg,.msg-all svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.all-az{display:flex;flex-wrap:wrap;gap:8px}
+.all-az button{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--sheet);font:600 .86rem/1 var(--f-body);color:var(--ink)}
+.all-az button:focus-visible{outline:2px solid var(--blue)}
+.all-az button[disabled]{opacity:.45;cursor:default}
+.all-nota{margin:6px 0 0;font-size:.78rem;line-height:1.4;color:var(--muted)}
+.msg-all{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px}
+.msg-all button{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:6px;max-width:100%;padding:5px 10px 5px 5px;border-radius:10px;border:1px solid var(--line);background:var(--paper);font:600 .8rem/1.2 var(--f-body);color:var(--blue)}
+.msg-all button span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.msg-all button:focus-visible{outline:2px solid var(--blue)}
+.msg-all .th{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:7px;overflow:hidden;background:var(--chip);color:var(--muted)}
+.msg-all .th img{width:100%;height:100%;object-fit:cover}
+/* annuncio anonimo (1.01.00) */
+.msg-n .anon{display:flex;align-items:flex-start;gap:8px;font-size:.86rem;line-height:1.35;color:var(--ink);cursor:pointer}
+.msg-n .anon[hidden]{display:none}
+.msg-n .anon input{margin:1px 0 0;width:18px;height:18px;accent-color:var(--blue);flex:none}
+.msg-n .anon small{display:block;color:var(--muted);font-size:.78rem}
 .msg-bot{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
 .msg-bot{justify-content:flex-end}
 .msg-bot .chi{flex:1 1 100%;margin:0 0 2px}
@@ -86,12 +113,14 @@ textarea.in{min-height:150px;resize:vertical;line-height:1.5}
 
 /* area admin: utenti (admin: nome e foto; super-admin: tutto), accessi, segnalazioni */
 .adm-bar h2 small.sa{display:block;width:max-content;margin-top:3px;padding:2px 8px;border-radius:999px;background:var(--racing);color:var(--on-racing);box-shadow:inset 0 0 0 1px var(--racing-bd)}
-.adm-tabs{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:4px;padding:4px;margin:0 0 14px;border-radius:999px;background:var(--chip)}
-.adm-tabs button{all:unset;box-sizing:border-box;cursor:pointer;text-align:center;padding:9px 4px;border-radius:999px;font:600 .86rem/1 var(--f-body);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adm-tabs{display:flex;gap:3px;padding:3px;margin:0 0 14px;border-radius:999px;background:var(--chip);overflow-x:auto;scrollbar-width:none}
+.adm-tabs::-webkit-scrollbar{display:none}
+.adm-tabs button{all:unset;box-sizing:border-box;flex:1 1 auto;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:8px 9px;border-radius:999px;font:600 .82rem/1 var(--f-body);color:var(--muted);white-space:nowrap}
 .adm-tabs button[aria-selected="true"]{background:var(--sheet);color:var(--ink);box-shadow:0 1px 4px rgba(6,17,27,.12)}
 .adm-tabs button:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
-.adm-tabs .n{font-variant-numeric:tabular-nums}
-.adm-tabs.t4 button{padding:9px 2px;font-size:.8rem}
+/* 4 schede (super-admin): più strette, così sul telefono si leggono tutte (1.01.00) */
+.adm-tabs.t4 button{padding:8px 6px;font-size:.76rem;letter-spacing:-.01em}
+@media (max-width:360px){.adm-tabs.t4 button{padding:8px 4px;font-size:.71rem}.adm-tabs.t4 .qp-n{min-width:16px;height:16px;padding:0 4px;font-size:.62rem}}
 /* messaggi e annunci (1.6) */
 .msg-n{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:12px 14px 14px;margin:0 0 16px;display:grid;gap:8px}
 .msg-n h3{margin:0 0 2px;font:700 1rem/1.25 var(--f-body);color:var(--ink)}
@@ -235,7 +264,10 @@ body.fb-aperto{overflow:hidden}
     flag: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4.5h11.5l-2.2 4 2.2 4H5"/></svg>',
     x: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
     ok: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
-    lock: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg>'
+    lock: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg>',
+    cam: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5h3l1.6-2.5h6.8L17 8.5h3v10.5H4z"/><circle cx="12" cy="13.5" r="3.3"/></svg>',
+    clip: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 11.5l-6.6 6.6a4.2 4.2 0 0 1-6-6l7-7a2.8 2.8 0 0 1 4 4l-7 7a1.4 1.4 0 0 1-2-2l6.3-6.3"/></svg>',
+    doc: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4"/></svg>'
   };
 
   /* ---------- servizio: Supabase vero oppure anteprima sul telefono ---------- */
@@ -265,6 +297,52 @@ body.fb-aperto{overflow:hidden}
     }
   };
   const api = (metodo, q, corpo) => QP.rest('segnalazioni', metodo, q, corpo);
+
+  /* ---------- allegati (1.01.00): bucket privato "allegati" su Supabase, cartella = id di chi invia;
+     li apre solo il super-admin (link firmato di 10 minuti). Le foto si rimpiccioliscono prima dell'invio. ---------- */
+  const MAX_ALL = 3, MAX_MB = 10;
+  const TIPI_OK = /^(image\/(jpeg|png|webp|gif|heic|heif)|application\/(pdf|msword|vnd\.openxmlformats-officedocument\.(wordprocessingml\.document|spreadsheetml\.sheet|presentationml\.presentation)|vnd\.ms-excel|vnd\.ms-powerpoint)|text\/plain|audio\/(mpeg|mp4|x-m4a|aac|ogg|wav)|video\/(mp4|quicktime))$/;
+  const EST = {pdf: 'application/pdf', txt: 'text/plain', doc: 'application/msword', docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    xls: 'application/vnd.ms-excel', xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', ppt: 'application/vnd.ms-powerpoint',
+    pptx: 'application/vnd.openxmlformats-officedocument.presentationml.presentation', jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', webp: 'image/webp',
+    gif: 'image/gif', heic: 'image/heic', heif: 'image/heif', mp3: 'audio/mpeg', m4a: 'audio/mp4', aac: 'audio/aac', ogg: 'audio/ogg', wav: 'audio/wav', mp4: 'video/mp4', mov: 'video/quicktime'};
+  const tipoDi = f => { const t = (f.type || '').toLowerCase(); return TIPI_OK.test(t) ? t : (EST[(f.name.split('.').pop() || '').toLowerCase()] || t); };
+  const peso = n => n < 1024 * 1024 ? Math.max(1, Math.round(n / 1024)) + ' KB' : (n / 1048576).toFixed(1).replace('.', ',') + ' MB';
+  const pulito = n => (n.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-Za-z0-9._-]+/g, '_').replace(/^_+|_+$/g, '') || 'file').slice(-80);
+  /* foto grandi → JPEG lato lungo 1920 px; se il telefono non sa leggerla (es. HEIC su Android) resta com'è */
+  async function rimpicciolisci(f, tipo){
+    if (!/^image\/(jpeg|png|webp|heic|heif)$/.test(tipo) || f.size < 400 * 1024) return {file: f, tipo};
+    try {
+      const img = await createImageBitmap(f), k = Math.min(1, 1920 / Math.max(img.width, img.height));
+      const c = document.createElement('canvas'); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); if (img.close) img.close();
+      const b = await new Promise(r => c.toBlob(r, 'image/jpeg', .82));
+      if (b && b.size < f.size) return {file: b, tipo: 'image/jpeg', nome: f.name.replace(/\.[^.]+$/, '') + '.jpg'};
+    } catch (e) {}
+    return {file: f, tipo};
+  }
+  const STO = () => CFG.url + '/storage/v1/object';
+  const allegati = {
+    async carica(a, uid){
+      const path = uid + '/' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6) + '-' + pulito(a.nome);
+      if (DEMO) return {path: 'demo/' + path, nome: a.nome, tipo: a.tipo, dim: a.file.size};
+      const r = await fetch(STO() + '/allegati/' + path, {method: 'POST', body: a.file,
+        headers: {apikey: CFG.chiave, Authorization: 'Bearer ' + await QP.token(), 'Content-Type': a.tipo, 'x-upsert': 'false'}});
+      if (!r.ok) throw new Error('allegato ' + r.status);
+      return {path, nome: a.nome.slice(0, 120), tipo: a.tipo, dim: a.file.size};
+    },
+    async link(path){
+      if (DEMO) return '';
+      const r = await fetch(STO() + '/sign/allegati/' + path, {method: 'POST', headers: H(await QP.token()), body: JSON.stringify({expiresIn: 600})});
+      if (!r.ok) throw new Error('link ' + r.status);
+      const j = await r.json(), u = j.signedURL || j.signedUrl || '';
+      return /^https?:/.test(u) ? u : CFG.url + '/storage/v1' + u;
+    },
+    async elimina(paths){
+      if (DEMO || !paths.length) return;
+      await fetch(STO() + '/allegati', {method: 'DELETE', headers: H(await QP.token()), body: JSON.stringify({prefixes: paths})}).catch(() => {});
+    }
+  };
   const admin = QP.superadmin;                        // le segnalazioni le legge solo il super-admin
 
   /* ---------- coda: se manca internet (o l'accesso è scaduto) il messaggio parte dopo; una coda per account ---------- */
@@ -338,8 +416,12 @@ body.fb-aperto{overflow:hidden}
     '<fieldset class="campo"><legend class="fl">Di che si tratta?</legend><div class="tipo">' +
     TIPI.map(([v, t], i) => '<label><input type="radio" name="tipo" value="' + v + '"' + (i ? '' : ' checked') + '><span>' + t + '</span></label>').join('') + '</div></fieldset>' +
     '<div class="campo"><label class="fl" for="fb-arg">Argomento <small>(facoltativo)</small></label><input class="in" id="fb-arg" maxlength="160" placeholder="Es. Stabilità › Altezza metacentrica" autocomplete="off"></div>' +
-    '<div class="campo"><label class="fl" for="fb-txt">Messaggio</label><textarea class="in" id="fb-txt" maxlength="' + MAX + '" placeholder="Scrivi qui cosa hai trovato o cosa miglioreresti." aria-describedby="fb-aiuto"></textarea>' +
+    '<div class="campo"><label class="fl" for="fb-txt">Messaggio</label><textarea class="in" id="fb-txt" maxlength="' + MAX + '" placeholder="Scrivi qui cosa hai trovato o cosa miglioreresti. Puoi anche allegare foto o file qui sotto." aria-describedby="fb-aiuto"></textarea>' +
     '<div class="aiuto" id="fb-aiuto"><span class="err" id="fb-err" role="alert"></span><span id="fb-cnt">0 / ' + MAX + '</span></div></div>' +
+    '<div class="campo all"><span class="fl" id="fb-all-t">Foto e file <small>(facoltativo, fino a ' + MAX_ALL + ')</small></span><div class="all-l" aria-labelledby="fb-all-t"></div>' +
+    '<div class="all-az"><button type="button" class="all-cam">' + ICO.cam + 'Scatta foto</button><button type="button" class="all-sc">' + ICO.clip + 'Allega foto o file</button></div>' +
+    '<input type="file" accept="image/*" capture="environment" class="all-in-cam" hidden><input type="file" multiple class="all-in" hidden>' +
+    '<p class="all-nota">Foto, PDF, Word, Excel, PowerPoint, audio o video fino a ' + MAX_MB + ' MB ciascuno. Per inviarli serve internet.</p></div>' +
     '<div class="campo"><label class="fl" for="fb-nome">Nome <small>(facoltativo)</small></label><input class="in" id="fb-nome" maxlength="60" autocomplete="name" placeholder="Lascia vuoto per restare anonimo"></div>' +
     '<div class="trappola" aria-hidden="true"><label>Sito <input id="fb-sito" tabindex="-1" autocomplete="off"></label></div>' +
     '<div class="azioni"><button type="submit" class="btn pri">Invia</button><button type="button" class="btn annulla">Annulla</button></div>' +
@@ -347,11 +429,41 @@ body.fb-aperto{overflow:hidden}
     '</form><div class="esito" hidden></div></div></div>';
   document.body.append(velo, P);
   const F = $('form', P), txt = $('#fb-txt', P), err = $('#fb-err', P), cnt = $('#fb-cnt', P), esito = $('.esito', P);
-  let rif = '', prima = null;
+  let rif = '', prima = null, scelti = [];
+  const AL = $('.all-l', P), bCam = $('.all-cam', P), bSc = $('.all-sc', P);
+  function disegnaScelti(){
+    AL.innerHTML = '';
+    scelti.forEach((a, i) => {
+      const r = document.createElement('div'); r.className = 'all-i';
+      if (a.anteprima) { const im = document.createElement('img'); im.src = a.anteprima; im.alt = ''; r.append(im); } else r.insertAdjacentHTML('beforeend', ICO.doc);
+      r.insertAdjacentHTML('beforeend', '<span class="nm"></span><span class="dim"></span><button type="button">' + ICO.x + '</button>');
+      $('.nm', r).textContent = a.nome; $('.dim', r).textContent = peso(a.file.size);
+      const x = $('button', r); x.setAttribute('aria-label', 'Togli ' + a.nome);
+      x.addEventListener('click', () => { if (a.anteprima) URL.revokeObjectURL(a.anteprima); scelti.splice(i, 1); disegnaScelti(); bSc.focus(); });
+      AL.append(r);
+    });
+    bCam.disabled = bSc.disabled = scelti.length >= MAX_ALL;
+  }
+  async function aggiungi(files){
+    err.textContent = '';
+    for (const f of files) {
+      if (scelti.length >= MAX_ALL) { err.textContent = 'Puoi allegare al massimo ' + MAX_ALL + ' file.'; break; }
+      const t = tipoDi(f);
+      if (!TIPI_OK.test(t)) { err.textContent = '"' + f.name + '": tipo di file non supportato.'; continue; }
+      const r = await rimpicciolisci(f, t);
+      if (r.file.size > MAX_MB * 1048576) { err.textContent = '"' + f.name + '" supera ' + MAX_MB + ' MB.'; continue; }
+      scelti.push({file: r.file, tipo: r.tipo, nome: r.nome || f.name || 'foto.jpg', anteprima: /^image\/(jpeg|png|webp|gif)$/.test(r.tipo) ? URL.createObjectURL(r.file) : ''});
+    }
+    disegnaScelti();
+  }
+  bCam.addEventListener('click', () => $('.all-in-cam', P).click());
+  bSc.addEventListener('click', () => $('.all-in', P).click());
+  P.querySelectorAll('.all-in, .all-in-cam').forEach(inp => inp.addEventListener('change', () => { const l = [...(inp.files || [])]; inp.value = ''; aggiungi(l); }));
   txt.addEventListener('input', () => { cnt.textContent = txt.value.length + ' / ' + MAX; if (txt.value.trim()) err.textContent = ''; });
   function apriModulo(arg, idArg, tipo){
     prima = document.activeElement; rif = idArg || '';
     F.reset(); F.hidden = false; esito.hidden = true; err.textContent = ''; cnt.textContent = '0 / ' + MAX;
+    scelti.forEach(a => { if (a.anteprima) URL.revokeObjectURL(a.anteprima); }); scelti = []; disegnaScelti();
     $('#fb-arg', P).value = arg || '';
     $('#fb-nome', P).value = QP.nome();
     if (tipo) { const r = F.querySelector('input[value="' + tipo + '"]'); if (r) r.checked = true; }
@@ -369,6 +481,13 @@ body.fb-aperto{overflow:hidden}
     const m = {tipo: F.tipo.value, argomento: $('#fb-arg', P).value.trim().slice(0, 160), rif, messaggio: testo.slice(0, MAX), nome: $('#fb-nome', P).value.trim().slice(0, 60), versione: ver};
     const btn = $('button[type=submit]', F), sid = (QP.sessione() || {}).id; btn.disabled = true; btn.textContent = 'Invio…';
     const riprova = t => { err.textContent = t; btn.disabled = false; btn.textContent = 'Invia'; };
+    if (scelti.length) {                                  // prima si caricano gli allegati: servono internet e l'accesso
+      if (!navigator.onLine) { riprova('Per inviare foto e file serve internet: riprova quando sei connesso, oppure toglili.'); return; }
+      if (!sid) { riprova('Rientra con il tuo account per inviare foto e file.'); return; }
+      try { m.allegati = []; for (const a of scelti) { btn.textContent = 'Carico ' + (m.allegati.length + 1) + '/' + scelti.length + '…'; m.allegati.push(await allegati.carica(a, sid)); } }
+      catch (x) { riprova(x && x.message === 'fuori' ? 'Accesso scaduto: rientra con il tuo account e riprova.' : 'Caricamento di foto e file non riuscito: riprova.'); return; }
+      btn.textContent = 'Invio…';
+    }
     let stato = 'inviata';
     if (!navigator.onLine) stato = 'coda';
     else {
@@ -472,13 +591,14 @@ body.fb-aperto{overflow:hidden}
       if (DEMO) return mem.get('qp-demo-msg') || [];
       return (await QP.rpc('messaggi_inviati')) || [];
     },
-    async invia(a, testo){
+    async invia(a, testo, anonimo){
+      anonimo = !a && !!anonimo;                       // anonimi solo gli annunci a tutti (1.01.00)
       if (DEMO) {
         const l = mem.get('qp-demo-msg') || [], u = a && utenti.find(x => x.id === a);
-        l.unshift({id: Date.now(), testo, creato: new Date().toISOString(), mittente_nome: QP.nome(), mio: true, destinatario: a || null, dest_nome: u ? u.nome : null, letto: null, letti: 0, totale: a ? 1 : Math.max(utenti.length - 1, 0)});
+        l.unshift({id: Date.now(), testo, creato: new Date().toISOString(), mittente_nome: QP.nome(), mio: true, destinatario: a || null, anonimo, dest_nome: u ? u.nome : null, letto: null, letti: 0, totale: a ? 1 : Math.max(utenti.length - 1, 0)});
         mem.set('qp-demo-msg', l); return;
       }
-      await QP.rpc('invia_messaggio', {a: a || null, testo});
+      await QP.rpc('invia_messaggio', anonimo ? {a: null, testo, anonimo: true} : {a: a || null, testo});
     },
     async ritira(id){
       if (DEMO) { mem.set('qp-demo-msg', (mem.get('qp-demo-msg') || []).filter(m => m.id !== id)); return; }
@@ -534,7 +654,7 @@ body.fb-aperto{overflow:hidden}
   function schede(){
     if (!QP.admin()) return '';
     const sup = QP.superadmin(), n = lista.filter(m => !m.letto).length;
-    const t = sup ? [['utenti', 'Utenti'], ['accessi', 'Accessi'], ['segnalazioni', 'Segnalazioni' + (QP.nuove || n ? ' <span class="n">(' + (QP.nuove || n) + ')</span>' : '')], ['messaggi', 'Messaggi']]
+    const t = sup ? [['utenti', 'Utenti'], ['accessi', 'Accessi'], ['segnalazioni', 'Segnalazioni' + (QP.nuove || n ? ' <span class="qp-n" aria-label="' + (QP.nuove || n) + ' da leggere">' + (QP.nuove || n) + '</span>' : '')], ['messaggi', 'Messaggi']]
       : [['utenti', 'Utenti'], ['messaggi', 'Messaggi']];
     return '<div class="adm-tabs' + (t.length > 3 ? ' t4' : '') + '" role="tablist" aria-label="' + (sup ? 'Area super-admin' : 'Area admin') + '">' +
       t.map(([k, t]) => '<button type="button" role="tab" data-s="' + k + '" aria-selected="' + (scheda === k) + '">' + t + '</button>').join('') + '</div>';
@@ -561,6 +681,7 @@ body.fb-aperto{overflow:hidden}
     f.innerHTML = '<h3>Nuovo messaggio</h3>' +
       '<label class="fl" for="msg-a">A chi</label><select class="in" id="msg-a"></select>' +
       '<label class="fl" for="msg-t">Messaggio</label><textarea class="in" id="msg-t" maxlength="1000" placeholder="Scrivi qui il messaggio."></textarea>' +
+      '<label class="anon" hidden><input type="checkbox" id="msg-anon"><span>Annuncio anonimo<small>Chi lo riceve non vede il tuo nome né la foto.</small></span></label>' +
       '<p class="aiuto"></p><p class="err" role="alert"></p>' +
       '<div class="azioni"><button type="submit" class="btn pri">Invia</button><span class="cont">0/1000</span></div>' + (msgOk ? '<p class="ok-msg" role="status"></p>' : '');
     const sel = $('#msg-a', f), ta = $('#msg-t', f), e = $('.err', f), aiuto = $('.aiuto', f), inv = $('button[type=submit]', f), cont = $('.cont', f);
@@ -570,6 +691,7 @@ body.fb-aperto{overflow:hidden}
     if (msgOk) { $('.ok-msg', f).textContent = msgOk; msgOk = ''; }
     const spiega = () => {
       const tutti = sup && !sel.value;
+      $('.anon', f).hidden = !tutti; if (!tutti) $('#msg-anon', f).checked = false;
       aiuto.textContent = tutti ? 'Annuncio: compare in primo piano a tutti gli utenti, anche a chi si registra dopo, finché non premono OK.'
         : sel.value ? 'Compare in primo piano solo a questo utente (all\'apertura dell\'app, o entro un minuto se è in linea) finché non preme OK.'
         : 'Scegli a chi scrivere: il messaggio comparirà in primo piano solo a quell\'utente finché non preme OK.';
@@ -586,8 +708,9 @@ body.fb-aperto{overflow:hidden}
       const u = altri.find(x => x.id === a);
       inv.disabled = true; inv.textContent = 'Invio…';
       try {
-        await serv.invia(a, t);
-        msgOk = a ? 'Inviato a ' + (u ? u.nome : 'utente') + ': lo vedrà in primo piano.' : 'Annuncio inviato a tutti.';
+        const anon = !a && $('#msg-anon', f).checked;
+        await serv.invia(a, t, anon);
+        msgOk = a ? 'Inviato a ' + (u ? u.nome : 'utente') + ': lo vedrà in primo piano.' : anon ? 'Annuncio anonimo inviato a tutti.' : 'Annuncio inviato a tutti.';
         msgA = a; inviati = await serv.inviati().catch(() => inviati); disegnaMessaggi(C);
       } catch (x) { e.textContent = errMsg(x); inv.disabled = false; spiega(); }
     });
@@ -610,7 +733,7 @@ body.fb-aperto{overflow:hidden}
       const a = document.createElement('article'); a.className = 'msg mi';
       a.innerHTML = '<div class="msg-top"><span class="tag"></span><time></time></div><p class="msg-txt"></p><div class="msg-bot"><span class="chi stato"></span><button type="button" class="del">Ritira</button></div>';
       const tg = $('.tag', a), ann = !m.destinatario;
-      tg.classList.add(ann ? 't-ann' : 't-dm'); tg.textContent = ann ? 'Annuncio a tutti' : 'A ' + (m.dest_nome || 'utente eliminato');
+      tg.classList.add(ann ? 't-ann' : 't-dm'); tg.textContent = ann ? (m.anonimo ? 'Annuncio anonimo' : 'Annuncio a tutti') : 'A ' + (m.dest_nome || 'utente eliminato');
       $('time', a).textContent = quando(m.creato); $('time', a).dateTime = m.creato;
       $('.msg-txt', a).textContent = m.testo;
       const st = $('.stato', a);
@@ -836,6 +959,28 @@ body.fb-aperto{overflow:hidden}
     const ks = new Set(gr.map(g => g.k)); [...accAperti].forEach(k => { if (!ks.has(k)) accAperti.delete(k); });
     gr.forEach(g => L.append(cartaDisp(g, true, accAperti)));
   }
+  /* allegati di una segnalazione: miniatura per le foto, tocco = apre il file (link firmato di 10 minuti) */
+  const linkCache = new Map();
+  async function linkDi(p){ const c = linkCache.get(p); if (c && c.t > Date.now()) return c.u; const u = await allegati.link(p); linkCache.set(p, {u, t: Date.now() + 9 * 6e4}); return u; }
+  function fileSegnalazione(l){
+    const W = document.createElement('div'); W.className = 'msg-all';
+    l.forEach(a => {
+      if (!a || !a.path) return;
+      const b = document.createElement('button'); b.type = 'button';
+      const foto = /^image\//.test(a.tipo || ''), th = document.createElement('span'); th.className = 'th'; th.innerHTML = ICO.doc;
+      const nm = document.createElement('span'); nm.textContent = (a.nome || 'file') + (a.dim ? ' · ' + peso(a.dim) : '');
+      b.append(th, nm); b.setAttribute('aria-label', 'Apri ' + (a.nome || 'allegato'));
+      if (foto && !DEMO) linkDi(a.path).then(u => { const im = new Image(); im.alt = ''; im.onload = () => { th.innerHTML = ''; th.append(im); }; im.src = u; }).catch(() => {});
+      b.addEventListener('click', async () => {
+        if (DEMO) { nm.textContent = (a.nome || 'file') + ' · anteprima: file non inviato'; return; }
+        const w = window.open('', '_blank');
+        try { const u = await linkDi(a.path); if (w) w.location.href = u; else location.href = u; }
+        catch (x) { if (w) w.close(); nm.textContent = (a.nome || 'file') + ' · non si apre: ' + errMsg(x); }
+      });
+      W.append(b);
+    });
+    return W;
+  }
   /* segnalazioni (solo super-admin) */
   function disegnaSegnalazioni(C){
     const nuove = lista.filter(m => !m.letto).length;
@@ -855,6 +1000,7 @@ body.fb-aperto{overflow:hidden}
       const ar = $('.msg-arg', c);
       if (m.argomento) { ar.textContent = m.argomento; if (m.rif && document.getElementById(m.rif)) ar.addEventListener('click', () => { location.hash = m.rif; }); else ar.classList.add('nolink'); } else ar.remove();
       $('.msg-txt', c).textContent = m.messaggio;
+      if (Array.isArray(m.allegati) && m.allegati.length) $('.msg-txt', c).after(fileSegnalazione(m.allegati));
       $('.chi', c).textContent = (m.nome ? 'da ' + m.nome : 'anonimo') + (m.versione ? ' · ' + m.versione : '');
       const tl = $('.tl', c); tl.textContent = m.letto ? 'Segna da leggere' : 'Segna come letta';
       tl.addEventListener('click', async () => { try { await srv.segna(m.id, !m.letto); m.letto = !m.letto; disegnaAdmin(); conta(); } catch (x) {} });
@@ -863,7 +1009,7 @@ body.fb-aperto{overflow:hidden}
         const bot = $('.msg-bot', c);
         bot.innerHTML = '<span class="chi">Eliminare questa segnalazione?</span><button type="button" class="si">Elimina</button><button type="button" class="no">Annulla</button>';
         $('.no', bot).addEventListener('click', () => disegnaAdmin());
-        $('.si', bot).addEventListener('click', async () => { try { await srv.elimina(m.id); lista = lista.filter(x => x !== m); disegnaAdmin(); conta(); } catch (x) {} });
+        $('.si', bot).addEventListener('click', async () => { try { await srv.elimina(m.id); allegati.elimina((m.allegati || []).map(a => a.path).filter(Boolean)); lista = lista.filter(x => x !== m); disegnaAdmin(); conta(); } catch (x) {} });
         $('.no', bot).focus();
       });
       L.append(c);

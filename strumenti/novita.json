@@ -1,0 +1,20 @@
+[
+  {"v": "1.01.00", "data": "06/11/2026", "cosa": [
+    "Nuova numerazione delle versioni (1.MM.PP) e questo riquadro \"Novità\".",
+    "Segnalazioni: puoi allegare fino a 3 foto o file (le foto vengono rimpicciolite prima dell'invio).",
+    "Annunci anche in forma anonima, senza il nome di chi li manda.",
+    "Pallino rosso con il numero delle segnalazioni da leggere sul profilo, nell'area admin e sulle schede.",
+    "Area admin: barra delle schede più compatta, si leggono tutte anche sul telefono."
+  ]},
+  {"v": "1.00.00", "data": "05/11/2026", "cosa": [
+    "Messaggi al singolo utente da admin e super-admin.",
+    "Annunci a tutti in primo piano, si chiudono con OK.",
+    "Era la versione 1.6: da qui parte la nuova numerazione."
+  ]},
+  {"v": "1.5", "data": "01/11/2026", "cosa": ["Cambio del nome utente con registro dei nomi.", "Accessi raggruppati per dispositivo e apribili."]},
+  {"v": "1.4", "data": "31/10/2026", "cosa": ["Correzioni dal controllo del codice; segnalazioni in attesa salvate per account."]},
+  {"v": "1.3", "data": "30/10/2026", "cosa": ["Passage planning, ECDIS e safety contour, pilot chart e routeing chart."]},
+  {"v": "1.2", "data": "30/10/2026", "cosa": ["Carta sinottica d'esempio con tutti i fenomeni, legenda e modello di stazione."]},
+  {"v": "1.1", "data": "27/10/2026", "cosa": ["Schermata d'accesso e codice per registrarsi; tolta la modalità Guest."]},
+  {"v": "1.0", "data": "26/10/2026", "cosa": ["Super-admin e admin, foto profilo, registro accessi, termini di servizio."]}
+]

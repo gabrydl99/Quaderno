@@ -3,9 +3,10 @@
 cambiate dall'ultimo commit (account, feedback, tema, istruzioni, …) e mette versione e data in fondo.
 
 Uso:
-    python3 strumenti/aggiorna_index.py --versione 1.1 [--data 27/10/2026]
+    python3 strumenti/aggiorna_index.py --versione 1.01.00 [--data 06/11/2026]
 
-Versioni dalla 1.0 (26/10/2026): 1.0, 1.1, 1.2 … (2.0 solo per cambi grossi). Aggiorna anche sw.js.
+Versioni dalla 1.01.00 (06/11/2026): 1.MM.PP a due cifre (vedi LEGGIMI). Prima di lanciarlo aggiungi in cima a
+strumenti/novita.json cosa è cambiato: finisce nel riquadro "Novità" sotto la versione. Aggiorna anche sw.js.
 Confronta con l'ultimo commit: per rilanciarlo dopo altre modifiche (senza commit in mezzo) prima
 `git checkout index.html sw.js`.
 """
@@ -15,7 +16,7 @@ from zoneinfo import ZoneInfo
 RADICE = pathlib.Path(__file__).resolve().parent.parent
 PARTI = ['tema.css', 'istruzioni.html', 'installa.html', 'pagina.html', 'sfondo.html', 'account.html', 'feedback.html', 'home-aggiunte.html']
 sys.path.insert(0, str(RADICE / 'strumenti'))
-from costruisci_pwa import PIEDE, PORTA, PORTA_SOTTO, ids_unici  # noqa: E402
+from costruisci_pwa import piede as fa_piede, PORTA, PORTA_SOTTO, ids_unici  # noqa: E402
 
 
 def con_supabase(t: str) -> str:
@@ -45,9 +46,11 @@ def main():
         print('aggiornato', f)
     # versione: niente più in alto (fino alla v47), in fondo alla pagina iniziale
     s = re.sub(r'<span class="ver-top"[^>]*>.*?</small></span>\s*', '', s, count=1, flags=re.S)
-    piede = PIEDE.format(v=v, data=data)
-    if 'class="ver-fondo"' in s:
-        s = re.sub(r'\n?<p class="ver-fondo"[^>]*>.*?</p>', piede, s, count=1, flags=re.S)
+    piede = fa_piede(v, data)
+    if '<div class="ver-box">' in s:
+        s = re.sub(r'\n?<div class="ver-box">.*?<!--/ver-box-->', lambda _m: piede, s, count=1, flags=re.S)
+    elif 'class="ver-fondo"' in s:
+        s = re.sub(r'\n?<p class="ver-fondo"[^>]*>.*?</p>', lambda _m: piede, s, count=1, flags=re.S)
     else:
         k = s.find('</section>', s.find('<section class="howto"')) + len('</section>')
         s = s[:k] + piede + s[k:]

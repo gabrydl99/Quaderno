@@ -56,6 +56,18 @@ TESTA = TESTA + PORTA
 
 PIEDE = '\n<p class="ver-fondo" title="Versione dell\'app e data dell\'ultimo aggiornamento">Versione <b>{v}</b> · {data}</p>'
 
+
+def piede(v: str, data: str) -> str:
+    """Versione e data in fondo alla home, più il riquadro apribile "Novità" (dalla 1.01.00) da strumenti/novita.json.
+    Tutto tra <div class="ver-box"> e <!--/ver-box--> così aggiorna_index.py lo sostituisce intero."""
+    import html as _h
+    voci = json.loads((RADICE / 'strumenti' / 'novita.json').read_text(encoding='utf8'))
+    lista = ''.join('<li><p class="nv-v"><b>' + _h.escape(n['v']) + '</b> · ' + _h.escape(n['data']) + '</p><ul>' +
+                    ''.join('<li>' + _h.escape(c) + '</li>' for c in n['cosa']) + '</ul></li>' for n in voci)
+    return ('\n<div class="ver-box">' + PIEDE.format(v=v, data=data).strip() +
+            '<details class="novita"><summary><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 15.5 12 9 18.5"/></svg>Novità</summary>'
+            '<ol class="nv">' + lista + '</ol></details></div><!--/ver-box-->')
+
 REGISTRA = '''
 <script>
 /* PWA: funziona anche senza internet; gli audio restano sul telefono dopo il primo ascolto */
@@ -167,14 +179,14 @@ def costruisci(sorgente: str, versione: str | None, sfondo: bool = False, data: 
     s = s[:k] + '\n<style id="tema">\n' + tema + '</style>' + s[k:]
 
     # 4. versione e data dell'ultimo aggiornamento: in fondo alla pagina iniziale, sotto "Come si usa l'app"
-    #    (dalla 1.0 del 26/10/2026: 1.0, 1.1, 1.2 … ; prima era in alto a destra come vNN)
+    #    (dalla 1.01.00 del 06/11/2026: 1.MM.PP, vedi LEGGIMI; prima 1.0 … 1.6 e, ancora prima, vNN in alto a destra)
     vecchia = re.search(r'class="ver"[^>]*>(v\d+)<', s)
     v = versione or (vecchia.group(1) if vecchia else '')
     s = re.sub(r'\s*<p class="foot-ver">.*?</p>', '', s, count=1, flags=re.S)
     data = data or datetime.datetime.now(ZoneInfo('Europe/Rome')).strftime('%d/%m/%Y')
-    piede = PIEDE.format(v=v, data=data)
+    piede_ = piede(v, data)
     k = s.find('</section>', s.find('<section class="howto"')) + len('</section>')
-    s = s[:k] + piede + s[k:]
+    s = s[:k] + piede_ + s[k:]
 
     # 5. tasto Installa, immagine di sfondo (facoltativa) e registrazione del service worker
     extra = (RADICE / 'strumenti' / 'installa.html').read_text(encoding='utf8')

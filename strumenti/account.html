@@ -15,6 +15,9 @@
 .acc-chip.sa{border-color:var(--racing-bd)}
 .acc-chip.sa .av,.acc .av.sa{background:var(--racing);color:var(--on-racing);box-shadow:0 0 0 2px var(--racing)}
 .acc-chip .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* pallino delle segnalazioni da leggere sopra la foto (1.01.00); all:unset toglie position, qui torna */
+.acc-chip{position:relative}
+.acc-chip > .qp-n{position:absolute;top:-6px;left:20px;box-shadow:0 0 0 2px var(--sheet)}
 .acc-chip:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .acc svg,.acc-chip svg,.letto svg,.toc .tk svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;color:inherit}
 
@@ -480,9 +483,11 @@ body.avv-aperto{overflow:hidden}
         '<div class="avv-da"><span class="av"></span><span class="avv-chi"><b></b><time></time></span></div>' +
         '<p class="avv-txt" id="avv-txt"></p><button type="button" class="btn pri avv-ok">OK</button></div>';
       $('.avv-tag', d).textContent = m.annuncio ? 'Annuncio' : 'Messaggio per te';
-      avatar($('.av', d), m.da, m.foto_da, m.ruolo_da || '');
-      $('.avv-chi b', d).textContent = 'Da ' + (m.da || 'amministratore');
-      if (m.ruolo_da) { const b = document.createElement('span'); b.className = 'badge' + (m.ruolo_da === 'superadmin' ? ' sa' : ''); b.textContent = NOME_RUOLO[m.ruolo_da] || m.ruolo_da; $('.avv-chi b', d).append(b); }
+      if (m.anonimo) {                                   // annuncio anonimo (1.01.00): senza mittente, solo la data
+        $('.av', d).remove(); $('.avv-chi b', d).remove();
+      } else avatar($('.av', d), m.da, m.foto_da, m.ruolo_da || '');
+      if (!m.anonimo) $('.avv-chi b', d).textContent = 'Da ' + (m.da || 'amministratore');
+      if (!m.anonimo && m.ruolo_da) { const b = document.createElement('span'); b.className = 'badge' + (m.ruolo_da === 'superadmin' ? ' sa' : ''); b.textContent = NOME_RUOLO[m.ruolo_da] || m.ruolo_da; $('.avv-chi b', d).append(b); }
       const t = $('time', d); t.dateTime = m.creato || ''; t.textContent = m.creato ? new Date(m.creato).toLocaleString('it-IT', {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'}) : '';
       $('.avv-txt', d).textContent = m.testo || '';
       const ok = $('.avv-ok', d);
@@ -565,7 +570,13 @@ body.avv-aperto{overflow:hidden}
   let riga = cerca && cerca.closest('.cerca-riga');
   if (cerca && !riga) { riga = document.createElement('div'); riga.className = 'cerca-riga'; cerca.parentNode.insertBefore(riga, cerca); riga.append(cerca); }
   const chip = document.createElement('button'); chip.type = 'button'; chip.className = 'acc-chip';
-  chip.innerHTML = '<span class="av"></span><span class="nm"></span>';
+  chip.innerHTML = '<span class="av"></span><span class="nm"></span><span class="qp-n" hidden></span>';
+  /* pallino sul profilo: segnalazioni da leggere (solo super-admin, numero da feedback.html in QP.nuove) */
+  function pallino(){
+    const n = ruoloDi(sess()) === 'superadmin' && window.QP ? (window.QP.nuove || 0) : 0, b = $('.qp-n', chip);
+    b.hidden = !n; b.textContent = n > 99 ? '99+' : n;
+    chip.setAttribute('aria-description', n ? n + (n === 1 ? ' segnalazione da leggere' : ' segnalazioni da leggere') : '');
+  }
   if (riga) cerca.after(chip);
   chip.addEventListener('click', () => apri());
 
@@ -605,7 +616,7 @@ body.avv-aperto{overflow:hidden}
       '<p class="aiuto">Da 3 a 20 caratteri: lettere, numeri, punto, trattino o trattino basso. Da ora entrerai con il nuovo nome, la password resta la stessa.</p><p class="err" role="alert"></p>' +
       '<div class="azioni"><button type="submit" class="btn pri">Salva</button><button type="button" class="btn n-no">Annulla</button></div></form>' + (nomeOk ? '<p class="ok-nome" role="status"></p>' : '') +
       '<div class="tot"><div class="tot-n"><b>' + p + '%</b><span>' + n + ' argomenti letti su ' + t + '</span></div><span class="bar' + (p === 100 ? ' ok' : '') + '" role="progressbar" aria-label="Avanzamento totale" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + p + '"><i style="width:' + p + '%"></i></span></div>' +
-      (r === 'superadmin' ? '<div class="adm-box sa"><p><b>Area super-admin</b>Utenti, accessi, segnalazioni, messaggi e codice' + (window.QP.nuove ? ' · ' + window.QP.nuove + ' da leggere' : '') + '</p><button type="button" class="btn adm-go">Apri</button></div>' :
+      (r === 'superadmin' ? '<div class="adm-box sa"><p><b>Area super-admin</b>Utenti, accessi, segnalazioni, messaggi e codice</p><button type="button" class="btn adm-go">Apri' + (window.QP.nuove ? ' <span class="qp-n" aria-label="' + window.QP.nuove + ' da leggere">' + window.QP.nuove + '</span>' : '') + '</button></div>' :
        r === 'admin' ? '<div class="adm-box"><p><b>Area admin</b>Utenti, messaggi e codice d\'accesso</p><button type="button" class="btn adm-go">Apri</button></div>' : '') +
       '<h4>Capitoli</h4><ul class="cap"></ul>' +
       '<button type="button" class="btn largo esci">Esci</button>' +
@@ -752,6 +763,7 @@ body.avv-aperto{overflow:hidden}
     const av = $('.av', chip); if (s) { avatar(av, s.nome, foto.mia(), ''); } else { av.innerHTML = ICO.utente; }
     $('.nm', chip).textContent = s ? s.nome : '';
     chip.setAttribute('aria-label', s ? 'Profilo di ' + s.nome + (r ? ' (' + NOME_RUOLO[r] + ')' : '') : 'Profilo');
+    pallino();
     Object.keys(tasti).forEach(id => {
       const b = tasti[id], on = !!s && prog.fatti.has(id);
       b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false');
@@ -781,7 +793,7 @@ body.avv-aperto{overflow:hidden}
     admin: () => ruolo() === 'admin' || ruolo() === 'superadmin',       // può aprire l'area admin (utenti)
     superadmin: () => ruolo() === 'superadmin',                           // accessi, segnalazioni, elimina account
     nome: () => { const s = sess(); return s ? s.nome : ''; },
-    on: f => subs.push(f), apriProfilo: apri, cambiaNome, nuove: 0, ridisegna: () => { if (!P.hidden) disegna(); }, CODICE_DEMO};
+    on: f => subs.push(f), apriProfilo: apri, cambiaNome, nuove: 0, ridisegna: () => { pallino(); if (!P.hidden) disegna(); }, CODICE_DEMO};
 
   aggiorna(); rotta();
   if (sess() && !DEMO) { prog.scarica().then(aggiorna); battito.avvia(); }

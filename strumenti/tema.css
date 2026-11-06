@@ -220,6 +220,25 @@ article.topic{box-shadow:0 1px 2px rgba(6,17,27,.04),0 10px 28px -16px rgba(6,17
 /* versione dell'app in fondo alla pagina iniziale (dalla 1.0) */
 .ver-fondo{display:table;margin:12px auto 6px;padding:5px 12px;border-radius:999px;font:500 .76rem/1.4 var(--f-body);color:var(--muted);background:color-mix(in srgb,var(--sheet) 85%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line)}
 .ver-fondo b{font-weight:700;color:var(--ink)}
+.ver-box{display:grid;justify-items:center;gap:0;margin:0 auto 8px;max-width:560px;padding:0 4px}
+.ver-box .ver-fondo{margin-bottom:6px}
+/* riquadro apribile "Novità" sotto la versione (dalla 1.01.00) */
+.novita{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--sheet) 90%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.novita summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;padding:9px 12px;font:600 .84rem/1.2 var(--f-body);color:var(--ink);border-radius:14px}
+.novita summary::-webkit-details-marker{display:none}
+.novita summary svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;color:var(--muted);transition:transform .15s}
+.novita[open] summary svg{transform:rotate(90deg)}
+.novita summary:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+.nv{list-style:none;margin:0;padding:0 14px 12px;display:grid;gap:10px;max-height:340px;overflow:auto}
+.nv > li{border-top:1px solid var(--line);padding-top:9px}
+.nv-v{margin:0 0 3px;font:500 .8rem/1.3 var(--f-body);color:var(--muted)}
+.nv-v b{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
+.nv ul{margin:0;padding-left:18px;font-size:.84rem;line-height:1.45;color:var(--ink)}
+.nv ul li{margin:2px 0}
+@media (prefers-reduced-motion:reduce){.novita summary svg{transition:none}}
+/* pallino con il numero delle notifiche (dalla 1.01.00) */
+.qp-n{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;box-sizing:border-box;border-radius:999px;background:var(--red);color:var(--sheet);font:700 .68rem/1 var(--f-body);font-variant-numeric:tabular-nums;letter-spacing:0;vertical-align:middle}
+.qp-n[hidden]{display:none}
 /* senza account l'app resta coperta dalla schermata d'accesso (strumenti/account.html); qp-ok lo mette
    lo script in testa alla pagina se c'è una sessione salvata, così chi è già entrato non vede lampi */
 html:not(.qp-ok) body{overflow:hidden}

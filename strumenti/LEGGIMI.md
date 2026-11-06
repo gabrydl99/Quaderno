@@ -6,15 +6,19 @@ Sito: https://gabrydl99.github.io/Quaderno/ — audio divisi tra questo reposito
 Sorgente dei contenuti: l'HTML dell'artefatto "Quaderno Patentino" (v34). Il contenuto non si modifica qui: solo grafica e funzioni.
 
 ```
-python3 strumenti/costruisci_pwa.py SORGENTE.html --versione 1.1 --sfondo --feedback
+python3 strumenti/costruisci_pwa.py SORGENTE.html --versione 1.01.00 --sfondo --feedback
 ```
 - `--anteprima` (con `--uscita prova.html`): nessun collegamento a Supabase, tutto resta sul telefono.
-- Ogni pubblicazione: aumentare la versione (aggiorna anche `sw.js`).
-- **Versioni**: fino al 26/10/2026 erano v1…v47; da lì la v47 è diventata **1.0** e si conta 1.1, 1.2 … (2.0 solo per cambi grossi).
-  Versione e data stanno **in fondo alla pagina iniziale** (`<p class="ver-fondo">`), non più in alto.
+- Ogni pubblicazione: aumentare la versione (aggiorna anche `sw.js`) e aggiungere **in cima** a `strumenti/novita.json`
+  cosa è cambiato: finisce nel riquadro apribile **"Novità"** sotto la versione, in fondo alla home (`<div class="ver-box">…<!--/ver-box-->`).
+- **Versioni dalla 1.01.00 (06/11/2026): `1.MM.PP` a due cifre.** La vecchia 1.6 (messaggi) = **1.00.00**.
+  - **Media** (`1.01.00`, `1.02.00` …): grafica, disegni, nuovi argomenti, nuove sezioni. Quando sale, la piccola torna a `00`.
+  - **Piccola** (`1.01.01`, `1.01.02` …): piccole funzioni, pulsanti, correzioni di errori o di testo.
+  - `2.00.00` solo per una svolta vera. Prima: v1…v47, poi 1.0…1.6.
+  Versione e data stanno **in fondo alla pagina iniziale** (`<p class="ver-fondo">`).
 - Modifiche solo a grafica/funzioni (file di `strumenti/`) senza ricostruire dal sorgente:
   ```
-  python3 strumenti/aggiorna_index.py --versione 1.1
+  python3 strumenti/aggiorna_index.py --versione 1.01.01
   ```
   sostituisce in `index.html` le parti cambiate dall'ultimo commit e aggiorna versione, data e `sw.js`.
 
@@ -52,6 +56,14 @@ Ruoli (`app_metadata.ruolo`, letto dal database con `mio_ruolo()`: un cambio val
 (anche toccando il nome nella griglia o "Scrivi" nei dettagli); solo il super-admin manda annunci a tutti.
 Il messaggio arriva con `segnale()` e compare in primo piano (`avvisi` in `account.html`) finché non si preme OK;
 chi l'ha inviato vede "Letto …" / "Letto da N su M" e può ritirarlo. SQL: `sql/05_messaggi.sql`.
+**1.01.00**: annunci anche **anonimi** (casella "Annuncio anonimo", solo super-admin e solo per gli annunci a tutti:
+colonna `messaggi.anonimo`; `segnale()` non manda nome, ruolo e foto del mittente). **Allegati nelle segnalazioni**: fino a 3
+file da 10 MB (foto rimpicciolite a 1920 px JPEG sul telefono), nel bucket privato `allegati` di Supabase Storage, cartella =
+id di chi invia; la segnalazione ne tiene l'elenco in `segnalazioni.allegati` (trigger `controlla_allegati`). Li apre solo il
+super-admin con un link firmato di 10 minuti; eliminando la segnalazione si cancellano anche i file. Servono internet (niente coda).
+**Pallino rosso** `.qp-n` (in `tema.css`) con le segnalazioni da leggere: sul profilo in alto, su "Area super-admin", sul tasto Apri
+del profilo e sulla scheda Segnalazioni. Schede dell'area admin più strette (si leggono tutte e quattro anche a 360 px).
+SQL: `sql/06_allegati_annunci_anonimi.sql`.
 Nota: dalla 1.5 `account.html` e `feedback.html` erano rimasti indietro rispetto a `index.html`: alla 1.6 sono stati
 riallineati estraendoli da `index.html`.
 

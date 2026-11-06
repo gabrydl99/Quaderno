@@ -9,8 +9,7 @@ Sorgente dei contenuti: l'HTML dell'artefatto "Quaderno Patentino" (v34). Il con
 python3 strumenti/costruisci_pwa.py SORGENTE.html --versione 1.01.00 --sfondo --feedback
 ```
 - `--anteprima` (con `--uscita prova.html`): nessun collegamento a Supabase, tutto resta sul telefono.
-- Ogni pubblicazione: aumentare la versione (aggiorna anche `sw.js`) e aggiungere **in cima** a `strumenti/novita.json`
-  cosa è cambiato: finisce nel riquadro apribile **"Novità"** sotto la versione, in fondo alla home (`<div class="ver-box">…<!--/ver-box-->`).
+- Ogni pubblicazione: aumentare la versione (aggiorna anche `sw.js`). Il riquadro "Novità" della 1.01.00 è stato tolto nella 1.01.01 su richiesta.
 - **Versioni dalla 1.01.00 (06/11/2026): `1.MM.PP` a due cifre.** La vecchia 1.6 (messaggi) = **1.00.00**.
   - **Media** (`1.01.00`, `1.02.00` …): grafica, disegni, nuovi argomenti, nuove sezioni. Quando sale, la piccola torna a `00`.
   - **Piccola** (`1.01.01`, `1.01.02` …): piccole funzioni, pulsanti, correzioni di errori o di testo.

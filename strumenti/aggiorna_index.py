@@ -5,8 +5,7 @@ cambiate dall'ultimo commit (account, feedback, tema, istruzioni, …) e mette v
 Uso:
     python3 strumenti/aggiorna_index.py --versione 1.01.00 [--data 06/11/2026]
 
-Versioni dalla 1.01.00 (06/11/2026): 1.MM.PP a due cifre (vedi LEGGIMI). Prima di lanciarlo aggiungi in cima a
-strumenti/novita.json cosa è cambiato: finisce nel riquadro "Novità" sotto la versione. Aggiorna anche sw.js.
+Versioni dalla 1.01.00 (06/11/2026): 1.MM.PP a due cifre (vedi LEGGIMI). Aggiorna anche sw.js.
 Confronta con l'ultimo commit: per rilanciarlo dopo altre modifiche (senza commit in mezzo) prima
 `git checkout index.html sw.js`.
 """
@@ -47,7 +46,7 @@ def main():
     # versione: niente più in alto (fino alla v47), in fondo alla pagina iniziale
     s = re.sub(r'<span class="ver-top"[^>]*>.*?</small></span>\s*', '', s, count=1, flags=re.S)
     piede = fa_piede(v, data)
-    if '<div class="ver-box">' in s:
+    if '<div class="ver-box">' in s:                  # riquadro Novità della 1.01.00: va via
         s = re.sub(r'\n?<div class="ver-box">.*?<!--/ver-box-->', lambda _m: piede, s, count=1, flags=re.S)
     elif 'class="ver-fondo"' in s:
         s = re.sub(r'\n?<p class="ver-fondo"[^>]*>.*?</p>', lambda _m: piede, s, count=1, flags=re.S)

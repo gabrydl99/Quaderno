@@ -58,15 +58,8 @@ PIEDE = '\n<p class="ver-fondo" title="Versione dell\'app e data dell\'ultimo ag
 
 
 def piede(v: str, data: str) -> str:
-    """Versione e data in fondo alla home, più il riquadro apribile "Novità" (dalla 1.01.00) da strumenti/novita.json.
-    Tutto tra <div class="ver-box"> e <!--/ver-box--> così aggiorna_index.py lo sostituisce intero."""
-    import html as _h
-    voci = json.loads((RADICE / 'strumenti' / 'novita.json').read_text(encoding='utf8'))
-    lista = ''.join('<li><p class="nv-v"><b>' + _h.escape(n['v']) + '</b> · ' + _h.escape(n['data']) + '</p><ul>' +
-                    ''.join('<li>' + _h.escape(c) + '</li>' for c in n['cosa']) + '</ul></li>' for n in voci)
-    return ('\n<div class="ver-box">' + PIEDE.format(v=v, data=data).strip() +
-            '<details class="novita"><summary><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 15.5 12 9 18.5"/></svg>Novità</summary>'
-            '<ol class="nv">' + lista + '</ol></details></div><!--/ver-box-->')
+    """Versione e data in fondo alla home (il riquadro "Novità" della 1.01.00 è stato tolto nella 1.01.01)."""
+    return PIEDE.format(v=v, data=data)
 
 REGISTRA = '''
 <script>
